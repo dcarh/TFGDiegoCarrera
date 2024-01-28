@@ -10,7 +10,8 @@ lazy val root = (project in file("."))
       "com.softwaremill.sttp.tapir" %% "tapir-json-circe" % "1.9.7",
       "io.circe" %% "circe-generic" % "0.14.5",
       "org.typelevel" %% "cats-core" % "2.9.0",
-      "org.typelevel" %% "cats-effect" % "3.5.0"
+      "org.typelevel" %% "cats-effect" % "3.5.0",
+      "com.softwaremill.sttp.tapir" %% "tapir-http4s-client" % "1.9.7"
     ),
     scalacOptions += "-Ypartial-unification"
   )

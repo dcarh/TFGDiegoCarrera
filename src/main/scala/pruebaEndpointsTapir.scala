@@ -27,6 +27,20 @@ class pruebaEndpointsTapir {
                   budget: Int
                   )
 
+  val newMovie: Movie = Movie(
+    "Moonlight",
+    3357,
+    "2016",
+    List("2016-01-01"),
+    List("US"),
+    List("en"),
+    List("Barry Jenkins", "Mahersala Ali", "Trevante Rhodes"),
+    "Bla bla bla",
+    List(18),
+    List(24),
+    8000000
+  )
+
   val obtainMovies: EndpointInput[String] =
     query[String]("name")
 
