@@ -1,5 +1,5 @@
 package server
 
-class HTTPRoutes {
+class HttpRoutes {
 
 }

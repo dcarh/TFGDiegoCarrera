@@ -42,6 +42,7 @@ class PruebaEndpointGET {
     8000000
   )
 
+  /*
   val obtainMovies: EndpointInput[String] =
     query[String]("name")
 
@@ -50,6 +51,6 @@ class PruebaEndpointGET {
 
   val listMoviesEndpoint: PublicEndpoint[String, Unit, List[Movie], Any] =
     endpoint.in("movies" / "search").in(obtainMovies).out(jsonBody[List[Movie]])
-
+   */
 
 }

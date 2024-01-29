@@ -12,6 +12,5 @@ lazy val root = (project in file("."))
       "org.typelevel" %% "cats-core" % "2.9.0",
       "org.typelevel" %% "cats-effect" % "3.5.0",
       "com.softwaremill.sttp.tapir" %% "tapir-http4s-client" % "1.9.7"
-    ),
-    scalacOptions += "-Ypartial-unification"
+    )
   )

@@ -5,7 +5,7 @@ import sttp.tapir.generic.auto._
 import sttp.tapir.json.circe._
 // import sttp.tapir.EndpointIO.annotations._
 
-import java.util.UUID
+
 
 import io.circe.generic.auto._
 import io.circe.syntax._
@@ -40,7 +40,7 @@ class pruebaEndpointsTapir {
     List(24),
     8000000
   )
-
+  
   val obtainMovies: EndpointInput[String] =
     query[String]("name")
 

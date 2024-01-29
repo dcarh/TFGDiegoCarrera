@@ -44,8 +44,8 @@ class pruebasHTTP4s {
     8000000
   )
 
-  I => (org.http4s.Request[F], org.http4s.Response[F] => F[Either[E, O]])
-
+  // I => (org.http4s.Request[F], org.http4s.Response[F] => F[Either[E, O]])
+  /*
   val obtainMovies: EndpointInput[String] =
     query[String]("name")
 
@@ -54,6 +54,6 @@ class pruebasHTTP4s {
 
   val listMoviesEndpoint: PublicEndpoint[String, Unit, List[Movie], Any] =
     endpoint.in("movies" / "search").in(obtainMovies).out(jsonBody[List[Movie]])
-
+  */
 
 }
