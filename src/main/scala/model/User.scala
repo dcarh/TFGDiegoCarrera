@@ -2,7 +2,8 @@ package model
 import sttp.tapir.model.UsernamePassword
 
 case class User(
-               id: Long,
+               id: Int,
                email: String,
-               usernamePassword: UsernamePassword
+               usernamePassword: UsernamePassword,
+               settings: Settings
                )

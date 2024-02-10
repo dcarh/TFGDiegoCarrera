@@ -15,7 +15,6 @@ class UsersEndpoints {
 
   private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
 
-  val user1: User = User(727891, "d.carrerah.2019@alumnos.urjc.es", UsernamePassword("dcarrerah", Some("6756897845563")))
 
   val queryId: EndpointInput[Long] =
     query[Long]("id")
@@ -73,6 +72,9 @@ class UsersEndpoints {
 
   val pathWishlist: EndpointInput[String] =
     path[String]("wishlist")
+
+  val pathOwned: EndpointInput[String] =
+    path[String]("owned")
 
   val userEndpoint: PublicEndpoint[Long, Unit, User, Any] =
     endpoint.in("users").in(queryId).out(jsonBody[User])
