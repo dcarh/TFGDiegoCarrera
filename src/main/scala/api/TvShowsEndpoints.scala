@@ -31,17 +31,20 @@ class TvShowsEndpoints {
     jsonBody[TVShow]
 
 
-  private val moviesBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
+  private val tvShowsBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
     endpoint.in("api" / "tv_shows")
+
+  private val tvShowBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
+    endpoint.in("api" / "tv_show")
 
 
   val tvShowsEnpoint: PublicEndpoint[String, Unit, List[TVShow], Any] =
-    moviesBaseEndpoint
+    tvShowsBaseEndpoint
       .in(queryOrderBy)
       .out(jsonTVShowListOut)
 
   val specificTVShowEnpoint: PublicEndpoint[Int, Unit, TVShow, Any] =
-    moviesBaseEndpoint
+    tvShowBaseEndpoint
       .in(pathTVShowId)
       .out(jsonTVShowOut)
 

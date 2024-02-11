@@ -87,13 +87,13 @@ class SearchEndpoints {
       .in(queryOrderBy)
       .out(jsonElementListOut)
 
-  val searchMoviesEndpoint: PublicEndpoint[(String, String), Unit, List[Movie], Any] =
+  val searchMovieEndpoint: PublicEndpoint[(String, String), Unit, List[Movie], Any] =
     searchBaseEndpoint
       .in(pathMovies)
       .in(queryOrderBy)
       .out(jsonMovieListOut)
 
-  val searchTVShowsEndpoint: PublicEndpoint[(String, String), Unit, List[TVShow], Any] =
+  val searchTVShowEndpoint: PublicEndpoint[(String, String), Unit, List[TVShow], Any] =
     searchBaseEndpoint
       .in(pathTVShows)
       .in(queryOrderBy)

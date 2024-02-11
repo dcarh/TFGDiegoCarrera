@@ -45,8 +45,11 @@ class ListEndpoints {
   private val queryOrderBy: EndpointInput[String] =
     query[String]("order_by")
 
-  private val listBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
+  private val listsBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
     endpoint.in("api" / "lists")
+
+  private val listBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
+    endpoint.in("api" / "list")
 
 
 
@@ -84,7 +87,7 @@ class ListEndpoints {
     jsonBody[List[User]]
 
   val listsEndpoint: PublicEndpoint[(String, String), Unit, List[ElementList], Any] =
-    listBaseEndpoint
+    listsBaseEndpoint
       .in(queryType)
       .in(queryOrderBy)
       .out(jsonListOfElementListOut)
@@ -92,37 +95,37 @@ class ListEndpoints {
     
   // TODO: Decidir lógica de la aplicación Para discernir entre pelis, series y demás, ¿Path o Query?
   val listOfMovieListsEndpoint: PublicEndpoint[(String, String), Unit, List[ElementList], Any] =
-    listBaseEndpoint
+    listsBaseEndpoint
       .in(pathMovies)
       .in(queryOrderBy)
       .out(jsonListOfElementListOut)
 
   val listOfTVShowListsEndpoint: PublicEndpoint[(String, String), Unit, List[ElementList], Any] =
-    listBaseEndpoint
+    listsBaseEndpoint
       .in(pathTVShows)
       .in(queryOrderBy)
       .out(jsonListOfElementListOut)
 
   val listOfSeasonListsEndpoint: PublicEndpoint[(String, String), Unit, List[ElementList], Any] =
-    listBaseEndpoint
+    listsBaseEndpoint
       .in(pathSeasons)
       .in(queryOrderBy)
       .out(jsonListOfElementListOut)
   
   val listOfEpisodesListsEndpoint: PublicEndpoint[(String, String), Unit, List[ElementList], Any] =
-    listBaseEndpoint
+    listsBaseEndpoint
       .in(pathEpisodes)
       .in(queryOrderBy)
       .out(jsonListOfElementListOut)
 
   val listOfVideogamesListsEndpoint: PublicEndpoint[(String, String), Unit, List[ElementList], Any] =
-    listBaseEndpoint
+    listsBaseEndpoint
       .in(pathVideogames)
       .in(queryOrderBy)
       .out(jsonListOfElementListOut)
 
   val listOfBooksListsEndpoint: PublicEndpoint[(String, String), Unit, List[ElementList], Any] =
-    listBaseEndpoint
+    listsBaseEndpoint
       .in(pathBooks)
       .in(queryOrderBy)
       .out(jsonListOfElementListOut)
@@ -130,7 +133,7 @@ class ListEndpoints {
   
   
   val specificListEndpoint: PublicEndpoint[Int, Unit, ElementList, Any] =
-    listBaseEndpoint
+    listsBaseEndpoint
       .in(pathListId)
       .out(jsonElementListOut)
 }

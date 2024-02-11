@@ -15,6 +15,7 @@ import sttp.model.StatusCode
 import java.util.UUID
 
 class MoviesEndpoints {
+  
   private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
 
   private val pathMovieId: EndpointInput[Int] =
@@ -33,6 +34,9 @@ class MoviesEndpoints {
   private val moviesBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
     endpoint.in("api" / "movies")
 
+  private val movieBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
+    endpoint.in("api" / "movie")
+
 
   val moviesEnpoint: PublicEndpoint[String, Unit, List[Movie], Any] =
     moviesBaseEndpoint
@@ -40,7 +44,7 @@ class MoviesEndpoints {
       .out(jsonMovieListOut)
 
   val specificMovieEnpoint: PublicEndpoint[Int, Unit, Movie, Any] =
-    moviesBaseEndpoint
+    movieBaseEndpoint
       .in(pathMovieId)
       .out(jsonMovieOut)
 }

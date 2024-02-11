@@ -32,6 +32,9 @@ class BooksEndpoints {
   private val booksBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
     endpoint.in("api" / "books")
 
+  private val bookBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
+    endpoint.in("api" / "book")
+
 
   val booksEnpoint: PublicEndpoint[String, Unit, List[Book], Any] =
     booksBaseEndpoint
@@ -39,7 +42,7 @@ class BooksEndpoints {
       .out(jsonBookListOut)
 
   val specificBookEnpoint: PublicEndpoint[Int, Unit, Book, Any] =
-    booksBaseEndpoint
+    bookBaseEndpoint
       .in(pathBookId)
       .out(jsonBookOut)
   

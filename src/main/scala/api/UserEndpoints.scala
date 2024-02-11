@@ -4,8 +4,8 @@ import cats.effect.*
 import io.circe.Printer
 import io.circe.generic.auto._
 import io.circe.syntax.*
-import model.{User,Element, Movie, TVShow, Season, Episode, Videogame, Book, ElementList, Log, Comment, Article, 
-  Settings, Review, ErrorInfo, Chat}
+import model.{User,Element, Movie, TVShow, Season, Episode, Videogame, Book, ElementList, Review, Comment, Article, 
+  Settings, ErrorInfo, Chat}
 import sttp.tapir._
 import sttp.tapir.generic.auto._
 import sttp.tapir.json.circe._
@@ -38,6 +38,9 @@ class UserEndpoints {
 
   private val queryOrderBy: EndpointInput[String] =
     query[String]("order_by")
+
+  private val usersBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
+    endpoint.in("api" / "users")
 
   private val userBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
     endpoint.in("api" / "user")
@@ -72,9 +75,6 @@ class UserEndpoints {
   private val jsonCommentListOut: EndpointOutput[List[Comment]] =
     jsonBody[List[Comment]]
 
-  private val jsonLogListOut: EndpointOutput[List[Log]] =
-    jsonBody[List[Log]]
-
   private val jsonArticleListOut: EndpointOutput[List[Article]] =
     jsonBody[List[Article]]
 
@@ -103,6 +103,12 @@ class UserEndpoints {
     jsonBody[ElementList]
 
 
+  // Endpoint that returns a list with all the users in the app
+  val usersEndpoint: PublicEndpoint[String, Unit, List[User], Any] =
+    usersBaseEndpoint
+      .in(queryOrderBy)
+      .out(jsonUserListOut)
+  
 
   // Endpoints for elements of "Completed" category
   val userCompletedListEndpoint: PublicEndpoint[String, Unit, List[Element], Any] =
@@ -518,53 +524,53 @@ class UserEndpoints {
 
 
 
-  // Endpoints for Logs
-  val userLogsListEndpoint: PublicEndpoint[String, Unit, List[Log], Any] =
+  // Endpoints for Reviews
+  val userReviewsListEndpoint: PublicEndpoint[String, Unit, List[Review], Any] =
     userBaseEndpoint
       .in(pathUsername)
-      .in("logs")
-      .out(jsonLogListOut)
+      .in("reviews")
+      .out(jsonReviewListOut)
 
-  val userLogsMoviesListEndpoint: PublicEndpoint[String, Unit, List[Movie], Any] =
+  val userReviewsMoviesListEndpoint: PublicEndpoint[String, Unit, List[Movie], Any] =
     userBaseEndpoint
       .in(pathUsername)
-      .in("logs" / "movies")
+      .in("reviews" / "movies")
       .out(jsonMovieListOut)
 
-  val userLogsTVShowsListEndpoint: PublicEndpoint[String, Unit, List[TVShow], Any] =
+  val userReviewsTVShowsListEndpoint: PublicEndpoint[String, Unit, List[TVShow], Any] =
     userBaseEndpoint
       .in(pathUsername)
-      .in("logs" / "tv_shows")
+      .in("reviews" / "tv_shows")
       .out(jsonTVShowListOut)
 
-  val userLogsSeasonsListEndpoint: PublicEndpoint[String, Unit, List[Season], Any] =
+  val userReviewsSeasonsListEndpoint: PublicEndpoint[String, Unit, List[Season], Any] =
     userBaseEndpoint
       .in(pathUsername)
-      .in("logs" / "seasons")
+      .in("reviews" / "seasons")
       .out(jsonSeasonListOut)
 
-  val userLogsEpisodesListEndpoint: PublicEndpoint[String, Unit, List[Episode], Any] =
+  val userReviewsEpisodesListEndpoint: PublicEndpoint[String, Unit, List[Episode], Any] =
   userBaseEndpoint
     .in(pathUsername)
-    .in("logs" / "episodes")
+    .in("reviews" / "episodes")
     .out(jsonEpisodeListOut)
 
-  val userLogsVideogamesListEndpoint: PublicEndpoint[String, Unit, List[Videogame], Any] =
+  val userReviewsVideogamesListEndpoint: PublicEndpoint[String, Unit, List[Videogame], Any] =
     userBaseEndpoint
       .in(pathUsername)
-      .in("logs" / "videogames")
+      .in("reviews" / "videogames")
       .out(jsonVideogameListOut)
 
-  val userLogsBooksListEndpoint: PublicEndpoint[String, Unit, List[Book], Any] =
+  val userReviewsBooksListEndpoint: PublicEndpoint[String, Unit, List[Book], Any] =
     userBaseEndpoint
       .in(pathUsername)
-      .in("logs" / "books")
+      .in("reviews" / "books")
       .out(jsonBookListOut)
 
-  val userLogsArticlesListEndpoint: PublicEndpoint[String, Unit, List[Article], Any] =
+  val userReviewsArticlesListEndpoint: PublicEndpoint[String, Unit, List[Article], Any] =
     userBaseEndpoint
       .in(pathUsername)
-      .in("logs" / "articles")
+      .in("reviews" / "articles")
       .out(jsonArticleListOut)
 
 

@@ -34,6 +34,9 @@ class VideogamesEndpoints {
   private val videogamesBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
     endpoint.in("api" / "videogames")
 
+  private val videogameBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
+    endpoint.in("api" / "videogame")
+
 
   val videogamesEnpoint: PublicEndpoint[String, Unit, List[Videogame], Any] =
     videogamesBaseEndpoint
@@ -41,7 +44,7 @@ class VideogamesEndpoints {
       .out(jsonVideogameListOut)
 
   val specificVideogameEnpoint: PublicEndpoint[Int, Unit, Videogame, Any] =
-    videogamesBaseEndpoint
+    videogameBaseEndpoint
       .in(pathVideogameId)
       .out(jsonVideogameOut)
   
