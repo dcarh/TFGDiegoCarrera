@@ -1,16 +1,10 @@
 package api
 
-import cats.effect.*
-import io.circe.Printer
 import io.circe.generic.auto._
-import io.circe.syntax.*
-import model.{User,Element, Movie, TVShow, Season, Episode, Videogame, Book, ElementList, Log, Comment, Article,
-  Settings, Review, ErrorInfo, Chat}
+import modelClasses.Article
 import sttp.tapir._
 import sttp.tapir.generic.auto._
 import sttp.tapir.json.circe._
-import sttp.tapir.model.UsernamePassword
-import sttp.model.StatusCode
 
 class ArticlesEndpoints {
 
@@ -22,8 +16,8 @@ class ArticlesEndpoints {
   private val queryOrderBy: EndpointInput[String] =
     query[String]("order_by").description("Ordenar por")
 
-  private val jsonArticleListOut: EndpointOutput[List[Article]] =
-    jsonBody[List[Article]]
+  private val jsonArticleListOut: EndpointOutput[Seq[Article]] =
+    jsonBody[Seq[Article]]
 
   private val jsonArticleOut: EndpointOutput[Article] =
     jsonBody[Article]
@@ -36,7 +30,7 @@ class ArticlesEndpoints {
     endpoint.in("api" / "article")
 
 
-  val articlesEnpoint: PublicEndpoint[String, Unit, List[Article], Any] =
+  val articlesEnpoint: PublicEndpoint[String, Unit, Seq[Article], Any] =
     articlesBaseEndpoint
       .in(queryOrderBy)
       .out(jsonArticleListOut)

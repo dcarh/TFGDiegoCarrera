@@ -1,18 +1,10 @@
 package api
 
-import cats.effect.*
-import io.circe.Printer
 import io.circe.generic.auto._
-import io.circe.syntax.*
-import model.{User,Element, Movie, TVShow, Season, Episode, Videogame, Book, ElementList, Log, Comment, Article,
-  Settings, Review, ErrorInfo, Chat}
+import modelClasses.Videogame
 import sttp.tapir._
 import sttp.tapir.generic.auto._
 import sttp.tapir.json.circe._
-import sttp.tapir.model.UsernamePassword
-import sttp.model.StatusCode
-
-import java.util.UUID
 
 class VideogamesEndpoints {
 
@@ -24,8 +16,8 @@ class VideogamesEndpoints {
   private val queryOrderBy: EndpointInput[String] =
     query[String]("order_by").description("Ordenar por")
 
-  private val jsonVideogameListOut: EndpointOutput[List[Videogame]] =
-    jsonBody[List[Videogame]]
+  private val jsonVideogameListOut: EndpointOutput[Seq[Videogame]] =
+    jsonBody[Seq[Videogame]]
 
   private val jsonVideogameOut: EndpointOutput[Videogame] =
     jsonBody[Videogame]
@@ -38,7 +30,7 @@ class VideogamesEndpoints {
     endpoint.in("api" / "videogame")
 
 
-  val videogamesEnpoint: PublicEndpoint[String, Unit, List[Videogame], Any] =
+  val videogamesEnpoint: PublicEndpoint[String, Unit, Seq[Videogame], Any] =
     videogamesBaseEndpoint
       .in(queryOrderBy)
       .out(jsonVideogameListOut)

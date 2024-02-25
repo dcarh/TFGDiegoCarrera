@@ -1,18 +1,10 @@
 package api
 
-import cats.effect.*
-import io.circe.Printer
 import io.circe.generic.auto._
-import io.circe.syntax.*
-import model.{User,Element, Movie, TVShow, Season, Episode, Videogame, Book, ElementList, Log, Comment, Article,
-  Settings, Review, ErrorInfo, Chat}
+import modelClasses.Movie
 import sttp.tapir._
 import sttp.tapir.generic.auto._
 import sttp.tapir.json.circe._
-import sttp.tapir.model.UsernamePassword
-import sttp.model.StatusCode
-
-import java.util.UUID
 
 class MoviesEndpoints {
   
@@ -24,8 +16,8 @@ class MoviesEndpoints {
   private val queryOrderBy: EndpointInput[String] =
     query[String]("order_by").description("Ordenar por")
 
-  private val jsonMovieListOut: EndpointOutput[List[Movie]] =
-    jsonBody[List[Movie]]
+  private val jsonMovieListOut: EndpointOutput[Seq[Movie]] =
+    jsonBody[Seq[Movie]]
 
   private val jsonMovieOut: EndpointOutput[Movie] =
     jsonBody[Movie]
@@ -38,7 +30,7 @@ class MoviesEndpoints {
     endpoint.in("api" / "movie")
 
 
-  val moviesEnpoint: PublicEndpoint[String, Unit, List[Movie], Any] =
+  val moviesEnpoint: PublicEndpoint[String, Unit, Seq[Movie], Any] =
     moviesBaseEndpoint
       .in(queryOrderBy)
       .out(jsonMovieListOut)

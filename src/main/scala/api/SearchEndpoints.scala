@@ -1,13 +1,10 @@
 package api
 
 import io.circe.generic.auto._
-import model.{User,Element, Movie, TVShow, Season, Episode, Videogame, Book, ElementList, Log, Comment, Article,
-  Settings, Review, ErrorInfo}
+import modelClasses.{User,Element, Movie, TVShow, Season, Episode, Videogame, Book, ElementList, Article}
 import sttp.tapir._
 import sttp.tapir.generic.auto._
 import sttp.tapir.json.circe._
-import sttp.tapir.model.UsernamePassword
-import sttp.model.StatusCode
 
 class SearchEndpoints {
 
@@ -47,95 +44,95 @@ class SearchEndpoints {
   private val queryOrderBy: EndpointInput[String] =
     query[String]("order_by").description("Ordenar por")
 
-  private val jsonElementListOut: EndpointOutput[List[Element]] =
-    jsonBody[List[Element]]
+  private val jsonElementListOut: EndpointOutput[Seq[Element]] =
+    jsonBody[Seq[Element]]
 
-  private val jsonMovieListOut: EndpointOutput[List[Movie]] =
-    jsonBody[List[Movie]]
+  private val jsonMovieListOut: EndpointOutput[Seq[Movie]] =
+    jsonBody[Seq[Movie]]
 
-  private val jsonTVShowListOut: EndpointOutput[List[TVShow]] =
-    jsonBody[List[TVShow]]
+  private val jsonTVShowListOut: EndpointOutput[Seq[TVShow]] =
+    jsonBody[Seq[TVShow]]
 
-  private val jsonSeasonListOut: EndpointOutput[List[Season]] =
-    jsonBody[List[Season]]
+  private val jsonSeasonListOut: EndpointOutput[Seq[Season]] =
+    jsonBody[Seq[Season]]
 
-  private val jsonEpisodeListOut: EndpointOutput[List[Episode]] =
-    jsonBody[List[Episode]]
+  private val jsonEpisodeListOut: EndpointOutput[Seq[Episode]] =
+    jsonBody[Seq[Episode]]
 
-  private val jsonVideogameListOut: EndpointOutput[List[Videogame]] =
-    jsonBody[List[Videogame]]
+  private val jsonVideogameListOut: EndpointOutput[Seq[Videogame]] =
+    jsonBody[Seq[Videogame]]
 
-  private val jsonBookListOut: EndpointOutput[List[Book]] =
-    jsonBody[List[Book]]
+  private val jsonBookListOut: EndpointOutput[Seq[Book]] =
+    jsonBody[Seq[Book]]
 
-  private val jsonArticleListOut: EndpointOutput[List[Article]] =
-    jsonBody[List[Article]]
+  private val jsonArticleListOut: EndpointOutput[Seq[Article]] =
+    jsonBody[Seq[Article]]
 
-  private val jsonUserListOut: EndpointOutput[List[User]] =
-    jsonBody[List[User]]
+  private val jsonUserListOut: EndpointOutput[Seq[User]] =
+    jsonBody[Seq[User]]
 
-  private val jsonListOfElementListOut: EndpointOutput[List[ElementList]] =
-    jsonBody[List[ElementList]]
+  private val jsonListOfElementListOut: EndpointOutput[Seq[ElementList]] =
+    jsonBody[Seq[ElementList]]
 
   private val searchBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
     endpoint.in("api" / "search")
 
 
-  val searchEnpoint: PublicEndpoint[(String, String), Unit, List[Element], Any] =
+  val searchEnpoint: PublicEndpoint[(String, String), Unit, Seq[Element], Any] =
     searchBaseEndpoint
       .in(queryType)
       .in(queryOrderBy)
       .out(jsonElementListOut)
 
-  val searchMovieEndpoint: PublicEndpoint[(String, String), Unit, List[Movie], Any] =
+  val searchMovieEndpoint: PublicEndpoint[(String, String), Unit, Seq[Movie], Any] =
     searchBaseEndpoint
       .in(pathMovies)
       .in(queryOrderBy)
       .out(jsonMovieListOut)
 
-  val searchTVShowEndpoint: PublicEndpoint[(String, String), Unit, List[TVShow], Any] =
+  val searchTVShowEndpoint: PublicEndpoint[(String, String), Unit, Seq[TVShow], Any] =
     searchBaseEndpoint
       .in(pathTVShows)
       .in(queryOrderBy)
       .out(jsonTVShowListOut)
 
-  val searchSeasonEndpoint: PublicEndpoint[(String, String), Unit, List[Season], Any] =
+  val searchSeasonEndpoint: PublicEndpoint[(String, String), Unit, Seq[Season], Any] =
     searchBaseEndpoint
       .in(pathEpisodes)
       .in(queryOrderBy)
       .out(jsonSeasonListOut)
 
-  val searchEpisodeEndpoint: PublicEndpoint[(String, String), Unit, List[Episode], Any] =
+  val searchEpisodeEndpoint: PublicEndpoint[(String, String), Unit, Seq[Episode], Any] =
     searchBaseEndpoint
       .in(pathSeasons)
       .in(queryOrderBy)
       .out(jsonEpisodeListOut)
 
-  val searchVideogameEndpoint: PublicEndpoint[(String, String), Unit, List[Videogame], Any] =
+  val searchVideogameEndpoint: PublicEndpoint[(String, String), Unit, Seq[Videogame], Any] =
     searchBaseEndpoint
       .in(pathVideogames)
       .in(queryOrderBy)
       .out(jsonVideogameListOut)
 
-  val searchBookEndpoint: PublicEndpoint[(String, String), Unit, List[Book], Any] =
+  val searchBookEndpoint: PublicEndpoint[(String, String), Unit, Seq[Book], Any] =
     searchBaseEndpoint
       .in(pathBooks)
       .in(queryOrderBy)
       .out(jsonBookListOut)
 
-  val searchElementListEndpoint: PublicEndpoint[(String, String), Unit, List[ElementList], Any] =
+  val searchElementListEndpoint: PublicEndpoint[(String, String), Unit, Seq[ElementList], Any] =
     searchBaseEndpoint
       .in(pathLists)
       .in(queryOrderBy)
       .out(jsonListOfElementListOut)
 
-  val searchArticleEndpoint: PublicEndpoint[(String, String), Unit, List[Article], Any] =
+  val searchArticleEndpoint: PublicEndpoint[(String, String), Unit, Seq[Article], Any] =
     searchBaseEndpoint
       .in(pathArticles)
       .in(queryOrderBy)
       .out(jsonArticleListOut)
 
-  val searchUserEndpoint: PublicEndpoint[(String, String), Unit, List[User], Any] =
+  val searchUserEndpoint: PublicEndpoint[(String, String), Unit, Seq[User], Any] =
     searchBaseEndpoint
       .in(pathUsers)
       .in(queryOrderBy)

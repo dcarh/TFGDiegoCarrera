@@ -1,18 +1,10 @@
 package api
 
-import cats.effect.*
-import io.circe.Printer
 import io.circe.generic.auto._
-import io.circe.syntax.*
-import model.{User,Element, Movie, TVShow, Season, Episode, Videogame, Book, ElementList, Log, Comment, Article,
-  Settings, Review, ErrorInfo, Chat}
+import modelClasses.Review
 import sttp.tapir._
 import sttp.tapir.generic.auto._
 import sttp.tapir.json.circe._
-import sttp.tapir.model.UsernamePassword
-import sttp.model.StatusCode
-
-import java.util.UUID
 
 class ReviewsEndpoints {
 
@@ -24,8 +16,8 @@ class ReviewsEndpoints {
   private val queryOrderBy: EndpointInput[String] =
     query[String]("order_by").description("Ordenar por")
 
-  private val jsonReviewListOut: EndpointOutput[List[Review]] =
-    jsonBody[List[Review]]
+  private val jsonReviewListOut: EndpointOutput[Seq[Review]] =
+    jsonBody[Seq[Review]]
 
   private val jsonReviewOut: EndpointOutput[Review] =
     jsonBody[Review]
@@ -38,7 +30,7 @@ class ReviewsEndpoints {
     endpoint.in("api" / "review")
 
 
-  val reviewsEnpoint: PublicEndpoint[String, Unit, List[Review], Any] =
+  val reviewsEnpoint: PublicEndpoint[String, Unit, Seq[Review], Any] =
     reviewsBaseEndpoint
       .in(queryOrderBy)
       .out(jsonReviewListOut)
