@@ -1,7 +1,7 @@
-package modelClasses
-
-case class UserSettings(
-                       username: String,
-                       bio: String
-                       )
+//package modelClasses
+//
+//case class UserSettings(
+//                       username: String,
+//                       bio: String
+//                       )
 

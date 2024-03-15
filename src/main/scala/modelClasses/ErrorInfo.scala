@@ -1,3 +1,3 @@
-package modelClasses
-
-case class ErrorInfo(message: String)
+//package modelClasses
+//
+//case class ErrorInfo(message: String)
