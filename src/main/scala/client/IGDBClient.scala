@@ -1,5 +1,5 @@
-//package client
-//
-//class IGDBClient {
-//
-//}
+package client
+
+class IGDBClient {
+
+}
