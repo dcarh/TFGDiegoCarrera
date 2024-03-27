@@ -30,13 +30,19 @@ class SeasonsEndpoints {
     endpoint.in("api" / "season")
 
 
-  val seasonsEnpoint: PublicEndpoint[String, Unit, Seq[Season], Any] =
+  val seasonsEndpoint: PublicEndpoint[String, Unit, Seq[Season], Any] =
     seasonsBaseEndpoint
+      .name("TV seasons endpoint")
+      .description("This endpoint returns a list with all the TV seasons in the app")
+      .get
       .in(queryOrderBy)
       .out(jsonSeasonListOut)
 
-  val specificSeasonEnpoint: PublicEndpoint[Int, Unit, Season, Any] =
+  val specificSeasonEndpoint: PublicEndpoint[Int, Unit, Season, Any] =
     seasonBaseEndpoint
+      .name("Specific TV season endpoint")
+      .description("This endpoint returns a specific TV season by its Id")
+      .get
       .in(pathSeasonId)
       .out(jsonSeasonOut)
   

@@ -1,10 +1,11 @@
 package api
 
-import io.circe.generic.auto._
-import modelClasses.{User, Movie, TVShow, Season, Episode, Videogame, Book, ElementList, Article}
-import sttp.tapir._
-import sttp.tapir.generic.auto._
-import sttp.tapir.json.circe._
+import io.circe.generic.auto.*
+import modelClasses.{Article, Book, ElementList, Episode, ErrorInfo, Movie, Season, TVShow, User, Videogame}
+import sttp.model.StatusCode
+import sttp.tapir.*
+import sttp.tapir.generic.auto.*
+import sttp.tapir.json.circe.*
 
 class ListEndpoints {
 
@@ -12,8 +13,8 @@ class ListEndpoints {
 
   private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
 
-  private val pathListId: EndpointInput[Int] =
-    path[Int]("list_id")
+  private val pathListId: EndpointInput[Long] =
+    path[Long]("list_id")
 
   private val queryType: EndpointInput[String] =
     query[String]("type")
@@ -84,8 +85,14 @@ class ListEndpoints {
   private val jsonUserListOut: EndpointOutput[Seq[User]] =
     jsonBody[Seq[User]]
 
+  private val jsonErrorInfoOut: EndpointOutput[ErrorInfo] =
+    jsonBody[ErrorInfo]
+
   val listsEndpoint: PublicEndpoint[(String, String), Unit, Seq[ElementList], Any] =
     listsBaseEndpoint
+      .name("List of elements endpoint")
+      .description("This endpoint returns a list of elements, whether it may be of all elements or a specific type of element")
+      .get
       .in(queryType)
       .in(queryOrderBy)
       .out(jsonListOfElementListOut)
@@ -94,44 +101,93 @@ class ListEndpoints {
   // TODO: Decidir lógica de la aplicación Para discernir entre pelis, series y demás, ¿Path o Query?
   val listOfMovieListsEndpoint: PublicEndpoint[(String, String), Unit, Seq[ElementList], Any] =
     listsBaseEndpoint
+      .name("List of movies lists endpoint")
+      .description("This endpoint returns a list of movies lists")
+      .get
       .in(pathMovies)
       .in(queryOrderBy)
       .out(jsonListOfElementListOut)
 
   val listOfTVShowListsEndpoint: PublicEndpoint[(String, String), Unit, Seq[ElementList], Any] =
     listsBaseEndpoint
+      .name("List of TV shows lists endpoint")
+      .description("This endpoint returns a list of TV shows lists")
+      .get
       .in(pathTVShows)
       .in(queryOrderBy)
       .out(jsonListOfElementListOut)
 
   val listOfSeasonListsEndpoint: PublicEndpoint[(String, String), Unit, Seq[ElementList], Any] =
     listsBaseEndpoint
+      .name("List of TV seasons lists endpoint")
+      .description("This endpoint returns a list of TV seasons lists")
+      .get
       .in(pathSeasons)
       .in(queryOrderBy)
       .out(jsonListOfElementListOut)
   
   val listOfEpisodesListsEndpoint: PublicEndpoint[(String, String), Unit, Seq[ElementList], Any] =
     listsBaseEndpoint
+      .name("List of TV episodes lists endpoint")
+      .description("This endpoint returns a list of TV episodes lists")
+      .get
       .in(pathEpisodes)
       .in(queryOrderBy)
       .out(jsonListOfElementListOut)
 
   val listOfVideogamesListsEndpoint: PublicEndpoint[(String, String), Unit, Seq[ElementList], Any] =
     listsBaseEndpoint
+      .name("List of videogames lists endpoint")
+      .description("This endpoint returns a list of videogames lists")
+      .get
       .in(pathVideogames)
       .in(queryOrderBy)
       .out(jsonListOfElementListOut)
 
   val listOfBooksListsEndpoint: PublicEndpoint[(String, String), Unit, Seq[ElementList], Any] =
     listsBaseEndpoint
+      .name("List of books lists endpoint")
+      .description("This endpoint returns a list of books lists")
+      .get
       .in(pathBooks)
       .in(queryOrderBy)
       .out(jsonListOfElementListOut)
+
   
-  
-  
-  val specificListEndpoint: PublicEndpoint[Int, Unit, ElementList, Any] =
+  val specificListEndpoint: PublicEndpoint[Long, Unit, ElementList, Any] =
     listsBaseEndpoint
+      .name("Specific list endpoint")
+      .description("This endpoint returns a specific list of elements by its ID")
+      .get
       .in(pathListId)
       .out(jsonElementListOut)
+
+  val createListEndpoint: PublicEndpoint[Unit, ErrorInfo, ElementList, Any] =
+    listBaseEndpoint
+      .name("Create list endpoint")
+      .description("This endpoint creates a list of elements and returns it in case of success")
+      .post
+      .in("create")
+      .out(jsonElementListOut)
+      .errorOut(jsonErrorInfoOut)
+
+  val userEditListEndpoint: PublicEndpoint[Long, ErrorInfo, Unit, Any] =
+    listBaseEndpoint
+      .name("Edit list endpoint")
+      .description("This endpoint allows to edit a list of elements and returns it in case of success. Otherwise returns an error message")
+      .delete
+      .in(pathListId)
+      .in("delete")
+      .out(statusCode(StatusCode.NoContent))
+      .errorOut(jsonErrorInfoOut)
+
+  val userDeleteListEndpoint: PublicEndpoint[Long, ErrorInfo, Unit, Any] =
+    listBaseEndpoint
+      .name("Delete list endpoint")
+      .description("This endpoint deletes a list of elements and returns it in case of success")
+      .delete
+      .in(pathListId)
+      .in("delete")
+      .out(statusCode(StatusCode.NoContent))
+      .errorOut(jsonErrorInfoOut)
 }

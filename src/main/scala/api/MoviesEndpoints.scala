@@ -30,13 +30,19 @@ class MoviesEndpoints {
     endpoint.in("api" / "movie")
 
 
-  val moviesEnpoint: PublicEndpoint[String, Unit, Seq[Movie], Any] =
+  val moviesEndpoint: PublicEndpoint[String, Unit, Seq[Movie], Any] =
     moviesBaseEndpoint
+      .name("Movies endpoint")
+      .description("This endpoint returns a list with all the movies in the app")
+      .get
       .in(queryOrderBy)
       .out(jsonMovieListOut)
 
-  val specificMovieEnpoint: PublicEndpoint[Int, Unit, Movie, Any] =
+  val specificMovieEndpoint: PublicEndpoint[Int, Unit, Movie, Any] =
     movieBaseEndpoint
+      .name("Specific movie endpoint")
+      .description("This endpoint returns a specific movie by its Id")
+      .get
       .in(pathMovieId)
       .out(jsonMovieOut)
 }

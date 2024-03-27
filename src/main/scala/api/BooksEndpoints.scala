@@ -30,13 +30,19 @@ class BooksEndpoints {
     endpoint.in("api" / "book")
 
 
-  val booksEnpoint: PublicEndpoint[String, Unit, Seq[Book], Any] =
+  val booksEndpoint: PublicEndpoint[String, Unit, Seq[Book], Any] =
     booksBaseEndpoint
+      .name("Books endpoint")
+      .description("This endpoint returns a list with all the books in the app")
+      .get
       .in(queryOrderBy)
       .out(jsonBookListOut)
 
-  val specificBookEnpoint: PublicEndpoint[Int, Unit, Book, Any] =
+  val specificBookEndpoint: PublicEndpoint[Int, Unit, Book, Any] =
     bookBaseEndpoint
+      .name("Specific book endpoint")
+      .description("This endpoint returns a specific book by its Id")
+      .get
       .in(pathBookId)
       .out(jsonBookOut)
   

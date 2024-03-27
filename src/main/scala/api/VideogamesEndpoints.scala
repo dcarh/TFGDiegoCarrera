@@ -30,13 +30,19 @@ class VideogamesEndpoints {
     endpoint.in("api" / "videogame")
 
 
-  val videogamesEnpoint: PublicEndpoint[String, Unit, Seq[Videogame], Any] =
+  val videogamesEndpoint: PublicEndpoint[String, Unit, Seq[Videogame], Any] =
     videogamesBaseEndpoint
+      .name("Videogames endpoint")
+      .description("This endpoint returns a list with all the videogames in the app")
+      .get
       .in(queryOrderBy)
       .out(jsonVideogameListOut)
 
-  val specificVideogameEnpoint: PublicEndpoint[Int, Unit, Videogame, Any] =
+  val specificVideogameEndpoint: PublicEndpoint[Int, Unit, Videogame, Any] =
     videogameBaseEndpoint
+      .name("Specific videogame endpoint")
+      .description("This endpoint returns a specific videogame by its Id")
+      .get
       .in(pathVideogameId)
       .out(jsonVideogameOut)
 }

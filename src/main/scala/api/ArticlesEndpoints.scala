@@ -30,13 +30,19 @@ class ArticlesEndpoints {
     endpoint.in("api" / "article")
 
 
-  val articlesEnpoint: PublicEndpoint[String, Unit, Seq[Article], Any] =
+  val articlesEndpoint: PublicEndpoint[String, Unit, Seq[Article], Any] =
     articlesBaseEndpoint
+      .name("Articles endpoint")
+      .description("This endpoint returns a list with all the articles in the app")
+      .get
       .in(queryOrderBy)
       .out(jsonArticleListOut)
 
-  val specificArticleEnpoint: PublicEndpoint[Int, Unit, Article, Any] =
+  val specificArticleEndpoint: PublicEndpoint[Int, Unit, Article, Any] =
     articleBaseEndpoint
+      .name("Specific article endpoint")
+      .description("This endpoint returns a specific article by its Id")
+      .get
       .in(pathArticleId)
       .out(jsonArticleOut)
 

@@ -30,13 +30,19 @@ class ReviewsEndpoints {
     endpoint.in("api" / "review")
 
 
-  val reviewsEnpoint: PublicEndpoint[String, Unit, Seq[Review], Any] =
+  val reviewsEndpoint: PublicEndpoint[String, Unit, Seq[Review], Any] =
     reviewsBaseEndpoint
+      .name("Reviews endpoint")
+      .description("This endpoint returns a list with all the reviews in the app")
+      .get
       .in(queryOrderBy)
       .out(jsonReviewListOut)
 
-  val specificReviewEnpoint: PublicEndpoint[Int, Unit, Review, Any] =
+  val specificReviewEndpoint: PublicEndpoint[Int, Unit, Review, Any] =
     reviewBaseEndpoint
+      .name("Specific review endpoint")
+      .description("This endpoint returns a specific review by its Id")
+      .get
       .in(pathReviewId)
       .out(jsonReviewOut)
 
