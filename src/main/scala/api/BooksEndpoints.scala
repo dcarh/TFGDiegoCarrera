@@ -16,8 +16,8 @@ class BooksEndpoints {
   private val queryOrderBy: EndpointInput[String] =
     query[String]("order_by").description("Ordenar por")
 
-  private val jsonBookListOut: EndpointOutput[Seq[Book]] =
-    jsonBody[Seq[Book]]
+  private val jsonBookListOut: EndpointOutput[List[Book]] =
+    jsonBody[List[Book]]
 
   private val jsonBookOut: EndpointOutput[Book] =
     jsonBody[Book]
@@ -30,7 +30,7 @@ class BooksEndpoints {
     endpoint.in("api" / "book")
 
 
-  val booksEndpoint: PublicEndpoint[String, Unit, Seq[Book], Any] =
+  val booksEndpoint: PublicEndpoint[String, Unit, List[Book], Any] =
     booksBaseEndpoint
       .name("Books endpoint")
       .description("This endpoint returns a list with all the books in the app")

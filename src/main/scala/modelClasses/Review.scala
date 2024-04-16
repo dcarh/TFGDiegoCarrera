@@ -19,7 +19,7 @@ case class Review(
                  startedDate: String,   // TODO: Cambiar a Date y resolver errores que se generan
                  platform: String,
                  timeSpent: Time,
-                 tags: Seq[String]
+                 tags: List[String]
                  ) extends AppElement
 
 object Review {

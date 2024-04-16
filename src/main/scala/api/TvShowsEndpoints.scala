@@ -18,8 +18,8 @@ class TvShowsEndpoints {
   private val queryOrderBy: EndpointInput[String] =
     query[String]("order_by").description("Ordenar por")
 
-  private val jsonTVShowListOut: EndpointOutput[Seq[TVShow]] =
-    jsonBody[Seq[TVShow]]
+  private val jsonTVShowListOut: EndpointOutput[List[TVShow]] =
+    jsonBody[List[TVShow]]
 
   private val jsonTVShowOut: EndpointOutput[TVShow] =
     jsonBody[TVShow]
@@ -32,7 +32,7 @@ class TvShowsEndpoints {
     endpoint.in("api" / "tv_show")
 
 
-  val tvShowsEndpoint: PublicEndpoint[String, Unit, Seq[TVShow], Any] =
+  val tvShowsEndpoint: PublicEndpoint[String, Unit, List[TVShow], Any] =
     tvShowsBaseEndpoint
       .name("TV shows endpoint")
       .description("This endpoint returns a list with all the TV shows in the app")

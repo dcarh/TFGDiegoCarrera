@@ -4,7 +4,7 @@ case class Comment(
                   id: Comment.Id,
                   userId: User.Id,
                   comment: String,
-                  likesIds: Seq[Like.Id],
+                  likesIds: List[Like.Id],
                   objectCommentedId: Either[ElementList.Id, Review.Id]
                   ) extends AppElement
 

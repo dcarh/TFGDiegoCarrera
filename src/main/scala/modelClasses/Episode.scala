@@ -9,14 +9,14 @@ case class Episode(
                   seasonNumber: Int,
                   overview: String,
                   episodeNumber: Int,
-                  crew: Seq[(String, String)],
-                  guestStars: Seq[(String, String)],
+                  crew: List[(String, String)],
+                  guestStars: List[(String, String)],
 
-                  likes: Seq[Like.Id],
-                  reviews: Seq[Review.Id],
+                  likes: List[Like.Id],
+                  reviews: List[Review.Id],
                   averageRating: Double,
                   ratings: Long,
-                  lists: Seq[ElementList.Id],
+                  lists: List[ElementList.Id],
                   completed: Long,
                   // TODO: Meter más campos
                   )

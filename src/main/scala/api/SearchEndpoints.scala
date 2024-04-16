@@ -47,29 +47,29 @@ class SearchEndpoints {
    private val jsonElementListOut: EndpointOutput[ElementList] =
      jsonBody[ElementList]
 
-  private val jsonMovieListOut: EndpointOutput[Seq[Movie]] =
-    jsonBody[Seq[Movie]]
+  private val jsonMovieListOut: EndpointOutput[List[Movie]] =
+    jsonBody[List[Movie]]
 
-  private val jsonTVShowListOut: EndpointOutput[Seq[TVShow]] =
-    jsonBody[Seq[TVShow]]
+  private val jsonTVShowListOut: EndpointOutput[List[TVShow]] =
+    jsonBody[List[TVShow]]
 
-  private val jsonSeasonListOut: EndpointOutput[Seq[Season]] =
-    jsonBody[Seq[Season]]
+  private val jsonSeasonListOut: EndpointOutput[List[Season]] =
+    jsonBody[List[Season]]
 
-  private val jsonEpisodeListOut: EndpointOutput[Seq[Episode]] =
-    jsonBody[Seq[Episode]]
+  private val jsonEpisodeListOut: EndpointOutput[List[Episode]] =
+    jsonBody[List[Episode]]
 
-  private val jsonVideogameListOut: EndpointOutput[Seq[Videogame]] =
-    jsonBody[Seq[Videogame]]
+  private val jsonVideogameListOut: EndpointOutput[List[Videogame]] =
+    jsonBody[List[Videogame]]
 
-  private val jsonBookListOut: EndpointOutput[Seq[Book]] =
-    jsonBody[Seq[Book]]
+  private val jsonBookListOut: EndpointOutput[List[Book]] =
+    jsonBody[List[Book]]
 
-  private val jsonUserListOut: EndpointOutput[Seq[User]] =
-    jsonBody[Seq[User]]
+  private val jsonUserListOut: EndpointOutput[List[User]] =
+    jsonBody[List[User]]
 
-  private val jsonListOfElementListOut: EndpointOutput[Seq[ElementList]] =
-    jsonBody[Seq[ElementList]]
+  private val jsonListOfElementListOut: EndpointOutput[List[ElementList]] =
+    jsonBody[List[ElementList]]
 
   private val searchBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
     endpoint.in("api" / "search")
@@ -84,7 +84,7 @@ class SearchEndpoints {
       .in(queryOrderBy)
       .out(jsonElementListOut)
 
-  val searchMovieEndpoint: PublicEndpoint[(String, String), Unit, Seq[Movie], Any] =
+  val searchMovieEndpoint: PublicEndpoint[(String, String), Unit, List[Movie], Any] =
     searchBaseEndpoint
       .name("Search movie endpoint")
       .description("This endpoint searches any movie on the app based on text coincidence")
@@ -93,7 +93,7 @@ class SearchEndpoints {
       .in(queryOrderBy)
       .out(jsonMovieListOut)
 
-  val searchTVShowEndpoint: PublicEndpoint[(String, String), Unit, Seq[TVShow], Any] =
+  val searchTVShowEndpoint: PublicEndpoint[(String, String), Unit, List[TVShow], Any] =
     searchBaseEndpoint
       .name("Search TV show endpoint")
       .description("This endpoint searches any TV show on the app based on text coincidence")
@@ -102,7 +102,7 @@ class SearchEndpoints {
       .in(queryOrderBy)
       .out(jsonTVShowListOut)
 
-  //val searchSeasonEndpoint: PublicEndpoint[(String, String), Unit, Seq[Season], Any] =
+  //val searchSeasonEndpoint: PublicEndpoint[(String, String), Unit, List[Season], Any] =
   //  searchBaseEndpoint
   //    .name("Search TV season endpoint")
   //    .description("This endpoint searches any TV season on the app based on text coincidence")
@@ -111,7 +111,7 @@ class SearchEndpoints {
   //    .in(queryOrderBy)
   //    .out(jsonSeasonListOut)
 //
-  //val searchEpisodeEndpoint: PublicEndpoint[(String, String), Unit, Seq[Episode], Any] =
+  //val searchEpisodeEndpoint: PublicEndpoint[(String, String), Unit, List[Episode], Any] =
   //  searchBaseEndpoint
   //    .name("Search TV episode endpoint")
   //    .description("This endpoint searches any TV episode on the app based on text coincidence")
@@ -120,7 +120,7 @@ class SearchEndpoints {
   //    .in(queryOrderBy)
   //    .out(jsonEpisodeListOut)
 
-  val searchVideogameEndpoint: PublicEndpoint[(String, String), Unit, Seq[Videogame], Any] =
+  val searchVideogameEndpoint: PublicEndpoint[(String, String), Unit, List[Videogame], Any] =
     searchBaseEndpoint
       .name("Search videogame endpoint")
       .description("This endpoint searches any videogame on the app based on text coincidence")
@@ -129,7 +129,7 @@ class SearchEndpoints {
       .in(queryOrderBy)
       .out(jsonVideogameListOut)
 
-  val searchBookEndpoint: PublicEndpoint[(String, String), Unit, Seq[Book], Any] =
+  val searchBookEndpoint: PublicEndpoint[(String, String), Unit, List[Book], Any] =
     searchBaseEndpoint
       .name("Search book endpoint")
       .description("This endpoint searches any book on the app based on text coincidence")
@@ -138,7 +138,7 @@ class SearchEndpoints {
       .in(queryOrderBy)
       .out(jsonBookListOut)
 
-  val searchElementListEndpoint: PublicEndpoint[(String, String), Unit, Seq[ElementList], Any] =
+  val searchElementListEndpoint: PublicEndpoint[(String, String), Unit, List[ElementList], Any] =
     searchBaseEndpoint
       .name("Search list endpoint")
       .description("This endpoint searches any list on the app based on text coincidence")
@@ -147,7 +147,7 @@ class SearchEndpoints {
       .in(queryOrderBy)
       .out(jsonListOfElementListOut)
 
-  val searchUserEndpoint: PublicEndpoint[(String, String), Unit, Seq[User], Any] =
+  val searchUserEndpoint: PublicEndpoint[(String, String), Unit, List[User], Any] =
     searchBaseEndpoint
       .name("Search user endpoint")
       .description("This endpoint searches any user on the app based on text coincidence")

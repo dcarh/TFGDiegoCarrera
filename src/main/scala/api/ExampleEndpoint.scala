@@ -18,11 +18,11 @@ class ExampleEndpoint {
   private val pathUserId: EndpointInput[Long] =
     path[Long]("user_id")
 
-  private val jsonLongListOut: EndpointOutput[Seq[Long]] =
-    jsonBody[Seq[Long]]
+  private val jsonLongListOut: EndpointOutput[List[Long]] =
+    jsonBody[List[Long]]
 
   
-  val favouritesEndpoint: PublicEndpoint[Long, String, Seq[Long], Any] =
+  val favouritesEndpoint: PublicEndpoint[Long, String, List[Long], Any] =
     userBaseEndpoint
       .name("User Favorites endpoint")
       .description("This endpoint returns the favorite elements IDs of the specified user")
@@ -33,7 +33,7 @@ class ExampleEndpoint {
       .errorOut(stringBody)
 
 
-  val favouritesEndpointLogic: Long => IO[Either[String, Seq[Long]]] = id =>
+  val favouritesEndpointLogic: Long => IO[Either[String, List[Long]]] = id =>
     if (id == 1) IO.pure(Right(List(502033, 61222, 113112, 12354)))
     else IO.pure(Left("Item not found"))
 

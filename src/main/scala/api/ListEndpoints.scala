@@ -9,7 +9,7 @@ import sttp.tapir.json.circe.*
 
 class ListEndpoints {
 
-  implicit val sUser: Schema[User] = Schema.derived
+  // implicit val sUser: Schema[User] = Schema.derived
 
   private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
 
@@ -55,37 +55,37 @@ class ListEndpoints {
   // val userBaseEndpoint: PublicEndpoint[Unit, ErrorInfo, Unit, Any] =
   //  endpoint.in("api" / "v1.0").errorOut(jsonBody[ErrorInfo])
 
-  private val jsonListOfElementListOut: EndpointOutput[Seq[ElementList]] =
-    jsonBody[Seq[ElementList]]
+  private val jsonListOfElementListOut: EndpointOutput[List[ElementList]] =
+    jsonBody[List[ElementList]]
 
   private val jsonElementListOut: EndpointOutput[ElementList] =
     jsonBody[ElementList]
 
-  private val jsonMovieListOut: EndpointOutput[Seq[Movie]] =
-    jsonBody[Seq[Movie]]
+  private val jsonMovieListOut: EndpointOutput[List[Movie]] =
+    jsonBody[List[Movie]]
 
-  private val jsonTVShowListOut: EndpointOutput[Seq[TVShow]] =
-    jsonBody[Seq[TVShow]]
+  private val jsonTVShowListOut: EndpointOutput[List[TVShow]] =
+    jsonBody[List[TVShow]]
 
-  private val jsonSeasonListOut: EndpointOutput[Seq[Season]] =
-    jsonBody[Seq[Season]]
+  private val jsonSeasonListOut: EndpointOutput[List[Season]] =
+    jsonBody[List[Season]]
 
-  private val jsonEpisodeListOut: EndpointOutput[Seq[Episode]] =
-    jsonBody[Seq[Episode]]
+  private val jsonEpisodeListOut: EndpointOutput[List[Episode]] =
+    jsonBody[List[Episode]]
 
-  private val jsonVideogameListOut: EndpointOutput[Seq[Videogame]] =
-    jsonBody[Seq[Videogame]]
+  private val jsonVideogameListOut: EndpointOutput[List[Videogame]] =
+    jsonBody[List[Videogame]]
 
-  private val jsonBookListOut: EndpointOutput[Seq[Book]] =
-    jsonBody[Seq[Book]]
+  private val jsonBookListOut: EndpointOutput[List[Book]] =
+    jsonBody[List[Book]]
 
-  private val jsonUserListOut: EndpointOutput[Seq[User]] =
-    jsonBody[Seq[User]]
+  private val jsonUserListOut: EndpointOutput[List[User]] =
+    jsonBody[List[User]]
 
   private val jsonErrorInfoOut: EndpointOutput[ErrorInfo] =
     jsonBody[ErrorInfo]
 
-  val listsEndpoint: PublicEndpoint[(String, String), Unit, Seq[ElementList], Any] =
+  val listsEndpoint: PublicEndpoint[(String, String), Unit, List[ElementList], Any] =
     listsBaseEndpoint
       .name("List of elements endpoint")
       .description("This endpoint returns a list of elements, whether it may be of all elements or a specific type of element")
@@ -96,7 +96,7 @@ class ListEndpoints {
     
     
   // TODO: Decidir lógica de la aplicación Para discernir entre pelis, series y demás, ¿Path o Query?
-  val listOfMovieListsEndpoint: PublicEndpoint[(String, String), Unit, Seq[ElementList], Any] =
+  val listOfMovieListsEndpoint: PublicEndpoint[(String, String), Unit, List[ElementList], Any] =
     listsBaseEndpoint
       .name("List of movies lists endpoint")
       .description("This endpoint returns a list of movies lists")
@@ -105,7 +105,7 @@ class ListEndpoints {
       .in(queryOrderBy)
       .out(jsonListOfElementListOut)
 
-  val listOfTVShowListsEndpoint: PublicEndpoint[(String, String), Unit, Seq[ElementList], Any] =
+  val listOfTVShowListsEndpoint: PublicEndpoint[(String, String), Unit, List[ElementList], Any] =
     listsBaseEndpoint
       .name("List of TV shows lists endpoint")
       .description("This endpoint returns a list of TV shows lists")
@@ -114,7 +114,7 @@ class ListEndpoints {
       .in(queryOrderBy)
       .out(jsonListOfElementListOut)
 
-  val listOfSeasonListsEndpoint: PublicEndpoint[(String, String), Unit, Seq[ElementList], Any] =
+  val listOfSeasonListsEndpoint: PublicEndpoint[(String, String), Unit, List[ElementList], Any] =
     listsBaseEndpoint
       .name("List of TV seasons lists endpoint")
       .description("This endpoint returns a list of TV seasons lists")
@@ -123,7 +123,7 @@ class ListEndpoints {
       .in(queryOrderBy)
       .out(jsonListOfElementListOut)
   
-  val listOfEpisodesListsEndpoint: PublicEndpoint[(String, String), Unit, Seq[ElementList], Any] =
+  val listOfEpisodesListsEndpoint: PublicEndpoint[(String, String), Unit, List[ElementList], Any] =
     listsBaseEndpoint
       .name("List of TV episodes lists endpoint")
       .description("This endpoint returns a list of TV episodes lists")
@@ -132,7 +132,7 @@ class ListEndpoints {
       .in(queryOrderBy)
       .out(jsonListOfElementListOut)
 
-  val listOfVideogamesListsEndpoint: PublicEndpoint[(String, String), Unit, Seq[ElementList], Any] =
+  val listOfVideogamesListsEndpoint: PublicEndpoint[(String, String), Unit, List[ElementList], Any] =
     listsBaseEndpoint
       .name("List of videogames lists endpoint")
       .description("This endpoint returns a list of videogames lists")
@@ -141,7 +141,7 @@ class ListEndpoints {
       .in(queryOrderBy)
       .out(jsonListOfElementListOut)
 
-  val listOfBooksListsEndpoint: PublicEndpoint[(String, String), Unit, Seq[ElementList], Any] =
+  val listOfBooksListsEndpoint: PublicEndpoint[(String, String), Unit, List[ElementList], Any] =
     listsBaseEndpoint
       .name("List of books lists endpoint")
       .description("This endpoint returns a list of books lists")

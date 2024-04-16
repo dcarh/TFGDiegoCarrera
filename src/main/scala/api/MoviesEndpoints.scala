@@ -16,8 +16,8 @@ class MoviesEndpoints {
   private val queryOrderBy: EndpointInput[String] =
     query[String]("order_by").description("Ordenar por")
 
-  private val jsonMovieListOut: EndpointOutput[Seq[Movie]] =
-    jsonBody[Seq[Movie]]
+  private val jsonMovieListOut: EndpointOutput[List[Movie]] =
+    jsonBody[List[Movie]]
 
   private val jsonMovieOut: EndpointOutput[Movie] =
     jsonBody[Movie]
@@ -30,7 +30,7 @@ class MoviesEndpoints {
     endpoint.in("api" / "movie")
 
 
-  val moviesEndpoint: PublicEndpoint[String, Unit, Seq[Movie], Any] =
+  val moviesEndpoint: PublicEndpoint[String, Unit, List[Movie], Any] =
     moviesBaseEndpoint
       .name("Movies endpoint")
       .description("This endpoint returns a list with all the movies in the app")

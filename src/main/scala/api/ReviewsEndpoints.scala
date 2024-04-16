@@ -16,8 +16,8 @@ class ReviewsEndpoints {
   private val queryOrderBy: EndpointInput[String] =
     query[String]("order_by").description("Ordenar por")
 
-  private val jsonReviewListOut: EndpointOutput[Seq[Review]] =
-    jsonBody[Seq[Review]]
+  private val jsonReviewListOut: EndpointOutput[List[Review]] =
+    jsonBody[List[Review]]
 
   private val jsonReviewOut: EndpointOutput[Review] =
     jsonBody[Review]
@@ -30,7 +30,7 @@ class ReviewsEndpoints {
     endpoint.in("api" / "review")
 
 
-  val reviewsEndpoint: PublicEndpoint[String, Unit, Seq[Review], Any] =
+  val reviewsEndpoint: PublicEndpoint[String, Unit, List[Review], Any] =
     reviewsBaseEndpoint
       .name("Reviews endpoint")
       .description("This endpoint returns a list with all the reviews in the app")

@@ -16,8 +16,8 @@ class VideogamesEndpoints {
   private val queryOrderBy: EndpointInput[String] =
     query[String]("order_by").description("Ordenar por")
 
-  private val jsonVideogameListOut: EndpointOutput[Seq[Videogame]] =
-    jsonBody[Seq[Videogame]]
+  private val jsonVideogameListOut: EndpointOutput[List[Videogame]] =
+    jsonBody[List[Videogame]]
 
   private val jsonVideogameOut: EndpointOutput[Videogame] =
     jsonBody[Videogame]
@@ -30,7 +30,7 @@ class VideogamesEndpoints {
     endpoint.in("api" / "videogame")
 
 
-  val videogamesEndpoint: PublicEndpoint[String, Unit, Seq[Videogame], Any] =
+  val videogamesEndpoint: PublicEndpoint[String, Unit, List[Videogame], Any] =
     videogamesBaseEndpoint
       .name("Videogames endpoint")
       .description("This endpoint returns a list with all the videogames in the app")
