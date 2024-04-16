@@ -1,8 +1,12 @@
 package modelClasses
 
 case class Chat(
-               id: Int,
-               user1Id: Int,
-               user2Id: Int,
-               messagesIds: Seq[Int]
+               id: Chat.Id,
+               user1Id: User.Id,
+               user2Id: User.Id,
+               messagesIds: Seq[Message.Id]
                )
+object  Chat {
+  type Id = Long
+}
+

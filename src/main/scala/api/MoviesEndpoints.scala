@@ -10,8 +10,8 @@ class MoviesEndpoints {
   
   private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
 
-  private val pathMovieId: EndpointInput[Int] =
-    path[Int]("movie_id")
+  private val pathMovieId: EndpointInput[Movie.Id] =
+    path[Movie.Id]("movie_id")
 
   private val queryOrderBy: EndpointInput[String] =
     query[String]("order_by").description("Ordenar por")
@@ -38,7 +38,7 @@ class MoviesEndpoints {
       .in(queryOrderBy)
       .out(jsonMovieListOut)
 
-  val specificMovieEndpoint: PublicEndpoint[Int, Unit, Movie, Any] =
+  val specificMovieEndpoint: PublicEndpoint[Movie.Id, Unit, Movie, Any] =
     movieBaseEndpoint
       .name("Specific movie endpoint")
       .description("This endpoint returns a specific movie by its Id")

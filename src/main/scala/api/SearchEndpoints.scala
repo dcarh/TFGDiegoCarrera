@@ -1,7 +1,7 @@
 package api
 
 import io.circe.generic.auto._
-import modelClasses.{User,Element, Movie, TVShow, Season, Episode, Videogame, Book, ElementList, Article}
+import modelClasses.{User,Element, Movie, TVShow, Season, Episode, Videogame, Book, ElementList}
 import sttp.tapir._
 import sttp.tapir.generic.auto._
 import sttp.tapir.json.circe._
@@ -44,8 +44,8 @@ class SearchEndpoints {
   private val queryOrderBy: EndpointInput[String] =
     query[String]("order_by").description("Ordenar por")
 
-  private val jsonElementListOut: EndpointOutput[Seq[Element]] =
-    jsonBody[Seq[Element]]
+   private val jsonElementListOut: EndpointOutput[ElementList] =
+     jsonBody[ElementList]
 
   private val jsonMovieListOut: EndpointOutput[Seq[Movie]] =
     jsonBody[Seq[Movie]]
@@ -65,9 +65,6 @@ class SearchEndpoints {
   private val jsonBookListOut: EndpointOutput[Seq[Book]] =
     jsonBody[Seq[Book]]
 
-  private val jsonArticleListOut: EndpointOutput[Seq[Article]] =
-    jsonBody[Seq[Article]]
-
   private val jsonUserListOut: EndpointOutput[Seq[User]] =
     jsonBody[Seq[User]]
 
@@ -78,7 +75,7 @@ class SearchEndpoints {
     endpoint.in("api" / "search")
 
 
-  val searchEndpoint: PublicEndpoint[(String, String), Unit, Seq[Element], Any] =
+  val searchEndpoint: PublicEndpoint[(String, String), Unit, ElementList, Any] =
     searchBaseEndpoint
       .name("Search endpoint")
       .description("This endpoint searches any element on the app based on text coincidence")
@@ -149,15 +146,6 @@ class SearchEndpoints {
       .in(pathLists)
       .in(queryOrderBy)
       .out(jsonListOfElementListOut)
-
-  val searchArticleEndpoint: PublicEndpoint[(String, String), Unit, Seq[Article], Any] =
-    searchBaseEndpoint
-      .name("Search article endpoint")
-      .description("This endpoint searches any article on the app based on text coincidence")
-      .get
-      .in(pathArticles)
-      .in(queryOrderBy)
-      .out(jsonArticleListOut)
 
   val searchUserEndpoint: PublicEndpoint[(String, String), Unit, Seq[User], Any] =
     searchBaseEndpoint

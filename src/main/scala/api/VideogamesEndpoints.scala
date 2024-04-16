@@ -10,8 +10,8 @@ class VideogamesEndpoints {
 
   private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
 
-  private val pathVideogameId: EndpointInput[Int] =
-    path[Int]("videogame_id")
+  private val pathVideogameId: EndpointInput[Videogame.Id] =
+    path[Videogame.Id]("videogame_id")
 
   private val queryOrderBy: EndpointInput[String] =
     query[String]("order_by").description("Ordenar por")
@@ -38,7 +38,7 @@ class VideogamesEndpoints {
       .in(queryOrderBy)
       .out(jsonVideogameListOut)
 
-  val specificVideogameEndpoint: PublicEndpoint[Int, Unit, Videogame, Any] =
+  val specificVideogameEndpoint: PublicEndpoint[Videogame.Id, Unit, Videogame, Any] =
     videogameBaseEndpoint
       .name("Specific videogame endpoint")
       .description("This endpoint returns a specific videogame by its Id")

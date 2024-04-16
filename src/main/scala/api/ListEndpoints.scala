@@ -1,7 +1,7 @@
 package api
 
 import io.circe.generic.auto.*
-import modelClasses.{Article, Book, ElementList, Episode, ErrorInfo, Movie, Season, TVShow, User, Videogame}
+import modelClasses.{Book, ElementList, Episode, ErrorInfo, Movie, Season, TVShow, User, Videogame}
 import sttp.model.StatusCode
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*
@@ -13,8 +13,8 @@ class ListEndpoints {
 
   private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
 
-  private val pathListId: EndpointInput[Long] =
-    path[Long]("list_id")
+  private val pathListId: EndpointInput[ElementList.Id] =
+    path[ElementList.Id]("list_id")
 
   private val queryType: EndpointInput[String] =
     query[String]("type")
@@ -78,9 +78,6 @@ class ListEndpoints {
 
   private val jsonBookListOut: EndpointOutput[Seq[Book]] =
     jsonBody[Seq[Book]]
-
-  private val jsonArticleListOut: EndpointOutput[Seq[Article]] =
-    jsonBody[Seq[Article]]
 
   private val jsonUserListOut: EndpointOutput[Seq[User]] =
     jsonBody[Seq[User]]
@@ -154,7 +151,7 @@ class ListEndpoints {
       .out(jsonListOfElementListOut)
 
   
-  val specificListEndpoint: PublicEndpoint[Long, Unit, ElementList, Any] =
+  val specificListEndpoint: PublicEndpoint[ElementList.Id, Unit, ElementList, Any] =
     listsBaseEndpoint
       .name("Specific list endpoint")
       .description("This endpoint returns a specific list of elements by its ID")
@@ -171,7 +168,7 @@ class ListEndpoints {
       .out(jsonElementListOut)
       .errorOut(jsonErrorInfoOut)
 
-  val userEditListEndpoint: PublicEndpoint[Long, ErrorInfo, Unit, Any] =
+  val userEditListEndpoint: PublicEndpoint[ElementList.Id, ErrorInfo, Unit, Any] =
     listBaseEndpoint
       .name("Edit list endpoint")
       .description("This endpoint allows to edit a list of elements and returns it in case of success. Otherwise returns an error message")
@@ -181,7 +178,7 @@ class ListEndpoints {
       .out(statusCode(StatusCode.NoContent))
       .errorOut(jsonErrorInfoOut)
 
-  val userDeleteListEndpoint: PublicEndpoint[Long, ErrorInfo, Unit, Any] =
+  val userDeleteListEndpoint: PublicEndpoint[ElementList.Id, ErrorInfo, Unit, Any] =
     listBaseEndpoint
       .name("Delete list endpoint")
       .description("This endpoint deletes a list of elements and returns it in case of success")

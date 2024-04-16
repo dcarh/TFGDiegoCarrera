@@ -10,8 +10,8 @@ class EpisodesEndpoints {
 
   private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
 
-  private val pathEpisodeId: EndpointInput[Int] =
-    path[Int]("episode_id")
+  private val pathEpisodeId: EndpointInput[Episode.Id] =
+    path[Episode.Id]("episode_id")
 
   private val queryOrderBy: EndpointInput[String] =
     query[String]("order_by").description("Ordenar por")
@@ -38,7 +38,7 @@ class EpisodesEndpoints {
       .in(queryOrderBy)
       .out(jsonEpisodeListOut)
 
-  val specificEpisodeEndpoint: PublicEndpoint[Int, Unit, Episode, Any] =
+  val specificEpisodeEndpoint: PublicEndpoint[Episode.Id, Unit, Episode, Any] =
     episodeBaseEndpoint
       .name("Specific TV episode endpoint")
       .description("This endpoint returns a specific TV episode by its Id")

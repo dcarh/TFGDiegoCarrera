@@ -10,8 +10,8 @@ class ReviewsEndpoints {
 
   private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
 
-  private val pathReviewId: EndpointInput[Int] =
-    path[Int]("review_id")
+  private val pathReviewId: EndpointInput[Review.Id] =
+    path[Review.Id]("review_id")
 
   private val queryOrderBy: EndpointInput[String] =
     query[String]("order_by").description("Ordenar por")
@@ -38,7 +38,7 @@ class ReviewsEndpoints {
       .in(queryOrderBy)
       .out(jsonReviewListOut)
 
-  val specificReviewEndpoint: PublicEndpoint[Int, Unit, Review, Any] =
+  val specificReviewEndpoint: PublicEndpoint[Review.Id, Unit, Review, Any] =
     reviewBaseEndpoint
       .name("Specific review endpoint")
       .description("This endpoint returns a specific review by its Id")

@@ -3,8 +3,8 @@ package modelClasses
 import org.http4s.headers.Date
 
 case class Review(
-                 id: Int,
-                 userId: Int,
+                 id: Review.Id,
+                 userId: User.Id,
                  elementId: Int,
                  elementTitle: String,
                  elementType: String,
@@ -19,4 +19,9 @@ case class Review(
                  startedDate: String,   // TODO: Cambiar a Date y resolver errores que se generan
                  platform: String,
                  timeSpent: Time,
-                 tags: Seq[String])
+                 tags: Seq[String]
+                 ) extends AppElement
+
+object Review {
+  type Id = Long
+}

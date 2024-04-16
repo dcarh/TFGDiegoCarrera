@@ -10,8 +10,8 @@ class BooksEndpoints {
 
   private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
 
-  private val pathBookId: EndpointInput[Int] =
-    path[Int]("book_id")
+  private val pathBookId: EndpointInput[Book.Id] =
+    path[Book.Id]("book_id")
 
   private val queryOrderBy: EndpointInput[String] =
     query[String]("order_by").description("Ordenar por")
@@ -38,7 +38,7 @@ class BooksEndpoints {
       .in(queryOrderBy)
       .out(jsonBookListOut)
 
-  val specificBookEndpoint: PublicEndpoint[Int, Unit, Book, Any] =
+  val specificBookEndpoint: PublicEndpoint[Book.Id, Unit, Book, Any] =
     bookBaseEndpoint
       .name("Specific book endpoint")
       .description("This endpoint returns a specific book by its Id")
