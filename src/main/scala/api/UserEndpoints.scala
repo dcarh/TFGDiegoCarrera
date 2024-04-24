@@ -1,7 +1,7 @@
 package api
 
 import io.circe.generic.auto._
-import modelClasses.{User,Element, Movie, TVShow, Season, Episode, Videogame, Book, ElementList, Review, Comment,
+import modelClasses.{User,Element, Movie, TVShow, Season, Episode, Videogame, Book, MediaContentList, Review, Comment,
   UserSettings, ErrorInfo, Chat}
 import sttp.tapir._
 import sttp.tapir.generic.auto._
@@ -18,8 +18,8 @@ class UserEndpoints {
   private val pathUsername: EndpointInput[String] =
     path[String]("username")
 
-  private val pathListId: EndpointInput[ElementList.Id] =
-    path[ElementList.Id]("list_id")
+  private val pathListId: EndpointInput[MediaContentList.Id] =
+    path[MediaContentList.Id]("list_id")
 
   private val queryType: EndpointInput[String] =
     query[String]("type")
@@ -69,8 +69,8 @@ class UserEndpoints {
   private val jsonChatOut: EndpointOutput[Chat] =
     jsonBody[Chat]
 
-  private val jsonElementListOut: EndpointOutput[ElementList] =
-    jsonBody[ElementList]
+  private val jsonElementListOut: EndpointOutput[MediaContentList] =
+    jsonBody[MediaContentList]
 
   private val jsonMovieListOut: EndpointOutput[List[Movie]] =
     jsonBody[List[Movie]]
@@ -102,8 +102,8 @@ class UserEndpoints {
   private val jsonChatListOut: EndpointOutput[List[Chat]] =
     jsonBody[List[Chat]]
   
-  private val jsonListOfElementListOut: EndpointOutput[List[ElementList]] =
-    jsonBody[List[ElementList]]
+  private val jsonListOfElementListOut: EndpointOutput[List[MediaContentList]] =
+    jsonBody[List[MediaContentList]]
 
   private val jsonSettingsOut: EndpointOutput[UserSettings] =
     jsonBody[UserSettings]
@@ -114,8 +114,8 @@ class UserEndpoints {
   private val jsonSettingsIn: EndpointInput[UserSettings] =
     jsonBody[UserSettings]
 
-  private val jsonElementListIn: EndpointInput[ElementList] =
-    jsonBody[ElementList]
+  private val jsonElementListIn: EndpointInput[MediaContentList] =
+    jsonBody[MediaContentList]
 
   val testEndpoint: PublicEndpoint[String, Unit, List[User], Any] =
     endpoint.get
@@ -152,7 +152,7 @@ class UserEndpoints {
   
 
   // Endpoints for elements of "Completed" category
-  val userCompletedListEndpoint: PublicEndpoint[String, Unit, ElementList, Any] =
+  val userCompletedListEndpoint: PublicEndpoint[String, Unit, MediaContentList, Any] =
     userBaseEndpoint
       .name("User's 'Completed' endpoint")
       .description("This endpoint returns a list of all the 'Completed' elements for a user")
@@ -218,7 +218,7 @@ class UserEndpoints {
 
 
   // Endpoints for elements of "In Progress" category
-  val userInProgressListEndpoint: PublicEndpoint[String, Unit, ElementList, Any] =
+  val userInProgressListEndpoint: PublicEndpoint[String, Unit, MediaContentList, Any] =
     userBaseEndpoint
       .name("User's 'In Progress' elements endpoint")
       .description("This endpoint returns a list of all the 'In Progress' elements for a user")
@@ -284,7 +284,7 @@ class UserEndpoints {
 
 
   // Endpoints for elements of "Pending" category
-  val userPendingListEndpoint: PublicEndpoint[String, Unit, ElementList, Any] =
+  val userPendingListEndpoint: PublicEndpoint[String, Unit, MediaContentList, Any] =
     userBaseEndpoint
       .name("User's 'Pending' elements endpoint")
       .description("This endpoint returns a list of all the 'Pending' elements for a user")
@@ -350,7 +350,7 @@ class UserEndpoints {
 
 
   // Endpoints for elements of "On Hold" category
-  val userOnHoldListEndpoint: PublicEndpoint[String, Unit, ElementList, Any] =
+  val userOnHoldListEndpoint: PublicEndpoint[String, Unit, MediaContentList, Any] =
     userBaseEndpoint
       .name("User's 'On Hold' elements endpoint")
       .description("This endpoint returns a list of all the 'On Hold' elements for a user")
@@ -416,7 +416,7 @@ class UserEndpoints {
 
 
   // Endpoints for elements of "Abandoned" category
-  val userAbandonedListEndpoint: PublicEndpoint[String, Unit, ElementList, Any] =
+  val userAbandonedListEndpoint: PublicEndpoint[String, Unit, MediaContentList, Any] =
     userBaseEndpoint
       .name("User's 'Abandoned' elements endpoint")
       .description("This endpoint returns a list of all the 'Abandoned' elements for a user")
@@ -482,7 +482,7 @@ class UserEndpoints {
 
 
   // Endpoints for elements of "Wishlist" category
-  val userWishlistListEndpoint: PublicEndpoint[String, Unit, ElementList, Any] =
+  val userWishlistListEndpoint: PublicEndpoint[String, Unit, MediaContentList, Any] =
     userBaseEndpoint
       .name("User's 'Wishlist' elements endpoint")
       .description("This endpoint returns a list of all the 'Wishlist' elements for a user")
@@ -548,7 +548,7 @@ class UserEndpoints {
 
 
   // Endpoints for elements of "Owned" category
-  val userOwnedListEndpoint: PublicEndpoint[String, Unit, ElementList, Any] =
+  val userOwnedListEndpoint: PublicEndpoint[String, Unit, MediaContentList, Any] =
     userBaseEndpoint
       .name("User's 'Owned' elements endpoint")
       .description("This endpoint returns a list of all the 'Owned' elements for a user")
@@ -614,7 +614,7 @@ class UserEndpoints {
 
 
   // Endpoints for elements of "Liked" category
-  val userLikesListEndpoint: PublicEndpoint[String, Unit, ElementList, Any] =
+  val userLikesListEndpoint: PublicEndpoint[String, Unit, MediaContentList, Any] =
     userBaseEndpoint
       .name("User's liked elements endpoint")
       .description("This endpoint returns a list of all the liked elements for a user")
@@ -695,7 +695,7 @@ class UserEndpoints {
       .in("likes" / "comments")
       .out(jsonCommentListOut)
 
-  val userLikedListsListEndpoint: PublicEndpoint[String, Unit, List[ElementList], Any] =
+  val userLikedListsListEndpoint: PublicEndpoint[String, Unit, List[MediaContentList], Any] =
     userBaseEndpoint
       .name("User's liked lists endpoint")
       .description("This endpoint returns a list of all the liked lists for a user")
@@ -704,7 +704,7 @@ class UserEndpoints {
       .in("likes" / "lists")
       .out(jsonListOfElementListOut)
 
-  val userLikedMovieListsListEndpoint: PublicEndpoint[String, Unit, List[ElementList], Any] =
+  val userLikedMovieListsListEndpoint: PublicEndpoint[String, Unit, List[MediaContentList], Any] =
     userBaseEndpoint
       .name("User's liked movie lists endpoint")
       .description("This endpoint returns a list of all the liked movie lists for a user")
@@ -713,7 +713,7 @@ class UserEndpoints {
       .in("likes" / "lists" / "movies")
       .out(jsonListOfElementListOut)
 
-  val userLikedTVShowsListsListEndpoint: PublicEndpoint[String, Unit, List[ElementList], Any] =
+  val userLikedTVShowsListsListEndpoint: PublicEndpoint[String, Unit, List[MediaContentList], Any] =
     userBaseEndpoint
       .name("User's liked TV shows lists endpoint")
       .description("This endpoint returns a list of all the liked TV shows lists for a user")
@@ -722,7 +722,7 @@ class UserEndpoints {
       .in("likes" / "lists" / "tv_shows")
       .out(jsonListOfElementListOut)
 
-  val userLikedSeasonsListsListEndpoint: PublicEndpoint[String, Unit, List[ElementList], Any] =
+  val userLikedSeasonsListsListEndpoint: PublicEndpoint[String, Unit, List[MediaContentList], Any] =
     userBaseEndpoint
       .name("User's liked TV seasons lists endpoint")
       .description("This endpoint returns a list of all the liked TV seasons lists for a user")
@@ -731,7 +731,7 @@ class UserEndpoints {
       .in("likes" / "lists" / "seasons")
       .out(jsonListOfElementListOut)
 
-  val userLikedEpisodesListsListEndpoint: PublicEndpoint[String, Unit, List[ElementList], Any] =
+  val userLikedEpisodesListsListEndpoint: PublicEndpoint[String, Unit, List[MediaContentList], Any] =
     userBaseEndpoint
       .name("User's liked TV episodes lists endpoint")
       .description("This endpoint returns a list of all the liked TV episodes lists for a user")
@@ -740,7 +740,7 @@ class UserEndpoints {
       .in("likes" / "lists" / "episodes")
       .out(jsonListOfElementListOut)
 
-  val userLikedVideogamesListsListEndpoint: PublicEndpoint[String, Unit, List[ElementList], Any] =
+  val userLikedVideogamesListsListEndpoint: PublicEndpoint[String, Unit, List[MediaContentList], Any] =
     userBaseEndpoint
       .name("User's liked videogames lists endpoint")
       .description("This endpoint returns a list of all the liked videogames lists for a user")
@@ -749,7 +749,7 @@ class UserEndpoints {
       .in("likes" / "lists" / "videogames")
       .out(jsonListOfElementListOut)
 
-  val userLikedBooksListsListEndpoint: PublicEndpoint[String, Unit, List[ElementList], Any] =
+  val userLikedBooksListsListEndpoint: PublicEndpoint[String, Unit, List[MediaContentList], Any] =
     userBaseEndpoint
       .name("User's liked books lists endpoint")
       .description("This endpoint returns a list of all the liked books lists for a user")
@@ -827,7 +827,7 @@ class UserEndpoints {
 
   // Endpoints for favourite Movies, TV Shows, Seasons, Episodes, Videogames and Books
   // TODO: Las favourites van a ser: 1 película, 1 serie, 1 videojuego y 1 libro
-  val userFavouritesEndpoint: PublicEndpoint[String, Unit, ElementList, Any] =
+  val userFavouritesEndpoint: PublicEndpoint[String, Unit, MediaContentList, Any] =
   userBaseEndpoint
     .name("User's favourite elements endpoint")
     .description("This endpoint returns the favourite elements (one movie, one TV show, one videogame, one book) for a user")
@@ -873,37 +873,37 @@ class UserEndpoints {
       .out(jsonBookOut)
 
   /*
-  val userFavouriteMoviesListEndpoint: PublicEndpoint[String, Unit, List[ElementList], Any] =
+  val userFavouriteMoviesListEndpoint: PublicEndpoint[String, Unit, List[MediaContentList], Any] =
     userBaseEndpoint
       .in(pathUsername)
       .in("favourites" / "movies")
       .out(jsonListOfElementListOut)
 
-  val userFavouriteTVShowsListEndpoint: PublicEndpoint[String, Unit, List[ElementList], Any] =
+  val userFavouriteTVShowsListEndpoint: PublicEndpoint[String, Unit, List[MediaContentList], Any] =
     userBaseEndpoint
       .in(pathUsername)
       .in("favourites" / "tv_shows")
       .out(jsonListOfElementListOut)
 
-  val userFavouriteSeasonsListEndpoint: PublicEndpoint[String, Unit, List[ElementList], Any] =
+  val userFavouriteSeasonsListEndpoint: PublicEndpoint[String, Unit, List[MediaContentList], Any] =
     userBaseEndpoint
       .in(pathUsername)
       .in("favourites" / "seasons")
       .out(jsonListOfElementListOut)
 
-  val userFavouriteEpisodesListEndpoint: PublicEndpoint[String, Unit, List[ElementList], Any] =
+  val userFavouriteEpisodesListEndpoint: PublicEndpoint[String, Unit, List[MediaContentList], Any] =
     userBaseEndpoint
       .in(pathUsername)
       .in("favourites" / "episodes")
       .out(jsonListOfElementListOut)
 
-  val userFavouriteVideogamesListEndpoint: PublicEndpoint[String, Unit, List[ElementList], Any] =
+  val userFavouriteVideogamesListEndpoint: PublicEndpoint[String, Unit, List[MediaContentList], Any] =
     userBaseEndpoint
       .in(pathUsername)
       .in("favourites" / "videogames")
       .out(jsonListOfElementListOut)
 
-  val userFavouriteBooksListEndpoint: PublicEndpoint[String, Unit, List[ElementList], Any] =
+  val userFavouriteBooksListEndpoint: PublicEndpoint[String, Unit, List[MediaContentList], Any] =
     userBaseEndpoint
       .in(pathUsername)
       .in("favourites" / "books")
@@ -921,7 +921,7 @@ class UserEndpoints {
     .in("comments")
     .out(jsonCommentListOut)
 
-  val userCommentsListsListEndpoint: PublicEndpoint[String, Unit, List[ElementList], Any] =
+  val userCommentsListsListEndpoint: PublicEndpoint[String, Unit, List[MediaContentList], Any] =
     userBaseEndpoint
       .name("User's comments to lists endpoint")
       .description("This endpoint returns all the comments made by a user specifically to lists")
@@ -969,7 +969,7 @@ class UserEndpoints {
       .out(jsonSettingsOut)
 
   // Endpoints for Lists
-  val userListsEndpoint: PublicEndpoint[(String, String, String), Unit, List[ElementList], Any] =
+  val userListsEndpoint: PublicEndpoint[(String, String, String), Unit, List[MediaContentList], Any] =
     userBaseEndpoint
       .name("User's lists endpoint")
       .description("This endpoint returns all the lists for a user")
@@ -980,7 +980,7 @@ class UserEndpoints {
       .in(queryOrderBy)
       .out(jsonListOfElementListOut)
 
-  val userSpecificListEndpoint: PublicEndpoint[(String, ElementList.Id), Unit, List[ElementList], Any] =
+  val userSpecificListEndpoint: PublicEndpoint[(String, MediaContentList.Id), Unit, List[MediaContentList], Any] =
     userBaseEndpoint
       .name("User's specific list endpoint")
       .description("This endpoint returns a specific list for a user by the ID of the list")

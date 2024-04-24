@@ -1,7 +1,7 @@
 package api
 
 import io.circe.generic.auto._
-import modelClasses.{User,Element, Movie, TVShow, Season, Episode, Videogame, Book, ElementList}
+import modelClasses.{User,Element, Movie, TVShow, Season, Episode, Videogame, Book, MediaContentList}
 import sttp.tapir._
 import sttp.tapir.generic.auto._
 import sttp.tapir.json.circe._
@@ -44,8 +44,8 @@ class SearchEndpoints {
   private val queryOrderBy: EndpointInput[String] =
     query[String]("order_by").description("Ordenar por")
 
-   private val jsonElementListOut: EndpointOutput[ElementList] =
-     jsonBody[ElementList]
+   private val jsonElementListOut: EndpointOutput[MediaContentList] =
+     jsonBody[MediaContentList]
 
   private val jsonMovieListOut: EndpointOutput[List[Movie]] =
     jsonBody[List[Movie]]
@@ -68,14 +68,14 @@ class SearchEndpoints {
   private val jsonUserListOut: EndpointOutput[List[User]] =
     jsonBody[List[User]]
 
-  private val jsonListOfElementListOut: EndpointOutput[List[ElementList]] =
-    jsonBody[List[ElementList]]
+  private val jsonListOfElementListOut: EndpointOutput[List[MediaContentList]] =
+    jsonBody[List[MediaContentList]]
 
   private val searchBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
     endpoint.in("api" / "search")
 
 
-  val searchEndpoint: PublicEndpoint[(String, String), Unit, ElementList, Any] =
+  val searchEndpoint: PublicEndpoint[(String, String), Unit, MediaContentList, Any] =
     searchBaseEndpoint
       .name("Search endpoint")
       .description("This endpoint searches any element on the app based on text coincidence")
@@ -102,24 +102,6 @@ class SearchEndpoints {
       .in(queryOrderBy)
       .out(jsonTVShowListOut)
 
-  //val searchSeasonEndpoint: PublicEndpoint[(String, String), Unit, List[Season], Any] =
-  //  searchBaseEndpoint
-  //    .name("Search TV season endpoint")
-  //    .description("This endpoint searches any TV season on the app based on text coincidence")
-  //    .get
-  //    .in(pathEpisodes)
-  //    .in(queryOrderBy)
-  //    .out(jsonSeasonListOut)
-//
-  //val searchEpisodeEndpoint: PublicEndpoint[(String, String), Unit, List[Episode], Any] =
-  //  searchBaseEndpoint
-  //    .name("Search TV episode endpoint")
-  //    .description("This endpoint searches any TV episode on the app based on text coincidence")
-  //    .get
-  //    .in(pathSeasons)
-  //    .in(queryOrderBy)
-  //    .out(jsonEpisodeListOut)
-
   val searchVideogameEndpoint: PublicEndpoint[(String, String), Unit, List[Videogame], Any] =
     searchBaseEndpoint
       .name("Search videogame endpoint")
@@ -138,7 +120,7 @@ class SearchEndpoints {
       .in(queryOrderBy)
       .out(jsonBookListOut)
 
-  val searchElementListEndpoint: PublicEndpoint[(String, String), Unit, List[ElementList], Any] =
+  val searchElementListEndpoint: PublicEndpoint[(String, String), Unit, List[MediaContentList], Any] =
     searchBaseEndpoint
       .name("Search list endpoint")
       .description("This endpoint searches any list on the app based on text coincidence")

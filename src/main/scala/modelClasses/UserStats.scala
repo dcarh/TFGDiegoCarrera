@@ -1,5 +1,6 @@
 package modelClasses
 
+import sttp.tapir.generic.auto._
 
 case class UserStats(
                     userId: User.Id,

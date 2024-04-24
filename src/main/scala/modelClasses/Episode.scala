@@ -1,5 +1,7 @@
 package modelClasses
 
+import sttp.tapir.generic.auto._
+
 case class Episode(
                   id: Episode.Id,
                   tvShowId: TVShow.Id,
@@ -16,7 +18,7 @@ case class Episode(
                   reviews: List[Review.Id],
                   averageRating: Double,
                   ratings: Long,
-                  lists: List[ElementList.Id],
+                  lists: List[MediaContentList.Id],
                   completed: Long,
                   // TODO: Meter más campos
                   )

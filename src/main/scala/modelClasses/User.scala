@@ -4,8 +4,8 @@ import cats.effect.*
 import io.circe.Printer
 import io.circe.generic.auto._
 import io.circe.syntax.*
-import modelClasses.{User,Element, Movie, TVShow, Season, Episode, Videogame, Book, ElementList, Comment, UserSettings, 
-  UserStats, UserTradeInformation}
+import modelClasses.{User, MediaContent, Movie, TVShow, Season, Episode, Videogame, Book, MediaContentList, Comment, UserSettings, 
+  UserStats}
 import sttp.tapir._
 import sttp.tapir.generic.auto._
 import sttp.tapir.json.circe._
@@ -26,13 +26,13 @@ case class User(
                favoriteTVShowId: TVShow.Id,
                favoriteVideogameId: Videogame.Id,
                favoriteBookId: Book.Id,
-               completed: List[Element],
-               pending: List[Element],
-               inProgress: List[Element],
-               onHold: List[Element],
-               dropped: List[Element],
-               wishlist: List[Element],
-               userListsIds: List[ElementList.Id],
+               completed: List[MediaContent],
+               pending: List[MediaContent],
+               inProgress: List[MediaContent],
+               onHold: List[MediaContent],
+               dropped: List[MediaContent],
+               wishlist: List[MediaContent],
+               userListsIds: List[MediaContentList.Id],
                userReviewsIds: List[Review.Id],
                userCommentsIds: List[Comment.Id],
                userLikesIds: List[Like.Id],
@@ -42,11 +42,7 @@ case class User(
                blockedUsersIds: List[User.Id],
                chatsIds: List[Chat.Id],
                stats: UserStats,
-               // TODO: Se ha quedado como String para que no diese errores por el tema de Codecs/Schemas
-               //  pero lo suyo es que sea una instancia de UserStats (o separar los posibles campos de dicha clase en 
-               //  atributos de esta
-               settings: UserSettings  //Schema[UserSettings])
-               // TODO: Lo mismo que con stats, pero siendo una instancia de UserSettings
+               settings: UserSettings 
                )
 
 object User {
