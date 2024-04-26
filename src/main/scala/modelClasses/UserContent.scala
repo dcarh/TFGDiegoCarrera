@@ -1,6 +1,6 @@
 package modelClasses
 
-import sttp.tapir.generic.auto._
+import sttp.tapir.generic.auto.*
 
 sealed trait UserContent {
   type Id <: Long
@@ -11,39 +11,24 @@ object UserContent {
 }
 
 case class MediaContentList(
-                        id: MediaContentList.Id,
-                        userId: User.Id,
-                        elementsType: String,
-                        mediaContentsIds: List[MediaContent.Id],
-                        likesIds: List[Like.Id],
-                        commentsIds: List[Comment.Id]
-                      ) extends UserContent
-
-// TODO: Si no voy a hacer persistencia para los elementos obtenidos de APIs, no tiene sentido que haga los companion
-//  objects para ellos
+                           id           : MediaContentList.Id, 
+                           user         : User.Id, 
+                           mediaContents: List[MediaContent.Id], 
+                           likes        : List[Like.Id],
+                           replies      : List[Comment.Id]
+                           ) extends UserContent
 
 object MediaContentList {
   type Id = Long
 }
 
 case class Review(
-                   id: Review.Id,
-                   userId: User.Id,
-                   elementId: Int,
-                   elementTitle: String,
-                   elementType: String,
-                   rating: Int,
-                   textReview: String,
-                   like: Boolean,
-                   firstTime: Boolean,
-                   completed: Boolean,
-                   paused: Boolean,
-                   abandoned: Boolean,
-                   reviewDate: String,    // TODO: Cambiar a Date y resolver errores que se generan
-                   startedDate: String,   // TODO: Cambiar a Date y resolver errores que se generan
-                   platform: String,
-                   timeSpent: Time,
-                   tags: List[String]
+                 id            : Review.Id,
+                 user          : User.Id,
+                 objectReviewed: MediaContent.Id,
+                 review        : String,
+                 likes         : List[Like.Id],
+                 replies       : List[Reply.Id]
                  ) extends UserContent
 
 object Review {
@@ -51,18 +36,14 @@ object Review {
 }
 
 
-case class Comment(
-                    id: Comment.Id,
-                    userId: User.Id,
-                    comment: String,
-                    likesIds: List[Like.Id],
-                    objectCommentedId: Either[MediaContentList.Id, Review.Id]
-                  ) extends UserContent
+case class Reply(
+                id           : Reply.Id,
+                user         : User.Id,
+                objectReplied: Either[MediaContentList.Id, UserContent.Id],
+                comment      : String,
+                likes        : List[Like.Id]
+                ) extends UserContent
 
-// TODO: objectCommentedId -> Elegir definitivamente qué tipos de elementos pueden ser. Elegir también cómo implementar
-//  esos elementos. ¿case class Element? ¿sealed trait? ¿Distintos tipos de Comment que heredan de Comment todos
-//  excepto objectCommentedId?
-
-object Comment {
+object Reply {
   type Id = Long
 }

@@ -1,11 +1,11 @@
 package api
 
-import io.circe.generic.auto._
-import modelClasses.{User,Element, Movie, TVShow, Season, Episode, Videogame, Book, MediaContentList, Review, Comment,
-  UserSettings, ErrorInfo, Chat}
-import sttp.tapir._
-import sttp.tapir.generic.auto._
-import sttp.tapir.json.circe._
+import io.circe.generic.auto.*
+import modelClasses.{Book, Chat, Episode, ErrorInfo, MediaContentList, Movie, Review, Season, TVShow, User,
+  Reply, UserSettings, Videogame}
+import sttp.tapir.*
+import sttp.tapir.generic.auto.*
+import sttp.tapir.json.circe.*
 import sttp.model.StatusCode
 
 class UserEndpoints {
@@ -60,8 +60,8 @@ class UserEndpoints {
   private val jsonReviewOut: EndpointOutput[Review] =
     jsonBody[Review]
 
-  private val jsonCommentOut: EndpointOutput[Comment] =
-    jsonBody[Comment]
+  private val jsonReplyOut: EndpointOutput[Reply] =
+    jsonBody[Reply]
 
   private val jsonUserOut: EndpointOutput[User] =
     jsonBody[User]
@@ -93,8 +93,8 @@ class UserEndpoints {
   private val jsonReviewListOut: EndpointOutput[List[Review]] =
     jsonBody[List[Review]]
 
-  private val jsonCommentListOut: EndpointOutput[List[Comment]] =
-    jsonBody[List[Comment]]
+  private val jsonReplyListOut: EndpointOutput[List[Reply]] =
+    jsonBody[List[Reply]]
 
   private val jsonUserListOut: EndpointOutput[List[User]] =
     jsonBody[List[User]]
@@ -686,14 +686,14 @@ class UserEndpoints {
       .in("likes" / "reviews")
       .out(jsonReviewListOut)
 
-  val userLikedCommentsListEndpoint: PublicEndpoint[String, Unit, List[Comment], Any] =
+  val userLikedCommentsListEndpoint: PublicEndpoint[String, Unit, List[Reply], Any] =
     userBaseEndpoint
-      .name("User's liked comments endpoint")
-      .description("This endpoint returns a list of all the liked comments for a user")
+      .name("User's liked replies endpoint")
+      .description("This endpoint returns a list of all the liked replies for a user")
       .get
       .in(pathUsername)
-      .in("likes" / "comments")
-      .out(jsonCommentListOut)
+      .in("likes" / "replies")
+      .out(jsonReplyListOut)
 
   val userLikedListsListEndpoint: PublicEndpoint[String, Unit, List[MediaContentList], Any] =
     userBaseEndpoint
@@ -911,42 +911,42 @@ class UserEndpoints {
   */
 
 
-  // Endpoints for Comments
-  val userCommentsListEndpoint: PublicEndpoint[String, Unit, List[Comment], Any] =
+  // Endpoints for Replies
+  val userCommentsListEndpoint: PublicEndpoint[String, Unit, List[Reply], Any] =
   userBaseEndpoint
-    .name("User's comments endpoint")
-    .description("This endpoint returns all the comments made by a user")
+    .name("User's replies endpoint")
+    .description("This endpoint returns all the replies made by a user")
     .get
     .in(pathUsername)
-    .in("comments")
-    .out(jsonCommentListOut)
+    .in("replies")
+    .out(jsonReplyListOut)
 
   val userCommentsListsListEndpoint: PublicEndpoint[String, Unit, List[MediaContentList], Any] =
     userBaseEndpoint
-      .name("User's comments to lists endpoint")
-      .description("This endpoint returns all the comments made by a user specifically to lists")
+      .name("User's replies to lists endpoint")
+      .description("This endpoint returns all the replies made by a user specifically to lists")
       .get
       .in(pathUsername)
-      .in("comments" / "lists")
+      .in("replies" / "lists")
       .out(jsonListOfElementListOut)
 
   val userCommentsReviewsListEndpoint: PublicEndpoint[String, Unit, List[Review], Any] =
     userBaseEndpoint
-      .name("User's comments to reviews endpoint")
-      .description("This endpoint returns all the comments made by a user specifically to reviews")
+      .name("User's replies to reviews endpoint")
+      .description("This endpoint returns all the replies made by a user specifically to reviews")
       .get
       .in(pathUsername)
-      .in("comments" / "reviews")
+      .in("replies" / "reviews")
       .out(jsonReviewListOut)
 
   /*
-  val userCommentsCommentsListEndpoint: PublicEndpoint[String, Unit, List[Comment], Any] =
+  val userCommentsCommentsListEndpoint: PublicEndpoint[String, Unit, List[Reply], Any] =
     userBaseEndpoint
-      .name("User's comments to comments endpoint")
-      .description("This endpoint returns all the comments made by a user specifically to other comments")
+      .name("User's replies to replies endpoint")
+      .description("This endpoint returns all the replies made by a user specifically to other replies")
       .get
       .in(pathUsername)
-      .in("comments" / "comments")
+      .in("replies" / "replies")
       .out(jsonCommentListOut)
    */
 

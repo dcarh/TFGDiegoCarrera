@@ -1,9 +1,9 @@
 package modelClasses
 
 case class Chat(
-               id: Chat.Id,
-               user1Id: User.Id,
-               user2Id: User.Id,
+               id         : Chat.Id,
+               user1Id    : User.Id,
+               user2Id    : User.Id,
                messagesIds: List[Message.Id]
                )
 object  Chat {
