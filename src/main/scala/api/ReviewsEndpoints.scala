@@ -1,7 +1,7 @@
 package api
 
 import io.circe.generic.auto._
-import modelClasses.Review
+import modelClasses.social.Review
 import sttp.tapir._
 import sttp.tapir.generic.auto._
 import sttp.tapir.json.circe._
