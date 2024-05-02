@@ -1,4 +1,6 @@
-package modelClasses
+package modelClasses.chatting
+
+import modelClasses.user.User
 
 case class Chat(
                id         : Chat.Id,

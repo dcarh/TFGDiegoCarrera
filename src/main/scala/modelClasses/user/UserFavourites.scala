@@ -1,4 +1,6 @@
-package modelClasses
+package modelClasses.user
+
+import modelClasses.media.*
 
 case class UserFavourites(
                          movie    : Movie.Id,

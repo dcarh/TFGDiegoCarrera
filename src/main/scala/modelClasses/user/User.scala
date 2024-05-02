@@ -1,29 +1,24 @@
-package modelClasses
+package modelClasses.user
 
-import cats.effect.*
-import io.circe.Printer
 import io.circe.generic.auto._
-import io.circe.syntax.*
-import sttp.tapir._
-import sttp.tapir.generic.auto._
-import sttp.tapir.json.circe._
-import sttp.tapir.model.UsernamePassword
 
-import sttp.tapir.Schema.derived
+import modelClasses.chatting.Chat
+import modelClasses.media.MediaMainContent
+import modelClasses.social.*
 
 case class User(
                id        : User.Id,
-               // TODO: usernamePassword: UsernamePassword,
                profile   : UserProfile,
                favourites: UserFavourites,
-               completed : List[MediaContent.Id],
-               pending   : List[MediaContent.Id],
-               inProgress: List[MediaContent.Id],
-               onHold    : List[MediaContent.Id],
-               dropped   : List[MediaContent.Id],
+               completed : List[MediaMainContent.Id],
+               pending   : List[MediaMainContent.Id],
+               inProgress: List[MediaMainContent.Id],
+               onHold    : List[MediaMainContent.Id],
+               dropped   : List[MediaMainContent.Id],
                lists     : List[MediaContentList.Id],
                entries   : List[Entry.Id],
                reviews   : List[Review.Id],
+               ratings   : List[Rating], // o List[(Either[MediaMainContent, MediaSecondaryContent], Int)]
                likes     : List[Like.Id],
                replies   : List[Reply.Id],
                // tags   : List[String],

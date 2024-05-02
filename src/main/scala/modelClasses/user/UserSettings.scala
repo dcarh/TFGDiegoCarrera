@@ -1,6 +1,4 @@
-package modelClasses
-
-import sttp.tapir.generic.auto._
+package modelClasses.user
 
 case class UserSettings(
                        user    : User.Id,

@@ -1,6 +1,6 @@
-package modelClasses
+package modelClasses.chatting
 
-import sttp.tapir.generic.auto._
+import modelClasses.user.User
 
 case class Message(
                   id     : Message.Id,

@@ -1,9 +1,9 @@
-package modelClasses
+package modelClasses.media
 
-import sttp.tapir.generic.auto._
+import modelClasses.social.{Like, Review, MediaContentList}
 
-sealed trait MediaContent {
-  val id                : MediaContent.Id
+sealed trait MediaMainContent {
+  val id                : MediaMainContent.Id
   val likes             : List[Like.Id]
   val reviews           : List[Review.Id]
   val averageRating     : Double
@@ -16,7 +16,7 @@ sealed trait MediaContent {
   val numberOfAbandoned : Long
 }
 
-object MediaContent {
+object MediaMainContent {
   type Id = Long
 }
 
@@ -46,7 +46,7 @@ case class Movie(
                 numberOfPaused     : Option[Long],
                 numberOfPending    : Long,
                 numberOfAbandoned  : Long
-                ) extends MediaContent
+                ) extends MediaMainContent
 
 object Movie {
   type Id = Long
@@ -83,7 +83,7 @@ case class TVShow(
                    numberOfPaused     : Option[Long],
                    numberOfPending    : Long,
                    numberOfAbandoned  : Long
-                 ) extends MediaContent
+                 ) extends MediaMainContent
 
 object TVShow {
   type Id = Long
@@ -124,7 +124,7 @@ case class Videogame(
                       numberOfPaused      : Option[Long],
                       numberOfPending     : Long,
                       numberOfAbandoned   : Long
-                    ) extends MediaContent
+                    ) extends MediaMainContent
 
 object Videogame {
   type Id = Long
@@ -147,7 +147,7 @@ case class Book(
                  numberOfPaused    : Option[Long],
                  numberOfPending   : Long,
                  numberOfAbandoned : Long
-               ) extends MediaContent
+               ) extends MediaMainContent
 
 object Book {
   type Id = Long

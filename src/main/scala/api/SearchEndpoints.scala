@@ -1,7 +1,9 @@
 package api
 
 import io.circe.generic.auto._
-import modelClasses.{User, Movie, TVShow, Season, Episode, Videogame, Book, MediaContentList}
+import modelClasses.user.User
+import modelClasses.media.*
+import modelClasses.social.MediaContentList
 import sttp.tapir._
 import sttp.tapir.generic.auto._
 import sttp.tapir.json.circe._

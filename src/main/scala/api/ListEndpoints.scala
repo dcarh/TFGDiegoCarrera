@@ -1,11 +1,15 @@
 package api
 
-import io.circe.generic.auto.*
-import modelClasses.{Book, MediaContentList, Episode, ErrorInfo, Movie, Season, TVShow, User, Videogame}
+import io.circe.generic.auto._
+import modelClasses.ErrorInfo
+import modelClasses.media._
+import modelClasses.user.User
+import modelClasses.social.MediaContentList
 import sttp.model.StatusCode
-import sttp.tapir.*
-import sttp.tapir.generic.auto.*
-import sttp.tapir.json.circe.*
+import sttp.tapir._
+import sttp.tapir.generic.auto._
+import sttp.tapir.json.circe._
+
 
 class ListEndpoints {
 

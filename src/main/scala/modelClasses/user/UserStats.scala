@@ -1,6 +1,6 @@
-package modelClasses
+package modelClasses.user
 
-import sttp.tapir.generic.auto._
+import modelClasses.Time
 
 case class UserStats(
                     userId                        : User.Id,

@@ -1,7 +1,7 @@
-package api
+package api.media
 
 import io.circe.generic.auto._
-import modelClasses.Book
+import modelClasses.media.Book
 import sttp.tapir._
 import sttp.tapir.generic.auto._
 import sttp.tapir.json.circe._
