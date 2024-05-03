@@ -7,137 +7,77 @@ import modelClasses.social.MediaContentList
 import sttp.tapir._
 import sttp.tapir.generic.auto._
 import sttp.tapir.json.circe._
+import api.common.Inputs.inputs
+import api.common.Outputs.outputs
 
 class SearchEndpoints {
 
   private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
 
-  private val pathMovies: EndpointInput[String] =
-    path[String]("movies")
-
-  private val pathTVShows: EndpointInput[String] =
-    path[String]("tv_shows")
-
-  private val pathSeasons: EndpointInput[String] =
-    path[String]("seasons")
-
-  private val pathEpisodes: EndpointInput[String] =
-    path[String]("episodes")
-
-  private val pathVideogames: EndpointInput[String] =
-    path[String]("videogames")
-
-  private val pathBooks: EndpointInput[String] =
-    path[String]("books")
-
-  private val pathArticles: EndpointInput[String] =
-    path[String]("articles")
-
-  private val pathLists: EndpointInput[String] =
-    path[String]("lists")
-
-  private val pathUsers: EndpointInput[String] =
-    path[String]("users")
-
-  private val queryType: EndpointInput[String] =
-    query[String]("type").description("Tipo de elemento a buscar")
-  // TODO: Añadir validator para que solo pueda ser: all, movie, tv_show, season, episode, videogame, book
-
-  private val queryOrderBy: EndpointInput[String] =
-    query[String]("order_by").description("Ordenar por")
-
-   private val jsonElementListOut: EndpointOutput[MediaContentList] =
-     jsonBody[MediaContentList]
-
-  private val jsonMovieListOut: EndpointOutput[List[Movie]] =
-    jsonBody[List[Movie]]
-
-  private val jsonTVShowListOut: EndpointOutput[List[TVShow]] =
-    jsonBody[List[TVShow]]
-
-  private val jsonSeasonListOut: EndpointOutput[List[Season]] =
-    jsonBody[List[Season]]
-
-  private val jsonEpisodeListOut: EndpointOutput[List[Episode]] =
-    jsonBody[List[Episode]]
-
-  private val jsonVideogameListOut: EndpointOutput[List[Videogame]] =
-    jsonBody[List[Videogame]]
-
-  private val jsonBookListOut: EndpointOutput[List[Book]] =
-    jsonBody[List[Book]]
-
-  private val jsonUserListOut: EndpointOutput[List[User]] =
-    jsonBody[List[User]]
-
-  private val jsonListOfElementListOut: EndpointOutput[List[MediaContentList]] =
-    jsonBody[List[MediaContentList]]
-
   private val searchBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
     endpoint.in("api" / "search")
-
 
   val searchEndpoint: PublicEndpoint[(String, String), Unit, MediaContentList, Any] =
     searchBaseEndpoint
       .name("Search endpoint")
       .description("This endpoint searches any element on the app based on text coincidence")
       .get
-      .in(queryType)
-      .in(queryOrderBy)
-      .out(jsonElementListOut)
+      .in(inputs.queryType)
+      .in(inputs.queryOrderBy)
+      .out(outputs.jsonMediaContentListOut)
 
   val searchMovieEndpoint: PublicEndpoint[(String, String), Unit, List[Movie], Any] =
     searchBaseEndpoint
       .name("Search movie endpoint")
       .description("This endpoint searches any movie on the app based on text coincidence")
       .get
-      .in(pathMovies)
-      .in(queryOrderBy)
-      .out(jsonMovieListOut)
+      .in(inputs.pathMovies)
+      .in(inputs.queryOrderBy)
+      .out(outputs.jsonMovieListOut)
 
   val searchTVShowEndpoint: PublicEndpoint[(String, String), Unit, List[TVShow], Any] =
     searchBaseEndpoint
       .name("Search TV show endpoint")
       .description("This endpoint searches any TV show on the app based on text coincidence")
       .get
-      .in(pathTVShows)
-      .in(queryOrderBy)
-      .out(jsonTVShowListOut)
+      .in(inputs.pathTVShows)
+      .in(inputs.queryOrderBy)
+      .out(outputs.jsonTVShowListOut)
 
   val searchVideogameEndpoint: PublicEndpoint[(String, String), Unit, List[Videogame], Any] =
     searchBaseEndpoint
       .name("Search videogame endpoint")
       .description("This endpoint searches any videogame on the app based on text coincidence")
       .get
-      .in(pathVideogames)
-      .in(queryOrderBy)
-      .out(jsonVideogameListOut)
+      .in(inputs.pathVideogames)
+      .in(inputs.queryOrderBy)
+      .out(outputs.jsonVideogameListOut)
 
   val searchBookEndpoint: PublicEndpoint[(String, String), Unit, List[Book], Any] =
     searchBaseEndpoint
       .name("Search book endpoint")
       .description("This endpoint searches any book on the app based on text coincidence")
       .get
-      .in(pathBooks)
-      .in(queryOrderBy)
-      .out(jsonBookListOut)
+      .in(inputs.pathBooks)
+      .in(inputs.queryOrderBy)
+      .out(outputs.jsonBookListOut)
 
   val searchElementListEndpoint: PublicEndpoint[(String, String), Unit, List[MediaContentList], Any] =
     searchBaseEndpoint
       .name("Search list endpoint")
       .description("This endpoint searches any list on the app based on text coincidence")
       .get
-      .in(pathLists)
-      .in(queryOrderBy)
-      .out(jsonListOfElementListOut)
+      .in(inputs.pathLists)
+      .in(inputs.queryOrderBy)
+      .out(outputs.jsonListOfElementListOut)
 
   val searchUserEndpoint: PublicEndpoint[(String, String), Unit, List[User], Any] =
     searchBaseEndpoint
       .name("Search user endpoint")
       .description("This endpoint searches any user on the app based on text coincidence")
       .get
-      .in(pathUsers)
-      .in(queryOrderBy)
-      .out(jsonUserListOut)
+      .in(inputs.pathUsers)
+      .in(inputs.queryOrderBy)
+      .out(outputs.jsonUserListOut)
 
 }
