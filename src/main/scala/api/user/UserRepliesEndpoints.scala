@@ -2,7 +2,7 @@ package api.user
 
 import sttp.tapir._
 
-import modelClasses.social.{MediaContentList, Review, Reply}
+import modelClasses.social.Reply
 import api.common.Inputs.inputs
 import api.common.Outputs.outputs
 
@@ -25,23 +25,23 @@ class UserRepliesEndpoints {
       .in("replies")
       .out(outputs.jsonReplyListOut)
 
-  val userRepliesListsListEndpoint: PublicEndpoint[String, Unit, List[MediaContentList], Any] =
+  val userRepliesListsListEndpoint: PublicEndpoint[String, Unit, List[Reply], Any] =
     userBaseEndpoint
       .name("User's replies to lists endpoint")
       .description("This endpoint returns all the replies made by a user specifically to lists")
       .get
       .in(inputs.pathUsername)
       .in("replies" / "lists")
-      .out(outputs.jsonListOfElementListOut)
+      .out(outputs.jsonReplyListOut)
 
-  val userRepliesReviewsListEndpoint: PublicEndpoint[String, Unit, List[Review], Any] =
+  val userRepliesReviewsListEndpoint: PublicEndpoint[String, Unit, List[Reply], Any] =
     userBaseEndpoint
       .name("User's replies to reviews endpoint")
       .description("This endpoint returns all the replies made by a user specifically to reviews")
       .get
       .in(inputs.pathUsername)
       .in("replies" / "reviews")
-      .out(outputs.jsonReviewListOut)
+      .out(outputs.jsonReplyListOut)
 
   val userRepliesRepliesListEndpoint: PublicEndpoint[String, Unit, List[Reply], Any] =
     userBaseEndpoint

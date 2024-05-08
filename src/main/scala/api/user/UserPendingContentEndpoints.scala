@@ -19,8 +19,8 @@ class UserPendingContentEndpoints {
     
   val userPendingListEndpoint: PublicEndpoint[String, Unit, MediaContentList, Any] =
     userBaseEndpoint
-      .name("User's 'Pending' elements endpoint")
-      .description("This endpoint returns a list of all the 'Pending' elements for a user")
+      .name("User's 'Pending' media content endpoint")
+      .description("This endpoint returns a list of all the 'Pending' media content for a user")
       .get
       .in(inputs.pathUsername)
       .in("pending")

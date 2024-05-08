@@ -19,8 +19,8 @@ class UserLikesEndpoints {
 
   val userLikesListEndpoint: PublicEndpoint[String, Unit, MediaContentList, Any] =
     userBaseEndpoint
-      .name("User's liked elements endpoint")
-      .description("This endpoint returns a list of all the liked elements for a user")
+      .name("User's liked media content endpoint")
+      .description("This endpoint returns a list of all the liked media content for a user")
       .get
       .in(inputs.pathUsername)
       .in("likes")
@@ -105,7 +105,7 @@ class UserLikesEndpoints {
       .get
       .in(inputs.pathUsername)
       .in("likes" / "lists")
-      .out(outputs.jsonListOfElementListOut)
+      .out(outputs.jsonListOfMediaContentListOut)
 
   val userLikedMovieListsListEndpoint: PublicEndpoint[String, Unit, List[MediaContentList], Any] =
     userBaseEndpoint
@@ -114,7 +114,7 @@ class UserLikesEndpoints {
       .get
       .in(inputs.pathUsername)
       .in("likes" / "lists" / "movies")
-      .out(outputs.jsonListOfElementListOut)
+      .out(outputs.jsonListOfMediaContentListOut)
 
   val userLikedTVShowsListsListEndpoint: PublicEndpoint[String, Unit, List[MediaContentList], Any] =
     userBaseEndpoint
@@ -123,7 +123,7 @@ class UserLikesEndpoints {
       .get
       .in(inputs.pathUsername)
       .in("likes" / "lists" / "tv_shows")
-      .out(outputs.jsonListOfElementListOut)
+      .out(outputs.jsonListOfMediaContentListOut)
 
   val userLikedSeasonsListsListEndpoint: PublicEndpoint[String, Unit, List[MediaContentList], Any] =
     userBaseEndpoint
@@ -132,7 +132,7 @@ class UserLikesEndpoints {
       .get
       .in(inputs.pathUsername)
       .in("likes" / "lists" / "seasons")
-      .out(outputs.jsonListOfElementListOut)
+      .out(outputs.jsonListOfMediaContentListOut)
 
   val userLikedEpisodesListsListEndpoint: PublicEndpoint[String, Unit, List[MediaContentList], Any] =
     userBaseEndpoint
@@ -141,7 +141,7 @@ class UserLikesEndpoints {
       .get
       .in(inputs.pathUsername)
       .in("likes" / "lists" / "episodes")
-      .out(outputs.jsonListOfElementListOut)
+      .out(outputs.jsonListOfMediaContentListOut)
 
   val userLikedVideogamesListsListEndpoint: PublicEndpoint[String, Unit, List[MediaContentList], Any] =
     userBaseEndpoint
@@ -150,7 +150,7 @@ class UserLikesEndpoints {
       .get
       .in(inputs.pathUsername)
       .in("likes" / "lists" / "videogames")
-      .out(outputs.jsonListOfElementListOut)
+      .out(outputs.jsonListOfMediaContentListOut)
 
   val userLikedBooksListsListEndpoint: PublicEndpoint[String, Unit, List[MediaContentList], Any] =
     userBaseEndpoint
@@ -159,6 +159,6 @@ class UserLikesEndpoints {
       .get
       .in(inputs.pathUsername)
       .in("likes" / "lists" / "books")
-      .out(outputs.jsonListOfElementListOut)
+      .out(outputs.jsonListOfMediaContentListOut)
 
 }

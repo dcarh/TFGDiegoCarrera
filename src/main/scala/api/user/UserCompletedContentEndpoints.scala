@@ -19,8 +19,8 @@ class UserCompletedContentEndpoints {
 
   val userCompletedListEndpoint: PublicEndpoint[String, Unit, MediaContentList, Any] =
     userBaseEndpoint
-      .name("User's 'Completed' endpoint")
-      .description("This endpoint returns a list of all the 'Completed' elements for a user")
+      .name("User's 'Completed' media content endpoint")
+      .description("This endpoint returns a list of all the 'Completed' media content for a user")
       .get
       .in(inputs.pathUsername)
       .in("completed")

@@ -19,8 +19,8 @@ class UserInProgressContentEndpoints {
 
   val userInProgressListEndpoint: PublicEndpoint[String, Unit, MediaContentList, Any] =
     userBaseEndpoint
-      .name("User's 'In Progress' elements endpoint")
-      .description("This endpoint returns a list of all the 'In Progress' elements for a user")
+      .name("User's 'In Progress' media content endpoint")
+      .description("This endpoint returns a list of all the 'In Progress' media content for a user")
       .get
       .in(inputs.pathUsername)
       .in("in_progress")

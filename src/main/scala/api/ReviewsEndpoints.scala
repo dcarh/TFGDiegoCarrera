@@ -16,12 +16,12 @@ class ReviewsEndpoints {
   private val reviewBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
     endpoint.in("api" / "review")
   
-  val reviewsEndpoint: PublicEndpoint[String, Unit, List[Review], Any] =
+  val reviewsEndpoint: PublicEndpoint[Option[String], Unit, List[Review], Any] =
     reviewsBaseEndpoint
       .name("Reviews endpoint")
       .description("This endpoint returns a list with all the reviews in the app")
       .get
-      .in(inputs.queryOrderBy)
+      .in(inputs.querySortBy)
       .out(outputs.jsonReviewListOut)
 
   val specificReviewEndpoint: PublicEndpoint[Review.Id, Unit, Review, Any] =

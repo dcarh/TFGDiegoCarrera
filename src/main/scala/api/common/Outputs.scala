@@ -1,14 +1,16 @@
 package api.common
 
-import io.circe.generic.auto.*
+import sttp.tapir._
+import sttp.tapir.generic.auto._
+import sttp.tapir.json.circe._
+
+import io.circe.generic.auto._
+
+import modelClasses.media._
+import modelClasses.social._
+import modelClasses.user._
 import modelClasses.ErrorInfo
 import modelClasses.chatting.Chat
-import modelClasses.media.*
-import modelClasses.social.*
-import modelClasses.user.*
-import sttp.tapir.*
-import sttp.tapir.generic.auto.*
-import sttp.tapir.json.circe.*
 
 class Outputs {
 
@@ -84,7 +86,7 @@ class Outputs {
   val jsonChatListOut: EndpointOutput[List[Chat]] =
     jsonBody[List[Chat]]
 
-  val jsonListOfElementListOut: EndpointOutput[List[MediaContentList]] =
+  val jsonListOfMediaContentListOut: EndpointOutput[List[MediaContentList]] =
     jsonBody[List[MediaContentList]]
 
   val jsonSettingsOut: EndpointOutput[UserSettings] =

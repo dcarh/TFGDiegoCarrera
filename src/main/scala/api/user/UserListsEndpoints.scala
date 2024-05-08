@@ -16,18 +16,17 @@ class UserListsEndpoints {
   private val userBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
     endpoint.in("api" / "user")
 
-  val userListsEndpoint: PublicEndpoint[(String, String, String), Unit, List[MediaContentList], Any] =
+  val userListsEndpoint: PublicEndpoint[(String, Option[String]), Unit, List[MediaContentList], Any] =
     userBaseEndpoint
       .name("User's lists endpoint")
       .description("This endpoint returns all the lists for a user")
       .get
       .in(inputs.pathUsername)
       .in("lists")
-      .in(inputs.queryType)
-      .in(inputs.queryOrderBy)
-      .out(outputs.jsonListOfElementListOut)
+      .in(inputs.querySortBy)
+      .out(outputs.jsonListOfMediaContentListOut)
 
-  val userSpecificListEndpoint: PublicEndpoint[(String, MediaContentList.Id), Unit, List[MediaContentList], Any] =
+  val userSpecificListEndpoint: PublicEndpoint[(String, MediaContentList.Id), Unit, MediaContentList, Any] =
     userBaseEndpoint
       .name("User's specific list endpoint")
       .description("This endpoint returns a specific list for a user by the ID of the list")
@@ -35,6 +34,6 @@ class UserListsEndpoints {
       .in(inputs.pathUsername)
       .in("lists")
       .in(inputs.pathListId)
-      .out(outputs.jsonListOfElementListOut)
+      .out(outputs.jsonMediaContentListOut)
 
 }

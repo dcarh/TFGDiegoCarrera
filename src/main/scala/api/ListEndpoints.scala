@@ -21,70 +21,61 @@ class ListEndpoints {
   private val listBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
     endpoint.in("api" / "list")
 
-  val listsEndpoint: PublicEndpoint[(String, String), Unit, List[MediaContentList], Any] =
+  val listsEndpoint: PublicEndpoint[Option[String], Unit, List[MediaContentList], Any] =
     listsBaseEndpoint
       .name("List of elements endpoint")
       .description("This endpoint returns a list of elements, whether it may be of all elements or a specific type of element")
       .get
-      .in(inputs.queryType)
-      .in(inputs.queryOrderBy)
-      .out(outputs.jsonListOfElementListOut)
-    
-    
-  // TODO: Decidir lógica de la aplicación Para discernir entre pelis, series y demás, ¿Path o Query?
-  val listOfMovieListsEndpoint: PublicEndpoint[(String, String), Unit, List[MediaContentList], Any] =
+      .in(inputs.querySortBy)
+      .out(outputs.jsonListOfMediaContentListOut)
+  
+  val listOfMovieListsEndpoint: PublicEndpoint[Option[String], Unit, List[MediaContentList], Any] =
     listsBaseEndpoint
       .name("List of movies lists endpoint")
       .description("This endpoint returns a list of movies lists")
       .get
-      .in(inputs.pathMovies)
-      .in(inputs.queryOrderBy)
-      .out(outputs.jsonListOfElementListOut)
+      .in(inputs.querySortBy)
+      .out(outputs.jsonListOfMediaContentListOut)
 
-  val listOfTVShowListsEndpoint: PublicEndpoint[(String, String), Unit, List[MediaContentList], Any] =
+  val listOfTVShowListsEndpoint: PublicEndpoint[Option[String], Unit, List[MediaContentList], Any] =
     listsBaseEndpoint
       .name("List of TV shows lists endpoint")
       .description("This endpoint returns a list of TV shows lists")
       .get
-      .in(inputs.pathTVShows)
-      .in(inputs.queryOrderBy)
-      .out(outputs.jsonListOfElementListOut)
+      .in(inputs.querySortBy)
+      .out(outputs.jsonListOfMediaContentListOut)
 
-  val listOfSeasonListsEndpoint: PublicEndpoint[(String, String), Unit, List[MediaContentList], Any] =
+  val listOfSeasonListsEndpoint: PublicEndpoint[Option[String], Unit, List[MediaContentList], Any] =
     listsBaseEndpoint
       .name("List of TV seasons lists endpoint")
       .description("This endpoint returns a list of TV seasons lists")
       .get
-      .in(inputs.pathSeasons)
-      .in(inputs.queryOrderBy)
-      .out(outputs.jsonListOfElementListOut)
+      .in(inputs.querySortBy)
+      .out(outputs.jsonListOfMediaContentListOut)
   
-  val listOfEpisodesListsEndpoint: PublicEndpoint[(String, String), Unit, List[MediaContentList], Any] =
+  val listOfEpisodesListsEndpoint: PublicEndpoint[Option[String], Unit, List[MediaContentList], Any] =
     listsBaseEndpoint
       .name("List of TV episodes lists endpoint")
       .description("This endpoint returns a list of TV episodes lists")
       .get
-      .in(inputs.pathEpisodes)
-      .in(inputs.queryOrderBy)
-      .out(outputs.jsonListOfElementListOut)
+      .in(inputs.querySortBy)
+      .out(outputs.jsonListOfMediaContentListOut)
 
-  val listOfVideogamesListsEndpoint: PublicEndpoint[(String, String), Unit, List[MediaContentList], Any] =
+  val listOfVideogamesListsEndpoint: PublicEndpoint[Option[String], Unit, List[MediaContentList], Any] =
     listsBaseEndpoint
       .name("List of videogames lists endpoint")
       .description("This endpoint returns a list of videogames lists")
       .get
-      .in(inputs.pathVideogames)
-      .in(inputs.queryOrderBy)
-      .out(outputs.jsonListOfElementListOut)
+      .in(inputs.querySortBy)
+      .out(outputs.jsonListOfMediaContentListOut)
 
-  val listOfBooksListsEndpoint: PublicEndpoint[(String, String), Unit, List[MediaContentList], Any] =
+  val listOfBooksListsEndpoint: PublicEndpoint[Option[String], Unit, List[MediaContentList], Any] =
     listsBaseEndpoint
       .name("List of books lists endpoint")
       .description("This endpoint returns a list of books lists")
       .get
-      .in(inputs.pathBooks)
-      .in(inputs.queryOrderBy)
-      .out(outputs.jsonListOfElementListOut)
+      .in(inputs.querySortBy)
+      .out(outputs.jsonListOfMediaContentListOut)
   
   val specificListEndpoint: PublicEndpoint[MediaContentList.Id, Unit, MediaContentList, Any] =
     listsBaseEndpoint

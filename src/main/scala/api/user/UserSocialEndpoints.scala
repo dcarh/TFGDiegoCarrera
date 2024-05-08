@@ -28,7 +28,7 @@ class UserSocialEndpoints {
 
   val userFollowingList: PublicEndpoint[String, Unit, List[User], Any] =
     userBaseEndpoint
-      .name("User's people following endpoint")
+      .name("User's following endpoint")
       .description("This endpoint returns the people followed by the user")
       .get
       .in(inputs.pathUsername)
@@ -56,7 +56,7 @@ class UserSocialEndpoints {
   val userChatWithOtherUser: PublicEndpoint[String, Unit, Chat, Any] =
     userBaseEndpoint
       .name("User's chat with other user endpoint")
-      .description("This endpoint returns a the chat between the user and another specific user")
+      .description("This endpoint returns the chat between the user and another specific user")
       .get
       .in(inputs.pathUsername)
       .in("chat")

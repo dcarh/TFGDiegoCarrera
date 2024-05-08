@@ -1,6 +1,7 @@
 package api.user
 
 import sttp.tapir._
+
 import modelClasses.media._
 import modelClasses.social.MediaContentList
 import api.common.Inputs.inputs
@@ -18,8 +19,8 @@ class UserAbandonedContentEndpoints {
 
   val userAbandonedListEndpoint: PublicEndpoint[String, Unit, MediaContentList, Any] =
     userBaseEndpoint
-      .name("User's 'Abandoned' elements endpoint")
-      .description("This endpoint returns a list of all the 'Abandoned' elements for a user")
+      .name("User's 'Abandoned' media content endpoint")
+      .description("This endpoint returns a list of all the 'Abandoned' media content for a user")
       .get
       .in(inputs.pathUsername)
       .in("abandoned")

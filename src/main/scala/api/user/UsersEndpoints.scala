@@ -34,12 +34,11 @@ class UsersEndpoints {
       .in("sign-in")
       .out(outputs.jsonUserOut)
 
-  // Endpoint that returns a list with all the users in the app
-  val usersEndpoint: PublicEndpoint[String, Unit, List[User], Any] =
+  val usersEndpoint: PublicEndpoint[Option[String], Unit, List[User], Any] =
     usersBaseEndpoint
       .name("Users endpoint")
       .description("This endpoint returns a list of all the users in the app")
       .get
-      .in(inputs.queryOrderBy)
+      .in(inputs.querySortBy)
       .out(outputs.jsonUserListOut)
 }

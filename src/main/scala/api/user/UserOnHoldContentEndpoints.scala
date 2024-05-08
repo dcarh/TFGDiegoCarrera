@@ -19,8 +19,8 @@ class UserOnHoldContentEndpoints {
 
   val userOnHoldListEndpoint: PublicEndpoint[String, Unit, MediaContentList, Any] =
     userBaseEndpoint
-      .name("User's 'On Hold' elements endpoint")
-      .description("This endpoint returns a list of all the 'On Hold' elements for a user")
+      .name("User's 'On Hold' media content endpoint")
+      .description("This endpoint returns a list of all the 'On Hold' media content for a user")
       .get
       .in(inputs.pathUsername)
       .in("on_hold")

@@ -19,8 +19,8 @@ class UserFavouritesEndpoints {
 
   val userFavouritesEndpoint: PublicEndpoint[String, Unit, MediaContentList, Any] =
     userBaseEndpoint
-      .name("User's favourite elements endpoint")
-      .description("This endpoint returns the favourite elements (one movie, one TV show, one videogame, one book) for a user")
+      .name("User's favourites endpoint")
+      .description("This endpoint returns the favourite media content (one movie, one TV show, one videogame, one book) for a user")
       .get
       .in(inputs.pathUsername)
       .in("favourites")
