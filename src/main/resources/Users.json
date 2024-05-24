@@ -1,0 +1,933 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "profile": {
+        "username": "user1",
+        "password": "pass1",
+        "email": "user1@example.com",
+        "biography": "Bio of user1",
+        "location": "Location1"
+      },
+      "favourites": {
+        "movie": 101,
+        "tvShow": 201,
+        "videogame": 301,
+        "book": 401
+      },
+      "completed": [101, 202, 303],
+      "pending": [104, 205, 306],
+      "inProgress": [107, 208, 309],
+      "onHold": [110, 211, 312],
+      "dropped": [113, 214, 315],
+      "lists": [1, 2],
+      "entries": [1, 2],
+      "reviews": [1, 2],
+      "ratings": [
+        {
+          "mediaRated": {"left": 101},
+          "rating": 4
+        },
+        {
+          "mediaRated": {"right": 201},
+          "rating": 5
+        }
+      ],
+      "likes": [1, 2],
+      "replies": [1, 2],
+      "following": [2, 3],
+      "followers": [4, 5],
+      "blocked": [6],
+      "chats": [1, 2],
+      "stats": {
+        "userId": 1,
+        "avgElementsRating": 4.5,
+        "timeSpentInMovies": {"hours": 10, "minutes": 30, "seconds": 0},
+        "timeSpentInTVShows": {"hours": 20, "minutes": 45, "seconds": 0},
+        "timeSpentInVideogames": {"hours": 15, "minutes": 0, "seconds": 0},
+        "timeSpentInBooks": {"hours": 5, "minutes": 30, "seconds": 0},
+        "totalTimeSpent": {"hours": 51, "minutes": 45, "seconds": 0},
+        "numberOfMoviesCompleted": 3,
+        "numberOfTVShowsCompleted": 5,
+        "numberOfVideogamesCompleted": 2,
+        "numberOfBooksCompleted": 1,
+        "totalNumberOfElementsCompleted": 11
+      },
+      "settings": {
+        "user": 1,
+        "isPublic": true
+      }
+    },
+    {
+      "id": 2,
+      "profile": {
+        "username": "user2",
+        "password": "pass2",
+        "email": "user2@example.com",
+        "biography": "Bio of user2",
+        "location": "Location2"
+      },
+      "favourites": {
+        "movie": 102,
+        "tvShow": 202,
+        "videogame": 302,
+        "book": 402
+      },
+      "completed": [102, 203, 304],
+      "pending": [105, 206, 307],
+      "inProgress": [108, 209, 310],
+      "onHold": [111, 212, 313],
+      "dropped": [114, 215, 316],
+      "lists": [3, 4],
+      "entries": [3, 4],
+      "reviews": [3, 4],
+      "ratings": [
+        {
+          "mediaRated": {"left": 102},
+          "rating": 3
+        },
+        {
+          "mediaRated": {"right": 202},
+          "rating": 4
+        }
+      ],
+      "likes": [3, 4],
+      "replies": [3, 4],
+      "following": [1, 3],
+      "followers": [4, 5],
+      "blocked": [6],
+      "chats": [3, 4],
+      "stats": {
+        "userId": 2,
+        "avgElementsRating": 3.5,
+        "timeSpentInMovies": {"hours": 15, "minutes": 45, "seconds": 0},
+        "timeSpentInTVShows": {"hours": 25, "minutes": 0, "seconds": 0},
+        "timeSpentInVideogames": {"hours": 10, "minutes": 15, "seconds": 0},
+        "timeSpentInBooks": {"hours": 7, "minutes": 0, "seconds": 0},
+        "totalTimeSpent": {"hours": 58, "minutes": 0, "seconds": 0},
+        "numberOfMoviesCompleted": 4,
+        "numberOfTVShowsCompleted": 6,
+        "numberOfVideogamesCompleted": 1,
+        "numberOfBooksCompleted": 2,
+        "totalNumberOfElementsCompleted": 13
+      },
+      "settings": {
+        "user": 2,
+        "isPublic": false
+      }
+    },
+    {
+      "id": 3,
+      "profile": {
+        "username": "user3",
+        "password": "pass3",
+        "email": "user3@example.com",
+        "biography": "Bio of user3",
+        "location": "Location3"
+      },
+      "favourites": {
+        "movie": 103,
+        "tvShow": 203,
+        "videogame": 303,
+        "book": 403
+      },
+      "completed": [103, 204, 305],
+      "pending": [106, 207, 308],
+      "inProgress": [109, 210, 311],
+      "onHold": [112, 213, 314],
+      "dropped": [115, 216, 317],
+      "lists": [5, 6],
+      "entries": [5, 6],
+      "reviews": [5, 6],
+      "ratings": [
+        {
+          "mediaRated": {"left": 103},
+          "rating": 5
+        },
+        {
+          "mediaRated": {"right": 203},
+          "rating": 2
+        }
+      ],
+      "likes": [5, 6],
+      "replies": [5, 6],
+      "following": [1, 2],
+      "followers": [4, 5],
+      "blocked": [6],
+      "chats": [5, 6],
+      "stats": {
+        "userId": 3,
+        "avgElementsRating": 4.0,
+        "timeSpentInMovies": {"hours": 20, "minutes": 0, "seconds": 0},
+        "timeSpentInTVShows": {"hours": 30, "minutes": 15, "seconds": 0},
+        "timeSpentInVideogames": {"hours": 12, "minutes": 45, "seconds": 0},
+        "timeSpentInBooks": {"hours": 9, "minutes": 30, "seconds": 0},
+        "totalTimeSpent": {"hours": 72, "minutes": 30, "seconds": 0},
+        "numberOfMoviesCompleted": 5,
+        "numberOfTVShowsCompleted": 7,
+        "numberOfVideogamesCompleted": 3,
+        "numberOfBooksCompleted": 2,
+        "totalNumberOfElementsCompleted": 17
+      },
+      "settings": {
+        "user": 3,
+        "isPublic": true
+      }
+    },
+    {
+      "id": 4,
+      "profile": {
+        "username": "user4",
+        "password": "pass4",
+        "email": "user4@example.com",
+        "biography": "Bio of user4",
+        "location": "Location4"
+      },
+      "favourites": {
+        "movie": 104,
+        "tvShow": 204,
+        "videogame": 304,
+        "book": 404
+      },
+      "completed": [104, 205, 306],
+      "pending": [107, 208, 309],
+      "inProgress": [110, 211, 312],
+      "onHold": [113, 214, 315],
+      "dropped": [116, 217, 318],
+      "lists": [7, 8],
+      "entries": [7, 8],
+      "reviews": [7, 8],
+      "ratings": [
+        {
+          "mediaRated": {"left": 104},
+          "rating": 3
+        },
+        {
+          "mediaRated": {"right": 204},
+          "rating": 5
+        }
+      ],
+      "likes": [7, 8],
+      "replies": [7, 8],
+      "following": [1, 3],
+      "followers": [2, 5],
+      "blocked": [6],
+      "chats": [7, 8],
+      "stats": {
+        "userId": 4,
+        "avgElementsRating": 4.2,
+        "timeSpentInMovies": {"hours": 10, "minutes": 15, "seconds": 0},
+        "timeSpentInTVShows": {"hours": 25, "minutes": 45, "seconds": 0},
+        "timeSpentInVideogames": {"hours": 17, "minutes": 30, "seconds": 0},
+        "timeSpentInBooks": {"hours": 8, "minutes": 0, "seconds": 0},
+        "totalTimeSpent": {"hours": 61, "minutes": 30, "seconds": 0},
+        "numberOfMoviesCompleted": 4,
+        "numberOfTVShowsCompleted": 5,
+        "numberOfVideogamesCompleted": 3,
+        "numberOfBooksCompleted": 1,
+        "totalNumberOfElementsCompleted": 13
+      },
+      "settings": {
+        "user": 4,
+        "isPublic": true
+      }
+    },
+    {
+      "id": 5,
+      "profile": {
+        "username": "user5",
+        "password": "pass5",
+        "email": "user5@example.com",
+        "biography": "Bio of user5",
+        "location": "Location5"
+      },
+      "favourites": {
+        "movie": 105,
+        "tvShow": 205,
+        "videogame": 305,
+        "book": 405
+      },
+      "completed": [105, 206, 307],
+      "pending": [108, 209, 310],
+      "inProgress": [111, 212, 313],
+      "onHold": [114, 215, 316],
+      "dropped": [117, 218, 319],
+      "lists": [9, 10],
+      "entries": [9, 10],
+      "reviews": [9, 10],
+      "ratings": [
+        {
+          "mediaRated": {"left": 105},
+          "rating": 2
+        },
+        {
+          "mediaRated": {"right": 205},
+          "rating": 3
+        }
+      ],
+      "likes": [9, 10],
+      "replies": [9, 10],
+      "following": [1, 4],
+      "followers": [2, 3],
+      "blocked": [6],
+      "chats": [9, 10],
+      "stats": {
+        "userId": 5,
+        "avgElementsRating": 3.0,
+        "timeSpentInMovies": {"hours": 12, "minutes": 30, "seconds": 0},
+        "timeSpentInTVShows": {"hours": 20, "minutes": 0, "seconds": 0},
+        "timeSpentInVideogames": {"hours": 15, "minutes": 45, "seconds": 0},
+        "timeSpentInBooks": {"hours": 5, "minutes": 15, "seconds": 0},
+        "totalTimeSpent": {"hours": 53, "minutes": 30, "seconds": 0},
+        "numberOfMoviesCompleted": 3,
+        "numberOfTVShowsCompleted": 4,
+        "numberOfVideogamesCompleted": 2,
+        "numberOfBooksCompleted": 1,
+        "totalNumberOfElementsCompleted": 10
+      },
+      "settings": {
+        "user": 5,
+        "isPublic": false
+      }
+    },
+    {
+      "id": 6,
+      "profile": {
+        "username": "user6",
+        "password": "pass6",
+        "email": "user6@example.com",
+        "biography": "Bio of user6",
+        "location": "Location6"
+      },
+      "favourites": {
+        "movie": 106,
+        "tvShow": 206,
+        "videogame": 306,
+        "book": 406
+      },
+      "completed": [106, 207, 308],
+      "pending": [109, 210, 311],
+      "inProgress": [112, 213, 314],
+      "onHold": [115, 216, 317],
+      "dropped": [118, 219, 320],
+      "lists": [11, 12],
+      "entries": [11, 12],
+      "reviews": [11, 12],
+      "ratings": [
+        {
+          "mediaRated": {"left": 106},
+          "rating": 5
+        },
+        {
+          "mediaRated": {"right": 206},
+          "rating": 4
+        }
+      ],
+      "likes": [11, 12],
+      "replies": [11, 12],
+      "following": [1, 2],
+      "followers": [3, 4],
+      "blocked": [5],
+      "chats": [11, 12],
+      "stats": {
+        "userId": 6,
+        "avgElementsRating": 4.5,
+        "timeSpentInMovies": {"hours": 15, "minutes": 0, "seconds": 0},
+        "timeSpentInTVShows": {"hours": 18, "minutes": 30, "seconds": 0},
+        "timeSpentInVideogames": {"hours": 20, "minutes": 45, "seconds": 0},
+        "timeSpentInBooks": {"hours": 8, "minutes": 15, "seconds": 0},
+        "totalTimeSpent": {"hours": 62, "minutes": 30, "seconds": 0},
+        "numberOfMoviesCompleted": 4,
+        "numberOfTVShowsCompleted": 5,
+        "numberOfVideogamesCompleted": 3,
+        "numberOfBooksCompleted": 2,
+        "totalNumberOfElementsCompleted": 14
+      },
+      "settings": {
+        "user": 6,
+        "isPublic": true
+      }
+    },
+    {
+      "id": 7,
+      "profile": {
+        "username": "user7",
+        "password": "pass7",
+        "email": "user7@example.com",
+        "biography": "Bio of user7",
+        "location": "Location7"
+      },
+      "favourites": {
+        "movie": 107,
+        "tvShow": 207,
+        "videogame": 307,
+        "book": 407
+      },
+      "completed": [107, 208, 309],
+      "pending": [110, 211, 312],
+      "inProgress": [113, 214, 315],
+      "onHold": [116, 217, 318],
+      "dropped": [119, 220, 321],
+      "lists": [13, 14],
+      "entries": [13, 14],
+      "reviews": [13, 14],
+      "ratings": [
+        {
+          "mediaRated": {"left": 107},
+          "rating": 4
+        },
+        {
+          "mediaRated": {"right": 207},
+          "rating": 3
+        }
+      ],
+      "likes": [13, 14],
+      "replies": [13, 14],
+      "following": [1, 3],
+      "followers": [2, 4],
+      "blocked": [5],
+      "chats": [13, 14],
+      "stats": {
+        "userId": 7,
+        "avgElementsRating": 3.8,
+        "timeSpentInMovies": {"hours": 14, "minutes": 15, "seconds": 0},
+        "timeSpentInTVShows": {"hours": 20, "minutes": 30, "seconds": 0},
+        "timeSpentInVideogames": {"hours": 17, "minutes": 0, "seconds": 0},
+        "timeSpentInBooks": {"hours": 7, "minutes": 45, "seconds": 0},
+        "totalTimeSpent": {"hours": 59, "minutes": 30, "seconds": 0},
+        "numberOfMoviesCompleted": 4,
+        "numberOfTVShowsCompleted": 4,
+        "numberOfVideogamesCompleted": 2,
+        "numberOfBooksCompleted": 2,
+        "totalNumberOfElementsCompleted": 12
+      },
+      "settings": {
+        "user": 7,
+        "isPublic": false
+      }
+    },
+    {
+      "id": 8,
+      "profile": {
+        "username": "user8",
+        "password": "pass8",
+        "email": "user8@example.com",
+        "biography": "Bio of user8",
+        "location": "Location8"
+      },
+      "favourites": {
+        "movie": 108,
+        "tvShow": 208,
+        "videogame": 308,
+        "book": 408
+      },
+      "completed": [108, 209, 310],
+      "pending": [111, 212, 313],
+      "inProgress": [114, 215, 316],
+      "onHold": [117, 218, 319],
+      "dropped": [120, 221, 322],
+      "lists": [15, 16],
+      "entries": [15, 16],
+      "reviews": [15, 16],
+      "ratings": [
+        {
+          "mediaRated": {"left": 108},
+          "rating": 4
+        },
+        {
+          "mediaRated": {"right": 208},
+          "rating": 3
+        }
+      ],
+      "likes": [15, 16],
+      "replies": [15, 16],
+      "following": [1, 4],
+      "followers": [2, 3],
+      "blocked": [5],
+      "chats": [15, 16],
+      "stats": {
+        "userId": 8,
+        "avgElementsRating": 3.7,
+        "timeSpentInMovies": {"hours": 13, "minutes": 45, "seconds": 0},
+        "timeSpentInTVShows": {"hours": 22, "minutes": 15, "seconds": 0},
+        "timeSpentInVideogames": {"hours": 19, "minutes": 0, "seconds": 0},
+        "timeSpentInBooks": {"hours": 6, "minutes": 45, "seconds": 0},
+        "totalTimeSpent": {"hours": 61, "minutes": 45, "seconds": 0},
+        "numberOfMoviesCompleted": 3,
+        "numberOfTVShowsCompleted": 5,
+        "numberOfVideogamesCompleted": 3,
+        "numberOfBooksCompleted": 1,
+        "totalNumberOfElementsCompleted": 12
+      },
+      "settings": {
+        "user": 8,
+        "isPublic": true
+      }
+    },
+    {
+      "id": 9,
+      "profile": {
+        "username": "user9",
+        "password": "pass9",
+        "email": "user9@example.com",
+        "biography": "Bio of user9",
+        "location": "Location9"
+      },
+      "favourites": {
+        "movie": 109,
+        "tvShow": 209,
+        "videogame": 309,
+        "book": 409
+      },
+      "completed": [109, 210, 311],
+      "pending": [112, 213, 314],
+      "inProgress": [115, 216, 317],
+      "onHold": [118, 219, 320],
+      "dropped": [121, 222, 323],
+      "lists": [17, 18],
+      "entries": [17, 18],
+      "reviews": [17, 18],
+      "ratings": [
+        {
+          "mediaRated": {"left": 109},
+          "rating": 5
+        },
+        {
+          "mediaRated": {"right": 209},
+          "rating": 4
+        }
+      ],
+      "likes": [17, 18],
+      "replies": [17, 18],
+      "following": [1, 5],
+      "followers": [2, 4],
+      "blocked": [3],
+      "chats": [17, 18],
+      "stats": {
+        "userId": 9,
+        "avgElementsRating": 4.6,
+        "timeSpentInMovies": {"hours": 16, "minutes": 0, "seconds": 0},
+        "timeSpentInTVShows": {"hours": 23, "minutes": 30, "seconds": 0},
+        "timeSpentInVideogames": {"hours": 18, "minutes": 45, "seconds": 0},
+        "timeSpentInBooks": {"hours": 7, "minutes": 30, "seconds": 0},
+        "totalTimeSpent": {"hours": 65, "minutes": 45, "seconds": 0},
+        "numberOfMoviesCompleted": 5,
+        "numberOfTVShowsCompleted": 5,
+        "numberOfVideogamesCompleted": 3,
+        "numberOfBooksCompleted": 2,
+        "totalNumberOfElementsCompleted": 15
+      },
+      "settings": {
+        "user": 9,
+        "isPublic": false
+      }
+    },
+    {
+      "id": 10,
+      "profile": {
+        "username": "user10",
+        "password": "pass10",
+        "email": "user10@example.com",
+        "biography": "Bio of user10",
+        "location": "Location10"
+      },
+      "favourites": {
+        "movie": 110,
+        "tvShow": 210,
+        "videogame": 310,
+        "book": 410
+      },
+      "completed": [110, 211, 312],
+      "pending": [113, 214, 315],
+      "inProgress": [116, 217, 318],
+      "onHold": [119, 220, 321],
+      "dropped": [122, 223, 324],
+      "lists": [19, 20],
+      "entries": [19, 20],
+      "reviews": [19, 20],
+      "ratings": [
+        {
+          "mediaRated": {"left": 110},
+          "rating": 3
+        },
+        {
+          "mediaRated": {"right": 210},
+          "rating": 5
+        }
+      ],
+      "likes": [19, 20],
+      "replies": [19, 20],
+      "following": [1, 6],
+      "followers": [2, 4],
+      "blocked": [3],
+      "chats": [19, 20],
+      "stats": {
+        "userId": 10,
+        "avgElementsRating": 4.1,
+        "timeSpentInMovies": {"hours": 12, "minutes": 0, "seconds": 0},
+        "timeSpentInTVShows": {"hours": 24, "minutes": 15, "seconds": 0},
+        "timeSpentInVideogames": {"hours": 20, "minutes": 30, "seconds": 0},
+        "timeSpentInBooks": {"hours": 6, "minutes": 15, "seconds": 0},
+        "totalTimeSpent": {"hours": 62, "minutes": 0, "seconds": 0},
+        "numberOfMoviesCompleted": 4,
+        "numberOfTVShowsCompleted": 5,
+        "numberOfVideogamesCompleted": 3,
+        "numberOfBooksCompleted": 2,
+        "totalNumberOfElementsCompleted": 14
+      },
+      "settings": {
+        "user": 10,
+        "isPublic": true
+      }
+    },
+    {
+      "id": 11,
+      "profile": {
+        "username": "user11",
+        "password": "pass11",
+        "email": "user11@example.com",
+        "biography": "Bio of user11",
+        "location": "Location11"
+      },
+      "favourites": {
+        "movie": 111,
+        "tvShow": 211,
+        "videogame": 311,
+        "book": 411
+      },
+      "completed": [111, 212, 313],
+      "pending": [114, 215, 316],
+      "inProgress": [117, 218, 319],
+      "onHold": [120, 221, 322],
+      "dropped": [123, 224, 325],
+      "lists": [21, 22],
+      "entries": [21, 22],
+      "reviews": [21, 22],
+      "ratings": [
+        {
+          "mediaRated": {"left": 111},
+          "rating": 4
+        },
+        {
+          "mediaRated": {"right": 211},
+          "rating": 3
+        }
+      ],
+      "likes": [21, 22],
+      "replies": [21, 22],
+      "following": [1, 7],
+      "followers": [2, 5],
+      "blocked": [3],
+      "chats": [21, 22],
+      "stats": {
+        "userId": 11,
+        "avgElementsRating": 3.9,
+        "timeSpentInMovies": {"hours": 14, "minutes": 30, "seconds": 0},
+        "timeSpentInTVShows": {"hours": 22, "minutes": 0, "seconds": 0},
+        "timeSpentInVideogames": {"hours": 17, "minutes": 15, "seconds": 0},
+        "timeSpentInBooks": {"hours": 6, "minutes": 45, "seconds": 0},
+        "totalTimeSpent": {"hours": 60, "minutes": 30, "seconds": 0},
+        "numberOfMoviesCompleted": 3,
+        "numberOfTVShowsCompleted": 5,
+        "numberOfVideogamesCompleted": 3,
+        "numberOfBooksCompleted": 1,
+        "totalNumberOfElementsCompleted": 12
+      },
+      "settings": {
+        "user": 11,
+        "isPublic": false
+      }
+    },
+    {
+      "id": 12,
+      "profile": {
+        "username": "user12",
+        "password": "pass12",
+        "email": "user12@example.com",
+        "biography": "Bio of user12",
+        "location": "Location12"
+      },
+      "favourites": {
+        "movie": 112,
+        "tvShow": 212,
+        "videogame": 312,
+        "book": 412
+      },
+      "completed": [112, 213, 314],
+      "pending": [115, 216, 317],
+      "inProgress": [118, 219, 320],
+      "onHold": [121, 222, 323],
+      "dropped": [124, 225, 326],
+      "lists": [23, 24],
+      "entries": [23, 24],
+      "reviews": [23, 24],
+      "ratings": [
+        {
+          "mediaRated": {"left": 112},
+          "rating": 5
+        },
+        {
+          "mediaRated": {"right": 212},
+          "rating": 4
+        }
+      ],
+      "likes": [23, 24],
+      "replies": [23, 24],
+      "following": [1, 8],
+      "followers": [2, 3],
+      "blocked": [5],
+      "chats": [23, 24],
+      "stats": {
+        "userId": 12,
+        "avgElementsRating": 4.7,
+        "timeSpentInMovies": {"hours": 16, "minutes": 15, "seconds": 0},
+        "timeSpentInTVShows": {"hours": 25, "minutes": 0, "seconds": 0},
+        "timeSpentInVideogames": {"hours": 22, "minutes": 45, "seconds": 0},
+        "timeSpentInBooks": {"hours": 8, "minutes": 30, "seconds": 0},
+        "totalTimeSpent": {"hours": 72, "minutes": 30, "seconds": 0},
+        "numberOfMoviesCompleted": 5,
+        "numberOfTVShowsCompleted": 6,
+        "numberOfVideogamesCompleted": 4,
+        "numberOfBooksCompleted": 2,
+        "totalNumberOfElementsCompleted": 17
+      },
+      "settings": {
+        "user": 12,
+        "isPublic": true
+      }
+    },
+    {
+      "id": 13,
+      "profile": {
+        "username": "user13",
+        "password": "pass13",
+        "email": "user13@example.com",
+        "biography": "Bio of user13",
+        "location": "Location13"
+      },
+      "favourites": {
+        "movie": 113,
+        "tvShow": 213,
+        "videogame": 313,
+        "book": 413
+      },
+      "completed": [113, 214, 315],
+      "pending": [116, 217, 318],
+      "inProgress": [119, 220, 321],
+      "onHold": [122, 223, 324],
+      "dropped": [125, 226, 327],
+      "lists": [25, 26],
+      "entries": [25, 26],
+      "reviews": [25, 26],
+      "ratings": [
+        {
+          "mediaRated": {"left": 113},
+          "rating": 4
+        },
+        {
+          "mediaRated": {"right": 213},
+          "rating": 3
+        }
+      ],
+      "likes": [25, 26],
+      "replies": [25, 26],
+      "following": [1, 9],
+      "followers": [2, 4],
+      "blocked": [5],
+      "chats": [25, 26],
+      "stats": {
+        "userId": 13,
+        "avgElementsRating": 4.2,
+        "timeSpentInMovies": {"hours": 15, "minutes": 45, "seconds": 0},
+        "timeSpentInTVShows": {"hours": 23, "minutes": 15, "seconds": 0},
+        "timeSpentInVideogames": {"hours": 19, "minutes": 30, "seconds": 0},
+        "timeSpentInBooks": {"hours": 7, "minutes": 0, "seconds": 0},
+        "totalTimeSpent": {"hours": 65, "minutes": 30, "seconds": 0},
+        "numberOfMoviesCompleted": 4,
+        "numberOfTVShowsCompleted": 5,
+        "numberOfVideogamesCompleted": 3,
+        "numberOfBooksCompleted": 2,
+        "totalNumberOfElementsCompleted": 14
+      },
+      "settings": {
+        "user": 13,
+        "isPublic": false
+      }
+    },
+    {
+      "id": 14,
+      "profile": {
+        "username": "user14",
+        "password": "pass14",
+        "email": "user14@example.com",
+        "biography": "Bio of user14",
+        "location": "Location14"
+      },
+      "favourites": {
+        "movie": 114,
+        "tvShow": 214,
+        "videogame": 314,
+        "book": 414
+      },
+      "completed": [114, 215, 316],
+      "pending": [117, 218, 319],
+      "inProgress": [120, 221, 322],
+      "onHold": [123, 224, 325],
+      "dropped": [126, 227, 328],
+      "lists": [27, 28],
+      "entries": [27, 28],
+      "reviews": [27, 28],
+      "ratings": [
+        {
+          "mediaRated": {"left": 114},
+          "rating": 5
+        },
+        {
+          "mediaRated": {"right": 214},
+          "rating": 4
+        }
+      ],
+      "likes": [27, 28],
+      "replies": [27, 28],
+      "following": [1, 10],
+      "followers": [2, 4],
+      "blocked": [3],
+      "chats": [27, 28],
+      "stats": {
+        "userId": 14,
+        "avgElementsRating": 4.6,
+        "timeSpentInMovies": {"hours": 15, "minutes": 0, "seconds": 0},
+        "timeSpentInTVShows": {"hours": 21, "minutes": 30, "seconds": 0},
+        "timeSpentInVideogames": {"hours": 23, "minutes": 15, "seconds": 0},
+        "timeSpentInBooks": {"hours": 8, "minutes": 0, "seconds": 0},
+        "totalTimeSpent": {"hours": 67, "minutes": 45, "seconds": 0},
+        "numberOfMoviesCompleted": 5,
+        "numberOfTVShowsCompleted": 5,
+        "numberOfVideogamesCompleted": 4,
+        "numberOfBooksCompleted": 2,
+        "totalNumberOfElementsCompleted": 16
+      },
+      "settings": {
+        "user": 14,
+        "isPublic": true
+      }
+    },
+    {
+      "id": 15,
+      "profile": {
+        "username": "user15",
+        "password": "pass15",
+        "email": "user15@example.com",
+        "biography": "Bio of user15",
+        "location": "Location15"
+      },
+      "favourites": {
+        "movie": 115,
+        "tvShow": 215,
+        "videogame": 315,
+        "book": 415
+      },
+      "completed": [115, 216, 317],
+      "pending": [118, 219, 320],
+      "inProgress": [121, 222, 323],
+      "onHold": [124, 225, 326],
+      "dropped": [127, 228, 329],
+      "lists": [29, 30],
+      "entries": [29, 30],
+      "reviews": [29, 30],
+      "ratings": [
+        {
+          "mediaRated": {"left": 115},
+          "rating": 3
+        },
+        {
+          "mediaRated": {"right": 215},
+          "rating": 4
+        }
+      ],
+      "likes": [29, 30],
+      "replies": [29, 30],
+      "following": [1, 11],
+      "followers": [2, 4],
+      "blocked": [3],
+      "chats": [29, 30],
+      "stats": {
+        "userId": 15,
+        "avgElementsRating": 3.5,
+        "timeSpentInMovies": {"hours": 14, "minutes": 0, "seconds": 0},
+        "timeSpentInTVShows": {"hours": 19, "minutes": 30, "seconds": 0},
+        "timeSpentInVideogames": {"hours": 18, "minutes": 15, "seconds": 0},
+        "timeSpentInBooks": {"hours": 5, "minutes": 45, "seconds": 0},
+        "totalTimeSpent": {"hours": 57, "minutes": 30, "seconds": 0},
+        "numberOfMoviesCompleted": 3,
+        "numberOfTVShowsCompleted": 4,
+        "numberOfVideogamesCompleted": 3,
+        "numberOfBooksCompleted": 1,
+        "totalNumberOfElementsCompleted": 11
+      },
+      "settings": {
+        "user": 15,
+        "isPublic": false
+      }
+    },
+    {
+      "id": 16,
+      "profile": {
+        "username": "user16",
+        "password": "pass16",
+        "email": "user16@example.com",
+        "biography": "Bio of user16",
+        "location": "Location16"
+      },
+      "favourites": {
+        "movie": 116,
+        "tvShow": 216,
+        "videogame": 316,
+        "book": 416
+      },
+      "completed": [116, 217, 318],
+      "pending": [119, 220, 321],
+      "inProgress": [122, 223, 324],
+      "onHold": [125, 226, 327],
+      "dropped": [128, 229, 330],
+      "lists": [31, 32],
+      "entries": [31, 32],
+      "reviews": [31, 32],
+      "ratings": [
+        {
+          "mediaRated": {"left": 116},
+          "rating": 5
+        },
+        {
+          "mediaRated": {"right": 216},
+          "rating": 4
+        }
+      ],
+      "likes": [31, 32],
+      "replies": [31, 32],
+      "following": [1, 12],
+      "followers": [2, 3],
+      "blocked": [4],
+      "chats": [31, 32],
+      "stats": {
+        "userId": 16,
+        "avgElementsRating": 4.8,
+        "timeSpentInMovies": {"hours": 18, "minutes": 30, "seconds": 0},
+        "timeSpentInTVShows": {"hours": 25, "minutes": 15, "seconds": 0},
+        "timeSpentInVideogames": {"hours": 21, "minutes": 45, "seconds": 0},
+        "timeSpentInBooks": {"hours": 9, "minutes": 0, "seconds": 0},
+        "totalTimeSpent": {"hours": 74, "minutes": 30, "seconds": 0},
+        "numberOfMoviesCompleted": 6,
+        "numberOfTVShowsCompleted": 6,
+        "numberOfVideogamesCompleted": 4,
+        "numberOfBooksCompleted": 3,
+        "totalNumberOfElementsCompleted": 19
+      },
+      "settings": {
+        "user": 16,
+        "isPublic": true
+      }
+    }
+  ]
+}
+
