@@ -1,9 +1,10 @@
 package modelClasses.social
 
-import modelClasses.media.*
+import modelClasses.media._
 
 case class Rating(
-                 mediaRated: Either[MediaMainContent.Id, MediaSecondaryContent.Id],
+                 // mediaRated: Either[MediaMainContent.Id, MediaSecondaryContent.Id],
+                 mediaRated: Movie.Id | TVShow.Id | Season.Id | Episode.Id | Videogame.Id | Book.Id,
                  rating: Int
                  )
 

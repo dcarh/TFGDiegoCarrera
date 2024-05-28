@@ -1,10 +1,16 @@
 package api.common
 
-import sttp.tapir._
-import sttp.tapir.generic.auto._
-import sttp.tapir.json.circe._
-
+import sttp.tapir.*
+import sttp.tapir.generic.auto.*
+import sttp.tapir.json.circe.*
+import io.circe.Encoder
+import io.circe.Decoder
+import io.circe.generic.semiauto.{deriveDecoder, deriveEncoder}
 import io.circe.generic.auto._
+import io.circe.syntax._
+import io.circe._
+import cats.syntax.functor._
+
 
 import modelClasses.media._
 import modelClasses.social._
@@ -13,6 +19,42 @@ import modelClasses.ErrorInfo
 import modelClasses.chatting.Chat
 
 class Outputs {
+
+  //implicit val movieEncoder: Encoder[Movie] = deriveEncoder[Movie]
+  //implicit val tvShowEncoder: Encoder[TVShow] = deriveEncoder[TVShow]
+  //implicit val seasonEncoder: Encoder[Season] = deriveEncoder[Season]
+  //implicit val episodeEncoder: Encoder[Episode] = deriveEncoder[Episode]
+  //implicit val videogameEncoder: Encoder[Videogame] = deriveEncoder[Videogame]
+  //implicit val bookEncoder: Encoder[Book] = deriveEncoder[Book]
+//
+  //implicit val movieDecoder: Decoder[Movie] = deriveDecoder[Movie]
+  //implicit val tvShowDecoder: Decoder[TVShow] = deriveDecoder[TVShow]
+  //implicit val seasonDecoder: Decoder[Season] = deriveDecoder[Season]
+  //implicit val episodeDecoder: Decoder[Episode] = deriveDecoder[Episode]
+  //implicit val videogameDecoder: Decoder[Videogame] = deriveDecoder[Videogame]
+  //implicit val bookDecoder: Decoder[Book] = deriveDecoder[Book]
+
+  implicit val mediaEncoder: Encoder[Movie | TVShow | Season | Episode | Videogame | Book] = Encoder.instance {
+    case movie: Movie => movie.asJson
+    case tvShow: TVShow => tvShow.asJson
+    case season: Season => season.asJson
+    case episode: Episode => episode.asJson
+    case videogame: Videogame => videogame.asJson
+    case book: Book => book.asJson
+  }
+
+  implicit val mediaDecoder: Decoder[Movie | TVShow | Season | Episode | Videogame | Book] = Decoder.instance { cursor =>
+    List[Decoder[Movie | TVShow | Season | Episode | Videogame | Book]](
+      Decoder[Movie].widen,
+      Decoder[TVShow].widen,
+      Decoder[Season].widen,
+      Decoder[Episode].widen,
+      Decoder[Videogame].widen,
+      Decoder[Book].widen
+    ).reduceLeft(_ or _).apply(cursor)
+  }
+
+  implicit val s: Schema[Movie | TVShow | Season | Episode | Videogame | Book] = Schema.derivedUnion
 
   val jsonMovieOut: EndpointOutput[Movie] =
     jsonBody[Movie]
@@ -50,8 +92,8 @@ class Outputs {
   val jsonMediaContentListOut: EndpointOutput[MediaContentList] =
     jsonBody[MediaContentList]
 
-  val jsonEitherMediaListOut: EndpointOutput[List[Either[MediaMainContent, MediaSecondaryContent]]] =
-    jsonBody[List[Either[MediaMainContent, MediaSecondaryContent]]]
+  val jsonMediaListOut: EndpointOutput[List[Movie | TVShow | Season | Episode | Videogame | Book]] =
+    jsonBody[List[Movie | TVShow | Season | Episode | Videogame | Book]]
 
   val jsonMovieListOut: EndpointOutput[List[Movie]] =
     jsonBody[List[Movie]]

@@ -1,6 +1,6 @@
 package modelClasses.user
 
-import modelClasses.media.*
+import modelClasses.media._
 
 case class UserFavourites(
                          movie    : Movie.Id,
