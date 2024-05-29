@@ -1,7 +1,7 @@
 package modelClasses
 
 case class Time(
+               days   : Int,
                hours  : Int,
-               minutes: Int,
-               seconds: Int
+               minutes: Int
                )

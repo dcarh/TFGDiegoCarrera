@@ -79,14 +79,14 @@ class UserReviewsEndpoints {
       .in("reviews" / "books")
       .out(outputs.jsonReviewListOut)
 
-  //val userReviewedContentListEndpoint: PublicEndpoint[String, Unit, List[Either[MediaMainContent, MediaSecondaryContent]], Any] =
+  //val userReviewedContentListEndpoint: PublicEndpoint[String, Unit, List[Movie | TVShow | Season | Episode | Videogame | Book], Any] =
   //  userBaseEndpoint
   //    .name("User's reviewed contents endpoint")
   //    .description("This endpoint returns a list of all the reviewed contents for a user")
   //    .get
   //    .in(inputs.pathUsername)
   //    .in("reviews" / "all")
-  //    .out(outputs.jsonEitherMediaListOut)
+  //    .out(outputs.jsonMediaListOut)
 //
   //val userReviewsMoviesListEndpoint: PublicEndpoint[String, Unit, List[Movie], Any] =
   //  userBaseEndpoint

@@ -18,7 +18,7 @@ case class User(
                lists     : List[MediaContentList.Id],
                entries   : List[Entry.Id],
                reviews   : List[Review.Id],
-               ratings   : List[Rating], // o List[(Either[MediaMainContent, MediaSecondaryContent], Int)]
+               ratings   : List[Rating.Id],
                likes     : List[Like.Id],
                replies   : List[Reply.Id],
                // tags   : List[String],

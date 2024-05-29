@@ -1,13 +1,16 @@
 package modelClasses.social
 
 import modelClasses.Time
+import modelClasses.user.User
+import modelClasses.media._
 
 case class Entry(
                 id           : Entry.Id,
-                elementId    : Int,
+                userId       : User.Id,
+                elementId    : Movie.Id | TVShow.Id | Season.Id | Episode.Id | Videogame.Id| Book.Id,
                 // elementTitle: String,
                 // elementType : String,
-                rating       : Int,
+                rating       : Rating.Id,
                 review       : Review.Id,
                 like         : Boolean,
                 firstTime    : Boolean,
