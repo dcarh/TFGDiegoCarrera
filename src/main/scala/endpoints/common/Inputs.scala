@@ -4,10 +4,11 @@ import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*
 import io.circe.generic.auto.*
-import modelClasses.app.media.{Book, Episode, Movie, Season, TVShow, Videogame}
+import modelClasses.app.media.{Book, Episode, Movie, Season, TVShow, Videogame, MovieId, TVShowId}
 import modelClasses.app.social.{Entry, MediaContentList, Review}
 import modelClasses.app.user.{User, UserSettings}
 import modelClasses.app.media.*
+import codecs.ModelClasses.*
 
 object Inputs {
   
@@ -42,6 +43,12 @@ object Inputs {
 
     val pathTVShowId: EndpointInput[TVShow.Id] =
       path[TVShow.Id]("series_id")
+      
+    val pathMovieIdNew: EndpointInput[MovieId] =
+      path[MovieId]("movie_id")
+
+    val pathTVShowIdNew: EndpointInput[TVShowId] =
+      path[TVShowId]("series_id")
 
     val pathSeasonNumber: EndpointInput[Season.Number] =
       path[Season.Number]("season_number")

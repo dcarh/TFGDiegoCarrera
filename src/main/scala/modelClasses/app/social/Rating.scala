@@ -2,7 +2,6 @@ package modelClasses.app.social
 
 import modelClasses.app.media.{Book, Episode, Movie, Season, TVShow, Videogame}
 import modelClasses.app.user.User
-import modelClasses.app.media.*
 
 case class Rating(
                  id: Rating.Id,

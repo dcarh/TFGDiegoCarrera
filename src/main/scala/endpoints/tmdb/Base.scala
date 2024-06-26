@@ -4,7 +4,7 @@ import sttp.tapir.*
 
 import endpoints.common.Inputs._
 import endpoints.common.Outputs._
-import modelClasses.app.media.{Episode, Movie, Season, TVShow}
+import modelClasses.app.media.{Episode, Movie, Season, TVShow, MovieId, TVShowId}
 import modelClasses.ErrorInfo
 
 object Base {
@@ -22,28 +22,28 @@ object Base {
           .errorOut(ApiOutputs.jsonErrorInfoOut)
 
   val movieBaseEndpoint:
-    (String, String) => PublicEndpoint[(String, Movie.Id), ErrorInfo, Unit, Any] =
+    (String, String) => PublicEndpoint[(String, MovieId), ErrorInfo, Unit, Any] =
       (name, description) =>
         tmdbBaseEndpoint(name, description)
           .in("movie")
-          .in(PathInputs.pathMovieId)
+          .in(PathInputs.pathMovieIdNew)
 
   val tvShowBaseEndpoint:
-    (String, String) => PublicEndpoint[(String, TVShow.Id), ErrorInfo, Unit, Any] =
+    (String, String) => PublicEndpoint[(String, TVShowId), ErrorInfo, Unit, Any] =
       (name, description) =>
         tmdbBaseEndpoint(name, description)
           .in("tv")
-          .in(PathInputs.pathTVShowId)
+          .in(PathInputs.pathTVShowIdNew)
 
   val seasonBaseEndpoint:
-    (String, String) => PublicEndpoint[(String, TVShow.Id, Season.Number), ErrorInfo, Unit, Any] =
+    (String, String) => PublicEndpoint[(String, TVShowId, Season.Number), ErrorInfo, Unit, Any] =
       (name, description) =>
         tvShowBaseEndpoint(name, description)
           .in("season")
           .in(PathInputs.pathSeasonNumber)
 
   val episodeBaseEndpoint:
-    (String, String) => PublicEndpoint[(String, TVShow.Id, Season.Number, Episode.Number), ErrorInfo, Unit, Any] =
+    (String, String) => PublicEndpoint[(String, TVShowId, Season.Number, Episode.Number), ErrorInfo, Unit, Any] =
       (name, description) =>
         seasonBaseEndpoint(name, description)
           .in("episode")

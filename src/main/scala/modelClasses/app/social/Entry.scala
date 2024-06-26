@@ -3,7 +3,6 @@ package modelClasses.app.social
 import modelClasses.app.Time
 import modelClasses.app.media.{Book, Episode, Movie, Season, TVShow, Videogame}
 import modelClasses.app.user.User
-import modelClasses.app.media.*
 
 case class Entry(
                 id           : Entry.Id,

@@ -4,8 +4,6 @@ import io.circe.generic.auto.*
 import modelClasses.app.chatting.Chat
 import modelClasses.app.media.{Book, Movie, TVShow, Videogame}
 import modelClasses.app.social.{Entry, Like, MediaContentList, Rating, Reply, Review}
-import modelClasses.app.media.*
-import modelClasses.app.social.*
 
 case class User(
                id        : User.Id,

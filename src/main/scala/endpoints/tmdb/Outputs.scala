@@ -3,17 +3,17 @@ package endpoints.tmdb
 import io.circe.*
 import io.circe.generic.auto.*
 import modelClasses.tmdb.*
-import schemas.UnionTypes.*
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*
 
 object Outputs {
   
+
   object MoviesOutputs {
     
     import MovieRequests.*
-    
+
     val jsonRequestedMovieOut: EndpointOutput[RequestedMovie] =
       jsonBody[RequestedMovie]
 

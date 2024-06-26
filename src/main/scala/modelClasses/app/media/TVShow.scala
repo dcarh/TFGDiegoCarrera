@@ -1,6 +1,5 @@
 package modelClasses.app.media
 
-import sttp.tapir.generic.auto.*
 import io.circe.generic.auto.*
 import modelClasses.app.social.{Like, MediaContentList, Review}
 

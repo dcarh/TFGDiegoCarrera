@@ -5,7 +5,6 @@ import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*
 
-
 class GoogleBooksEndpoint {
 
   private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]

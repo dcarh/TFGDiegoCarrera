@@ -9,7 +9,8 @@ import sttp.tapir.*
 import sttp.tapir.DecodeResult
 import sttp.tapir.client.http4s.Http4sClientInterpreter
 import modelClasses.ErrorInfo
-import modelClasses.app.media.{Episode, Movie, Season, TVShow}
+import modelClasses.app.media.{Episode, Movie, Season, TVShow, MovieId, TVShowId}
+import scala.concurrent.duration._
 //import retry._
 //import retry.cats.effect._
 //import scala.concurrent.duration._
@@ -19,23 +20,28 @@ class TMDBClient {
   private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
 
   private val apiKey = "6c004411738609c1a39b5f11582a04b7"
+  private val responseMaxSize = 1024 * 32576 * 64
 
   def generalRequestNotGeneralized[I, O](
                                endpoint: PublicEndpoint[I, ErrorInfo, O, Any],
                                resourceId:
-                                 Movie.Id |
-                                 TVShow.Id |
-                                 (TVShow.Id, Season.Number) |
-                                 (TVShow.Id, Season.Number, Episode.Number)
+                                 MovieId |
+                                 TVShowId |
+                                 (TVShowId, Season.Number) |
+                                 (TVShowId, Season.Number, Episode.Number)
                              ): IO[Either[ErrorInfo, O]] = {
 
-    val httpClientResource: Resource[IO, Client[IO]] = EmberClientBuilder.default[IO].build
+    val httpClientResource: Resource[IO, Client[IO]] = EmberClientBuilder.default[IO]
+      .withMaxResponseHeaderSize(responseMaxSize)
+      .withChunkSize(responseMaxSize)
+      .withTimeout(5.seconds)
+      .build
 
     httpClientResource.use { client =>
       // Interpret the endpoint as a request and a response parser.
       val result = (endpoint, resourceId) match {
 
-        case (endpoint: PublicEndpoint[(String, Movie.Id), _, _, _], movieId: Movie.Id) =>
+        case (endpoint: PublicEndpoint[(String, MovieId), _, _, _], movieId: MovieId) =>
           println("Movie requested")
           val (userRequest, parseResponse) =
             Http4sClientInterpreter[IO]()
@@ -43,7 +49,7 @@ class TMDBClient {
               .apply(apiKey, movieId)
           IO.pure(userRequest, parseResponse)
 
-        case (endpoint: PublicEndpoint[(String, TVShow.Id), _, _, _], tvShowId: TVShow.Id) =>
+        case (endpoint: PublicEndpoint[(String, TVShowId), _, _, _], tvShowId: TVShowId) =>
           println("TV Show requested")
           val (userRequest, parseResponse) =
             Http4sClientInterpreter[IO]()
@@ -52,8 +58,8 @@ class TMDBClient {
           IO.pure(userRequest, parseResponse)
 
         case (
-          endpoint: PublicEndpoint[(String, TVShow.Id, Season.Number), _, _, _],
-          seasonNumber: (TVShow.Id, Season.Number)) =>
+          endpoint: PublicEndpoint[(String, TVShowId, Season.Number), _, _, _],
+          seasonNumber: (TVShowId, Season.Number)) =>
           println("Season requested")
             val (userRequest, parseResponse) =
               Http4sClientInterpreter[IO]()
@@ -62,8 +68,8 @@ class TMDBClient {
             IO.pure(userRequest, parseResponse)
 
         case (
-          endpoint: PublicEndpoint[(String, TVShow.Id, Season.Number, Episode.Number), _, _, _],
-          episodeNumber: (TVShow.Id, Season.Number, Episode.Number)) =>
+          endpoint: PublicEndpoint[(String, TVShowId, Season.Number, Episode.Number), _, _, _],
+          episodeNumber: (TVShowId, Season.Number, Episode.Number)) =>
             println("Episode requested")
             val (userRequest, parseResponse) =
               Http4sClientInterpreter[IO]()

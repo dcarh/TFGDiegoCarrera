@@ -73,110 +73,178 @@ object UnionTypes {
 
   implicit val mediaUnionSchema3: Schema[Movie.Id | TVShow.Id | (TVShow.Id, Season.Number) | (TVShow.Id, Season.Number, Episode.Number) | Videogame.Id | Book.Id] = Schema.derivedUnion
 
-  implicit val unionEncoder1: Encoder[String | Int] = Encoder.instance {
+  implicit val unionEncoder1: Encoder[String | Long] = Encoder.instance {
     case string: String => string.asJson
-    case int: Int => int.asJson
+    case long: Long => long.asJson
   }
 
-  implicit val unionDecoder1: Decoder[String | Int] = Decoder.instance { cursor =>
-    List[Decoder[String | Int]](
+  implicit val unionDecoder1: Decoder[String | Long] = Decoder.instance { cursor =>
+    List[Decoder[String | Long]](
       Decoder[String].widen,
-      Decoder[Int].widen
+      Decoder[Long].widen
     ).reduceLeft(_ or _).apply(cursor)
   }
 
-  implicit val unionSchema1: Schema[String | Int] = Schema.derivedUnion
-
-  implicit val unionEncoder2: Encoder[String | Int | Double] = Encoder.instance {
-    case string: String => string.asJson
-    case int: Int => int.asJson
-    case double: Double => double.asJson
-  }
-
-  implicit val unionDecoder2: Decoder[String | Int | Double] = Decoder.instance { cursor =>
-    List[Decoder[String | Int | Double]](
-      Decoder[String].widen,
-      Decoder[Int].widen,
-      Decoder[Double].widen
-    ).reduceLeft(_ or _).apply(cursor)
-  }
-
-  implicit val unionSchema2: Schema[String | Int | Double] = Schema.derivedUnion
-
-  implicit val unionEncoder3: Encoder[String | Int | Double | Boolean] = Encoder.instance {
-    case string: String => string.asJson
-    case int: Int => int.asJson
-    case double: Double => double.asJson
-    case boolean: Boolean => boolean.asJson
-  }
-
-  implicit val unionDecoder3: Decoder[String | Int | Double | Boolean] = Decoder.instance { cursor =>
-    List[Decoder[String | Int | Double | Boolean]](
-      Decoder[String].widen,
-      Decoder[Int].widen,
-      Decoder[Double].widen,
-      Decoder[Boolean].widen
-    ).reduceLeft(_ or _).apply(cursor)
-  }
-
-  implicit val unionSchema3: Schema[String | Int | Double | Boolean] = Schema.derivedUnion
-
-  implicit val unionEncoder4: Encoder[String | Int | Double | Boolean | List[Int]] = Encoder.instance {
-    case string: String => string.asJson
-    case int: Int => int.asJson
-    case double: Double => double.asJson
-    case boolean: Boolean => boolean.asJson
-    case listInt: List[Int] => listInt.asJson
-  }
-
-  implicit val unionDecoder4: Decoder[String | Int | Double | Boolean | List[Int]] = Decoder.instance { cursor =>
-    List[Decoder[String | Int | Double | Boolean | List[Int]]](
-      Decoder[String].widen,
-      Decoder[Int].widen,
-      Decoder[Double].widen,
-      Decoder[Boolean].widen,
-      Decoder[List[Int]].widen
-    ).reduceLeft(_ or _).apply(cursor)
-  }
-
-  implicit val unionSchema4: Schema[String | Int | Double | Boolean | List[Int]] = Schema.derivedUnion
-
-  implicit val unionEncoder5: Encoder[String | Int | Double | Boolean | List[Map[String, String | Int]]] = Encoder.instance {
-    case string: String => string.asJson
-    case int: Int => int.asJson
-    case double: Double => double.asJson
-    case boolean: Boolean => boolean.asJson
-    case listMapStringInt: List[Map[String, String | Int]] => listMapStringInt.asJson
-  }
-
-  implicit val unionDecoder5: Decoder[String | Int | Double | Boolean | List[Map[String, String | Int]]] = Decoder.instance { cursor =>
-    List[Decoder[String | Int | Double | Boolean | List[Map[String, String | Int]]]](
-      Decoder[String].widen,
-      Decoder[Int].widen,
-      Decoder[Double].widen,
-      Decoder[Boolean].widen,
-      Decoder[List[Map[String, String | Int]]].widen
-    ).reduceLeft(_ or _).apply(cursor)
-  }
-
-  implicit val unionSchema5: Schema[String | Int | Double | Boolean | List[Map[String, String | Int]]] = Schema.derivedUnion
-
-  implicit val unionEncoder6: Encoder[String | Int | Double | List[Map[String, String | Int | Double | Boolean]]] = Encoder.instance {
-    case string: String => string.asJson
-    case int: Int => int.asJson
-    case double: Double => double.asJson
-    case listMapStringIntDoubleBoolean: List[Map[String, String | Int | Double | Boolean]] => listMapStringIntDoubleBoolean.asJson
-  }
-
-  implicit val unionDecoder6: Decoder[String | Int | Double | List[Map[String, String | Int | Double | Boolean]]] = Decoder.instance { cursor =>
-    List[Decoder[String | Int | Double | List[Map[String, String | Int | Double | Boolean]]]](
-      Decoder[String].widen,
-      Decoder[Int].widen,
-      Decoder[Double].widen,
-      Decoder[List[Map[String, String | Int | Double | Boolean]]].widen
-    ).reduceLeft(_ or _).apply(cursor)
-  }
-
-  implicit val unionSchema6: Schema[String | Int | Double | List[Map[String, String | Int | Double | Boolean]]] = Schema.derivedUnion
+  // implicit val unionSchema1: Schema[String | Long] = Schema.derivedUnion
+// 
+  // implicit val unionEncoder2: Encoder[String | Long | Double] = Encoder.instance {
+  //   case string: String => string.asJson
+  //   case long: Long => long.asJson
+  //   case double: Double => double.asJson
+  // }
+// 
+  // implicit val unionDecoder2: Decoder[String | Long | Double] = Decoder.instance { cursor =>
+  //   List[Decoder[String | Long | Double]](
+  //     Decoder[String].widen,
+  //     Decoder[Long].widen,
+  //     Decoder[Double].widen
+  //   ).reduceLeft(_ or _).apply(cursor)
+  // }
+// 
+  // implicit val unionSchema2: Schema[String | Long | Double] = Schema.derivedUnion
+// 
+  // implicit val unionEncoder3: Encoder[String | Long | Double | Boolean] = Encoder.instance {
+  //   case string: String => string.asJson
+  //   case long: Long => long.asJson
+  //   case double: Double => double.asJson
+  //   case boolean: Boolean => boolean.asJson
+  // }
+// 
+  // implicit val unionDecoder3: Decoder[String | Long | Double | Boolean] = Decoder.instance { cursor =>
+  //   List[Decoder[String | Long | Double | Boolean]](
+  //     Decoder[String].widen,
+  //     Decoder[Long].widen,
+  //     Decoder[Double].widen,
+  //     Decoder[Boolean].widen
+  //   ).reduceLeft(_ or _).apply(cursor)
+  // }
+// 
+  // implicit val unionSchema3: Schema[String | Long | Double | Boolean] = Schema.derivedUnion
+// 
+  // implicit val unionEncoder4: Encoder[String | Long | Double | Boolean | List[Long]] = Encoder.instance {
+  //   case string: String => string.asJson
+  //   case long: Long => long.asJson
+  //   case double: Double => double.asJson
+  //   case boolean: Boolean => boolean.asJson
+  //   case listLong: List[Long] => listLong.asJson
+  // }
+//// 
+  // implicit val unionDecoder4: Decoder[String | Long | Double | Boolean | List[Long]] = Decoder.instance { cursor =>
+  //   List[Decoder[String | Long | Double | Boolean | List[Long]]](
+  //     Decoder[String].widen,
+  //     Decoder[Long].widen,
+  //     Decoder[Double].widen,
+  //     Decoder[Boolean].widen,
+  //     Decoder[List[Long]].widen
+  //   ).reduceLeft(_ or _).apply(cursor)
+  // }
+// 
+  // implicit val unionSchema4: Schema[String | Long | Double | Boolean | List[Long]] = Schema.derivedUnion
+// 
+  // implicit val unionEncoder5: Encoder[String | Long | Double | Boolean | List[Map[String, String | Long]]] = Encoder.instance {
+  //   case string: String => string.asJson
+  //   case long: Long => long.asJson
+  //   case double: Double => double.asJson
+  //   case boolean: Boolean => boolean.asJson
+  //   case listMapStringLong: List[Map[String, String | Long]] => listMapStringLong.asJson
+  // }
+// 
+  // implicit val unionDecoder5: Decoder[String | Long | Double | Boolean | List[Map[String, String | Long]]] = Decoder.instance { cursor =>
+  //   List[Decoder[String | Long | Double | Boolean | List[Map[String, String | Long]]]](
+  //     Decoder[String].widen,
+  //     Decoder[Long].widen,
+  //     Decoder[Double].widen,
+  //     Decoder[Boolean].widen,
+  //     Decoder[List[Map[String, String | Long]]].widen
+  //   ).reduceLeft(_ or _).apply(cursor)
+  // }
+// 
+  // implicit val unionSchema5: Schema[String | Long | Double | Boolean | List[Map[String, String | Long]]] = Schema.derivedUnion
+// 
+  // implicit val unionEncoder6: Encoder[String | Long | Double | List[Map[String, String | Long | Double | Boolean]]] = Encoder.instance {
+  //   case string: String => string.asJson
+  //   case long: Long => long.asJson
+  //   case double: Double => double.asJson
+  //   case listMapStringLongDoubleBoolean: List[Map[String, String | Long | Double | Boolean]] => listMapStringLongDoubleBoolean.asJson
+  // }
+// 
+  // implicit val unionDecoder6: Decoder[String | Long | Double | List[Map[String, String | Long | Double | Boolean]]] = Decoder.instance { cursor =>
+  //   List[Decoder[String | Long | Double | List[Map[String, String | Long | Double | Boolean]]]](
+  //     Decoder[String].widen,
+  //     Decoder[Long].widen,
+  //     Decoder[Double].widen,
+  //     Decoder[List[Map[String, String | Long | Double | Boolean]]].widen
+  //   ).reduceLeft(_ or _).apply(cursor)
+  // }
+// 
+  // implicit val unionSchema6: Schema[String | Long | Double | List[Map[String, String | Long | Double | Boolean]]] = Schema.derivedUnion
+// 
+  // implicit val unionEncoder7: Encoder[Long | List[Map[String, String | Long | Double | Boolean]]] = Encoder.instance {
+  //   case long: Long => long.asJson
+  //   case listMapStringLongDoubleBoolean: List[Map[String, String | Long | Double | Boolean]] => listMapStringLongDoubleBoolean.asJson
+  // }
+// 
+  // implicit val unionDecoder7: Decoder[Long | List[Map[String, String | Long | Double | Boolean]]] = Decoder.instance { cursor =>
+  //   List[Decoder[Long | List[Map[String, String | Long | Double | Boolean]]]](
+  //     Decoder[Long].widen,
+  //     Decoder[List[Map[String, String | Long | Double | Boolean]]].widen
+  //   ).reduceLeft(_ or _).apply(cursor)
+  // }
+// 
+  // implicit val unionSchema7: Schema[Long | List[Map[String, String | Long | Double | Boolean]]] = Schema.derivedUnion
+// 
+  // implicit val unionEncoder8: Encoder[Long | List[Map[String, String | Long | Double | Boolean]] | List[Map[String, String | Long | Double | Boolean | List[Map[String, String | Long]]]]] = Encoder.instance {
+  //   case long: Long => long.asJson
+  //   case listMapStringLongDoubleBoolean: List[Map[String, String | Long | Double | Boolean]] => listMapStringLongDoubleBoolean.asJson
+  //   case secondList: List[Map[String, String | Long | Double | Boolean | List[Map[String, String | Long]]]] => secondList.asJson
+  // }
+// 
+  // implicit val unionDecoder8: Decoder[Long | List[Map[String, String | Long | Double | Boolean]] | List[Map[String, String | Long | Double | Boolean | List[Map[String, String | Long]]]]] = Decoder.instance { cursor =>
+  //   List[Decoder[Long | List[Map[String, String | Long | Double | Boolean]] | List[Map[String, String | Long | Double | Boolean | List[Map[String, String | Long]]]]]](
+  //     Decoder[Long].widen,
+  //     Decoder[List[Map[String, String | Long | Double | Boolean]]].widen,
+  //     Decoder[List[Map[String, String | Long | Double | Boolean | List[Map[String, String | Long]]]]].widen
+  //   ).reduceLeft(_ or _).apply(cursor)
+  // }
+// 
+  // implicit val unionSchema8: Schema[Long | List[Map[String, String | Long | Double | Boolean]] | List[Map[String, String | Long | Double | Boolean | List[Map[String, String | Long]]]]] = Schema.derivedUnion
+// 
+  // implicit val unionEncoder9: Encoder[String | Long | List[Map[String, String | Long | Double | List[Map[String, String | Long | Double | Boolean]]]]] = Encoder.instance {
+  //   case string: String => string.asJson
+  //   case long: Long => long.asJson
+  //   case list: List[Map[String, String | Long | Double | List[Map[String, String | Long | Double | Boolean]]]] => list.asJson
+  // }
+// 
+  // implicit val unionDecoder9: Decoder[String | Long | List[Map[String, String | Long | Double | List[Map[String, String | Long | Double | Boolean]]]]] = Decoder.instance { cursor =>
+  //   List[Decoder[String | Long | List[Map[String, String | Long | Double | List[Map[String, String | Long | Double | Boolean]]]]]](
+  //     Decoder[String].widen,
+  //     Decoder[Long].widen,
+  //     Decoder[List[Map[String, String | Long | Double | List[Map[String, String | Long | Double | Boolean]]]]].widen
+  //   ).reduceLeft(_ or _).apply(cursor)
+  // }
+// 
+  // implicit val unionSchema9: Schema[String | Long | List[Map[String, String | Long | Double | List[Map[String, String | Long | Double | Boolean]]]]] = Schema.derivedUnion
+// 
+  // implicit val unionEncoder10: Encoder[String | Long | Double | Boolean | List[String] | List[Long]] = Encoder.instance {
+  //   case string: String => string.asJson
+  //   case long: Long => long.asJson
+  //   case double: Double => double.asJson
+  //   case boolean: Boolean => boolean.asJson
+  //   case stringList: List[String] => stringList.asJson
+  //   case longList: List[Long] => longList.asJson
+  // }
+// 
+  // implicit val unionDecoder10: Decoder[String | Long | Double | Boolean | List[String] | List[Long]] = Decoder.instance { cursor =>
+  //   List[Decoder[String | Long | Double | Boolean | List[String] | List[Long]]](
+  //     Decoder[String].widen,
+  //     Decoder[Long].widen,
+  //     Decoder[Double].widen,
+  //     Decoder[Boolean].widen,
+  //     Decoder[List[String]].widen,
+  //     Decoder[List[Long]].widen,
+  //   ).reduceLeft(_ or _).apply(cursor)
+  // }
+  //  
+  // implicit val unionSchema10: Schema[String | Long | Double | Boolean | List[String] | List[Long]] = Schema.derivedUnion
 
 }
