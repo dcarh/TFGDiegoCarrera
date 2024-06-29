@@ -4,7 +4,8 @@ import sttp.tapir.*
 
 import endpoints.tmdb.Base
 import endpoints.tmdb.Outputs.SeasonsOutputs._
-import modelClasses.app.media.{Season, TVShow, TVShowId}
+import modelClasses.app.media.{Season, TVShow}
+import modelClasses.app.media.IDs.TVShowId
 import modelClasses.tmdb.SeasonRequests._
 import modelClasses.ErrorInfo
 

@@ -4,7 +4,7 @@ import sttp.tapir.*
 
 import endpoints.tmdb.Outputs.MoviesOutputs._
 import modelClasses.tmdb.MovieRequests._
-import modelClasses.app.media.MovieId
+import modelClasses.app.media.IDs.MovieId
 import modelClasses.ErrorInfo
 
 object Movies {

@@ -4,7 +4,8 @@ import sttp.tapir.*
 
 import endpoints.common.Inputs._
 import endpoints.common.Outputs._
-import modelClasses.app.media.{Episode, Movie, Season, TVShow, MovieId, TVShowId}
+import modelClasses.app.media.{Episode, Movie, Season, TVShow}
+import modelClasses.app.media.IDs.{MovieId, TVShowId}
 import modelClasses.ErrorInfo
 
 object Base {
@@ -20,6 +21,13 @@ object Base {
           .get
           .in(QueryInputs.queryApiKey)
           .errorOut(ApiOutputs.jsonErrorInfoOut)
+        
+  val searchBaseEndpoint:
+    (String, String) => PublicEndpoint[String, ErrorInfo, Unit, Any] =
+      (name, descrption) =>
+        tmdbBaseEndpoint(name, descrption)
+          .get
+          .in("search")
 
   val movieBaseEndpoint:
     (String, String) => PublicEndpoint[(String, MovieId), ErrorInfo, Unit, Any] =

@@ -4,7 +4,8 @@ import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*
 import io.circe.generic.auto.*
-import modelClasses.app.media.{Book, Episode, Movie, Season, TVShow, Videogame, MovieId, TVShowId}
+import modelClasses.app.media.{Book, Episode, Movie, Season, TVShow, Videogame}
+import modelClasses.app.media.IDs._
 import modelClasses.app.social.{Entry, MediaContentList, Review}
 import modelClasses.app.user.{User, UserSettings}
 import modelClasses.app.media.*
@@ -21,7 +22,7 @@ object Inputs {
       query[Option[String]]("categories")
 
     val querySearch: EndpointInput[String] =
-      query[String]("search")
+      query[String]("query")
 
     val queryApiKey: EndpointInput[String] =
       query[String]("api_key")
@@ -53,14 +54,26 @@ object Inputs {
     val pathSeasonNumber: EndpointInput[Season.Number] =
       path[Season.Number]("season_number")
 
+    val pathSeasonNumberNew: EndpointInput[SeasonNumber] =
+      path[SeasonNumber]("season_number")
+
     val pathEpisodeNumber: EndpointInput[Episode.Number] =
       path[Episode.Number]("episode_number")
+
+    val pathEpisodeNumberNew: EndpointInput[EpisodeNumber] =
+      path[EpisodeNumber]("episode_number")
 
     val pathVideogameId: EndpointInput[Videogame.Id] =
       path[Videogame.Id]("videogame_id")
 
+    val pathVideogameIdNew: EndpointInput[VideogameId] =
+      path[VideogameId]("videogame_id")
+
     val pathBookId: EndpointInput[Book.Id] =
       path[Book.Id]("book_id")
+
+    val pathBookIdNew: EndpointInput[BookId] =
+      path[BookId]("volumeId")
 
     val pathListId: EndpointInput[MediaContentList.Id] =
       path[MediaContentList.Id]("list_id")

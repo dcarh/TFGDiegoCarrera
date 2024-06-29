@@ -3,7 +3,8 @@ package endpoints.tmdb
 import sttp.tapir.*
 
 import endpoints.tmdb.Outputs.EpisodesOutputs._
-import modelClasses.app.media.{Episode, Season, TVShow, TVShowId}
+import modelClasses.app.media.{Episode, Season, TVShow}
+import modelClasses.app.media.IDs.TVShowId
 import modelClasses.tmdb.EpisodeRequests._
 import modelClasses.ErrorInfo
 

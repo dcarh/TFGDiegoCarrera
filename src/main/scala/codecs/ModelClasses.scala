@@ -1,6 +1,6 @@
 package codecs
 
-import modelClasses.app.media.{MovieId, TVShowId}
+import modelClasses.app.media.IDs._
 import sttp.tapir.{Codec, CodecFormat, DecodeResult}
 import sttp.tapir.CodecFormat.TextPlain
 
@@ -13,5 +13,21 @@ object ModelClasses {
   // Definir Codec para TVShowId
   implicit val tvShowIdCodec: Codec[String, TVShowId, TextPlain] = 
     Codec.string.mapDecode(s => DecodeResult.Value(TVShowId(s.toLong)))(_.value.toString)
+  
+  // Definir Codec para SeasonNumber
+  implicit val seasonNumberCodec: Codec[String, SeasonNumber, TextPlain] = 
+    Codec.string.mapDecode(s => DecodeResult.Value(SeasonNumber(s.toLong)))(_.value.toString)
+  
+  // Definir Codec para TVShowId
+  implicit val episodeNumberCodec: Codec[String, EpisodeNumber, TextPlain] = 
+    Codec.string.mapDecode(s => DecodeResult.Value(EpisodeNumber(s.toLong)))(_.value.toString)
+
+  // Definir Codec para BookId
+  implicit val bookIdCodec: Codec[String, BookId, TextPlain] =
+    Codec.string.mapDecode(s => DecodeResult.Value(BookId(s)))(_.value)
+
+    // Definir Codec para VideogameId
+  implicit val videogameIdCodec: Codec[String, VideogameId, TextPlain] =
+    Codec.string.mapDecode(s => DecodeResult.Value(VideogameId(s.toLong)))(_.value.toString)
 
 }
