@@ -2,8 +2,8 @@ package endpoints.googleBooks
 
 import sttp.tapir.*
 
-import endpoints.common.Inputs._
-import endpoints.common.Outputs._
+import endpoints.inputs.Common._
+import endpoints.outputs.Common._
 import modelClasses.app.media.{Episode, Movie, Season, TVShow}
 import modelClasses.app.media.IDs.BookId
 import modelClasses.ErrorInfo

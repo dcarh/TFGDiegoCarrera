@@ -1,4 +1,4 @@
-package endpoints.common
+package endpoints.inputs
 
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*
@@ -11,8 +11,8 @@ import modelClasses.app.user.{User, UserSettings}
 import modelClasses.app.media.*
 import codecs.ModelClasses.*
 
-object Inputs {
-  
+object Common {
+
   object QueryInputs {
 
     val querySortBy: EndpointInput[Option[String]] =
@@ -23,13 +23,10 @@ object Inputs {
 
     val querySearch: EndpointInput[String] =
       query[String]("query")
-
-    val queryApiKey: EndpointInput[String] =
-      query[String]("api_key")
   }
-  
+
   object PathInputs {
-    
+
     val pathUserId: EndpointInput[User.Id] =
       path[User.Id]("user_id")
 
@@ -44,7 +41,7 @@ object Inputs {
 
     val pathTVShowId: EndpointInput[TVShow.Id] =
       path[TVShow.Id]("series_id")
-      
+
     val pathMovieIdNew: EndpointInput[MovieId] =
       path[MovieId]("movie_id")
 
@@ -84,13 +81,14 @@ object Inputs {
     val pathReviewId: EndpointInput[Review.Id] =
       path[Review.Id]("review_id")
   }
-  
+
   object JsonInputs {
-    
+
     val jsonSettingsIn: EndpointInput[UserSettings] =
       jsonBody[UserSettings]
 
     val jsonElementListIn: EndpointInput[MediaContentList] =
       jsonBody[MediaContentList]
   }
+
 }

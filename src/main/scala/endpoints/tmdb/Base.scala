@@ -2,10 +2,10 @@ package endpoints.tmdb
 
 import sttp.tapir.*
 
-import endpoints.common.Inputs._
-import endpoints.common.Outputs._
-import modelClasses.app.media.{Episode, Movie, Season, TVShow}
-import modelClasses.app.media.IDs.{MovieId, TVShowId}
+import endpoints.inputs.Common._
+import endpoints.outputs.Common._
+import endpoints.inputs.TMDB.Query._
+import modelClasses.app.media.IDs.{MovieId, TVShowId, SeasonNumber, EpisodeNumber}
 import modelClasses.ErrorInfo
 
 object Base {
@@ -19,7 +19,7 @@ object Base {
           .name(name)
           .description(description)
           .get
-          .in(QueryInputs.queryApiKey)
+          .in(queryApiKey)
           .errorOut(ApiOutputs.jsonErrorInfoOut)
         
   val searchBaseEndpoint:
@@ -44,16 +44,16 @@ object Base {
           .in(PathInputs.pathTVShowIdNew)
 
   val seasonBaseEndpoint:
-    (String, String) => PublicEndpoint[(String, TVShowId, Season.Number), ErrorInfo, Unit, Any] =
+    (String, String) => PublicEndpoint[(String, TVShowId, SeasonNumber), ErrorInfo, Unit, Any] =
       (name, description) =>
         tvShowBaseEndpoint(name, description)
           .in("season")
-          .in(PathInputs.pathSeasonNumber)
+          .in(PathInputs.pathSeasonNumberNew)
 
   val episodeBaseEndpoint:
-    (String, String) => PublicEndpoint[(String, TVShowId, Season.Number, Episode.Number), ErrorInfo, Unit, Any] =
+    (String, String) => PublicEndpoint[(String, TVShowId, SeasonNumber, EpisodeNumber), ErrorInfo, Unit, Any] =
       (name, description) =>
         seasonBaseEndpoint(name, description)
           .in("episode")
-          .in(PathInputs.pathEpisodeNumber)
+          .in(PathInputs.pathEpisodeNumberNew)
 }

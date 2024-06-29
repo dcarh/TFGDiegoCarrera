@@ -2,9 +2,9 @@ package endpoints.googleBooks
 
 import sttp.tapir.*
 
-import endpoints.common.Inputs._
-import endpoints.googleBooks.Inputs.SearchInputs
-import endpoints.googleBooks.Outputs.BooksOutputs._
+import endpoints.inputs.Common._
+import endpoints.inputs.GoogleBooks._
+import endpoints.outputs.GoogleBooks._
 import modelClasses.app.media.IDs.BookId
 import modelClasses.googleBooks.BooksRequests._
 import modelClasses.ErrorInfo
@@ -26,10 +26,10 @@ object Books {
         "Get book search from Google Books",
         "This endpoint returns a list of books from Google Books API by a search query"
       )
-      .in(SearchInputs.queryQ)
-      .in(SearchInputs.queryLangRestrict)
-      .in(SearchInputs.queryOrderBy)
-      .in(SearchInputs.queryProjection)
+      .in(queryQ)
+      .in(queryLangRestrict)
+      .in(queryOrderBy)
+      .in(queryProjection)
       .out(jsonRequestedBookSearchOut)
     
 
