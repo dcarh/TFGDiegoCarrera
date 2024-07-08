@@ -3,8 +3,6 @@ package modelClasses.igdb
 import io.circe.generic.auto.*
 
 object VideogameRequests {
-  
-  case class RequestedVideogamesList(list: List[RequestedVideogame])
 
   case class RequestedVideogame(
                                id: Long,

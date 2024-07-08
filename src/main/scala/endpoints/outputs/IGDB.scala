@@ -10,11 +10,7 @@ import sttp.tapir.json.circe.*
 object IGDB {
 
   import VideogameRequests.*
-
-  val jsonRequestedVideogameOut: EndpointOutput[RequestedVideogame] =
-    jsonBody[RequestedVideogame]
     
-  val jsonRequestedVideogamesListOut: EndpointOutput[RequestedVideogamesList] = 
-    jsonBody[RequestedVideogamesList]
-
+  val jsonListRequestedVideogameOut: EndpointOutput[List[RequestedVideogame]] =
+    jsonBody[List[RequestedVideogame]]
 }

@@ -19,7 +19,7 @@ class IGDBClient {
 
   private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
 
-  private val responseMaxSize = 1024 * 32576 * 64
+  private val responseMaxSize = 1024 * 32576 * 32
 
   private val headerAccept = "application/json"
   private val headerClientID = "qn2w238rb9gpxxpiv546tgg9th31mk"
