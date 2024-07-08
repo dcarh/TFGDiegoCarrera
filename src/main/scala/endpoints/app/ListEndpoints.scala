@@ -5,8 +5,8 @@ import sttp.model.StatusCode
 
 import modelClasses.ErrorInfo
 
-import endpoints.common.Inputs._
-import endpoints.common.Outputs._
+import endpoints.inputs.Common._
+import endpoints.outputs.Common._
 import modelClasses.app.social.MediaContentList
 
 

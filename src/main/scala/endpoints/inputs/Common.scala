@@ -1,17 +1,18 @@
-package endpoints.common
+package endpoints.inputs
 
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*
 import io.circe.generic.auto.*
-import modelClasses.app.media.{Book, Episode, Movie, Season, TVShow, Videogame, MovieId, TVShowId}
+import modelClasses.app.media.{Book, Episode, Movie, Season, TVShow, Videogame}
+import modelClasses.app.media.IDs._
 import modelClasses.app.social.{Entry, MediaContentList, Review}
 import modelClasses.app.user.{User, UserSettings}
 import modelClasses.app.media.*
 import codecs.ModelClasses.*
 
-object Inputs {
-  
+object Common {
+
   object QueryInputs {
 
     val querySortBy: EndpointInput[Option[String]] =
@@ -21,14 +22,11 @@ object Inputs {
       query[Option[String]]("categories")
 
     val querySearch: EndpointInput[String] =
-      query[String]("search")
-
-    val queryApiKey: EndpointInput[String] =
-      query[String]("api_key")
+      query[String]("query")
   }
-  
+
   object PathInputs {
-    
+
     val pathUserId: EndpointInput[User.Id] =
       path[User.Id]("user_id")
 
@@ -43,7 +41,7 @@ object Inputs {
 
     val pathTVShowId: EndpointInput[TVShow.Id] =
       path[TVShow.Id]("series_id")
-      
+
     val pathMovieIdNew: EndpointInput[MovieId] =
       path[MovieId]("movie_id")
 
@@ -53,14 +51,26 @@ object Inputs {
     val pathSeasonNumber: EndpointInput[Season.Number] =
       path[Season.Number]("season_number")
 
+    val pathSeasonNumberNew: EndpointInput[SeasonNumber] =
+      path[SeasonNumber]("season_number")
+
     val pathEpisodeNumber: EndpointInput[Episode.Number] =
       path[Episode.Number]("episode_number")
+
+    val pathEpisodeNumberNew: EndpointInput[EpisodeNumber] =
+      path[EpisodeNumber]("episode_number")
 
     val pathVideogameId: EndpointInput[Videogame.Id] =
       path[Videogame.Id]("videogame_id")
 
+    val pathVideogameIdNew: EndpointInput[VideogameId] =
+      path[VideogameId]("videogame_id")
+
     val pathBookId: EndpointInput[Book.Id] =
       path[Book.Id]("book_id")
+
+    val pathBookIdNew: EndpointInput[BookId] =
+      path[BookId]("volumeId")
 
     val pathListId: EndpointInput[MediaContentList.Id] =
       path[MediaContentList.Id]("list_id")
@@ -71,13 +81,14 @@ object Inputs {
     val pathReviewId: EndpointInput[Review.Id] =
       path[Review.Id]("review_id")
   }
-  
+
   object JsonInputs {
-    
+
     val jsonSettingsIn: EndpointInput[UserSettings] =
       jsonBody[UserSettings]
 
     val jsonElementListIn: EndpointInput[MediaContentList] =
       jsonBody[MediaContentList]
   }
+
 }

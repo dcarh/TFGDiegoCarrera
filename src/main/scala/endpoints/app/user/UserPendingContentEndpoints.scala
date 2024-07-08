@@ -1,8 +1,8 @@
 package endpoints.app.user
 
 import sttp.tapir.*
-import endpoints.common.Inputs.*
-import endpoints.common.Outputs.*
+import endpoints.inputs.Common._
+import endpoints.outputs.Common._
 import modelClasses.app.media.{Book, Movie, Season, TVShow, Videogame}
 import modelClasses.app.social.MediaContentList
 

@@ -9,7 +9,7 @@ import sttp.tapir.*
 import sttp.tapir.DecodeResult
 import sttp.tapir.client.http4s.Http4sClientInterpreter
 import modelClasses.ErrorInfo
-import modelClasses.app.media.{Episode, Movie, Season, TVShow, MovieId, TVShowId}
+import modelClasses.app.media.IDs.{MovieId, TVShowId, SeasonNumber, EpisodeNumber}
 import scala.concurrent.duration._
 //import retry._
 //import retry.cats.effect._
@@ -22,13 +22,13 @@ class TMDBClient {
   private val apiKey = "6c004411738609c1a39b5f11582a04b7"
   private val responseMaxSize = 1024 * 32576 * 64
 
-  def generalRequestNotGeneralized[I, O](
+  def executeRequest[I, O](
                                endpoint: PublicEndpoint[I, ErrorInfo, O, Any],
                                resourceId:
                                  MovieId |
                                  TVShowId |
-                                 (TVShowId, Season.Number) |
-                                 (TVShowId, Season.Number, Episode.Number)
+                                 (TVShowId, SeasonNumber) |
+                                 (TVShowId, SeasonNumber, EpisodeNumber)
                              ): IO[Either[ErrorInfo, O]] = {
 
     val httpClientResource: Resource[IO, Client[IO]] = EmberClientBuilder.default[IO]
@@ -58,8 +58,8 @@ class TMDBClient {
           IO.pure(userRequest, parseResponse)
 
         case (
-          endpoint: PublicEndpoint[(String, TVShowId, Season.Number), _, _, _],
-          seasonNumber: (TVShowId, Season.Number)) =>
+          endpoint: PublicEndpoint[(String, TVShowId, SeasonNumber), _, _, _],
+          seasonNumber: (TVShowId, SeasonNumber)) =>
           println("Season requested")
             val (userRequest, parseResponse) =
               Http4sClientInterpreter[IO]()
@@ -68,8 +68,8 @@ class TMDBClient {
             IO.pure(userRequest, parseResponse)
 
         case (
-          endpoint: PublicEndpoint[(String, TVShowId, Season.Number, Episode.Number), _, _, _],
-          episodeNumber: (TVShowId, Season.Number, Episode.Number)) =>
+          endpoint: PublicEndpoint[(String, TVShowId, SeasonNumber, EpisodeNumber), _, _, _],
+          episodeNumber: (TVShowId, SeasonNumber, EpisodeNumber)) =>
             println("Episode requested")
             val (userRequest, parseResponse) =
               Http4sClientInterpreter[IO]()

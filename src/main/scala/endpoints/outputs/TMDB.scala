@@ -1,4 +1,4 @@
-package endpoints.tmdb
+package endpoints.outputs
 
 import io.circe.*
 import io.circe.generic.auto.*
@@ -7,11 +7,10 @@ import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*
 
-object Outputs {
-  
+object TMDB {
 
   object MoviesOutputs {
-    
+
     import MovieRequests.*
 
     val jsonRequestedMovieOut: EndpointOutput[RequestedMovie] =
@@ -26,11 +25,11 @@ object Outputs {
     val jsonRequestedCreditsForMovieOut: EndpointOutput[RequestedCreditsForMovie] =
       jsonBody[RequestedCreditsForMovie]
   }
-  
+
   object TVShowsOutputs {
 
     import TVShowRequests.*
-    
+
     val jsonRequestedTvShowOut: EndpointOutput[RequestedTVShow] =
       jsonBody[RequestedTVShow]
 
@@ -46,11 +45,11 @@ object Outputs {
     val jsonRequestedAggregateCreditsForTvShowOut: EndpointOutput[RequestedAggregateCreditsForTVShow] =
       jsonBody[RequestedAggregateCreditsForTVShow]
   }
-  
+
   object SeasonsOutputs {
-    
+
     import SeasonRequests.*
-    
+
     val jsonRequestedSeasonOut: EndpointOutput[RequestedSeason] =
       jsonBody[RequestedSeason]
 
@@ -60,9 +59,9 @@ object Outputs {
     val jsonRequestedAggregateCreditsForSeasonOut: EndpointOutput[RequestedAggregateCreditsForSeason] =
       jsonBody[RequestedAggregateCreditsForSeason]
   }
-  
+
   object EpisodesOutputs {
-    
+
     import EpisodeRequests.*
 
     val jsonRequestedEpisodeOut: EndpointOutput[RequestedEpisode] =
@@ -71,4 +70,5 @@ object Outputs {
     val jsonRequestedCreditsForEpisodeOut: EndpointOutput[RequestedCreditsForEpisode] =
       jsonBody[RequestedCreditsForEpisode]
   }
+
 }

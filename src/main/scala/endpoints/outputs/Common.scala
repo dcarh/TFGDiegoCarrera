@@ -1,4 +1,4 @@
-package endpoints.common
+package endpoints.outputs
 
 import io.circe.*
 import io.circe.generic.auto.*
@@ -12,7 +12,7 @@ import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*
 
-object Outputs {
+object Common {
 
   object ApiOutputs {
 
@@ -64,7 +64,7 @@ object Outputs {
     val jsonListOfMediaContentListOut: EndpointOutput[List[MediaContentList]] =
       jsonBody[List[MediaContentList]]
   }
-  
+
   object MediaOutputs {
 
     val jsonMovieOut: EndpointOutput[Movie] =
@@ -109,4 +109,5 @@ object Outputs {
     val jsonBookListOut: EndpointOutput[List[Book]] =
       jsonBody[List[Book]]
   }
+
 }
