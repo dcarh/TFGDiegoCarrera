@@ -1,18 +1,24 @@
 package modelClasses.app.social
 
-import io.circe.generic.auto.*
+import upickle.default.*
 import modelClasses.app.media.{Book, Movie, TVShow, Videogame}
 import modelClasses.app.user.User
 
-case class MediaContentList(
-                             id           : MediaContentList.Id,
-                             user         : User.Id,
-                             mediaContents: List[Movie.Id | TVShow.Id | Videogame.Id | Book.Id],
-                             likes        : List[Like.Id],
-                             replies      : List[Reply.Id],
-                             visibility   : Visibility
-                           )
+import io.circe.generic.auto.*
 
-object MediaContentList {
-  type Id = Long
-}
+import modelClasses.ids.Media.{MovieId, TVShowId, VideogameId, BookId}
+import modelClasses.ids.Social.{LikeId, MediaContentListId, ReplyId}
+import modelClasses.ids.User.UserId
+
+case class MediaContentList(
+                             id           : MediaContentListId,
+                             user         : UserId,
+                             mediaContents: List[MovieId | TVShowId | VideogameId | BookId],
+                             likes        : List[LikeId],
+                             replies      : List[ReplyId],
+                             visibility   : Visibility
+                           ) derives ReadWriter
+
+// object MediaContentList {
+//   type Id = Long
+// }

@@ -1,9 +1,10 @@
 package modelClasses.app.user
 
 import modelClasses.app.Time
+import modelClasses.ids.User.UserId
 
 case class UserStats(
-                    userId                        : User.Id,
+                    userId                        : UserId,
                     avgElementsRating             : Double,
                     timeSpentInMovies             : Time,
                     timeSpentInTVShows            : Time,

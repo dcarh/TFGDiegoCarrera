@@ -9,7 +9,7 @@ import sttp.tapir.*
 import sttp.tapir.DecodeResult
 import sttp.tapir.client.http4s.Http4sClientInterpreter
 import modelClasses.ErrorInfo
-import modelClasses.app.media.IDs.{MovieId, TVShowId, SeasonNumber, EpisodeNumber}
+import modelClasses.ids.Media.{MovieId, TVShowId, SeasonNumber, EpisodeNumber}
 import scala.concurrent.duration._
 //import retry._
 //import retry.cats.effect._

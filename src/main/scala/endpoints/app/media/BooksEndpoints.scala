@@ -5,6 +5,7 @@ import sttp.tapir._
 import endpoints.inputs.Common._
 import endpoints.outputs.Common._
 import modelClasses.app.media.Book
+import modelClasses.ids.Media.BookId
 
 object BooksEndpoints {
 
@@ -24,7 +25,7 @@ object BooksEndpoints {
       .in(QueryInputs.querySortBy)
       .out(MediaOutputs.jsonBookListOut)
 
-  val specificBookEndpoint: PublicEndpoint[Book.Id, Unit, Book, Any] =
+  val specificBookEndpoint: PublicEndpoint[BookId, Unit, Book, Any] =
     bookBaseEndpoint
       .name("Specific book endpoint")
       .description("This endpoint returns a specific book by its Id")

@@ -1,14 +1,16 @@
 package modelClasses.app.chatting
 
-import modelClasses.app.user.User
+import upickle.default.*
+import modelClasses.ids.Chatting.MessageId
+import modelClasses.ids.User.UserId
 
 case class Message(
-                  id     : Message.Id,
-                  userId : User.Id,
+                  id     : MessageId,
+                  userId : UserId,
                   message: String,
                   date   : String     // TODO: ¿String o Date?
-                  )
+                  ) derives ReadWriter
 
-object Message {
-  type Id = Long
-}
+// object Message {
+//   type Id = Long
+// }

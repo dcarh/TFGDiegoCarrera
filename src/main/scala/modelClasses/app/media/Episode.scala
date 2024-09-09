@@ -1,30 +1,31 @@
 package modelClasses.app.media
 
 import io.circe.generic.auto.*
-import modelClasses.app.social.{Like, Review}
+import modelClasses.ids.Media.{TVShowId, SeasonNumber, EpisodeNumber}
+import modelClasses.ids.Social.{LikeId, ReviewId}
 
 case class Episode(
                     airDate      : String,
                     crew         : List[(String, String)],
-                    episodeNumber: Episode.Number,
+                    // episodeNumber: EpisodeNumber,
                     guestStars   : List[(String, String)],
-                    id           : Episode.Id,
+                    episodeNumber: EpisodeNumber,
                     overview     : String,
                     runtime      : String,
-                    seasonId     : Season.Id,
-                    seasonNumber : Season.Number,
+                    // seasonId     : Season.Id,
+                    seasonNumber : SeasonNumber,
                     title        : String,
-                    tvShowId     : TVShow.Id,
+                    tvShowId     : TVShowId,
 
                     averageRating: Double,
                     completed    : Long,
-                    likes        : List[Like.Id],
+                    likes        : List[LikeId],
                     ratings      : Long,
-                    reviews      : List[Review.Id]
+                    reviews      : List[ReviewId]
                     // TODO: Meter más campos
                   )
 
-object Episode {
-  type Number = Int
-  type Id = Long
-}
+// object Episode {
+//   type Number = Int
+//   type Id = Long
+// }

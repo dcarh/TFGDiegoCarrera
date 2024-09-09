@@ -2,12 +2,17 @@ package schemas
 
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*
+
 import io.circe.generic.auto.*
 import io.circe.syntax.*
 import io.circe.Encoder
 import io.circe.Decoder
+
 import cats.syntax.functor.*
+
 import modelClasses.app.media._
+import modelClasses.ids.Media.*
+import modelClasses.ids.Social.*
 
 object UnionTypes {
 
@@ -50,28 +55,6 @@ object UnionTypes {
   }
   
   implicit val mediaUnionSchema2: Schema[Movie | TVShow | Videogame | Book] = Schema.derivedUnion
-
-  implicit val mediaUnionEncoder3: Encoder[Movie.Id | TVShow.Id | (TVShow.Id, Season.Number) | (TVShow.Id, Season.Number, Episode.Number) | Videogame.Id | Book.Id] = Encoder.instance {
-    case movieId: Movie.Id => movieId.asJson
-    case tvShowId: TVShow.Id => tvShowId.asJson
-    case seasonNumber: (TVShow.Id, Season.Number) => seasonNumber.asJson
-    case episodeNumber: (TVShow.Id, Season.Number, Episode.Number) => episodeNumber.asJson
-    case videogameId: Videogame.Id => videogameId.asJson
-    case bookId: Book.Id => bookId.asJson
-  }
-
-  implicit val mediaUnionDecoder3: Decoder[Movie.Id | TVShow.Id | (TVShow.Id, Season.Number) | (TVShow.Id, Season.Number, Episode.Number) | Videogame.Id | Book.Id] = Decoder.instance { cursor =>
-    List[Decoder[Movie.Id | TVShow.Id | (TVShow.Id, Season.Number) | (TVShow.Id, Season.Number, Episode.Number) | Videogame.Id | Book.Id]](
-      Decoder[Movie.Id].widen,
-      Decoder[TVShow.Id].widen,
-      Decoder[(TVShow.Id, Season.Number)].widen,
-      Decoder[(TVShow.Id, Season.Number, Episode.Number)].widen,
-      Decoder[Videogame.Id].widen,
-      Decoder[Book.Id].widen
-    ).reduceLeft(_ or _).apply(cursor)
-  }
-
-  implicit val mediaUnionSchema3: Schema[Movie.Id | TVShow.Id | (TVShow.Id, Season.Number) | (TVShow.Id, Season.Number, Episode.Number) | Videogame.Id | Book.Id] = Schema.derivedUnion
 
   implicit val unionEncoder1: Encoder[String | Long] = Encoder.instance {
     case string: String => string.asJson

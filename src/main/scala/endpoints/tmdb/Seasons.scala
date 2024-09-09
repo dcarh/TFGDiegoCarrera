@@ -3,9 +3,10 @@ package endpoints.tmdb
 import sttp.tapir.*
 
 import endpoints.outputs.TMDB.SeasonsOutputs._
-import modelClasses.app.media.IDs.{TVShowId, SeasonNumber}
+
 import modelClasses.tmdb.SeasonRequests._
 import modelClasses.ErrorInfo
+import modelClasses.ids.Media.{TVShowId, SeasonNumber}
 
 object Seasons {
 

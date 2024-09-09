@@ -4,7 +4,9 @@ import sttp.tapir._
 
 import endpoints.inputs.Common._
 import endpoints.outputs.Common._
+
 import modelClasses.app.social.Entry
+import modelClasses.ids.Social.EntryId
 
 object UserEntriesEndpoints {
 
@@ -25,7 +27,7 @@ object UserEntriesEndpoints {
       .in("entries")
       .out(SocialOutputs.jsonEntryListOut)
 
-  val userSpecificListEndpoint: PublicEndpoint[(String, Entry.Id), Unit, Entry, Any] =
+  val userSpecificListEndpoint: PublicEndpoint[(String, EntryId), Unit, Entry, Any] =
     userBaseEndpoint
       .name("User's specific entry endpoint")
       .description("This endpoint returns a specific entry for a user by the ID of the entry")

@@ -5,7 +5,7 @@ import sttp.tapir.*
 import endpoints.inputs.Common._
 import endpoints.outputs.Common._
 import modelClasses.app.media.{Episode, Movie, Season, TVShow}
-import modelClasses.app.media.IDs.BookId
+import modelClasses.ids.Media.BookId
 import modelClasses.ErrorInfo
 
 object Base {

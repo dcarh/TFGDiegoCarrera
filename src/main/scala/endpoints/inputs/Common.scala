@@ -3,13 +3,23 @@ package endpoints.inputs
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*
+
 import io.circe.generic.auto.*
+
 import modelClasses.app.media.{Book, Episode, Movie, Season, TVShow, Videogame}
-import modelClasses.app.media.IDs._
 import modelClasses.app.social.{Entry, MediaContentList, Review}
 import modelClasses.app.user.{User, UserSettings}
 import modelClasses.app.media.*
-import codecs.ModelClasses.*
+
+import modelClasses.ids.Media.*
+import modelClasses.ids.Social.{EntryId, MediaContentListId, ReviewId}
+import modelClasses.ids.User.UserId
+
+import codecs.ModelClasses.Media.*
+import codecs.ModelClasses.Social.*
+import codecs.ModelClasses.User.*
+
+import schemas.UnionTypes.*
 
 object Common {
 
@@ -27,8 +37,11 @@ object Common {
 
   object PathInputs {
 
-    val pathUserId: EndpointInput[User.Id] =
-      path[User.Id]("user_id")
+    // val pathUserId: EndpointInput[User.Id] =
+    //   path[User.Id]("user_id")
+
+    val pathUserId: EndpointInput[UserId] =
+      path[UserId]("user_id")
 
     val pathUsername: EndpointInput[String] =
       path[String]("username")
@@ -36,50 +49,59 @@ object Common {
     // val pathSearch: EndpointInput[String] =
     //   path[String]("search")
 
-    val pathMovieId: EndpointInput[Movie.Id] =
-      path[Movie.Id]("movie_id")
+    // val pathMovieId: EndpointInput[Movie.Id] =
+    //   path[Movie.Id]("movie_id")
 
-    val pathTVShowId: EndpointInput[TVShow.Id] =
-      path[TVShow.Id]("series_id")
-
-    val pathMovieIdNew: EndpointInput[MovieId] =
+    val pathMovieId: EndpointInput[MovieId] =
       path[MovieId]("movie_id")
 
-    val pathTVShowIdNew: EndpointInput[TVShowId] =
+    // val pathTVShowId: EndpointInput[TVShow.Id] =
+    //   path[TVShow.Id]("series_id")
+
+    val pathTVShowId: EndpointInput[TVShowId] =
       path[TVShowId]("series_id")
 
-    val pathSeasonNumber: EndpointInput[Season.Number] =
-      path[Season.Number]("season_number")
+    // val pathSeasonNumber: EndpointInput[Season.Number] =
+    //   path[Season.Number]("season_number")
 
-    val pathSeasonNumberNew: EndpointInput[SeasonNumber] =
+    val pathSeasonNumber: EndpointInput[SeasonNumber] =
       path[SeasonNumber]("season_number")
 
-    val pathEpisodeNumber: EndpointInput[Episode.Number] =
-      path[Episode.Number]("episode_number")
+    // val pathEpisodeNumber: EndpointInput[Episode.Number] =
+    //   path[Episode.Number]("episode_number")
 
-    val pathEpisodeNumberNew: EndpointInput[EpisodeNumber] =
+    val pathEpisodeNumber: EndpointInput[EpisodeNumber] =
       path[EpisodeNumber]("episode_number")
 
-    val pathVideogameId: EndpointInput[Videogame.Id] =
-      path[Videogame.Id]("videogame_id")
+    // val pathVideogameId: EndpointInput[Videogame.Id] =
+    //   path[Videogame.Id]("videogame_id")
 
-    val pathVideogameIdNew: EndpointInput[VideogameId] =
+    val pathVideogameId: EndpointInput[VideogameId] =
       path[VideogameId]("videogame_id")
 
-    val pathBookId: EndpointInput[Book.Id] =
-      path[Book.Id]("book_id")
+    // val pathBookId: EndpointInput[Book.Id] =
+    //   path[Book.Id]("book_id")
 
-    val pathBookIdNew: EndpointInput[BookId] =
+    val pathBookId: EndpointInput[BookId] =
       path[BookId]("volumeId")
 
-    val pathListId: EndpointInput[MediaContentList.Id] =
-      path[MediaContentList.Id]("list_id")
+    // val pathEntryId: EndpointInput[Entry.Id] =
+    //   path[Entry.Id]("entry_id")
 
-    val pathEntryId: EndpointInput[Entry.Id] =
-      path[Entry.Id]("entry_id")
+    val pathEntryId: EndpointInput[EntryId] =
+      path[EntryId]("entry_id")
 
-    val pathReviewId: EndpointInput[Review.Id] =
-      path[Review.Id]("review_id")
+    // val pathListId: EndpointInput[MediaContentList.Id] =
+    //   path[MediaContentList.Id]("list_id")
+      
+    val pathListId: EndpointInput[MediaContentListId] =
+      path[MediaContentListId]("list_id")
+
+    // val pathReviewId: EndpointInput[Review.Id] =
+    //   path[Review.Id]("review_id")
+      
+    val pathReviewId: EndpointInput[ReviewId] =
+      path[ReviewId]("review_id")
   }
 
   object JsonInputs {

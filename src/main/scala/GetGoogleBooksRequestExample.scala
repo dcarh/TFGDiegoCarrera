@@ -1,7 +1,7 @@
 import cats.effect.*
 import clients.GoogleBooksClient
 import endpoints.googleBooks.Books
-import modelClasses.app.media.IDs.BookId
+import modelClasses.ids.Media.BookId
 
 object GetGoogleBooksRequestExample extends IOApp {
 

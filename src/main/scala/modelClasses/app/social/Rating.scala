@@ -1,16 +1,21 @@
 package modelClasses.app.social
 
+import upickle.default.*
 import modelClasses.app.media.{Book, Episode, Movie, Season, TVShow, Videogame}
 import modelClasses.app.user.User
 
-case class Rating(
-                 id: Rating.Id,
-                 userId: User.Id,
-                 mediaRated: Movie.Id | TVShow.Id | (TVShow.Id, Season.Number) | (TVShow.Id, Season.Number, Episode.Number) | Videogame.Id | Book.Id,
-                 rating: Int
-                 )
+import modelClasses.ids.Media.{MovieId, TVShowId, SeasonNumber, EpisodeNumber, VideogameId, BookId}
+import modelClasses.ids.Social.RatingId
+import modelClasses.ids.User.UserId
 
-object Rating {
-  type Id = Long
-}
+case class Rating(
+                 id: RatingId,
+                 userId: UserId,
+                 mediaRated: MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId,
+                 rating: Int
+                 ) derives ReadWriter
+
+// object Rating {
+//   type Id = Long
+// }
 // TODO: ¿Realmente hace falta esta clase cuando ya tenemos al atributo "rating" en Entry?

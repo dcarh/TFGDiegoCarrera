@@ -2,7 +2,7 @@ import cats.effect.*
 import clients.TMDBClient
 import endpoints.tmdb.{Movies, TVShows, Seasons, Episodes}
 import modelClasses.app.media.{Movie, TVShow, Season, Episode}
-import modelClasses.app.media.IDs.{MovieId, TVShowId}
+import modelClasses.ids.Media.{MovieId, TVShowId}
 
 object GetTMDBRequestExample extends IOApp {
 

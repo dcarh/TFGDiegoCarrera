@@ -4,7 +4,9 @@ import sttp.tapir._
 
 import endpoints.inputs.Common._
 import endpoints.outputs.Common._
+
 import modelClasses.app.social.Review
+import modelClasses.ids.Social.ReviewId
 
 object ReviewsEndpoints {
 
@@ -24,7 +26,7 @@ object ReviewsEndpoints {
       .in(QueryInputs.querySortBy)
       .out(SocialOutputs.jsonReviewListOut)
 
-  val specificReviewEndpoint: PublicEndpoint[Review.Id, Unit, Review, Any] =
+  val specificReviewEndpoint: PublicEndpoint[ReviewId, Unit, Review, Any] =
     reviewBaseEndpoint
       .name("Specific review endpoint")
       .description("This endpoint returns a specific review by its Id")

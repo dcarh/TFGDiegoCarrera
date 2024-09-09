@@ -10,7 +10,7 @@ import sttp.tapir.DecodeResult
 import sttp.tapir.client.http4s.Http4sClientInterpreter
 import modelClasses.ErrorInfo
 import modelClasses.app.media.Book
-import modelClasses.app.media.IDs.BookId
+import modelClasses.ids.Media.BookId
 import scala.concurrent.duration._
 //import retry._
 //import retry.cats.effect._

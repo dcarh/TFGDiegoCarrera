@@ -1,19 +1,24 @@
 package modelClasses.app.social
 
+import upickle.default.*
 import modelClasses.app.media.{Book, Movie, TVShow, Videogame}
 import modelClasses.app.user.User
 
-case class Reply(
-                  id           : Reply.Id,
-                  user         : User.Id,
-                  // objectReplied: Either[MediaContentList.Id, UserGeneratedContent.Id],
-                  objectReplied: Movie.Id | TVShow.Id | Videogame.Id | Book.Id | MediaContentList.Id | Review.Id | Reply.Id,    
-                  //TODO: ¿¿¿¿ Movie, TVShow, Videogame, Book ????
-                  likes        : List[Like.Id],
-                  replies      : List[Reply.Id],
-                  visibility   : Visibility
-                )
+import modelClasses.ids.Media.{MovieId, TVShowId, VideogameId, BookId}
+import modelClasses.ids.Social.{LikeId, MediaContentListId, ReviewId, ReplyId}
+import modelClasses.ids.User.UserId
 
-object Reply {
-  type Id = Long
-}
+case class Reply(
+                  id           : ReplyId,
+                  user         : UserId,
+                  // objectReplied: Either[MediaContentList.Id, UserGeneratedContent.Id],
+                  objectReplied: MovieId | TVShowId | VideogameId | BookId | MediaContentListId | ReviewId | ReplyId,    
+                  //TODO: ¿¿¿¿ Movie, TVShow, Videogame, Book ????
+                  likes        : List[LikeId],
+                  replies      : List[ReplyId],
+                  visibility   : Visibility
+                ) derives ReadWriter
+
+// object Reply {
+//   type Id = Long
+// }

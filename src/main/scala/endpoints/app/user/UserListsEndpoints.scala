@@ -4,7 +4,9 @@ import sttp.tapir._
 
 import endpoints.inputs.Common._
 import endpoints.outputs.Common._
+
 import modelClasses.app.social.MediaContentList
+import modelClasses.ids.Social.MediaContentListId
 
 object UserListsEndpoints {
 
@@ -26,7 +28,7 @@ object UserListsEndpoints {
       .in(QueryInputs.querySortBy)
       .out(SocialOutputs.jsonListOfMediaContentListOut)
 
-  val userSpecificListEndpoint: PublicEndpoint[(String, MediaContentList.Id), Unit, MediaContentList, Any] =
+  val userSpecificListEndpoint: PublicEndpoint[(String, MediaContentListId), Unit, MediaContentList, Any] =
     userBaseEndpoint
       .name("User's specific list endpoint")
       .description("This endpoint returns a specific list for a user by the ID of the list")

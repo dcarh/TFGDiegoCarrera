@@ -26,6 +26,8 @@ lazy val root = (project in file("."))
       "org.typelevel" %% "cats-effect" % "3.5.0",
       "com.softwaremill.sttp.client3" %% "http4s-backend" % "3.9.6",
       "org.http4s" %% "http4s-ember-client" % "0.23.27",
+      "com.lihaoyi" %% "upickle" % "3.3.0",
+      "com.lihaoyi" %% "os-lib" % "0.10.1"
     ),
     scalacOptions += "-Xmax-inlines:100"
   )

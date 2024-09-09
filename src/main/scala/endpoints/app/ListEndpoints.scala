@@ -7,7 +7,9 @@ import modelClasses.ErrorInfo
 
 import endpoints.inputs.Common._
 import endpoints.outputs.Common._
+
 import modelClasses.app.social.MediaContentList
+import modelClasses.ids.Social.MediaContentListId
 
 
 object ListEndpoints {
@@ -76,7 +78,7 @@ object ListEndpoints {
       .in(QueryInputs.querySortBy)
       .out(SocialOutputs.jsonListOfMediaContentListOut)
   
-  val specificListEndpoint: PublicEndpoint[MediaContentList.Id, Unit, MediaContentList, Any] =
+  val specificListEndpoint: PublicEndpoint[MediaContentListId, Unit, MediaContentList, Any] =
     listsBaseEndpoint
       .name("Specific list endpoint")
       .description("This endpoint returns a specific list of elements by its ID")
@@ -93,7 +95,7 @@ object ListEndpoints {
       .out(SocialOutputs.jsonMediaContentListOut)
       .errorOut(ApiOutputs.jsonErrorInfoOut)
 
-  val userEditListEndpoint: PublicEndpoint[MediaContentList.Id, ErrorInfo, Unit, Any] =
+  val userEditListEndpoint: PublicEndpoint[MediaContentListId, ErrorInfo, Unit, Any] =
     listBaseEndpoint
       .name("Edit list endpoint")
       .description("This endpoint allows to edit a list of elements and returns it in case of success. Otherwise returns an error message")
@@ -103,7 +105,7 @@ object ListEndpoints {
       .out(statusCode(StatusCode.NoContent))
       .errorOut(ApiOutputs.jsonErrorInfoOut)
 
-  val userDeleteListEndpoint: PublicEndpoint[MediaContentList.Id, ErrorInfo, Unit, Any] =
+  val userDeleteListEndpoint: PublicEndpoint[MediaContentListId, ErrorInfo, Unit, Any] =
     listBaseEndpoint
       .name("Delete list endpoint")
       .description("This endpoint deletes a list of elements and returns it in case of success")

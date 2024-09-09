@@ -3,7 +3,8 @@ package endpoints.tmdb
 import sttp.tapir.*
 
 import endpoints.outputs.TMDB.TVShowsOutputs._
-import modelClasses.app.media.IDs.TVShowId
+
+import modelClasses.ids.Media.TVShowId
 import modelClasses.tmdb.TVShowRequests._
 import modelClasses.ErrorInfo
 

@@ -4,7 +4,9 @@ import sttp.tapir._
 
 import endpoints.inputs.Common._
 import endpoints.outputs.Common._
+
 import modelClasses.app.media.Movie
+import modelClasses.ids.Media.MovieId
 
 object MoviesEndpoints {
   
@@ -24,7 +26,7 @@ object MoviesEndpoints {
       .in(QueryInputs.querySortBy)
       .out(MediaOutputs.jsonMovieListOut)
 
-  val specificMovieEndpoint: PublicEndpoint[Movie.Id, Unit, Movie, Any] =
+  val specificMovieEndpoint: PublicEndpoint[MovieId, Unit, Movie, Any] =
     movieBaseEndpoint
       .name("Specific movie endpoint")
       .description("This endpoint returns a specific movie by its Id")

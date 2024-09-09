@@ -5,8 +5,9 @@ import sttp.tapir.*
 import endpoints.inputs.Common._
 import endpoints.outputs.Common._
 import endpoints.inputs.TMDB.Query._
-import modelClasses.app.media.IDs.{MovieId, TVShowId, SeasonNumber, EpisodeNumber}
+
 import modelClasses.ErrorInfo
+import modelClasses.ids.Media.{MovieId, TVShowId, SeasonNumber, EpisodeNumber}
 
 object Base {
 
@@ -34,26 +35,26 @@ object Base {
       (name, description) =>
         tmdbBaseEndpoint(name, description)
           .in("movie")
-          .in(PathInputs.pathMovieIdNew)
+          .in(PathInputs.pathMovieId)
 
   val tvShowBaseEndpoint:
     (String, String) => PublicEndpoint[(String, TVShowId), ErrorInfo, Unit, Any] =
       (name, description) =>
         tmdbBaseEndpoint(name, description)
           .in("tv")
-          .in(PathInputs.pathTVShowIdNew)
+          .in(PathInputs.pathTVShowId)
 
   val seasonBaseEndpoint:
     (String, String) => PublicEndpoint[(String, TVShowId, SeasonNumber), ErrorInfo, Unit, Any] =
       (name, description) =>
         tvShowBaseEndpoint(name, description)
           .in("season")
-          .in(PathInputs.pathSeasonNumberNew)
+          .in(PathInputs.pathSeasonNumber)
 
   val episodeBaseEndpoint:
     (String, String) => PublicEndpoint[(String, TVShowId, SeasonNumber, EpisodeNumber), ErrorInfo, Unit, Any] =
       (name, description) =>
         seasonBaseEndpoint(name, description)
           .in("episode")
-          .in(PathInputs.pathEpisodeNumberNew)
+          .in(PathInputs.pathEpisodeNumber)
 }

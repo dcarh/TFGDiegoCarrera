@@ -1,6 +1,8 @@
 package modelClasses.app.media
 
 import io.circe.generic.auto.*
+import modelClasses.ids.Media.MovieId
+import modelClasses.ids.Social.{LikeId, MediaContentListId, ReviewId}
 import modelClasses.app.social.{Like, MediaContentList, Review}
 
 case class Movie(
@@ -8,30 +10,30 @@ case class Movie(
                   cast               : List[(String, String)],
                   director           : String,
                   genres             : List[(Int, String)],
-                  id                 : Movie.Id,
+                  id                 : MovieId,
                   overview           : String,
                   productionCompanies: List[(Int, String)],
                   productionCountries: List[(String, String)],
-                  recommendations    : List[Movie.Id],
+                  recommendations    : List[MovieId],
                   revenue            : Long,
                   runtime            : Int,
-                  similar            : List[Movie.Id],
+                  similar            : List[MovieId],
                   status             : String,
                   title              : String,
                   year               : String,
                 
                   averageRating      : Double,
-                  likes              : List[Like.Id],
-                  lists              : List[MediaContentList.Id],
+                  likes              : List[LikeId],
+                  lists              : List[MediaContentListId],
                   numberOfAbandoned  : Long,
                   numberOfCompleted  : Long,
                   numberOfInProgress : Option[Long],
                   numberOfPaused     : Option[Long],
                   numberOfPending    : Long,
                   ratings            : Long,
-                  reviews            : List[Review.Id]
+                  reviews            : List[ReviewId]
                 )
 
-object Movie {
-  type Id = Long
-}
+// object Movie {
+//   type Id = Long
+// }

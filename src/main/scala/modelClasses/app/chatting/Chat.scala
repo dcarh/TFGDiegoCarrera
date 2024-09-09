@@ -1,14 +1,19 @@
 package modelClasses.app.chatting
 
-import modelClasses.app.user.User
+import upickle.default.*
+import modelClasses.ids.Chatting.{ChatId, MessageId}
+import modelClasses.ids.User.UserId
+
+import upickle.default.ReadWriter.join
 
 case class Chat(
-               id         : Chat.Id,
-               user1Id    : User.Id,
-               user2Id    : User.Id,
-               messagesIds: List[Message.Id]
-               )
-object  Chat {
-  type Id = Long
-}
+               id         : ChatId,
+               user1Id    : UserId,
+               user2Id    : UserId,
+               messagesIds: List[MessageId]
+               ) derives ReadWriter
+
+// object  Chat {
+//   type Id = Long
+// }
 

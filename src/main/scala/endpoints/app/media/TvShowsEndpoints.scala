@@ -4,7 +4,9 @@ import sttp.tapir._
 
 import endpoints.inputs.Common._
 import endpoints.outputs.Common._
+
 import modelClasses.app.media.TVShow
+import modelClasses.ids.Media.TVShowId
 
 import java.util.UUID
 
@@ -26,7 +28,7 @@ object TvShowsEndpoints {
       .in(QueryInputs.querySortBy)
       .out(MediaOutputs.jsonTVShowListOut)
 
-  val specificTVShowEndpoint: PublicEndpoint[TVShow.Id, Unit, TVShow, Any] =
+  val specificTVShowEndpoint: PublicEndpoint[TVShowId, Unit, TVShow, Any] =
     tvShowBaseEndpoint
       .name("Specific TV show endpoint")
       .description("This endpoint returns a specific TV show by its Id")

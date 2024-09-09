@@ -1,7 +1,9 @@
 package modelClasses.app.user
 
+import modelClasses.ids.User.UserId
+
 case class UserSettings(
-                       user    : User.Id,
+                       user    : UserId,
                        isPublic: Boolean
                        )
 

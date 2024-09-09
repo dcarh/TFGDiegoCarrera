@@ -1,6 +1,8 @@
 package modelClasses.app.media
 
 import io.circe.generic.auto.*
+import modelClasses.ids.Media.TVShowId
+import modelClasses.ids.Social.{LikeId, MediaContentListId, ReviewId}
 import modelClasses.app.social.{Like, MediaContentList, Review}
 
 case class TVShow(
@@ -9,35 +11,35 @@ case class TVShow(
                    episodeRuntime     : Int,
                    firstAirDate       : String,
                    genres             : List[(Int, String)],
-                   id                 : TVShow.Id,
+                   id                 : TVShowId,
                    lastAirDate        : String,
                    numberOfEpisodes   : Int,
                    numberOfSeasons    : Int,
                    overview           : String,
                    productionCompanies: List[(Int, String)],
                    productionCountries: List[(String, String)],
-                   recommendations    : List[TVShow.Id],
-                   similar            : List[TVShow.Id],
+                   recommendations    : List[TVShowId],
+                   similar            : List[TVShowId],
                    status             : String,
                    title              : String,
 
                    averageRating      : Double,
-                   episodesIds        : List[Episode.Id],
-                   episodesNumbers    : List[Episode.Number],
-                   seasonsIds         : List[Season.Id],
-                   seasonsNumbers     : List[Season.Number],
-                   likes              : List[Like.Id],
-                   lists              : List[MediaContentList.Id],
+                   // episodesIds        : List[Episode.Id],
+                   // episodesNumbers    : List[Episode.Number],
+                   // seasonsIds         : List[Season.Id],
+                   // seasonsNumbers     : List[Season.Number],
+                   likes              : List[LikeId],
+                   lists              : List[MediaContentListId],
                    numberOfAbandoned  : Long,
                    numberOfCompleted  : Long,
                    numberOfInProgress : Option[Long],
                    numberOfPaused     : Option[Long],
                    numberOfPending    : Long,
                    ratings            : Long,
-                   reviews            : List[Review.Id],
+                   reviews            : List[ReviewId],
                    totalRuntime       : Int
                  )
 
-object TVShow {
-  type Id = Long
-}
+// object TVShow {
+//   type Id = Long
+// }

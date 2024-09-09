@@ -4,7 +4,9 @@ import sttp.tapir._
 
 import endpoints.inputs.Common._
 import endpoints.outputs.Common._
+
 import modelClasses.app.media.Videogame
+import modelClasses.ids.Media.VideogameId
 
 object VideogamesEndpoints {
 
@@ -24,7 +26,7 @@ object VideogamesEndpoints {
       .in(QueryInputs.querySortBy)
       .out(MediaOutputs.jsonVideogameListOut)
 
-  val specificVideogameEndpoint: PublicEndpoint[Videogame.Id, Unit, Videogame, Any] =
+  val specificVideogameEndpoint: PublicEndpoint[VideogameId, Unit, Videogame, Any] =
     videogameBaseEndpoint
       .name("Specific videogame endpoint")
       .description("This endpoint returns a specific videogame by its Id")

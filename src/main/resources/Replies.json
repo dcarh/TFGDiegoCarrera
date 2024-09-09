@@ -1,260 +1,258 @@
-{
-  "replies": [
-    {
-      "id": 1,
-      "user": 2,
-      "objectReplied": {"left": 101},
-      "likes": [1, 2],
-      "replies": [],
-      "visibility": "Public"
-    },
-    {
-      "id": 2,
-      "user": 3,
-      "objectReplied": {"left": 102},
-      "likes": [3],
-      "replies": [1],
-      "visibility": "Followers"
-    },
-    {
-      "id": 3,
-      "user": 4,
-      "objectReplied": {"left": 103},
-      "likes": [],
-      "replies": [],
-      "visibility": "Private"
-    },
-    {
-      "id": 4,
-      "user": 5,
-      "objectReplied": {"left": 104},
-      "likes": [4],
-      "replies": [2],
-      "visibility": "Public"
-    },
-    {
-      "id": 5,
-      "user": 6,
-      "objectReplied": {"left": 105},
-      "likes": [5],
-      "replies": [3],
-      "visibility": "Followers"
-    },
-    {
-      "id": 6,
-      "user": 7,
-      "objectReplied": {"left": 106},
-      "likes": [6, 7],
-      "replies": [],
-      "visibility": "Private"
-    },
-    {
-      "id": 7,
-      "user": 8,
-      "objectReplied": {"left": 107},
-      "likes": [8],
-      "replies": [4],
-      "visibility": "Public"
-    },
-    {
-      "id": 8,
-      "user": 9,
-      "objectReplied": {"left": 108},
-      "likes": [],
-      "replies": [5],
-      "visibility": "Followers"
-    },
-    {
-      "id": 9,
-      "user": 10,
-      "objectReplied": {"left": 109},
-      "likes": [9],
-      "replies": [],
-      "visibility": "Private"
-    },
-    {
-      "id": 10,
-      "user": 11,
-      "objectReplied": {"left": 110},
-      "likes": [10],
-      "replies": [6],
-      "visibility": "Public"
-    },
-    {
-      "id": 11,
-      "user": 12,
-      "objectReplied": {"left": 111},
-      "likes": [],
-      "replies": [7],
-      "visibility": "Followers"
-    },
-    {
-      "id": 12,
-      "user": 13,
-      "objectReplied": {"left": 112},
-      "likes": [11, 12],
-      "replies": [],
-      "visibility": "Private"
-    },
-    {
-      "id": 13,
-      "user": 14,
-      "objectReplied": {"left": 113},
-      "likes": [13],
-      "replies": [8],
-      "visibility": "Public"
-    },
-    {
-      "id": 14,
-      "user": 15,
-      "objectReplied": {"left": 114},
-      "likes": [14],
-      "replies": [9],
-      "visibility": "Followers"
-    },
-    {
-      "id": 15,
-      "user": 1,
-      "objectReplied": {"left": 115},
-      "likes": [15],
-      "replies": [],
-      "visibility": "Private"
-    },
-    {
-      "id": 16,
-      "user": 2,
-      "objectReplied": {"left": 116},
-      "likes": [1, 2],
-      "replies": [10],
-      "visibility": "Public"
-    },
-    {
-      "id": 17,
-      "user": 3,
-      "objectReplied": {"left": 117},
-      "likes": [3],
-      "replies": [11],
-      "visibility": "Followers"
-    },
-    {
-      "id": 18,
-      "user": 4,
-      "objectReplied": {"left": 118},
-      "likes": [],
-      "replies": [],
-      "visibility": "Private"
-    },
-    {
-      "id": 19,
-      "user": 5,
-      "objectReplied": {"left": 119},
-      "likes": [4],
-      "replies": [12],
-      "visibility": "Public"
-    },
-    {
-      "id": 20,
-      "user": 6,
-      "objectReplied": {"left": 120},
-      "likes": [5],
-      "replies": [13],
-      "visibility": "Followers"
-    },
-    {
-      "id": 21,
-      "user": 7,
-      "objectReplied": {"left": 121},
-      "likes": [6, 7],
-      "replies": [],
-      "visibility": "Private"
-    },
-    {
-      "id": 22,
-      "user": 8,
-      "objectReplied": {"left": 122},
-      "likes": [8],
-      "replies": [14],
-      "visibility": "Public"
-    },
-    {
-      "id": 23,
-      "user": 9,
-      "objectReplied": {"left": 123},
-      "likes": [],
-      "replies": [15],
-      "visibility": "Followers"
-    },
-    {
-      "id": 24,
-      "user": 10,
-      "objectReplied": {"left": 124},
-      "likes": [9],
-      "replies": [],
-      "visibility": "Private"
-    },
-    {
-      "id": 25,
-      "user": 11,
-      "objectReplied": {"left": 125},
-      "likes": [10],
-      "replies": [16],
-      "visibility": "Public"
-    },
-    {
-      "id": 26,
-      "user": 12,
-      "objectReplied": {"left": 126},
-      "likes": [],
-      "replies": [17],
-      "visibility": "Followers"
-    },
-    {
-      "id": 27,
-      "user": 13,
-      "objectReplied": {"left": 127},
-      "likes": [11, 12],
-      "replies": [],
-      "visibility": "Private"
-    },
-    {
-      "id": 28,
-      "user": 14,
-      "objectReplied": {"left": 128},
-      "likes": [13],
-      "replies": [18],
-      "visibility": "Public"
-    },
-    {
-      "id": 29,
-      "user": 15,
-      "objectReplied": {"left": 129},
-      "likes": [14],
-      "replies": [19],
-      "visibility": "Followers"
-    },
-    {
-      "id": 30,
-      "user": 1,
-      "objectReplied": {"left": 130},
-      "likes": [15],
-      "replies": [],
-      "visibility": "Private"
-    },
-    {
-      "id": 31,
-      "user": 2,
-      "objectReplied": {"left": 131},
-      "likes": [1, 2],
-      "replies": [20],
-      "visibility": "Public"
-    },
-    {
-      "id": 32,
-      "user": 3,
-      "objectReplied": {"left": 132},
-      "likes": [3],
-      "replies": [21],
-      "visibility": "Followers"
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "user": 2,
+    "objectReplied": {"left": 101},
+    "likes": [1, 2],
+    "replies": [],
+    "visibility": "Public"
+  },
+  {
+    "id": 2,
+    "user": 3,
+    "objectReplied": {"left": 102},
+    "likes": [3],
+    "replies": [1],
+    "visibility": "Followers"
+  },
+  {
+    "id": 3,
+    "user": 4,
+    "objectReplied": {"left": 103},
+    "likes": [],
+    "replies": [],
+    "visibility": "Private"
+  },
+  {
+    "id": 4,
+    "user": 5,
+    "objectReplied": {"left": 104},
+    "likes": [4],
+    "replies": [2],
+    "visibility": "Public"
+  },
+  {
+    "id": 5,
+    "user": 6,
+    "objectReplied": {"left": 105},
+    "likes": [5],
+    "replies": [3],
+    "visibility": "Followers"
+  },
+  {
+    "id": 6,
+    "user": 7,
+    "objectReplied": {"left": 106},
+    "likes": [6, 7],
+    "replies": [],
+    "visibility": "Private"
+  },
+  {
+    "id": 7,
+    "user": 8,
+    "objectReplied": {"left": 107},
+    "likes": [8],
+    "replies": [4],
+    "visibility": "Public"
+  },
+  {
+    "id": 8,
+    "user": 9,
+    "objectReplied": {"left": 108},
+    "likes": [],
+    "replies": [5],
+    "visibility": "Followers"
+  },
+  {
+    "id": 9,
+    "user": 10,
+    "objectReplied": {"left": 109},
+    "likes": [9],
+    "replies": [],
+    "visibility": "Private"
+  },
+  {
+    "id": 10,
+    "user": 11,
+    "objectReplied": {"left": 110},
+    "likes": [10],
+    "replies": [6],
+    "visibility": "Public"
+  },
+  {
+    "id": 11,
+    "user": 12,
+    "objectReplied": {"left": 111},
+    "likes": [],
+    "replies": [7],
+    "visibility": "Followers"
+  },
+  {
+    "id": 12,
+    "user": 13,
+    "objectReplied": {"left": 112},
+    "likes": [11, 12],
+    "replies": [],
+    "visibility": "Private"
+  },
+  {
+    "id": 13,
+    "user": 14,
+    "objectReplied": {"left": 113},
+    "likes": [13],
+    "replies": [8],
+    "visibility": "Public"
+  },
+  {
+    "id": 14,
+    "user": 15,
+    "objectReplied": {"left": 114},
+    "likes": [14],
+    "replies": [9],
+    "visibility": "Followers"
+  },
+  {
+    "id": 15,
+    "user": 1,
+    "objectReplied": {"left": 115},
+    "likes": [15],
+    "replies": [],
+    "visibility": "Private"
+  },
+  {
+    "id": 16,
+    "user": 2,
+    "objectReplied": {"left": 116},
+    "likes": [1, 2],
+    "replies": [10],
+    "visibility": "Public"
+  },
+  {
+    "id": 17,
+    "user": 3,
+    "objectReplied": {"left": 117},
+    "likes": [3],
+    "replies": [11],
+    "visibility": "Followers"
+  },
+  {
+    "id": 18,
+    "user": 4,
+    "objectReplied": {"left": 118},
+    "likes": [],
+    "replies": [],
+    "visibility": "Private"
+  },
+  {
+    "id": 19,
+    "user": 5,
+    "objectReplied": {"left": 119},
+    "likes": [4],
+    "replies": [12],
+    "visibility": "Public"
+  },
+  {
+    "id": 20,
+    "user": 6,
+    "objectReplied": {"left": 120},
+    "likes": [5],
+    "replies": [13],
+    "visibility": "Followers"
+  },
+  {
+    "id": 21,
+    "user": 7,
+    "objectReplied": {"left": 121},
+    "likes": [6, 7],
+    "replies": [],
+    "visibility": "Private"
+  },
+  {
+    "id": 22,
+    "user": 8,
+    "objectReplied": {"left": 122},
+    "likes": [8],
+    "replies": [14],
+    "visibility": "Public"
+  },
+  {
+    "id": 23,
+    "user": 9,
+    "objectReplied": {"left": 123},
+    "likes": [],
+    "replies": [15],
+    "visibility": "Followers"
+  },
+  {
+    "id": 24,
+    "user": 10,
+    "objectReplied": {"left": 124},
+    "likes": [9],
+    "replies": [],
+    "visibility": "Private"
+  },
+  {
+    "id": 25,
+    "user": 11,
+    "objectReplied": {"left": 125},
+    "likes": [10],
+    "replies": [16],
+    "visibility": "Public"
+  },
+  {
+    "id": 26,
+    "user": 12,
+    "objectReplied": {"left": 126},
+    "likes": [],
+    "replies": [17],
+    "visibility": "Followers"
+  },
+  {
+    "id": 27,
+    "user": 13,
+    "objectReplied": {"left": 127},
+    "likes": [11, 12],
+    "replies": [],
+    "visibility": "Private"
+  },
+  {
+    "id": 28,
+    "user": 14,
+    "objectReplied": {"left": 128},
+    "likes": [13],
+    "replies": [18],
+    "visibility": "Public"
+  },
+  {
+    "id": 29,
+    "user": 15,
+    "objectReplied": {"left": 129},
+    "likes": [14],
+    "replies": [19],
+    "visibility": "Followers"
+  },
+  {
+    "id": 30,
+    "user": 1,
+    "objectReplied": {"left": 130},
+    "likes": [15],
+    "replies": [],
+    "visibility": "Private"
+  },
+  {
+    "id": 31,
+    "user": 2,
+    "objectReplied": {"left": 131},
+    "likes": [1, 2],
+    "replies": [20],
+    "visibility": "Public"
+  },
+  {
+    "id": 32,
+    "user": 3,
+    "objectReplied": {"left": 132},
+    "likes": [3],
+    "replies": [21],
+    "visibility": "Followers"
+  }
+]

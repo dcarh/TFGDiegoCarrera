@@ -1,7 +1,7 @@
 import cats.effect.*
 import clients.IGDBClient
 import endpoints.igdb.Videogames
-import modelClasses.app.media.IDs.VideogameId
+import modelClasses.ids.Media.VideogameId
 
 object GetIGDBRequestExample extends IOApp {
 

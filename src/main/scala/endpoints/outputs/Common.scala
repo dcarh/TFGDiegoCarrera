@@ -2,12 +2,15 @@ package endpoints.outputs
 
 import io.circe.*
 import io.circe.generic.auto.*
+
 import modelClasses.ErrorInfo
 import modelClasses.app.chatting.Chat
 import modelClasses.app.media.{Book, Episode, Movie, Season, TVShow, Videogame}
 import modelClasses.app.social.{Entry, MediaContentList, Reply, Review}
 import modelClasses.app.user.{User, UserSettings}
+
 import schemas.UnionTypes.*
+
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*

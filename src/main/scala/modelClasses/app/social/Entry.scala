@@ -1,18 +1,26 @@
 package modelClasses.app.social
 
+import upickle.default.ReadWriter.join
+import upickle.default.*
+
 import modelClasses.app.Time
-import modelClasses.app.media.{Book, Episode, Movie, Season, TVShow, Videogame}
+import modelClasses.app.media.*
 import modelClasses.app.user.User
 
+import modelClasses.ids.Media.*
+import modelClasses.ids.Social.{EntryId, RatingId, ReviewId}
+import modelClasses.ids.User.UserId
+
+
 case class Entry(
-                id           : Entry.Id,
-                userId       : User.Id,
-                elementId    : Movie.Id | TVShow.Id | (TVShow.Id, Season.Number) | (TVShow.Id, Season.Number, Episode.Number) | Videogame.Id | Book.Id,
+                id           : EntryId,
+                userId       : UserId,
+                elementId    : MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId,
                 //elementId    : Movie.Id | TVShow.Id | Season.Id | Episode.Id | Videogame.Id | Book.Id,
                 // elementTitle: String,
                 // elementType : String,
-                rating       : Rating.Id,
-                review       : Review.Id,
+                rating       : RatingId,
+                review       : ReviewId,
                 like         : Boolean,
                 firstTime    : Boolean,
                 completed    : Boolean,
@@ -23,8 +31,8 @@ case class Entry(
                 platform     : Option[Int],
                 timeSpent    : Time,
                 tags         : List[String]
-                )
+                ) derives ReadWriter
 
-object Entry {
-  type Id = Long
-}
+// object Entry {
+//   type Id = Long
+// }
