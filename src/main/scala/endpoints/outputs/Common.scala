@@ -10,6 +10,7 @@ import modelClasses.app.social.{Entry, MediaContentList, Reply, Review}
 import modelClasses.app.user.{User, UserSettings}
 
 import schemas.UnionTypes.*
+import schemas.UnionTypesForIds.*
 
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*

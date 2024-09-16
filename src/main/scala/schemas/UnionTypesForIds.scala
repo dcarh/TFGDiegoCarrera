@@ -10,12 +10,29 @@ import io.circe.Decoder
 
 import cats.syntax.functor.*
 
-import modelClasses.app.media.{MovieId, TVShowId, SeasonNumber, EpisodeNumber, VideogameId, BookId}
 import modelClasses.ids.Media.*
 import modelClasses.ids.Social.*
 
 object UnionTypesForIds {
 
+
+  implicit val listMediaUnionEncoder: Encoder[MovieId | TVShowId | VideogameId | BookId] = Encoder.instance {
+    case movieId: MovieId => movieId.asJson
+    case tvShowId: TVShowId => tvShowId.asJson
+    case videogameId: VideogameId => videogameId.asJson
+    case bookId: BookId => bookId.asJson
+  }
+
+  implicit val listMediaUnionDecoder: Decoder[MovieId | TVShowId | VideogameId | BookId] = Decoder.instance { cursor =>
+    List[Decoder[MovieId | TVShowId | VideogameId | BookId]](
+      Decoder[MovieId].widen,
+      Decoder[TVShowId].widen,
+      Decoder[VideogameId].widen,
+      Decoder[BookId].widen
+    ).reduceLeft(_ or _).apply(cursor)
+  }
+
+  implicit val listMediaUnionSchema: Schema[MovieId | TVShowId  | VideogameId | BookId] = Schema.derivedUnion
 
   implicit val mediaUnionEncoder3: Encoder[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId] = Encoder.instance {
     case movieId: MovieId => movieId.asJson
@@ -62,6 +79,6 @@ object UnionTypesForIds {
     ).reduceLeft(_ or _).apply(cursor)
   }
 
-  // implicit val mediaUnionSchema4: Schema[MovieId | TVShowId | VideogameId | BookId | MediaContentListId | ReviewId | ReplyId] = Schema.derivedUnion
+  implicit val mediaUnionSchema4: Schema[MovieId | TVShowId | VideogameId | BookId | MediaContentListId | ReviewId | ReplyId] = Schema.derivedUnion
 
 }

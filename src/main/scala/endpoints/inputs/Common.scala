@@ -20,6 +20,7 @@ import codecs.ModelClasses.Social.*
 import codecs.ModelClasses.User.*
 
 import schemas.UnionTypes.*
+import schemas.UnionTypesForIds.*
 
 object Common {
 
