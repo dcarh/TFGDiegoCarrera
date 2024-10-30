@@ -1,7 +1,5 @@
 package modelClasses.app.social
 
-import upickle.default.*
-
 import io.circe.generic.auto.*
 
 import modelClasses.app.media.{Book, Movie, TVShow, Videogame}
@@ -19,7 +17,7 @@ case class Review(
                    likes         : List[LikeId],
                    replies       : List[ReplyId],
                    visibility    : Visibility
-                 ) derives ReadWriter
+                 )
 
 // object Review {
 //   type Id = Long

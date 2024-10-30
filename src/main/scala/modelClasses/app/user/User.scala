@@ -1,7 +1,5 @@
 package modelClasses.app.user
 
-import upickle.default.*
-
 import io.circe.generic.auto.*
 
 import modelClasses.app.chatting.Chat
@@ -35,7 +33,7 @@ case class User(
                chats     : List[ChatId],
                stats     : UserStats,
                settings  : UserSettings 
-               ) derives ReadWriter
+               )
 
 // object User {
 //   type Id = Long

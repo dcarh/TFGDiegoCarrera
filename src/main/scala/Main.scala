@@ -1,4 +1,3 @@
-
 import cats.effect.{IO, ExitCode, IOApp}
 import org.http4s.blaze.server.BlazeServerBuilder
 import org.http4s.implicits._

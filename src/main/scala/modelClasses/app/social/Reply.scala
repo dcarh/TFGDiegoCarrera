@@ -1,6 +1,5 @@
 package modelClasses.app.social
 
-import upickle.default.*
 import modelClasses.app.media.{Book, Movie, TVShow, Videogame}
 import modelClasses.app.user.User
 
@@ -17,7 +16,7 @@ case class Reply(
                   likes        : List[LikeId],
                   replies      : List[ReplyId],
                   visibility   : Visibility
-                ) derives ReadWriter
+                )
 
 // object Reply {
 //   type Id = Long

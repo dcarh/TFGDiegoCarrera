@@ -1,6 +1,5 @@
 package modelClasses.app.social
 
-import upickle.default.*
 import modelClasses.app.media.{Book, Episode, Movie, Season, TVShow, Videogame}
 import modelClasses.app.user.User
 
@@ -13,7 +12,7 @@ case class Rating(
                  userId: UserId,
                  mediaRated: MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId,
                  rating: Int
-                 ) derives ReadWriter
+                 )
 
 // object Rating {
 //   type Id = Long

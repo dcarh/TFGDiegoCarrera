@@ -1,8 +1,5 @@
 package modelClasses.app.social
 
-import upickle.default.ReadWriter.join
-import upickle.default.*
-
 import modelClasses.app.Time
 import modelClasses.app.media.*
 import modelClasses.app.user.User
@@ -31,7 +28,7 @@ case class Entry(
                 platform     : Option[Int],
                 timeSpent    : Time,
                 tags         : List[String]
-                ) derives ReadWriter
+                )
 
 // object Entry {
 //   type Id = Long
