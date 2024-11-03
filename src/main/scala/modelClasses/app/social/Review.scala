@@ -2,11 +2,8 @@ package modelClasses.app.social
 
 import io.circe.generic.auto.*
 
-import modelClasses.app.media.{Book, Movie, TVShow, Videogame}
-import modelClasses.app.user.User
-
 import modelClasses.ids.Media.{MovieId, TVShowId, VideogameId, BookId}
-import modelClasses.ids.Social.{LikeId, MediaContentListId, ReviewId, ReplyId}
+import modelClasses.ids.Social.{LikeId, ReviewId, ReplyId}
 import modelClasses.ids.User.UserId
 
 case class Review(

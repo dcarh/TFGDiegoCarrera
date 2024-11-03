@@ -1,8 +1,6 @@
 package modelClasses.app.social
 
 import modelClasses.app.Time
-import modelClasses.app.media.*
-import modelClasses.app.user.User
 
 import modelClasses.ids.Media.*
 import modelClasses.ids.Social.{EntryId, RatingId, ReviewId}

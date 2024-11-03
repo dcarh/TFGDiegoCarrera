@@ -2,10 +2,6 @@ package modelClasses.app.user
 
 import io.circe.generic.auto.*
 
-import modelClasses.app.chatting.Chat
-import modelClasses.app.media.{Book, Movie, TVShow, Videogame}
-import modelClasses.app.social.{Entry, Like, MediaContentList, Rating, Reply, Review}
-
 import modelClasses.ids.Chatting.ChatId
 import modelClasses.ids.Media.{MovieId, TVShowId, VideogameId, BookId}
 import modelClasses.ids.Social.{EntryId, LikeId, MediaContentListId, RatingId, ReviewId, ReplyId}

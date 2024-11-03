@@ -1,8 +1,5 @@
 package modelClasses.app.social
 
-import modelClasses.app.media.{Book, Episode, Movie, Season, TVShow, Videogame}
-import modelClasses.app.user.User
-
 import modelClasses.ids.Media.{MovieId, TVShowId, SeasonNumber, EpisodeNumber, VideogameId, BookId}
 import modelClasses.ids.Social.RatingId
 import modelClasses.ids.User.UserId
