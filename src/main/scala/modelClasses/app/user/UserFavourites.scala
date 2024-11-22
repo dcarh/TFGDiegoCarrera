@@ -4,8 +4,8 @@ import modelClasses.app.media.{Book, Movie, TVShow, Videogame}
 import modelClasses.ids.Media.{MovieId, TVShowId, BookId, VideogameId}
 
 case class UserFavourites(
-                         movie    : MovieId,
-                         tvShow   : TVShowId,
-                         videogame: VideogameId,
-                         book     : BookId
+                         movie    : Option[MovieId],
+                         tvShow   : Option[TVShowId],
+                         videogame: Option[VideogameId],
+                         book     : Option[BookId]
                          )

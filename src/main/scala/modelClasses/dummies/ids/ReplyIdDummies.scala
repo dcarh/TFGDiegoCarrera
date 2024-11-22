@@ -1,0 +1,10 @@
+package modelClasses.dummies.ids
+
+import modelClasses.ids.Social.ReplyId
+
+object ReplyIdDummies {
+  val replyId1: ReplyId = ReplyId(1)
+  val replyId2: ReplyId = ReplyId(2)
+  val replyId3: ReplyId = ReplyId(3)
+  val replyId4: ReplyId = ReplyId(4)
+}

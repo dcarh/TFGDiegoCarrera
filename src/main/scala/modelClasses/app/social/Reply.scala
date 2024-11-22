@@ -7,12 +7,10 @@ import modelClasses.ids.User.UserId
 case class Reply(
                   id           : ReplyId,
                   user         : UserId,
-                  // objectReplied: Either[MediaContentList.Id, UserGeneratedContent.Id],
-                  objectReplied: MovieId | TVShowId | VideogameId | BookId | MediaContentListId | ReviewId | ReplyId,    
-                  //TODO: ¿¿¿¿ Movie, TVShow, Videogame, Book ????
+                  objectReplied: MediaContentListId | ReviewId | ReplyId,
+                  reply        : String,
                   likes        : List[LikeId],
-                  replies      : List[ReplyId],
-                  visibility   : Visibility
+                  replies      : List[ReplyId]
                 )
 
 // object Reply {

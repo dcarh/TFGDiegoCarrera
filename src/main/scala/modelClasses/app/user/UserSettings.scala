@@ -3,7 +3,7 @@ package modelClasses.app.user
 import modelClasses.ids.User.UserId
 
 case class UserSettings(
-                       user    : UserId,
-                       isPublic: Boolean
+                       // user    : UserId,
+                       isPrivate: Boolean
                        )
 

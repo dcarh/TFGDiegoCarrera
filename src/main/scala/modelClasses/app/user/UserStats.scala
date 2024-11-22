@@ -4,7 +4,7 @@ import modelClasses.app.Time
 import modelClasses.ids.User.UserId
 
 case class UserStats(
-                    userId                        : UserId,
+                    // userId                        : UserId,
                     avgElementsRating             : Double,
                     timeSpentInMovies             : Time,
                     timeSpentInTVShows            : Time,
@@ -15,7 +15,7 @@ case class UserStats(
                     numberOfTVShowsCompleted      : Int,
                     numberOfVideogamesCompleted   : Int,
                     numberOfBooksCompleted        : Int,
-                    totalNumberOfElementsCompleted: Int,
+                    totalNumberOfElementsCompleted: Int
 
                     // TODO: Meter más campos
                     )
