@@ -9,7 +9,3 @@ case class Like(
                userId   : UserId,
                elementId: MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId | MediaContentListId | ReviewId | ReplyId
                )
-
-// object Like {
-//    type Id = Long
-// }

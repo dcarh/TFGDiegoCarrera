@@ -10,11 +10,24 @@ import io.circe.Decoder
 
 import cats.syntax.functor.*
 
-import modelClasses.app.media._
-import modelClasses.ids.Media.*
-import modelClasses.ids.Social.*
+import modelClasses.app.media.*
+import modelClasses.app.social.{MediaContentList, Reply, Review}
+
+import schemas.UnionTypesForIds.*
 
 object UnionTypes {
+
+  implicit val unionEncoder1: Encoder[String | Long] = Encoder.instance {
+    case string: String => string.asJson
+    case long: Long => long.asJson
+  }
+
+  implicit val unionDecoder1: Decoder[String | Long] = Decoder.instance { cursor =>
+    List[Decoder[String | Long]](
+      Decoder[String].widen,
+      Decoder[Long].widen
+    ).reduceLeft(_ or _).apply(cursor)
+  }
 
   implicit val mediaUnionEncoder: Encoder[Movie | TVShow | Season | Episode | Videogame | Book] = Encoder.instance {
     case movie: Movie => movie.asJson
@@ -56,17 +69,71 @@ object UnionTypes {
   
   implicit val mediaUnionSchema2: Schema[Movie | TVShow | Videogame | Book] = Schema.derivedUnion
 
-  implicit val unionEncoder1: Encoder[String | Long] = Encoder.instance {
-    case string: String => string.asJson
-    case long: Long => long.asJson
+  implicit val mediaUnionEncoder3: Encoder[TVShow | Season | Videogame | Book] = Encoder.instance {
+    case tvShow: TVShow => tvShow.asJson
+    case season: Season => season.asJson
+    case videogame: Videogame => videogame.asJson
+    case book: Book => book.asJson
   }
 
-  implicit val unionDecoder1: Decoder[String | Long] = Decoder.instance { cursor =>
-    List[Decoder[String | Long]](
-      Decoder[String].widen,
-      Decoder[Long].widen
+  implicit val mediaUnionDecoder3: Decoder[TVShow | Season | Videogame | Book] = Decoder.instance { cursor =>
+    List[Decoder[TVShow | Season | Videogame | Book]](
+      Decoder[TVShow].widen,
+      Decoder[Season].widen,
+      Decoder[Videogame].widen,
+      Decoder[Book].widen
     ).reduceLeft(_ or _).apply(cursor)
   }
+
+  implicit val mediaUnionSchema3: Schema[TVShow | Season | Videogame | Book] = Schema.derivedUnion
+
+  implicit val mediaUnionEncoder4: Encoder[Movie | TVShow | Season | Videogame | Book] = Encoder.instance {
+    case movie: Movie => movie.asJson
+    case tvShow: TVShow => tvShow.asJson
+    case season: Season => season.asJson
+    case videogame: Videogame => videogame.asJson
+    case book: Book => book.asJson
+  }
+
+  implicit val mediaUnionDecoder4: Decoder[Movie | TVShow | Season | Videogame | Book] = Decoder.instance { cursor =>
+    List[Decoder[Movie | TVShow | Season | Videogame | Book]](
+      Decoder[Movie].widen,
+      Decoder[TVShow].widen,
+      Decoder[Season].widen,
+      Decoder[Videogame].widen,
+      Decoder[Book].widen
+    ).reduceLeft(_ or _).apply(cursor)
+  }
+
+  implicit val mediaUnionSchema4: Schema[Movie | TVShow | Season | Videogame | Book] = Schema.derivedUnion
+
+  implicit val likeableUnionEncoder: Encoder[Movie | TVShow | Season | Episode | Videogame | Book | MediaContentList | Review | Reply] = Encoder.instance {
+    case movie: Movie => movie.asJson
+    case tvShow: TVShow => tvShow.asJson
+    case season: Season => season.asJson
+    case episode: Episode => episode.asJson
+    case videogame: Videogame => videogame.asJson
+    case book: Book => book.asJson
+    case mediaContentList: MediaContentList => mediaContentList.asJson
+    case review: Review => review.asJson
+    case reply: Reply => reply.asJson
+  }
+
+  implicit val likeableUnionDecoder: Decoder[Movie | TVShow | Season | Episode | Videogame | Book | MediaContentList | Review | Reply] = Decoder.instance { cursor =>
+    List[Decoder[Movie | TVShow | Season | Episode | Videogame | Book | MediaContentList | Review | Reply]](
+      Decoder[Movie].widen,
+      Decoder[TVShow].widen,
+      Decoder[Season].widen,
+      Decoder[Episode].widen,
+      Decoder[Videogame].widen,
+      Decoder[Book].widen,
+      Decoder[MediaContentList].widen,
+      Decoder[Review].widen,
+      Decoder[Reply].widen
+    ).reduceLeft(_ or _).apply(cursor)
+  }
+
+  implicit val likeableUnionSchema: Schema[Movie | TVShow | Season | Episode | Videogame | Book | MediaContentList | Review | Reply] = Schema.derivedUnion
 
   // implicit val unionSchema1: Schema[String | Long] = Schema.derivedUnion
 // 

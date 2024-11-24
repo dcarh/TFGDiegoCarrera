@@ -2,16 +2,13 @@ package endpoints.outputs
 
 import io.circe.*
 import io.circe.generic.auto.*
-
 import modelClasses.ErrorInfo
-import modelClasses.app.chatting.Chat
+import modelClasses.app.chatting.{Chat, Message}
 import modelClasses.app.media.{Book, Episode, Movie, Season, TVShow, Videogame}
-import modelClasses.app.social.{Entry, MediaContentList, Reply, Review}
+import modelClasses.app.social.{Entry, Like, MediaContentList, Rating, Reply, Review}
 import modelClasses.app.user.{User, UserSettings}
-
 import schemas.UnionTypes.*
 import schemas.UnionTypesForIds.*
-
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*
@@ -22,6 +19,21 @@ object Common {
 
     val jsonErrorInfoOut: EndpointOutput[ErrorInfo] =
       jsonBody[ErrorInfo]
+  }
+  
+  object ChattingOutputs {
+    
+    val jsonChatOut: EndpointOutput[Chat] =
+      jsonBody[Chat]
+
+    val jsonChatListOut: EndpointOutput[List[Chat]] =
+      jsonBody[List[Chat]]
+      
+    val jsonMessageOut: EndpointOutput[Message] =
+      jsonBody[Message]
+
+    val jsonMessageListOut: EndpointOutput[List[Message]] =
+      jsonBody[List[Message]]
   }
 
   object UserOutputs {
@@ -44,11 +56,14 @@ object Common {
     val jsonReviewOut: EndpointOutput[Review] =
       jsonBody[Review]
 
+    val jsonRatingOut: EndpointOutput[Rating] =
+      jsonBody[Rating]
+
+    val jsonLikeOut: EndpointOutput[Like] =
+      jsonBody[Like]
+
     val jsonReplyOut: EndpointOutput[Reply] =
       jsonBody[Reply]
-
-    val jsonChatOut: EndpointOutput[Chat] =
-      jsonBody[Chat]
 
     val jsonMediaContentListOut: EndpointOutput[MediaContentList] =
       jsonBody[MediaContentList]
@@ -59,11 +74,14 @@ object Common {
     val jsonReviewListOut: EndpointOutput[List[Review]] =
       jsonBody[List[Review]]
 
+    val jsonRatingListOut: EndpointOutput[List[Rating]] =
+      jsonBody[List[Rating]]
+
+    val jsonLikeListOut: EndpointOutput[List[Like]] =
+      jsonBody[List[Like]]
+
     val jsonReplyListOut: EndpointOutput[List[Reply]] =
       jsonBody[List[Reply]]
-
-    val jsonChatListOut: EndpointOutput[List[Chat]] =
-      jsonBody[List[Chat]]
 
     val jsonListOfMediaContentListOut: EndpointOutput[List[MediaContentList]] =
       jsonBody[List[MediaContentList]]
@@ -89,8 +107,14 @@ object Common {
     val jsonBookOut: EndpointOutput[Book] =
       jsonBody[Book]
 
-    val jsonMediaListOut: EndpointOutput[List[Movie | TVShow | Season | Episode | Videogame | Book]] =
+    val jsonAllMediaListOut: EndpointOutput[List[Movie | TVShow | Season | Episode | Videogame | Book]] =
       jsonBody[List[Movie | TVShow | Season | Episode | Videogame | Book]]
+
+    val jsonMediaListOut1: EndpointOutput[List[TVShow | Season | Videogame | Book]] =
+      jsonBody[List[TVShow | Season | Videogame | Book]]
+
+    val jsonMediaListOut2: EndpointOutput[List[Movie | TVShow | Season | Videogame | Book]] =
+      jsonBody[List[Movie | TVShow | Season | Videogame | Book]]
 
     val jsonFavouritesOut: EndpointOutput[List[Movie | TVShow | Videogame | Book]] =
       jsonBody[List[Movie | TVShow | Videogame | Book]]
@@ -112,6 +136,11 @@ object Common {
 
     val jsonBookListOut: EndpointOutput[List[Book]] =
       jsonBody[List[Book]]
+  }
+  
+  object OtherOutputs {
+    val jsonListLikeablesOutput: EndpointOutput[List[Movie | TVShow | Season | Episode | Videogame | Book | MediaContentList | Review | Reply]] =
+      jsonBody[List[Movie | TVShow | Season | Episode | Videogame | Book | MediaContentList | Review | Reply]]
   }
 
 }

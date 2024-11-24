@@ -1,10 +1,11 @@
 package endpoints.app.user
 
 import sttp.tapir.*
-import endpoints.inputs.Common._
-import endpoints.outputs.Common._
-import modelClasses.app.media.{Book, Movie, Season, TVShow, Videogame}
+import endpoints.inputs.Common.*
+import endpoints.outputs.Common.*
+import modelClasses.app.media.{Book, Episode, Movie, Season, TVShow, Videogame}
 import modelClasses.app.social.MediaContentList
+import modelClasses.ids.User.UserId
 
 object UserPendingContentEndpoints {
 
@@ -15,59 +16,58 @@ object UserPendingContentEndpoints {
 
   private val userBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
     endpoint.in("api" / "user")
-    
-  // TODO: No debe devolver un MediaContentList, sino un List[Movie | TVShow | Videogame ...]
-  val userPendingListEndpoint: PublicEndpoint[String, Unit, MediaContentList, Any] =
+  
+  val userPendingListEndpoint: PublicEndpoint[UserId, Unit, List[Movie | TVShow | Season | Videogame | Book], Any] =
     userBaseEndpoint
       .name("User's 'Pending' media content endpoint")
       .description("This endpoint returns a list of all the 'Pending' media content for a user")
       .get
-      .in(PathInputs.pathUsername)
+      .in(PathInputs.pathUserId)
       .in("pending")
-      .out(SocialOutputs.jsonMediaContentListOut)
+      .out(MediaOutputs.jsonMediaListOut2)
 
-  val userPendingMoviesListEndpoint: PublicEndpoint[String, Unit, List[Movie], Any] =
+  val userPendingMoviesListEndpoint: PublicEndpoint[UserId, Unit, List[Movie], Any] =
     userBaseEndpoint
       .name("User's 'Pending' movies endpoint")
       .description("This endpoint returns a list of all the 'Pending' movies for a user")
       .get
-      .in(PathInputs.pathUsername)
+      .in(PathInputs.pathUserId)
       .in("pending" / "movies")
       .out(MediaOutputs.jsonMovieListOut)
 
-  val userPendingTVShowsListEndpoint: PublicEndpoint[String, Unit, List[TVShow], Any] =
+  val userPendingTVShowsListEndpoint: PublicEndpoint[UserId, Unit, List[TVShow], Any] =
     userBaseEndpoint
       .name("User's 'Pending' TV shows endpoint")
       .description("This endpoint returns a list of all the 'Pending' TV shows for a user")
       .get
-      .in(PathInputs.pathUsername)
+      .in(PathInputs.pathUserId)
       .in("pending" / "tv_shows")
       .out(MediaOutputs.jsonTVShowListOut)
 
-  val userPendingSeasonsListEndpoint: PublicEndpoint[String, Unit, List[Season], Any] =
+  val userPendingSeasonsListEndpoint: PublicEndpoint[UserId, Unit, List[Season], Any] =
     userBaseEndpoint
       .name("User's 'Pending' TV seasons endpoint")
       .description("This endpoint returns a list of all the 'Pending' TV seasons for a user")
       .get
-      .in(PathInputs.pathUsername)
+      .in(PathInputs.pathUserId)
       .in("pending" / "seasons")
       .out(MediaOutputs.jsonSeasonListOut)
 
-  val userPendingVideogamesListEndpoint: PublicEndpoint[String, Unit, List[Videogame], Any] =
+  val userPendingVideogamesListEndpoint: PublicEndpoint[UserId, Unit, List[Videogame], Any] =
     userBaseEndpoint
       .name("User's 'Pending' videogames endpoint")
       .description("This endpoint returns a list of all the 'Pending' videogames for a user")
       .get
-      .in(PathInputs.pathUsername)
+      .in(PathInputs.pathUserId)
       .in("pending" / "videogames")
       .out(MediaOutputs.jsonVideogameListOut)
 
-  val userPendingBooksListEndpoint: PublicEndpoint[String, Unit, List[Book], Any] =
+  val userPendingBooksListEndpoint: PublicEndpoint[UserId, Unit, List[Book], Any] =
     userBaseEndpoint
       .name("User's 'Pending' books endpoint")
       .description("This endpoint returns a list of all the 'Pending' books for a user")
       .get
-      .in(PathInputs.pathUsername)
+      .in(PathInputs.pathUserId)
       .in("pending" / "books")
       .out(MediaOutputs.jsonBookListOut)
 

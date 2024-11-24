@@ -30,7 +30,7 @@ object ModelClasses {
   
   object Social {
     
-    import modelClasses.ids.Social.{EntryId, MediaContentListId, ReviewId}
+    import modelClasses.ids.Social.*
     
     implicit val entryIdCodec: Codec[String, EntryId, TextPlain] =
       Codec.string.mapDecode(s => DecodeResult.Value(EntryId(s.toLong)))(_.value.toString)
@@ -40,6 +40,15 @@ object ModelClasses {
 
     implicit val reviewIdCodec: Codec[String, ReviewId, TextPlain] =
       Codec.string.mapDecode(s => DecodeResult.Value(ReviewId(s.toLong)))(_.value.toString)
+
+    implicit val ratingIdCodec: Codec[String, RatingId, TextPlain] =
+      Codec.string.mapDecode(s => DecodeResult.Value(RatingId(s.toLong)))(_.value.toString)
+
+    implicit val likeIdCodec: Codec[String, LikeId, TextPlain] =
+      Codec.string.mapDecode(s => DecodeResult.Value(LikeId(s.toLong)))(_.value.toString)
+
+    implicit val replyIdCodec: Codec[String, ReplyId, TextPlain] =
+      Codec.string.mapDecode(s => DecodeResult.Value(ReplyId(s.toLong)))(_.value.toString)
   }
   
   object User {

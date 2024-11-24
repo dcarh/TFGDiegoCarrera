@@ -1,12 +1,11 @@
 package endpoints.app.user
 
-import sttp.tapir._
-
-import endpoints.inputs.Common._
-import endpoints.outputs.Common._
-
+import sttp.tapir.*
+import endpoints.inputs.Common.*
+import endpoints.outputs.Common.*
 import modelClasses.app.social.MediaContentList
 import modelClasses.ids.Social.MediaContentListId
+import modelClasses.ids.User.UserId
 
 object UserListsEndpoints {
 
@@ -18,22 +17,22 @@ object UserListsEndpoints {
   private val userBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
     endpoint.in("api" / "user")
 
-  val userListsEndpoint: PublicEndpoint[(String, Option[String]), Unit, List[MediaContentList], Any] =
+  val userListsEndpoint: PublicEndpoint[(UserId, Option[String]), Unit, List[MediaContentList], Any] =
     userBaseEndpoint
       .name("User's lists endpoint")
       .description("This endpoint returns all the lists for a user")
       .get
-      .in(PathInputs.pathUsername)
+      .in(PathInputs.pathUserId)
       .in("lists")
       .in(QueryInputs.querySortBy)
       .out(SocialOutputs.jsonListOfMediaContentListOut)
 
-  val userSpecificListEndpoint: PublicEndpoint[(String, MediaContentListId), Unit, MediaContentList, Any] =
+  val userSpecificListEndpoint: PublicEndpoint[(UserId, MediaContentListId), Unit, MediaContentList, Any] =
     userBaseEndpoint
       .name("User's specific list endpoint")
       .description("This endpoint returns a specific list for a user by the ID of the list")
       .get
-      .in(PathInputs.pathUsername)
+      .in(PathInputs.pathUserId)
       .in("lists")
       .in(PathInputs.pathListId)
       .out(SocialOutputs.jsonMediaContentListOut)

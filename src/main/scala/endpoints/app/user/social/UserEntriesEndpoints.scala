@@ -1,12 +1,11 @@
 package endpoints.app.user
 
-import sttp.tapir._
-
-import endpoints.inputs.Common._
-import endpoints.outputs.Common._
-
+import sttp.tapir.*
+import endpoints.inputs.Common.*
+import endpoints.outputs.Common.*
 import modelClasses.app.social.Entry
 import modelClasses.ids.Social.EntryId
+import modelClasses.ids.User.UserId
 
 object UserEntriesEndpoints {
 
@@ -18,21 +17,21 @@ object UserEntriesEndpoints {
   private val userBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
     endpoint.in("api" / "user")
 
-  val userEntriesEndpoint: PublicEndpoint[String, Unit, List[Entry], Any] =
+  val userEntriesEndpoint: PublicEndpoint[UserId, Unit, List[Entry], Any] =
     userBaseEndpoint
       .name("User's entries endpoint")
       .description("This endpoint returns all the entries for a user")
       .get
-      .in(PathInputs.pathUsername)
+      .in(PathInputs.pathUserId)
       .in("entries")
       .out(SocialOutputs.jsonEntryListOut)
 
-  val userSpecificListEndpoint: PublicEndpoint[(String, EntryId), Unit, Entry, Any] =
+  val userSpecificListEndpoint: PublicEndpoint[(UserId, EntryId), Unit, Entry, Any] =
     userBaseEndpoint
       .name("User's specific entry endpoint")
       .description("This endpoint returns a specific entry for a user by the ID of the entry")
       .get
-      .in(PathInputs.pathUsername)
+      .in(PathInputs.pathUserId)
       .in("lists")
       .in(PathInputs.pathEntryId)
       .out(SocialOutputs.jsonEntryOut)
