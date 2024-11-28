@@ -26,14 +26,14 @@ object UserLikesEndpoints {
       .in("likes")
       .out(SocialOutputs.jsonLikeListOut)
   
-  val userLikedElementsListEndpoint: PublicEndpoint[UserId, Unit, List[Movie | TVShow | Season | Episode | Videogame | Book | MediaContentList | Review | Reply], Any] =
+  val userLikedElementsListEndpoint: PublicEndpoint[UserId, Unit, List[MediaContentList | Review | Reply], Any] =
     userBaseEndpoint
       .name("User's liked content endpoint")
       .description("This endpoint returns a list of all the liked content for a user")
       .get
       .in(PathInputs.pathUserId)
       .in("likes")
-      .out(OtherOutputs.jsonListLikeablesOutput)
+      .out(SocialOutputs.jsonLikeablesListOut)
 
   val userLikedMoviesListEndpoint: PublicEndpoint[UserId, Unit, List[Movie], Any] =
     userBaseEndpoint

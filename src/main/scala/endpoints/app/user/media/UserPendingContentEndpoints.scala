@@ -24,7 +24,7 @@ object UserPendingContentEndpoints {
       .get
       .in(PathInputs.pathUserId)
       .in("pending")
-      .out(MediaOutputs.jsonMediaListOut2)
+      .out(MediaOutputs.jsonPendingListOut)
 
   val userPendingMoviesListEndpoint: PublicEndpoint[UserId, Unit, List[Movie], Any] =
     userBaseEndpoint

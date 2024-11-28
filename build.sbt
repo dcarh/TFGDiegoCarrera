@@ -30,4 +30,6 @@ lazy val root = (project in file("."))
       "com.lihaoyi" %% "os-lib" % "0.10.1"
     ),
     scalacOptions += "-Xmax-inlines:100"
+    // fork/run := true, // Asegúrate de que la aplicación se ejecute en un proceso separado
+    // javaOptions += "-Xss1024m"
   )

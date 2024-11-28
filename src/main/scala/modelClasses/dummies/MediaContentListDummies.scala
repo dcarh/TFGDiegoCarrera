@@ -36,7 +36,7 @@ object MediaContentListDummies {
     false,
     LocalDateTime.of(2024, 5, 29, 20, 43, 12),
     LocalDateTime.of(2024, 8, 3, 16, 9, 27),
-    List(LikeIdDummies.likeId7),
+    List(LikeIdDummies.likeId4),
     List()
   )
   
@@ -103,7 +103,7 @@ object MediaContentListDummies {
     false,
     LocalDateTime.of(2024, 11, 3, 19, 12, 18),
     LocalDateTime.of(2024, 11, 3, 19, 12, 18),
-    List(LikeIdDummies.likeId3),
+    List(LikeIdDummies.likeId2),
     List()
   )
   

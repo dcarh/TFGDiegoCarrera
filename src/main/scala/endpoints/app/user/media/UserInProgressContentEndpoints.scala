@@ -16,8 +16,6 @@ object UserInProgressContentEndpoints {
 
   private val userBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
     endpoint.in("api" / "user")
-
-  // TODO: No debe devolver un MediaContentList, sino un List[Movie | TVShow | Videogame ...]
   
   val userInProgressListEndpoint: PublicEndpoint[UserId, Unit, List[TVShow | Season | Videogame | Book], Any] =
     userBaseEndpoint
@@ -26,7 +24,7 @@ object UserInProgressContentEndpoints {
       .get
       .in(PathInputs.pathUserId)
       .in("in_progress")
-      .out(MediaOutputs.jsonMediaListOut1)
+      .out(MediaOutputs.jsonProgressListOut)
 
   val userInProgressTVShowsListEndpoint: PublicEndpoint[UserId, Unit, List[TVShow], Any] =
     userBaseEndpoint

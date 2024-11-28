@@ -24,7 +24,7 @@ object UserOnHoldContentEndpoints {
       .get
       .in(PathInputs.pathUserId)
       .in("on_hold")
-      .out(MediaOutputs.jsonMediaListOut1)
+      .out(MediaOutputs.jsonProgressListOut)
 
   val userOnHoldTVShowsListEndpoint: PublicEndpoint[UserId, Unit, List[TVShow], Any] =
     userBaseEndpoint

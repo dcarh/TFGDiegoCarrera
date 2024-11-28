@@ -39,7 +39,7 @@ object ReplyDummies {
     UserIdDummies.userId3,
     ReviewIdDummies.reviewId4,
     "Not to mention its first 20 minutes, they're so devastating",
-    List(LikeIdDummies.likeId5),
+    List(LikeIdDummies.likeId3),
     List()
   )
   

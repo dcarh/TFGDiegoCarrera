@@ -54,8 +54,7 @@ object UserDummies {
       RatingIdDummies.ratingId12
     ),
     List(
-      LikeIdDummies.likeId5,
-      LikeIdDummies.likeId9
+      LikeIdDummies.likeId2
     ),
     List(
       ReplyIdDummies.replyId3
@@ -132,8 +131,7 @@ object UserDummies {
       RatingIdDummies.ratingId9
     ),
     List(
-      LikeIdDummies.likeId1,
-      LikeIdDummies.likeId6
+      LikeIdDummies.likeId1
     ),
     List(
       ReplyIdDummies.replyId2
@@ -209,9 +207,7 @@ object UserDummies {
       RatingIdDummies.ratingId2,
       RatingIdDummies.ratingId7
     ),
-    List(
-      LikeIdDummies.likeId4
-    ),
+    List(),
     List(
       ReplyIdDummies.replyId4
     ),
@@ -280,7 +276,7 @@ object UserDummies {
       RatingIdDummies.ratingId11
     ),
     List(
-      LikeIdDummies.likeId7
+      LikeIdDummies.likeId4
     ),
     List(
       ReplyIdDummies.replyId1
@@ -363,9 +359,7 @@ object UserDummies {
       RatingIdDummies.ratingId8
     ),
     List(
-      LikeIdDummies.likeId2,
-      LikeIdDummies.likeId5,
-      LikeIdDummies.likeId8
+      LikeIdDummies.likeId3
     ),
     List(),
     List(

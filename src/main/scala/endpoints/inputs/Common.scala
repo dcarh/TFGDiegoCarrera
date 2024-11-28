@@ -21,8 +21,9 @@ import codecs.ModelClasses.Media.*
 import codecs.ModelClasses.Social.*
 import codecs.ModelClasses.User.*
 
-import schemas.UnionTypes.*
-import schemas.UnionTypesForIds.*
+import unionTypes.decoders.MediaDecodersForIDs.*
+import unionTypes.encoders.MediaEncodersForIDs.*
+import unionTypes.schemas.MediaSchemasForIDs.*
 
 object Common {
 
