@@ -10,12 +10,10 @@ import modelClasses.ids.Media.{TVShowId, SeasonNumber}
 
 object Seasons {
 
-  private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
-
   val requestSeasonEndpoint: PublicEndpoint[(String, TVShowId, SeasonNumber), ErrorInfo, RequestedSeason, Any] =
     Base.seasonBaseEndpoint(
         "Get TV show season from TMDB", 
-        "This endpoint a specific TV show season from TMDB API by its ID"
+        "This endpoint returns a specific TV show season from TMDB API by its ID"
       )
       .out(jsonRequestedSeasonOut)
 

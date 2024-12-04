@@ -1,74 +1,74 @@
 package endpoints.app.user
 
 import sttp.tapir.*
+import endpoints.EndpointsUtils.appBaseEndpoint
+import endpoints.app.user.UserEndpointsUtils.userBaseEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
-import modelClasses.app.media.{Book, Episode, Movie, Season, TVShow, Videogame}
-import modelClasses.app.social.MediaContentList
+import modelClasses.ErrorInfo
+import modelClasses.app.media.{Book, Movie, Season, TVShow, Videogame}
 import modelClasses.ids.User.UserId
 
 object UserPendingContentEndpoints {
-
-  private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
-
-  private val usersBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
-    endpoint.in("api" / "users")
-
-  private val userBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
-    endpoint.in("api" / "user")
   
-  val userPendingListEndpoint: PublicEndpoint[UserId, Unit, List[Movie | TVShow | Season | Videogame | Book], Any] =
-    userBaseEndpoint
-      .name("User's 'Pending' media content endpoint")
-      .description("This endpoint returns a list of all the 'Pending' media content for a user")
-      .get
+  val userPendingListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Movie | TVShow | Season | Videogame | Book], Any] =
+    userBaseEndpoint(
+      "User's 'Pending' media content endpoint",
+      "This endpoint returns a list of all the 'Pending' media content for a user",
+      "GET"
+    )
       .in(PathInputs.pathUserId)
       .in("pending")
-      .out(MediaOutputs.jsonPendingListOut)
+      .out(MediaOutputs.listOfPendingSuccess)
 
-  val userPendingMoviesListEndpoint: PublicEndpoint[UserId, Unit, List[Movie], Any] =
-    userBaseEndpoint
-      .name("User's 'Pending' movies endpoint")
-      .description("This endpoint returns a list of all the 'Pending' movies for a user")
-      .get
+  val userPendingMoviesListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Movie], Any] =
+    userBaseEndpoint(
+      "User's 'Pending' movies endpoint",
+      "This endpoint returns a list of all the 'Pending' movies for a user",
+      "GET"
+    )
       .in(PathInputs.pathUserId)
       .in("pending" / "movies")
-      .out(MediaOutputs.jsonMovieListOut)
+      .out(MediaOutputs.listOfMoviesSuccess)
 
-  val userPendingTVShowsListEndpoint: PublicEndpoint[UserId, Unit, List[TVShow], Any] =
-    userBaseEndpoint
-      .name("User's 'Pending' TV shows endpoint")
-      .description("This endpoint returns a list of all the 'Pending' TV shows for a user")
-      .get
+  val userPendingTVShowsListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[TVShow], Any] =
+    userBaseEndpoint(
+      "User's 'Pending' TV shows endpoint",
+      "This endpoint returns a list of all the 'Pending' TV shows for a user",
+      "GET"
+    )
       .in(PathInputs.pathUserId)
       .in("pending" / "tv_shows")
-      .out(MediaOutputs.jsonTVShowListOut)
+      .out(MediaOutputs.listOfTvShowsSuccess)
 
-  val userPendingSeasonsListEndpoint: PublicEndpoint[UserId, Unit, List[Season], Any] =
-    userBaseEndpoint
-      .name("User's 'Pending' TV seasons endpoint")
-      .description("This endpoint returns a list of all the 'Pending' TV seasons for a user")
-      .get
+  val userPendingSeasonsListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Season], Any] =
+    userBaseEndpoint(
+      "User's 'Pending' TV seasons endpoint",
+      "This endpoint returns a list of all the 'Pending' TV seasons for a user",
+      "GET"
+    )
       .in(PathInputs.pathUserId)
       .in("pending" / "seasons")
-      .out(MediaOutputs.jsonSeasonListOut)
+      .out(MediaOutputs.listOfSeasonsSuccess)
 
-  val userPendingVideogamesListEndpoint: PublicEndpoint[UserId, Unit, List[Videogame], Any] =
-    userBaseEndpoint
-      .name("User's 'Pending' videogames endpoint")
-      .description("This endpoint returns a list of all the 'Pending' videogames for a user")
-      .get
+  val userPendingVideogamesListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Videogame], Any] =
+    userBaseEndpoint(
+      "User's 'Pending' videogames endpoint",
+      "This endpoint returns a list of all the 'Pending' videogames for a user",
+      "GET"
+    )
       .in(PathInputs.pathUserId)
       .in("pending" / "videogames")
-      .out(MediaOutputs.jsonVideogameListOut)
+      .out(MediaOutputs.listOfVideogamesSuccess)
 
-  val userPendingBooksListEndpoint: PublicEndpoint[UserId, Unit, List[Book], Any] =
-    userBaseEndpoint
-      .name("User's 'Pending' books endpoint")
-      .description("This endpoint returns a list of all the 'Pending' books for a user")
-      .get
+  val userPendingBooksListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Book], Any] =
+    userBaseEndpoint(
+      "User's 'Pending' books endpoint",
+      "This endpoint returns a list of all the 'Pending' books for a user",
+      "GET"
+    )
       .in(PathInputs.pathUserId)
       .in("pending" / "books")
-      .out(MediaOutputs.jsonBookListOut)
+      .out(MediaOutputs.listOfBooksSuccess)
 
 }

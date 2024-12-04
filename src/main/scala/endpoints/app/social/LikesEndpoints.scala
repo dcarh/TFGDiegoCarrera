@@ -1,36 +1,26 @@
 package endpoints.app.social
 
 import sttp.tapir.*
-
+import endpoints.EndpointsUtils.appBaseEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
+import modelClasses.ErrorInfo
 import modelClasses.app.social.Like
 import modelClasses.ids.Social.LikeId
 
 object LikesEndpoints {
 
-  private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
-  
-  private val likesBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
-    endpoint.in("api" / "likes")
+  private val likeBaseEndpoint:
+    (String, String, String) => PublicEndpoint[Unit, ErrorInfo, Unit, Any] =
+      (name, description, method) => appBaseEndpoint(name, description, "like", method)
 
-  private val likeBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
-    endpoint.in("api" / "like")
-  
-  val likesEndpoint: PublicEndpoint[Option[String], Unit, List[Like], Any] =
-    likesBaseEndpoint
-      .name("Likes endpoint")
-      .description("This endpoint returns a list with all the likes in the app")
-      .get
-      .in(QueryInputs.querySortBy)
-      .out(SocialOutputs.jsonLikeListOut)
-
-  val specificLikeEndpoint: PublicEndpoint[LikeId, Unit, Like, Any] =
-    likeBaseEndpoint
-      .name("Specific like endpoint")
-      .description("This endpoint returns a specific like by its Id")
-      .get
+  val specificLikeEndpoint: PublicEndpoint[LikeId, ErrorInfo, Like, Any] =
+    likeBaseEndpoint(
+      "Specific like endpoint", 
+      "This endpoint returns a specific like by its Id",
+      "GET"
+    )
       .in(PathInputs.pathLikeId)
-      .out(SocialOutputs.jsonLikeOut)
+      .out(SocialOutputs.likeSuccess)
 
 }

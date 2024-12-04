@@ -10,10 +10,8 @@ import org.http4s.HttpRoutes
 
 object ExampleEndpoint {
 
-  private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
-
   private val userBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
-    endpoint.in("api" / "user")
+    endpoint.in("user")
 
   private val pathUserId: EndpointInput[Long] =
     path[Long]("user_id")

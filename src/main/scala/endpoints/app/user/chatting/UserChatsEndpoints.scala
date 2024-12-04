@@ -1,47 +1,44 @@
 package endpoints.app.user.chatting
 
 import sttp.tapir.*
-
+import endpoints.EndpointsUtils.appBaseEndpoint
+import endpoints.app.user.UserEndpointsUtils.userBaseEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
+import modelClasses.ErrorInfo
 import modelClasses.app.chatting.Chat
 import modelClasses.ids.User.UserId
 
 object UserChatsEndpoints {
 
-  private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
-
-  private val usersBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
-    endpoint.in("api" / "users")
-
-  private val userBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
-    endpoint.in("api" / "user")
-
-  val userChatList: PublicEndpoint[UserId, Unit, List[Chat], Any] =
-    userBaseEndpoint
-      .name("User's chats endpoint")
-      .description("This endpoint returns the chats of the user")
-      .get
+  val userChatList: PublicEndpoint[UserId, ErrorInfo, List[Chat], Any] =
+    userBaseEndpoint(
+      "User's chats endpoint",
+      "This endpoint returns the chats of the user",
+      "GET"
+    )
       .in(PathInputs.pathUserId)
       .in("chats")
-      .out(ChattingOutputs.jsonChatListOut)
+      .out(ChattingOutputs.listOfChatsSuccess)
 
-  val userChat: PublicEndpoint[UserId, Unit, Chat, Any] =
-    userBaseEndpoint
-      .name("User's specific chat endpoint")
-      .description("This endpoint returns a specific chat of the user by the ID of the chat")
-      .get
+  val userChat: PublicEndpoint[UserId, ErrorInfo, Chat, Any] =
+    userBaseEndpoint(
+      "User's specific chat endpoint",
+      "This endpoint returns a specific chat of the user by the ID of the chat",
+      "GET"
+    )
       .in(PathInputs.pathUserId)
       .in("chat")
-      .out(ChattingOutputs.jsonChatOut)
+      .out(ChattingOutputs.chatSuccess)
 
-  val userChatWithOtherUser: PublicEndpoint[UserId, Unit, Chat, Any] =
-    userBaseEndpoint
-      .name("User's chat with other user endpoint")
-      .description("This endpoint returns the chat between the user and another specific user")
-      .get
+  val userChatWithOtherUser: PublicEndpoint[UserId, ErrorInfo, Chat, Any] =
+    userBaseEndpoint(
+      "User's chat with other user endpoint",
+      "This endpoint returns the chat between the user and another specific user",
+      "GET"
+    )
       .in(PathInputs.pathUserId)
       .in("chat")
-      .out(ChattingOutputs.jsonChatOut)
+      .out(ChattingOutputs.chatSuccess)
 
 }

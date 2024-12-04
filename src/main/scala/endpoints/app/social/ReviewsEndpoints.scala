@@ -1,37 +1,40 @@
 package endpoints.app
 
-import sttp.tapir._
-
-import endpoints.inputs.Common._
-import endpoints.outputs.Common._
-
+import sttp.tapir.*
+import endpoints.EndpointsUtils.appBaseEndpoint
+import endpoints.inputs.Common.*
+import endpoints.outputs.Common.*
+import modelClasses.ErrorInfo
 import modelClasses.app.social.Review
 import modelClasses.ids.Social.ReviewId
 
 object ReviewsEndpoints {
-
-  private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
   
-  private val reviewsBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
-    endpoint.in("api" / "reviews")
+  private val reviewsBaseEndpoint:
+    (String, String, String) => PublicEndpoint[Unit, ErrorInfo, Unit, Any] =
+      (name, description, method) => appBaseEndpoint(name, description, "reviews", method)
 
-  private val reviewBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
-    endpoint.in("api" / "review")
+  private val reviewBaseEndpoint:
+    (String, String, String) => PublicEndpoint[Unit, ErrorInfo, Unit, Any] =
+      (name, description, method) =>
+        appBaseEndpoint(name, description, "review", method)
   
-  val reviewsEndpoint: PublicEndpoint[Option[String], Unit, List[Review], Any] =
-    reviewsBaseEndpoint
-      .name("Reviews endpoint")
-      .description("This endpoint returns a list with all the reviews in the app")
-      .get
+  val reviewsEndpoint: PublicEndpoint[Option[String], ErrorInfo, List[Review], Any] =
+    reviewsBaseEndpoint(
+      "Reviews endpoint",
+      "This endpoint returns a list with all the reviews in the app",
+      "GET"
+    )
       .in(QueryInputs.querySortBy)
-      .out(SocialOutputs.jsonReviewListOut)
+      .out(SocialOutputs.listOfReviewsSuccess)
 
-  val specificReviewEndpoint: PublicEndpoint[ReviewId, Unit, Review, Any] =
-    reviewBaseEndpoint
-      .name("Specific review endpoint")
-      .description("This endpoint returns a specific review by its Id")
-      .get
+  val specificReviewEndpoint: PublicEndpoint[ReviewId, ErrorInfo, Review, Any] =
+    reviewBaseEndpoint(
+      "Specific review endpoint",
+      "This endpoint returns a specific review by its Id",
+      "GET"
+    )
       .in(PathInputs.pathReviewId)
-      .out(SocialOutputs.jsonReviewOut)
+      .out(SocialOutputs.reviewSuccess)
 
 }

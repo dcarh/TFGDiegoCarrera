@@ -5,13 +5,12 @@ import sttp.tapir.*
 import endpoints.inputs.Common._
 import endpoints.inputs.GoogleBooks._
 import endpoints.outputs.GoogleBooks._
+
 import modelClasses.ids.Media.BookId
 import modelClasses.googleBooks.BooksRequests._
 import modelClasses.ErrorInfo
 
 object Books {
-
-  private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
 
   val requestBookEndpoint: PublicEndpoint[BookId, ErrorInfo, RequestedBook, Any] =
     Base.bookBaseEndpoint(

@@ -3,13 +3,12 @@ package endpoints.tmdb
 import sttp.tapir.*
 
 import endpoints.outputs.TMDB.MoviesOutputs._
+
 import modelClasses.tmdb.MovieRequests._
 import modelClasses.ids.Media.MovieId
 import modelClasses.ErrorInfo
 
 object Movies {
-
-  private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
   
   val requestMovieEndpoint: PublicEndpoint[(String, MovieId), ErrorInfo, RequestedMovie, Any] =
     Base.movieBaseEndpoint(

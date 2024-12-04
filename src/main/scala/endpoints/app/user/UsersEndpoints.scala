@@ -1,44 +1,40 @@
 package endpoints.app.user
 
-import sttp.tapir._
-
-import endpoints.inputs.Common._
-import endpoints.outputs.Common._
+import sttp.tapir.*
+import endpoints.app.user.UserEndpointsUtils.{userBaseEndpoint, usersBaseEndpoint}
+import endpoints.inputs.Common.*
+import endpoints.outputs.Common.*
+import modelClasses.ErrorInfo
 import modelClasses.app.user.User
 
 object UsersEndpoints {
 
-  private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
-
-  private val usersBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
-    endpoint.in("api" / "users")
-
-  private val userBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
-    endpoint.in("api" / "user")
-
   // TODO: ¿Input?
-  val userSignUpEndpoint: PublicEndpoint[Unit, Unit, User, Any] =
-    userBaseEndpoint
-      .name("Sign up endpoint")
-      .description("With this endpoint, a person can sign up in the app. The endpoint returns the created user in case of success")
-      .post
+  val userSignUpEndpoint: PublicEndpoint[Unit, ErrorInfo, User, Any] =
+    userBaseEndpoint(
+      "Sign up endpoint",
+      "With this endpoint, a person can sign up in the app. The endpoint returns the created user in case of success",
+      "POST"
+    )
       .in("sign-up")
-      .out(UserOutputs.jsonUserOut)
+      .out(UserOutputs.userSuccess)
 
   // TODO: ¿Input?
-  val userSignInEndpoint: PublicEndpoint[Unit, Unit, User, Any] =
-    userBaseEndpoint
-      .name("Sign in endpoint")
-      .description("With this endpoint, a person can sign in in the app. The endpoint returns the user in case of success")
-      .post
+  val userSignInEndpoint: PublicEndpoint[Unit, ErrorInfo, User, Any] =
+    userBaseEndpoint(
+      "Sign in endpoint",
+      "With this endpoint, a person can sign in in the app. The endpoint returns the user in case of success",
+      "POST"
+    )
       .in("sign-in")
-      .out(UserOutputs.jsonUserOut)
+      .out(UserOutputs.userSuccess)
 
-  val usersEndpoint: PublicEndpoint[Option[String], Unit, List[User], Any] =
-    usersBaseEndpoint
-      .name("Users endpoint")
-      .description("This endpoint returns a list of all the users in the app")
-      .get
+  val usersEndpoint: PublicEndpoint[Option[String], ErrorInfo, List[User], Any] =
+    usersBaseEndpoint(
+      "Users endpoint",
+      "This endpoint returns a list of all the users in the app",
+      "GET"
+    )
       .in(QueryInputs.querySortBy)
-      .out(UserOutputs.jsonUserListOut)
+      .out(UserOutputs.listOfUsersSuccess)
 }

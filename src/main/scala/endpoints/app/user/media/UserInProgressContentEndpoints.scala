@@ -1,65 +1,64 @@
 package endpoints.app.user
 
 import sttp.tapir.*
+import endpoints.EndpointsUtils.appBaseEndpoint
+import endpoints.app.user.UserEndpointsUtils.userBaseEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
-import modelClasses.app.media.{Book, Movie, Season, TVShow, Videogame}
-import modelClasses.app.social.MediaContentList
+import modelClasses.ErrorInfo
+import modelClasses.app.media.{Book, Season, TVShow, Videogame}
 import modelClasses.ids.User.UserId
 
 object UserInProgressContentEndpoints {
-
-  private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
-
-  private val usersBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
-    endpoint.in("api" / "users")
-
-  private val userBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
-    endpoint.in("api" / "user")
   
-  val userInProgressListEndpoint: PublicEndpoint[UserId, Unit, List[TVShow | Season | Videogame | Book], Any] =
-    userBaseEndpoint
-      .name("User's 'In Progress' media content endpoint")
-      .description("This endpoint returns a list of all the 'In Progress' media content for a user")
-      .get
+  val userInProgressListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[TVShow | Season | Videogame | Book], Any] =
+    userBaseEndpoint(
+      "User's 'In Progress' media content endpoint",
+      "This endpoint returns a list of all the 'In Progress' media content for a user",
+      "GET"
+    )
       .in(PathInputs.pathUserId)
       .in("in_progress")
-      .out(MediaOutputs.jsonProgressListOut)
+      .out(MediaOutputs.listOfProgressSuccess)
 
-  val userInProgressTVShowsListEndpoint: PublicEndpoint[UserId, Unit, List[TVShow], Any] =
-    userBaseEndpoint
-      .name("User's 'In Progress' TV shows endpoint")
-      .description("This endpoint returns a list of all the 'In Progress' TV shows for a user")
-      .get
+  val userInProgressTVShowsListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[TVShow], Any] =
+    userBaseEndpoint(
+      "User's 'In Progress' TV shows endpoint",
+      "This endpoint returns a list of all the 'In Progress' TV shows for a user",
+      "GET"
+    )
       .in(PathInputs.pathUserId)
       .in("in_progress" / "tv_shows")
-      .out(MediaOutputs.jsonTVShowListOut)
+      .out(MediaOutputs.listOfTvShowsSuccess)
 
-  val userInProgressSeasonsListEndpoint: PublicEndpoint[UserId, Unit, List[Season], Any] =
-    userBaseEndpoint
-      .name("User's 'In Progress' TV seasons endpoint")
-      .description("This endpoint returns a list of all the 'In Progress' TV seasons for a user")
-      .get
+  val userInProgressSeasonsListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Season], Any] =
+    userBaseEndpoint(
+      "User's 'In Progress' TV seasons endpoint",
+      "This endpoint returns a list of all the 'In Progress' TV seasons for a user",
+      "GET"
+    )
       .in(PathInputs.pathUserId)
       .in("in_progress" / "seasons")
-      .out(MediaOutputs.jsonSeasonListOut)
+      .out(MediaOutputs.listOfSeasonsSuccess)
 
-  val userInProgressVideogamesListEndpoint: PublicEndpoint[UserId, Unit, List[Videogame], Any] =
-    userBaseEndpoint
-      .name("User's 'In Progress' videogames endpoint")
-      .description("This endpoint returns a list of all the 'In Progress' videogames for a user")
-      .get
+  val userInProgressVideogamesListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Videogame], Any] =
+    userBaseEndpoint(
+      "User's 'In Progress' videogames endpoint",
+      "This endpoint returns a list of all the 'In Progress' videogames for a user",
+      "GET"
+    )
       .in(PathInputs.pathUserId)
       .in("in_progress" / "videogames")
-      .out(MediaOutputs.jsonVideogameListOut)
+      .out(MediaOutputs.listOfVideogamesSuccess)
 
-  val userInProgressBooksListEndpoint: PublicEndpoint[UserId, Unit, List[Book], Any] =
-    userBaseEndpoint
-      .name("User's 'In Progress' books endpoint")
-      .description("This endpoint returns a list of all the 'In Progress' books for a user")
-      .get
+  val userInProgressBooksListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Book], Any] =
+    userBaseEndpoint(
+      "User's 'In Progress' books endpoint",
+      "This endpoint returns a list of all the 'In Progress' books for a user",
+      "GET"
+    )
       .in(PathInputs.pathUserId)
       .in("in_progress" / "books")
-      .out(MediaOutputs.jsonBookListOut)
+      .out(MediaOutputs.listOfBooksSuccess)
 
 }

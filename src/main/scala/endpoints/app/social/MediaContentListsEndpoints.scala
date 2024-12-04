@@ -5,6 +5,7 @@ import sttp.model.StatusCode
 
 import modelClasses.ErrorInfo
 
+import endpoints.EndpointsUtils.appBaseEndpoint
 import endpoints.inputs.Common._
 import endpoints.outputs.Common._
 
@@ -13,58 +14,67 @@ import modelClasses.ids.Social.MediaContentListId
 
 
 object MediaContentListsEndpoints {
-
-  private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
     
-  private val listsBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
-    endpoint.in("api" / "lists")
+  private val listsBaseEndpoint:
+    (String, String, String) => PublicEndpoint[Unit, ErrorInfo, Unit, Any] =
+      (name, description, method) => appBaseEndpoint(name, description, "lists", method)
 
-  private val listBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
-    endpoint.in("api" / "list")
+  private val listBaseEndpoint:
+    (String, String, String) => PublicEndpoint[Unit, ErrorInfo, Unit, Any] =
+      (name, description, method) =>
+        appBaseEndpoint(name, description, "list", method)
 
-  val listssEndpoint: PublicEndpoint[Option[String], Unit, List[MediaContentList], Any] =
-    listsBaseEndpoint
-      .name("Lists endpoint")
-      .description("This endpoint returns a list with all the lists in the app")
-      .get
+  val listsEndpoint: PublicEndpoint[Option[String], ErrorInfo, List[MediaContentList], Any] =
+    listsBaseEndpoint(
+      "Lists endpoint", 
+      "This endpoint returns a list with all the lists in the app",
+      "GET"
+    )
       .in(QueryInputs.querySortBy)
-      .out(SocialOutputs.jsonListOfMediaContentListOut)
+      .out(SocialOutputs.listOfMediaContentListSuccess)
 
-  val specificListEndpoint: PublicEndpoint[(MediaContentListId, Option[String]), Unit, MediaContentList, Any] =
-    listsBaseEndpoint
-      .name("Specific list endpoint")
-      .description("This endpoint returns a specific list of elements by its ID")
-      .get
+  val specificListEndpoint: PublicEndpoint[(MediaContentListId, Option[String]), ErrorInfo, MediaContentList, Any] =
+    listsBaseEndpoint(
+      "Specific list endpoint", 
+      "This endpoint returns a specific list of elements by its ID",
+      "GET"
+    )
       .in(PathInputs.pathListId)
       .in(QueryInputs.querySortBy)
-      .out(SocialOutputs.jsonMediaContentListOut)
+      .out(SocialOutputs.mediaContentListSucess)
 
   val createListEndpoint: PublicEndpoint[Unit, ErrorInfo, MediaContentList, Any] =
-    listBaseEndpoint
-      .name("Create list endpoint")
-      .description("This endpoint creates a list of elements and returns it in case of success")
-      .post
+    listBaseEndpoint(
+      "Create list endpoint", 
+      "This endpoint creates a list of elements and returns it in case of success",
+      "POST"
+    )
       .in("create")
-      .out(SocialOutputs.jsonMediaContentListOut)
-      .errorOut(ApiOutputs.jsonErrorInfoOut)
+      .out(SocialOutputs.mediaContentListSucess)
 
-  val userEditListEndpoint: PublicEndpoint[MediaContentListId, ErrorInfo, Unit, Any] =
-    listBaseEndpoint
-      .name("Edit list endpoint")
-      .description("This endpoint allows to edit a list of elements and returns it in case of success. Otherwise returns an error message")
-      .delete
+  val userEditListEndpoint: PublicEndpoint[MediaContentListId, ErrorInfo, MediaContentList, Any] =
+    listBaseEndpoint(
+      "Edit list endpoint", 
+      "This endpoint allows to edit a list of elements and returns it in case of success. Otherwise returns an error message",
+      "PUT"
+    )
       .in(PathInputs.pathListId)
-      .in("delete")
-      .out(statusCode(StatusCode.NoContent))
-      .errorOut(ApiOutputs.jsonErrorInfoOut)
+      .in("edit")
+      .out(SocialOutputs.mediaContentListSucess)
 
   val userDeleteListEndpoint: PublicEndpoint[MediaContentListId, ErrorInfo, Unit, Any] =
-    listBaseEndpoint
-      .name("Delete list endpoint")
-      .description("This endpoint deletes a list of elements and returns it in case of success")
-      .delete
+    listBaseEndpoint(
+      "Delete list endpoint", 
+      "This endpoint deletes a list of elements and returns it in case of success",
+      "DELETE"
+    )
       .in(PathInputs.pathListId)
       .in("delete")
+      .errorOut(
+        oneOf[ErrorInfo](
+          oneOfVariant(StatusCode.NotFound, ErrorOutputs.notFound),
+          oneOfVariant(StatusCode.BadRequest, ErrorOutputs.invalidRequest)
+        )
+      )
       .out(statusCode(StatusCode.NoContent))
-      .errorOut(ApiOutputs.jsonErrorInfoOut)
 }

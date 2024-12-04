@@ -1,36 +1,40 @@
 package endpoints.app.social
 
 import sttp.tapir.*
-
+import endpoints.EndpointsUtils.appBaseEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
+import modelClasses.ErrorInfo
 import modelClasses.app.social.Entry
 import modelClasses.ids.Social.EntryId
 
 object EntriesEndpoints {
-
-  private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
   
-  private val entriesBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
-    endpoint.in("api" / "entries")
+  private val entriesBaseEndpoint:
+    (String, String, String) => PublicEndpoint[Unit, ErrorInfo, Unit, Any] =
+      (name, description, method) => appBaseEndpoint(name, description, "entries", method)
 
-  private val entryBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
-    endpoint.in("api" / "entry")
+  private val entryBaseEndpoint:
+    (String, String, String) => PublicEndpoint[Unit, ErrorInfo, Unit, Any] =
+      (name, description, method) =>
+        appBaseEndpoint(name, description, "entry", method)
   
-  val entriesEndpoint: PublicEndpoint[Option[String], Unit, List[Entry], Any] =
-    entriesBaseEndpoint
-      .name("Entries endpoint")
-      .description("This endpoint returns a list with all the entries in the app")
-      .get
+  val entriesEndpoint: PublicEndpoint[Option[String], ErrorInfo, List[Entry], Any] =
+    entriesBaseEndpoint(
+      "Entries endpoint", 
+      "This endpoint returns a list with all the entries in the app",
+      "GET"
+    )
       .in(QueryInputs.querySortBy)
-      .out(SocialOutputs.jsonEntryListOut)
+      .out(SocialOutputs.listOfEntriesSuccess)
 
-  val specificEntryEndpoint: PublicEndpoint[EntryId, Unit, Entry, Any] =
-    entryBaseEndpoint
-      .name("Specific entry endpoint")
-      .description("This endpoint returns a specific entry by its Id")
-      .get
+  val specificEntryEndpoint: PublicEndpoint[EntryId, ErrorInfo, Entry, Any] =
+    entryBaseEndpoint(
+      "Specific entry endpoint", 
+      "This endpoint returns a specific entry by its Id",
+      "GET"
+    )
       .in(PathInputs.pathEntryId)
-      .out(SocialOutputs.jsonEntryOut)
+      .out(SocialOutputs.entrySuccess)
 
 }

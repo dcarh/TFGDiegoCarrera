@@ -9,13 +9,11 @@ import modelClasses.ErrorInfo
 import modelClasses.ids.Media.{TVShowId, SeasonNumber, EpisodeNumber}
 
 object Episodes {
-
-  private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
   
   val requestEpisodeEndpoint: PublicEndpoint[(String, TVShowId, SeasonNumber, EpisodeNumber), ErrorInfo, RequestedEpisode, Any] =
     Base.episodeBaseEndpoint(
         "Get TV show episode from TMDB", 
-        "This endpoint a specific TV show episode from TMDB API by its ID"
+        "This endpoint returns a specific TV show episode from TMDB API by its ID"
       )
       .out(jsonRequestedEpisodeOut)
 

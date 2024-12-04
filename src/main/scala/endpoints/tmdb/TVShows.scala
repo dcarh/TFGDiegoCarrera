@@ -9,13 +9,11 @@ import modelClasses.tmdb.TVShowRequests._
 import modelClasses.ErrorInfo
 
 object TVShows {
-
-  private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
   
   val requestTvShowEndpoint: PublicEndpoint[(String, TVShowId), ErrorInfo, RequestedTVShow, Any] =
     Base.tvShowBaseEndpoint(
         "Get TV Show from TMDB", 
-        "This endpoint a specific TV Show from TMDB API by its ID"
+        "This endpoint returns a specific TV Show from TMDB API by its ID"
       )
       .out(jsonRequestedTvShowOut)
 

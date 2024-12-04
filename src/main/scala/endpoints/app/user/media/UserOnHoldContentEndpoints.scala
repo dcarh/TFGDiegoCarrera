@@ -1,65 +1,64 @@
 package endpoints.app.user
 
 import sttp.tapir.*
+import endpoints.EndpointsUtils.appBaseEndpoint
+import endpoints.app.user.UserEndpointsUtils.userBaseEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
-import modelClasses.app.media.{Book, Movie, Season, TVShow, Videogame}
-import modelClasses.app.social.MediaContentList
+import modelClasses.ErrorInfo
+import modelClasses.app.media.{Book, Season, TVShow, Videogame}
 import modelClasses.ids.User.UserId
 
 object UserOnHoldContentEndpoints {
-
-  private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
-
-  private val usersBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
-    endpoint.in("api" / "users")
-
-  private val userBaseEndpoint: PublicEndpoint[Unit, Unit, Unit, Any] =
-    endpoint.in("api" / "user")
   
-  val userOnHoldListEndpoint: PublicEndpoint[UserId, Unit, List[TVShow | Season | Videogame | Book], Any] =
-    userBaseEndpoint
-      .name("User's 'On Hold' media content endpoint")
-      .description("This endpoint returns a list of all the 'On Hold' media content for a user")
-      .get
+  val userOnHoldListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[TVShow | Season | Videogame | Book], Any] =
+    userBaseEndpoint(
+      "User's 'On Hold' media content endpoint",
+      "This endpoint returns a list of all the 'On Hold' media content for a user",
+      "GET"
+    )
       .in(PathInputs.pathUserId)
       .in("on_hold")
-      .out(MediaOutputs.jsonProgressListOut)
+      .out(MediaOutputs.listOfProgressSuccess)
 
-  val userOnHoldTVShowsListEndpoint: PublicEndpoint[UserId, Unit, List[TVShow], Any] =
-    userBaseEndpoint
-      .name("User's 'On Hold' TV shows endpoint")
-      .description("This endpoint returns a list of all the 'On Hold' TV shows for a user")
-      .get
+  val userOnHoldTVShowsListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[TVShow], Any] =
+    userBaseEndpoint(
+      "User's 'On Hold' TV shows endpoint",
+      "This endpoint returns a list of all the 'On Hold' TV shows for a user",
+      "GET"
+    )
       .in(PathInputs.pathUserId)
       .in("on_hold" / "tv_shows")
-      .out(MediaOutputs.jsonTVShowListOut)
+      .out(MediaOutputs.listOfTvShowsSuccess)
 
-  val userOnHoldSeasonsListEndpoint: PublicEndpoint[UserId, Unit, List[Season], Any] =
-    userBaseEndpoint
-      .name("User's 'On Hold' TV seasons endpoint")
-      .description("This endpoint returns a list of all the 'On Hold' TV seasons for a user")
-      .get
+  val userOnHoldSeasonsListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Season], Any] =
+    userBaseEndpoint(
+      "User's 'On Hold' TV seasons endpoint",
+      "This endpoint returns a list of all the 'On Hold' TV seasons for a user",
+      "GET"
+    )
       .in(PathInputs.pathUserId)
       .in("on_hold" / "seasons")
-      .out(MediaOutputs.jsonSeasonListOut)
+      .out(MediaOutputs.listOfSeasonsSuccess)
 
-  val userOnHoldVideogamesListEndpoint: PublicEndpoint[UserId, Unit, List[Videogame], Any] =
-    userBaseEndpoint
-      .name("User's 'On Hold' videogames endpoint")
-      .description("This endpoint returns a list of all the 'On Hold' videogames for a user")
-      .get
+  val userOnHoldVideogamesListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Videogame], Any] =
+    userBaseEndpoint(
+      "User's 'On Hold' videogames endpoint",
+      "This endpoint returns a list of all the 'On Hold' videogames for a user",
+      "GET"
+    )
       .in(PathInputs.pathUserId)
       .in("on_hold" / "videogames")
-      .out(MediaOutputs.jsonVideogameListOut)
+      .out(MediaOutputs.listOfVideogamesSuccess)
 
-  val userOnHoldBooksListEndpoint: PublicEndpoint[UserId, Unit, List[Book], Any] =
-    userBaseEndpoint
-      .name("User's 'On Hold' books endpoint")
-      .description("This endpoint returns a list of all the 'On Hold' books for a user")
-      .get
+  val userOnHoldBooksListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Book], Any] =
+    userBaseEndpoint(
+      "User's 'On Hold' books endpoint",
+      "This endpoint returns a list of all the 'On Hold' books for a user",
+      "GET"
+    )
       .in(PathInputs.pathUserId)
       .in("on_hold" / "books")
-      .out(MediaOutputs.jsonBookListOut)
+      .out(MediaOutputs.listOfBooksSuccess)
 
 }
