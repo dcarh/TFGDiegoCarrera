@@ -22,8 +22,8 @@ object ExampleEndpoint {
   
   val favouritesEndpoint: PublicEndpoint[Long, String, List[Long], Any] =
     userBaseEndpoint
-      .name("User Favorites endpoint")
-      .description("This endpoint returns the favorite elements IDs of the specified user")
+      .name("User Favourites endpoint")
+      .description("This endpoint returns the favourite elements IDs of the specified user")
       .get
       .in(pathUserId)
       .in("favourites")

@@ -7,7 +7,7 @@ import endpoints.outputs.Common.*
 import modelClasses.errors.UserError.*
 import modelClasses.app.user.User
 
-object UsersEndpoints {
+object UserEndpoints {
 
   // TODO: ¿Input?
   val userSignUpEndpoint: PublicEndpoint[Unit, UserError, User, Any] =

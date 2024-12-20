@@ -8,7 +8,7 @@ import modelClasses.errors.UserError.*
 import modelClasses.app.chatting.Message
 import modelClasses.ids.Chatting.MessageId
 
-object MessageEndpoints {
+object MessagesEndpoints {
 
   private val messageBaseEndpoint:
     (String, String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
