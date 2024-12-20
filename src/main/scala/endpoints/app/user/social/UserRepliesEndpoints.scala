@@ -1,17 +1,16 @@
 package endpoints.app.user
 
 import sttp.tapir.*
-import endpoints.EndpointsUtils.appBaseEndpoint
 import endpoints.app.user.UserEndpointsUtils.userBaseEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
-import modelClasses.ErrorInfo
+import modelClasses.errors.UserError.*
 import modelClasses.app.social.Reply
 import modelClasses.ids.User.UserId
 
 object UserRepliesEndpoints {
 
-  val userRepliesListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Reply], Any] =
+  val userRepliesListEndpoint: PublicEndpoint[UserId, UserError, List[Reply], Any] =
     userBaseEndpoint(
       "User's replies endpoint",
       "This endpoint returns all the replies made by a user",
@@ -21,7 +20,7 @@ object UserRepliesEndpoints {
       .in("replies")
       .out(SocialOutputs.listOfRepliesSuccess)
 
-  val userRepliesListsListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Reply], Any] =
+  val userRepliesListsListEndpoint: PublicEndpoint[UserId, UserError, List[Reply], Any] =
     userBaseEndpoint(
       "User's replies to lists endpoint",
       "This endpoint returns all the replies made by a user specifically to lists",
@@ -31,7 +30,7 @@ object UserRepliesEndpoints {
       .in("replies" / "lists")
       .out(SocialOutputs.listOfRepliesSuccess)
 
-  val userRepliesReviewsListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Reply], Any] =
+  val userRepliesReviewsListEndpoint: PublicEndpoint[UserId, UserError, List[Reply], Any] =
     userBaseEndpoint(
       "User's replies to reviews endpoint",
       "This endpoint returns all the replies made by a user specifically to reviews",
@@ -41,7 +40,7 @@ object UserRepliesEndpoints {
       .in("replies" / "reviews")
       .out(SocialOutputs.listOfRepliesSuccess)
 
-  val userRepliesRepliesListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Reply], Any] =
+  val userRepliesRepliesListEndpoint: PublicEndpoint[UserId, UserError, List[Reply], Any] =
     userBaseEndpoint(
       "User's replies to replies endpoint",
       "This endpoint returns all the replies made by a user specifically to other replies",

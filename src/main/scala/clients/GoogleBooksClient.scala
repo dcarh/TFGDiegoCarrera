@@ -8,7 +8,7 @@ import org.http4s.ember.client.EmberClientBuilder
 import sttp.tapir.*
 import sttp.tapir.DecodeResult
 import sttp.tapir.client.http4s.Http4sClientInterpreter
-import modelClasses.ErrorInfo
+import modelClasses.errors.UserError.*
 import modelClasses.app.media.Book
 import modelClasses.ids.Media.BookId
 import scala.concurrent.duration._
@@ -23,11 +23,11 @@ class GoogleBooksClient {
   private val responseMaxSize = 1024 * 32576 * 64
 
   def executeRequest[I, O](
-                                          endpoint: PublicEndpoint[I, ErrorInfo, O, Any],
+                                          endpoint: PublicEndpoint[I, UserError, O, Any],
                                           resourceId: 
                                             BookId | 
                                             (String, String, String, String)
-                                        ): IO[Either[ErrorInfo, O]] = {
+                                        ): IO[Either[UserError, O]] = {
 
     val httpClientResource: Resource[IO, Client[IO]] = EmberClientBuilder.default[IO]
       .withMaxResponseHeaderSize(responseMaxSize)
@@ -55,7 +55,7 @@ class GoogleBooksClient {
               .apply(query)
           IO.pure(userRequest, parseResponse)
 
-        case _ => IO.pure(ErrorInfo("Wrong number of parameters for specified endpoint"))
+        case _ => IO.pure(BadRequest("Wrong number of parameters for specified endpoint"))
       }
 
       result.flatMap {
@@ -81,20 +81,20 @@ class GoogleBooksClient {
                           IO(s"DecodeResult.Value.Left: $errorInfo") >>
                             IO.pure(Left(errorInfo))
                         case failure: DecodeResult.Failure =>
-                          IO.pure(Left(ErrorInfo(s"Failed to decode response: $failure")))
+                          IO.pure(Left(Unknown(500, s"Failed to decode response: $failure")))
                       }
                     case Left(error) =>
                       IO(println(s"Failed to parse response: ${error.toString}")) >>
-                        IO.pure(Left(ErrorInfo("Failed to parse response")))
+                        IO.pure(Left(Unknown(500, "Failed to parse response")))
                   }
               case Left(error) =>
                 IO(println(s"Request failed")) >>
-                  IO.pure(Left(ErrorInfo("Request failed")))
+                  IO.pure(Left(BadRequest("Request failed")))
             }
           } yield result
       }
     }.handleErrorWith { error =>
-      IO.pure(println(s"An unexpected error occurred: ${error.getMessage}")).as(Left(ErrorInfo("An unexpected error occurred")))
+      IO.pure(println(s"An unexpected error occurred: ${error.getMessage}")).as(Left(Unknown(500, "An unexpected error occurred")))
     }
   }
 }

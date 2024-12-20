@@ -1,11 +1,9 @@
 package endpoints.igdb
 
 import sttp.tapir.*
-
-import endpoints.EndpointsUtils.appBaseEndpoint
-import endpoints.inputs.IGDB._
-
-import modelClasses.ErrorInfo
+import endpoints.EndpointsUtils.httpMethodEndpoint
+import endpoints.inputs.IGDB.*
+import modelClasses.errors.UserError.*
 
 object Base {
 
@@ -23,9 +21,9 @@ object Base {
 //        .errorOut(ErrorOutputs.jsonErrorInfoOut)
 
   val igdbBaseEndpoint:
-    (String, String, String) => PublicEndpoint[(String, String, String, String), ErrorInfo, Unit, Any] =
+    (String, String, String) => PublicEndpoint[(String, String, String, String), UserError, Unit, Any] =
     (name, description, path) =>
-      appBaseEndpoint(name, description, path, "POST")
+      httpMethodEndpoint(name, description, path, "POST")
         .in(Headers.accept)
         .in(Headers.clientId)
         .in(Headers.authorization)

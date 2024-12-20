@@ -1,42 +1,90 @@
 package endpoints
 
 import sttp.tapir.*
-import modelClasses.ErrorInfo
-import endpoints.outputs.Common._
+import sttp.model.StatusCode
+import endpoints.outputs.Common.ErrorOutputsTraits
+import modelClasses.errors.UserError.*
 
 object EndpointsUtils {
   
-  val notFoundString: 
-    String => String = 
-      obj => obj + " not found"
-  
-  val invalidRequestString: String = "Invalid request"
+//  val notFoundString:
+//    String => String =
+//      obj => obj + " not found"
+//
+//  val invalidRequestString: String = "Invalid request"
+
+  private val baseEndpoint:
+    (String, String, String) => PublicEndpoint[Unit, Unit, Unit, Any] =
+    (name, description, path) =>
+      endpoint
+        .name(name)
+        .description(description)
+        .in(path)
 
   private val getBaseEndpoint:
-    (String, String, String) => PublicEndpoint[Unit, ErrorInfo, Unit, Any] =
+    (String, String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
       (name, description, path) =>
-        endpoint
-          .name(name)
-          .description(description)
+        baseEndpoint(name, description, path)
           .get
-          .in(path)
-          .errorOut(ErrorOutputs.jsonErrorInfoOut)
+          .errorOut(
+            oneOf[UserError](
+              oneOfVariant(StatusCode.NotFound, ErrorOutputsTraits.notFound),
+              oneOfVariant(StatusCode.BadRequest, ErrorOutputsTraits.badRequest),
+              oneOfDefaultVariant(ErrorOutputsTraits.unknown)
+            )
+          )
+          .out(statusCode(StatusCode.Ok))
 
   private val postBaseEndpoint:
-    (String, String, String) => PublicEndpoint[Unit, ErrorInfo, Unit, Any] =
+    (String, String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
       (name, description, path) =>
-        endpoint
-          .name(name)
-          .description(description)
+        baseEndpoint(name, description, path)
           .post
-          .in(path)
-          .errorOut(ErrorOutputs.jsonErrorInfoOut)
+          .errorOut(
+            oneOf[UserError](
+              oneOfVariant(StatusCode.BadRequest, ErrorOutputsTraits.badRequest),
+              oneOfVariant(StatusCode.Conflict, ErrorOutputsTraits.conflict),
+              oneOfDefaultVariant(ErrorOutputsTraits.unknown)
+            )
+          )
+          .out(statusCode(StatusCode.Created))
 
-  val appBaseEndpoint:
-    (String, String, String, String) => PublicEndpoint[Unit, ErrorInfo, Unit, Any] =
+  private val putBaseEndpoint:
+    (String, String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
+      (name, description, path) =>
+        baseEndpoint(name, description, path)
+          .put
+          .errorOut(
+            oneOf[UserError](
+              oneOfVariant(StatusCode.BadRequest, ErrorOutputsTraits.badRequest),
+              oneOfVariant(StatusCode.NotFound, ErrorOutputsTraits.notFound),
+              oneOfVariant(StatusCode.Conflict, ErrorOutputsTraits.conflict),
+              oneOfDefaultVariant(ErrorOutputsTraits.unknown)
+            )
+          )
+          .out(statusCode(StatusCode.Ok))
+
+  private val deleteBaseEndpoint:
+    (String, String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
+      (name, description, path) =>
+        baseEndpoint(name, description, path)
+          .delete
+          .errorOut(
+            oneOf[UserError](
+              oneOfVariant(StatusCode.NotFound, ErrorOutputsTraits.notFound),
+              oneOfVariant(StatusCode.BadRequest, ErrorOutputsTraits.badRequest),
+              oneOfDefaultVariant(ErrorOutputsTraits.unknown)
+            )
+          )
+          .out(statusCode(StatusCode.NoContent))
+
+  val httpMethodEndpoint:
+    (String, String, String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
       {
         case (name, description, path, "GET") => getBaseEndpoint(name, description, path)
         case (name, description, path, "POST") => postBaseEndpoint(name, description, path)
+        case (name, description, path, "PUT") => putBaseEndpoint(name, description, path)
+        case (name, description, path, "DELETE") => deleteBaseEndpoint(name, description, path)
       }
 
 

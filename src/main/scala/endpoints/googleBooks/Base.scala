@@ -1,11 +1,10 @@
 package endpoints.googleBooks
 
 import sttp.tapir.*
-
-import endpoints.EndpointsUtils.appBaseEndpoint
+import endpoints.EndpointsUtils.httpMethodEndpoint
+import modelClasses.errors.UserError.*
 //import endpoints.outputs.Common._
 
-import modelClasses.ErrorInfo
 
 object Base {
 
@@ -25,7 +24,7 @@ object Base {
 //        .in("volumes")
 
   val bookBaseEndpoint:
-    (String, String) => PublicEndpoint[Unit, ErrorInfo, Unit, Any] =
-      (name, description) => appBaseEndpoint(name, description, "volumes", "GET")
+    (String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
+      (name, description) => httpMethodEndpoint(name, description, "volumes", "GET")
 
 }

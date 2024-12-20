@@ -1,40 +1,68 @@
 package endpoints.app.social
 
 import sttp.tapir.*
-import endpoints.EndpointsUtils.appBaseEndpoint
+import endpoints.EndpointsUtils.httpMethodEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
-import modelClasses.ErrorInfo
+import modelClasses.errors.UserError.*
 import modelClasses.app.social.Entry
 import modelClasses.ids.Social.EntryId
 
 object EntriesEndpoints {
   
   private val entriesBaseEndpoint:
-    (String, String, String) => PublicEndpoint[Unit, ErrorInfo, Unit, Any] =
-      (name, description, method) => appBaseEndpoint(name, description, "entries", method)
+    (String, String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
+      (name, description, method) => httpMethodEndpoint(name, description, "entries", method)
 
   private val entryBaseEndpoint:
-    (String, String, String) => PublicEndpoint[Unit, ErrorInfo, Unit, Any] =
+    (String, String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
       (name, description, method) =>
-        appBaseEndpoint(name, description, "entry", method)
+        httpMethodEndpoint(name, description, "entry", method)
   
-  val entriesEndpoint: PublicEndpoint[Option[String], ErrorInfo, List[Entry], Any] =
+  val getEntriesEndpoint: PublicEndpoint[Option[String], UserError, List[Entry], Any] =
     entriesBaseEndpoint(
-      "Entries endpoint", 
-      "This endpoint returns a list with all the entries in the app",
+      "Get entries endpoint", 
+      "This endpoint returns a entry with all the entries in the app",
       "GET"
     )
       .in(QueryInputs.querySortBy)
       .out(SocialOutputs.listOfEntriesSuccess)
 
-  val specificEntryEndpoint: PublicEndpoint[EntryId, ErrorInfo, Entry, Any] =
+  val getEntryEndpoint: PublicEndpoint[EntryId, UserError, Entry, Any] =
     entryBaseEndpoint(
-      "Specific entry endpoint", 
+      "Get entry endpoint", 
       "This endpoint returns a specific entry by its Id",
       "GET"
     )
       .in(PathInputs.pathEntryId)
       .out(SocialOutputs.entrySuccess)
+  
+  val createEntryEndpoint: PublicEndpoint[Unit, UserError, Entry, Any] =
+    entryBaseEndpoint(
+      "Create entry endpoint",
+      "This endpoint creates a entry of elements and returns it in case of success",
+      "POST"
+    )
+      .in("create")
+      .out(SocialOutputs.entrySuccess)
+
+  val editEntryEndpoint: PublicEndpoint[EntryId, UserError, Entry, Any] =
+    entryBaseEndpoint(
+      "Edit entry endpoint",
+      "This endpoint allows to edit a entry and returns it in case of success. Otherwise returns an error message",
+      "PUT"
+    )
+      .in(PathInputs.pathEntryId)
+      .in("edit")
+      .out(SocialOutputs.entrySuccess)
+
+  val deleteEntryEndpoint: PublicEndpoint[EntryId, UserError, Unit, Any] =
+    entryBaseEndpoint(
+      "Delete entry endpoint",
+      "This endpoint deletes a entry and returns it in case of success",
+      "DELETE"
+    )
+      .in(PathInputs.pathEntryId)
+      .in("delete")
 
 }

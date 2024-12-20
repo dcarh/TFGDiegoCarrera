@@ -1,18 +1,17 @@
 package endpoints.app.user
 
 import sttp.tapir.*
-import endpoints.EndpointsUtils.appBaseEndpoint
 import endpoints.app.user.UserEndpointsUtils.userBaseEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
-import modelClasses.ErrorInfo
+import modelClasses.errors.UserError.*
 import modelClasses.app.media.{Book, Episode, Movie, Season, TVShow, Videogame}
 import modelClasses.app.social.{Like, MediaContentList, Reply, Review}
 import modelClasses.ids.User.UserId
 
 object UserLikesEndpoints {
   
-  val userLikesListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Like], Any] =
+  val userLikesListEndpoint: PublicEndpoint[UserId, UserError, List[Like], Any] =
     userBaseEndpoint(
       "User's likes endpoint",
       "This endpoint returns a list of all the likes for a user",
@@ -22,7 +21,7 @@ object UserLikesEndpoints {
       .in("likes")
       .out(SocialOutputs.listOfLikesSuccess)
   
-  val userLikedElementsListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[MediaContentList | Review | Reply], Any] =
+  val userLikedElementsListEndpoint: PublicEndpoint[UserId, UserError, List[MediaContentList | Review | Reply], Any] =
     userBaseEndpoint(
       "User's liked content endpoint",
       "This endpoint returns a list of all the liked content for a user",
@@ -92,7 +91,7 @@ object UserLikesEndpoints {
 //      .in("likes" / "books")
 //      .out(MediaOutputs.listOfBooksSuccess)
 
-  val userLikedListsListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[MediaContentList], Any] =
+  val userLikedListsListEndpoint: PublicEndpoint[UserId, UserError, List[MediaContentList], Any] =
     userBaseEndpoint(
       "User's liked lists endpoint",
       "This endpoint returns a list of all the liked lists for a user",
@@ -102,7 +101,7 @@ object UserLikesEndpoints {
       .in("likes" / "lists")
       .out(SocialOutputs.listOfMediaContentListSuccess)
 
-  val userLikedReviewsListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Review], Any] =
+  val userLikedReviewsListEndpoint: PublicEndpoint[UserId, UserError, List[Review], Any] =
     userBaseEndpoint(
       "User's liked reviews endpoint",
       "This endpoint returns a list of all the liked reviews for a user",
@@ -112,7 +111,7 @@ object UserLikesEndpoints {
       .in("likes" / "reviews")
       .out(SocialOutputs.listOfReviewsSuccess)
 
-  val userLikedCommentsListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Reply], Any] =
+  val userLikedCommentsListEndpoint: PublicEndpoint[UserId, UserError, List[Reply], Any] =
     userBaseEndpoint(
       "User's liked replies endpoint",
       "This endpoint returns a list of all the liked replies for a user",

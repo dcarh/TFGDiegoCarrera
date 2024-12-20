@@ -1,17 +1,16 @@
 package endpoints.app.user.chatting
 
 import sttp.tapir.*
-import endpoints.EndpointsUtils.appBaseEndpoint
 import endpoints.app.user.UserEndpointsUtils.userBaseEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
-import modelClasses.ErrorInfo
+import modelClasses.errors.UserError.*
 import modelClasses.app.chatting.Chat
 import modelClasses.ids.User.UserId
 
 object UserChatsEndpoints {
 
-  val userChatList: PublicEndpoint[UserId, ErrorInfo, List[Chat], Any] =
+  val userChatList: PublicEndpoint[UserId, UserError, List[Chat], Any] =
     userBaseEndpoint(
       "User's chats endpoint",
       "This endpoint returns the chats of the user",
@@ -21,7 +20,7 @@ object UserChatsEndpoints {
       .in("chats")
       .out(ChattingOutputs.listOfChatsSuccess)
 
-  val userChat: PublicEndpoint[UserId, ErrorInfo, Chat, Any] =
+  val userChat: PublicEndpoint[UserId, UserError, Chat, Any] =
     userBaseEndpoint(
       "User's specific chat endpoint",
       "This endpoint returns a specific chat of the user by the ID of the chat",
@@ -31,7 +30,7 @@ object UserChatsEndpoints {
       .in("chat")
       .out(ChattingOutputs.chatSuccess)
 
-  val userChatWithOtherUser: PublicEndpoint[UserId, ErrorInfo, Chat, Any] =
+  val userChatWithOtherUser: PublicEndpoint[UserId, UserError, Chat, Any] =
     userBaseEndpoint(
       "User's chat with other user endpoint",
       "This endpoint returns the chat between the user and another specific user",

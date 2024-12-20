@@ -2,7 +2,7 @@ package endpoints.outputs
 
 import io.circe.*
 import io.circe.generic.auto.*
-import modelClasses.ErrorInfo
+import modelClasses.errors.UserError.*
 import modelClasses.app.chatting.{Chat, Message}
 import modelClasses.app.media.{Book, Episode, Movie, Season, TVShow, Videogame}
 import modelClasses.app.social.{Entry, Like, MediaContentList, Rating, Reply, Review}
@@ -28,23 +28,47 @@ import unionTypes.schemas.SocialSchemasForIDs.*
 
 object Common {
 
-  object ErrorOutputs {
-
-//    val notFound:
-//      String => EndpointOutput[ErrorInfo] =
-//        obj => jsonBody[ErrorInfo].description(obj + " not found")
-
-    val notFound: EndpointOutput[ErrorInfo] =
-        jsonBody[ErrorInfo].description("Not found")
-
+//  object ErrorOutputs {
+//    
+//    val errorInfo: EndpointOutput[ErrorInfo] =
+//      jsonBody[ErrorInfo]
+//
+////    val notFound:
+////      String => EndpointOutput[ErrorInfo] =
+////        obj => jsonBody[ErrorInfo].description(obj + " not found")
+//
+//    val notFound: EndpointOutput[ErrorInfo] =
+//        jsonBody[ErrorInfo].description("Not found")
+//
+////    val invalidRequest: EndpointOutput[ErrorInfo] =
+////        jsonBody[ErrorInfo].description("Invalid request")
+//
 //    val invalidRequest: EndpointOutput[ErrorInfo] =
-//        jsonBody[ErrorInfo].description("Invalid request")
+//        jsonBody[ErrorInfo].description("Invalid Request")
+//
+//    val unknown: EndpointOutput[ErrorInfo] =
+//        jsonBody[ErrorInfo].description("Unknown")
+//  }
+  
+  object ErrorOutputsTraits {
 
-    val invalidRequest: EndpointOutput[ErrorInfo] =
-        jsonBody[ErrorInfo].description("Invalid Request")
+    val badRequest: EndpointOutput[BadRequest] =
+      stringBody.mapTo[BadRequest].description("Bad request")
 
-    val unknown: EndpointOutput[ErrorInfo] =
-        jsonBody[ErrorInfo].description("Unknown")
+    val notFound: EndpointOutput[NotFound] =
+      stringBody.mapTo[NotFound].description("Not found")
+        
+    val unauthorized: EndpointOutput[Unauthorized] =
+      stringBody.mapTo[Unauthorized].description("Unauthorized")
+
+    val conflict: EndpointOutput[Conflict] =
+      stringBody.mapTo[Conflict].description("Conflict")
+
+    val unknown: EndpointOutput[Unknown] =
+      jsonBody[Unknown].description("Unknown")
+
+    val noContent: EndpointOutput[NoContent] =
+      jsonBody[NoContent].description("No content")
   }
   
   object ChattingOutputs {

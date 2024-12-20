@@ -1,15 +1,13 @@
 package endpoints.igdb
 
 import sttp.tapir.*
-
-import endpoints.outputs.IGDB._
-
-import modelClasses.igdb.VideogameRequests._
-import modelClasses.ErrorInfo
+import endpoints.outputs.IGDB.*
+import modelClasses.igdb.VideogameRequests.*
+import modelClasses.errors.UserError.*
 
 object Videogames {
 
-  val requestVideogameEndpoint: PublicEndpoint[(String, String, String, String), ErrorInfo, List[RequestedVideogame], Any] =
+  val requestVideogameEndpoint: PublicEndpoint[(String, String, String, String), UserError, List[RequestedVideogame], Any] =
     Base.igdbBaseEndpoint(
         "Get videogame from IGDB",
         "This endpoint returns a list of videogames from IGDB API, whether we want a specific videogame by its ID " +

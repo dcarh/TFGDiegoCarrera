@@ -1,17 +1,16 @@
 package endpoints.app.user
 
-import endpoints.EndpointsUtils.appBaseEndpoint
 import endpoints.app.user.UserEndpointsUtils.userBaseEndpoint
 import sttp.tapir.*
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
-import modelClasses.ErrorInfo
+import modelClasses.errors.UserError.*
 import modelClasses.app.social.Review
 import modelClasses.ids.User.UserId
 
 object UserReviewsEndpoints {
 
-  val userReviewsListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Review], Any] =
+  val userReviewsListEndpoint: PublicEndpoint[UserId, UserError, List[Review], Any] =
     userBaseEndpoint(
       "User's reviews endpoint",
       "This endpoint returns a list of all the reviews written by a user",
@@ -31,7 +30,7 @@ object UserReviewsEndpoints {
 //      .in("reviews" / "movies")
 //      .out(SocialOutputs.listOfMoviesSuccess)
 
-  val userMoviesReviewsListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Review], Any] =
+  val userMoviesReviewsListEndpoint: PublicEndpoint[UserId, UserError, List[Review], Any] =
     userBaseEndpoint(
       "User's movie reviews endpoint",
       "This endpoint returns a list of all a user's movie reviews",
@@ -51,7 +50,7 @@ object UserReviewsEndpoints {
 //      .in("reviews" / "tv_shows")
 //      .out(SocialOutputs.listOfTvShowsSuccess)
 
-  val userTVShowsReviewsListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Review], Any] =
+  val userTVShowsReviewsListEndpoint: PublicEndpoint[UserId, UserError, List[Review], Any] =
     userBaseEndpoint(
       "User's TV show reviews endpoint",
       "This endpoint returns a list of all a user's TV show reviews",
@@ -71,7 +70,7 @@ object UserReviewsEndpoints {
 //      .in("reviews" / "seasons")
 //      .out(SocialOutputs.listOfSeasonsSuccess)
 
-  val userSeasonsReviewsListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Review], Any] =
+  val userSeasonsReviewsListEndpoint: PublicEndpoint[UserId, UserError, List[Review], Any] =
     userBaseEndpoint(
       "User's season reviews endpoint",
       "This endpoint returns a list of all a user's season reviews",
@@ -91,7 +90,7 @@ object UserReviewsEndpoints {
 //      .in("reviews" / "episodes")
 //      .out(SocialOutputs.listOfEpisodesSuccess)
 
-  val userEpisodesReviewsListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Review], Any] =
+  val userEpisodesReviewsListEndpoint: PublicEndpoint[UserId, UserError, List[Review], Any] =
     userBaseEndpoint(
       "User's episode reviews endpoint",
       "This endpoint returns a list of all a user's episode reviews",
@@ -111,7 +110,7 @@ object UserReviewsEndpoints {
 //      .in("reviews" / "videogames")
 //      .out(SocialOutputs.listOfVideogamesSuccess)
 
-  val userVideogamesReviewsListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Review], Any] =
+  val userVideogamesReviewsListEndpoint: PublicEndpoint[UserId, UserError, List[Review], Any] =
     userBaseEndpoint(
       "User's videogame reviews endpoint",
       "This endpoint returns a list of all a user's videogame reviews",
@@ -131,7 +130,7 @@ object UserReviewsEndpoints {
 //      .in("reviews" / "books")
 //      .out(SocialOutputs.listOfBookSuccess)
 
-  val userBooksReviewsListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Review], Any] =
+  val userBooksReviewsListEndpoint: PublicEndpoint[UserId, UserError, List[Review], Any] =
     userBaseEndpoint(
       "User's books reviews endpoint",
       "This endpoint returns a list of all a user's book reviews",

@@ -1,14 +1,10 @@
 package endpoints.app
 
-import sttp.tapir._
-import sttp.model.StatusCode
-
-import modelClasses.ErrorInfo
-
-import endpoints.EndpointsUtils.appBaseEndpoint
-import endpoints.inputs.Common._
-import endpoints.outputs.Common._
-
+import sttp.tapir.*
+import endpoints.EndpointsUtils.httpMethodEndpoint
+import endpoints.inputs.Common.*
+import endpoints.outputs.Common.*
+import modelClasses.errors.UserError.*
 import modelClasses.app.social.MediaContentList
 import modelClasses.ids.Social.MediaContentListId
 
@@ -16,26 +12,26 @@ import modelClasses.ids.Social.MediaContentListId
 object MediaContentListsEndpoints {
     
   private val listsBaseEndpoint:
-    (String, String, String) => PublicEndpoint[Unit, ErrorInfo, Unit, Any] =
-      (name, description, method) => appBaseEndpoint(name, description, "lists", method)
+    (String, String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
+      (name, description, method) => httpMethodEndpoint(name, description, "lists", method)
 
   private val listBaseEndpoint:
-    (String, String, String) => PublicEndpoint[Unit, ErrorInfo, Unit, Any] =
+    (String, String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
       (name, description, method) =>
-        appBaseEndpoint(name, description, "list", method)
+        httpMethodEndpoint(name, description, "list", method)
 
-  val listsEndpoint: PublicEndpoint[Option[String], ErrorInfo, List[MediaContentList], Any] =
+  val getListsEndpoint: PublicEndpoint[Option[String], UserError, List[MediaContentList], Any] =
     listsBaseEndpoint(
-      "Lists endpoint", 
+      "Get lists endpoint", 
       "This endpoint returns a list with all the lists in the app",
       "GET"
     )
       .in(QueryInputs.querySortBy)
       .out(SocialOutputs.listOfMediaContentListSuccess)
 
-  val specificListEndpoint: PublicEndpoint[(MediaContentListId, Option[String]), ErrorInfo, MediaContentList, Any] =
+  val getListEndpoint: PublicEndpoint[(MediaContentListId, Option[String]), UserError, MediaContentList, Any] =
     listsBaseEndpoint(
-      "Specific list endpoint", 
+      "Get list endpoint", 
       "This endpoint returns a specific list of elements by its ID",
       "GET"
     )
@@ -43,7 +39,7 @@ object MediaContentListsEndpoints {
       .in(QueryInputs.querySortBy)
       .out(SocialOutputs.mediaContentListSucess)
 
-  val createListEndpoint: PublicEndpoint[Unit, ErrorInfo, MediaContentList, Any] =
+  val createListEndpoint: PublicEndpoint[Unit, UserError, MediaContentList, Any] =
     listBaseEndpoint(
       "Create list endpoint", 
       "This endpoint creates a list of elements and returns it in case of success",
@@ -52,7 +48,7 @@ object MediaContentListsEndpoints {
       .in("create")
       .out(SocialOutputs.mediaContentListSucess)
 
-  val userEditListEndpoint: PublicEndpoint[MediaContentListId, ErrorInfo, MediaContentList, Any] =
+  val editListEndpoint: PublicEndpoint[MediaContentListId, UserError, MediaContentList, Any] =
     listBaseEndpoint(
       "Edit list endpoint", 
       "This endpoint allows to edit a list of elements and returns it in case of success. Otherwise returns an error message",
@@ -62,19 +58,12 @@ object MediaContentListsEndpoints {
       .in("edit")
       .out(SocialOutputs.mediaContentListSucess)
 
-  val userDeleteListEndpoint: PublicEndpoint[MediaContentListId, ErrorInfo, Unit, Any] =
+  val deleteListEndpoint: PublicEndpoint[MediaContentListId, UserError, Unit, Any] =
     listBaseEndpoint(
-      "Delete list endpoint", 
+      "Delete list endpoint",
       "This endpoint deletes a list of elements and returns it in case of success",
       "DELETE"
     )
       .in(PathInputs.pathListId)
       .in("delete")
-      .errorOut(
-        oneOf[ErrorInfo](
-          oneOfVariant(StatusCode.NotFound, ErrorOutputs.notFound),
-          oneOfVariant(StatusCode.BadRequest, ErrorOutputs.invalidRequest)
-        )
-      )
-      .out(statusCode(StatusCode.NoContent))
 }

@@ -6,18 +6,18 @@ import endpoints.outputs.TMDB.MoviesOutputs._
 
 import modelClasses.tmdb.MovieRequests._
 import modelClasses.ids.Media.MovieId
-import modelClasses.ErrorInfo
+import modelClasses.errors.UserError.*
 
 object Movies {
   
-  val requestMovieEndpoint: PublicEndpoint[(String, MovieId), ErrorInfo, RequestedMovie, Any] =
+  val requestMovieEndpoint: PublicEndpoint[(String, MovieId), UserError, RequestedMovie, Any] =
     Base.movieBaseEndpoint(
         "Get movie from TMDB", 
         "This endpoint returns a specific movie from TMDB API by its ID"
       )
       .out(jsonRequestedMovieOut)
 
-  val requestedSimilarMoviesEndpoint: PublicEndpoint[(String, MovieId), ErrorInfo, RequestedSimilarMovies, Any] =
+  val requestedSimilarMoviesEndpoint: PublicEndpoint[(String, MovieId), UserError, RequestedSimilarMovies, Any] =
     Base.movieBaseEndpoint(
         "Get similar movies from TMDB",
         "This endpoint returns a list of similar movies to a movie specified by its ID from TMDB API"
@@ -25,7 +25,7 @@ object Movies {
       .in("similar")
       .out(jsonRequestedSimilarMoviesOut)
 
-  val requestedRecommendedMoviesEndpoint: PublicEndpoint[(String, MovieId), ErrorInfo, RequestedRecommendedMovies, Any] =
+  val requestedRecommendedMoviesEndpoint: PublicEndpoint[(String, MovieId), UserError, RequestedRecommendedMovies, Any] =
     Base.movieBaseEndpoint(
         "Get recommended movies from TMDB",
         "This endpoint returns a list of recommended movies by a movie specified by its ID from TMDB API"
@@ -33,7 +33,7 @@ object Movies {
       .in("recommendations")
       .out(jsonRequestedRecommendedMoviesOut)
 
-  val requestedCreditsForMovieEndpoint: PublicEndpoint[(String, MovieId), ErrorInfo, RequestedCreditsForMovie, Any] =
+  val requestedCreditsForMovieEndpoint: PublicEndpoint[(String, MovieId), UserError, RequestedCreditsForMovie, Any] =
     Base.movieBaseEndpoint(
         "Get credits for a movie from TMDB",
         "This endpoint returns the credits of a movie specified by its ID from TMDB API"

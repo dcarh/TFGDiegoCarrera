@@ -5,19 +5,19 @@ import sttp.tapir.*
 import endpoints.outputs.TMDB.SeasonsOutputs._
 
 import modelClasses.tmdb.SeasonRequests._
-import modelClasses.ErrorInfo
+import modelClasses.errors.UserError.*
 import modelClasses.ids.Media.{TVShowId, SeasonNumber}
 
 object Seasons {
 
-  val requestSeasonEndpoint: PublicEndpoint[(String, TVShowId, SeasonNumber), ErrorInfo, RequestedSeason, Any] =
+  val requestSeasonEndpoint: PublicEndpoint[(String, TVShowId, SeasonNumber), UserError, RequestedSeason, Any] =
     Base.seasonBaseEndpoint(
         "Get TV show season from TMDB", 
         "This endpoint returns a specific TV show season from TMDB API by its ID"
       )
       .out(jsonRequestedSeasonOut)
 
-  val requestedCreditsForSeasonEndpoint: PublicEndpoint[(String, TVShowId, SeasonNumber), ErrorInfo, RequestedCreditsForSeason, Any] =
+  val requestedCreditsForSeasonEndpoint: PublicEndpoint[(String, TVShowId, SeasonNumber), UserError, RequestedCreditsForSeason, Any] =
     Base.seasonBaseEndpoint(
         "Get credits for a TV show season from TMDB",
         "This endpoint returns the credits of a TV show season specified by its ID from TMDB API"
@@ -25,7 +25,7 @@ object Seasons {
       .in("credits")
       .out(jsonRequestedCreditsForSeasonOut)
 
-  val requestedAggregateCreditsForSeasonEndpoint: PublicEndpoint[(String, TVShowId, SeasonNumber), ErrorInfo, RequestedAggregateCreditsForSeason, Any] =
+  val requestedAggregateCreditsForSeasonEndpoint: PublicEndpoint[(String, TVShowId, SeasonNumber), UserError, RequestedAggregateCreditsForSeason, Any] =
     Base.seasonBaseEndpoint(
         "Get aggregate credits for a TV show season from TMDB",
         "This endpoint returns the aggregate credits of a TV show season specified by its ID from TMDB API"

@@ -1,18 +1,16 @@
 package endpoints.googleBooks
 
 import sttp.tapir.*
-
-import endpoints.inputs.Common._
-import endpoints.inputs.GoogleBooks._
-import endpoints.outputs.GoogleBooks._
-
+import endpoints.inputs.Common.*
+import endpoints.inputs.GoogleBooks.*
+import endpoints.outputs.GoogleBooks.*
 import modelClasses.ids.Media.BookId
-import modelClasses.googleBooks.BooksRequests._
-import modelClasses.ErrorInfo
+import modelClasses.googleBooks.BooksRequests.*
+import modelClasses.errors.UserError.*
 
 object Books {
 
-  val requestBookEndpoint: PublicEndpoint[BookId, ErrorInfo, RequestedBook, Any] =
+  val requestBookEndpoint: PublicEndpoint[BookId, UserError, RequestedBook, Any] =
     Base.bookBaseEndpoint(
         "Get book from Google Books",
         "This endpoint returns a specific book from Google Books API by its ID"
@@ -20,7 +18,7 @@ object Books {
       .in(PathInputs.pathBookId)
       .out(jsonRequestedBookOut)
 
-  val requestBookSearchEndpoint: PublicEndpoint[(String, String, String, String), ErrorInfo, RequestedBookSearch, Any] =
+  val requestBookSearchEndpoint: PublicEndpoint[(String, String, String, String), UserError, RequestedBookSearch, Any] =
     Base.bookBaseEndpoint(
         "Get book search from Google Books",
         "This endpoint returns a list of books from Google Books API by a search query"
