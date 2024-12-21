@@ -1,10 +1,8 @@
-package modelClasses.dummies
+package modelClasses.dummies.objects
 
 import modelClasses.app.social.Rating
 import modelClasses.dummies.ids.{RatingIdDummies, UserIdDummies}
-import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TVShowId, VideogameId}
-import modelClasses.ids.Social.RatingId
-import modelClasses.ids.User.UserId
+import modelClasses.ids.Media.{BookId, MovieId, SeasonNumber, TVShowId, VideogameId}
 
 object RatingDummies {
   val rating1: Rating = Rating(

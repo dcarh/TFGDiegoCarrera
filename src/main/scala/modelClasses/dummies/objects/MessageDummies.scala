@@ -1,9 +1,6 @@
-package modelClasses.dummies
+package modelClasses.dummies.objects
 
 import modelClasses.app.chatting.Message
-
-import modelClasses.ids.Chatting.MessageId
-import modelClasses.ids.User.UserId
 
 import modelClasses.dummies.ids.{MessageIdDummies, UserIdDummies}
 

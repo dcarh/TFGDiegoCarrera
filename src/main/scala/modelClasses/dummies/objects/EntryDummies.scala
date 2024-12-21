@@ -1,13 +1,11 @@
-package modelClasses.dummies
+package modelClasses.dummies.objects
 
 import modelClasses.app.social.Entry
 import modelClasses.app.Time
-import modelClasses.dummies.ids.{EntryIdDummies, LikeIdDummies, RatingIdDummies, ReviewIdDummies, UserIdDummies}
+import modelClasses.dummies.ids.{EntryIdDummies, RatingIdDummies, ReviewIdDummies, UserIdDummies}
 import modelClasses.ids.Media.*
-import modelClasses.ids.Social.{EntryId, RatingId, ReviewId}
-import modelClasses.ids.User.UserId
 
-import java.time.{LocalDate, LocalDateTime, LocalTime}
+import java.time.{LocalDate, LocalDateTime}
 
 object EntryDummies {
   val entry1: Entry = Entry(

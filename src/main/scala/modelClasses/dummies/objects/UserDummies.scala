@@ -1,11 +1,8 @@
-package modelClasses.dummies
+package modelClasses.dummies.objects
 
 import modelClasses.app.user.*
 import modelClasses.dummies.ids.*
-import modelClasses.ids.Chatting.ChatId
 import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TVShowId, VideogameId}
-import modelClasses.ids.Social.{EntryId, LikeId, MediaContentListId, RatingId, ReplyId, ReviewId}
-import modelClasses.ids.User.UserId
 import modelClasses.app.Time
 
 object UserDummies {

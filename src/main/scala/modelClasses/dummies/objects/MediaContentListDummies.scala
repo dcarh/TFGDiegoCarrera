@@ -1,10 +1,8 @@
-package modelClasses.dummies
+package modelClasses.dummies.objects
 
 import modelClasses.app.social.{MediaContentList, Visibility}
 import modelClasses.dummies.ids.{LikeIdDummies, MediaContentListIdDummies, ReplyIdDummies, UserIdDummies}
 import modelClasses.ids.Media.{BookId, MovieId, TVShowId, VideogameId}
-import modelClasses.ids.Social.{LikeId, MediaContentListId, ReplyId}
-import modelClasses.ids.User.UserId
 
 import java.time.LocalDateTime
 

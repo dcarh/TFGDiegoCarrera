@@ -1,9 +1,6 @@
-package modelClasses.dummies
+package modelClasses.dummies.objects
 
-import modelClasses.app.social.{Reply, Visibility}
-import modelClasses.ids.Media.{BookId, MovieId, TVShowId, VideogameId}
-import modelClasses.ids.Social.{LikeId, MediaContentListId, ReplyId, ReviewId}
-import modelClasses.ids.User.UserId
+import modelClasses.app.social.Reply
 import modelClasses.dummies.ids.{LikeIdDummies, MediaContentListIdDummies, ReplyIdDummies, ReviewIdDummies, UserIdDummies}
 
 object ReplyDummies {

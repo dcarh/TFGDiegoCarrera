@@ -1,10 +1,8 @@
-package modelClasses.dummies
+package modelClasses.dummies.objects
 
-import modelClasses.app.social.{Review, Visibility}
+import modelClasses.app.social.Review
 import modelClasses.dummies.ids.{LikeIdDummies, ReplyIdDummies, ReviewIdDummies, UserIdDummies}
 import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TVShowId, VideogameId}
-import modelClasses.ids.Social.{LikeId, ReplyId, ReviewId}
-import modelClasses.ids.User.UserId
 
 object ReviewDummies {
   val review1: Review = Review(
