@@ -9,18 +9,18 @@ import modelClasses.ids.User.UserId
 import java.time.LocalDateTime
 
 case class MediaContentList(
-                             id           : MediaContentListId,
-                             user         : UserId,
-                             title        : String,
-                             description  : String,
-                             mediaContents: List[MovieId | TVShowId | VideogameId | BookId],
-                             visibility   : Visibility,
-                             allowReplies : Boolean,
-                             ranked       : Boolean,
-                             creationDate : LocalDateTime,
-                             updateDate   : LocalDateTime,
-                             likes        : List[LikeId],
-                             replies      : List[ReplyId]
+                             id              : MediaContentListId,
+                             userId          : UserId,
+                             title           : String,
+                             description     : String,
+                             mediaContentsIds: List[MovieId | TVShowId | VideogameId | BookId],
+                             visibility      : Visibility,
+                             allowReplies    : Boolean,
+                             ranked          : Boolean,
+                             creationDate    : LocalDateTime,
+                             updateDate      : LocalDateTime,
+                             likes           : List[LikeId],
+                             replies         : List[ReplyId]
                            )
 
 // object MediaContentList {

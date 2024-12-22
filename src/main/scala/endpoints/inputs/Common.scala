@@ -6,10 +6,9 @@ import sttp.tapir.json.circe.*
 
 import io.circe.generic.auto.*
 
-import modelClasses.app.media.{Book, Episode, Movie, Season, TVShow, Videogame}
-import modelClasses.app.social.{Entry, MediaContentList, Review}
+import modelClasses.app.chatting.{Chat, Message}
+import modelClasses.app.social.{Entry, Like, MediaContentList, Rating, Reply, Review}
 import modelClasses.app.user.{User, UserSettings}
-import modelClasses.app.media.*
 
 import modelClasses.ids.Chatting.*
 import modelClasses.ids.Media.*
@@ -24,6 +23,10 @@ import codecs.ModelClasses.User.*
 import unionTypes.decoders.MediaDecodersForIDs.*
 import unionTypes.encoders.MediaEncodersForIDs.*
 import unionTypes.schemas.MediaSchemasForIDs.*
+
+import unionTypes.encoders.SocialEncodersForIDs.*
+import unionTypes.decoders.SocialDecodersForIDs.*
+import unionTypes.schemas.SocialSchemasForIDs.*
 
 object Common {
 
@@ -91,12 +94,36 @@ object Common {
   }
 
   object JsonInputs {
-
-    val jsonSettingsIn: EndpointInput[UserSettings] =
-      jsonBody[UserSettings]
-
-    val jsonElementListIn: EndpointInput[MediaContentList] =
+    
+    val jsonChat: EndpointInput[Chat] =
+      jsonBody[Chat]
+      
+    val jsonMessage: EndpointInput[Message] =
+      jsonBody[Message]
+      
+    val jsonEntry: EndpointInput[Entry] =
+      jsonBody[Entry]
+      
+    val jsonLike: EndpointInput[Like] =
+      jsonBody[Like]
+      
+    val jsonMediaContentList: EndpointInput[MediaContentList] =
       jsonBody[MediaContentList]
+      
+    val jsonRating: EndpointInput[Rating] =
+      jsonBody[Rating]
+      
+    val jsonReply: EndpointInput[Reply] =
+      jsonBody[Reply]
+      
+    val jsonReview: EndpointInput[Review] =
+      jsonBody[Review]
+      
+    val jsonUser: EndpointInput[User] =
+      jsonBody[User]
+
+    val jsonSettings: EndpointInput[UserSettings] =
+      jsonBody[UserSettings]
   }
 
 }

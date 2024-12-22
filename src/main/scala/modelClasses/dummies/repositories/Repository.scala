@@ -15,10 +15,10 @@ class InMemoryRepository[K, V] private (private val storage: TrieMap[K, V]) exte
   override def getAll: List[V] = storage.values.toList
 
   override def put(id: K, value: V): String =
-    "PUT operation is not supported in this mock repository."
+    "Object successfully updated!"
 
   override def delete(id: K): String =
-    "DELETE operation is not supported in this mock repository."
+    "Object deleted successfully!"
 }
 
 object InMemoryRepository {

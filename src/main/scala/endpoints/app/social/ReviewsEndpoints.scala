@@ -1,4 +1,4 @@
-package endpoints.app
+package endpoints.app.social
 
 import sttp.tapir.*
 import endpoints.EndpointsUtils.httpMethodEndpoint
@@ -19,7 +19,7 @@ object ReviewsEndpoints {
       (name, description, method) =>
         httpMethodEndpoint(name, description, "review", method)
   
-  val getReviewsEndpoint: PublicEndpoint[Option[String], UserError, List[Review], Any] =
+  val getAllReviewsEndpoint: PublicEndpoint[Option[String], UserError, List[Review], Any] =
     reviewsBaseEndpoint(
       "Get reviews endpoint",
       "This endpoint returns a list with all the reviews in the app",
@@ -37,29 +37,31 @@ object ReviewsEndpoints {
       .in(PathInputs.pathReviewId)
       .out(SocialOutputs.reviewSuccess)
 
-  val createLikeEndpoint: PublicEndpoint[Unit, UserError, Review, Any] =
+  val createReviewEndpoint: PublicEndpoint[Review, UserError, Review, Any] =
     reviewBaseEndpoint(
-      "Create like endpoint",
-      "This endpoint creates a like and returns it in case of success",
+      "Create review endpoint",
+      "This endpoint creates a review and returns it in case of success",
       "POST"
     )
       .in("create")
+      .in(JsonInputs.jsonReview)
       .out(SocialOutputs.reviewSuccess)
 
-  val editLikeEndpoint: PublicEndpoint[ReviewId, UserError, Review, Any] =
+  val editReviewEndpoint: PublicEndpoint[(ReviewId, Review), UserError, Review, Any] =
     reviewBaseEndpoint(
-      "Edit like endpoint",
-      "This endpoint allows to edit a like and returns it in case of success. Otherwise returns an error message",
+      "Edit review endpoint",
+      "This endpoint allows to edit a review and returns it in case of success. Otherwise returns an error message",
       "PUT"
     )
       .in(PathInputs.pathReviewId)
       .in("edit")
+      .in(JsonInputs.jsonReview)
       .out(SocialOutputs.reviewSuccess)
 
-  val deleteLikeEndpoint: PublicEndpoint[ReviewId, UserError, Unit, Any] =
+  val deleteReviewEndpoint: PublicEndpoint[ReviewId, UserError, Unit, Any] =
     reviewBaseEndpoint(
-      "Delete like endpoint",
-      "This endpoint deletes a like  returns it in case of success",
+      "Delete review endpoint",
+      "This endpoint deletes a review  returns it in case of success",
       "DELETE"
     )
       .in(PathInputs.pathReviewId)

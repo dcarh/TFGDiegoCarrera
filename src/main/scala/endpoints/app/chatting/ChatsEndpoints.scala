@@ -23,4 +23,34 @@ object ChatsEndpoints {
       .in(PathInputs.pathChatId)
       .out(ChattingOutputs.chatSuccess)
 
+  val createChatEndpoint: PublicEndpoint[Chat, UserError, Chat, Any] =
+    chatBaseEndpoint(
+      "Create chat endpoint", 
+      "This endpoint creates a new chat and returns it",
+      "POST"
+    )
+      .in("create")
+      .in(JsonInputs.jsonChat)
+      .out(ChattingOutputs.chatSuccess)
+
+  val editChatEndpoint: PublicEndpoint[(ChatId, Chat), UserError, Chat, Any] =
+    chatBaseEndpoint(
+      "Edit chat endpoint", 
+      "This endpoint edits a specific chat by its Id and returns it",
+      "PUT"
+    )
+      .in(PathInputs.pathChatId)
+      .in("edit")
+      .in(JsonInputs.jsonChat)
+      .out(ChattingOutputs.chatSuccess)
+
+  val deleteChatEndpoint: PublicEndpoint[ChatId, UserError, Unit, Any] =
+    chatBaseEndpoint(
+      "Delete chat endpoint", 
+      "This endpoint deletes a specific chat by its Id",
+      "DELETE"
+    )
+      .in("delete")
+      .in(PathInputs.pathChatId)
+
 }

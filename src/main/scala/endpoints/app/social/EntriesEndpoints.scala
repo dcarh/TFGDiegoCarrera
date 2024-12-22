@@ -19,10 +19,10 @@ object EntriesEndpoints {
       (name, description, method) =>
         httpMethodEndpoint(name, description, "entry", method)
   
-  val getEntriesEndpoint: PublicEndpoint[Option[String], UserError, List[Entry], Any] =
+  val getAllEntriesEndpoint: PublicEndpoint[Option[String], UserError, List[Entry], Any] =
     entriesBaseEndpoint(
       "Get entries endpoint", 
-      "This endpoint returns a entry with all the entries in the app",
+      "This endpoint returns a list with all the entries in the app",
       "GET"
     )
       .in(QueryInputs.querySortBy)
@@ -37,16 +37,17 @@ object EntriesEndpoints {
       .in(PathInputs.pathEntryId)
       .out(SocialOutputs.entrySuccess)
   
-  val createEntryEndpoint: PublicEndpoint[Unit, UserError, Entry, Any] =
+  val createEntryEndpoint: PublicEndpoint[Entry, UserError, Entry, Any] =
     entryBaseEndpoint(
       "Create entry endpoint",
       "This endpoint creates a entry of elements and returns it in case of success",
       "POST"
     )
       .in("create")
+      .in(JsonInputs.jsonEntry)
       .out(SocialOutputs.entrySuccess)
 
-  val editEntryEndpoint: PublicEndpoint[EntryId, UserError, Entry, Any] =
+  val editEntryEndpoint: PublicEndpoint[(EntryId, Entry), UserError, Entry, Any] =
     entryBaseEndpoint(
       "Edit entry endpoint",
       "This endpoint allows to edit a entry and returns it in case of success. Otherwise returns an error message",
@@ -54,6 +55,7 @@ object EntriesEndpoints {
     )
       .in(PathInputs.pathEntryId)
       .in("edit")
+      .in(JsonInputs.jsonEntry)
       .out(SocialOutputs.entrySuccess)
 
   val deleteEntryEndpoint: PublicEndpoint[EntryId, UserError, Unit, Any] =

@@ -28,7 +28,7 @@ object UserSettingsEndpoints {
     )
       .in(PathInputs.pathUserId)
       .in("settings" / "edit")
-      .in(JsonInputs.jsonSettingsIn)
+      .in(JsonInputs.jsonSettings)
       .out(UserOutputs.userSettingsSuccess)
 
 }

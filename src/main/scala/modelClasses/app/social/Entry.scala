@@ -2,7 +2,7 @@ package modelClasses.app.social
 
 import modelClasses.app.Time
 import modelClasses.ids.Media.*
-import modelClasses.ids.Social.{EntryId, LikeId, RatingId, ReviewId}
+import modelClasses.ids.Social.{EntryId, RatingId, ReviewId}
 import modelClasses.ids.User.UserId
 
 import java.time.{LocalDate, LocalDateTime}
@@ -11,7 +11,7 @@ import java.time.{LocalDate, LocalDateTime}
 case class Entry(
                   id           : EntryId,
                   userId       : UserId,
-                  elementId    : MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId,
+                  mediaId      : MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId,
                   //elementId    : Movie.Id | TVShow.Id | Season.Id | Episode.Id | Videogame.Id | Book.Id,
                   // elementTitle: String,
                   // elementType : String,

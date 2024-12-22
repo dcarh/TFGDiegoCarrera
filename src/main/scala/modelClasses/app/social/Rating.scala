@@ -5,10 +5,10 @@ import modelClasses.ids.Social.RatingId
 import modelClasses.ids.User.UserId
 
 case class Rating(
-                 id: RatingId,
-                 userId: UserId,
-                 mediaRated: MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId,
-                 rating: Int
+                 id          : RatingId,
+                 userId      : UserId,
+                 mediaRatedId: MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId,
+                 rating      : Int
                  )
 
 // object Rating {

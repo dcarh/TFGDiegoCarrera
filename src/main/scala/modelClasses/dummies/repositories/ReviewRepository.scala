@@ -20,4 +20,6 @@ object ReviewRepository {
 
   def get(id: ReviewId): Option[Review] = repository.get(id)
   def getAll: List[Review] = repository.getAll
+  def put(id: ReviewId, value: Review): String = repository.put(id, value)
+  def delete(id: ReviewId): String = repository.delete(id)
 }

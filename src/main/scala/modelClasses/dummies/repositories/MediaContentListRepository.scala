@@ -18,4 +18,6 @@ object MediaContentListRepository {
 
   def get(id: MediaContentListId): Option[MediaContentList] = repository.get(id)
   def getAll: List[MediaContentList] = repository.getAll
+  def put(id: MediaContentListId, value: MediaContentList): String = repository.put(id, value)
+  def delete(id: MediaContentListId): String = repository.delete(id)
 }

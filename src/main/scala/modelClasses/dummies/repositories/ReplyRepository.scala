@@ -18,4 +18,6 @@ object ReplyRepository {
 
   def get(id: ReplyId): Option[Reply] = repository.get(id)
   def getAll: List[Reply] = repository.getAll
+  def put(id: ReplyId, value: Reply): String = repository.put(id, value)
+  def delete(id: ReplyId): String = repository.delete(id)
 }

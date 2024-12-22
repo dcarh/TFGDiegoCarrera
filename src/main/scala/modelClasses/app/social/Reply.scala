@@ -7,12 +7,12 @@ import modelClasses.ids.Social.{LikeId, MediaContentListId, ReviewId, ReplyId}
 import modelClasses.ids.User.UserId
 
 case class Reply(
-                  id           : ReplyId,
-                  user         : UserId,
-                  objectReplied: MediaContentListId | ReviewId | ReplyId,
-                  reply        : String,
-                  likes        : List[LikeId],
-                  replies      : List[ReplyId]
+                  id             : ReplyId,
+                  userId         : UserId,
+                  objectRepliedId: MediaContentListId | ReviewId | ReplyId,
+                  reply          : String,
+                  likes          : List[LikeId],
+                  replies        : List[ReplyId]
                 )
 
 // object Reply {
