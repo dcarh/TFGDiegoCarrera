@@ -19,6 +19,7 @@ import codecs.ModelClasses.Chatting.*
 import codecs.ModelClasses.Media.*
 import codecs.ModelClasses.Social.*
 import codecs.ModelClasses.User.*
+import codecs.Others.*
 
 import unionTypes.decoders.MediaDecodersForIDs.*
 import unionTypes.encoders.MediaEncodersForIDs.*
@@ -35,8 +36,8 @@ object Common {
     val querySortBy: EndpointInput[Option[String]] =
       query[Option[String]]("sort_by")
 
-    val queryCategories: EndpointInput[Option[String]] =
-      query[Option[String]]("categories")
+    val queryCategories: EndpointInput[Option[List[String]]] =
+      query[Option[List[String]]]("categories")
 
     val querySearch: EndpointInput[String] =
       query[String]("query")

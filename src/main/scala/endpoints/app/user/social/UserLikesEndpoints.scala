@@ -10,26 +10,55 @@ import modelClasses.app.social.{Like, MediaContentList, Reply, Review}
 import modelClasses.ids.User.UserId
 
 object UserLikesEndpoints {
+
+  private val userLikesBaseEndpoint:
+    (String, String, String) => PublicEndpoint[UserId, UserError, Unit, Any] =
+      (name, description, method) => userBaseEndpoint(name, description, method)
+        .in(PathInputs.pathUserId)
+        .in("likes")
   
   val userLikesListEndpoint: PublicEndpoint[UserId, UserError, List[Like], Any] =
-    userBaseEndpoint(
+    userLikesBaseEndpoint(
       "User's likes endpoint",
       "This endpoint returns a list of all the likes for a user",
       "GET"
     )
-      .in(PathInputs.pathUserId)
-      .in("likes")
       .out(SocialOutputs.listOfLikesSuccess)
   
-  val userLikedElementsListEndpoint: PublicEndpoint[UserId, UserError, List[MediaContentList | Review | Reply], Any] =
-    userBaseEndpoint(
-      "User's liked content endpoint",
-      "This endpoint returns a list of all the liked content for a user",
-      "GET"
-    )
-      .in(PathInputs.pathUserId)
-      .in("likes")
-      .out(SocialOutputs.listOfLikeableObjectsSuccess)
+//  val userLikedElementsListEndpoint: PublicEndpoint[UserId, UserError, List[MediaContentList | Review | Reply], Any] =
+//    userLikesBaseEndpoint(
+//      "User's liked content endpoint",
+//      "This endpoint returns a list of all the liked content for a user",
+//      "GET"
+//    )
+//      .out(SocialOutputs.listOfLikeableObjectsSuccess)
+
+//  val userLikedListsListEndpoint: PublicEndpoint[UserId, UserError, List[MediaContentList], Any] =
+//    userLikesBaseEndpoint(
+//      "User's liked lists endpoint",
+//      "This endpoint returns a list of all the liked lists for a user",
+//      "GET"
+//    )
+//      .in("lists")
+//      .out(SocialOutputs.listOfMediaContentListSuccess)
+//
+//  val userLikedReviewsListEndpoint: PublicEndpoint[UserId, UserError, List[Review], Any] =
+//    userLikesBaseEndpoint(
+//      "User's liked reviews endpoint",
+//      "This endpoint returns a list of all the liked reviews for a user",
+//      "GET"
+//    )
+//      .in("reviews")
+//      .out(SocialOutputs.listOfReviewsSuccess)
+//
+//  val userLikedCommentsListEndpoint: PublicEndpoint[UserId, UserError, List[Reply], Any] =
+//    userLikesBaseEndpoint(
+//      "User's liked replies endpoint",
+//      "This endpoint returns a list of all the liked replies for a user",
+//      "GET"
+//    )
+//      .in("replies")
+//      .out(SocialOutputs.listOfRepliesSuccess)
 
 //  val userLikedMoviesListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Movie], Any] =
 //    userBaseEndpoint(
@@ -90,35 +119,5 @@ object UserLikesEndpoints {
 //      .in(PathInputs.pathUserId)
 //      .in("likes" / "books")
 //      .out(MediaOutputs.listOfBooksSuccess)
-
-  val userLikedListsListEndpoint: PublicEndpoint[UserId, UserError, List[MediaContentList], Any] =
-    userBaseEndpoint(
-      "User's liked lists endpoint",
-      "This endpoint returns a list of all the liked lists for a user",
-      "GET"
-    )
-      .in(PathInputs.pathUserId)
-      .in("likes" / "lists")
-      .out(SocialOutputs.listOfMediaContentListSuccess)
-
-  val userLikedReviewsListEndpoint: PublicEndpoint[UserId, UserError, List[Review], Any] =
-    userBaseEndpoint(
-      "User's liked reviews endpoint",
-      "This endpoint returns a list of all the liked reviews for a user",
-      "GET"
-    )
-      .in(PathInputs.pathUserId)
-      .in("likes" / "reviews")
-      .out(SocialOutputs.listOfReviewsSuccess)
-
-  val userLikedCommentsListEndpoint: PublicEndpoint[UserId, UserError, List[Reply], Any] =
-    userBaseEndpoint(
-      "User's liked replies endpoint",
-      "This endpoint returns a list of all the liked replies for a user",
-      "GET"
-    )
-      .in(PathInputs.pathUserId)
-      .in("likes" / "replies")
-      .out(SocialOutputs.listOfRepliesSuccess)
 
 }

@@ -11,26 +11,34 @@ import modelClasses.ids.User.UserId
 
 object UserListsEndpoints {
 
+//  private val userListBaseEndpoint:
+//    (String, String, String) => PublicEndpoint[UserId, UserError, Unit, Any] =
+//      (name, description, method) => userBaseEndpoint(name, description, method)
+//        .in(PathInputs.pathUserId)
+//        .in("list")
+
+  private val userListsBaseEndpoint:
+    (String, String, String) => PublicEndpoint[UserId, UserError, Unit, Any] =
+      (name, description, method) => userBaseEndpoint(name, description, method)
+        .in(PathInputs.pathUserId)
+        .in("lists")
+
   val userListsEndpoint: PublicEndpoint[(UserId, Option[String]), UserError, List[MediaContentList], Any] =
-    userBaseEndpoint(
+    userListsBaseEndpoint(
       "User's lists endpoint",
       "This endpoint returns all the lists for a user",
       "GET"
     )
-      .in(PathInputs.pathUserId)
-      .in("lists")
       .in(QueryInputs.querySortBy)
       .out(SocialOutputs.listOfMediaContentListSuccess)
 
-  val userSpecificListEndpoint: PublicEndpoint[(UserId, MediaContentListId), UserError, MediaContentList, Any] =
-    userBaseEndpoint(
-      "User's specific list endpoint",
-      "This endpoint returns a specific list for a user by the ID of the list",
-      "GET"
-    )
-      .in(PathInputs.pathUserId)
-      .in("lists")
-      .in(PathInputs.pathListId)
-      .out(SocialOutputs.mediaContentListSucess)
+//  val userSpecificListEndpoint: PublicEndpoint[(UserId, MediaContentListId), UserError, MediaContentList, Any] =
+//    userListBaseEndpoint(
+//      "User's specific list endpoint",
+//      "This endpoint returns a specific list for a user by the ID of the list",
+//      "GET"
+//    )
+//      .in(PathInputs.pathListId)
+//      .out(SocialOutputs.mediaContentListSucess)
 
 }
