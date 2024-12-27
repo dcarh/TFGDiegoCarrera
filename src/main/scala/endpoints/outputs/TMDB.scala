@@ -16,6 +16,9 @@ object TMDB {
     val jsonRequestedMovieOut: EndpointOutput[RequestedMovie] =
       jsonBody[RequestedMovie]
 
+    val jsonRequestedMoviesListOut: EndpointOutput[List[RequestedMovie]] =
+      jsonBody[List[RequestedMovie]]
+
     val jsonRequestedSimilarMoviesOut: EndpointOutput[RequestedSimilarMovies] =
       jsonBody[RequestedSimilarMovies]
 
@@ -32,6 +35,9 @@ object TMDB {
 
     val jsonRequestedTvShowOut: EndpointOutput[RequestedTVShow] =
       jsonBody[RequestedTVShow]
+
+    val jsonRequestedTvShowsListOut: EndpointOutput[List[RequestedTVShow]] =
+      jsonBody[List[RequestedTVShow]]
 
     val jsonRequestedSimilarTvShowsOut: EndpointOutput[RequestedSimilarTVShows] =
       jsonBody[RequestedSimilarTVShows]

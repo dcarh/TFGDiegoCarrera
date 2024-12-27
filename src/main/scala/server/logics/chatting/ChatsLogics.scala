@@ -1,11 +1,11 @@
 package server.logics.chatting
 
 import cats.effect.IO
+import dummies.repositories.ChatRepository
 
 import modelClasses.app.chatting.Chat
 import modelClasses.errors.UserError.*
 import modelClasses.ids.Chatting.ChatId
-import modelClasses.dummies.repositories.ChatRepository
 
 object ChatsLogics {
 

@@ -12,5 +12,8 @@ object IGDB {
   import VideogameRequests.*
     
   val jsonListRequestedVideogameOut: EndpointOutput[List[RequestedVideogame]] =
-    jsonBody[List[RequestedVideogame]]
+    jsonBody[List[RequestedVideogame]]  
+    
+  val jsonListRequestedVideogameAllFieldsOut: EndpointOutput[List[VideogameAllFields]] =
+    jsonBody[List[VideogameAllFields]]
 }

@@ -1,14 +1,20 @@
 package endpoints.tmdb
 
+import endpoints.inputs.Common.QueryInputs
 import sttp.tapir.*
-
-import endpoints.outputs.TMDB.MoviesOutputs._
-
-import modelClasses.tmdb.MovieRequests._
+import endpoints.outputs.TMDB.MoviesOutputs.*
+import modelClasses.tmdb.MovieRequests.*
 import modelClasses.ids.Media.MovieId
 import modelClasses.errors.UserError.*
 
 object Movies {
+
+  val searchMoviesEndpoint: PublicEndpoint[(String, String), UserError, List[RequestedMovie], Any] =
+    Base.searchBaseEndpoint(
+        "Search movies in TMDB",
+        "This endpoint returns a list of movies from TMDB API by their title"
+      )
+      .out(jsonRequestedMoviesListOut)
   
   val requestMovieEndpoint: PublicEndpoint[(String, MovieId), UserError, RequestedMovie, Any] =
     Base.movieBaseEndpoint(

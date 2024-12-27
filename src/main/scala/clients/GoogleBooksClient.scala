@@ -52,7 +52,7 @@ class GoogleBooksClient {
           val (userRequest, parseResponse) =
             Http4sClientInterpreter[IO]()
               .toRequest(endpoint, baseUri = Some(uri"https://www.googleapis.com/books/v1"))
-              .apply(query)
+              .apply(query._1, query._2, query._3, query._4)
           IO.pure(userRequest, parseResponse)
 
         case _ => IO.pure(BadRequest("Wrong number of parameters for specified endpoint"))

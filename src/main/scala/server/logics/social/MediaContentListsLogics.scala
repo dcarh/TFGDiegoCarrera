@@ -1,11 +1,11 @@
 package server.logics.social
 
 import cats.effect.IO
+import dummies.repositories.MediaContentListRepository
 
 import modelClasses.app.social.MediaContentList
 import modelClasses.errors.UserError.*
 import modelClasses.ids.Social.MediaContentListId
-import modelClasses.dummies.repositories.MediaContentListRepository
 
 object MediaContentListsLogics {
 

@@ -23,13 +23,13 @@ class IGDBClient {
 
   private val headerAccept = "application/json"
   private val headerClientID = "qn2w238rb9gpxxpiv546tgg9th31mk"
-  private val headerAuthorization = "Bearer 82gc19tdnzrhe6iisxa3ffxvrhj0lg"
+  private val headerAuthorization = "Bearer xss4i4buto7alt34th56mt9wwrjh12"
 
   def executeRequest[I, O](
                             endpoint: PublicEndpoint[I, UserError, O, Any],
                             resourceId:
                               VideogameId |
-                              (String, String, String, String)
+                              String
                           ): IO[Either[UserError, O]] = {
 
 
@@ -45,6 +45,15 @@ class IGDBClient {
 
         case (endpoint: PublicEndpoint[(String, String, String, String), _, _, _], id: VideogameId) =>
           val bodyQuery = "fields id, category, name, url;where id = " + id.value + ";sort first_release_date desc;limit 100;"
+          println("Videogame requested")
+          val (userRequest, parseResponse) =
+            Http4sClientInterpreter[IO]()
+              .toRequest(endpoint, baseUri = Some(uri"https://api.igdb.com/v4"))
+              .apply(headerAccept, headerClientID, headerAuthorization, bodyQuery)
+          IO.pure(userRequest, parseResponse)
+
+        case (endpoint: PublicEndpoint[(String, String, String, String), _, _, _], name: String) =>
+          val bodyQuery = "fields id, category, name, url;where name ~ \"" + name + "\";sort first_release_date desc;limit 100;"
           println("Videogame requested")
           val (userRequest, parseResponse) =
             Http4sClientInterpreter[IO]()

@@ -1,11 +1,11 @@
 package server.logics.social
 
 import cats.effect.IO
+import dummies.repositories.ReplyRepository
 
 import modelClasses.app.social.Reply
 import modelClasses.errors.UserError.*
 import modelClasses.ids.Social.ReplyId
-import modelClasses.dummies.repositories.ReplyRepository
 
 object RepliesLogics {
 

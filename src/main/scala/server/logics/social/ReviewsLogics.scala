@@ -1,11 +1,11 @@
 package server.logics.social
 
 import cats.effect.IO
+import dummies.repositories.ReviewRepository
 
 import modelClasses.app.social.Review
 import modelClasses.errors.UserError.*
 import modelClasses.ids.Social.ReviewId
-import modelClasses.dummies.repositories.ReviewRepository
 
 object ReviewsLogics {
 

@@ -27,9 +27,10 @@ object Base {
           .in(queryApiKey)
         
   val searchBaseEndpoint:
-    (String, String) => PublicEndpoint[String, UserError, Unit, Any] =
+    (String, String) => PublicEndpoint[(String, String), UserError, Unit, Any] =
       (name, description) =>
         tmdbBaseEndpoint(name, description, "search")
+          .in(QueryInputs.querySearch)
 
   val movieBaseEndpoint:
     (String, String) => PublicEndpoint[(String, MovieId), UserError, Unit, Any] =

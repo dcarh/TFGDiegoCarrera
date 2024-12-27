@@ -9,6 +9,13 @@ import modelClasses.tmdb.TVShowRequests._
 import modelClasses.errors.UserError.*
 
 object TVShows {
+
+  val searchTvShowsEndpoint: PublicEndpoint[(String, String), UserError, List[RequestedTVShow], Any] =
+    Base.searchBaseEndpoint(
+        "Search movies in TMDB",
+        "This endpoint returns a list of movies from TMDB API by their title"
+      )
+      .out(jsonRequestedTvShowsListOut)
   
   val requestTvShowEndpoint: PublicEndpoint[(String, TVShowId), UserError, RequestedTVShow, Any] =
     Base.tvShowBaseEndpoint(

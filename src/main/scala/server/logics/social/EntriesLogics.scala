@@ -1,10 +1,10 @@
 package server.logics.social
 
 import cats.effect.IO
+import dummies.repositories.{EntryRepository, RatingRepository}
 import modelClasses.app.social.Entry
 import modelClasses.errors.UserError.*
 import modelClasses.ids.Social.EntryId
-import modelClasses.dummies.repositories.{EntryRepository, RatingRepository}
 
 object EntriesLogics {
 
