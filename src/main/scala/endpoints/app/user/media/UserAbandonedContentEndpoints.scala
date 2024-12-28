@@ -65,11 +65,11 @@ object UserAbandonedContentEndpoints {
   val addAbandonedEpisode:
     PublicEndpoint[(UserId, TVShowId, SeasonNumber, EpisodeNumber), UserError, List[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId], Any] =
       userAbandonedBaseEndpoint(
-        "Add 'Abandoned' season endpoint",
-        "This endpoint adds a season to the list of all the 'Abandoned' media content for a user",
+        "Add 'Abandoned' episode endpoint",
+        "This endpoint adds a episode to the list of all the 'Abandoned' media content for a user",
         "PUT"
       )
-        .in("add_season")
+        .in("add_episode")
         .in(PathInputs.pathTVShowId)
         .in(PathInputs.pathSeasonNumber)
         .in(PathInputs.pathEpisodeNumber)
@@ -127,11 +127,11 @@ object UserAbandonedContentEndpoints {
 
   val deleteAbandonedEpisode: PublicEndpoint[(UserId, TVShowId, SeasonNumber, EpisodeNumber), UserError, Unit, Any] =
     userAbandonedBaseEndpoint(
-      "Delete 'Abandoned' season endpoint",
-      "This endpoint deletes a season to the list of all the 'Abandoned' media content for a user",
+      "Delete 'Abandoned' episode endpoint",
+      "This endpoint deletes a episode to the list of all the 'Abandoned' media content for a user",
       "DELETE"
     )
-      .in("delete_season")
+      .in("delete_episode")
       .in(PathInputs.pathTVShowId)
       .in(PathInputs.pathSeasonNumber)
       .in(PathInputs.pathEpisodeNumber)

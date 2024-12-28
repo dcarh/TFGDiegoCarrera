@@ -65,11 +65,11 @@ object UserCompletedContentEndpoints {
   val addCompletedEpisode:
     PublicEndpoint[(UserId, TVShowId, SeasonNumber, EpisodeNumber), UserError, List[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId], Any] =
       userCompletedBaseEndpoint(
-        "Add 'Completed' season endpoint",
-        "This endpoint adds a season to the list of all the 'Completed' media content for a user",
+        "Add 'Completed' episode endpoint",
+        "This endpoint adds a episode to the list of all the 'Completed' media content for a user",
         "PUT"
       )
-        .in("add_season")
+        .in("add_episode")
         .in(PathInputs.pathTVShowId)
         .in(PathInputs.pathSeasonNumber)
         .in(PathInputs.pathEpisodeNumber)
@@ -97,7 +97,8 @@ object UserCompletedContentEndpoints {
         .in(PathInputs.pathBookId)
         .out(MediaOutputs.listOfAllMediaIds)
 
-  val deleteCompletedMovie: PublicEndpoint[(UserId, MovieId), UserError, Unit, Any] =
+  val deleteCompletedMovie:
+    PublicEndpoint[(UserId, MovieId), UserError, Unit, Any] =
     userCompletedBaseEndpoint(
       "Delete 'Completed' movie endpoint",
       "This endpoint deletes a movie to the list of all the 'Completed' media content for a user",
@@ -127,11 +128,11 @@ object UserCompletedContentEndpoints {
 
   val deleteCompletedEpisode: PublicEndpoint[(UserId, TVShowId, SeasonNumber, EpisodeNumber), UserError, Unit, Any] =
     userCompletedBaseEndpoint(
-      "Delete 'Completed' season endpoint",
-      "This endpoint deletes a season to the list of all the 'Completed' media content for a user",
+      "Delete 'Completed' episode endpoint",
+      "This endpoint deletes a episode to the list of all the 'Completed' media content for a user",
       "DELETE"
     )
-      .in("delete_season")
+      .in("delete_episode")
       .in(PathInputs.pathTVShowId)
       .in(PathInputs.pathSeasonNumber)
       .in(PathInputs.pathEpisodeNumber)
