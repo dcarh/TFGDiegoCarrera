@@ -97,68 +97,62 @@ object UserCompletedContentEndpoints {
         .in(PathInputs.pathBookId)
         .out(MediaOutputs.listOfAllMediaIds)
 
-  val deleteCompletedMovie:
-    PublicEndpoint[(UserId, MovieId), UserError, Unit, Any] =
-      userCompletedBaseEndpoint(
-        "Delete 'Completed' movie endpoint",
-        "This endpoint deletes a movie to the list of all the 'Completed' media content for a user",
-        "DELETE"
-      )
-        .in("delete_movie")
-        .in(PathInputs.pathMovieId)
+  val deleteCompletedMovie: PublicEndpoint[(UserId, MovieId), UserError, Unit, Any] =
+    userCompletedBaseEndpoint(
+      "Delete 'Completed' movie endpoint",
+      "This endpoint deletes a movie to the list of all the 'Completed' media content for a user",
+      "DELETE"
+    )
+      .in("delete_movie")
+      .in(PathInputs.pathMovieId)
 
-  val deleteCompletedTvShow:
-    PublicEndpoint[(UserId, TVShowId), UserError, Unit, Any] =
-      userCompletedBaseEndpoint(
-        "Delete 'Completed' TV show endpoint",
-        "This endpoint deletes a TV show to the list of all the 'Completed' media content for a user",
-        "DELETE"
-      )
-        .in("delete_tv_show")
-        .in(PathInputs.pathTVShowId)
+  val deleteCompletedTvShow: PublicEndpoint[(UserId, TVShowId), UserError, Unit, Any] =
+    userCompletedBaseEndpoint(
+      "Delete 'Completed' TV show endpoint",
+      "This endpoint deletes a TV show to the list of all the 'Completed' media content for a user",
+      "DELETE"
+    )
+      .in("delete_tv_show")
+      .in(PathInputs.pathTVShowId)
 
-  val deleteCompletedSeason:
-    PublicEndpoint[(UserId, TVShowId, SeasonNumber), UserError, Unit, Any] =
-      userCompletedBaseEndpoint(
-        "Delete 'Completed' season endpoint",
-        "This endpoint deletes a season to the list of all the 'Completed' media content for a user",
-        "DELETE"
-      )
-        .in("delete_season")
-        .in(PathInputs.pathTVShowId)
-        .in(PathInputs.pathSeasonNumber)
+  val deleteCompletedSeason: PublicEndpoint[(UserId, TVShowId, SeasonNumber), UserError, Unit, Any] =
+    userCompletedBaseEndpoint(
+      "Delete 'Completed' season endpoint",
+      "This endpoint deletes a season to the list of all the 'Completed' media content for a user",
+      "DELETE"
+    )
+      .in("delete_season")
+      .in(PathInputs.pathTVShowId)
+      .in(PathInputs.pathSeasonNumber)
 
-  val deleteCompletedEpisode:
-    PublicEndpoint[(UserId, TVShowId, SeasonNumber, EpisodeNumber), UserError, Unit, Any] =
-      userCompletedBaseEndpoint(
-        "Delete 'Completed' season endpoint",
-        "This endpoint deletes a season to the list of all the 'Completed' media content for a user",
-        "DELETE"
-      )
-        .in("delete_season")
-        .in(PathInputs.pathTVShowId)
-        .in(PathInputs.pathSeasonNumber)
-        .in(PathInputs.pathEpisodeNumber)
+  val deleteCompletedEpisode: PublicEndpoint[(UserId, TVShowId, SeasonNumber, EpisodeNumber), UserError, Unit, Any] =
+    userCompletedBaseEndpoint(
+      "Delete 'Completed' season endpoint",
+      "This endpoint deletes a season to the list of all the 'Completed' media content for a user",
+      "DELETE"
+    )
+      .in("delete_season")
+      .in(PathInputs.pathTVShowId)
+      .in(PathInputs.pathSeasonNumber)
+      .in(PathInputs.pathEpisodeNumber)
 
-  val deleteCompletedVideogame:
-    PublicEndpoint[(UserId, VideogameId), UserError, Unit, Any] =
-      userCompletedBaseEndpoint(
-        "Delete 'Completed' videogame endpoint",
-        "This endpoint deletes a videogame to the list of all the 'Completed' media content for a user",
-        "DELETE"
-      )
-        .in("delete_videogame")
-        .in(PathInputs.pathVideogameId)
+  val deleteCompletedVideogame: PublicEndpoint[(UserId, VideogameId), UserError, Unit, Any] =
+    userCompletedBaseEndpoint(
+      "Delete 'Completed' videogame endpoint",
+      "This endpoint deletes a videogame to the list of all the 'Completed' media content for a user",
+      "DELETE"
+    )
+      .in("delete_videogame")
+      .in(PathInputs.pathVideogameId)
 
-  val deleteCompletedBook:
-    PublicEndpoint[(UserId, BookId), UserError, Unit, Any] =
-      userCompletedBaseEndpoint(
-        "Delete 'Completed' book endpoint",
-        "This endpoint deletes a book to the list of all the 'Completed' media content for a user",
-        "DELETE"
-      )
-        .in("delete_book")
-        .in(PathInputs.pathBookId)
+  val deleteCompletedBook: PublicEndpoint[(UserId, BookId), UserError, Unit, Any] =
+    userCompletedBaseEndpoint(
+      "Delete 'Completed' book endpoint",
+      "This endpoint deletes a book to the list of all the 'Completed' media content for a user",
+      "DELETE"
+    )
+      .in("delete_book")
+      .in(PathInputs.pathBookId)
 
   //  val userCompletedMoviesListEndpoint: PublicEndpoint[UserId, UserError, List[Movie], Any] =
 //    userCompletedBaseEndpoint(
