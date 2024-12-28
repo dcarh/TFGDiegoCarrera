@@ -52,7 +52,7 @@ object UserChatsEndpoints {
 
 // TODO: Dudo que hagan falta estos dos endpoints. La lógica, según lo entiendo yo, de acceder a una chat del usuario, debería ser: 
   //  TODO: 1. Accedo a todos los chats del usuario. 
-  //   2. Dados esos chats, accedo, según su ID al chat deseado. 
-  //   Por tanto, para lo segundo, ya tenemos el endpoint de chatting.chat
+  //        2. Dados esos chats, accedo, según su ID al chat deseado.
+  //        Por tanto, para lo segundo, ya tenemos el endpoint de chatting.chat
 
 }

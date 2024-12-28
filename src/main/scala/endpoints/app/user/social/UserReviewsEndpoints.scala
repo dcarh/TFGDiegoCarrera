@@ -16,7 +16,7 @@ object UserReviewsEndpoints {
       .in(PathInputs.pathUserId)
       .in("reviews")
 
-  val userReviewsListEndpoint: PublicEndpoint[UserId, UserError, List[Review], Any] =
+  val getUserReviewsList: PublicEndpoint[UserId, UserError, List[Review], Any] =
     userReviewsBaseEndpoint(
       "User's reviews endpoint",
       "This endpoint returns a list of all the reviews written by a user",

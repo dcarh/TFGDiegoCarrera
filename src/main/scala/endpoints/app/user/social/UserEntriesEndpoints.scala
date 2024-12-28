@@ -23,7 +23,7 @@ object UserEntriesEndpoints {
         .in(PathInputs.pathUserId)
         .in("entries")
 
-  val userEntriesEndpoint: PublicEndpoint[UserId, UserError, List[Entry], Any] =
+  val getUserEntries: PublicEndpoint[UserId, UserError, List[Entry], Any] =
     userEntriesBaseEndpoint(
       "User's entries endpoint",
       "This endpoint returns all the entries for a user",

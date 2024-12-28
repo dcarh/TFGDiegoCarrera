@@ -16,7 +16,7 @@ object UserRepliesEndpoints {
       .in(PathInputs.pathUserId)
       .in("replies")
 
-  val userRepliesListEndpoint: PublicEndpoint[UserId, UserError, List[Reply], Any] =
+  val getUserReplies: PublicEndpoint[UserId, UserError, List[Reply], Any] =
     userRepliesBaseEndpoint(
       "User's replies endpoint",
       "This endpoint returns all the replies made by a user",

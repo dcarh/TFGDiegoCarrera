@@ -17,7 +17,7 @@ object UserLikesEndpoints {
         .in(PathInputs.pathUserId)
         .in("likes")
   
-  val userLikesListEndpoint: PublicEndpoint[UserId, UserError, List[Like], Any] =
+  val getUserLikes: PublicEndpoint[UserId, UserError, List[Like], Any] =
     userLikesBaseEndpoint(
       "User's likes endpoint",
       "This endpoint returns a list of all the likes for a user",

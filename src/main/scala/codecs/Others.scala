@@ -5,7 +5,7 @@ import sttp.tapir.CodecFormat.TextPlain
 
 object Others {
 
-  implicit val categories2Codec: Codec[String, Option[List[String]], TextPlain] =
+  implicit val categoriesCodec: Codec[String, Option[List[String]], TextPlain] =
     Codec.string.mapDecode(s => DecodeResult.Value {
       if (s.isEmpty) None else Some(s.split(",").toList)
     })(

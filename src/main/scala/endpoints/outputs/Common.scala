@@ -7,6 +7,7 @@ import modelClasses.app.chatting.{Chat, Message}
 import modelClasses.app.media.{Book, Episode, Movie, Season, TVShow, Videogame}
 import modelClasses.app.social.{Entry, Like, MediaContentList, Rating, Reply, Review}
 import modelClasses.app.user.{User, UserFavourites, UserSettings}
+import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TVShowId, VideogameId}
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*
@@ -165,6 +166,9 @@ object Common {
 
     val listOfAllMediaSuccess: EndpointOutput[List[Movie | TVShow | Season | Episode | Videogame | Book]] =
       jsonBody[List[Movie | TVShow | Season | Episode | Videogame | Book]].description("The requested list of all media possible")
+
+    val listOfAllMediaIds: EndpointOutput[List[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]] =
+      jsonBody[List[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]].description("The requested list of all media IDs possible")
 
     val listOfProgressSuccess: EndpointOutput[List[TVShow | Season | Videogame | Book]] =
       jsonBody[List[TVShow | Season | Videogame | Book]].description("The requested list of the elements that can have a certain progress")

@@ -23,7 +23,7 @@ object UserListsEndpoints {
         .in(PathInputs.pathUserId)
         .in("lists")
 
-  val userListsEndpoint: PublicEndpoint[(UserId, Option[String]), UserError, List[MediaContentList], Any] =
+  val getUserLists: PublicEndpoint[(UserId, Option[String]), UserError, List[MediaContentList], Any] =
     userListsBaseEndpoint(
       "User's lists endpoint",
       "This endpoint returns all the lists for a user",
