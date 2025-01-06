@@ -19,7 +19,7 @@ object ChatsLogics {
           Left(BadRequest("Invalid chat ID"))
 
         case None =>
-          Left(NotFound(s"Chat with ID $chatId not found"))
+          Left(NotFound(s"Chat with ID ${chatId.value} not found"))
       }
     }.handleError {
       case ex: Exception =>

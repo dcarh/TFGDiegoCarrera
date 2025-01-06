@@ -27,7 +27,7 @@ object MediaContentListsEndpoints {
       "GET"
     )
       .in(QueryInputs.querySortBy)
-      .out(SocialOutputs.listOfMediaContentListSuccess)
+      .out(SocialOutputs.listOfMediaContentListsOutput)
 
   val getMediaContentListEndpoint: PublicEndpoint[MediaContentListId, UserError, MediaContentList, Any] =
     listsBaseEndpoint(
@@ -36,7 +36,7 @@ object MediaContentListsEndpoints {
       "GET"
     )
       .in(PathInputs.pathListId)
-      .out(SocialOutputs.mediaContentListSucess)
+      .out(SocialOutputs.mediaContentListOutput)
 
   val createMediaContentListEndpoint: PublicEndpoint[MediaContentList, UserError, MediaContentList, Any] =
     listBaseEndpoint(
@@ -46,7 +46,7 @@ object MediaContentListsEndpoints {
     )
       .in("create")
       .in(JsonInputs.jsonMediaContentList)
-      .out(SocialOutputs.mediaContentListSucess)
+      .out(SocialOutputs.mediaContentListOutput)
 
   val editMediaContentListEndpoint: PublicEndpoint[(MediaContentListId, MediaContentList), UserError, MediaContentList, Any] =
     listBaseEndpoint(
@@ -57,7 +57,7 @@ object MediaContentListsEndpoints {
       .in(PathInputs.pathListId)
       .in("edit")
       .in(JsonInputs.jsonMediaContentList)
-      .out(SocialOutputs.mediaContentListSucess)
+      .out(SocialOutputs.mediaContentListOutput)
 
   val deleteMediaContentListEndpoint: PublicEndpoint[MediaContentListId, UserError, Unit, Any] =
     listBaseEndpoint(

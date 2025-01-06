@@ -5,7 +5,6 @@ import endpoints.app.user.UserEndpointsUtils.userBaseEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
 import modelClasses.errors.UserError.*
-import modelClasses.app.user.User
 import modelClasses.ids.User.UserId
 
 object UserNetworkEndpoints {
@@ -15,25 +14,34 @@ object UserNetworkEndpoints {
       (name, description, method) => userBaseEndpoint(name, description, method)
         .in(PathInputs.pathUserId)
 
-  val getFollowers: PublicEndpoint[UserId, UserError, List[User], Any] =
+  val getFollowers: PublicEndpoint[UserId, UserError, List[UserId], Any] =
     userNetworkBaseEndpoint(
       "User's followers endpoint",
       "This endpoint returns the followers of the user",
       "GET"
     )
       .in("followers")
-      .out(UserOutputs.listOfUsersSuccess)
+      .out(UserOutputs.listOfUserIdsOutput)
 
-  val getFollowing: PublicEndpoint[UserId, UserError, List[User], Any] =
+  val getFollowing: PublicEndpoint[UserId, UserError, List[UserId], Any] =
     userNetworkBaseEndpoint(
       "User's following endpoint",
       "This endpoint returns the people followed by the user",
       "GET"
     )
       .in("following")
-      .out(UserOutputs.listOfUsersSuccess)
+      .out(UserOutputs.listOfUserIdsOutput)
 
-  val followUser: PublicEndpoint[(UserId, UserId), UserError, List[User], Any] =
+  val getBlocked: PublicEndpoint[UserId, UserError, List[UserId], Any] =
+    userNetworkBaseEndpoint(
+      "User's blocked endpoint",
+      "This endpoint returns the people blocked by the user",
+      "GET"
+    )
+      .in("blocked")
+      .out(UserOutputs.listOfUserIdsOutput)
+
+  val followUser: PublicEndpoint[(UserId, UserId), UserError, (List[UserId], List[UserId]), Any] =
     userNetworkBaseEndpoint(
       "Follow user endpoint",
       "This endpoint allows a user to follow another user and returns the list of people followed by the user",
@@ -41,7 +49,7 @@ object UserNetworkEndpoints {
     )
       .in("follow")
       .in(PathInputs.pathUserId)
-      .out(UserOutputs.listOfUsersSuccess)
+      .out(UserOutputs.tupleOfListsOfUserIdsOutput)
 
   val unfollowUser: PublicEndpoint[(UserId, UserId), UserError, Unit, Any] =
     userNetworkBaseEndpoint(
@@ -52,7 +60,7 @@ object UserNetworkEndpoints {
       .in("unfollow")
       .in(PathInputs.pathUserId)
 
-  val blockUser: PublicEndpoint[(UserId, UserId), UserError, List[User], Any] =
+  val blockUser: PublicEndpoint[(UserId, UserId), UserError, List[UserId], Any] =
     userNetworkBaseEndpoint(
       "Block user endpoint",
       "This endpoint allows a user to block another user and returns the list of people blocked by the user",
@@ -60,7 +68,7 @@ object UserNetworkEndpoints {
     )
       .in("block")
       .in(PathInputs.pathUserId)
-      .out(UserOutputs.listOfUsersSuccess)
+      .out(UserOutputs.listOfUserIdsOutput)
 
   val unblockUser: PublicEndpoint[(UserId, UserId), UserError, Unit, Any] =
     userNetworkBaseEndpoint(
@@ -70,14 +78,5 @@ object UserNetworkEndpoints {
     )
       .in("unblock")
       .in(PathInputs.pathUserId)
-
-  val getBlocked: PublicEndpoint[UserId, UserError, List[User], Any] =
-    userNetworkBaseEndpoint(
-      "User's blocked endpoint",
-      "This endpoint returns the people blocked by the user",
-      "GET"
-    )
-      .in("blocked")
-      .out(UserOutputs.listOfUsersSuccess)
 
 }

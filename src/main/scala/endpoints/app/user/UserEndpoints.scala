@@ -17,7 +17,7 @@ object UserEndpoints {
       "POST"
     )
       .in("sign-up")
-      .out(UserOutputs.userSuccess)
+      .out(UserOutputs.userOutput)
 
   // TODO: ¿Input?
   val userSignInEndpoint: PublicEndpoint[Unit, UserError, User, Any] =
@@ -27,7 +27,7 @@ object UserEndpoints {
       "POST"
     )
       .in("sign-in")
-      .out(UserOutputs.userSuccess)
+      .out(UserOutputs.userOutput)
 
   val usersEndpoint: PublicEndpoint[Option[String], UserError, List[User], Any] =
     usersBaseEndpoint(
@@ -36,5 +36,5 @@ object UserEndpoints {
       "GET"
     )
       .in(QueryInputs.querySortBy)
-      .out(UserOutputs.listOfUsersSuccess)
+      .out(UserOutputs.listOfUsersOutput)
 }

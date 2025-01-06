@@ -1,4 +1,4 @@
-package endpoints.app.user
+package endpoints.app.user.social
 
 import sttp.tapir.*
 import endpoints.app.user.UserEndpointsUtils.userBaseEndpoint
@@ -6,6 +6,7 @@ import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
 import modelClasses.errors.UserError.*
 import modelClasses.app.social.Reply
+import modelClasses.ids.Social.ReplyId
 import modelClasses.ids.User.UserId
 
 object UserRepliesEndpoints {
@@ -16,13 +17,13 @@ object UserRepliesEndpoints {
       .in(PathInputs.pathUserId)
       .in("replies")
 
-  val getUserReplies: PublicEndpoint[UserId, UserError, List[Reply], Any] =
+  val getUserReplies: PublicEndpoint[UserId, UserError, List[ReplyId], Any] =
     userRepliesBaseEndpoint(
       "User's replies endpoint",
       "This endpoint returns all the replies made by a user",
       "GET"
     )
-      .out(SocialOutputs.listOfRepliesSuccess)
+      .out(SocialOutputs.listOfRepliesIdsOutput)
 
 //  val userRepliesListsListEndpoint: PublicEndpoint[UserId, UserError, List[Reply], Any] =
 //    userRepliesBaseEndpoint(
@@ -31,7 +32,7 @@ object UserRepliesEndpoints {
 //      "GET"
 //    )
 //      .in("lists")
-//      .out(SocialOutputs.listOfRepliesSuccess)
+//      .out(SocialOutputs.listOfRepliesOutput)
 //
 //  val userRepliesReviewsListEndpoint: PublicEndpoint[UserId, UserError, List[Reply], Any] =
 //    userRepliesBaseEndpoint(
@@ -40,7 +41,7 @@ object UserRepliesEndpoints {
 //      "GET"
 //    )
 //      .in("reviews")
-//      .out(SocialOutputs.listOfRepliesSuccess)
+//      .out(SocialOutputs.listOfRepliesOutput)
 //
 //  val userRepliesRepliesListEndpoint: PublicEndpoint[UserId, UserError, List[Reply], Any] =
 //    userRepliesBaseEndpoint(
@@ -49,6 +50,6 @@ object UserRepliesEndpoints {
 //      "GET"
 //    )
 //      .in("replies")
-//      .out(SocialOutputs.listOfRepliesSuccess)
+//      .out(SocialOutputs.listOfRepliesOutput)
 
 }

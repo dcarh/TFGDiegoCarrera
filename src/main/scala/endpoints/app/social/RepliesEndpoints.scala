@@ -21,7 +21,7 @@ object RepliesEndpoints {
       "GET"
     )
       .in(PathInputs.pathReplyId)
-      .out(SocialOutputs.replySuccess)
+      .out(SocialOutputs.replyOutput)
 
   val createReplyEndpoint: PublicEndpoint[Reply, UserError, Reply, Any] =
     replyBaseEndpoint(
@@ -31,7 +31,7 @@ object RepliesEndpoints {
     )
       .in("create")
       .in(JsonInputs.jsonReply)
-      .out(SocialOutputs.replySuccess)
+      .out(SocialOutputs.replyOutput)
 
   val editReplyEndpoint: PublicEndpoint[(ReplyId, Reply), UserError, Reply, Any] =
     replyBaseEndpoint(
@@ -42,7 +42,7 @@ object RepliesEndpoints {
       .in(PathInputs.pathReplyId)
       .in("edit")
       .in(JsonInputs.jsonReply)
-      .out(SocialOutputs.replySuccess)
+      .out(SocialOutputs.replyOutput)
 
   val deleteReplyEndpoint: PublicEndpoint[ReplyId, UserError, Unit, Any] =
     replyBaseEndpoint(

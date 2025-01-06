@@ -22,7 +22,7 @@ object MediaEndpoints {
       "movie"
     )
       .in(PathInputs.pathMovieId)
-      .out(MediaOutputs.movieSuccess)
+      .out(MediaOutputs.movieOutput)
 
   val getTvShow: PublicEndpoint[TVShowId, UserError, TVShow, Any] =
     mediaBaseEndpoint(
@@ -31,7 +31,7 @@ object MediaEndpoints {
       "tv_show"
     )
       .in(PathInputs.pathTVShowId)
-      .out(MediaOutputs.tvShowSuccess)
+      .out(MediaOutputs.tvShowOutput)
 
   val getSeason: PublicEndpoint[(TVShowId, SeasonNumber), UserError, Season, Any] =
     mediaBaseEndpoint(
@@ -42,7 +42,7 @@ object MediaEndpoints {
       .in(PathInputs.pathTVShowId)
       .in("season")
       .in(PathInputs.pathSeasonNumber)
-      .out(MediaOutputs.seasonSuccess)
+      .out(MediaOutputs.seasonOutput)
 
   val getEpisode: PublicEndpoint[(TVShowId, SeasonNumber, EpisodeNumber), UserError, Episode, Any] =
     mediaBaseEndpoint(
@@ -55,7 +55,7 @@ object MediaEndpoints {
       .in(PathInputs.pathSeasonNumber)
       .in("episode")
       .in(PathInputs.pathEpisodeNumber)
-      .out(MediaOutputs.episodeSuccess)
+      .out(MediaOutputs.episodeOutput)
 
   val getVideogame: PublicEndpoint[VideogameId, UserError, Videogame, Any] =
     mediaBaseEndpoint(
@@ -64,7 +64,7 @@ object MediaEndpoints {
       "videogame"
     )
       .in(PathInputs.pathVideogameId)
-      .out(MediaOutputs.videogameSuccess)
+      .out(MediaOutputs.videogameOutput)
 
   val getBook: PublicEndpoint[BookId, UserError, Book, Any] =
     mediaBaseEndpoint(
@@ -73,6 +73,6 @@ object MediaEndpoints {
       "book"
     )
       .in(PathInputs.pathBookId)
-      .out(MediaOutputs.bookSuccess)
+      .out(MediaOutputs.bookOutput)
 
 }

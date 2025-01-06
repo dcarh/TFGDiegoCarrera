@@ -26,7 +26,7 @@ object EntriesEndpoints {
       "GET"
     )
       .in(QueryInputs.querySortBy)
-      .out(SocialOutputs.listOfEntriesSuccess)
+      .out(SocialOutputs.listOfEntriesOutput)
 
   val getEntryEndpoint: PublicEndpoint[EntryId, UserError, Entry, Any] =
     entryBaseEndpoint(
@@ -35,7 +35,7 @@ object EntriesEndpoints {
       "GET"
     )
       .in(PathInputs.pathEntryId)
-      .out(SocialOutputs.entrySuccess)
+      .out(SocialOutputs.entryOutput)
   
   val createEntryEndpoint: PublicEndpoint[Entry, UserError, Entry, Any] =
     entryBaseEndpoint(
@@ -45,7 +45,7 @@ object EntriesEndpoints {
     )
       .in("create")
       .in(JsonInputs.jsonEntry)
-      .out(SocialOutputs.entrySuccess)
+      .out(SocialOutputs.entryOutput)
 
   val editEntryEndpoint: PublicEndpoint[(EntryId, Entry), UserError, Entry, Any] =
     entryBaseEndpoint(
@@ -56,7 +56,7 @@ object EntriesEndpoints {
       .in(PathInputs.pathEntryId)
       .in("edit")
       .in(JsonInputs.jsonEntry)
-      .out(SocialOutputs.entrySuccess)
+      .out(SocialOutputs.entryOutput)
 
   val deleteEntryEndpoint: PublicEndpoint[EntryId, UserError, Unit, Any] =
     entryBaseEndpoint(

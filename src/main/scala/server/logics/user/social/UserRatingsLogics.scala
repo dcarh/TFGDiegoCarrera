@@ -2,18 +2,17 @@ package server.logics.user.social
 
 import cats.effect.IO
 import dummies.repositories.UserRepository
-
 import modelClasses.errors.UserError.*
+import modelClasses.ids.Social.RatingId
 import modelClasses.ids.User.UserId
-import modelClasses.ids.Social.LikeId
 
-object UserLikesLogics {
+object UserRatingsLogics {
 
-  val getUserLikesLogic: UserId => IO[Either[UserError, List[LikeId]]] =
+  val getUserRatingsLogic: UserId => IO[Either[UserError, List[RatingId]]] =
     userId => IO {
       UserRepository.get(userId) match {
         case Some(user) =>
-          Right(user.likes)
+          Right(user.ratings)
 
         case None if userId.value <= 0 =>
           Left(BadRequest("Invalid user ID"))

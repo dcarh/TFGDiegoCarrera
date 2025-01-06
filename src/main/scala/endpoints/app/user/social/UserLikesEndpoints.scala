@@ -1,4 +1,4 @@
-package endpoints.app.user
+package endpoints.app.user.social
 
 import sttp.tapir.*
 import endpoints.app.user.UserEndpointsUtils.userBaseEndpoint
@@ -7,6 +7,7 @@ import endpoints.outputs.Common.*
 import modelClasses.errors.UserError.*
 import modelClasses.app.media.{Book, Episode, Movie, Season, TVShow, Videogame}
 import modelClasses.app.social.{Like, MediaContentList, Reply, Review}
+import modelClasses.ids.Social.LikeId
 import modelClasses.ids.User.UserId
 
 object UserLikesEndpoints {
@@ -17,13 +18,13 @@ object UserLikesEndpoints {
         .in(PathInputs.pathUserId)
         .in("likes")
   
-  val getUserLikes: PublicEndpoint[UserId, UserError, List[Like], Any] =
+  val getUserLikes: PublicEndpoint[UserId, UserError, List[LikeId], Any] =
     userLikesBaseEndpoint(
       "User's likes endpoint",
       "This endpoint returns a list of all the likes for a user",
       "GET"
     )
-      .out(SocialOutputs.listOfLikesSuccess)
+      .out(SocialOutputs.listOfLikesIdsOutput)
   
 //  val userLikedElementsListEndpoint: PublicEndpoint[UserId, UserError, List[MediaContentList | Review | Reply], Any] =
 //    userLikesBaseEndpoint(
@@ -31,7 +32,7 @@ object UserLikesEndpoints {
 //      "This endpoint returns a list of all the liked content for a user",
 //      "GET"
 //    )
-//      .out(SocialOutputs.listOfLikeableObjectsSuccess)
+//      .out(SocialOutputs.listOfLikeableObjectsOutput)
 
 //  val userLikedListsListEndpoint: PublicEndpoint[UserId, UserError, List[MediaContentList], Any] =
 //    userLikesBaseEndpoint(
@@ -40,7 +41,7 @@ object UserLikesEndpoints {
 //      "GET"
 //    )
 //      .in("lists")
-//      .out(SocialOutputs.listOfMediaContentListSuccess)
+//      .out(SocialOutputs.listOfMediaContentListOutput)
 //
 //  val userLikedReviewsListEndpoint: PublicEndpoint[UserId, UserError, List[Review], Any] =
 //    userLikesBaseEndpoint(
@@ -49,7 +50,7 @@ object UserLikesEndpoints {
 //      "GET"
 //    )
 //      .in("reviews")
-//      .out(SocialOutputs.listOfReviewsSuccess)
+//      .out(SocialOutputs.listOfReviewsOutput)
 //
 //  val userLikedCommentsListEndpoint: PublicEndpoint[UserId, UserError, List[Reply], Any] =
 //    userLikesBaseEndpoint(
@@ -58,7 +59,7 @@ object UserLikesEndpoints {
 //      "GET"
 //    )
 //      .in("replies")
-//      .out(SocialOutputs.listOfRepliesSuccess)
+//      .out(SocialOutputs.listOfRepliesOutput)
 
 //  val userLikedMoviesListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Movie], Any] =
 //    userBaseEndpoint(
@@ -68,7 +69,7 @@ object UserLikesEndpoints {
 //    )
 //      .in(PathInputs.pathUserId)
 //      .in("likes" / "movies")
-//      .out(MediaOutputs.listOfMoviesSuccess)
+//      .out(MediaOutputs.listOfMoviesOutput)
 //
 //  val userLikedTVShowsListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[TVShow], Any] =
 //    userBaseEndpoint(
@@ -78,7 +79,7 @@ object UserLikesEndpoints {
 //    )
 //      .in(PathInputs.pathUserId)
 //      .in("likes" / "tv_shows")
-//      .out(MediaOutputs.listOfTvShowsSuccess)
+//      .out(MediaOutputs.listOfTvShowsOutput)
 //
 //  val userLikedSeasonsListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Season], Any] =
 //    userBaseEndpoint(
@@ -88,7 +89,7 @@ object UserLikesEndpoints {
 //    )
 //      .in(PathInputs.pathUserId)
 //      .in("likes" / "seasons")
-//      .out(MediaOutputs.listOfSeasonsSuccess)
+//      .out(MediaOutputs.listOfSeasonsOutput)
 //
 //  val userLikedEpisodesListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Episode], Any] =
 //    userBaseEndpoint(
@@ -98,7 +99,7 @@ object UserLikesEndpoints {
 //    )
 //      .in(PathInputs.pathUserId)
 //      .in("likes" / "episodes")
-//      .out(MediaOutputs.listOfEpisodesSuccess)
+//      .out(MediaOutputs.listOfEpisodesOutput)
 //
 //  val userLikedVideogamesListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Videogame], Any] =
 //    userBaseEndpoint(
@@ -108,7 +109,7 @@ object UserLikesEndpoints {
 //    )
 //      .in(PathInputs.pathUserId)
 //      .in("likes" / "videogames")
-//      .out(MediaOutputs.listOfVideogamesSuccess)
+//      .out(MediaOutputs.listOfVideogamesOutput)
 //
 //  val userLikedBooksListEndpoint: PublicEndpoint[UserId, ErrorInfo, List[Book], Any] =
 //    userBaseEndpoint(
@@ -118,6 +119,6 @@ object UserLikesEndpoints {
 //    )
 //      .in(PathInputs.pathUserId)
 //      .in("likes" / "books")
-//      .out(MediaOutputs.listOfBooksSuccess)
+//      .out(MediaOutputs.listOfBooksOutput)
 
 }

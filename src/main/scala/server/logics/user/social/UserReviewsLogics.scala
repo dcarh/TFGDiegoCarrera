@@ -5,15 +5,15 @@ import dummies.repositories.UserRepository
 
 import modelClasses.errors.UserError.*
 import modelClasses.ids.User.UserId
-import modelClasses.ids.Social.LikeId
+import modelClasses.ids.Social.ReviewId
 
-object UserLikesLogics {
+object UserReviewsLogics {
 
-  val getUserLikesLogic: UserId => IO[Either[UserError, List[LikeId]]] =
+  val getUserReviewsLogic: UserId => IO[Either[UserError, List[ReviewId]]] =
     userId => IO {
       UserRepository.get(userId) match {
         case Some(user) =>
-          Right(user.likes)
+          Right(user.reviews)
 
         case None if userId.value <= 0 =>
           Left(BadRequest("Invalid user ID"))

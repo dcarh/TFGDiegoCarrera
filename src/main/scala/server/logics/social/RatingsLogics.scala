@@ -19,7 +19,7 @@ object RatingsLogics {
           Left(BadRequest("Invalid rating ID"))
 
         case None =>
-          Left(NotFound(s"Rating with ID $ratingId not found"))
+          Left(NotFound(s"Rating with ID ${ratingId.value} not found"))
       }
     }.handleError {
       case ex: Exception =>

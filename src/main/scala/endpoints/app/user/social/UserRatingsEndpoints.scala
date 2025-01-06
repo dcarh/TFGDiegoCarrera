@@ -1,26 +1,26 @@
 package endpoints.app.user.social
 
 import endpoints.app.user.UserEndpointsUtils.userBaseEndpoint
-import sttp.tapir.*
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
 import modelClasses.errors.UserError.*
-import modelClasses.ids.Social.ReviewId
+import modelClasses.ids.Social.RatingId
 import modelClasses.ids.User.UserId
+import sttp.tapir.*
 
-object UserReviewsEndpoints {
+object UserRatingsEndpoints {
 
-  private val userReviewsBaseEndpoint:
+  private val userRatingsBaseEndpoint:
     (String, String, String) => PublicEndpoint[UserId, UserError, Unit, Any] =
     (name, description, method) => userBaseEndpoint(name, description, method)
       .in(PathInputs.pathUserId)
-      .in("reviews")
+      .in("ratings")
 
-  val getUserReviews: PublicEndpoint[UserId, UserError, List[ReviewId], Any] =
-    userReviewsBaseEndpoint(
-      "User's reviews endpoint",
-      "This endpoint returns a list of all the reviews written by a user",
+  val getUserRatings: PublicEndpoint[UserId, UserError, List[RatingId], Any] =
+    userRatingsBaseEndpoint(
+      "User's ratings endpoint",
+      "This endpoint returns a list of all the ratings of a user",
       "GET"
     )
-      .out(SocialOutputs.listOfReviewsIdsOutput)
+      .out(SocialOutputs.listOfRatingsIdsOutput)
 }

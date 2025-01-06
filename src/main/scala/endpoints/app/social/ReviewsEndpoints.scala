@@ -26,7 +26,7 @@ object ReviewsEndpoints {
       "GET"
     )
       .in(QueryInputs.querySortBy)
-      .out(SocialOutputs.listOfReviewsSuccess)
+      .out(SocialOutputs.listOfReviewsOutput)
 
   val getReviewEndpoint: PublicEndpoint[ReviewId, UserError, Review, Any] =
     reviewBaseEndpoint(
@@ -35,7 +35,7 @@ object ReviewsEndpoints {
       "GET"
     )
       .in(PathInputs.pathReviewId)
-      .out(SocialOutputs.reviewSuccess)
+      .out(SocialOutputs.reviewOutput)
 
   val createReviewEndpoint: PublicEndpoint[Review, UserError, Review, Any] =
     reviewBaseEndpoint(
@@ -45,7 +45,7 @@ object ReviewsEndpoints {
     )
       .in("create")
       .in(JsonInputs.jsonReview)
-      .out(SocialOutputs.reviewSuccess)
+      .out(SocialOutputs.reviewOutput)
 
   val editReviewEndpoint: PublicEndpoint[(ReviewId, Review), UserError, Review, Any] =
     reviewBaseEndpoint(
@@ -56,7 +56,7 @@ object ReviewsEndpoints {
       .in(PathInputs.pathReviewId)
       .in("edit")
       .in(JsonInputs.jsonReview)
-      .out(SocialOutputs.reviewSuccess)
+      .out(SocialOutputs.reviewOutput)
 
   val deleteReviewEndpoint: PublicEndpoint[ReviewId, UserError, Unit, Any] =
     reviewBaseEndpoint(

@@ -7,7 +7,10 @@ import modelClasses.app.chatting.{Chat, Message}
 import modelClasses.app.media.{Book, Episode, Movie, Season, TVShow, Videogame}
 import modelClasses.app.social.{Entry, Like, MediaContentList, Rating, Reply, Review}
 import modelClasses.app.user.{User, UserFavourites, UserSettings}
+import modelClasses.ids.Chatting.ChatId
 import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TVShowId, VideogameId}
+import modelClasses.ids.Social.*
+import modelClasses.ids.User.UserId
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*
@@ -53,145 +56,172 @@ object Common {
   
   object ErrorOutputsTraits {
 
-    val badRequest: EndpointOutput[BadRequest] =
+    val badRequestOutput: EndpointOutput[BadRequest] =
       stringBody.mapTo[BadRequest].description("Bad request")
 
-    val notFound: EndpointOutput[NotFound] =
+    val notFoundOutput: EndpointOutput[NotFound] =
       stringBody.mapTo[NotFound].description("Not found")
         
-    val unauthorized: EndpointOutput[Unauthorized] =
+    val unauthorizedOutput: EndpointOutput[Unauthorized] =
       stringBody.mapTo[Unauthorized].description("Unauthorized")
 
-    val conflict: EndpointOutput[Conflict] =
+    val conflictOutput: EndpointOutput[Conflict] =
       stringBody.mapTo[Conflict].description("Conflict")
 
-    val unknown: EndpointOutput[Unknown] =
+    val unknownOutput: EndpointOutput[Unknown] =
       jsonBody[Unknown].description("Unknown")
 
-    val noContent: EndpointOutput[NoContent] =
+    val noContentOutput: EndpointOutput[NoContent] =
       jsonBody[NoContent].description("No content")
   }
   
   object ChattingOutputs {
     
-    val chatSuccess: EndpointOutput[Chat] =
+    val chatOutput: EndpointOutput[Chat] =
       jsonBody[Chat].description("The requested chat")
 
-    val listOfChatsSuccess: EndpointOutput[List[Chat]] =
+    val listOfChatsOutput: EndpointOutput[List[Chat]] =
       jsonBody[List[Chat]].description("The requested list of chats")
       
-    val messageSuccess: EndpointOutput[Message] =
+    val listOfChatIdsOutput: EndpointOutput[List[ChatId]] =
+      jsonBody[List[ChatId]].description("The requested list of chat IDs")
+      
+    val messageOutput: EndpointOutput[Message] =
       jsonBody[Message].description("The requested message")
 
-    val listOfMessagesSuccess: EndpointOutput[List[Message]] =
+    val listOfMessagesOutput: EndpointOutput[List[Message]] =
       jsonBody[List[Message]].description("The requested list of messages")
   }
 
   object UserOutputs {
 
-    val userSuccess: EndpointOutput[User] =
+    val userOutput: EndpointOutput[User] =
       jsonBody[User].description("The requested user")
 
-    val listOfUsersSuccess: EndpointOutput[List[User]] =
+    val listOfUsersOutput: EndpointOutput[List[User]] =
       jsonBody[List[User]].description("The requested list of users")
 
-    val userSettingsSuccess: EndpointOutput[UserSettings] =
+    val listOfUserIdsOutput: EndpointOutput[List[UserId]] =
+      jsonBody[List[UserId]].description("The requested list of user IDs")
+
+    val tupleOfListsOfUserIdsOutput: EndpointOutput[(List[UserId], List[UserId])] =
+      jsonBody[(List[UserId], List[UserId])].description("The requested tuple of lists of user IDs")
+
+    val userSettingsOutput: EndpointOutput[UserSettings] =
       jsonBody[UserSettings].description("The requested settings of the user")
   }
 
   object SocialOutputs {
 
-    val entrySuccess: EndpointOutput[Entry] =
+    val entryOutput: EndpointOutput[Entry] =
       jsonBody[Entry].description("The requested entry")
 
-    val reviewSuccess: EndpointOutput[Review] =
+    val reviewOutput: EndpointOutput[Review] =
       jsonBody[Review].description("The requested review")
 
-    val ratingSuccess: EndpointOutput[Rating] =
+    val ratingOutput: EndpointOutput[Rating] =
       jsonBody[Rating].description("The requested rating")
 
-    val likeSuccess: EndpointOutput[Like] =
+    val likeOutput: EndpointOutput[Like] =
       jsonBody[Like].description("The requested like")
 
-    val replySuccess: EndpointOutput[Reply] =
+    val replyOutput: EndpointOutput[Reply] =
       jsonBody[Reply].description("The requested reply")
 
-    val mediaContentListSucess: EndpointOutput[MediaContentList] =
+    val mediaContentListOutput: EndpointOutput[MediaContentList] =
       jsonBody[MediaContentList].description("The requested media content list")
 
-    val listOfEntriesSuccess: EndpointOutput[List[Entry]] =
+    val listOfEntriesOutput: EndpointOutput[List[Entry]] =
       jsonBody[List[Entry]].description("The requested list of entries")
 
-    val listOfReviewsSuccess: EndpointOutput[List[Review]] =
+    val listOfEntriesIdsOutput: EndpointOutput[List[EntryId]] =
+      jsonBody[List[EntryId]].description("The requested list of entries IDs")
+
+    val listOfReviewsOutput: EndpointOutput[List[Review]] =
       jsonBody[List[Review]].description("The requested list of reviews")
 
-    val listOfRatingsSuccess: EndpointOutput[List[Rating]] =
+    val listOfReviewsIdsOutput: EndpointOutput[List[ReviewId]] =
+      jsonBody[List[ReviewId]].description("The requested list of reviews IDs")
+
+    val listOfRatingsOutput: EndpointOutput[List[Rating]] =
       jsonBody[List[Rating]].description("The requested list of ratings")
 
-    val listOfLikesSuccess: EndpointOutput[List[Like]] =
+    val listOfRatingsIdsOutput: EndpointOutput[List[RatingId]] =
+      jsonBody[List[RatingId]].description("The requested list of ratings IDs")
+
+    val listOfLikesOutput: EndpointOutput[List[Like]] =
       jsonBody[List[Like]].description("The requested list of likes")
 
-    val listOfRepliesSuccess: EndpointOutput[List[Reply]] =
+    val listOfLikesIdsOutput: EndpointOutput[List[LikeId]] =
+      jsonBody[List[LikeId]].description("The requested list of likes IDs")
+
+    val listOfRepliesOutput: EndpointOutput[List[Reply]] =
       jsonBody[List[Reply]].description("The requested list of replies")
 
-    val listOfMediaContentListSuccess: EndpointOutput[List[MediaContentList]] =
+    val listOfRepliesIdsOutput: EndpointOutput[List[ReplyId]] =
+      jsonBody[List[ReplyId]].description("The requested list of replies IDs")
+
+    val listOfMediaContentListsOutput: EndpointOutput[List[MediaContentList]] =
       jsonBody[List[MediaContentList]].description("The requested list of media content lists")
 
-    val listOfLikeableObjectsSuccess: EndpointOutput[List[MediaContentList | Review | Reply]] =
+    val listOfMediaContentListsIdsOutput: EndpointOutput[List[MediaContentListId]] =
+      jsonBody[List[MediaContentListId]].description("The requested list of media content lists IDs")
+
+    val listOfLikeableObjectsOutput: EndpointOutput[List[MediaContentList | Review | Reply]] =
       jsonBody[List[MediaContentList | Review | Reply]].description("The requested list of likeable objects")
   }
 
   object MediaOutputs {
 
-    val movieSuccess: EndpointOutput[Movie] =
+    val movieOutput: EndpointOutput[Movie] =
       jsonBody[Movie].description("The requested movie")
 
-    val tvShowSuccess: EndpointOutput[TVShow] =
+    val tvShowOutput: EndpointOutput[TVShow] =
       jsonBody[TVShow].description("The requested TV show")
 
-    val seasonSuccess: EndpointOutput[Season] =
+    val seasonOutput: EndpointOutput[Season] =
       jsonBody[Season].description("The requested season")
 
-    val episodeSuccess: EndpointOutput[Episode] =
+    val episodeOutput: EndpointOutput[Episode] =
       jsonBody[Episode].description("The requested episode")
 
-    val videogameSuccess: EndpointOutput[Videogame] =
+    val videogameOutput: EndpointOutput[Videogame] =
       jsonBody[Videogame].description("The requested videogame")
 
-    val bookSuccess: EndpointOutput[Book] =
+    val bookOutput: EndpointOutput[Book] =
       jsonBody[Book].description("The requested book")
 
-    val favouritesSuccess: EndpointOutput[UserFavourites] =
+    val favouritesOutput: EndpointOutput[UserFavourites] =
       jsonBody[UserFavourites].description("The requested object with the favourite media for a user")
 
-    val listOfAllMediaSuccess: EndpointOutput[List[Movie | TVShow | Season | Episode | Videogame | Book]] =
+    val listOfAllMediaOutput: EndpointOutput[List[Movie | TVShow | Season | Episode | Videogame | Book]] =
       jsonBody[List[Movie | TVShow | Season | Episode | Videogame | Book]].description("The requested list of all media possible")
 
-    val listOfAllMediaIds: EndpointOutput[List[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]] =
+    val listOfAllMediaIdsOutput: EndpointOutput[List[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]] =
       jsonBody[List[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]].description("The requested list of all media IDs possible")
 
-    val listOfProgressSuccess: EndpointOutput[List[TVShow | Season | Videogame | Book]] =
+    val listOfProgressOutput: EndpointOutput[List[TVShow | Season | Videogame | Book]] =
       jsonBody[List[TVShow | Season | Videogame | Book]].description("The requested list of the elements that can have a certain progress")
+      
+    val listOfProgressIdsOutput: EndpointOutput[List[TVShowId | (TVShowId, SeasonNumber) | VideogameId | BookId]] =
+      jsonBody[List[TVShowId | (TVShowId, SeasonNumber) | VideogameId | BookId]].description("The requested list of the elements IDs that can have a certain progress")
 
-    val listOfPendingSuccess: EndpointOutput[List[Movie | TVShow | Season | Videogame | Book]] =
-      jsonBody[List[Movie | TVShow | Season | Videogame | Book]].description("The requested list of the elements that a user can have pending")
-
-    val listOfMoviesSuccess: EndpointOutput[List[Movie]] =
+    val listOfMoviesOutput: EndpointOutput[List[Movie]] =
       jsonBody[List[Movie]].description("The requested list of movies")
 
-    val listOfTvShowsSuccess: EndpointOutput[List[TVShow]] =
+    val listOfTvShowsOutput: EndpointOutput[List[TVShow]] =
       jsonBody[List[TVShow]].description("The requested list of TV shows")
 
-    val listOfSeasonsSuccess: EndpointOutput[List[Season]] =
+    val listOfSeasonsOutput: EndpointOutput[List[Season]] =
       jsonBody[List[Season]].description("The requested list of seasons")
 
-    val listOfEpisodesSuccess: EndpointOutput[List[Episode]] =
+    val listOfEpisodesOutput: EndpointOutput[List[Episode]] =
       jsonBody[List[Episode]].description("The requested list of episodes")
 
-    val listOfVideogamesSuccess: EndpointOutput[List[Videogame]] =
+    val listOfVideogamesOutput: EndpointOutput[List[Videogame]] =
       jsonBody[List[Videogame]].description("The requested list of videogames")
 
-    val listOfBooksSuccess: EndpointOutput[List[Book]] =
+    val listOfBooksOutput: EndpointOutput[List[Book]] =
       jsonBody[List[Book]].description("The requested list of books")
   }
 }

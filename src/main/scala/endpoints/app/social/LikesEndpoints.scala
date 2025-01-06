@@ -21,7 +21,7 @@ object LikesEndpoints {
       "GET"
     )
       .in(PathInputs.pathLikeId)
-      .out(SocialOutputs.likeSuccess)
+      .out(SocialOutputs.likeOutput)
 
   val createLikeEndpoint: PublicEndpoint[Like, UserError, Like, Any] =
     likeBaseEndpoint(
@@ -31,7 +31,7 @@ object LikesEndpoints {
     )
       .in("create")
       .in(JsonInputs.jsonLike)
-      .out(SocialOutputs.likeSuccess)
+      .out(SocialOutputs.likeOutput)
 
   val deleteLikeEndpoint: PublicEndpoint[LikeId, UserError, Unit, Any] =
     likeBaseEndpoint(

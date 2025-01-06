@@ -61,7 +61,7 @@ object MediaContentListsLogics {
           Left(BadRequest("Invalid media content list ID"))
 
         case None =>
-          Left(NotFound(s"Media content list with ID $mediaContentListId not found"))
+          Left(NotFound(s"Media content list with ID ${mediaContentListId.value} not found"))
       }
     }.handleError {
       case ex: Exception =>

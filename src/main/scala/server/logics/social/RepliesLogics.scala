@@ -19,7 +19,7 @@ object RepliesLogics {
           Left(BadRequest("Invalid reply ID"))
 
         case None =>
-          Left(NotFound(s"Reply with ID $replyId not found"))
+          Left(NotFound(s"Reply with ID ${replyId.value} not found"))
       }
     }.handleError {
       case ex: Exception =>

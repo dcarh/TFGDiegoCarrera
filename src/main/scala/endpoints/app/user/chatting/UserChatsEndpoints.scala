@@ -5,7 +5,7 @@ import endpoints.app.user.UserEndpointsUtils.userBaseEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
 import modelClasses.errors.UserError.*
-import modelClasses.app.chatting.Chat
+import modelClasses.ids.Chatting.ChatId
 import modelClasses.ids.User.UserId
 
 object UserChatsEndpoints {
@@ -16,13 +16,13 @@ object UserChatsEndpoints {
         .in(PathInputs.pathUserId)
         .in("chats")
 
-  val getUserChats: PublicEndpoint[(UserId, Option[String]), UserError, List[Chat], Any] =
+  val getUserChats: PublicEndpoint[(UserId, Option[String]), UserError, List[ChatId], Any] =
     userChatsBaseEndpoint(
       "User's chats endpoint",
-      "This endpoint returns the chats of the user",
+      "This endpoint returns a list containing the IDs of the chats of the user",
       "GET"
     )
       .in(QueryInputs.querySortBy)
-      .out(ChattingOutputs.listOfChatsSuccess)
+      .out(ChattingOutputs.listOfChatIdsOutput)
 
 }

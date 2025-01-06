@@ -21,7 +21,7 @@ object RatingsEndpoints {
       "GET"
     )
       .in(PathInputs.pathRatingId)
-      .out(SocialOutputs.ratingSuccess)
+      .out(SocialOutputs.ratingOutput)
 
   val createRatingEndpoint: PublicEndpoint[Rating, UserError, Rating, Any] =
     ratingBaseEndpoint(
@@ -31,7 +31,7 @@ object RatingsEndpoints {
     )
       .in("create")
       .in(JsonInputs.jsonRating)
-      .out(SocialOutputs.ratingSuccess)
+      .out(SocialOutputs.ratingOutput)
 
   val editRatingEndpoint: PublicEndpoint[(RatingId, Rating), UserError, Rating, Any] =
     ratingBaseEndpoint(
@@ -42,7 +42,7 @@ object RatingsEndpoints {
       .in(PathInputs.pathRatingId)
       .in("edit")
       .in(JsonInputs.jsonRating)
-      .out(SocialOutputs.ratingSuccess)
+      .out(SocialOutputs.ratingOutput)
 
   val deleteRatingEndpoint: PublicEndpoint[RatingId, UserError, Unit, Any] =
     ratingBaseEndpoint(

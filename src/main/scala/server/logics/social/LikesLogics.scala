@@ -19,7 +19,7 @@ object LikesLogics {
           Left(BadRequest("Invalid like ID"))
 
         case None =>
-          Left(NotFound(s"Like with ID $likeId not found"))
+          Left(NotFound(s"Like with ID ${likeId.value} not found"))
       }
     }.handleError {
       case ex: Exception =>

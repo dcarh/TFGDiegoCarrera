@@ -54,7 +54,7 @@ object EntriesLogics {
           Left(BadRequest("Invalid entry ID"))
 
         case None =>
-          Left(NotFound(s"Entry with ID $entryId not found"))
+          Left(NotFound(s"Entry with ID ${entryId.value} not found"))
       }
     }.handleError {
       case ex: Exception =>

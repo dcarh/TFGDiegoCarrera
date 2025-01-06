@@ -1,4 +1,4 @@
-package endpoints.app.user
+package endpoints.app.user.media
 
 import sttp.tapir.*
 import endpoints.app.user.UserEndpointsUtils.userBaseEndpoint
@@ -23,7 +23,7 @@ object UserFavouritesEndpoints {
       "This endpoint returns the favourite media content (one movie, one TV show, one videogame, one book) for a user",
       "GET"
     )
-      .out(MediaOutputs.favouritesSuccess)
+      .out(MediaOutputs.favouritesOutput)
 
   val addFavouriteMovie: PublicEndpoint[(UserId, MovieId), UserError, UserFavourites, Any] =
     userFavouritesBaseEndpoint(
@@ -33,7 +33,7 @@ object UserFavouritesEndpoints {
     )
       .in("add_movie")
       .in(PathInputs.pathMovieId)
-      .out(MediaOutputs.favouritesSuccess)
+      .out(MediaOutputs.favouritesOutput)
 
   val addFavouriteTvShow: PublicEndpoint[(UserId, TVShowId), UserError, UserFavourites, Any] =
     userFavouritesBaseEndpoint(
@@ -43,7 +43,7 @@ object UserFavouritesEndpoints {
     )
       .in("add_tv_show")
       .in(PathInputs.pathTVShowId)
-      .out(MediaOutputs.favouritesSuccess)
+      .out(MediaOutputs.favouritesOutput)
 
   val addFavouriteVideogame: PublicEndpoint[(UserId, VideogameId), UserError, UserFavourites, Any] =
     userFavouritesBaseEndpoint(
@@ -53,7 +53,7 @@ object UserFavouritesEndpoints {
     )
       .in("add_videogame")
       .in(PathInputs.pathVideogameId)
-      .out(MediaOutputs.favouritesSuccess)
+      .out(MediaOutputs.favouritesOutput)
 
   val addFavouriteBook: PublicEndpoint[(UserId, BookId), UserError, UserFavourites, Any] =
     userFavouritesBaseEndpoint(
@@ -63,7 +63,7 @@ object UserFavouritesEndpoints {
     )
       .in("add_book")
       .in(PathInputs.pathBookId)
-      .out(MediaOutputs.favouritesSuccess)
+      .out(MediaOutputs.favouritesOutput)
 
   val deleteFavouriteMovie: PublicEndpoint[(UserId, MovieId), UserError, Unit, Any] =
     userFavouritesBaseEndpoint(
@@ -100,41 +100,5 @@ object UserFavouritesEndpoints {
     )
       .in("delete_book")
       .in(PathInputs.pathBookId)
-
-//  val userFavouriteMovieEndpoint: PublicEndpoint[UserId, UserError, Movie, Any] =
-//    userFavouritesBaseEndpoint(
-//      "User's favourite movie endpoint",
-//      "This endpoint returns the favourite movie for a user",
-//      "GET"
-//    )
-//      .in("movie")
-//      .out(MediaOutputs.movieSuccess)
-//
-//  val userFavouriteTVShowEndpoint: PublicEndpoint[UserId, UserError, TVShow, Any] =
-//    userFavouritesBaseEndpoint(
-//      "User's favourite TV show endpoint",
-//      "This endpoint returns the favourite TV show for a user",
-//      "GET"
-//    )
-//      .in("tv_show")
-//      .out(MediaOutputs.tvShowSuccess)
-//
-//  val userFavouriteVideogameEndpoint: PublicEndpoint[UserId, UserError, Videogame, Any] =
-//    userFavouritesBaseEndpoint(
-//      "User's favourite videogame endpoint",
-//      "This endpoint returns the favourite videogame for a user",
-//      "GET"
-//    )
-//      .in("videogame")
-//      .out(MediaOutputs.videogameSuccess)
-//
-//  val userFavouriteBookEndpoint: PublicEndpoint[UserId, UserError, Book, Any] =
-//    userFavouritesBaseEndpoint(
-//      "User's favourite book endpoint",
-//      "This endpoint returns the favourite book for a user",
-//      "GET"
-//    )
-//      .in("book")
-//      .out(MediaOutputs.bookSuccess)
 
 }

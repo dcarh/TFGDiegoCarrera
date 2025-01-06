@@ -21,7 +21,7 @@ object MessagesEndpoints {
       "GET"
     )
       .in(PathInputs.pathMessageId)
-      .out(ChattingOutputs.messageSuccess)
+      .out(ChattingOutputs.messageOutput)
 
   val createMessageEndpoint: PublicEndpoint[Message, UserError, Message, Any] =
     messageBaseEndpoint(
@@ -31,7 +31,7 @@ object MessagesEndpoints {
     )
       .in("create")
       .in(JsonInputs.jsonMessage)
-      .out(ChattingOutputs.messageSuccess)
+      .out(ChattingOutputs.messageOutput)
 
   val editMessageEndpoint: PublicEndpoint[(MessageId, Message), UserError, Message, Any] =
     messageBaseEndpoint(
@@ -42,7 +42,7 @@ object MessagesEndpoints {
       .in(PathInputs.pathMessageId)
       .in("edit")
       .in(JsonInputs.jsonMessage)
-      .out(ChattingOutputs.messageSuccess)
+      .out(ChattingOutputs.messageOutput)
 
   val deleteMessageEndpoint: PublicEndpoint[MessageId, UserError, Unit, Any] =
     messageBaseEndpoint(

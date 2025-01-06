@@ -22,7 +22,7 @@ object SearchEndpoints {
       "This endpoint searches any movie on the app based on text coincidence"
     )
       .in(QueryInputs.querySortBy)
-      .out(MediaOutputs.listOfMoviesSuccess)
+      .out(MediaOutputs.listOfMoviesOutput)
 
   val searchTVShowEndpoint: PublicEndpoint[(String, Option[String]), UserError, List[TVShow], Any] =
     searchBaseEndpoint(
@@ -30,7 +30,7 @@ object SearchEndpoints {
       "This endpoint searches any TV show on the app based on text coincidence"
     )
       .in(QueryInputs.querySortBy)
-      .out(MediaOutputs.listOfTvShowsSuccess)
+      .out(MediaOutputs.listOfTvShowsOutput)
 
   val searchVideogameEndpoint: PublicEndpoint[(String, Option[String]), UserError, List[Videogame], Any] =
     searchBaseEndpoint(
@@ -38,7 +38,7 @@ object SearchEndpoints {
       "This endpoint searches any videogame on the app based on text coincidence"
     )
       .in(QueryInputs.querySortBy)
-      .out(MediaOutputs.listOfVideogamesSuccess)
+      .out(MediaOutputs.listOfVideogamesOutput)
 
   val searchBookEndpoint: PublicEndpoint[(String, Option[String]), UserError, List[Book], Any] =
     searchBaseEndpoint(
@@ -46,20 +46,20 @@ object SearchEndpoints {
       "This endpoint searches any book on the app based on text coincidence"
     )
       .in(QueryInputs.querySortBy)
-      .out(MediaOutputs.listOfBooksSuccess)
+      .out(MediaOutputs.listOfBooksOutput)
 
   val searchMediaContentListEndpoint: PublicEndpoint[String, UserError, List[MediaContentList], Any] =
     searchBaseEndpoint(
       "Search list endpoint",
       "This endpoint searches any list on the app based on text coincidence"
     )
-      .out(SocialOutputs.listOfMediaContentListSuccess)
+      .out(SocialOutputs.listOfMediaContentListsOutput)
 
   val searchUserEndpoint: PublicEndpoint[String, UserError, List[User], Any] =
     searchBaseEndpoint(
       "Search user endpoint",
       "This endpoint searches any user on the app based on text coincidence"
     )
-      .out(UserOutputs.listOfUsersSuccess)
+      .out(UserOutputs.listOfUsersOutput)
 
 }

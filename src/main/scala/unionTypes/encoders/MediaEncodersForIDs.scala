@@ -15,11 +15,18 @@ object MediaEncodersForIDs {
     case bookId: BookId => bookId.asJson
   }
   
-  implicit val mediaUnionEncoder3: Encoder[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId] = Encoder.instance {
+  implicit val listMediaUnionEncoder2: Encoder[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId] = Encoder.instance {
     case movieId: MovieId => movieId.asJson
     case tvShowId: TVShowId => tvShowId.asJson
     case seasonNumber: (TVShowId, SeasonNumber) => seasonNumber.asJson
     case episodeNumber: (TVShowId, SeasonNumber, EpisodeNumber) => episodeNumber.asJson
+    case videogameId: VideogameId => videogameId.asJson
+    case bookId: BookId => bookId.asJson
+  }
+  
+  implicit val listMediaUnionEncoder3: Encoder[TVShowId | (TVShowId, SeasonNumber) | VideogameId | BookId] = Encoder.instance {
+    case tvShowId: TVShowId => tvShowId.asJson
+    case seasonNumber: (TVShowId, SeasonNumber) => seasonNumber.asJson
     case videogameId: VideogameId => videogameId.asJson
     case bookId: BookId => bookId.asJson
   }

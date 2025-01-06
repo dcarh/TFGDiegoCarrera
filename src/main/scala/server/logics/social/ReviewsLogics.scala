@@ -9,7 +9,6 @@ import modelClasses.ids.Social.ReviewId
 
 object ReviewsLogics {
 
-  // TODO: getAllReviewsLogic
   val getAllReviewsLogic: Option[String] => IO[Either[UserError, List[Review]]] = {
     sortByOption =>
       IO {
@@ -50,7 +49,7 @@ object ReviewsLogics {
           Left(BadRequest("Invalid review ID"))
 
         case None =>
-          Left(NotFound(s"Review with ID $reviewId not found"))
+          Left(NotFound(s"Review with ID ${reviewId.value} not found"))
       }
     }.handleError {
       case ex: Exception =>

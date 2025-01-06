@@ -28,9 +28,9 @@ object EndpointsUtils {
           .get
           .errorOut(
             oneOf[UserError](
-              oneOfVariant(StatusCode.NotFound, ErrorOutputsTraits.notFound),
-              oneOfVariant(StatusCode.BadRequest, ErrorOutputsTraits.badRequest),
-              oneOfDefaultVariant(ErrorOutputsTraits.unknown)
+              oneOfVariant(StatusCode.NotFound, ErrorOutputsTraits.notFoundOutput),
+              oneOfVariant(StatusCode.BadRequest, ErrorOutputsTraits.badRequestOutput),
+              oneOfDefaultVariant(ErrorOutputsTraits.unknownOutput)
             )
           )
           .out(statusCode(StatusCode.Ok))
@@ -42,9 +42,9 @@ object EndpointsUtils {
           .post
           .errorOut(
             oneOf[UserError](
-              oneOfVariant(StatusCode.BadRequest, ErrorOutputsTraits.badRequest),
-              oneOfVariant(StatusCode.Conflict, ErrorOutputsTraits.conflict),
-              oneOfDefaultVariant(ErrorOutputsTraits.unknown)
+              oneOfVariant(StatusCode.BadRequest, ErrorOutputsTraits.badRequestOutput),
+              oneOfVariant(StatusCode.Conflict, ErrorOutputsTraits.conflictOutput),
+              oneOfDefaultVariant(ErrorOutputsTraits.unknownOutput)
             )
           )
           .out(statusCode(StatusCode.Created))
@@ -56,10 +56,10 @@ object EndpointsUtils {
           .put
           .errorOut(
             oneOf[UserError](
-              oneOfVariant(StatusCode.BadRequest, ErrorOutputsTraits.badRequest),
-              oneOfVariant(StatusCode.NotFound, ErrorOutputsTraits.notFound),
-              oneOfVariant(StatusCode.Conflict, ErrorOutputsTraits.conflict),
-              oneOfDefaultVariant(ErrorOutputsTraits.unknown)
+              oneOfVariant(StatusCode.BadRequest, ErrorOutputsTraits.badRequestOutput),
+              oneOfVariant(StatusCode.NotFound, ErrorOutputsTraits.notFoundOutput),
+              oneOfVariant(StatusCode.Conflict, ErrorOutputsTraits.conflictOutput),
+              oneOfDefaultVariant(ErrorOutputsTraits.unknownOutput)
             )
           )
           .out(statusCode(StatusCode.Ok))
@@ -71,9 +71,9 @@ object EndpointsUtils {
           .delete
           .errorOut(
             oneOf[UserError](
-              oneOfVariant(StatusCode.NotFound, ErrorOutputsTraits.notFound),
-              oneOfVariant(StatusCode.BadRequest, ErrorOutputsTraits.badRequest),
-              oneOfDefaultVariant(ErrorOutputsTraits.unknown)
+              oneOfVariant(StatusCode.NotFound, ErrorOutputsTraits.notFoundOutput),
+              oneOfVariant(StatusCode.BadRequest, ErrorOutputsTraits.badRequestOutput),
+              oneOfDefaultVariant(ErrorOutputsTraits.unknownOutput)
             )
           )
           .out(statusCode(StatusCode.NoContent))

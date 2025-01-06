@@ -8,7 +8,8 @@ import modelClasses.ids.Media.*
 object MediaSchemasForIDs {
   
   implicit val listMediaUnionSchema: Schema[MovieId | TVShowId  | VideogameId | BookId] = Schema.derivedUnion
-
-
-  implicit val mediaUnionSchema3: Schema[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId] = Schema.derivedUnion
+  
+  implicit val listMediaUnionSchema2: Schema[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId] = Schema.derivedUnion
+  
+  implicit val listMediaUnionSchema3: Schema[TVShowId | (TVShowId, SeasonNumber) | VideogameId | BookId] = Schema.derivedUnion
 }

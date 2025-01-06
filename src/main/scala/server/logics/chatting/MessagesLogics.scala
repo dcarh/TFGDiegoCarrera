@@ -20,7 +20,7 @@ object MessagesLogics {
             Left(BadRequest("Invalid message ID"))
   
           case None =>
-            Left(NotFound(s"Message with ID $messageId not found"))
+            Left(NotFound(s"Message with ID ${messageId.value} not found"))
         }
       }.handleError {
         case ex: Exception =>

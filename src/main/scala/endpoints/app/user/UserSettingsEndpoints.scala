@@ -22,7 +22,7 @@ object UserSettingsEndpoints {
       "This endpoint returns the settings [SPECIFY SETTINGS] of a user",
       "GET"
     )
-      .out(UserOutputs.userSettingsSuccess)
+      .out(UserOutputs.userSettingsOutput)
 
   val userEditSettingsEndpoint: PublicEndpoint[(UserId, UserSettings), UserError, UserSettings, Any] =
     userSettingsBaseEndpoint(
@@ -32,6 +32,6 @@ object UserSettingsEndpoints {
     )
       .in("edit")
       .in(JsonInputs.jsonSettings)
-      .out(UserOutputs.userSettingsSuccess)
+      .out(UserOutputs.userSettingsOutput)
 
 }

@@ -1,4 +1,4 @@
-package endpoints.app.user
+package endpoints.app.user.social
 
 import sttp.tapir.*
 import endpoints.app.user.UserEndpointsUtils.userBaseEndpoint
@@ -23,14 +23,14 @@ object UserListsEndpoints {
         .in(PathInputs.pathUserId)
         .in("lists")
 
-  val getUserLists: PublicEndpoint[(UserId, Option[String]), UserError, List[MediaContentList], Any] =
+  val getUserLists: PublicEndpoint[(UserId, Option[String]), UserError, List[MediaContentListId], Any] =
     userListsBaseEndpoint(
       "User's lists endpoint",
       "This endpoint returns all the lists for a user",
       "GET"
     )
       .in(QueryInputs.querySortBy)
-      .out(SocialOutputs.listOfMediaContentListSuccess)
+      .out(SocialOutputs.listOfMediaContentListsIdsOutput)
 
 //  val userSpecificListEndpoint: PublicEndpoint[(UserId, MediaContentListId), UserError, MediaContentList, Any] =
 //    userListBaseEndpoint(
