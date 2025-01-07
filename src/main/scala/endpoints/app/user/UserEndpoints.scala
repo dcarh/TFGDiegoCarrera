@@ -6,6 +6,7 @@ import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
 import modelClasses.errors.UserError.*
 import modelClasses.app.user.User
+import modelClasses.ids.User.UserId
 
 object UserEndpoints {
 
@@ -37,4 +38,13 @@ object UserEndpoints {
     )
       .in(QueryInputs.querySortBy)
       .out(UserOutputs.listOfUsersOutput)
+
+  val getUser: PublicEndpoint[UserId, UserError, User, Any] =
+    userBaseEndpoint(
+      "User endpoint",
+      "This endpoint returns the user specified by its ID",
+      "GET"
+    )
+      .in(PathInputs.pathUserId)
+      .out(UserOutputs.userOutput)
 }

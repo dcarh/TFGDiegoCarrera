@@ -9,7 +9,7 @@ import modelClasses.ids.Media.{BookId, MovieId, TVShowId, VideogameId}
 
 object UserFavouritesLogics {
 
-  val getFavouritesLogic: UserId => IO[Either[UserError, UserFavourites]] =
+  val getFavourites: UserId => IO[Either[UserError, UserFavourites]] =
     userId => IO {
       UserRepository.get(userId) match {
         case Some(user) =>
@@ -26,7 +26,7 @@ object UserFavouritesLogics {
         Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-  val addFavouriteMovieLogic: ((UserId, MovieId)) => IO[Either[UserError, UserFavourites]] =
+  val addFavouriteMovie: ((UserId, MovieId)) => IO[Either[UserError, UserFavourites]] =
     (userId, movieId) => IO {
       if movieId.value <= 0 then
         Left(BadRequest("Invalid movie ID"))
@@ -49,7 +49,7 @@ object UserFavouritesLogics {
         Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-  val addFavouriteTvShowLogic: ((UserId, TVShowId)) => IO[Either[UserError, UserFavourites]] =
+  val addFavouriteTvShow: ((UserId, TVShowId)) => IO[Either[UserError, UserFavourites]] =
     (userId, tvShowId) => IO {
       if tvShowId.value <= 0 then
         Left(BadRequest("Invalid TV show ID"))
@@ -72,7 +72,7 @@ object UserFavouritesLogics {
         Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-  val addFavouriteVideogameLogic: ((UserId, VideogameId)) => IO[Either[UserError, UserFavourites]] =
+  val addFavouriteVideogame: ((UserId, VideogameId)) => IO[Either[UserError, UserFavourites]] =
     (userId, videogameId) => IO {
       if videogameId.value <= 0 then
         Left(BadRequest("Invalid videogame ID"))
@@ -95,7 +95,7 @@ object UserFavouritesLogics {
         Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-  val addFavouriteBookLogic: ((UserId, BookId)) => IO[Either[UserError, UserFavourites]] =
+  val addFavouriteBook: ((UserId, BookId)) => IO[Either[UserError, UserFavourites]] =
     (userId, bookId) => IO {
       if bookId.value == "" then
         Left(BadRequest("Invalid book ID"))
@@ -118,7 +118,7 @@ object UserFavouritesLogics {
         Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-  val deleteFavouriteMovieLogic: ((UserId, MovieId)) => IO[Either[UserError, Unit]] =
+  val deleteFavouriteMovie: ((UserId, MovieId)) => IO[Either[UserError, Unit]] =
     (userId, movieId) => IO {
       if movieId.value <= 0 then
         Left(BadRequest("Invalid movie ID"))
@@ -139,7 +139,7 @@ object UserFavouritesLogics {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
-  val deleteFavouriteTvShowLogic: ((UserId, TVShowId)) => IO[Either[UserError, Unit]] =
+  val deleteFavouriteTvShow: ((UserId, TVShowId)) => IO[Either[UserError, Unit]] =
     (userId, tvShowId) => IO {
       if tvShowId.value <= 0 then
         Left(BadRequest("Invalid TV show ID"))
@@ -160,7 +160,7 @@ object UserFavouritesLogics {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
-  val deleteFavouriteVideogameLogic: ((UserId, VideogameId)) => IO[Either[UserError, Unit]] =
+  val deleteFavouriteVideogame: ((UserId, VideogameId)) => IO[Either[UserError, Unit]] =
     (userId, videogameId) => IO {
       if videogameId.value <= 0 then
         Left(BadRequest("Invalid videogame ID"))
@@ -181,7 +181,7 @@ object UserFavouritesLogics {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
-  val deleteFavouriteBookLogic: ((UserId, BookId)) => IO[Either[UserError, Unit]] =
+  val deleteFavouriteBook: ((UserId, BookId)) => IO[Either[UserError, Unit]] =
     (userId, bookId) => IO {
       if bookId.value <= "" then
         Left(BadRequest("Invalid book ID"))

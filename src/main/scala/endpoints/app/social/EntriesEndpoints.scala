@@ -19,7 +19,7 @@ object EntriesEndpoints {
       (name, description, method) =>
         httpMethodEndpoint(name, description, "entry", method)
   
-  val getAllEntriesEndpoint: PublicEndpoint[Option[String], UserError, List[Entry], Any] =
+  val getAllEntries: PublicEndpoint[Option[String], UserError, List[Entry], Any] =
     entriesBaseEndpoint(
       "Get entries endpoint", 
       "This endpoint returns a list with all the entries in the app",
@@ -28,7 +28,7 @@ object EntriesEndpoints {
       .in(QueryInputs.querySortBy)
       .out(SocialOutputs.listOfEntriesOutput)
 
-  val getEntryEndpoint: PublicEndpoint[EntryId, UserError, Entry, Any] =
+  val getEntry: PublicEndpoint[EntryId, UserError, Entry, Any] =
     entryBaseEndpoint(
       "Get entry endpoint", 
       "This endpoint returns a specific entry by its Id",
@@ -37,7 +37,7 @@ object EntriesEndpoints {
       .in(PathInputs.pathEntryId)
       .out(SocialOutputs.entryOutput)
   
-  val createEntryEndpoint: PublicEndpoint[Entry, UserError, Entry, Any] =
+  val createEntry: PublicEndpoint[Entry, UserError, Entry, Any] =
     entryBaseEndpoint(
       "Create entry endpoint",
       "This endpoint creates a entry of elements and returns it in case of success",
@@ -47,7 +47,7 @@ object EntriesEndpoints {
       .in(JsonInputs.jsonEntry)
       .out(SocialOutputs.entryOutput)
 
-  val editEntryEndpoint: PublicEndpoint[(EntryId, Entry), UserError, Entry, Any] =
+  val editEntry: PublicEndpoint[(EntryId, Entry), UserError, Entry, Any] =
     entryBaseEndpoint(
       "Edit entry endpoint",
       "This endpoint allows to edit a entry and returns it in case of success. Otherwise returns an error message",
@@ -58,7 +58,7 @@ object EntriesEndpoints {
       .in(JsonInputs.jsonEntry)
       .out(SocialOutputs.entryOutput)
 
-  val deleteEntryEndpoint: PublicEndpoint[EntryId, UserError, Unit, Any] =
+  val deleteEntry: PublicEndpoint[EntryId, UserError, Unit, Any] =
     entryBaseEndpoint(
       "Delete entry endpoint",
       "This endpoint deletes a entry and returns it in case of success",

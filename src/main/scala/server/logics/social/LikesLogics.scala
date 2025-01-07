@@ -9,7 +9,7 @@ import modelClasses.ids.Social.LikeId
 
 object LikesLogics {
 
-  val getLikeLogic: LikeId => IO[Either[UserError, Like]] =
+  val getLike: LikeId => IO[Either[UserError, Like]] =
     likeId => IO {
       LikeRepository.get(likeId) match {
         case Some(like) =>
@@ -26,7 +26,7 @@ object LikesLogics {
         Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-  val createLikeLogic: Like => IO[Either[UserError, Like]] =
+  val createLike: Like => IO[Either[UserError, Like]] =
     newLike => IO {
       LikeRepository.put(newLike.id, newLike)
       Right(newLike)
@@ -34,7 +34,7 @@ object LikesLogics {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
-  val deleteLikeLogic: LikeId => IO[Either[UserError, Unit]] =
+  val deleteLike: LikeId => IO[Either[UserError, Unit]] =
     likeId => IO {
       LikeRepository.delete(likeId) match {
         case "Object deleted successfully!" =>

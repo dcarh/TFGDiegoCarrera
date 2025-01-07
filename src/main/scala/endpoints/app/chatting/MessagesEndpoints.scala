@@ -14,7 +14,7 @@ object MessagesEndpoints {
     (String, String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
       (name, description, method) => httpMethodEndpoint(name, description, "message", method)
 
-  val getMessageEndpoint: PublicEndpoint[MessageId, UserError, Message, Any] =
+  val getMessage: PublicEndpoint[MessageId, UserError, Message, Any] =
     messageBaseEndpoint(
       "Get message endpoint", 
       "This endpoint returns a specific message by its Id",
@@ -23,7 +23,7 @@ object MessagesEndpoints {
       .in(PathInputs.pathMessageId)
       .out(ChattingOutputs.messageOutput)
 
-  val createMessageEndpoint: PublicEndpoint[Message, UserError, Message, Any] =
+  val createMessage: PublicEndpoint[Message, UserError, Message, Any] =
     messageBaseEndpoint(
       "Create message endpoint", 
       "This endpoint creates a specific message and returns it",
@@ -33,7 +33,7 @@ object MessagesEndpoints {
       .in(JsonInputs.jsonMessage)
       .out(ChattingOutputs.messageOutput)
 
-  val editMessageEndpoint: PublicEndpoint[(MessageId, Message), UserError, Message, Any] =
+  val editMessage: PublicEndpoint[(MessageId, Message), UserError, Message, Any] =
     messageBaseEndpoint(
       "Create message endpoint", 
       "This endpoint creates a specific message and returns it",
@@ -44,7 +44,7 @@ object MessagesEndpoints {
       .in(JsonInputs.jsonMessage)
       .out(ChattingOutputs.messageOutput)
 
-  val deleteMessageEndpoint: PublicEndpoint[MessageId, UserError, Unit, Any] =
+  val deleteMessage: PublicEndpoint[MessageId, UserError, Unit, Any] =
     messageBaseEndpoint(
       "Delete message endpoint", 
       "This endpoint deletes a specific message by its Id",

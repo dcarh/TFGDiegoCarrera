@@ -9,7 +9,7 @@ import modelClasses.ids.Social.RatingId
 
 object RatingsLogics {
 
-  val getRatingLogic: RatingId => IO[Either[UserError, Rating]] =
+  val getRating: RatingId => IO[Either[UserError, Rating]] =
     ratingId => IO {
       RatingRepository.get(ratingId) match {
         case Some(rating) =>
@@ -26,7 +26,7 @@ object RatingsLogics {
         Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-  val createRatingLogic: Rating => IO[Either[UserError, Rating]] =
+  val createRating: Rating => IO[Either[UserError, Rating]] =
     newRating => IO {
       RatingRepository.put(newRating.id, newRating)
       Right(newRating)
@@ -34,7 +34,7 @@ object RatingsLogics {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
-  val editRatingLogic: ((RatingId, Rating)) => IO[Either[UserError, Rating]] =
+  val editRating: ((RatingId, Rating)) => IO[Either[UserError, Rating]] =
     (ratingId, updatedRatingData) => IO {
       RatingRepository.get(ratingId) match {
         case Some(existingRating) =>
@@ -53,7 +53,7 @@ object RatingsLogics {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
-  val deleteRatingLogic: RatingId => IO[Either[UserError, Unit]] =
+  val deleteRating: RatingId => IO[Either[UserError, Unit]] =
     ratingId => IO {
       RatingRepository.delete(ratingId) match {
         case "Object deleted successfully!" =>

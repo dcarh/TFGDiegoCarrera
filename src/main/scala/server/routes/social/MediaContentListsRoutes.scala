@@ -1,27 +1,40 @@
 package server.routes.social
 
 import cats.effect.IO
+import cats.implicits.toSemigroupKOps
 import org.http4s.HttpRoutes
 import sttp.tapir.server.http4s.Http4sServerInterpreter
 
-import endpoints.app.social.MediaContentListsEndpoints.*
-import server.logics.social.MediaContentListsLogics.*
+import endpoints.app.social.MediaContentListsEndpoints
+import server.logics.social.MediaContentListsLogics
 
 object MediaContentListsRoutes {
 
-  val getAllMediaContentListsRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(getAllMediaContentListsEndpoint.serverLogic(getAllMediaContentListsLogic))
+  private val getAllMediaContentLists: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(MediaContentListsEndpoints.getAllMediaContentLists.serverLogic(MediaContentListsLogics.getAllMediaContentLists))
 
-  val getMediaContentListRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(getMediaContentListEndpoint.serverLogic(getMediaContentListLogic))
+  private val getMediaContentList: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(MediaContentListsEndpoints.getMediaContentList.serverLogic(MediaContentListsLogics.getMediaContentList))
 
-  val createMediaContentListRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(createMediaContentListEndpoint.serverLogic(createMediaContentListLogic))
+  private val createMediaContentList: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(MediaContentListsEndpoints.createMediaContentList.serverLogic(MediaContentListsLogics.createMediaContentList))
 
-  val editMediaContentListRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(editMediaContentListEndpoint.serverLogic(editMediaContentListLogic))
+  private val editMediaContentList: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(MediaContentListsEndpoints.editMediaContentList.serverLogic(MediaContentListsLogics.editMediaContentList))
 
-  val deleteMediaContentListRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(deleteMediaContentListEndpoint.serverLogic(deleteMediaContentListLogic))
+  private val deleteMediaContentList: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(MediaContentListsEndpoints.deleteMediaContentList.serverLogic(MediaContentListsLogics.deleteMediaContentList))
+
+  val mediaContentListsRoutes: HttpRoutes[IO] =
+    getAllMediaContentLists <+>
+      getMediaContentList <+>
+      createMediaContentList <+>
+      editMediaContentList <+>
+      deleteMediaContentList
 
 }

@@ -14,7 +14,7 @@ object ChatsEndpoints {
     (String, String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
       (name, description, method) => httpMethodEndpoint(name, description, "chat", method)
 
-  val getChatEndpoint: PublicEndpoint[ChatId, UserError, Chat, Any] =
+  val getChat: PublicEndpoint[ChatId, UserError, Chat, Any] =
     chatBaseEndpoint(
       "Get chat endpoint", 
       "This endpoint returns a specific chat by its Id",
@@ -23,7 +23,7 @@ object ChatsEndpoints {
       .in(PathInputs.pathChatId)
       .out(ChattingOutputs.chatOutput)
 
-  val createChatEndpoint: PublicEndpoint[Chat, UserError, Chat, Any] =
+  val createChat: PublicEndpoint[Chat, UserError, Chat, Any] =
     chatBaseEndpoint(
       "Create chat endpoint", 
       "This endpoint creates a new chat and returns it",
@@ -33,7 +33,7 @@ object ChatsEndpoints {
       .in(JsonInputs.jsonChat)
       .out(ChattingOutputs.chatOutput)
 
-  val editChatEndpoint: PublicEndpoint[(ChatId, Chat), UserError, Chat, Any] =
+  val editChat: PublicEndpoint[(ChatId, Chat), UserError, Chat, Any] =
     chatBaseEndpoint(
       "Edit chat endpoint", 
       "This endpoint edits a specific chat by its Id and returns it",
@@ -44,13 +44,13 @@ object ChatsEndpoints {
       .in(JsonInputs.jsonChat)
       .out(ChattingOutputs.chatOutput)
 
-  val deleteChatEndpoint: PublicEndpoint[ChatId, UserError, Unit, Any] =
+  val deleteChat: PublicEndpoint[ChatId, UserError, Unit, Any] =
     chatBaseEndpoint(
       "Delete chat endpoint", 
       "This endpoint deletes a specific chat by its Id",
       "DELETE"
     )
-      .in("delete")
       .in(PathInputs.pathChatId)
+      .in("delete")
 
 }

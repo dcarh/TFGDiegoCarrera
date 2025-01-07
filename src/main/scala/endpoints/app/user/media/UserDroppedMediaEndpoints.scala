@@ -8,7 +8,7 @@ import modelClasses.errors.UserError.*
 import modelClasses.ids.User.UserId
 import modelClasses.ids.Media.*
 
-object UserDroppedContentEndpoints {
+object UserDroppedMediaEndpoints {
 
   private val userDroppedBaseEndpoint:
     (String, String, String) => PublicEndpoint[UserId, UserError, Unit, Any] =
@@ -16,7 +16,7 @@ object UserDroppedContentEndpoints {
         .in(PathInputs.pathUserId)
         .in("dropped")
   
-  val getDropped:
+  val getAllDroppedMedia:
     PublicEndpoint[(UserId, Option[String], Option[List[String]]), UserError, List[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId], Any] =
       userDroppedBaseEndpoint(
         "User's 'Dropped' media content endpoint",

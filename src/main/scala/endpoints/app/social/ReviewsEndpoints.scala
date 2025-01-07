@@ -19,7 +19,7 @@ object ReviewsEndpoints {
       (name, description, method) =>
         httpMethodEndpoint(name, description, "review", method)
   
-  val getAllReviewsEndpoint: PublicEndpoint[Option[String], UserError, List[Review], Any] =
+  val getAllReviews: PublicEndpoint[Option[String], UserError, List[Review], Any] =
     reviewsBaseEndpoint(
       "Get reviews endpoint",
       "This endpoint returns a list with all the reviews in the app",
@@ -28,7 +28,7 @@ object ReviewsEndpoints {
       .in(QueryInputs.querySortBy)
       .out(SocialOutputs.listOfReviewsOutput)
 
-  val getReviewEndpoint: PublicEndpoint[ReviewId, UserError, Review, Any] =
+  val getReview: PublicEndpoint[ReviewId, UserError, Review, Any] =
     reviewBaseEndpoint(
       "Get review endpoint",
       "This endpoint returns a specific review by its Id",
@@ -37,7 +37,7 @@ object ReviewsEndpoints {
       .in(PathInputs.pathReviewId)
       .out(SocialOutputs.reviewOutput)
 
-  val createReviewEndpoint: PublicEndpoint[Review, UserError, Review, Any] =
+  val createReview: PublicEndpoint[Review, UserError, Review, Any] =
     reviewBaseEndpoint(
       "Create review endpoint",
       "This endpoint creates a review and returns it in case of success",
@@ -47,7 +47,7 @@ object ReviewsEndpoints {
       .in(JsonInputs.jsonReview)
       .out(SocialOutputs.reviewOutput)
 
-  val editReviewEndpoint: PublicEndpoint[(ReviewId, Review), UserError, Review, Any] =
+  val editReview: PublicEndpoint[(ReviewId, Review), UserError, Review, Any] =
     reviewBaseEndpoint(
       "Edit review endpoint",
       "This endpoint allows to edit a review and returns it in case of success. Otherwise returns an error message",
@@ -58,7 +58,7 @@ object ReviewsEndpoints {
       .in(JsonInputs.jsonReview)
       .out(SocialOutputs.reviewOutput)
 
-  val deleteReviewEndpoint: PublicEndpoint[ReviewId, UserError, Unit, Any] =
+  val deleteReview: PublicEndpoint[ReviewId, UserError, Unit, Any] =
     reviewBaseEndpoint(
       "Delete review endpoint",
       "This endpoint deletes a review  returns it in case of success",

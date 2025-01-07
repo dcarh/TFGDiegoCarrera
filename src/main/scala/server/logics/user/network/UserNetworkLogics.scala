@@ -7,7 +7,7 @@ import modelClasses.ids.User.UserId
 
 object UserNetworkLogics {
 
-  val getFollowersLogic: UserId => IO[Either[UserError, List[UserId]]] =
+  val getFollowers: UserId => IO[Either[UserError, List[UserId]]] =
     userId => IO {
       UserRepository.get(userId) match {
         case Some(user) =>
@@ -24,7 +24,7 @@ object UserNetworkLogics {
         Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-  val getFollowingLogic: UserId => IO[Either[UserError, List[UserId]]] =
+  val getFollowing: UserId => IO[Either[UserError, List[UserId]]] =
     userId => IO {
       UserRepository.get(userId) match
         case Some(user) =>
@@ -41,7 +41,7 @@ object UserNetworkLogics {
         Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-  val getBlockedLogic: UserId => IO[Either[UserError, List[UserId]]] =
+  val getBlocked: UserId => IO[Either[UserError, List[UserId]]] =
     userId => IO {
       UserRepository.get(userId) match
         case Some(user) =>
@@ -58,7 +58,7 @@ object UserNetworkLogics {
         Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-  val followUserLogic: ((UserId, UserId)) => IO[Either[UserError, (List[UserId], List[UserId])]] =
+  val followUser: ((UserId, UserId)) => IO[Either[UserError, (List[UserId], List[UserId])]] =
     (userId, followedUserId) => IO {
       UserRepository.get(userId) match
         case Some(user) =>
@@ -88,7 +88,7 @@ object UserNetworkLogics {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
-  val unfollowUserLogic: ((UserId, UserId)) => IO[Either[UserError, Unit]] =
+  val unfollowUser: ((UserId, UserId)) => IO[Either[UserError, Unit]] =
     (userId, unfollowedUserId) => IO {
       UserRepository.get(userId) match
         case Some(user) =>
@@ -118,7 +118,7 @@ object UserNetworkLogics {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
-  val blockUserLogic: ((UserId, UserId)) => IO[Either[UserError, List[UserId]]] =
+  val blockUser: ((UserId, UserId)) => IO[Either[UserError, List[UserId]]] =
     (userId, blockedUserId) => IO {
       UserRepository.get(userId) match
         case Some(user) =>
@@ -144,7 +144,7 @@ object UserNetworkLogics {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
-  val unblockUserLogic: ((UserId, UserId)) => IO[Either[UserError, Unit]] =
+  val unblockUser: ((UserId, UserId)) => IO[Either[UserError, Unit]] =
     (userId, unblockedUserId) => IO {
       UserRepository.get(userId) match
         case Some(user) =>

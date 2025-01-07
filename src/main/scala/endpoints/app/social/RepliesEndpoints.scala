@@ -14,7 +14,7 @@ object RepliesEndpoints {
     (String, String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
       (name, description, method) => httpMethodEndpoint(name, description, "reply", method)
 
-  val getReplyEndpoint: PublicEndpoint[ReplyId, UserError, Reply, Any] =
+  val getReply: PublicEndpoint[ReplyId, UserError, Reply, Any] =
     replyBaseEndpoint(
       "Get reply endpoint",
       "This endpoint returns a specific reply by its Id",
@@ -23,7 +23,7 @@ object RepliesEndpoints {
       .in(PathInputs.pathReplyId)
       .out(SocialOutputs.replyOutput)
 
-  val createReplyEndpoint: PublicEndpoint[Reply, UserError, Reply, Any] =
+  val createReply: PublicEndpoint[Reply, UserError, Reply, Any] =
     replyBaseEndpoint(
       "Create reply endpoint",
       "This endpoint creates a reply and returns it in case of success",
@@ -33,7 +33,7 @@ object RepliesEndpoints {
       .in(JsonInputs.jsonReply)
       .out(SocialOutputs.replyOutput)
 
-  val editReplyEndpoint: PublicEndpoint[(ReplyId, Reply), UserError, Reply, Any] =
+  val editReply: PublicEndpoint[(ReplyId, Reply), UserError, Reply, Any] =
     replyBaseEndpoint(
       "Edit reply endpoint",
       "This endpoint allows to edit a reply and returns it in case of success. Otherwise returns an error message",
@@ -44,7 +44,7 @@ object RepliesEndpoints {
       .in(JsonInputs.jsonReply)
       .out(SocialOutputs.replyOutput)
 
-  val deleteReplyEndpoint: PublicEndpoint[ReplyId, UserError, Unit, Any] =
+  val deleteReply: PublicEndpoint[ReplyId, UserError, Unit, Any] =
     replyBaseEndpoint(
       "Delete reply endpoint",
       "This endpoint deletes a reply returns it in case of success",

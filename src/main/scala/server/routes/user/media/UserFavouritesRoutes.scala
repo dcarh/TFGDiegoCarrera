@@ -1,38 +1,59 @@
 package server.routes.user.media
 
 import cats.effect.IO
+import cats.implicits.toSemigroupKOps
 import org.http4s.HttpRoutes
 import sttp.tapir.server.http4s.Http4sServerInterpreter
 
-import endpoints.app.user.media.UserFavouritesEndpoints.*
-import server.logics.user.media.UserFavouritesLogics.*
+import endpoints.app.user.media.UserFavouritesEndpoints
+import server.logics.user.media.UserFavouritesLogics
 
 object UserFavouritesRoutes {
 
-  val getFavouritesRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(getFavourites.serverLogic(getFavouritesLogic))
+  private val getFavourites: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(UserFavouritesEndpoints.getFavourites.serverLogic(UserFavouritesLogics.getFavourites))
 
-  val addFavouriteMovieRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(addFavouriteMovie.serverLogic(addFavouriteMovieLogic))
+  private val addFavouriteMovie: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(UserFavouritesEndpoints.addFavouriteMovie.serverLogic(UserFavouritesLogics.addFavouriteMovie))
 
-  val addFavouriteTvShowRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(addFavouriteTvShow.serverLogic(addFavouriteTvShowLogic))
+  private val addFavouriteTvShow: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(UserFavouritesEndpoints.addFavouriteTvShow.serverLogic(UserFavouritesLogics.addFavouriteTvShow))
   
-  val addFavouriteVideogameRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(addFavouriteVideogame.serverLogic(addFavouriteVideogameLogic))
+  private val addFavouriteVideogame: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(UserFavouritesEndpoints.addFavouriteVideogame.serverLogic(UserFavouritesLogics.addFavouriteVideogame))
   
-  val addFavouriteBookRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(addFavouriteBook.serverLogic(addFavouriteBookLogic))
+  private val addFavouriteBook: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(UserFavouritesEndpoints.addFavouriteBook.serverLogic(UserFavouritesLogics.addFavouriteBook))
 
-  val deleteFavouriteMovieRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(deleteFavouriteMovie.serverLogic(deleteFavouriteMovieLogic))
+  private val deleteFavouriteMovie: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(UserFavouritesEndpoints.deleteFavouriteMovie.serverLogic(UserFavouritesLogics.deleteFavouriteMovie))
 
-  val deleteFavouriteTvShowRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(deleteFavouriteTvShow.serverLogic(deleteFavouriteTvShowLogic))
+  private val deleteFavouriteTvShow: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(UserFavouritesEndpoints.deleteFavouriteTvShow.serverLogic(UserFavouritesLogics.deleteFavouriteTvShow))
 
-  val deleteFavouriteVideogameRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(deleteFavouriteVideogame.serverLogic(deleteFavouriteVideogameLogic))
+  private val deleteFavouriteVideogame: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(UserFavouritesEndpoints.deleteFavouriteVideogame.serverLogic(UserFavouritesLogics.deleteFavouriteVideogame))
 
-  val deleteFavouriteBookRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(deleteFavouriteBook.serverLogic(deleteFavouriteBookLogic))
+  private val deleteFavouriteBook: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(UserFavouritesEndpoints.deleteFavouriteBook.serverLogic(UserFavouritesLogics.deleteFavouriteBook))
+    
+  val userFavouritesRoutes: HttpRoutes[IO] =
+    getFavourites <+>
+      addFavouriteMovie <+>
+      addFavouriteTvShow <+>
+      addFavouriteVideogame <+>
+      addFavouriteBook <+>
+      deleteFavouriteMovie <+>
+      deleteFavouriteTvShow <+>
+      deleteFavouriteVideogame <+>
+      deleteFavouriteBook
 }

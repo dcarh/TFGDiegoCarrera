@@ -22,7 +22,7 @@ object SearchLogics {
   private val igdbClient = IGDBClient()
   private val googleBooksClient = GoogleBooksClient()
 
-  val searchMovieLogic: ((String, Option[String])) => IO[Either[UserError, List[Movie]]] =
+  val searchMovie: ((String, Option[String])) => IO[Either[UserError, List[Movie]]] =
     (title, sortByOption) =>
       tmdbClient.executeRequest(Movies.searchMoviesEndpoint, title).flatMap {
         case Right(requestedListOfMovies: List[RequestedMovie]) =>
@@ -56,7 +56,7 @@ object SearchLogics {
         case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
       }
 
-  val searchTVShowLogic: ((String, Option[String])) => IO[Either[UserError, List[TVShow]]] =
+  val searchTVShow: ((String, Option[String])) => IO[Either[UserError, List[TVShow]]] =
     (title, sortByOption) =>
       tmdbClient.executeRequest(TVShows.searchTvShowsEndpoint, title).flatMap {
         case Right(requestedListOfTvShows: List[RequestedTVShow]) =>
@@ -87,7 +87,7 @@ object SearchLogics {
         case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
       }
 
-  val searchVideogameLogic: ((String, Option[String])) => IO[Either[UserError, List[Videogame]]] =
+  val searchVideogame: ((String, Option[String])) => IO[Either[UserError, List[Videogame]]] =
     (title, sortByOption) =>
       igdbClient.executeRequest(Videogames.requestVideogameAllFieldsEndpoint, title).flatMap {
         case Right(requestedListOfVideogames: List[VideogameAllFields]) =>
@@ -129,9 +129,9 @@ object SearchLogics {
         case Left(error: UserError) => IO(Left(error))
       }
 
-  val searchBookLogic: ((String, Option[String])) => IO[Either[UserError, List[Book]]] = ???
+//  val searchBook: ((String, Option[String])) => IO[Either[UserError, List[Book]]] = ???
 
-  val searchMediaContentListLogic: String => IO[Either[UserError, List[MediaContentList]]] = {
+  val searchMediaContentList: String => IO[Either[UserError, List[MediaContentList]]] = {
     title =>
       IO(Right(MediaContentListRepository.findByTitle(title)))
         .handleError {
@@ -139,7 +139,7 @@ object SearchLogics {
         }
   }
 
-  val searchUserLogic: String => IO[Either[UserError, List[User]]] = {
+  val searchUser: String => IO[Either[UserError, List[User]]] = {
     username =>
       IO(Right(UserRepository.findByUsername(username)))
         .handleError {

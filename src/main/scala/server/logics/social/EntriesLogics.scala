@@ -8,7 +8,7 @@ import modelClasses.ids.Social.EntryId
 
 object EntriesLogics {
 
-  val getAllEntriesLogic: Option[String] => IO[Either[UserError, List[Entry]]] = {
+  val getAllEntries: Option[String] => IO[Either[UserError, List[Entry]]] = {
     sortByOption =>
       IO {
         val entries = EntryRepository.getAll
@@ -44,7 +44,7 @@ object EntriesLogics {
       }
   }
 
-  val getEntryLogic: EntryId => IO[Either[UserError, Entry]] =
+  val getEntry: EntryId => IO[Either[UserError, Entry]] =
     entryId => IO {
       EntryRepository.get(entryId) match {
         case Some(entry) =>
@@ -61,7 +61,7 @@ object EntriesLogics {
         Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-  val createEntryLogic: Entry => IO[Either[UserError, Entry]] =
+  val createEntry: Entry => IO[Either[UserError, Entry]] =
     newEntry => IO {
       EntryRepository.put(newEntry.id, newEntry)
       Right(newEntry)
@@ -69,7 +69,7 @@ object EntriesLogics {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
-  val editEntryLogic: ((EntryId, Entry)) => IO[Either[UserError, Entry]] =
+  val editEntry: ((EntryId, Entry)) => IO[Either[UserError, Entry]] =
     (entryId, updatedEntryData) => IO {
       EntryRepository.get(entryId) match {
         case Some(existingEntry) =>
@@ -100,7 +100,7 @@ object EntriesLogics {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
-  val deleteEntryLogic: EntryId => IO[Either[UserError, Unit]] =
+  val deleteEntry: EntryId => IO[Either[UserError, Unit]] =
     entryId => IO {
       EntryRepository.delete(entryId) match {
         case "Object deleted successfully!" =>

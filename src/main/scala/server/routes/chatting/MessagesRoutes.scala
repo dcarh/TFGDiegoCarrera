@@ -1,24 +1,35 @@
 package server.routes.chatting
 
 import cats.effect.IO
+import cats.implicits.toSemigroupKOps
 import org.http4s.HttpRoutes
 import sttp.tapir.server.http4s.Http4sServerInterpreter
 
-import endpoints.app.chatting.MessagesEndpoints.*
-import server.logics.chatting.MessagesLogics.*
+import endpoints.app.chatting.MessagesEndpoints
+import server.logics.chatting.MessagesLogics
 
 object MessagesRoutes {
 
-  val getChatRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(getMessageEndpoint.serverLogic(getMessageLogic))
+  private val getMessage: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(MessagesEndpoints.getMessage.serverLogic(MessagesLogics.getMessage))
 
-  val createChatRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(createMessageEndpoint.serverLogic(createMessageLogic))
+  private val createMessage: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(MessagesEndpoints.createMessage.serverLogic(MessagesLogics.createMessage))
 
-  val editChatRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(editMessageEndpoint.serverLogic(editMessageLogic))
+  private val editMessage: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(MessagesEndpoints.editMessage.serverLogic(MessagesLogics.editMessage))
 
-  val deleteChatRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(deleteMessageEndpoint.serverLogic(deleteMessageLogic))
+  private val deleteMessage: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(MessagesEndpoints.deleteMessage.serverLogic(MessagesLogics.deleteMessage))
+    
+  val messagesRoutes: HttpRoutes[IO] =
+    getMessage <+>
+      createMessage <+>
+      editMessage <+>
+      deleteMessage
 
 }

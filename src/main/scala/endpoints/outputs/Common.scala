@@ -31,28 +31,6 @@ import unionTypes.schemas.SocialSchemas.*
 import unionTypes.schemas.SocialSchemasForIDs.*
 
 object Common {
-
-//  object ErrorOutputs {
-//    
-//    val errorInfo: EndpointOutput[ErrorInfo] =
-//      jsonBody[ErrorInfo]
-//
-////    val notFound:
-////      String => EndpointOutput[ErrorInfo] =
-////        obj => jsonBody[ErrorInfo].description(obj + " not found")
-//
-//    val notFound: EndpointOutput[ErrorInfo] =
-//        jsonBody[ErrorInfo].description("Not found")
-//
-////    val invalidRequest: EndpointOutput[ErrorInfo] =
-////        jsonBody[ErrorInfo].description("Invalid request")
-//
-//    val invalidRequest: EndpointOutput[ErrorInfo] =
-//        jsonBody[ErrorInfo].description("Invalid Request")
-//
-//    val unknown: EndpointOutput[ErrorInfo] =
-//        jsonBody[ErrorInfo].description("Unknown")
-//  }
   
   object ErrorOutputsTraits {
 

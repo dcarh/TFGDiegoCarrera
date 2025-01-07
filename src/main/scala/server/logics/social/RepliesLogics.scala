@@ -9,7 +9,7 @@ import modelClasses.ids.Social.ReplyId
 
 object RepliesLogics {
 
-  val getReplyLogic: ReplyId => IO[Either[UserError, Reply]] =
+  val getReply: ReplyId => IO[Either[UserError, Reply]] =
     replyId => IO {
       ReplyRepository.get(replyId) match {
         case Some(reply) =>
@@ -26,7 +26,7 @@ object RepliesLogics {
         Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-  val createReplyLogic: Reply => IO[Either[UserError, Reply]] =
+  val createReply: Reply => IO[Either[UserError, Reply]] =
     newReply => IO {
       ReplyRepository.put(newReply.id, newReply)
       Right(newReply)
@@ -34,7 +34,7 @@ object RepliesLogics {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
-  val editReplyLogic: ((ReplyId, Reply)) => IO[Either[UserError, Reply]] =
+  val editReply: ((ReplyId, Reply)) => IO[Either[UserError, Reply]] =
     (replyId, updatedReplyData) => IO {
       ReplyRepository.get(replyId) match {
         case Some(existingReply) =>
@@ -55,7 +55,7 @@ object RepliesLogics {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
-  val deleteReplyLogic: ReplyId => IO[Either[UserError, Unit]] =
+  val deleteReply: ReplyId => IO[Either[UserError, Unit]] =
     replyId => IO {
       ReplyRepository.delete(replyId) match {
         case "Object deleted successfully!" =>

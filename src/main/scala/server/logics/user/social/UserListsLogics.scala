@@ -11,7 +11,7 @@ object UserListsLogics {
 
   // TODO: Implementar la funcionalidad del sortByOption
   
-  val getUserListsLogic: ((UserId, Option[String])) => IO[Either[UserError, List[MediaContentListId]]] =
+  val getUserLists: ((UserId, Option[String])) => IO[Either[UserError, List[MediaContentListId]]] =
     (userId, sortByOption) => IO {
       UserRepository.get(userId) match {
         case Some(user) =>

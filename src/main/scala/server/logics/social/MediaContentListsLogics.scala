@@ -9,7 +9,7 @@ import modelClasses.ids.Social.MediaContentListId
 
 object MediaContentListsLogics {
 
-  val getAllMediaContentListsLogic: Option[String] => IO[Either[UserError, List[MediaContentList]]] = {
+  val getAllMediaContentLists: Option[String] => IO[Either[UserError, List[MediaContentList]]] = {
     sortByOption =>
       IO {
         val mediaContentLists = MediaContentListRepository.getAll
@@ -51,7 +51,7 @@ object MediaContentListsLogics {
       }
   }
 
-  val getMediaContentListLogic: MediaContentListId => IO[Either[UserError, MediaContentList]] =
+  val getMediaContentList: MediaContentListId => IO[Either[UserError, MediaContentList]] =
     mediaContentListId => IO {
       MediaContentListRepository.get(mediaContentListId) match {
         case Some(mediaContentList) =>
@@ -68,7 +68,7 @@ object MediaContentListsLogics {
         Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-  val createMediaContentListLogic: MediaContentList => IO[Either[UserError, MediaContentList]] =
+  val createMediaContentList: MediaContentList => IO[Either[UserError, MediaContentList]] =
     newMediaContentList => IO {
       MediaContentListRepository.put(newMediaContentList.id, newMediaContentList)
       Right(newMediaContentList)
@@ -76,7 +76,7 @@ object MediaContentListsLogics {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
-  val editMediaContentListLogic: ((MediaContentListId, MediaContentList)) => IO[Either[UserError, MediaContentList]] =
+  val editMediaContentList: ((MediaContentListId, MediaContentList)) => IO[Either[UserError, MediaContentList]] =
     (mediaContentListId, updatedMediaContentListData) => IO {
       MediaContentListRepository.get(mediaContentListId) match {
         case Some(existingMediaContentList) =>
@@ -103,7 +103,7 @@ object MediaContentListsLogics {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
-  val deleteMediaContentListLogic: MediaContentListId => IO[Either[UserError, Unit]] =
+  val deleteMediaContentList: MediaContentListId => IO[Either[UserError, Unit]] =
     mediaContentListId => IO {
       MediaContentListRepository.delete(mediaContentListId) match {
         case "Object deleted successfully!" =>

@@ -1,21 +1,30 @@
 package server.routes.social
 
 import cats.effect.IO
+import cats.implicits.toSemigroupKOps
 import org.http4s.HttpRoutes
 import sttp.tapir.server.http4s.Http4sServerInterpreter
 
-import endpoints.app.social.LikesEndpoints.*
-import server.logics.social.LikesLogics.*
+import endpoints.app.social.LikesEndpoints
+import server.logics.social.LikesLogics
 
 object LikesRoutes {
 
-  val getLikeRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(getLikeEndpoint.serverLogic(getLikeLogic))
+  private val getLike: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(LikesEndpoints.getLike.serverLogic(LikesLogics.getLike))
 
-  val createLikeRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(createLikeEndpoint.serverLogic(createLikeLogic))
+  private val createLike: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(LikesEndpoints.createLike.serverLogic(LikesLogics.createLike))
 
-  val deleteLikeRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(deleteLikeEndpoint.serverLogic(deleteLikeLogic))
+  private val deleteLike: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(LikesEndpoints.deleteLike.serverLogic(LikesLogics.deleteLike))
+
+  val likesRoutes: HttpRoutes[IO] =
+    getLike <+>
+      createLike <+>
+      deleteLike
 
 }

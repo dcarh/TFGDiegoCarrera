@@ -11,7 +11,7 @@ object UserChatsLogics {
   
   // TODO: Implementar la funcionalidad del sortByOption
 
-  val getUserChatsLogic: ((UserId, Option[String])) => IO[Either[UserError, List[ChatId]]] =
+  val getUserChats: ((UserId, Option[String])) => IO[Either[UserError, List[ChatId]]] =
     (userId, sortByOption) => IO {
       UserRepository.get(userId) match {
         case Some(user) => 

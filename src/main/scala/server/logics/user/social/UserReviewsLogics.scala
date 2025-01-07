@@ -9,7 +9,7 @@ import modelClasses.ids.Social.ReviewId
 
 object UserReviewsLogics {
 
-  val getUserReviewsLogic: UserId => IO[Either[UserError, List[ReviewId]]] =
+  val getUserReviews: UserId => IO[Either[UserError, List[ReviewId]]] =
     userId => IO {
       UserRepository.get(userId) match {
         case Some(user) =>

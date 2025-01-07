@@ -6,12 +6,6 @@ import endpoints.outputs.Common.ErrorOutputsTraits
 import modelClasses.errors.UserError.*
 
 object EndpointsUtils {
-  
-//  val notFoundString:
-//    String => String =
-//      obj => obj + " not found"
-//
-//  val invalidRequestString: String = "Invalid request"
 
   private val baseEndpoint:
     (String, String, String) => PublicEndpoint[Unit, Unit, Unit, Any] =
@@ -86,35 +80,4 @@ object EndpointsUtils {
         case (name, description, path, "PUT") => putBaseEndpoint(name, description, path)
         case (name, description, path, "DELETE") => deleteBaseEndpoint(name, description, path)
       }
-
-
-
-//  private val appBaseEndpoint:
-//    (String, String, String, String) => PublicEndpoint[Unit, ErrorInfo, Unit, Any] =
-//      (name, description, path, method) =>
-//        method.toUpperCase() match
-//          case "GET" => getBaseEndpoint(name, description, path)
-//          case "POST" => postBaseEndpoint(name, description, path)
-
-//  private val appBaseEndpoint:
-//    (String, String, String) => PublicEndpoint[Unit, ErrorInfo, Unit, Any] =
-//      (name, description, path) =>
-//        endpoint
-//          .name(name)
-//          .description(description)
-//          .in(path)
-//          .errorOut(ErrorOutputs.jsonErrorInfoOut)
-
-//  val getBaseEndpoint:
-//    (String, String, String) => PublicEndpoint[Unit, ErrorInfo, Unit, Any] =
-//      (name, description, path) =>
-//        appBaseEndpoint(name, description, path)
-//          .get
-//
-//  val postBaseEndpoint:
-//    (String, String, String) => PublicEndpoint[Unit, ErrorInfo, Unit, Any] =
-//      (name, description, path) =>
-//        appBaseEndpoint(name, description, path)
-//          .post
-
 }

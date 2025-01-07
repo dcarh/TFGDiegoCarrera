@@ -8,7 +8,7 @@ import modelClasses.ids.User.UserId
 
 object UserRatingsLogics {
 
-  val getUserRatingsLogic: UserId => IO[Either[UserError, List[RatingId]]] =
+  val getUserRatings: UserId => IO[Either[UserError, List[RatingId]]] =
     userId => IO {
       UserRepository.get(userId) match {
         case Some(user) =>

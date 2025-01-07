@@ -1,27 +1,40 @@
 package server.routes.social
 
 import cats.effect.IO
+import cats.implicits.toSemigroupKOps
 import org.http4s.HttpRoutes
 import sttp.tapir.server.http4s.Http4sServerInterpreter
 
-import endpoints.app.social.ReviewsEndpoints.*
-import server.logics.social.ReviewsLogics.*
+import endpoints.app.social.ReviewsEndpoints
+import server.logics.social.ReviewsLogics
 
 object ReviewsRoutes {
 
-  val getAllReviewsRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(getAllReviewsEndpoint.serverLogic(getAllReviewsLogic))
+  private val getAllReviews: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(ReviewsEndpoints.getAllReviews.serverLogic(ReviewsLogics.getAllReviews))
 
-  val getReviewRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(getReviewEndpoint.serverLogic(getReviewLogic))
+  private val getReview: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(ReviewsEndpoints.getReview.serverLogic(ReviewsLogics.getReview))
 
-  val createReviewRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(createReviewEndpoint.serverLogic(createReviewLogic))
+  private val createReview: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(ReviewsEndpoints.createReview.serverLogic(ReviewsLogics.createReview))
 
-  val editReviewRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(editReviewEndpoint.serverLogic(editReviewLogic))
+  private val editReview: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(ReviewsEndpoints.editReview.serverLogic(ReviewsLogics.editReview))
 
-  val deleteReviewRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(deleteReviewEndpoint.serverLogic(deleteReviewLogic))
+  private val deleteReview: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(ReviewsEndpoints.deleteReview.serverLogic(ReviewsLogics.deleteReview))
+
+  val reviewsRoutes: HttpRoutes[IO] =
+    getAllReviews <+>
+      getReview <+>
+      createReview <+>
+      editReview <+>
+      deleteReview
 
 }

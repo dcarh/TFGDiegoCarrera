@@ -14,7 +14,7 @@ object LikesEndpoints {
     (String, String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
       (name, description, method) => httpMethodEndpoint(name, description, "like", method)
 
-  val getLikeEndpoint: PublicEndpoint[LikeId, UserError, Like, Any] =
+  val getLike: PublicEndpoint[LikeId, UserError, Like, Any] =
     likeBaseEndpoint(
       "Get like endpoint", 
       "This endpoint returns a specific like by its Id",
@@ -23,7 +23,7 @@ object LikesEndpoints {
       .in(PathInputs.pathLikeId)
       .out(SocialOutputs.likeOutput)
 
-  val createLikeEndpoint: PublicEndpoint[Like, UserError, Like, Any] =
+  val createLike: PublicEndpoint[Like, UserError, Like, Any] =
     likeBaseEndpoint(
       "Create like endpoint",
       "This endpoint creates a like and returns it in case of success",
@@ -33,7 +33,7 @@ object LikesEndpoints {
       .in(JsonInputs.jsonLike)
       .out(SocialOutputs.likeOutput)
 
-  val deleteLikeEndpoint: PublicEndpoint[LikeId, UserError, Unit, Any] =
+  val deleteLike: PublicEndpoint[LikeId, UserError, Unit, Any] =
     likeBaseEndpoint(
       "Delete like endpoint",
       "This endpoint deletes a like  returns it in case of success",

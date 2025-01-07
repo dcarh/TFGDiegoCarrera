@@ -1,24 +1,35 @@
 package server.routes.social
 
 import cats.effect.IO
+import cats.implicits.toSemigroupKOps
 import org.http4s.HttpRoutes
 import sttp.tapir.server.http4s.Http4sServerInterpreter
 
-import endpoints.app.social.RatingsEndpoints.*
-import server.logics.social.RatingsLogics.*
+import endpoints.app.social.RatingsEndpoints
+import server.logics.social.RatingsLogics
 
 object RatingsRoutes {
 
-  val getRatingRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(getRatingEndpoint.serverLogic(getRatingLogic))
+  private val getRating: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(RatingsEndpoints.getRating.serverLogic(RatingsLogics.getRating))
 
-  val createRatingRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(createRatingEndpoint.serverLogic(createRatingLogic))
+  private val createRating: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(RatingsEndpoints.createRating.serverLogic(RatingsLogics.createRating))
 
-  val editRatingRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(editRatingEndpoint.serverLogic(editRatingLogic))
+  private val editRating: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(RatingsEndpoints.editRating.serverLogic(RatingsLogics.editRating))
 
-  val deleteRatingRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(deleteRatingEndpoint.serverLogic(deleteRatingLogic))
+  private val deleteRating: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(RatingsEndpoints.deleteRating.serverLogic(RatingsLogics.deleteRating))
+
+  val ratingsRoutes: HttpRoutes[IO] =
+    getRating <+>
+      createRating <+>
+      editRating <+>
+      deleteRating
 
 }

@@ -9,7 +9,7 @@ import modelClasses.ids.Chatting.MessageId
 
 object MessagesLogics {
 
-  val getMessageLogic:
+  val getMessage:
     MessageId => IO[Either[UserError, Message]] =
       messageId => IO {
         MessageRepository.get(messageId) match {
@@ -27,7 +27,7 @@ object MessagesLogics {
           Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
       }
 
-  val createMessageLogic: Message => IO[Either[UserError, Message]] =
+  val createMessage: Message => IO[Either[UserError, Message]] =
     newMessage => IO {
       MessageRepository.put(newMessage.id, newMessage)
       Right(newMessage)
@@ -35,7 +35,7 @@ object MessagesLogics {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
-  val editMessageLogic: ((MessageId, Message)) => IO[Either[UserError, Message]] =
+  val editMessage: ((MessageId, Message)) => IO[Either[UserError, Message]] =
     (messageId, updatedMessageData) => IO {
       MessageRepository.get(messageId) match {
         case Some(existingMessage) =>
@@ -54,7 +54,7 @@ object MessagesLogics {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
-  val deleteMessageLogic: MessageId => IO[Either[UserError, Unit]] =
+  val deleteMessage: MessageId => IO[Either[UserError, Unit]] =
     messageId => IO {
       MessageRepository.delete(messageId) match {
         case "Object deleted successfully!" =>

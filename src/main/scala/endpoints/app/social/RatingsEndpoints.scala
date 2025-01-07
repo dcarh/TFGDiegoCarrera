@@ -14,7 +14,7 @@ object RatingsEndpoints {
     (String, String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
       (name, description, method) => httpMethodEndpoint(name, description, "rating", method)
 
-  val getRatingEndpoint: PublicEndpoint[RatingId, UserError, Rating, Any] =
+  val getRating: PublicEndpoint[RatingId, UserError, Rating, Any] =
     ratingBaseEndpoint(
       "Get rating endpoint",
       "This endpoint returns a specific rating by its Id",
@@ -23,7 +23,7 @@ object RatingsEndpoints {
       .in(PathInputs.pathRatingId)
       .out(SocialOutputs.ratingOutput)
 
-  val createRatingEndpoint: PublicEndpoint[Rating, UserError, Rating, Any] =
+  val createRating: PublicEndpoint[Rating, UserError, Rating, Any] =
     ratingBaseEndpoint(
       "Create rating endpoint",
       "This endpoint creates a rating and returns it in case of success",
@@ -33,7 +33,7 @@ object RatingsEndpoints {
       .in(JsonInputs.jsonRating)
       .out(SocialOutputs.ratingOutput)
 
-  val editRatingEndpoint: PublicEndpoint[(RatingId, Rating), UserError, Rating, Any] =
+  val editRating: PublicEndpoint[(RatingId, Rating), UserError, Rating, Any] =
     ratingBaseEndpoint(
       "Edit rating endpoint",
       "This endpoint allows to edit a rating and returns it in case of success. Otherwise returns an error message",
@@ -44,7 +44,7 @@ object RatingsEndpoints {
       .in(JsonInputs.jsonRating)
       .out(SocialOutputs.ratingOutput)
 
-  val deleteRatingEndpoint: PublicEndpoint[RatingId, UserError, Unit, Any] =
+  val deleteRating: PublicEndpoint[RatingId, UserError, Unit, Any] =
     ratingBaseEndpoint(
       "Delete rating endpoint",
       "This endpoint deletes a rating returns it in case of success",

@@ -9,7 +9,7 @@ import modelClasses.ids.Chatting.ChatId
 
 object ChatsLogics {
 
-  val getChatLogic: ChatId => IO[Either[UserError, Chat]] =
+  val getChat: ChatId => IO[Either[UserError, Chat]] =
     chatId => IO {
       ChatRepository.get(chatId) match {
         case Some(chat) =>
@@ -26,7 +26,7 @@ object ChatsLogics {
         Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-  val createChatLogic: Chat => IO[Either[UserError, Chat]] =
+  val createChat: Chat => IO[Either[UserError, Chat]] =
     newChat => IO {
       ChatRepository.put(newChat.id, newChat)
       Right(newChat)
@@ -34,7 +34,7 @@ object ChatsLogics {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
-  val editChatLogic: ((ChatId, Chat)) => IO[Either[UserError, Chat]] =
+  val editChat: ((ChatId, Chat)) => IO[Either[UserError, Chat]] =
     (chatId, updatedChatData) => IO {
       ChatRepository.get(chatId) match {
         case Some(existingChat) =>
@@ -53,10 +53,11 @@ object ChatsLogics {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
-  val deleteChatLogic: ChatId => IO[Either[UserError, Unit]] =
+  val deleteChat: ChatId => IO[Either[UserError, Unit]] =
     chatId => IO {
       ChatRepository.delete(chatId) match {
         case "Object deleted successfully!" =>
+          IO(println("HEEEEEEY"))
           Right(())
         case otherMessage =>
           Left(Conflict(s"Chat with ID ${chatId.value} could not be deleted: $otherMessage"))

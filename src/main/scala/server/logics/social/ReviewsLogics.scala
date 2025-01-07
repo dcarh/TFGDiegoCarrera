@@ -9,7 +9,7 @@ import modelClasses.ids.Social.ReviewId
 
 object ReviewsLogics {
 
-  val getAllReviewsLogic: Option[String] => IO[Either[UserError, List[Review]]] = {
+  val getAllReviews: Option[String] => IO[Either[UserError, List[Review]]] = {
     sortByOption =>
       IO {
         val reviews = ReviewRepository.getAll
@@ -39,7 +39,7 @@ object ReviewsLogics {
       }
   }
 
-  val getReviewLogic: ReviewId => IO[Either[UserError, Review]] =
+  val getReview: ReviewId => IO[Either[UserError, Review]] =
     reviewId => IO {
       ReviewRepository.get(reviewId) match {
         case Some(review) =>
@@ -56,7 +56,7 @@ object ReviewsLogics {
         Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-  val createReviewLogic: Review => IO[Either[UserError, Review]] =
+  val createReview: Review => IO[Either[UserError, Review]] =
     newReview => IO {
       ReviewRepository.put(newReview.id, newReview)
       Right(newReview)
@@ -64,7 +64,7 @@ object ReviewsLogics {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
-  val editReviewLogic: ((ReviewId, Review)) => IO[Either[UserError, Review]] =
+  val editReview: ((ReviewId, Review)) => IO[Either[UserError, Review]] =
     (reviewId, updatedReviewData) => IO {
       ReviewRepository.get(reviewId) match {
         case Some(existingReview) =>
@@ -87,7 +87,7 @@ object ReviewsLogics {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
-  val deleteReviewLogic: ReviewId => IO[Either[UserError, Unit]] =
+  val deleteReview: ReviewId => IO[Either[UserError, Unit]] =
     reviewId => IO {
       ReviewRepository.delete(reviewId) match {
         case "Object deleted successfully!" =>
