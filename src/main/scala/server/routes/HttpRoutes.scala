@@ -8,7 +8,7 @@ import server.routes.chatting.ChatsRoutes.chatsRoutes
 import server.routes.chatting.MessagesRoutes.messagesRoutes
 import server.routes.social.EntriesRoutes.entriesRoutes
 import server.routes.social.LikesRoutes.likesRoutes
-import server.routes.social.MediaContentListsRoutes.mediaContentListsRoutes
+import server.routes.social.MediaListsRoutes.mediaListsRoutes
 import server.routes.social.RatingsRoutes.ratingsRoutes
 import server.routes.social.RepliesRoutes.repliesRoutes
 import server.routes.social.ReviewsRoutes.reviewsRoutes
@@ -22,7 +22,7 @@ import server.routes.user.media.UserPendingMediaRoutes.userPendingMediaRoutes
 import server.routes.user.network.UserNetworkRoutes.userNetworkRoutes
 import server.routes.user.social.UserEntriesRoutes.userEntriesRoutes
 import server.routes.user.social.UserLikesRoutes.userLikesRoutes
-import server.routes.user.social.UserListsRoutes.userListsRoutes
+import server.routes.user.social.UserListsRoutes.userMediaListsRoutes
 import server.routes.user.social.UserRatingsRoutes.userRatingsRoutes
 import server.routes.user.social.UserRepliesRoutes.userRepliesRoutes
 import server.routes.user.social.UserReviewsRoutes.userReviewsRoutes
@@ -37,7 +37,7 @@ object HttpRoutes {
       messagesRoutes <+>
       entriesRoutes <+>
       likesRoutes <+>
-      mediaContentListsRoutes <+>
+      mediaListsRoutes <+>
       ratingsRoutes <+>
       repliesRoutes <+>
       reviewsRoutes <+>
@@ -51,7 +51,7 @@ object HttpRoutes {
       userNetworkRoutes <+>
       userEntriesRoutes <+>
       userLikesRoutes <+>
-      userListsRoutes <+>
+      userMediaListsRoutes <+>
       userRatingsRoutes <+>
       userRepliesRoutes <+>
       userReviewsRoutes <+>

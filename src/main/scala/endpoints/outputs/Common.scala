@@ -5,7 +5,7 @@ import io.circe.generic.auto.*
 import modelClasses.errors.UserError.*
 import modelClasses.app.chatting.{Chat, Message}
 import modelClasses.app.media.{Book, Episode, Movie, Season, TvShow, Videogame}
-import modelClasses.app.social.{Entry, Like, MediaContentList, Rating, Reply, Review}
+import modelClasses.app.social.{Entry, Like, MediaList, Rating, Reply, Review}
 import modelClasses.app.user.{User, UserFavourites, UserSettings}
 import modelClasses.ids.Chatting.ChatId
 import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TvShowId, VideogameId}
@@ -106,8 +106,8 @@ object Common {
     val replyOutput: EndpointOutput[Reply] =
       jsonBody[Reply].description("The requested reply")
 
-    val mediaContentListOutput: EndpointOutput[MediaContentList] =
-      jsonBody[MediaContentList].description("The requested media content list")
+    val mediaContentListOutput: EndpointOutput[MediaList] =
+      jsonBody[MediaList].description("The requested media content list")
 
     val listOfEntriesOutput: EndpointOutput[List[Entry]] =
       jsonBody[List[Entry]].description("The requested list of entries")
@@ -139,14 +139,14 @@ object Common {
     val listOfRepliesIdsOutput: EndpointOutput[List[ReplyId]] =
       jsonBody[List[ReplyId]].description("The requested list of replies IDs")
 
-    val listOfMediaContentListsOutput: EndpointOutput[List[MediaContentList]] =
-      jsonBody[List[MediaContentList]].description("The requested list of media content lists")
+    val listOfMediaListsOutput: EndpointOutput[List[MediaList]] =
+      jsonBody[List[MediaList]].description("The requested list of media lists")
 
-    val listOfMediaContentListsIdsOutput: EndpointOutput[List[MediaContentListId]] =
-      jsonBody[List[MediaContentListId]].description("The requested list of media content lists IDs")
+    val listOfMediaListsIdsOutput: EndpointOutput[List[MediaListId]] =
+      jsonBody[List[MediaListId]].description("The requested list of media lists IDs")
 
-    val listOfLikeableObjectsOutput: EndpointOutput[List[MediaContentList | Review | Reply]] =
-      jsonBody[List[MediaContentList | Review | Reply]].description("The requested list of likeable objects")
+    val listOfLikeableObjectsOutput: EndpointOutput[List[MediaList | Review | Reply]] =
+      jsonBody[List[MediaList | Review | Reply]].description("The requested list of likeable objects")
   }
 
   object MediaOutputs {

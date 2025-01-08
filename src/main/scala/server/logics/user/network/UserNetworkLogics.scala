@@ -7,6 +7,8 @@ import modelClasses.ids.User.UserId
 
 object UserNetworkLogics {
 
+  // TODO: Aquí también se podría añadir alguna funcionalidad para ordenar los resultados obtenidos: Por antiguedad o por popularidad, por ejemplo
+
   val getFollowers: UserId => IO[Either[UserError, List[UserId]]] =
     userId => IO {
       UserRepository.get(userId) match {

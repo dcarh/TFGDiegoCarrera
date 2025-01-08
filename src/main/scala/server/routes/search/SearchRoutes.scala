@@ -2,7 +2,7 @@ package server.routes.search
 
 import cats.effect.IO
 import cats.implicits.toSemigroupKOps
-import endpoints.app.SearchEndpoints
+import endpoints.app.search.SearchEndpoints
 import org.http4s.HttpRoutes
 import server.logics.SearchLogics
 import sttp.tapir.server.http4s.Http4sServerInterpreter
@@ -25,9 +25,9 @@ object SearchRoutes {
 //    Http4sServerInterpreter[IO]().
 //      toRoutes(SearchEndpoints.searchBook.serverLogic(SearchLogics.searchBook))
 
-  private val searchMediaContentList: HttpRoutes[IO] =
+  private val searchMediaList: HttpRoutes[IO] =
     Http4sServerInterpreter[IO]().
-      toRoutes(SearchEndpoints.searchMediaContentList.serverLogic(SearchLogics.searchMediaContentList))
+      toRoutes(SearchEndpoints.searchMediaList.serverLogic(SearchLogics.searchMediaList))
 
   private val searchUser: HttpRoutes[IO] =
     Http4sServerInterpreter[IO]().
@@ -38,7 +38,7 @@ object SearchRoutes {
       searchTVShow <+>
       searchVideogame <+>
 //      searchBook <+>
-      searchMediaContentList <+>
+      searchMediaList <+>
       searchUser
 
 }

@@ -2,12 +2,12 @@ package server.logics
 
 import cats.effect.IO
 import clients.{GoogleBooksClient, IGDBClient, TMDBClient}
-import dummies.repositories.{MediaContentListRepository, UserRepository}
+import dummies.repositories.{MediaListRepository, UserRepository}
 import endpoints.googleBooks.Books
 import endpoints.igdb.Videogames
 import endpoints.tmdb.{Movies, TVShows}
 import modelClasses.app.media.{Book, Movie, TvShow, Videogame}
-import modelClasses.app.social.MediaContentList
+import modelClasses.app.social.MediaList
 import modelClasses.app.user.User
 import modelClasses.errors.UserError.*
 import modelClasses.ids.Media.{BookId, MovieId, TvShowId, VideogameId}
@@ -131,9 +131,9 @@ object SearchLogics {
 
 //  val searchBook: ((String, Option[String])) => IO[Either[UserError, List[Book]]] = ???
 
-  val searchMediaContentList: String => IO[Either[UserError, List[MediaContentList]]] = {
+  val searchMediaList: String => IO[Either[UserError, List[MediaList]]] = {
     title =>
-      IO(Right(MediaContentListRepository.findByTitle(title)))
+      IO(Right(MediaListRepository.findByTitle(title)))
         .handleError {
           case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
         }

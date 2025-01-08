@@ -1,14 +1,14 @@
 package dummies.objects
 
-import dummies.ids.{LikeIdDummies, MediaContentListIdDummies, ReplyIdDummies, UserIdDummies}
-import modelClasses.app.social.{MediaContentList, Visibility}
+import dummies.ids.{LikeIdDummies, MediaListIdDummies, ReplyIdDummies, UserIdDummies}
+import modelClasses.app.social.{MediaList, Visibility}
 import modelClasses.ids.Media.{BookId, MovieId, TvShowId, VideogameId}
 
 import java.time.LocalDateTime
 
-object MediaContentListDummies {
-  val mediaContentList1: MediaContentList = MediaContentList(
-    MediaContentListIdDummies.mediaContentListId1,
+object MediaListDummies {
+  val mediaContentList1: MediaList = MediaList(
+    MediaListIdDummies.mediaListId1,
     UserIdDummies.userId3,
     "Martial arts",
     "",
@@ -38,8 +38,8 @@ object MediaContentListDummies {
     List()
   )
   
-  val mediaContentList2: MediaContentList = MediaContentList(
-    MediaContentListIdDummies.mediaContentListId2,
+  val mediaContentList2: MediaList = MediaList(
+    MediaListIdDummies.mediaListId2,
     UserIdDummies.userId1,
     "Top 5 movies 2021",
     "My top 5 movies released in 2021",
@@ -59,8 +59,8 @@ object MediaContentListDummies {
     List(ReplyIdDummies.replyId1)
   )
   
-  val mediaContentList3: MediaContentList = MediaContentList(
-    MediaContentListIdDummies.mediaContentListId3,
+  val mediaContentList3: MediaList = MediaList(
+    MediaListIdDummies.mediaListId3,
     UserIdDummies.userId1,
     "Books read in 2024",
     "A list with the books I've read in 2024 so far",
@@ -79,8 +79,8 @@ object MediaContentListDummies {
     List()
   )
   
-  val mediaContentList4: MediaContentList = MediaContentList(
-    MediaContentListIdDummies.mediaContentListId4,
+  val mediaContentList4: MediaList = MediaList(
+    MediaListIdDummies.mediaListId4,
     UserIdDummies.userId2,
     "Movies, games, etc. to get to know me",
     "Hope you enjoy them as much as I've done",

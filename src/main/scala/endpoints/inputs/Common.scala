@@ -7,7 +7,7 @@ import sttp.tapir.json.circe.*
 import io.circe.generic.auto.*
 
 import modelClasses.app.chatting.{Chat, Message}
-import modelClasses.app.social.{Entry, Like, MediaContentList, Rating, Reply, Review}
+import modelClasses.app.social.{Entry, Like, MediaList, Rating, Reply, Review}
 import modelClasses.app.user.{User, UserSettings}
 
 import modelClasses.ids.Chatting.*
@@ -72,8 +72,8 @@ object Common {
     val pathEntryId: EndpointInput[EntryId] =
       path[EntryId]("entry_id")
       
-    val pathListId: EndpointInput[MediaContentListId] =
-      path[MediaContentListId]("list_id")
+    val pathListId: EndpointInput[MediaListId] =
+      path[MediaListId]("list_id")
       
     val pathReviewId: EndpointInput[ReviewId] =
       path[ReviewId]("review_id")
@@ -108,8 +108,8 @@ object Common {
     val jsonLike: EndpointInput[Like] =
       jsonBody[Like]
       
-    val jsonMediaContentList: EndpointInput[MediaContentList] =
-      jsonBody[MediaContentList]
+    val jsonMediaList: EndpointInput[MediaList] =
+      jsonBody[MediaList]
       
     val jsonRating: EndpointInput[Rating] =
       jsonBody[Rating]

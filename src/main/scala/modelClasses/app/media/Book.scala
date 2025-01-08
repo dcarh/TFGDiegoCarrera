@@ -3,7 +3,7 @@ package modelClasses.app.media
 import io.circe.generic.auto.*
 
 import modelClasses.ids.Media.BookId
-import modelClasses.ids.Social.{LikeId, MediaContentListId, ReviewId}
+import modelClasses.ids.Social.{LikeId, MediaListId, ReviewId}
 
 case class Book(
                  authors           : List[String],
@@ -14,7 +14,7 @@ case class Book(
 
                  averageRating     : Double,
                  likes             : List[LikeId],
-                 lists             : List[MediaContentListId],
+                 lists             : List[MediaListId],
                  numberOfAbandoned : Long,
                  numberOfCompleted : Long,
                  numberOfInProgress: Option[Long],

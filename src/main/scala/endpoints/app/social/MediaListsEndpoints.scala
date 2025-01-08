@@ -5,11 +5,11 @@ import endpoints.EndpointsUtils.httpMethodEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
 import modelClasses.errors.UserError.*
-import modelClasses.app.social.MediaContentList
-import modelClasses.ids.Social.MediaContentListId
+import modelClasses.app.social.MediaList
+import modelClasses.ids.Social.MediaListId
 
 
-object MediaContentListsEndpoints {
+object MediaListsEndpoints {
     
   private val listsBaseEndpoint:
     (String, String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
@@ -20,16 +20,16 @@ object MediaContentListsEndpoints {
       (name, description, method) =>
         httpMethodEndpoint(name, description, "list", method)
 
-  val getAllMediaContentLists: PublicEndpoint[Option[String], UserError, List[MediaContentList], Any] =
+  val getAllMediaLists: PublicEndpoint[Option[String], UserError, List[MediaList], Any] =
     listsBaseEndpoint(
       "Get all media content lists endpoint", 
       "This endpoint returns a list with all the media content lists in the app",
       "GET"
     )
       .in(QueryInputs.querySortBy)
-      .out(SocialOutputs.listOfMediaContentListsOutput)
+      .out(SocialOutputs.listOfMediaListsOutput)
 
-  val getMediaContentList: PublicEndpoint[MediaContentListId, UserError, MediaContentList, Any] =
+  val getMediaList: PublicEndpoint[MediaListId, UserError, MediaList, Any] =
     listsBaseEndpoint(
       "Get media content list endpoint", 
       "This endpoint returns a specific media content list by its ID",
@@ -38,17 +38,17 @@ object MediaContentListsEndpoints {
       .in(PathInputs.pathListId)
       .out(SocialOutputs.mediaContentListOutput)
 
-  val createMediaContentList: PublicEndpoint[MediaContentList, UserError, MediaContentList, Any] =
+  val createMediaList: PublicEndpoint[MediaList, UserError, MediaList, Any] =
     listBaseEndpoint(
       "Create media content list endpoint", 
       "This endpoint creates a media content list and returns it in case of success",
       "POST"
     )
       .in("create")
-      .in(JsonInputs.jsonMediaContentList)
+      .in(JsonInputs.jsonMediaList)
       .out(SocialOutputs.mediaContentListOutput)
 
-  val editMediaContentList: PublicEndpoint[(MediaContentListId, MediaContentList), UserError, MediaContentList, Any] =
+  val editMediaList: PublicEndpoint[(MediaListId, MediaList), UserError, MediaList, Any] =
     listBaseEndpoint(
       "Edit media content list endpoint", 
       "This endpoint allows to edit a media content list and returns it in case of success. Otherwise returns an error message",
@@ -56,10 +56,10 @@ object MediaContentListsEndpoints {
     )
       .in(PathInputs.pathListId)
       .in("edit")
-      .in(JsonInputs.jsonMediaContentList)
+      .in(JsonInputs.jsonMediaList)
       .out(SocialOutputs.mediaContentListOutput)
 
-  val deleteMediaContentList: PublicEndpoint[MediaContentListId, UserError, Unit, Any] =
+  val deleteMediaList: PublicEndpoint[MediaListId, UserError, Unit, Any] =
     listBaseEndpoint(
       "Delete media content list endpoint",
       "This endpoint deletes a media content list and returns it in case of success",

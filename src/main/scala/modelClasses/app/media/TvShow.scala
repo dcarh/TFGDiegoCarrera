@@ -2,8 +2,8 @@ package modelClasses.app.media
 
 import io.circe.generic.auto.*
 import modelClasses.ids.Media.TvShowId
-import modelClasses.ids.Social.{LikeId, MediaContentListId, ReviewId}
-import modelClasses.app.social.{Like, MediaContentList, Review}
+import modelClasses.ids.Social.{LikeId, MediaListId, ReviewId}
+import modelClasses.app.social.{Like, MediaList, Review}
 
 case class TvShow(
 //                   cast               : List[(String, String)], Temporal (23/12/2024)
@@ -30,7 +30,7 @@ case class TvShow(
                    // seasonsIds         : List[Season.Id],
                    // seasonsNumbers     : List[Season.Number],
 //                   likes              : List[LikeId], Temporal (23/12/2024)
-//                   lists              : List[MediaContentListId], Temporal (23/12/2024)
+//                   lists              : List[MediaListId], Temporal (23/12/2024)
 //                   numberOfAbandoned  : Long, Temporal (23/12/2024)
 //                   numberOfCompleted  : Long, Temporal (23/12/2024)
 //                   numberOfInProgress : Option[Long], Temporal (23/12/2024)

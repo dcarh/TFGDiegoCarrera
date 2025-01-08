@@ -1,13 +1,13 @@
 package dummies.objects
 
-import dummies.ids.{LikeIdDummies, MediaContentListIdDummies, ReplyIdDummies, ReviewIdDummies, UserIdDummies}
+import dummies.ids.{LikeIdDummies, MediaListIdDummies, ReplyIdDummies, ReviewIdDummies, UserIdDummies}
 import modelClasses.app.social.Reply
 
 object ReplyDummies {
   val reply1: Reply = Reply(
     ReplyIdDummies.replyId1,
     UserIdDummies.userId4,
-    MediaContentListIdDummies.mediaContentListId2,
+    MediaListIdDummies.mediaListId2,
     "Not Dune on the list?",
     List(),
     List(ReplyIdDummies.replyId3)

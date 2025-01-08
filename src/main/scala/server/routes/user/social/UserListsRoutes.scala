@@ -5,16 +5,16 @@ import cats.implicits.toSemigroupKOps
 import org.http4s.HttpRoutes
 import sttp.tapir.server.http4s.Http4sServerInterpreter
 
-import endpoints.app.user.social.UserListsEndpoints
-import server.logics.user.social.UserListsLogics
+import endpoints.app.user.social.UserMediaListsEndpoints
+import server.logics.user.social.UserMediaListsLogics
 
 object UserListsRoutes {
 
-  private val getUserLists: HttpRoutes[IO] =
+  private val getUserMediaLists: HttpRoutes[IO] =
     Http4sServerInterpreter[IO]()
-      .toRoutes(UserListsEndpoints.getUserLists.serverLogic(UserListsLogics.getUserLists))
+      .toRoutes(UserMediaListsEndpoints.getUserMediaLists.serverLogic(UserMediaListsLogics.getUserMediaLists))
 
-  val userListsRoutes: HttpRoutes[IO] =
-    getUserLists
+  val userMediaListsRoutes: HttpRoutes[IO] =
+    getUserMediaLists
 
 }

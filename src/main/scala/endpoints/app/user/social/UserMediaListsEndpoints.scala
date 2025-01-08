@@ -5,11 +5,11 @@ import endpoints.app.user.UserEndpointsUtils.userBaseEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
 import modelClasses.errors.UserError.*
-import modelClasses.app.social.MediaContentList
-import modelClasses.ids.Social.MediaContentListId
+import modelClasses.app.social.MediaList
+import modelClasses.ids.Social.MediaListId
 import modelClasses.ids.User.UserId
 
-object UserListsEndpoints {
+object UserMediaListsEndpoints {
 
 //  private val userListBaseEndpoint:
 //    (String, String, String) => PublicEndpoint[UserId, UserError, Unit, Any] =
@@ -17,20 +17,20 @@ object UserListsEndpoints {
 //        .in(PathInputs.pathUserId)
 //        .in("list")
 
-  private val userListsBaseEndpoint:
+  private val userMediaListsBaseEndpoint:
     (String, String, String) => PublicEndpoint[UserId, UserError, Unit, Any] =
       (name, description, method) => userBaseEndpoint(name, description, method)
         .in(PathInputs.pathUserId)
         .in("lists")
 
-  val getUserLists: PublicEndpoint[(UserId, Option[String]), UserError, List[MediaContentListId], Any] =
-    userListsBaseEndpoint(
+  val getUserMediaLists: PublicEndpoint[(UserId, Option[String]), UserError, List[MediaListId], Any] =
+    userMediaListsBaseEndpoint(
       "User's lists endpoint",
       "This endpoint returns all the lists for a user",
       "GET"
     )
       .in(QueryInputs.querySortBy)
-      .out(SocialOutputs.listOfMediaContentListsIdsOutput)
+      .out(SocialOutputs.listOfMediaListsIdsOutput)
 
 //  val userSpecificListEndpoint: PublicEndpoint[(UserId, MediaContentListId), UserError, MediaContentList, Any] =
 //    userListBaseEndpoint(

@@ -5,13 +5,13 @@ import cats.syntax.functor.*
 import io.circe.Decoder
 import io.circe.generic.auto.*
 
-import modelClasses.ids.Social.{MediaContentListId, ReplyId, ReviewId}
+import modelClasses.ids.Social.{MediaListId, ReplyId, ReviewId}
 
 object SocialDecodersForIDs {
   
-  implicit val mediaUnionDecoder4: Decoder[MediaContentListId | ReviewId | ReplyId] = Decoder.instance { cursor =>
-    List[Decoder[MediaContentListId | ReviewId | ReplyId]](
-      Decoder[MediaContentListId].widen,
+  implicit val socialIdsDecoder: Decoder[MediaListId | ReviewId | ReplyId] = Decoder.instance { cursor =>
+    List[Decoder[MediaListId | ReviewId | ReplyId]](
+      Decoder[MediaListId].widen,
       Decoder[ReviewId].widen,
       Decoder[ReplyId].widen,
     ).reduceLeft(_ or _).apply(cursor)

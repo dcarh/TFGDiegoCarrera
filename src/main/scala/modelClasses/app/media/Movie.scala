@@ -2,8 +2,8 @@ package modelClasses.app.media
 
 import io.circe.generic.auto.*
 import modelClasses.ids.Media.MovieId
-import modelClasses.ids.Social.{LikeId, MediaContentListId, ReviewId}
-import modelClasses.app.social.{Like, MediaContentList, Review}
+import modelClasses.ids.Social.{LikeId, MediaListId, ReviewId}
+import modelClasses.app.social.{Like, MediaList, Review}
 
 case class Movie(
                   budget             : Long,
@@ -25,7 +25,7 @@ case class Movie(
                 
 //                  averageRating      : Double, 
 //                  likes              : List[LikeId],
-//                  lists              : List[MediaContentListId],
+//                  lists              : List[MediaListId],
 //                  numberOfAbandoned  : Long,
 //                  numberOfCompleted  : Long,
 //                  numberOfInProgress : Option[Long],

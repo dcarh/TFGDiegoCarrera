@@ -9,6 +9,8 @@ import modelClasses.ids.Social.ReviewId
 
 object UserReviewsLogics {
 
+  // TODO: sortByOption, filterByOption
+
   val getUserReviews: UserId => IO[Either[UserError, List[ReviewId]]] =
     userId => IO {
       UserRepository.get(userId) match {

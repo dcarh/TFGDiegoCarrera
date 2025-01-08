@@ -35,8 +35,8 @@ object ModelClasses {
     implicit val entryIdCodec: Codec[String, EntryId, TextPlain] =
       Codec.string.mapDecode(s => DecodeResult.Value(EntryId(s.toLong)))(_.value.toString)
 
-    implicit val mediaContentListIdCodec: Codec[String, MediaContentListId, TextPlain] =
-      Codec.string.mapDecode(s => DecodeResult.Value(MediaContentListId(s.toLong)))(_.value.toString)
+    implicit val mediaListIdCodec: Codec[String, MediaListId, TextPlain] =
+      Codec.string.mapDecode(s => DecodeResult.Value(MediaListId(s.toLong)))(_.value.toString)
 
     implicit val reviewIdCodec: Codec[String, ReviewId, TextPlain] =
       Codec.string.mapDecode(s => DecodeResult.Value(ReviewId(s.toLong)))(_.value.toString)

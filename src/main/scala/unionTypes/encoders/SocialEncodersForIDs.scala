@@ -4,13 +4,13 @@ import io.circe.Encoder
 import io.circe.generic.auto.*
 import io.circe.syntax.*
 
-import modelClasses.ids.Social.{MediaContentListId, ReplyId, ReviewId}
+import modelClasses.ids.Social.{MediaListId, ReplyId, ReviewId}
 
 object SocialEncodersForIDs {
 
 
-  implicit val mediaUnionEncoder4: Encoder[MediaContentListId | ReviewId | ReplyId] = Encoder.instance {
-    case mediaContentListId: MediaContentListId => mediaContentListId.asJson
+  implicit val socialIdsEncoder: Encoder[MediaListId | ReviewId | ReplyId] = Encoder.instance {
+    case mediaListId: MediaListId => mediaListId.asJson
     case reviewId: ReviewId => reviewId.asJson
     case replyId: ReplyId => replyId.asJson
   }

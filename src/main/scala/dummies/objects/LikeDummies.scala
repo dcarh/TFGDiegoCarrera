@@ -1,6 +1,6 @@
 package dummies.objects
 
-import dummies.ids.{LikeIdDummies, MediaContentListIdDummies, ReplyIdDummies, ReviewIdDummies, UserIdDummies}
+import dummies.ids.{LikeIdDummies, MediaListIdDummies, ReplyIdDummies, ReviewIdDummies, UserIdDummies}
 import modelClasses.app.social.Like
 
 object LikeDummies {
@@ -13,7 +13,7 @@ object LikeDummies {
   val like2: Like = Like(
     LikeIdDummies.likeId2,
     UserIdDummies.userId5,
-    MediaContentListIdDummies.mediaContentListId4
+    MediaListIdDummies.mediaListId4
   )
 
   val like3: Like = Like(
@@ -25,7 +25,7 @@ object LikeDummies {
   val like4: Like = Like(
     LikeIdDummies.likeId4,
     UserIdDummies.userId4,
-    MediaContentListIdDummies.mediaContentListId1
+    MediaListIdDummies.mediaListId1
   )
 
 }

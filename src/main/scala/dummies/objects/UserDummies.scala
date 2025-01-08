@@ -33,8 +33,8 @@ object UserDummies {
     ),
     List(),
     List(
-      MediaContentListIdDummies.mediaContentListId2,
-      MediaContentListIdDummies.mediaContentListId3
+      MediaListIdDummies.mediaListId2,
+      MediaListIdDummies.mediaListId3
     ),
     List(
       EntryIdDummies.entryId4,
@@ -111,7 +111,7 @@ object UserDummies {
       VideogameId(1082),
     ),
     List(
-      MediaContentListIdDummies.mediaContentListId4
+      MediaListIdDummies.mediaListId4
     ),
     List(
       EntryIdDummies.entryId5,
@@ -191,7 +191,7 @@ object UserDummies {
     List(),
     List(),
     List(
-      MediaContentListIdDummies.mediaContentListId1
+      MediaListIdDummies.mediaListId1
     ),
     List(
       EntryIdDummies.entryId2,

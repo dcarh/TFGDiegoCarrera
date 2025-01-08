@@ -5,13 +5,15 @@ import dummies.repositories.UserRepository
 
 import modelClasses.errors.UserError.*
 import modelClasses.ids.User.UserId
-import modelClasses.ids.Social.MediaContentListId
+import modelClasses.ids.Social.MediaListId
 
-object UserListsLogics {
+object UserMediaListsLogics {
+
+  // TODO: sortByOption, filterByOption
 
   // TODO: Implementar la funcionalidad del sortByOption
   
-  val getUserLists: ((UserId, Option[String])) => IO[Either[UserError, List[MediaContentListId]]] =
+  val getUserMediaLists: ((UserId, Option[String])) => IO[Either[UserError, List[MediaListId]]] =
     (userId, sortByOption) => IO {
       UserRepository.get(userId) match {
         case Some(user) =>
