@@ -6,11 +6,11 @@ import dummies.repositories.{MediaContentListRepository, UserRepository}
 import endpoints.googleBooks.Books
 import endpoints.igdb.Videogames
 import endpoints.tmdb.{Movies, TVShows}
-import modelClasses.app.media.{Book, Movie, TVShow, Videogame}
+import modelClasses.app.media.{Book, Movie, TvShow, Videogame}
 import modelClasses.app.social.MediaContentList
 import modelClasses.app.user.User
 import modelClasses.errors.UserError.*
-import modelClasses.ids.Media.{BookId, MovieId, TVShowId, VideogameId}
+import modelClasses.ids.Media.{BookId, MovieId, TvShowId, VideogameId}
 import modelClasses.tmdb.MovieRequests.RequestedMovie
 import modelClasses.tmdb.TVShowRequests.RequestedTVShow
 import modelClasses.igdb.VideogameRequests.{RequestedVideogame, VideogameAllFields}
@@ -56,15 +56,15 @@ object SearchLogics {
         case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
       }
 
-  val searchTVShow: ((String, Option[String])) => IO[Either[UserError, List[TVShow]]] =
+  val searchTVShow: ((String, Option[String])) => IO[Either[UserError, List[TvShow]]] =
     (title, sortByOption) =>
       tmdbClient.executeRequest(TVShows.searchTvShowsEndpoint, title).flatMap {
         case Right(requestedListOfTvShows: List[RequestedTVShow]) =>
           val listOfTvShows = requestedListOfTvShows.map(
             requestedTvShow =>
-              TVShow(
+              TvShow(
                 firstAirDate = requestedTvShow.first_air_date,
-                id = TVShowId(requestedTvShow.id),
+                id = TvShowId(requestedTvShow.id),
                 lastAirDate = requestedTvShow.last_air_date,
                 numberOfEpisodes = requestedTvShow.number_of_episodes,
                 numberOfSeasons = requestedTvShow.number_of_seasons,

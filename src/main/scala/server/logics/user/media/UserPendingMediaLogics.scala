@@ -4,13 +4,13 @@ import cats.effect.IO
 import dummies.repositories.UserRepository
 import modelClasses.errors.UserError.*
 import modelClasses.ids.User.UserId
-import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TVShowId, VideogameId}
+import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TvShowId, VideogameId}
 
 object UserPendingMediaLogics {
 
   // TODO: Implementar funcionalidad de sortByOption y categoryOption
 
-  val getPending: ((UserId, Option[String], Option[List[String]])) => IO[Either[UserError, List[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+  val getPending: ((UserId, Option[String], Option[List[String]])) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
     (userId, sortByOption, categoryOption) => IO {
       UserRepository.get(userId) match {
         case Some(user) =>
@@ -29,34 +29,34 @@ object UserPendingMediaLogics {
 
   // TODO: Dejar estos endpoints para lo último (implementación avanzada de endpoints)
 
-  val addPendingMovie: ((UserId, MovieId)) => IO[Either[UserError, List[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+  val addPendingMovie: ((UserId, MovieId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
     ???
 
-  val addPendingTvShow: ((UserId, TVShowId)) => IO[Either[UserError, List[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+  val addPendingTvShow: ((UserId, TvShowId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
     ???
 
-  val addPendingSeason: ((UserId, TVShowId, SeasonNumber)) => IO[Either[UserError, List[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+  val addPendingSeason: ((UserId, TvShowId, SeasonNumber)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
     ???
 
-  val addPendingEpisode: ((UserId, TVShowId, SeasonNumber, EpisodeNumber)) => IO[Either[UserError, List[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+  val addPendingEpisode: ((UserId, TvShowId, SeasonNumber, EpisodeNumber)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
     ???
 
-  val addPendingVideogame: ((UserId, VideogameId)) => IO[Either[UserError, List[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+  val addPendingVideogame: ((UserId, VideogameId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
     ???
 
-  val addPendingBook: ((UserId, BookId)) => IO[Either[UserError, List[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+  val addPendingBook: ((UserId, BookId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
     ???
 
   val deletePendingMovie: ((UserId, MovieId)) => IO[Either[UserError, Unit]] =
     ???
 
-  val deletePendingTvShow: ((UserId, TVShowId)) => IO[Either[UserError, Unit]] =
+  val deletePendingTvShow: ((UserId, TvShowId)) => IO[Either[UserError, Unit]] =
     ???
 
-  val deletePendingSeason: ((UserId, TVShowId, SeasonNumber)) => IO[Either[UserError, Unit]] =
+  val deletePendingSeason: ((UserId, TvShowId, SeasonNumber)) => IO[Either[UserError, Unit]] =
     ???
 
-  val deletePendingEpisode: ((UserId, TVShowId, SeasonNumber, EpisodeNumber)) => IO[Either[UserError, Unit]] =
+  val deletePendingEpisode: ((UserId, TvShowId, SeasonNumber, EpisodeNumber)) => IO[Either[UserError, Unit]] =
     ???
 
   val deletePendingVideogame: ((UserId, VideogameId)) => IO[Either[UserError, Unit]] =

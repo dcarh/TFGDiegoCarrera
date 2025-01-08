@@ -24,33 +24,33 @@ object MediaEndpoints {
       .in(PathInputs.pathMovieId)
       .out(MediaOutputs.movieOutput)
 
-  val getTvShow: PublicEndpoint[TVShowId, UserError, TVShow, Any] =
+  val getTvShow: PublicEndpoint[TvShowId, UserError, TvShow, Any] =
     mediaBaseEndpoint(
       "Get TV show endpoint",
       "This endpoint returns the TV show specified by the ID introduced",
       "tv_show"
     )
-      .in(PathInputs.pathTVShowId)
+      .in(PathInputs.pathTvShowId)
       .out(MediaOutputs.tvShowOutput)
 
-  val getSeason: PublicEndpoint[(TVShowId, SeasonNumber), UserError, Season, Any] =
+  val getSeason: PublicEndpoint[(TvShowId, SeasonNumber), UserError, Season, Any] =
     mediaBaseEndpoint(
       "Get season endpoint",
       "This endpoint returns the season specified by the ID introduced",
       "tv_show"
     )
-      .in(PathInputs.pathTVShowId)
+      .in(PathInputs.pathTvShowId)
       .in("season")
       .in(PathInputs.pathSeasonNumber)
       .out(MediaOutputs.seasonOutput)
 
-  val getEpisode: PublicEndpoint[(TVShowId, SeasonNumber, EpisodeNumber), UserError, Episode, Any] =
+  val getEpisode: PublicEndpoint[(TvShowId, SeasonNumber, EpisodeNumber), UserError, Episode, Any] =
     mediaBaseEndpoint(
       "Get episode endpoint",
       "This endpoint returns the episode specified by the ID introduced",
       "tv_show"
     )
-      .in(PathInputs.pathTVShowId)
+      .in(PathInputs.pathTvShowId)
       .in("season")
       .in(PathInputs.pathSeasonNumber)
       .in("episode")

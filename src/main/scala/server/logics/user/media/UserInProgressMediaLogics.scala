@@ -4,13 +4,13 @@ import cats.effect.IO
 import dummies.repositories.UserRepository
 import modelClasses.errors.UserError.*
 import modelClasses.ids.User.UserId
-import modelClasses.ids.Media.{BookId, SeasonNumber, TVShowId, VideogameId}
+import modelClasses.ids.Media.{BookId, SeasonNumber, TvShowId, VideogameId}
 
 object UserInProgressMediaLogics {
 
   // TODO: Implementar funcionalidad de sortByOption y categoryOption
 
-  val getInProgress: ((UserId, Option[String], Option[List[String]])) => IO[Either[UserError, List[TVShowId | (TVShowId, SeasonNumber) | VideogameId | BookId]]] =
+  val getInProgress: ((UserId, Option[String], Option[List[String]])) => IO[Either[UserError, List[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId]]] =
     (userId, sortByOption, categoryOption) => IO {
       UserRepository.get(userId) match {
         case Some(user) =>
@@ -29,22 +29,22 @@ object UserInProgressMediaLogics {
 
   // TODO: Dejar estos endpoints para lo último (implementación avanzada de endpoints)
   
-  val addInProgressTvShow: ((UserId, TVShowId)) => IO[Either[UserError, List[TVShowId | (TVShowId, SeasonNumber) | VideogameId | BookId]]] =
+  val addInProgressTvShow: ((UserId, TvShowId)) => IO[Either[UserError, List[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId]]] =
     ???
 
-  val addInProgressSeason: ((UserId, TVShowId, SeasonNumber)) => IO[Either[UserError, List[TVShowId | (TVShowId, SeasonNumber) | VideogameId | BookId]]] =
+  val addInProgressSeason: ((UserId, TvShowId, SeasonNumber)) => IO[Either[UserError, List[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId]]] =
     ???
 
-  val addInProgressVideogame: ((UserId, VideogameId)) => IO[Either[UserError, List[TVShowId | (TVShowId, SeasonNumber) | VideogameId | BookId]]] =
+  val addInProgressVideogame: ((UserId, VideogameId)) => IO[Either[UserError, List[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId]]] =
     ???
 
-  val addInProgressBook: ((UserId, BookId)) => IO[Either[UserError, List[TVShowId | (TVShowId, SeasonNumber) | VideogameId | BookId]]] =
+  val addInProgressBook: ((UserId, BookId)) => IO[Either[UserError, List[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId]]] =
     ???
 
-  val deleteInProgressTvShow: ((UserId, TVShowId)) => IO[Either[UserError, Unit]] =
+  val deleteInProgressTvShow: ((UserId, TvShowId)) => IO[Either[UserError, Unit]] =
     ???
 
-  val deleteInProgressSeason: ((UserId, TVShowId, SeasonNumber)) => IO[Either[UserError, Unit]] =
+  val deleteInProgressSeason: ((UserId, TvShowId, SeasonNumber)) => IO[Either[UserError, Unit]] =
     ???
 
   val deleteInProgressVideogame: ((UserId, VideogameId)) => IO[Either[UserError, Unit]] =

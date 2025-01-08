@@ -11,7 +11,7 @@ import java.time.{LocalDate, LocalDateTime}
 case class Entry(
                   id           : EntryId,
                   userId       : UserId,
-                  mediaId      : MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId,
+                  mediaId      : MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId,
                   //elementId    : Movie.Id | TVShow.Id | Season.Id | Episode.Id | Videogame.Id | Book.Id,
                   // elementTitle: String,
                   // elementType : String,

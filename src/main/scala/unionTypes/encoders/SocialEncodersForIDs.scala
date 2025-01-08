@@ -15,11 +15,11 @@ object SocialEncodersForIDs {
     case replyId: ReplyId => replyId.asJson
   }
 
-  //  implicit val mediaUnionEncoder5: Encoder[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId | MediaContentListId | ReviewId | ReplyId] = Encoder.instance {
+  //  implicit val mediaUnionEncoder5: Encoder[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId | MediaContentListId | ReviewId | ReplyId] = Encoder.instance {
   //    case movieId: MovieId => movieId.asJson
-  //    case tvShowId: TVShowId => tvShowId.asJson
-  //    case seasonNumber: (TVShowId, SeasonNumber) => seasonNumber.asJson
-  //    case episodeNumber: (TVShowId, SeasonNumber, EpisodeNumber) => episodeNumber.asJson
+  //    case tvShowId: TvShowId => tvShowId.asJson
+  //    case seasonNumber: (TvShowId, SeasonNumber) => seasonNumber.asJson
+  //    case episodeNumber: (TvShowId, SeasonNumber, EpisodeNumber) => episodeNumber.asJson
   //    case videogameId: VideogameId => videogameId.asJson
   //    case bookId: BookId => bookId.asJson
   //    case mediaContentListId: MediaContentListId => mediaContentListId.asJson

@@ -5,7 +5,7 @@ import endpoints.app.user.UserEndpointsUtils.userBaseEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
 import modelClasses.errors.UserError.*
-import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TVShowId, VideogameId}
+import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TvShowId, VideogameId}
 import modelClasses.ids.User.UserId
 
 object UserPendingMediaEndpoints {
@@ -18,7 +18,7 @@ object UserPendingMediaEndpoints {
 
 
   val getPending:
-    PublicEndpoint[(UserId, Option[String], Option[List[String]]), UserError, List[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId], Any] =
+    PublicEndpoint[(UserId, Option[String], Option[List[String]]), UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId], Any] =
       userPendingBaseEndpoint(
         "User's 'Pending' media content endpoint",
         "This endpoint returns a list of all the 'Pending' media content for a user",
@@ -29,7 +29,7 @@ object UserPendingMediaEndpoints {
         .out(MediaOutputs.listOfAllMediaIdsOutput)
 
   val addPendingMovie:
-    PublicEndpoint[(UserId, MovieId), UserError, List[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId], Any] =
+    PublicEndpoint[(UserId, MovieId), UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId], Any] =
       userPendingBaseEndpoint(
         "Add 'Pending' movie endpoint",
         "This endpoint adds a movie to the list of all the 'Pending' media content for a user",
@@ -40,43 +40,43 @@ object UserPendingMediaEndpoints {
         .out(MediaOutputs.listOfAllMediaIdsOutput)
 
   val addPendingTvShow:
-    PublicEndpoint[(UserId, TVShowId), UserError, List[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId], Any] =
+    PublicEndpoint[(UserId, TvShowId), UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId], Any] =
       userPendingBaseEndpoint(
         "Add 'Pending' TV show endpoint",
         "This endpoint adds a TV show to the list of all the 'Pending' media content for a user",
         "PUT"
       )
         .in("add_tv_show")
-        .in(PathInputs.pathTVShowId)
+        .in(PathInputs.pathTvShowId)
         .out(MediaOutputs.listOfAllMediaIdsOutput)
 
   val addPendingSeason:
-    PublicEndpoint[(UserId, TVShowId, SeasonNumber), UserError, List[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId], Any] =
+    PublicEndpoint[(UserId, TvShowId, SeasonNumber), UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId], Any] =
       userPendingBaseEndpoint(
         "Add 'Pending' season endpoint",
         "This endpoint adds a season to the list of all the 'Pending' media content for a user",
         "PUT"
       )
         .in("add_season")
-        .in(PathInputs.pathTVShowId)
+        .in(PathInputs.pathTvShowId)
         .in(PathInputs.pathSeasonNumber)
         .out(MediaOutputs.listOfAllMediaIdsOutput)
 
   val addPendingEpisode:
-    PublicEndpoint[(UserId, TVShowId, SeasonNumber, EpisodeNumber), UserError, List[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId], Any] =
+    PublicEndpoint[(UserId, TvShowId, SeasonNumber, EpisodeNumber), UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId], Any] =
       userPendingBaseEndpoint(
         "Add 'Pending' episode endpoint",
         "This endpoint adds a episode to the list of all the 'Pending' media content for a user",
         "PUT"
       )
         .in("add_episode")
-        .in(PathInputs.pathTVShowId)
+        .in(PathInputs.pathTvShowId)
         .in(PathInputs.pathSeasonNumber)
         .in(PathInputs.pathEpisodeNumber)
         .out(MediaOutputs.listOfAllMediaIdsOutput)
 
   val addPendingVideogame:
-    PublicEndpoint[(UserId, VideogameId), UserError, List[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId], Any] =
+    PublicEndpoint[(UserId, VideogameId), UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId], Any] =
       userPendingBaseEndpoint(
         "Add 'Pending' videogame endpoint",
         "This endpoint adds a videogame to the list of all the 'Pending' media content for a user",
@@ -87,7 +87,7 @@ object UserPendingMediaEndpoints {
         .out(MediaOutputs.listOfAllMediaIdsOutput)
 
   val addPendingBook:
-    PublicEndpoint[(UserId, BookId), UserError, List[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId], Any] =
+    PublicEndpoint[(UserId, BookId), UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId], Any] =
       userPendingBaseEndpoint(
         "Add 'Pending' book endpoint",
         "This endpoint adds a book to the list of all the 'Pending' media content for a user",
@@ -106,33 +106,33 @@ object UserPendingMediaEndpoints {
       .in("delete_movie")
       .in(PathInputs.pathMovieId)
 
-  val deletePendingTvShow: PublicEndpoint[(UserId, TVShowId), UserError, Unit, Any] =
+  val deletePendingTvShow: PublicEndpoint[(UserId, TvShowId), UserError, Unit, Any] =
     userPendingBaseEndpoint(
       "Delete 'Pending' TV show endpoint",
       "This endpoint deletes a TV show to the list of all the 'Pending' media content for a user",
       "DELETE"
     )
       .in("delete_tv_show")
-      .in(PathInputs.pathTVShowId)
+      .in(PathInputs.pathTvShowId)
 
-  val deletePendingSeason: PublicEndpoint[(UserId, TVShowId, SeasonNumber), UserError, Unit, Any] =
+  val deletePendingSeason: PublicEndpoint[(UserId, TvShowId, SeasonNumber), UserError, Unit, Any] =
     userPendingBaseEndpoint(
       "Delete 'Pending' season endpoint",
       "This endpoint deletes a season to the list of all the 'Pending' media content for a user",
       "DELETE"
     )
       .in("delete_season")
-      .in(PathInputs.pathTVShowId)
+      .in(PathInputs.pathTvShowId)
       .in(PathInputs.pathSeasonNumber)
 
-  val deletePendingEpisode: PublicEndpoint[(UserId, TVShowId, SeasonNumber, EpisodeNumber), UserError, Unit, Any] =
+  val deletePendingEpisode: PublicEndpoint[(UserId, TvShowId, SeasonNumber, EpisodeNumber), UserError, Unit, Any] =
     userPendingBaseEndpoint(
       "Delete 'Pending' episode endpoint",
       "This endpoint deletes a episode to the list of all the 'Pending' media content for a user",
       "DELETE"
     )
       .in("delete_episode")
-      .in(PathInputs.pathTVShowId)
+      .in(PathInputs.pathTvShowId)
       .in(PathInputs.pathSeasonNumber)
       .in(PathInputs.pathEpisodeNumber)
 

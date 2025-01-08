@@ -5,7 +5,7 @@ import dummies.repositories.UserRepository
 import modelClasses.errors.UserError.*
 import modelClasses.ids.User.UserId
 import modelClasses.app.user.UserFavourites
-import modelClasses.ids.Media.{BookId, MovieId, TVShowId, VideogameId}
+import modelClasses.ids.Media.{BookId, MovieId, TvShowId, VideogameId}
 
 object UserFavouritesLogics {
 
@@ -49,7 +49,7 @@ object UserFavouritesLogics {
         Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-  val addFavouriteTvShow: ((UserId, TVShowId)) => IO[Either[UserError, UserFavourites]] =
+  val addFavouriteTvShow: ((UserId, TvShowId)) => IO[Either[UserError, UserFavourites]] =
     (userId, tvShowId) => IO {
       if tvShowId.value <= 0 then
         Left(BadRequest("Invalid TV show ID"))
@@ -139,7 +139,7 @@ object UserFavouritesLogics {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
-  val deleteFavouriteTvShow: ((UserId, TVShowId)) => IO[Either[UserError, Unit]] =
+  val deleteFavouriteTvShow: ((UserId, TvShowId)) => IO[Either[UserError, Unit]] =
     (userId, tvShowId) => IO {
       if tvShowId.value <= 0 then
         Left(BadRequest("Invalid TV show ID"))

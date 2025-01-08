@@ -9,10 +9,10 @@ import modelClasses.app.media.*
 
 object MediaDecodersAll {
 
-  implicit val allMediaUnionDecoder: Decoder[Movie | TVShow | Season | Episode | Videogame | Book] = Decoder.instance { cursor =>
-    List[Decoder[Movie | TVShow | Season | Episode | Videogame | Book]](
+  implicit val allMediaUnionDecoder: Decoder[Movie | TvShow | Season | Episode | Videogame | Book] = Decoder.instance { cursor =>
+    List[Decoder[Movie | TvShow | Season | Episode | Videogame | Book]](
       Decoder[Movie].widen,
-      Decoder[TVShow].widen,
+      Decoder[TvShow].widen,
       Decoder[Season].widen,
       Decoder[Episode].widen,
       Decoder[Videogame].widen,

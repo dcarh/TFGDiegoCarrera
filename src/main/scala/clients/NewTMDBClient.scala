@@ -2,7 +2,7 @@
 //
 //import cats.effect.*
 //import modelClasses.errors.UserError.*
-//import modelClasses.ids.Media.{EpisodeNumber, MovieId, SeasonNumber, TVShowId}
+//import modelClasses.ids.Media.{EpisodeNumber, MovieId, SeasonNumber, TvShowId}
 //import modelClasses.tmdb.MovieRequests.RequestedMovie
 //import org.http4s.*
 //import org.http4s.client.Client
@@ -25,9 +25,9 @@
 //                            endpoint: PublicEndpoint[I, UserError, O, Any],
 //                            resource:
 //                            MovieId |
-//                              TVShowId |
-//                              (TVShowId, SeasonNumber) |
-//                              (TVShowId, SeasonNumber, EpisodeNumber) |
+//                              TvShowId |
+//                              (TvShowId, SeasonNumber) |
+//                              (TvShowId, SeasonNumber, EpisodeNumber) |
 //                              String
 //                          ): Either[UserError, O] = {
 //
@@ -48,7 +48,7 @@
 //                .apply(apiKey, movieId)
 //            (userRequest, parseResponse)
 //
-//          case (endpoint: PublicEndpoint[(String, TVShowId), _, _, _], tvShowId: TVShowId) =>
+//          case (endpoint: PublicEndpoint[(String, TvShowId), _, _, _], tvShowId: TvShowId) =>
 //            println("TV Show requested")
 //            val (userRequest, parseResponse) =
 //              Http4sClientInterpreter[IO]()
@@ -57,8 +57,8 @@
 //            (userRequest, parseResponse)
 //
 //          case (
-//            endpoint: PublicEndpoint[(String, TVShowId, SeasonNumber), _, _, _],
-//            seasonNumber: (TVShowId, SeasonNumber)
+//            endpoint: PublicEndpoint[(String, TvShowId, SeasonNumber), _, _, _],
+//            seasonNumber: (TvShowId, SeasonNumber)
 //            ) =>
 //            println("Season requested")
 //            val (userRequest, parseResponse) =
@@ -68,8 +68,8 @@
 //            (userRequest, parseResponse)
 //
 //          case (
-//            endpoint: PublicEndpoint[(String, TVShowId, SeasonNumber, EpisodeNumber), _, _, _],
-//            episodeNumber: (TVShowId, SeasonNumber, EpisodeNumber)
+//            endpoint: PublicEndpoint[(String, TvShowId, SeasonNumber, EpisodeNumber), _, _, _],
+//            episodeNumber: (TvShowId, SeasonNumber, EpisodeNumber)
 //            ) =>
 //            println("Episode requested")
 //            val (userRequest, parseResponse) =

@@ -1,7 +1,7 @@
 package modelClasses.app.media
 
 import io.circe.generic.auto.*
-import modelClasses.ids.Media.{TVShowId, SeasonNumber, EpisodeNumber}
+import modelClasses.ids.Media.{TvShowId, SeasonNumber, EpisodeNumber}
 import modelClasses.ids.Social.{LikeId, ReviewId}
 
 case class Episode(
@@ -15,7 +15,7 @@ case class Episode(
                     // seasonId     : Season.Id,
                     seasonNumber : SeasonNumber,
                     title        : String,
-                    tvShowId     : TVShowId,
+                    tvShowId     : TvShowId,
 
                     averageRating: Double,
                     completed    : Long,

@@ -12,7 +12,7 @@ object EntryDummies {
     // The Bear
     EntryIdDummies.entryId1,
     UserIdDummies.userId5,
-    TVShowId(136315),
+    TvShowId(136315),
     Some(RatingIdDummies.ratingId1),
     Some(ReviewIdDummies.reviewId1),
     true,
@@ -152,7 +152,7 @@ object EntryDummies {
     // Eighty-six
     EntryIdDummies.entryId8,
     UserIdDummies.userId5,
-    TVShowId(100565),
+    TvShowId(100565),
     Some(RatingIdDummies.ratingId8),
     None,
     false,
@@ -272,7 +272,7 @@ object EntryDummies {
     // The Bear 07x02
     EntryIdDummies.entryId14,
     UserIdDummies.userId5,
-    (TVShowId(136315), SeasonNumber(2), EpisodeNumber(7)),
+    (TvShowId(136315), SeasonNumber(2), EpisodeNumber(7)),
     None,
     None,
     true,
@@ -292,7 +292,7 @@ object EntryDummies {
     // Westworld S.01
     EntryIdDummies.entryId15,
     UserIdDummies.userId1,
-    (TVShowId(63247), SeasonNumber(1)),
+    (TvShowId(63247), SeasonNumber(1)),
     Some(RatingIdDummies.ratingId12),
     None,
     true,

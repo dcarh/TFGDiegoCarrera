@@ -2,7 +2,7 @@ package dummies.objects
 
 import modelClasses.app.user.*
 import dummies.ids.*
-import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TVShowId, VideogameId}
+import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TvShowId, VideogameId}
 import modelClasses.app.Time
 
 object UserDummies {
@@ -17,14 +17,14 @@ object UserDummies {
     ),
     UserFavourites(
       Some(MovieId(502033)),
-      Some(TVShowId(61222)),
+      Some(TvShowId(61222)),
       None,
       Some(BookId("7qylv1KYf0kC"))
     ),
     List(
       MovieId(502033),
       BookId("ZEfWEAAAQBAJ"),
-      (TVShowId(63247), SeasonNumber(1)),
+      (TvShowId(63247), SeasonNumber(1)),
     ),
     List(),
     List(),
@@ -96,7 +96,7 @@ object UserDummies {
     ),
     UserFavourites(
       Some(MovieId(502033)),
-      Some(TVShowId(135918)),
+      Some(TvShowId(135918)),
       Some(VideogameId(113112)),
       Some(BookId("kHh_EAAAQBAJ"))
     ),
@@ -178,7 +178,7 @@ object UserDummies {
     ),
     UserFavourites(
       Some(MovieId(94329)),
-      Some(TVShowId(77169)),
+      Some(TvShowId(77169)),
       Some(VideogameId(144022)),
       None
     ),
@@ -328,14 +328,14 @@ object UserDummies {
     ),
     UserFavourites(
       None,
-      Some(TVShowId(88803)),
+      Some(TvShowId(88803)),
       None,
       None
     ),
     List(
-      TVShowId(136315),
-      TVShowId(100565),
-      (TVShowId(136315), SeasonNumber(2), EpisodeNumber(7)),
+      TvShowId(136315),
+      TvShowId(100565),
+      (TvShowId(136315), SeasonNumber(2), EpisodeNumber(7)),
     ),
     List(),
     List(),

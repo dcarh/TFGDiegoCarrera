@@ -17,12 +17,12 @@ object SocialDecodersForIDs {
     ).reduceLeft(_ or _).apply(cursor)
   }
 
-  //  implicit val mediaUnionDecoder5: Decoder[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId | MediaContentListId | ReviewId | ReplyId] = Decoder.instance { cursor =>
-  //    List[Decoder[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId | MediaContentListId | ReviewId | ReplyId]](
+  //  implicit val mediaUnionDecoder5: Decoder[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId | MediaContentListId | ReviewId | ReplyId] = Decoder.instance { cursor =>
+  //    List[Decoder[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId | MediaContentListId | ReviewId | ReplyId]](
   //      Decoder[MovieId].widen,
-  //      Decoder[TVShowId].widen,
-  //      Decoder[(TVShowId, SeasonNumber)].widen,
-  //      Decoder[(TVShowId, SeasonNumber, EpisodeNumber)].widen,
+  //      Decoder[TvShowId].widen,
+  //      Decoder[(TvShowId, SeasonNumber)].widen,
+  //      Decoder[(TvShowId, SeasonNumber, EpisodeNumber)].widen,
   //      Decoder[VideogameId].widen,
   //      Decoder[BookId].widen,
   //      Decoder[MediaContentListId].widen,

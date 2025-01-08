@@ -54,8 +54,8 @@ object Common {
     val pathMovieId: EndpointInput[MovieId] =
       path[MovieId]("movie_id")
 
-    val pathTVShowId: EndpointInput[TVShowId] =
-      path[TVShowId]("series_id")
+    val pathTvShowId: EndpointInput[TvShowId] =
+      path[TvShowId]("tv_show_id")
 
     val pathSeasonNumber: EndpointInput[SeasonNumber] =
       path[SeasonNumber]("season_number")

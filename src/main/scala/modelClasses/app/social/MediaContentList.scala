@@ -2,7 +2,7 @@ package modelClasses.app.social
 
 import io.circe.generic.auto.*
 
-import modelClasses.ids.Media.{BookId, MovieId, TVShowId, VideogameId}
+import modelClasses.ids.Media.{BookId, MovieId, TvShowId, VideogameId}
 import modelClasses.ids.Social.{LikeId, MediaContentListId, ReplyId}
 import modelClasses.ids.User.UserId
 
@@ -13,7 +13,7 @@ case class MediaContentList(
                              userId          : UserId,
                              title           : String,
                              description     : String,
-                             mediaContentsIds: List[MovieId | TVShowId | VideogameId | BookId],
+                             mediaContentsIds: List[MovieId | TvShowId | VideogameId | BookId],
                              visibility      : Visibility,
                              allowReplies    : Boolean,
                              ranked          : Boolean,

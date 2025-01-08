@@ -9,7 +9,7 @@ import sttp.tapir.*
 import sttp.tapir.DecodeResult
 import sttp.tapir.client.http4s.Http4sClientInterpreter
 import modelClasses.errors.UserError.*
-import modelClasses.ids.Media.{EpisodeNumber, MovieId, SeasonNumber, TVShowId}
+import modelClasses.ids.Media.{EpisodeNumber, MovieId, SeasonNumber, TvShowId}
 import modelClasses.tmdb.MovieRequests.RequestedMovie
 
 import scala.concurrent.duration.*
@@ -26,9 +26,9 @@ class TMDBClient {
                                endpoint: PublicEndpoint[I, UserError, O, Any],
                                resource:
                                  MovieId |
-                                 TVShowId |
-                                 (TVShowId, SeasonNumber) |
-                                 (TVShowId, SeasonNumber, EpisodeNumber) |
+                                 TvShowId |
+                                 (TvShowId, SeasonNumber) |
+                                 (TvShowId, SeasonNumber, EpisodeNumber) |
                                  String
                              ): IO[Either[UserError, O]] = {
 
@@ -49,7 +49,7 @@ class TMDBClient {
               .apply(apiKey, movieId)
           IO.pure(userRequest, parseResponse)
 
-        case (endpoint: PublicEndpoint[(String, TVShowId), _, _, _], tvShowId: TVShowId) =>
+        case (endpoint: PublicEndpoint[(String, TvShowId), _, _, _], tvShowId: TvShowId) =>
           println("TV Show requested")
           val (userRequest, parseResponse) =
             Http4sClientInterpreter[IO]()
@@ -58,8 +58,8 @@ class TMDBClient {
           IO.pure(userRequest, parseResponse)
 
         case (
-          endpoint: PublicEndpoint[(String, TVShowId, SeasonNumber), _, _, _],
-          seasonNumber: (TVShowId, SeasonNumber)
+          endpoint: PublicEndpoint[(String, TvShowId, SeasonNumber), _, _, _],
+          seasonNumber: (TvShowId, SeasonNumber)
           ) =>
           println("Season requested")
             val (userRequest, parseResponse) =
@@ -69,8 +69,8 @@ class TMDBClient {
             IO.pure(userRequest, parseResponse)
 
         case (
-          endpoint: PublicEndpoint[(String, TVShowId, SeasonNumber, EpisodeNumber), _, _, _],
-          episodeNumber: (TVShowId, SeasonNumber, EpisodeNumber)
+          endpoint: PublicEndpoint[(String, TvShowId, SeasonNumber, EpisodeNumber), _, _, _],
+          episodeNumber: (TvShowId, SeasonNumber, EpisodeNumber)
           ) =>
             println("Episode requested")
             val (userRequest, parseResponse) =

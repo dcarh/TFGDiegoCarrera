@@ -8,23 +8,23 @@ import modelClasses.app.media.*
 
 object MediaEncoders {
   
-  implicit val favouritesMediaUnionEncoder: Encoder[Movie | TVShow | Videogame | Book] = Encoder.instance {
+  implicit val favouritesMediaUnionEncoder: Encoder[Movie | TvShow | Videogame | Book] = Encoder.instance {
     case movie: Movie => movie.asJson
-    case tvShow: TVShow => tvShow.asJson
+    case tvShow: TvShow => tvShow.asJson
     case videogame: Videogame => videogame.asJson
     case book: Book => book.asJson
   }
 
-  implicit val progressMediaUnionEncoder: Encoder[TVShow | Season | Videogame | Book] = Encoder.instance {
-    case tvShow: TVShow => tvShow.asJson
+  implicit val progressMediaUnionEncoder: Encoder[TvShow | Season | Videogame | Book] = Encoder.instance {
+    case tvShow: TvShow => tvShow.asJson
     case season: Season => season.asJson
     case videogame: Videogame => videogame.asJson
     case book: Book => book.asJson
   }
 
-  implicit val pendingMediaUnionEncoder: Encoder[Movie | TVShow | Season | Videogame | Book] = Encoder.instance {
+  implicit val pendingMediaUnionEncoder: Encoder[Movie | TvShow | Season | Videogame | Book] = Encoder.instance {
     case movie: Movie => movie.asJson
-    case tvShow: TVShow => tvShow.asJson
+    case tvShow: TvShow => tvShow.asJson
     case season: Season => season.asJson
     case videogame: Videogame => videogame.asJson
     case book: Book => book.asJson

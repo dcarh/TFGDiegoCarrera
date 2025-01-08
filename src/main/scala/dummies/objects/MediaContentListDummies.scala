@@ -2,7 +2,7 @@ package dummies.objects
 
 import dummies.ids.{LikeIdDummies, MediaContentListIdDummies, ReplyIdDummies, UserIdDummies}
 import modelClasses.app.social.{MediaContentList, Visibility}
-import modelClasses.ids.Media.{BookId, MovieId, TVShowId, VideogameId}
+import modelClasses.ids.Media.{BookId, MovieId, TvShowId, VideogameId}
 
 import java.time.LocalDateTime
 
@@ -26,8 +26,8 @@ object MediaContentListDummies {
       MovieId(12580),
       VideogameId(1267),
       VideogameId(11397),
-      TVShowId(56425),
-      TVShowId(77169)
+      TvShowId(56425),
+      TvShowId(77169)
     ),
     Visibility.Public,
     false,
@@ -92,8 +92,8 @@ object MediaContentListDummies {
       VideogameId(253148),
       VideogameId(113112),
       VideogameId(21865),
-      TVShowId(135918),
-      TVShowId(1402),
+      TvShowId(135918),
+      TvShowId(1402),
       BookId("kHh_EAAAQBAJ")
     ),
     Visibility.Followers,

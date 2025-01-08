@@ -6,7 +6,7 @@ import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
 import modelClasses.errors.UserError.*
 import modelClasses.app.user.UserFavourites
-import modelClasses.ids.Media.{BookId, MovieId, TVShowId, VideogameId}
+import modelClasses.ids.Media.{BookId, MovieId, TvShowId, VideogameId}
 import modelClasses.ids.User.UserId
 
 object UserFavouritesEndpoints {
@@ -35,14 +35,14 @@ object UserFavouritesEndpoints {
       .in(PathInputs.pathMovieId)
       .out(MediaOutputs.favouritesOutput)
 
-  val addFavouriteTvShow: PublicEndpoint[(UserId, TVShowId), UserError, UserFavourites, Any] =
+  val addFavouriteTvShow: PublicEndpoint[(UserId, TvShowId), UserError, UserFavourites, Any] =
     userFavouritesBaseEndpoint(
       "Add 'Favourite' TV show endpoint",
       "This endpoint adds a TV show to the list of all the 'Favourites' of a user",
       "PUT"
     )
       .in("add_tv_show")
-      .in(PathInputs.pathTVShowId)
+      .in(PathInputs.pathTvShowId)
       .out(MediaOutputs.favouritesOutput)
 
   val addFavouriteVideogame: PublicEndpoint[(UserId, VideogameId), UserError, UserFavourites, Any] =
@@ -74,14 +74,14 @@ object UserFavouritesEndpoints {
       .in("delete_movie")
       .in(PathInputs.pathMovieId)
 
-  val deleteFavouriteTvShow: PublicEndpoint[(UserId, TVShowId), UserError, Unit, Any] =
+  val deleteFavouriteTvShow: PublicEndpoint[(UserId, TvShowId), UserError, Unit, Any] =
     userFavouritesBaseEndpoint(
       "Delete 'Favourite' TV show endpoint",
       "This endpoint deletes a TV show from the 'Favourites' of a user",
       "DELETE"
     )
       .in("delete_tv_show")
-      .in(PathInputs.pathTVShowId)
+      .in(PathInputs.pathTvShowId)
 
   val deleteFavouriteVideogame: PublicEndpoint[(UserId, VideogameId), UserError, Unit, Any] =
     userFavouritesBaseEndpoint(

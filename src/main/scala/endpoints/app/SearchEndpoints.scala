@@ -6,7 +6,7 @@ import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
 import modelClasses.errors.UserError.*
 import modelClasses.app.social.MediaContentList
-import modelClasses.app.media.{Book, Movie, TVShow, Videogame}
+import modelClasses.app.media.{Book, Movie, TvShow, Videogame}
 import modelClasses.app.user.User
 
 object SearchEndpoints {
@@ -24,7 +24,7 @@ object SearchEndpoints {
       .in(QueryInputs.querySortBy)
       .out(MediaOutputs.listOfMoviesOutput)
 
-  val searchTVShow: PublicEndpoint[(String, Option[String]), UserError, List[TVShow], Any] =
+  val searchTVShow: PublicEndpoint[(String, Option[String]), UserError, List[TvShow], Any] =
     searchBaseEndpoint(
       "Search TV show endpoint",
       "This endpoint searches any TV show on the app based on text coincidence"

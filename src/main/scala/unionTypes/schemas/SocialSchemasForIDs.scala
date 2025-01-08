@@ -9,5 +9,5 @@ object SocialSchemasForIDs {
 
   implicit val mediaUnionSchema4: Schema[MediaContentListId | ReviewId | ReplyId] = Schema.derivedUnion
   
-//  implicit val mediaUnionSchema5: Schema[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId | MediaContentListId | ReviewId | ReplyId] = Schema.derivedUnion
+//  implicit val mediaUnionSchema5: Schema[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId | MediaContentListId | ReviewId | ReplyId] = Schema.derivedUnion
 }

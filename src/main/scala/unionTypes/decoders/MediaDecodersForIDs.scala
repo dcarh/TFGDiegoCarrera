@@ -10,30 +10,30 @@ import modelClasses.ids.Media.*
 object MediaDecodersForIDs {
 
 
-  implicit val listMediaUnionDecoder: Decoder[MovieId | TVShowId | VideogameId | BookId] = Decoder.instance { cursor =>
-    List[Decoder[MovieId | TVShowId | VideogameId | BookId]](
+  implicit val listMediaUnionDecoder: Decoder[MovieId | TvShowId | VideogameId | BookId] = Decoder.instance { cursor =>
+    List[Decoder[MovieId | TvShowId | VideogameId | BookId]](
       Decoder[MovieId].widen,
-      Decoder[TVShowId].widen,
+      Decoder[TvShowId].widen,
       Decoder[VideogameId].widen,
       Decoder[BookId].widen
     ).reduceLeft(_ or _).apply(cursor)
   }
   
-  implicit val listMediaUnionDecoder2: Decoder[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId] = Decoder.instance { cursor =>
-    List[Decoder[MovieId | TVShowId | (TVShowId, SeasonNumber) | (TVShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]](
+  implicit val listMediaUnionDecoder2: Decoder[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId] = Decoder.instance { cursor =>
+    List[Decoder[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]](
       Decoder[MovieId].widen,
-      Decoder[TVShowId].widen,
-      Decoder[(TVShowId, SeasonNumber)].widen,
-      Decoder[(TVShowId, SeasonNumber, EpisodeNumber)].widen,
+      Decoder[TvShowId].widen,
+      Decoder[(TvShowId, SeasonNumber)].widen,
+      Decoder[(TvShowId, SeasonNumber, EpisodeNumber)].widen,
       Decoder[VideogameId].widen,
       Decoder[BookId].widen
     ).reduceLeft(_ or _).apply(cursor)
   }
   
-  implicit val listMediaUnionDecoder3: Decoder[TVShowId | (TVShowId, SeasonNumber) | VideogameId | BookId] = Decoder.instance { cursor =>
-    List[Decoder[TVShowId | (TVShowId, SeasonNumber) | VideogameId | BookId]](
-      Decoder[TVShowId].widen,
-      Decoder[(TVShowId, SeasonNumber)].widen,
+  implicit val listMediaUnionDecoder3: Decoder[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId] = Decoder.instance { cursor =>
+    List[Decoder[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId]](
+      Decoder[TvShowId].widen,
+      Decoder[(TvShowId, SeasonNumber)].widen,
       Decoder[VideogameId].widen,
       Decoder[BookId].widen
     ).reduceLeft(_ or _).apply(cursor)
