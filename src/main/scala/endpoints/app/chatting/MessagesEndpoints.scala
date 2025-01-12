@@ -35,9 +35,9 @@ object MessagesEndpoints {
 
   val editMessage: PublicEndpoint[(MessageId, Message), UserError, Message, Any] =
     messageBaseEndpoint(
-      "Create message endpoint", 
-      "This endpoint creates a specific message and returns it",
-      "POST"
+      "Edit message endpoint",
+      "This endpoint edits a specific message and returns it",
+      "PUT"
     )
       .in(PathInputs.pathMessageId)
       .in("edit")

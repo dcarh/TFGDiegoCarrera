@@ -1,7 +1,7 @@
 package endpoints.app.user.chatting
 
 import sttp.tapir.*
-import endpoints.app.user.UserEndpointsUtils.userBaseEndpoint
+import endpoints.app.user.UserEndpointsUtils.specificUserBaseEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
 import modelClasses.errors.UserError.*
@@ -12,8 +12,7 @@ object UserChatsEndpoints {
 
   private val userChatsBaseEndpoint:
     (String, String, String) => PublicEndpoint[UserId, UserError, Unit, Any] =
-      (name, description, method) => userBaseEndpoint(name, description, method)
-        .in(PathInputs.pathUserId)
+      (name, description, method) => specificUserBaseEndpoint(name, description, method)
         .in("chats")
 
   val getUserChats: PublicEndpoint[(UserId, Option[String]), UserError, List[ChatId], Any] =

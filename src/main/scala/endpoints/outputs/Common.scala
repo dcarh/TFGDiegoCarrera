@@ -6,7 +6,7 @@ import modelClasses.errors.UserError.*
 import modelClasses.app.chatting.{Chat, Message}
 import modelClasses.app.media.{Book, Episode, Movie, Season, TvShow, Videogame}
 import modelClasses.app.social.{Entry, Like, MediaList, Rating, Reply, Review}
-import modelClasses.app.user.{User, UserFavourites, UserSettings}
+import modelClasses.app.user.{User, UserFavourites, UserProfile, UserSettings}
 import modelClasses.ids.Chatting.ChatId
 import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TvShowId, VideogameId}
 import modelClasses.ids.Social.*
@@ -87,6 +87,9 @@ object Common {
 
     val userSettingsOutput: EndpointOutput[UserSettings] =
       jsonBody[UserSettings].description("The requested settings of the user")
+
+    val userProfileOutput: EndpointOutput[UserProfile] =
+      jsonBody[UserProfile].description("The requested profile of the user")
   }
 
   object SocialOutputs {

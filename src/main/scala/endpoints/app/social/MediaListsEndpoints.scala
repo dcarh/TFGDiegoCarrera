@@ -30,7 +30,7 @@ object MediaListsEndpoints {
       .out(SocialOutputs.listOfMediaListsOutput)
 
   val getMediaList: PublicEndpoint[MediaListId, UserError, MediaList, Any] =
-    listsBaseEndpoint(
+    listBaseEndpoint(
       "Get media content list endpoint", 
       "This endpoint returns a specific media content list by its ID",
       "GET"

@@ -14,7 +14,17 @@ object UserRoutes {
     Http4sServerInterpreter[IO]()
       .toRoutes(UserEndpoints.getUser.serverLogic(UserLogics.getUser))
   
+  private val createUser: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(UserEndpoints.createUser.serverLogic(UserLogics.createUser))
+  
+  private val deleteUser: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]()
+      .toRoutes(UserEndpoints.deleteUser.serverLogic(UserLogics.deleteUser))
+  
   val userRoutes: HttpRoutes[IO] =
-    getUser
+    getUser <+>
+      createUser <+>
+      deleteUser
 
 }

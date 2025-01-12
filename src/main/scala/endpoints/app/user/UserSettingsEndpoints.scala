@@ -1,7 +1,7 @@
 package endpoints.app.user
 
 import sttp.tapir.*
-import endpoints.app.user.UserEndpointsUtils.userBaseEndpoint
+import endpoints.app.user.UserEndpointsUtils.specificUserBaseEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
 import modelClasses.errors.UserError.*
@@ -12,11 +12,10 @@ object UserSettingsEndpoints {
 
   private val userSettingsBaseEndpoint:
     (String, String, String) => PublicEndpoint[UserId, UserError, Unit, Any] =
-      (name, description, method) => userBaseEndpoint(name, description, method)
-        .in(PathInputs.pathUserId)
+      (name, description, method) => specificUserBaseEndpoint(name, description, method)
         .in("settings")
 
-  val userSettingsEndpoint: PublicEndpoint[UserId, UserError, UserSettings, Any] =
+  val getUserSettings: PublicEndpoint[UserId, UserError, UserSettings, Any] =
     userSettingsBaseEndpoint(
       "User's settings endpoint" ,
       "This endpoint returns the settings [SPECIFY SETTINGS] of a user",
@@ -24,7 +23,7 @@ object UserSettingsEndpoints {
     )
       .out(UserOutputs.userSettingsOutput)
 
-  val userEditSettingsEndpoint: PublicEndpoint[(UserId, UserSettings), UserError, UserSettings, Any] =
+  val editUserSettings: PublicEndpoint[(UserId, UserSettings), UserError, UserSettings, Any] =
     userSettingsBaseEndpoint(
       "User's edit settings endpoint" ,
       "This endpoint allows the editing of the settings [SPECIFY SETTINGS] of a user",

@@ -1,7 +1,7 @@
 package endpoints.app.user.media
 
 import sttp.tapir.*
-import endpoints.app.user.UserEndpointsUtils.userBaseEndpoint
+import endpoints.app.user.UserEndpointsUtils.specificUserBaseEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
 import modelClasses.errors.UserError.*
@@ -12,12 +12,11 @@ object UserInProgressMediaEndpoints {
 
   private val userInProgressBaseEndpoint:
     (String, String, String) => PublicEndpoint[UserId, UserError, Unit, Any] =
-      (name, description, method) => userBaseEndpoint(name, description, method)
-        .in(PathInputs.pathUserId)
+      (name, description, method) => specificUserBaseEndpoint(name, description, method)
         .in("in_progress")
 
 
-  val getInProgress:
+  val getAllInProgressMedia:
     PublicEndpoint[(UserId, Option[String], Option[List[String]]), UserError, List[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId], Any] =
       userInProgressBaseEndpoint(
         "User's 'In Progress' media content endpoint",

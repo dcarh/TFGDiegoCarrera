@@ -29,8 +29,8 @@ object UserCompletedMediaLogics {
     
   // TODO: Dejar estos endpoints para lo último (implementación avanzada de endpoints)
 
-  val addCompletedMovie: ((UserId, MovieId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
-    ???
+//  val addCompletedMovie: ((UserId, MovieId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+//    ???
 //    (userId, movieId) => IO {
 //      if movieId.value <= 0 then ???
 //      else
@@ -49,37 +49,37 @@ object UserCompletedMediaLogics {
 //        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
 //    }
     
-  val addCompletedTvShow: ((UserId, TvShowId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
-    ???
-    
-  val addCompletedSeason: ((UserId, TvShowId, SeasonNumber)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
-    ???
-    
-  val addCompletedEpisode: ((UserId, TvShowId, SeasonNumber, EpisodeNumber)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
-    ???
-    
-  val addCompletedVideogame: ((UserId, VideogameId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
-    ???
-    
-  val addCompletedBook: ((UserId, BookId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
-    ???
-    
-  val deleteCompletedMovie: ((UserId, MovieId)) => IO[Either[UserError, Unit]] =
-    ???
-    
-  val deleteCompletedTvShow: ((UserId, TvShowId)) => IO[Either[UserError, Unit]] =
-    ???
-    
-  val deleteCompletedSeason: ((UserId, TvShowId, SeasonNumber)) => IO[Either[UserError, Unit]] =
-    ???
-    
-  val deleteCompletedEpisode: ((UserId, TvShowId, SeasonNumber, EpisodeNumber)) => IO[Either[UserError, Unit]] =
-    ???
-    
-  val deleteCompletedVideogame: ((UserId, VideogameId)) => IO[Either[UserError, Unit]] =
-    ???
-    
-  val deleteCompletedBook: ((UserId, BookId)) => IO[Either[UserError, Unit]] =
-    ???
+//  val addCompletedTvShow: ((UserId, TvShowId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+//    ???
+//    
+//  val addCompletedSeason: ((UserId, TvShowId, SeasonNumber)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+//    ???
+//    
+//  val addCompletedEpisode: ((UserId, TvShowId, SeasonNumber, EpisodeNumber)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+//    ???
+//    
+//  val addCompletedVideogame: ((UserId, VideogameId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+//    ???
+//    
+//  val addCompletedBook: ((UserId, BookId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+//    ???
+//    
+//  val deleteCompletedMovie: ((UserId, MovieId)) => IO[Either[UserError, Unit]] =
+//    ???
+//    
+//  val deleteCompletedTvShow: ((UserId, TvShowId)) => IO[Either[UserError, Unit]] =
+//    ???
+//    
+//  val deleteCompletedSeason: ((UserId, TvShowId, SeasonNumber)) => IO[Either[UserError, Unit]] =
+//    ???
+//    
+//  val deleteCompletedEpisode: ((UserId, TvShowId, SeasonNumber, EpisodeNumber)) => IO[Either[UserError, Unit]] =
+//    ???
+//    
+//  val deleteCompletedVideogame: ((UserId, VideogameId)) => IO[Either[UserError, Unit]] =
+//    ???
+//    
+//  val deleteCompletedBook: ((UserId, BookId)) => IO[Either[UserError, Unit]] =
+//    ???
 
 }

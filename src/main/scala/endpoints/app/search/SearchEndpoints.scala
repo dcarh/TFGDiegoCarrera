@@ -21,6 +21,7 @@ object SearchEndpoints {
       "Search movie endpoint",
       "This endpoint searches any movie on the app based on text coincidence"
     )
+      .in("movie")
       .in(QueryInputs.querySortBy)
       .out(MediaOutputs.listOfMoviesOutput)
 
@@ -29,6 +30,7 @@ object SearchEndpoints {
       "Search TV show endpoint",
       "This endpoint searches any TV show on the app based on text coincidence"
     )
+      .in("tv_show")
       .in(QueryInputs.querySortBy)
       .out(MediaOutputs.listOfTvShowsOutput)
 
@@ -37,6 +39,7 @@ object SearchEndpoints {
       "Search videogame endpoint",
       "This endpoint searches any videogame on the app based on text coincidence"
     )
+      .in("videogame")
       .in(QueryInputs.querySortBy)
       .out(MediaOutputs.listOfVideogamesOutput)
 
@@ -45,6 +48,7 @@ object SearchEndpoints {
       "Search book endpoint",
       "This endpoint searches any book on the app based on text coincidence"
     )
+      .in("book")
       .in(QueryInputs.querySortBy)
       .out(MediaOutputs.listOfBooksOutput)
 
@@ -53,6 +57,7 @@ object SearchEndpoints {
       "Search list endpoint",
       "This endpoint searches any list on the app based on text coincidence"
     )
+      .in("list")
       .out(SocialOutputs.listOfMediaListsOutput)
 
   val searchUser: PublicEndpoint[String, UserError, List[User], Any] =
@@ -60,6 +65,7 @@ object SearchEndpoints {
       "Search user endpoint",
       "This endpoint searches any user on the app based on text coincidence"
     )
+      .in("user")
       .out(UserOutputs.listOfUsersOutput)
 
 }

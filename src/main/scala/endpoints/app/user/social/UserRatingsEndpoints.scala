@@ -1,6 +1,6 @@
 package endpoints.app.user.social
 
-import endpoints.app.user.UserEndpointsUtils.userBaseEndpoint
+import endpoints.app.user.UserEndpointsUtils.specificUserBaseEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
 import modelClasses.errors.UserError.*
@@ -12,8 +12,7 @@ object UserRatingsEndpoints {
 
   private val userRatingsBaseEndpoint:
     (String, String, String) => PublicEndpoint[UserId, UserError, Unit, Any] =
-    (name, description, method) => userBaseEndpoint(name, description, method)
-      .in(PathInputs.pathUserId)
+    (name, description, method) => specificUserBaseEndpoint(name, description, method)
       .in("ratings")
 
   val getUserRatings: PublicEndpoint[UserId, UserError, List[RatingId], Any] =

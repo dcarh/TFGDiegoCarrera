@@ -1,7 +1,7 @@
 package endpoints.app.user.media
 
 import sttp.tapir.*
-import endpoints.app.user.UserEndpointsUtils.userBaseEndpoint
+import endpoints.app.user.UserEndpointsUtils.specificUserBaseEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
 import modelClasses.errors.UserError.*
@@ -12,12 +12,11 @@ object UserPendingMediaEndpoints {
 
   private val userPendingBaseEndpoint:
     (String, String, String) => PublicEndpoint[UserId, UserError, Unit, Any] =
-      (name, description, method) => userBaseEndpoint(name, description, method)
-        .in(PathInputs.pathUserId)
+      (name, description, method) => specificUserBaseEndpoint(name, description, method)
         .in("pending")
 
 
-  val getPending:
+  val getAllPendingMedia:
     PublicEndpoint[(UserId, Option[String], Option[List[String]]), UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId], Any] =
       userPendingBaseEndpoint(
         "User's 'Pending' media content endpoint",

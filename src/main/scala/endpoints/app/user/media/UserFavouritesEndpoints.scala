@@ -1,7 +1,7 @@
 package endpoints.app.user.media
 
 import sttp.tapir.*
-import endpoints.app.user.UserEndpointsUtils.userBaseEndpoint
+import endpoints.app.user.UserEndpointsUtils.specificUserBaseEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
 import modelClasses.errors.UserError.*
@@ -13,8 +13,7 @@ object UserFavouritesEndpoints {
 
   private val userFavouritesBaseEndpoint:
     (String, String, String) => PublicEndpoint[UserId, UserError, Unit, Any] =
-      (name, description, method) => userBaseEndpoint(name, description, method)
-        .in(PathInputs.pathUserId)
+      (name, description, method) => specificUserBaseEndpoint(name, description, method)
         .in("favourites")
 
   val getFavourites: PublicEndpoint[UserId, UserError, UserFavourites, Any] =

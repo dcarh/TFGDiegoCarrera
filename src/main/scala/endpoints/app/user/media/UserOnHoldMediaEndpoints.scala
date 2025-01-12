@@ -1,7 +1,7 @@
 package endpoints.app.user.media
 
 import sttp.tapir.*
-import endpoints.app.user.UserEndpointsUtils.userBaseEndpoint
+import endpoints.app.user.UserEndpointsUtils.specificUserBaseEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
 import modelClasses.errors.UserError.*
@@ -12,12 +12,11 @@ object UserOnHoldMediaEndpoints {
 
   private val userOnHoldBaseEndpoint:
     (String, String, String) => PublicEndpoint[UserId, UserError, Unit, Any] =
-      (name, description, method) => userBaseEndpoint(name, description, method)
-        .in(PathInputs.pathUserId)
+      (name, description, method) => specificUserBaseEndpoint(name, description, method)
         .in("on_hold")
 
 
-  val getOnHold:
+  val getAllOnHoldMedia:
     PublicEndpoint[(UserId, Option[String], Option[List[String]]), UserError, List[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId], Any] =
       userOnHoldBaseEndpoint(
         "User's 'On Hold' media content endpoint",

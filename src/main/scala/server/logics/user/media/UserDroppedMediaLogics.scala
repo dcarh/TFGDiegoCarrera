@@ -29,40 +29,40 @@ object UserDroppedMediaLogics {
 
   // TODO: Dejar estos endpoints para lo último (implementación avanzada de endpoints)
 
-  val addDroppedMovie: ((UserId, MovieId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
-    ???
-
-  val addDroppedTvShow: ((UserId, TvShowId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
-    ???
-
-  val addDroppedSeason: ((UserId, TvShowId, SeasonNumber)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
-    ???
-
-  val addDroppedEpisode: ((UserId, TvShowId, SeasonNumber, EpisodeNumber)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
-    ???
-
-  val addDroppedVideogame: ((UserId, VideogameId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
-    ???
-
-  val addDroppedBook: ((UserId, BookId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
-    ???
-
-  val deleteDroppedMovie: ((UserId, MovieId)) => IO[Either[UserError, Unit]] =
-    ???
-
-  val deleteDroppedTvShow: ((UserId, TvShowId)) => IO[Either[UserError, Unit]] =
-    ???
-
-  val deleteDroppedSeason: ((UserId, TvShowId, SeasonNumber)) => IO[Either[UserError, Unit]] =
-    ???
-
-  val deleteDroppedEpisode: ((UserId, TvShowId, SeasonNumber, EpisodeNumber)) => IO[Either[UserError, Unit]] =
-    ???
-
-  val deleteDroppedVideogame: ((UserId, VideogameId)) => IO[Either[UserError, Unit]] =
-    ???
-
-  val deleteDroppedBook: ((UserId, BookId)) => IO[Either[UserError, Unit]] =
-    ???
+//  val addDroppedMovie: ((UserId, MovieId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+//    ???
+//
+//  val addDroppedTvShow: ((UserId, TvShowId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+//    ???
+//
+//  val addDroppedSeason: ((UserId, TvShowId, SeasonNumber)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+//    ???
+//
+//  val addDroppedEpisode: ((UserId, TvShowId, SeasonNumber, EpisodeNumber)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+//    ???
+//
+//  val addDroppedVideogame: ((UserId, VideogameId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+//    ???
+//
+//  val addDroppedBook: ((UserId, BookId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+//    ???
+//
+//  val deleteDroppedMovie: ((UserId, MovieId)) => IO[Either[UserError, Unit]] =
+//    ???
+//
+//  val deleteDroppedTvShow: ((UserId, TvShowId)) => IO[Either[UserError, Unit]] =
+//    ???
+//
+//  val deleteDroppedSeason: ((UserId, TvShowId, SeasonNumber)) => IO[Either[UserError, Unit]] =
+//    ???
+//
+//  val deleteDroppedEpisode: ((UserId, TvShowId, SeasonNumber, EpisodeNumber)) => IO[Either[UserError, Unit]] =
+//    ???
+//
+//  val deleteDroppedVideogame: ((UserId, VideogameId)) => IO[Either[UserError, Unit]] =
+//    ???
+//
+//  val deleteDroppedBook: ((UserId, BookId)) => IO[Either[UserError, Unit]] =
+//    ???
 
 }

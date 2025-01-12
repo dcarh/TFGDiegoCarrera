@@ -3,28 +3,22 @@ package endpoints.inputs
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*
-
 import io.circe.generic.auto.*
-
 import modelClasses.app.chatting.{Chat, Message}
 import modelClasses.app.social.{Entry, Like, MediaList, Rating, Reply, Review}
-import modelClasses.app.user.{User, UserSettings}
-
+import modelClasses.app.user.{User, UserProfile, UserSettings}
 import modelClasses.ids.Chatting.*
 import modelClasses.ids.Media.*
 import modelClasses.ids.Social.*
 import modelClasses.ids.User.UserId
-
 import codecs.ModelClasses.Chatting.*
 import codecs.ModelClasses.Media.*
 import codecs.ModelClasses.Social.*
 import codecs.ModelClasses.User.*
 import codecs.Others.*
-
 import unionTypes.decoders.MediaDecodersForIDs.*
 import unionTypes.encoders.MediaEncodersForIDs.*
 import unionTypes.schemas.MediaSchemasForIDs.*
-
 import unionTypes.encoders.SocialEncodersForIDs.*
 import unionTypes.decoders.SocialDecodersForIDs.*
 import unionTypes.schemas.SocialSchemasForIDs.*
@@ -122,6 +116,9 @@ object Common {
       
     val jsonUser: EndpointInput[User] =
       jsonBody[User]
+
+    val jsonProfile: EndpointInput[UserProfile] =
+      jsonBody[UserProfile]
 
     val jsonSettings: EndpointInput[UserSettings] =
       jsonBody[UserSettings]
