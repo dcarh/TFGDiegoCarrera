@@ -53,6 +53,7 @@ object UserEndpoints {
       "This endpoint creates a user and returns it in case of success",
       "POST"
     )
+      .in("create")
       .in(JsonInputs.jsonUser)
       .out(UserOutputs.userOutput)
 

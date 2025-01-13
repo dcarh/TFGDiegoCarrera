@@ -27,7 +27,7 @@ case class User(
                blocked   : List[UserId],
                chats     : List[ChatId],
                stats     : UserStats,
-               settings  : UserSettings 
+               settings  : UserSettings
                )
 
 // object User {

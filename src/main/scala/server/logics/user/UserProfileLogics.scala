@@ -18,7 +18,7 @@ object UserProfileLogics {
           Left(BadRequest("Invalid entry ID"))
 
         case None =>
-          Left(NotFound(s"Entry with ID ${userId.value} not found"))
+          Left(NotFound(s"User with ID ${userId.value} not found"))
       }
     }.handleError {
       case ex: Exception =>
@@ -41,7 +41,7 @@ object UserProfileLogics {
           UserRepository.put(userId, updatedUser)
           Right(updatedUser.profile)
         case None =>
-          Left(NotFound(s"Entry with ID ${userId.value} not found"))
+          Left(NotFound(s"User with ID ${userId.value} not found"))
       }
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))

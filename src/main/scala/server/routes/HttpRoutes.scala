@@ -58,6 +58,6 @@ object HttpRoutes {
       userReviewsRoutes <+>
       userRoutes <+>
       userProfileRoutes <+>
-//      userSettingsRoutes <+>
+      userSettingsRoutes <+>
       searchRoutes
 }
