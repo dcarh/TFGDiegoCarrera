@@ -18,14 +18,8 @@ case class Season(
                    averageRating: Double,
                    completed: Long,
                    inProgress: Long,
-                   likes: List[LikeId],
                    paused: Long,
                    pending: Long,
                    ratings: Long,
                    reviews: List[ReviewId]
                  )
-
-// object Season {
-//   type Id = Long
-//   type Number = Int
-// }

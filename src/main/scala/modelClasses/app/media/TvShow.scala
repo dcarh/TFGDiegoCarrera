@@ -29,7 +29,6 @@ case class TvShow(
                    // episodesNumbers    : List[Episode.Number],
                    // seasonsIds         : List[Season.Id],
                    // seasonsNumbers     : List[Season.Number],
-//                   likes              : List[LikeId], Temporal (23/12/2024)
 //                   lists              : List[MediaListId], Temporal (23/12/2024)
 //                   numberOfAbandoned  : Long, Temporal (23/12/2024)
 //                   numberOfCompleted  : Long, Temporal (23/12/2024)
@@ -40,7 +39,3 @@ case class TvShow(
 //                   reviews            : List[ReviewId], Temporal (23/12/2024)
 //                   totalRuntime       : Int Temporal (23/12/2024)
                  )
-
-// object TVShow {
-//   type Id = Long
-// }

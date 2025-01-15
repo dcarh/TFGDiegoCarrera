@@ -16,7 +16,3 @@ case class Review(
                    replies        : List[ReplyId],
                    spoilers       : Boolean
                  )
-
-// object Review {
-//   type Id = Long
-// }

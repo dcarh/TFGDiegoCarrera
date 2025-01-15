@@ -32,7 +32,6 @@ case class Videogame(
                       year                : Long,
 
 //                      averageRating       : Double,
-//                      likes               : List[LikeId],
 //                      lists               : List[MediaListId],
 //                      numberOfAbandoned   : Long,
 //                      numberOfCompleted   : Long,
@@ -42,7 +41,3 @@ case class Videogame(
 //                      ratings             : Long,
 //                      reviews             : List[ReviewId],
                     )
-
-// object Videogame {
-//   type Id = Long
-// }

@@ -13,7 +13,6 @@ case class Book(
                  title             : String,
 
                  averageRating     : Double,
-                 likes             : List[LikeId],
                  lists             : List[MediaListId],
                  numberOfAbandoned : Long,
                  numberOfCompleted : Long,
@@ -23,7 +22,3 @@ case class Book(
                  ratings           : Long,
                  reviews           : List[ReviewId]
                )
-
-// object Book {
-//   type Id = Long
-// }

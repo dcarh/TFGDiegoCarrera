@@ -19,7 +19,3 @@ case class UserStats(
 
                     // TODO: Meter más campos
                     )
-
-object UserStats {
-  type Id = Long
-}

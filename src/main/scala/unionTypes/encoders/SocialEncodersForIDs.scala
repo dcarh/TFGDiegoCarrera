@@ -1,29 +1,15 @@
 package unionTypes.encoders
 
-import io.circe.Encoder
-import io.circe.generic.auto.*
+import io.circe.{Encoder, Json}
 import io.circe.syntax.*
 
 import modelClasses.ids.Social.{MediaListId, ReplyId, ReviewId}
 
 object SocialEncodersForIDs {
 
-
   implicit val socialIdsEncoder: Encoder[MediaListId | ReviewId | ReplyId] = Encoder.instance {
-    case mediaListId: MediaListId => mediaListId.asJson
-    case reviewId: ReviewId => reviewId.asJson
-    case replyId: ReplyId => replyId.asJson
+    case mediaListId: MediaListId => Json.obj("type" -> "MediaListId".asJson, "value" -> mediaListId.value.asJson)
+    case reviewId: ReviewId => Json.obj("type" -> "ReviewId".asJson, "value" -> reviewId.value.asJson)
+    case replyId: ReplyId => Json.obj("type" -> "ReplyId".asJson, "value" -> replyId.value.asJson)
   }
-
-  //  implicit val mediaUnionEncoder5: Encoder[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId | MediaContentListId | ReviewId | ReplyId] = Encoder.instance {
-  //    case movieId: MovieId => movieId.asJson
-  //    case tvShowId: TvShowId => tvShowId.asJson
-  //    case seasonNumber: (TvShowId, SeasonNumber) => seasonNumber.asJson
-  //    case episodeNumber: (TvShowId, SeasonNumber, EpisodeNumber) => episodeNumber.asJson
-  //    case videogameId: VideogameId => videogameId.asJson
-  //    case bookId: BookId => bookId.asJson
-  //    case mediaContentListId: MediaContentListId => mediaContentListId.asJson
-  //    case reviewId: ReviewId => reviewId.asJson
-  //    case replyId: ReplyId => replyId.asJson
-  //  }
 }

@@ -1,33 +1,16 @@
 package unionTypes.decoders
 
-import cats.syntax.functor.*
-
-import io.circe.Decoder
-import io.circe.generic.auto.*
-
+import io.circe.{Decoder, DecodingFailure}
 import modelClasses.ids.Social.{MediaListId, ReplyId, ReviewId}
 
 object SocialDecodersForIDs {
-  
-  implicit val socialIdsDecoder: Decoder[MediaListId | ReviewId | ReplyId] = Decoder.instance { cursor =>
-    List[Decoder[MediaListId | ReviewId | ReplyId]](
-      Decoder[MediaListId].widen,
-      Decoder[ReviewId].widen,
-      Decoder[ReplyId].widen,
-    ).reduceLeft(_ or _).apply(cursor)
-  }
 
-  //  implicit val mediaUnionDecoder5: Decoder[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId | MediaContentListId | ReviewId | ReplyId] = Decoder.instance { cursor =>
-  //    List[Decoder[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId | MediaContentListId | ReviewId | ReplyId]](
-  //      Decoder[MovieId].widen,
-  //      Decoder[TvShowId].widen,
-  //      Decoder[(TvShowId, SeasonNumber)].widen,
-  //      Decoder[(TvShowId, SeasonNumber, EpisodeNumber)].widen,
-  //      Decoder[VideogameId].widen,
-  //      Decoder[BookId].widen,
-  //      Decoder[MediaContentListId].widen,
-  //      Decoder[ReviewId].widen,
-  //      Decoder[ReplyId].widen,
-  //    ).reduceLeft(_ or _).apply(cursor)
-  //  }
+  implicit val socialIdsDecoder: Decoder[MediaListId | ReviewId | ReplyId] = Decoder.instance { cursor =>
+    cursor.downField("type").as[String].flatMap {
+      case "MediaListId" => cursor.downField("value").as[Long].map(MediaListId.apply)
+      case "ReviewId" => cursor.downField("value").as[Long].map(ReviewId.apply)
+      case "ReplyId" => cursor.downField("value").as[Long].map(ReplyId.apply)
+      case other => Left(DecodingFailure(s"Unknown type: $other", cursor.history))
+    }
+  }
 }

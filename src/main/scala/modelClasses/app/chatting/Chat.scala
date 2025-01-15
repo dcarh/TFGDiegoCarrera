@@ -9,8 +9,3 @@ case class Chat(
                user2Id    : UserId,
                messagesIds: List[MessageId]
                )
-
-// object  Chat {
-//   type Id = Long
-// }
-

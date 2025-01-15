@@ -11,7 +11,4 @@ case class Rating(
                  rating      : Int
                  )
 
-// object Rating {
-//   type Id = Long
-// }
 // TODO: ¿Realmente hace falta esta clase cuando ya tenemos al atributo "rating" en Entry?

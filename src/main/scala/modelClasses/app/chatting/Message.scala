@@ -9,7 +9,3 @@ case class Message(
                   message: String,
                   date   : String     // TODO: ¿String o Date?
                   )
-
-// object Message {
-//   type Id = Long
-// }

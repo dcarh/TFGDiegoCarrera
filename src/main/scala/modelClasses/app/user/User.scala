@@ -29,9 +29,3 @@ case class User(
                stats     : UserStats,
                settings  : UserSettings
                )
-
-// object User {
-//   type Id = Long
-// }
-
-

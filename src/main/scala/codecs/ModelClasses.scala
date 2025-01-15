@@ -68,8 +68,5 @@ object ModelClasses {
     implicit val messageIdCodec: Codec[String, MessageId, TextPlain] =
       Codec.string.mapDecode(s => DecodeResult.Value(MessageId(s.toLong)))(_.value.toString)
   }
-  
-  
-  
-  
+
 }

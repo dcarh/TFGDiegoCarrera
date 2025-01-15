@@ -24,7 +24,6 @@ case class Movie(
                   year               : String,
                 
 //                  averageRating      : Double, 
-//                  likes              : List[LikeId],
 //                  lists              : List[MediaListId],
 //                  numberOfAbandoned  : Long,
 //                  numberOfCompleted  : Long,
@@ -34,7 +33,3 @@ case class Movie(
 //                  ratings            : Long,
 //                  reviews            : List[ReviewId]
                 )
-
-// object Movie {
-//   type Id = Long
-// }

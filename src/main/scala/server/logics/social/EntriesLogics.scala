@@ -79,7 +79,6 @@ object EntriesLogics {
             mediaId = updatedEntryData.mediaId,
             rating = updatedEntryData.rating,
             review = updatedEntryData.review,
-            like = updatedEntryData.like,
             completed = updatedEntryData.completed,
             paused = updatedEntryData.paused,
             abandoned = updatedEntryData.abandoned,

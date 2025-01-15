@@ -1,41 +1,57 @@
 package unionTypes.decoders
 
-import io.circe.generic.auto.*
-import io.circe.Decoder
-
-import cats.syntax.functor.*
+import io.circe.{Decoder, DecodingFailure}
 
 import modelClasses.ids.Media.*
 
 object MediaDecodersForIDs {
 
-
   implicit val listMediaUnionDecoder: Decoder[MovieId | TvShowId | VideogameId | BookId] = Decoder.instance { cursor =>
-    List[Decoder[MovieId | TvShowId | VideogameId | BookId]](
-      Decoder[MovieId].widen,
-      Decoder[TvShowId].widen,
-      Decoder[VideogameId].widen,
-      Decoder[BookId].widen
-    ).reduceLeft(_ or _).apply(cursor)
+    cursor.downField("type").as[String].flatMap {
+      case "MovieId" => cursor.downField("value").as[Long].map(MovieId.apply)
+      case "TvShowId" => cursor.downField("value").as[Long].map(TvShowId.apply)
+      case "VideogameId" => cursor.downField("value").as[Long].map(VideogameId.apply)
+      case "BookId" => cursor.downField("value").as[String].map(BookId.apply)
+      case other => Left(DecodingFailure(s"Unknown type: $other", cursor.history))
+    }
   }
-  
+
   implicit val listMediaUnionDecoder2: Decoder[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId] = Decoder.instance { cursor =>
-    List[Decoder[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]](
-      Decoder[MovieId].widen,
-      Decoder[TvShowId].widen,
-      Decoder[(TvShowId, SeasonNumber)].widen,
-      Decoder[(TvShowId, SeasonNumber, EpisodeNumber)].widen,
-      Decoder[VideogameId].widen,
-      Decoder[BookId].widen
-    ).reduceLeft(_ or _).apply(cursor)
+    cursor.downField("type").as[String].flatMap {
+      case "MovieId" => cursor.downField("value").as[Long].map(MovieId.apply)
+      case "TvShowId" => cursor.downField("value").as[Long].map(TvShowId.apply)
+      case "SeasonNumber" =>
+        cursor.downField("value").as[Map[String, Long]].map { values =>
+          (TvShowId(values("tvShowId")), SeasonNumber(values("seasonNumber")))
+        }
+
+      case "EpisodeNumber" =>
+        cursor.downField("value").as[Map[String, Long]].map { values =>
+          (
+            TvShowId(values("tvShowId")),
+            SeasonNumber(values("seasonNumber")),
+            EpisodeNumber(values("episodeNumber"))
+          )
+        }
+      case "VideogameId" => cursor.downField("value").as[Long].map(VideogameId.apply)
+      case "BookId" => cursor.downField("value").as[String].map(BookId.apply)
+      case other => Left(DecodingFailure(s"Unknown type: $other", cursor.history))
+    }
   }
-  
+
   implicit val listMediaUnionDecoder3: Decoder[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId] = Decoder.instance { cursor =>
-    List[Decoder[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId]](
-      Decoder[TvShowId].widen,
-      Decoder[(TvShowId, SeasonNumber)].widen,
-      Decoder[VideogameId].widen,
-      Decoder[BookId].widen
-    ).reduceLeft(_ or _).apply(cursor)
+    cursor.downField("type").as[String].flatMap {
+      case "TvShowId" => cursor.downField("value").as[Long].map(TvShowId.apply)
+      case "SeasonNumber" => cursor.downField("value").as[List[Map[String, Long]]].map(
+        value =>
+          (
+            TvShowId(value.head.apply("tvShowId")),
+            SeasonNumber(value(1).apply("seasonNumber"))
+          )
+      )
+      case "VideogameId" => cursor.downField("value").as[Long].map(VideogameId.apply)
+      case "BookId" => cursor.downField("value").as[String].map(BookId.apply)
+      case other => Left(DecodingFailure(s"Unknown type: $other", cursor.history))
+    }
   }
 }

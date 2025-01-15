@@ -22,7 +22,3 @@ case class MediaList(
                              likes           : List[LikeId],
                              replies         : List[ReplyId]
                            )
-
-// object MediaContentList {
-//   type Id = Long
-// }

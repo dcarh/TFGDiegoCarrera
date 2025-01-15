@@ -19,13 +19,7 @@ case class Episode(
 
                     averageRating: Double,
                     completed    : Long,
-                    likes        : List[LikeId],
                     ratings      : Long,
                     reviews      : List[ReviewId]
                     // TODO: Meter más campos
                   )
-
-// object Episode {
-//   type Number = Int
-//   type Id = Long
-// }

@@ -16,5 +16,4 @@ object SocialEncoders {
     case review: Review => review.asJson
     case reply: Reply => reply.asJson
   }
-
 }
