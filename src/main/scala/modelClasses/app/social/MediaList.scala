@@ -1,7 +1,5 @@
 package modelClasses.app.social
 
-import io.circe.generic.auto.*
-
 import modelClasses.ids.Media.{BookId, MovieId, TvShowId, VideogameId}
 import modelClasses.ids.Social.{LikeId, MediaListId, ReplyId}
 import modelClasses.ids.User.UserId
