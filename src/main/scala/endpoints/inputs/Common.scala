@@ -31,7 +31,7 @@ object Common {
       query[Option[String]]("sort_by")
 
     val queryCategories: EndpointInput[Option[List[String]]] =
-      query[Option[List[String]]]("categories")
+      query[Option[List[String]]]("categories").default(None)
 
     val querySearch: EndpointInput[String] =
       query[String]("query")
