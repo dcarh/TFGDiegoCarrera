@@ -8,13 +8,25 @@ import modelClasses.ids.Media.{BookId, SeasonNumber, TvShowId, VideogameId}
 
 object UserOnHoldMediaLogics {
 
-  // TODO: Implementar funcionalidad de sortByOption y categoryOption
+  // TODO: Implementar funcionalidad de sortByOption (en caso de seguir adelante con ello)
 
   val getAllOnHoldMedia: ((UserId, Option[String], Option[List[String]])) => IO[Either[UserError, List[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId]]] =
     (userId, sortByOption, categoryOption) => IO {
       UserRepository.get(userId) match {
         case Some(user) =>
-          Right(user.onHold)
+          val onHoldMedia = user.onHold
+
+          val filteredOnHoldMedia = categoryOption match
+            case Some(categories) =>
+              onHoldMedia.filter {
+                case _: TvShowId => categories.contains("tv_show")
+                case (_: TvShowId, _: SeasonNumber) => categories.contains("season")
+                case videogameId: VideogameId => categories.contains("videogame")
+                case bookId: BookId => categories.contains("book")
+              }
+            case None =>  onHoldMedia
+
+          Right(filteredOnHoldMedia)
 
         case None if userId.value <= 0 =>
           Left(BadRequest("Invalid user ID"))

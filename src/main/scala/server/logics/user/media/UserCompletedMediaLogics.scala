@@ -8,13 +8,27 @@ import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TvS
 
 object UserCompletedMediaLogics {
   
-  // TODO: Implementar funcionalidad de sortByOption y categoryOption
+  // TODO: Implementar funcionalidad de sortByOption (en caso de seguir adelante con ello)
 
   val getAllCompletedMedia: ((UserId, Option[String], Option[List[String]])) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
     (userId, sortByOption, categoryOption) => IO {
       UserRepository.get(userId) match 
         case Some(user) =>
-          Right(user.completed)
+          val completedMedia = user.completed
+          
+          val filteredCompletedMedia = categoryOption match
+            case Some(categories) =>
+              completedMedia.filter {
+                case _: MovieId => categories.contains("movie")
+                case _: TvShowId => categories.contains("tv_show")
+                case (_: TvShowId, _: SeasonNumber) => categories.contains("season")
+                case (_: TvShowId, _: SeasonNumber, _: EpisodeNumber) => categories.contains("episode")
+                case videogameId: VideogameId => categories.contains("videogame")
+                case bookId: BookId => categories.contains("book")
+              }
+            case None =>  completedMedia
+
+          Right(filteredCompletedMedia)
 
         case None if userId.value <= 0 =>
           Left(BadRequest("Invalid user ID"))
