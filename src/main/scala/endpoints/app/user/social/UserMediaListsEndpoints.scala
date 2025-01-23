@@ -11,12 +11,6 @@ import modelClasses.ids.User.UserId
 
 object UserMediaListsEndpoints {
 
-//  private val userListBaseEndpoint:
-//    (String, String, String) => PublicEndpoint[UserId, UserError, Unit, Any] =
-//      (name, description, method) => userBaseEndpoint(name, description, method)
-//        .in(PathInputs.pathUserId)
-//        .in("list")
-
   private val userMediaListsBaseEndpoint:
     (String, String, String) => PublicEndpoint[UserId, UserError, Unit, Any] =
       (name, description, method) => specificUserBaseEndpoint(name, description, method)
@@ -30,14 +24,4 @@ object UserMediaListsEndpoints {
     )
       .in(QueryInputs.querySortBy)
       .out(SocialOutputs.listOfMediaListsIdsOutput)
-
-//  val userSpecificListEndpoint: PublicEndpoint[(UserId, MediaContentListId), UserError, MediaContentList, Any] =
-//    userListBaseEndpoint(
-//      "User's specific list endpoint",
-//      "This endpoint returns a specific list for a user by the ID of the list",
-//      "GET"
-//    )
-//      .in(PathInputs.pathListId)
-//      .out(SocialOutputs.mediaContentListSucess)
-
 }

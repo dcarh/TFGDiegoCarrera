@@ -11,8 +11,8 @@ object UserReviewsLogics {
 
   // TODO: sortByOption, filterByOption
 
-  val getUserReviews: UserId => IO[Either[UserError, List[ReviewId]]] =
-    userId => IO {
+  val getUserReviews: ((UserId, Option[List[String]], Option[String])) => IO[Either[UserError, List[ReviewId]]] =
+    (userId, sortByOption, filterByOption) => IO {
       UserRepository.get(userId) match {
         case Some(user) =>
           Right(user.reviews)

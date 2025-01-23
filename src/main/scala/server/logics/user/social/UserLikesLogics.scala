@@ -11,8 +11,8 @@ object UserLikesLogics {
 
   // TODO: sortByOption, filterByOption
 
-  val getUserLikes: UserId => IO[Either[UserError, List[LikeId]]] =
-    userId => IO {
+  val getUserLikes: ((UserId, Option[List[String]], Option[String])) => IO[Either[UserError, List[LikeId]]] =
+    (userId, sortByOption, filterByOption) => IO {
       UserRepository.get(userId) match {
         case Some(user) =>
           Right(user.likes)
