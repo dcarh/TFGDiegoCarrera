@@ -10,8 +10,8 @@ object UserRatingsLogics {
   
   // TODO: sortByOption, filterByOption
 
-  val getUserRatings: UserId => IO[Either[UserError, List[RatingId]]] =
-    userId => IO {
+  val getUserRatings: ((UserId, Option[List[String]], Option[String])) => IO[Either[UserError, List[RatingId]]] =
+    (userId, sortByOption, filterByOption) => IO {
       UserRepository.get(userId) match {
         case Some(user) =>
           Right(user.ratings)
