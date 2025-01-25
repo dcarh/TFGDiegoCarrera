@@ -57,7 +57,6 @@ object ChatsLogics {
     chatId => IO {
       ChatRepository.delete(chatId) match {
         case "Object deleted successfully!" =>
-          IO(println("HEEEEEEY"))
           Right(())
         case otherMessage =>
           Left(Conflict(s"Chat with ID ${chatId.value} could not be deleted: $otherMessage"))

@@ -41,42 +41,180 @@ object UserDroppedMediaLogics {
         Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-  // TODO: Dejar estos endpoints para lo último (implementación avanzada de endpoints)
+  val addDroppedMovie:
+    ((UserId, MovieId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+    (userId, movieId) => addDroppedMedia(userId, movieId)
 
-//  val addDroppedMovie: ((UserId, MovieId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
-//    ???
-//
-//  val addDroppedTvShow: ((UserId, TvShowId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
-//    ???
-//
-//  val addDroppedSeason: ((UserId, TvShowId, SeasonNumber)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
-//    ???
-//
-//  val addDroppedEpisode: ((UserId, TvShowId, SeasonNumber, EpisodeNumber)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
-//    ???
-//
-//  val addDroppedVideogame: ((UserId, VideogameId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
-//    ???
-//
-//  val addDroppedBook: ((UserId, BookId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
-//    ???
-//
-//  val deleteDroppedMovie: ((UserId, MovieId)) => IO[Either[UserError, Unit]] =
-//    ???
-//
-//  val deleteDroppedTvShow: ((UserId, TvShowId)) => IO[Either[UserError, Unit]] =
-//    ???
-//
-//  val deleteDroppedSeason: ((UserId, TvShowId, SeasonNumber)) => IO[Either[UserError, Unit]] =
-//    ???
-//
-//  val deleteDroppedEpisode: ((UserId, TvShowId, SeasonNumber, EpisodeNumber)) => IO[Either[UserError, Unit]] =
-//    ???
-//
-//  val deleteDroppedVideogame: ((UserId, VideogameId)) => IO[Either[UserError, Unit]] =
-//    ???
-//
-//  val deleteDroppedBook: ((UserId, BookId)) => IO[Either[UserError, Unit]] =
-//    ???
+  val addDroppedTvShow:
+    ((UserId, TvShowId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+    (userId, tvShowId) => addDroppedMedia(userId, tvShowId)
+
+  val addDroppedSeason:
+    ((UserId, TvShowId, SeasonNumber)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+    (userId, tvShowId, seasonNumber) => addDroppedMedia(userId, (tvShowId, seasonNumber))
+
+  val addDroppedEpisode:
+    ((UserId, TvShowId, SeasonNumber, EpisodeNumber)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+    (userId, tvShowId, seasonNumber, episodeNumber) => addDroppedMedia(userId, (tvShowId, seasonNumber, episodeNumber))
+
+  val addDroppedVideogame:
+    ((UserId, VideogameId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+    (userId, videogameId) => addDroppedMedia(userId, videogameId)
+
+  val addDroppedBook:
+    ((UserId, BookId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+    (userId, bookId) => addDroppedMedia(userId, bookId)
+
+  val deleteDroppedMovie: ((UserId, MovieId)) => IO[Either[UserError, Unit]] =
+    (userId, movieId) => deleteDroppedMedia(userId, movieId)
+
+  val deleteDroppedTvShow: ((UserId,  TvShowId)) => IO[Either[UserError, Unit]] =
+    (userId, tvShowId) => deleteDroppedMedia(userId, tvShowId)
+
+  val deleteDroppedSeason: ((UserId, TvShowId, SeasonNumber)) => IO[Either[UserError, Unit]] =
+    (userId, tvShowId, seasonNumber) => deleteDroppedMedia(userId, (tvShowId, seasonNumber))
+
+  val deleteDroppedEpisode: ((UserId, TvShowId, SeasonNumber, EpisodeNumber)) => IO[Either[UserError, Unit]] =
+    (userId, tvShowId, seasonNumber, episodeNumber) => deleteDroppedMedia(userId, (tvShowId, seasonNumber, episodeNumber))
+
+  val deleteDroppedVideogame: ((UserId, VideogameId)) => IO[Either[UserError, Unit]] =
+    (userId, videogameId) => deleteDroppedMedia(userId, videogameId)
+
+  val deleteDroppedBook: ((UserId, BookId)) => IO[Either[UserError, Unit]] =
+    (userId, bookId) => deleteDroppedMedia(userId, bookId)
+
+  private val addDroppedMedia:
+    ((UserId, MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
+    (userId, mediaId) => IO {
+      UserRepository.get(userId) match
+        case None if userId.value <= 0 =>
+          Left(BadRequest("Invalid user ID"))
+
+        case None =>
+          Left(NotFound(s"User with ID ${userId.value} not found"))
+
+        case Some(user) =>
+          if user.dropped.contains(mediaId) then
+            Left(Conflict("Media already dropped"))
+          else
+            val updatedDroppedMedia = mediaId match
+              case movieId: MovieId =>
+                if movieId.value <= 0 then BadRequest("Invalid movie ID")
+                else
+                  movieId :: user.dropped
+
+              case tvShowId: TvShowId =>
+                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
+                else
+                  tvShowId :: user.dropped
+
+              case (tvShowId: TvShowId, seasonNumber: SeasonNumber) =>
+                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
+                else if seasonNumber.value <= 0 then BadRequest("Invalid season number")
+                else
+                  (tvShowId, seasonNumber) :: user.dropped
+
+              case (tvShowId: TvShowId, seasonNumber: SeasonNumber, episodeNumber: EpisodeNumber) =>
+                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
+                else if seasonNumber.value <= 0 then BadRequest("Invalid season number")
+                else if episodeNumber.value <= 0 then BadRequest("Invalid episode number")
+                else
+                  (tvShowId, seasonNumber, episodeNumber) :: user.dropped
+
+              case videogameId: VideogameId =>
+                if videogameId.value <= 0 then BadRequest("Invalid videogame ID")
+                else
+                  videogameId :: user.dropped
+
+              case bookId: BookId =>
+                if bookId.value == "" then BadRequest("Invalid book ID")
+                else
+                  bookId :: user.dropped
+
+            updatedDroppedMedia match
+              case badRequest: BadRequest =>
+                Left(badRequest)
+
+              case list: List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId] =>
+                val updatedUser = user.copy(
+                  dropped = list
+                )
+                UserRepository.put(userId, updatedUser)
+                Right(updatedUser.dropped)
+
+              case _ =>
+                Left(Unknown(500, "An unexpected error occurred"))
+
+    }.handleError {
+      case ex: Exception =>
+        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+    }
+
+  private val deleteDroppedMedia: ((UserId, MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId)) => IO[Either[UserError, Unit]] =
+    (userId, mediaId) => IO {
+      UserRepository.get(userId) match
+        case None if userId.value <= 0 =>
+          Left(BadRequest("Invalid user ID"))
+
+        case None =>
+          Left(NotFound(s"User with ID ${userId.value} not found"))
+
+        case Some(user) =>
+          if !user.dropped.contains(mediaId) then
+            Left(BadRequest("Media not dropped yet"))
+          else
+            val updatedDroppedMedia = mediaId match
+              case movieId: MovieId =>
+                if movieId.value <= 0 then BadRequest("Invalid movie ID")
+                else
+                  user.dropped.filterNot(_ == movieId)
+
+              case tvShowId: TvShowId =>
+                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
+                else
+                  user.dropped.filterNot(_ == tvShowId)
+
+              case (tvShowId: TvShowId, seasonNumber: SeasonNumber) =>
+                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
+                else if seasonNumber.value <= 0 then BadRequest("Invalid season number")
+                else
+                  user.dropped.filterNot(_ == (tvShowId, seasonNumber))
+
+              case (tvShowId: TvShowId, seasonNumber: SeasonNumber, episodeNumber: EpisodeNumber) =>
+                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
+                else if seasonNumber.value <= 0 then BadRequest("Invalid season number")
+                else if episodeNumber.value <= 0 then BadRequest("Invalid episode number")
+                else
+                  user.dropped.filterNot(_ == (tvShowId, seasonNumber, episodeNumber))
+
+              case videogameId: VideogameId =>
+                if videogameId.value <= 0 then BadRequest("Invalid videogame ID")
+                else
+                  user.dropped.filterNot(_ == videogameId)
+
+              case bookId: BookId =>
+                if bookId.value == "" then BadRequest("Invalid book ID")
+                else
+                  user.dropped.filterNot(_ == bookId)
+
+            updatedDroppedMedia match
+              case badRequest: BadRequest =>
+                Left(badRequest)
+
+              case list: List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId] =>
+                val updatedUser = user.copy(
+                  dropped = list
+                )
+                UserRepository.put(userId, updatedUser)
+                Right(())
+
+              case _ =>
+                Left(Unknown(500, "An unexpected error occurred"))
+
+
+    }.handleError {
+      case ex: Exception =>
+        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+    }
 
 }
