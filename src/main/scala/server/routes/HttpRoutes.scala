@@ -4,15 +4,13 @@ import cats.effect.IO
 import cats.implicits.toSemigroupKOps
 import org.http4s.HttpRoutes
 
-import server.routes.chatting.ChatsRoutes.chatsRoutes
-import server.routes.chatting.MessagesRoutes.messagesRoutes
+import server.routes.chatting.ChattingRoutes.chattingRoutes
 import server.routes.social.EntriesRoutes.entriesRoutes
 import server.routes.social.LikesRoutes.likesRoutes
 import server.routes.social.MediaListsRoutes.mediaListsRoutes
 import server.routes.social.RatingsRoutes.ratingsRoutes
 import server.routes.social.RepliesRoutes.repliesRoutes
 import server.routes.social.ReviewsRoutes.reviewsRoutes
-import server.routes.user.chatting.UserChatsRoutes.userChatsRoutes
 import server.routes.user.media.UserCompletedMediaRoutes.userCompletedMediaRoutes
 import server.routes.user.media.UserDroppedMediaRoutes.userDroppedMediaRoutes
 import server.routes.user.media.UserFavouritesRoutes.userFavouritesRoutes
@@ -34,15 +32,13 @@ import server.routes.search.SearchRoutes.searchRoutes
 object HttpRoutes {
 
   val httpRoutes: HttpRoutes[IO] =
-    chatsRoutes <+>
-      messagesRoutes <+>
+    chattingRoutes <+>
       entriesRoutes <+>
       likesRoutes <+>
       mediaListsRoutes <+>
       ratingsRoutes <+>
       repliesRoutes <+>
       reviewsRoutes <+>
-      userChatsRoutes <+>
       userCompletedMediaRoutes <+>
       userDroppedMediaRoutes <+>
       userFavouritesRoutes <+>

@@ -65,8 +65,9 @@ object UserDummies {
     ),
     List(),
     List(
-      ChatIdDummies.chatId2
+      ChatIdDummies.chatId3
     ),
+    List(),
     UserStats(
       7.33,
       Time(0, 2, 0),
@@ -146,8 +147,10 @@ object UserDummies {
     ),
     List(),
     List(
-      ChatIdDummies.chatId1,
-      ChatIdDummies.chatId3
+      ChatIdDummies.chatId1
+    ),
+    List(
+      ChatIdDummies.chatId6
     ),
     UserStats(
       5.33,
@@ -212,6 +215,7 @@ object UserDummies {
     List(
       UserIdDummies.userId5
     ),
+    List(),
     List(),
     List(),
     List(),
@@ -296,9 +300,10 @@ object UserDummies {
       UserIdDummies.userId3
     ),
     List(
-      ChatIdDummies.chatId2,
-      ChatIdDummies.chatId3
+      ChatIdDummies.chatId4,
+      ChatIdDummies.chatId5
     ),
+    List(),
     UserStats(
       7,
       Time(0, 1, 45),
@@ -369,8 +374,9 @@ object UserDummies {
     List(UserIdDummies.userId3),
     List(),
     List(
-      ChatIdDummies.chatId1
+      ChatIdDummies.chatId2
     ),
+    List(),
     UserStats(
       9.5,
       Time(0, 0, 0),

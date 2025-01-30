@@ -7,7 +7,7 @@ import modelClasses.app.chatting.{Chat, Message}
 import modelClasses.app.media.{Book, Episode, Movie, Season, TvShow, Videogame}
 import modelClasses.app.social.{Entry, Like, MediaList, Rating, Reply, Review}
 import modelClasses.app.user.{User, UserFavourites, UserProfile, UserSettings}
-import modelClasses.ids.Chatting.ChatId
+import modelClasses.ids.Chatting.{ChatId, MessageId}
 import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TvShowId, VideogameId}
 import modelClasses.ids.Social.*
 import modelClasses.ids.User.UserId
@@ -69,6 +69,9 @@ object Common {
 
     val listOfMessagesOutput: EndpointOutput[List[Message]] =
       jsonBody[List[Message]].description("The requested list of messages")
+
+    val listOfMessagesIdsOutput: EndpointOutput[List[MessageId]] =
+      jsonBody[List[MessageId]].description("The requested list of messages IDs")
   }
 
   object UserOutputs {

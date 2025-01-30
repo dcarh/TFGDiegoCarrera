@@ -29,6 +29,9 @@ object Common {
 
     val querySortBy: EndpointInput[Option[String]] =
       query[Option[String]]("sort_by")
+      
+    val queryArchived: EndpointInput[Option[Boolean]] =
+      query[Option[Boolean]]("archived")
 
     val queryCategories: EndpointInput[Option[List[String]]] =
       query[Option[List[String]]]("categories").default(None)
@@ -89,9 +92,6 @@ object Common {
   }
 
   object JsonInputs {
-    
-    val jsonChat: EndpointInput[Chat] =
-      jsonBody[Chat]
       
     val jsonMessage: EndpointInput[Message] =
       jsonBody[Message]
