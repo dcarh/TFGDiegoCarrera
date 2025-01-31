@@ -13,10 +13,6 @@ import modelClasses.ids.User.UserId
 
 object ChattingEndpoints {
 
-//  private val chatBaseEndpoint:
-//    (String, String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
-//    (name, description, method) => httpMethodEndpoint(name, description, "chat", method)
-
   private val chatsBaseEndpoint:
     (String, String, String) => PublicEndpoint[UserId, UserError, Unit, Any] =
     (name, description, method) => specificUserBaseEndpoint(name, description, method)
@@ -36,15 +32,6 @@ object ChattingEndpoints {
     (String, String, String) => PublicEndpoint[(UserId, ChatId, MessageId), UserError, Unit, Any] =
     (name, description, method) => messagesBaseEndpoint(name, description, method)
       .in(PathInputs.pathMessageId)
-
-//  getChats -> app / user / {user_id} / chats
-//  getChat -> app / user / {user_id} / chats / {chat_id}
-//  deleteChat -> app / user / {user_id} / chats / {chat_id} / delete
-//  archiveChat -> app / user / {user_id} / chats / {chat_id} / archive
-//  getChatMessages -> app / user / {user_id} / chats / {chat_id} / messages
-//  getMessage -> app / user / {user_id} / chats / {chat_id} / messages / {message_id}
-//  sendMessage -> app / user / {user_id} / chats / {chat_id} / messages / send / {user_id}
-//  deleteMessage -> app / user / {user_id} / chats / {chat_id} / messages / {message_id} /delete
 
   val getChats: PublicEndpoint[(UserId, Option[String], Option[Boolean]), UserError, List[ChatId], Any] =
     chatsBaseEndpoint(

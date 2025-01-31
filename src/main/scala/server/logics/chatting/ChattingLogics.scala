@@ -154,7 +154,7 @@ object ChattingLogics {
 
 
   // TODO: Se podría ampliar más este método en caso de que quisiéramos borrar el mensaje también de la versión de Chat
-  //  del otro usuario, y creo que es mucho lío
+  //  del otro usuario, pero creo que es mucho lío
   val deleteMessage: ((UserId, ChatId, MessageId)) => IO[Either[UserError, Unit]] =
     (userId, chatId, messageId) => IO {
       ChattingAuxFunctions.assertUserAndChatAndMessageIds(userId, chatId, messageId) match
