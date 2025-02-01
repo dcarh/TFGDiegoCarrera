@@ -67,7 +67,6 @@ object EntriesLogics {
         Left(BadRequest("The user ID stored in the entry doesn't own the entry"))
 
 
-  // TODO: Quizás se le podría añadir una opción de filterBy, para que filtre según el tipo de Media que referencia
   val getAllEntries: ((Option[String], Option[List[String]])) => IO[Either[UserError, List[Entry]]] = {
     (sortByOption, categoryOption) =>
       IO {
