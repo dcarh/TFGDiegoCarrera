@@ -48,7 +48,7 @@ object LikesLogics {
 
   val getLike: LikeId => IO[Either[UserError, Like]] =
     likeId => IO {
-      LikeRepository.get(likeId) match {
+      LikeRepository.get(likeId) match 
         case Some(like) =>
           Right(like)
 
@@ -57,7 +57,7 @@ object LikesLogics {
 
         case None =>
           Left(NotFound(s"Like with ID ${likeId.value} not found"))
-      }
+      
     }.handleError {
       case ex: Exception =>
         Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
@@ -74,7 +74,7 @@ object LikesLogics {
 
         case None  =>
           checkIfUserExistsAndApply(newLike.userId)(newLike.id, addNewLikeToUser) match
-            case Right(user) =>
+            case Right(_) =>
               LikeRepository.put(newLike.id, newLike)
               Right(newLike)
 
@@ -89,10 +89,13 @@ object LikesLogics {
     likeId => IO {
       LikeRepository.get(likeId) match
         case Some(like) =>
-          checkIfUserExistsAndApply(like.userId)(like.id, removeLikeFromUser)
-          LikeRepository.delete(likeId)
-          Right(())
-
+          checkIfUserExistsAndApply(like.userId)(like.id, removeLikeFromUser) match
+            case Right(_) =>
+              LikeRepository.delete(like.id)
+              Right(())
+            
+            case Left(error) => Left(error)
+          
         case None if likeId.value <= 0 =>
           Left(BadRequest("Invalid like ID"))
 

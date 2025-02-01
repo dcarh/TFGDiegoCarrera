@@ -84,6 +84,7 @@ object EntriesLogics {
             var ordered_entries = entries.sortBy { entry =>
               entry.rating.flatMap(ratingMap.get)
             }(Ordering.Option(Ordering.by(_.rating)))
+            
             order match {
               case "highest" =>
                 ordered_entries = ordered_entries.reverse
@@ -130,7 +131,7 @@ object EntriesLogics {
 
         case None =>
           checkIfUserExistsAndApply(newEntry.userId)(newEntry.id, addNewEntryToUser) match
-            case Right(user) =>
+            case Right(_) =>
               EntryRepository.put(newEntry.id, newEntry)
               Right(newEntry)
 
@@ -146,7 +147,7 @@ object EntriesLogics {
       EntryRepository.get(entryId) match
         case Some(existingEntry) =>
           checkIfUserExistsAndApply(existingEntry.userId)(existingEntry.id, updateUserFromEntry) match
-            case Right(value) =>
+            case Right(_) =>
               val updatedEntry = existingEntry.copy(
                 id = updatedEntryData.id,
                 userId = updatedEntryData.userId,
@@ -183,10 +184,13 @@ object EntriesLogics {
     entryId => IO {
       EntryRepository.get(entryId) match
         case Some(entry) =>
-          checkIfUserExistsAndApply(entry.userId)(entry.id, removeEntryFromUser)
-          EntryRepository.delete(entryId)
-          Right(())
-
+          checkIfUserExistsAndApply(entry.userId)(entry.id, removeEntryFromUser) match
+            case Right(_) =>
+              EntryRepository.delete(entry.id)
+              Right(())
+            
+            case Left(error) => Left(error)
+          
         case None if entryId.value <= 0 =>
           Left(BadRequest("Invalid entry ID"))
 

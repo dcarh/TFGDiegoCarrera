@@ -1,26 +1,71 @@
 package server.logics.social
 
 import cats.effect.IO
-import dummies.repositories.MediaListRepository
-
+import dummies.repositories.{MediaListRepository, UserRepository}
 import modelClasses.app.social.MediaList
+import modelClasses.app.user.User
 import modelClasses.errors.UserError.*
 import modelClasses.ids.Social.MediaListId
+import modelClasses.ids.User.UserId
 
 object MediaListsLogics {
+
+  private def checkIfUserExistsAndApply(userId: UserId)(mediaListId: MediaListId, f: (User, MediaListId) => Either[UserError, User]): Either[UserError, User] =
+    UserRepository.get(userId) match
+      case Some(user) =>
+        f(user, mediaListId)
+
+      case None if userId.value <= 0 =>
+        Left(BadRequest("Invalid media list ID"))
+
+      case None =>
+        Left(NotFound(s"Media list with ID ${userId.value} not found"))
+
+  private val addNewMediaListToUser: (User, MediaListId) => Either[UserError, User] =
+    (user, mediaListId) =>
+      if !user.lists.contains(mediaListId) then
+        val updatedUser = user.copy(
+          lists = mediaListId :: user.lists
+        )
+        UserRepository.put(updatedUser.id, updatedUser)
+        Right(user)
+
+      else
+        Left(BadRequest("The user with the ID stored in the media list already has an media list with the same ID"))
+
+  private val updateUserFromMediaList: (User, MediaListId) => Either[UserError, User] =
+    (user, mediaListId) =>
+      if user.lists.contains(mediaListId) then
+        Right(user)
+
+      else
+        Left(BadRequest("The user with the ID stored in the mediaList doesn't own the media list"))
+
+  private val removeMediaListFromUser: (User, MediaListId) => Either[UserError, User] =
+    (user, mediaListId) =>
+      if user.lists.contains(mediaListId) then
+        val updatedUser = user.copy(
+          lists = user.lists.filterNot(_ == mediaListId)
+        )
+        UserRepository.put(updatedUser.id, updatedUser)
+        Right(user)
+
+      else
+        Left(BadRequest("The user ID stored in the mediaList doesn't own the mediaList"))
+
 
   val getAllMediaLists: Option[String] => IO[Either[UserError, List[MediaList]]] = {
     sortByOption =>
       IO {
         val mediaLists = MediaListRepository.getAll
 
-        val sortedMediaLists = sortByOption match {
+        val sortedMediaLists = sortByOption match 
           case Some("earliest_created") =>
             Right(mediaLists.sortBy(_.creationDate))
 
           case Some("newest_created") =>
             Right(mediaLists.sortBy(_.creationDate).reverse)
-            
+
           case Some("earliest_updated") =>
             Right(mediaLists.sortBy(_.updateDate))
 
@@ -29,13 +74,13 @@ object MediaListsLogics {
 
           case Some("least_liked") =>
             Right(mediaLists.sortBy(_.likes.size))
-          
+
           case Some("most_liked") =>
             Right(mediaLists.sortBy(_.likes.size).reverse)
 
           case Some("least_replied") =>
             Right(mediaLists.sortBy(_.replies.size))
-          
+
           case Some("most_replied") =>
             Right(mediaLists.sortBy(_.replies.size).reverse)
 
@@ -44,16 +89,17 @@ object MediaListsLogics {
 
           case None =>
             Right(mediaLists)
-        }
+        
         sortedMediaLists
       }.handleError {
         case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
       }
   }
 
+
   val getMediaList: MediaListId => IO[Either[UserError, MediaList]] =
     mediaListId => IO {
-      MediaListRepository.get(mediaListId) match {
+      MediaListRepository.get(mediaListId) match 
         case Some(mediaList) =>
           Right(mediaList)
 
@@ -62,7 +108,7 @@ object MediaListsLogics {
 
         case None =>
           Left(NotFound(s"Media list with ID ${mediaListId.value} not found"))
-      }
+      
     }.handleError {
       case ex: Exception =>
         Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
@@ -70,47 +116,79 @@ object MediaListsLogics {
 
   val createMediaList: MediaList => IO[Either[UserError, MediaList]] =
     newMediaList => IO {
-      MediaListRepository.put(newMediaList.id, newMediaList)
-      Right(newMediaList)
+      MediaListRepository.get(newMediaList.id) match
+        case Some(_) =>
+          Left(Conflict(s"Media list with ID ${newMediaList.id.value} already exists"))
+
+        case None if newMediaList.id.value <= 0 =>
+          Left(BadRequest("Invalid media list ID"))
+
+        case None =>
+          checkIfUserExistsAndApply(newMediaList.userId)(newMediaList.id, addNewMediaListToUser) match
+            case Right(_) =>
+              MediaListRepository.put(newMediaList.id, newMediaList)
+              Right(newMediaList)
+            
+            case Left(error) => Left(error)
+
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
+
 
   val editMediaList: ((MediaListId, MediaList)) => IO[Either[UserError, MediaList]] =
     (mediaListId, updatedMediaListData) => IO {
-      MediaListRepository.get(mediaListId) match {
+      MediaListRepository.get(mediaListId) match 
         case Some(existingMediaList) =>
-          val updatedMediaList = existingMediaList.copy(
-            id = updatedMediaListData.id,
-            userId = updatedMediaListData.userId,
-            title = updatedMediaListData.title,
-            description = updatedMediaListData.description,
-            mediaContentsIds = updatedMediaListData.mediaContentsIds,
-            visibility = updatedMediaListData.visibility,
-            allowReplies = updatedMediaListData.allowReplies,
-            ranked = updatedMediaListData.ranked,
-            creationDate = updatedMediaListData.creationDate,
-            updateDate = updatedMediaListData.updateDate,
-            likes = updatedMediaListData.likes,
-            replies = updatedMediaListData.replies
-          )
-          MediaListRepository.put(mediaListId, updatedMediaList)
-          Right(updatedMediaList)
+          checkIfUserExistsAndApply(existingMediaList.userId)(existingMediaList.id, updateUserFromMediaList) match
+            case Right(_) =>
+              val updatedMediaList = existingMediaList.copy(
+                id = updatedMediaListData.id,
+                userId = updatedMediaListData.userId,
+                title = updatedMediaListData.title,
+                description = updatedMediaListData.description,
+                mediaContentsIds = updatedMediaListData.mediaContentsIds,
+                visibility = updatedMediaListData.visibility,
+                allowReplies = updatedMediaListData.allowReplies,
+                ranked = updatedMediaListData.ranked,
+                creationDate = updatedMediaListData.creationDate,
+                updateDate = updatedMediaListData.updateDate,
+                likes = updatedMediaListData.likes,
+                replies = updatedMediaListData.replies
+              )
+              MediaListRepository.put(mediaListId, updatedMediaList)
+              Right(updatedMediaList)
+            
+            case Left(error) => Left(error)
+          
+        case None if mediaListId.value <= 0 =>
+          Left(BadRequest("Invalid entry ID"))
+          
         case None =>
           Left(NotFound(s"Media list with ID ${mediaListId.value} not found"))
-      }
+      
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
+  
   val deleteMediaList: MediaListId => IO[Either[UserError, Unit]] =
     mediaListId => IO {
-      MediaListRepository.delete(mediaListId) match {
-        case "Object deleted successfully!" =>
-          Right(())
-        case otherMessage =>
-          Left(Conflict(s"Media list with ID ${mediaListId.value} could not be deleted: $otherMessage"))
-      }
+      MediaListRepository.get(mediaListId) match
+        case Some(mediaList) =>
+          checkIfUserExistsAndApply(mediaList.userId)(mediaListId, removeMediaListFromUser) match
+            case Right(_) => 
+              MediaListRepository.delete(mediaList.id)
+              Right(())
+            
+            case Left(error) => Left(error)
+
+        case None =>
+          Left(BadRequest("Invalid entry ID"))
+          
+        case None if mediaListId.value <= 0 =>
+          Left(NotFound(s"Media list with ID ${mediaListId.value} not found"))
+        
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
