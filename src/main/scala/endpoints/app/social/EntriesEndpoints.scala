@@ -19,13 +19,14 @@ object EntriesEndpoints {
       (name, description, method) =>
         httpMethodEndpoint(name, description, "entry", method)
   
-  val getAllEntries: PublicEndpoint[Option[String], UserError, List[Entry], Any] =
+  val getAllEntries: PublicEndpoint[(Option[String], Option[List[String]]), UserError, List[Entry], Any] =
     entriesBaseEndpoint(
       "Get entries endpoint", 
       "This endpoint returns a list with all the entries in the app",
       "GET"
     )
       .in(QueryInputs.querySortBy)
+      .in(QueryInputs.queryCategories)
       .out(SocialOutputs.listOfEntriesOutput)
 
   val getEntry: PublicEndpoint[EntryId, UserError, Entry, Any] =

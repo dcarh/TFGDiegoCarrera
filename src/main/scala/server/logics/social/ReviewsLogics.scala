@@ -6,6 +6,7 @@ import dummies.repositories.{ReviewRepository, UserRepository}
 import modelClasses.app.social.Review
 import modelClasses.app.user.User
 import modelClasses.errors.UserError.*
+import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TvShowId, VideogameId}
 import modelClasses.ids.Social.ReviewId
 import modelClasses.ids.User.UserId
 
@@ -55,30 +56,43 @@ object ReviewsLogics {
         Left(BadRequest("The user ID stored in the review doesn't own the review"))
 
 
-
-  val getAllReviews: Option[String] => IO[Either[UserError, List[Review]]] = {
-    sortByOption =>
+  val getAllReviews: ((Option[String], Option[List[String]])) => IO[Either[UserError, List[Review]]] = {
+    (sortByOption, categoryOption) =>
       IO {
         val reviews = ReviewRepository.getAll
 
+        val filteredReviews = categoryOption match
+          case Some(categories) =>
+            reviews.filter(
+              review => review.mediaReviewedId match
+                case _: MovieId => categories.contains("movie")
+                case _: TvShowId => categories.contains("tv_show")
+                case (_: TvShowId, _: SeasonNumber) => categories.contains("season")
+                case (_: TvShowId, _: SeasonNumber, _: EpisodeNumber) => categories.contains("episode")
+                case videogameId: VideogameId => categories.contains("videogame")
+                case bookId: BookId => categories.contains("book")
+            )
+
+          case None => reviews
+
         val sortedReviews = sortByOption match {
           case Some("least_liked") =>
-            Right(reviews.sortBy(_.likes.size))
+            Right(filteredReviews.sortBy(_.likes.size))
 
           case Some("most_liked") =>
-            Right(reviews.sortBy(_.likes.size).reverse)
+            Right(filteredReviews.sortBy(_.likes.size).reverse)
 
           case Some("least_replied") =>
-            Right(reviews.sortBy(_.replies.size))
+            Right(filteredReviews.sortBy(_.replies.size))
 
           case Some("most_replied") =>
-            Right(reviews.sortBy(_.replies.size).reverse)
+            Right(filteredReviews.sortBy(_.replies.size).reverse)
 
           case Some(unknown) =>
             Left(BadRequest(s"Invalid sorting parameter: $unknown"))
 
           case None =>
-            Right(reviews)
+            Right(filteredReviews)
         }
         sortedReviews
       }.handleError {

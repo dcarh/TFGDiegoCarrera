@@ -5,6 +5,7 @@ import dummies.repositories.{EntryRepository, RatingRepository, UserRepository}
 import modelClasses.app.social.Entry
 import modelClasses.app.user.User
 import modelClasses.errors.UserError.*
+import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TvShowId, VideogameId}
 import modelClasses.ids.Social.EntryId
 import modelClasses.ids.User.UserId
 
@@ -66,23 +67,40 @@ object EntriesLogics {
         Left(BadRequest("The user ID stored in the entry doesn't own the entry"))
 
 
-  val getAllEntries: Option[String] => IO[Either[UserError, List[Entry]]] = {
-    sortByOption =>
+  // TODO: Quizás se le podría añadir una opción de filterBy, para que filtre según el tipo de Media que referencia
+  val getAllEntries: ((Option[String], Option[List[String]])) => IO[Either[UserError, List[Entry]]] = {
+    (sortByOption, categoryOption) =>
       IO {
         val entries = EntryRepository.getAll
+        
+        val filteredEntries = categoryOption match
+          case Some(categories) =>
+            entries.filter(
+              entry => entry.mediaId match
+                case _: MovieId => categories.contains("movie")
+                case _: TvShowId => categories.contains("tv_show")
+                case (_: TvShowId, _: SeasonNumber) => categories.contains("season")
+                case (_: TvShowId, _: SeasonNumber, _: EpisodeNumber) => categories.contains("episode")
+                case videogameId: VideogameId => categories.contains("videogame")
+                case bookId: BookId => categories.contains("book") 
+            )
+          
+          case None => entries
+
         val ratings = RatingRepository.getAll
         val ratingMap = ratings.map(rating => rating.id -> rating).toMap
 
         val sortedEntries = sortByOption match
           case Some("earliest") =>
-            Right(entries.sortBy(_.creationDate))
+            Right(filteredEntries.sortBy(_.creationDate))
 
           case Some("newest") =>
-            Right(entries.sortBy(_.creationDate).reverse)
+            Right(filteredEntries.sortBy(_.creationDate).reverse)
 
           case Some(s"${order}_rating") =>
-            var ordered_entries = entries.sortBy { entry =>
-              entry.rating.flatMap(ratingMap.get)
+            var ordered_entries = filteredEntries.sortBy { 
+              entry =>
+                entry.rating.flatMap(ratingMap.get)
             }(Ordering.Option(Ordering.by(_.rating)))
             
             order match {
@@ -95,7 +113,7 @@ object EntriesLogics {
             Left(BadRequest(s"Invalid sorting parameter: $unknown"))
 
           case None =>
-            Right(entries)
+            Right(filteredEntries)
 
         sortedEntries
       }.handleError {

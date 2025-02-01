@@ -19,13 +19,14 @@ object ReviewsEndpoints {
       (name, description, method) =>
         httpMethodEndpoint(name, description, "review", method)
   
-  val getAllReviews: PublicEndpoint[Option[String], UserError, List[Review], Any] =
+  val getAllReviews: PublicEndpoint[(Option[String], Option[List[String]]), UserError, List[Review], Any] =
     reviewsBaseEndpoint(
       "Get reviews endpoint",
       "This endpoint returns a list with all the reviews in the app",
       "GET"
     )
       .in(QueryInputs.querySortBy)
+      .in(QueryInputs.queryCategories)
       .out(SocialOutputs.listOfReviewsOutput)
 
   val getReview: PublicEndpoint[ReviewId, UserError, Review, Any] =
