@@ -8,10 +8,6 @@ import modelClasses.ids.User.UserId
 import modelClasses.ids.Social.MediaListId
 
 object UserMediaListsLogics {
-
-  // TODO: sortByOption, filterByOption
-
-  // TODO: Implementar la funcionalidad del sortByOption
   
   val getUserMediaLists: ((UserId, Option[String])) => IO[Either[UserError, List[MediaListId]]] =
     (userId, sortByOption) => IO {

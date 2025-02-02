@@ -8,8 +8,6 @@ import modelClasses.ids.User.UserId
 import modelClasses.ids.Social.EntryId
 
 object UserEntriesLogics {
-  
-  // TODO: sortByOption, filterByOption
 
   val getUserEntries: ((UserId, Option[List[String]], Option[String])) => IO[Either[UserError, List[EntryId]]] =
     (userId, sortByOption, filterByOption) => IO {

@@ -7,8 +7,6 @@ import modelClasses.ids.Social.RatingId
 import modelClasses.ids.User.UserId
 
 object UserRatingsLogics {
-  
-  // TODO: sortByOption, filterByOption
 
   val getUserRatings: ((UserId, Option[List[String]], Option[String])) => IO[Either[UserError, List[RatingId]]] =
     (userId, sortByOption, filterByOption) => IO {

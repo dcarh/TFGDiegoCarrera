@@ -9,8 +9,6 @@ import modelClasses.ids.Social.ReplyId
 
 object UserRepliesLogics {
 
-  // TODO: sortByOption, filterByOption
-
   val getUserReplies: ((UserId, Option[List[String]], Option[String])) => IO[Either[UserError, List[ReplyId]]] =
     (userId, sortByOption, filterByOption) => IO {
       UserRepository.get(userId) match {

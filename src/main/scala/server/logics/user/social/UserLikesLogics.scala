@@ -9,8 +9,6 @@ import modelClasses.ids.Social.LikeId
 
 object UserLikesLogics {
 
-  // TODO: sortByOption, filterByOption
-
   val getUserLikes: ((UserId, Option[List[String]], Option[String])) => IO[Either[UserError, List[LikeId]]] =
     (userId, sortByOption, filterByOption) => IO {
       UserRepository.get(userId) match {
