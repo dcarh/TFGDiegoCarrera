@@ -12,6 +12,8 @@ import modelClasses.ids.Chatting.ChatId
 import modelClasses.ids.Chatting.MessageId
 import modelClasses.ids.User.UserId
 
+import server.logics.commonFunctions.CommonFunctions.{getUser, getBothUsers}
+
 object ChattingLogics {
 
   // TODO: Implementar la funcionalidad del sortByOption, si es que es posible (habría que meter funcionalidad de case
@@ -20,22 +22,15 @@ object ChattingLogics {
 
   val getChats: ((UserId, Option[String], Option[Boolean])) => IO[Either[UserError, List[ChatId]]] =
     (userId, sortByOption, archivedOption) => IO {
-      UserRepository.get(userId) match
-        case Some(user) =>
-          archivedOption match
-            case Some(archived) if archived =>
-              Right(user.archivedChats)
-            case _ =>
-              Right(user.chats)
+      getUser(userId) match
+        case Left(error) => Left(error)
+        case Right(user) => archivedOption match
+            case Some(archived) if archived => Right(user.archivedChats)
+            case _ => Right(user.chats)
 
-        case None if userId.value <= 0 =>
-          Left(BadRequest("Invalid user ID"))
 
-        case None =>
-          Left(NotFound(s"User with ID ${userId.value} not found"))
     }.handleError {
-      case ex: Exception =>
-        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+      case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
 
@@ -45,8 +40,7 @@ object ChattingLogics {
         case Left(error) => Left(error)
         case Right(_, chat) => Right(chat)
     }.handleError {
-      case ex: Exception =>
-        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+      case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
 
@@ -108,8 +102,7 @@ object ChattingLogics {
         case Right(_, chat) =>
           Right(chat.messagesIds)
     }.handleError {
-      case ex: Exception =>
-        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+      case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
 
@@ -119,8 +112,7 @@ object ChattingLogics {
         case Left(error) => Left(error)
         case Right(_, _, message) => Right(message)
     }.handleError {
-      case ex: Exception =>
-        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+      case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
 
@@ -148,8 +140,7 @@ object ChattingLogics {
                 Right(message)
 
     }.handleError {
-      case ex: Exception =>
-        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+      case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
 
@@ -160,12 +151,9 @@ object ChattingLogics {
       ChattingAuxFunctions.assertUserAndChatAndMessageIds(userId, chatId, messageId) match
         case Left(error) => Left(error)
         case Right(_, _, _) =>
-          MessageRepository.delete(messageId) match
-            case "Object deleted successfully!" =>
-              Right(())
-
-            case otherMessage =>
-              Left(NotFound(s"Message with ID ${messageId.value} could not be deleted: $otherMessage"))
+          MessageRepository.delete(messageId) 
+          Right(())
+          
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }

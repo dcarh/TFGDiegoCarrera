@@ -9,18 +9,9 @@ import modelClasses.errors.UserError.*
 import modelClasses.ids.Social.RatingId
 import modelClasses.ids.User.UserId
 
+import server.logics.commonFunctions.CommonFunctions
+
 object RatingsLogics {
-
-  private def checkIfUserExistsAndApply(userId: UserId)(ratingId: RatingId, f: (User, RatingId) => Either[UserError, User]): Either[UserError, User] =
-    UserRepository.get(userId) match
-      case Some(user) =>
-        f(user, ratingId)
-
-      case None if userId.value <= 0 =>
-        Left(BadRequest("Invalid rating ID"))
-
-      case None =>
-        Left(NotFound(s"Rating with ID ${userId.value} not found"))
 
   private val addNewRatingToUser: (User, RatingId) => Either[UserError, User] =
     (user, ratingId) =>
@@ -57,38 +48,26 @@ object RatingsLogics {
 
   val getRating: RatingId => IO[Either[UserError, Rating]] =
     ratingId => IO {
-      RatingRepository.get(ratingId) match 
-        case Some(rating) =>
-          Right(rating)
-
-        case None if ratingId.value <= 0 =>
-          Left(BadRequest("Invalid rating ID"))
-
-        case None =>
-          Left(NotFound(s"Rating with ID ${ratingId.value} not found"))
+      CommonFunctions.getRating(ratingId) match 
+        case Left(error) => Left(error)
+        case Right(rating) => Right(rating)
       
     }.handleError {
-      case ex: Exception =>
-        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+      case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
   val createRating: Rating => IO[Either[UserError, Rating]] =
     newRating => IO {
       RatingRepository.get(newRating.id) match
-        case Some(_) =>
-          Left(Conflict(s"Rating with ID ${newRating.id.value} already exists"))
-        
-        case None if newRating.id.value <= 0 =>
-          Left(BadRequest("Invalid rating ID"))
-        
+        case Some(_) => Left(Conflict(s"Rating with ID ${newRating.id.value} already exists"))
+        case None if newRating.id.value <= 0 => Left(BadRequest("Invalid rating ID"))
         case None =>
-          checkIfUserExistsAndApply(newRating.userId)(newRating.id, addNewRatingToUser) match
+          CommonFunctions.getUserAndApply(newRating.userId)(newRating.id, addNewRatingToUser) match
+            case Left(error) => Left(error)
             case Right(_) =>
               RatingRepository.put(newRating.id, newRating)
               Right(newRating)
 
-            case Left(error) =>
-              Left(error)
         
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
@@ -96,9 +75,11 @@ object RatingsLogics {
 
   val editRating: ((RatingId, Rating)) => IO[Either[UserError, Rating]] =
     (ratingId, updatedRatingData) => IO {
-      RatingRepository.get(ratingId) match
-        case Some(existingRating) =>
-          checkIfUserExistsAndApply(existingRating.userId)(existingRating.id, updateUserFromRating) match
+      CommonFunctions.getRating(ratingId) match
+        case Left(error) => Left(error)
+        case Right(existingRating) =>
+          CommonFunctions.getUserAndApply(existingRating.userId)(existingRating.id, updateUserFromRating) match
+            case Left(error) => Left(error)
             case Right(_) =>
               val updatedRating = existingRating.copy(
                 id = updatedRatingData.id,
@@ -108,14 +89,6 @@ object RatingsLogics {
               )
               RatingRepository.put(ratingId, updatedRating)
               Right(updatedRating)
-            
-            case Left(error) => Left(error)
-          
-        case None if ratingId.value <= 0 =>
-          Left(BadRequest("Invalid rating ID"))
-          
-        case None =>
-          Left(NotFound(s"Rating with ID ${ratingId.value} not found"))
       
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
@@ -123,20 +96,14 @@ object RatingsLogics {
 
   val deleteRating: RatingId => IO[Either[UserError, Unit]] =
     ratingId => IO {
-      RatingRepository.get(ratingId) match
-        case Some(rating) =>
-          checkIfUserExistsAndApply(rating.userId)(rating.id, removeRatingFromUser) match
+      CommonFunctions.getRating(ratingId) match
+        case Left(error) => Left(error)
+        case Right(rating) =>
+          CommonFunctions.getUserAndApply(rating.userId)(rating.id, removeRatingFromUser) match
+            case Left(error) => Left(error)
             case Right(_) =>
               RatingRepository.delete(rating.id)
               Right(())
-
-            case Left(error) => Left(error)
-          
-        case None if ratingId.value <= 0 =>
-          Left(BadRequest("Invalid rating ID"))
-          
-        case None =>
-          Left(NotFound(s"Rating with ID ${ratingId.value} not found"))
 
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))

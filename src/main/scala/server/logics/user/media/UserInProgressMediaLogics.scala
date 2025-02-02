@@ -6,14 +6,17 @@ import modelClasses.errors.UserError.*
 import modelClasses.ids.User.UserId
 import modelClasses.ids.Media.{BookId, SeasonNumber, TvShowId, VideogameId}
 
+import server.logics.commonFunctions.CommonFunctions
+
 object UserInProgressMediaLogics {
 
   // TODO: Implementar funcionalidad de sortByOption (en caso de seguir adelante con ello)
 
   val getAllInProgressMedia: ((UserId, Option[String], Option[List[String]])) => IO[Either[UserError, List[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId]]] =
     (userId, sortByOption, categoryOption) => IO {
-      UserRepository.get(userId) match {
-        case Some(user) =>
+      CommonFunctions.getUser(userId) match
+        case Left(error) => Left(error)
+        case Right(user) =>
           val inProgressMedia = user.inProgress
 
           val filteredInProgressMedia = categoryOption match
@@ -24,19 +27,12 @@ object UserInProgressMediaLogics {
                 case videogameId: VideogameId => categories.contains("videogame")
                 case bookId: BookId => categories.contains("book")
               }
-            case None =>  inProgressMedia
+            case None => inProgressMedia
 
           Right(filteredInProgressMedia)
-
-        case None if userId.value <= 0 =>
-          Left(BadRequest("Invalid user ID"))
-
-        case None =>
-          Left(NotFound(s"User with ID ${userId.value} not found"))
-      }
+      
     }.handleError {
-      case ex: Exception =>
-        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+      case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
     
   val addInProgressTvShow:
@@ -70,14 +66,9 @@ object UserInProgressMediaLogics {
   private val addInProgressMedia:
     ((UserId, TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId)) => IO[Either[UserError, List[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId]]] =
     (userId, mediaId) => IO {
-      UserRepository.get(userId) match
-        case None if userId.value <= 0 =>
-          Left(BadRequest("Invalid user ID"))
-
-        case None =>
-          Left(NotFound(s"User with ID ${userId.value} not found"))
-
-        case Some(user) =>
+      CommonFunctions.getUser(userId) match
+        case Left(error) => Left(error)
+        case Right(user) =>
           if user.inProgress.contains(mediaId) then
             Left(Conflict("Media already in progress"))
           else
@@ -104,9 +95,7 @@ object UserInProgressMediaLogics {
                   bookId :: user.inProgress
 
             updatedInProgressMedia match
-              case badRequest: BadRequest =>
-                Left(badRequest)
-
+              case badRequest: BadRequest => Left(badRequest)
               case list: List[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId] =>
                 val updatedUser = user.copy(
                   inProgress = list
@@ -114,24 +103,17 @@ object UserInProgressMediaLogics {
                 UserRepository.put(userId, updatedUser)
                 Right(updatedUser.inProgress)
 
-              case _ =>
-                Left(Unknown(500, "An unexpected error occurred"))
+              case _ => Left(Unknown(500, "An unexpected error occurred"))
 
     }.handleError {
-      case ex: Exception =>
-        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+      case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
   private val deleteInProgressMedia: ((UserId, TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId)) => IO[Either[UserError, Unit]] =
     (userId, mediaId) => IO {
-      UserRepository.get(userId) match
-        case None if userId.value <= 0 =>
-          Left(BadRequest("Invalid user ID"))
-
-        case None =>
-          Left(NotFound(s"User with ID ${userId.value} not found"))
-
-        case Some(user) =>
+      CommonFunctions.getUser(userId) match
+        case Left(error) => Left(error)
+        case Right(user) =>
           if !user.inProgress.contains(mediaId) then
             Left(BadRequest("Media not in progress yet"))
           else
@@ -158,9 +140,7 @@ object UserInProgressMediaLogics {
                   user.inProgress.filterNot(_ == bookId)
 
             updatedInProgressMedia match
-              case badRequest: BadRequest =>
-                Left(badRequest)
-
+              case badRequest: BadRequest => Left(badRequest)
               case list: List[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId] =>
                 val updatedUser = user.copy(
                   inProgress = list
@@ -168,12 +148,9 @@ object UserInProgressMediaLogics {
                 UserRepository.put(userId, updatedUser)
                 Right(())
 
-              case _ =>
-                Left(Unknown(500, "An unexpected error occurred"))
-
+              case _ => Left(Unknown(500, "An unexpected error occurred"))
 
     }.handleError {
-      case ex: Exception =>
-        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+      case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 }

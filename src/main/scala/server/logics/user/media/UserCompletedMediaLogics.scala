@@ -6,14 +6,17 @@ import modelClasses.errors.UserError.*
 import modelClasses.ids.User.UserId
 import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TvShowId, VideogameId}
 
+import server.logics.commonFunctions.CommonFunctions
+
 object UserCompletedMediaLogics {
   
   // TODO: Implementar funcionalidad de sortByOption (en caso de seguir adelante con ello)
 
   val getAllCompletedMedia: ((UserId, Option[String], Option[List[String]])) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
     (userId, sortByOption, categoryOption) => IO {
-      UserRepository.get(userId) match 
-        case Some(user) =>
+      CommonFunctions.getUser(userId) match
+        case Left(error) => Left(error)
+        case Right(user) =>
           val completedMedia = user.completed
           
           val filteredCompletedMedia = categoryOption match
@@ -26,19 +29,12 @@ object UserCompletedMediaLogics {
                 case videogameId: VideogameId => categories.contains("videogame")
                 case bookId: BookId => categories.contains("book")
               }
-            case None =>  completedMedia
+            case None => completedMedia
 
           Right(filteredCompletedMedia)
-
-        case None if userId.value <= 0 =>
-          Left(BadRequest("Invalid user ID"))
-
-        case None =>
-          Left(NotFound(s"User with ID ${userId.value} not found"))
       
     }.handleError {
-      case ex: Exception =>
-        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+      case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
   val addCompletedMovie:
@@ -86,14 +82,9 @@ object UserCompletedMediaLogics {
   private val addCompletedMedia:
     ((UserId, MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
     (userId, mediaId) => IO {
-      UserRepository.get(userId) match
-        case None if userId.value <= 0 =>
-          Left(BadRequest("Invalid user ID"))
-
-        case None =>
-          Left(NotFound(s"User with ID ${userId.value} not found"))
-
-        case Some(user) =>
+      CommonFunctions.getUser(userId) match
+        case Left(error) => Left(error)
+        case Right(user) =>
           if user.completed.contains(mediaId) then
             Left(Conflict("Media already completed"))
           else
@@ -132,9 +123,7 @@ object UserCompletedMediaLogics {
                   bookId :: user.completed
 
             updatedCompletedMedia match
-              case badRequest: BadRequest =>
-                Left(badRequest)
-
+              case badRequest: BadRequest => Left(badRequest)
               case list: List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId] =>
                 val updatedUser = user.copy(
                   completed = list
@@ -142,24 +131,17 @@ object UserCompletedMediaLogics {
                 UserRepository.put(userId, updatedUser)
                 Right(updatedUser.completed)
 
-              case _ =>
-                Left(Unknown(500, "An unexpected error occurred"))
+              case _ => Left(Unknown(500, "An unexpected error occurred"))
 
     }.handleError {
-      case ex: Exception =>
-        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+      case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
   private val deleteCompletedMedia: ((UserId, MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId)) => IO[Either[UserError, Unit]] =
     (userId, mediaId) => IO {
-      UserRepository.get(userId) match
-        case None if userId.value <= 0 =>
-          Left(BadRequest("Invalid user ID"))
-
-        case None =>
-          Left(NotFound(s"User with ID ${userId.value} not found"))
-
-        case Some(user) =>
+      CommonFunctions.getUser(userId) match
+        case Left(error) => Left(error)
+        case Right(user) =>
           if  !user.completed.contains(mediaId) then
             Left(BadRequest("Media not completed yet"))
           else
@@ -198,9 +180,7 @@ object UserCompletedMediaLogics {
                   user.completed.filterNot(_ == bookId)
 
             updatedCompletedMedia match
-              case badRequest: BadRequest =>
-                Left(badRequest)
-
+              case badRequest: BadRequest => Left(badRequest)
               case list: List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId] =>
                 val updatedUser = user.copy(
                   completed = list
@@ -208,13 +188,10 @@ object UserCompletedMediaLogics {
                 UserRepository.put(userId, updatedUser)
                 Right(())
 
-              case _ =>
-                Left(Unknown(500, "An unexpected error occurred"))
-
+              case _ => Left(Unknown(500, "An unexpected error occurred"))
 
     }.handleError {
-      case ex: Exception =>
-        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+      case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
 }

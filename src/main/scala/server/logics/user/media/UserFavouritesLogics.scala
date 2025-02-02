@@ -7,23 +7,18 @@ import modelClasses.ids.User.UserId
 import modelClasses.app.user.UserFavourites
 import modelClasses.ids.Media.{BookId, MovieId, TvShowId, VideogameId}
 
+import server.logics.commonFunctions.CommonFunctions
+
 object UserFavouritesLogics {
 
   val getFavourites: UserId => IO[Either[UserError, UserFavourites]] =
     userId => IO {
-      UserRepository.get(userId) match {
-        case Some(user) =>
-          Right(user.favourites)
+      CommonFunctions.getUser(userId) match
+        case Left(error) => Left(error)
+        case Right(user) => Right(user.favourites)
 
-        case None if userId.value <= 0 =>
-          Left(BadRequest("Invalid user ID"))
-
-        case None =>
-          Left(NotFound(s"User with ID ${userId.value} not found"))
-      }
     }.handleError {
-      case ex: Exception =>
-        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+      case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
   val addFavouriteMovie: ((UserId, MovieId)) => IO[Either[UserError, UserFavourites]] =
@@ -31,22 +26,20 @@ object UserFavouritesLogics {
       if movieId.value <= 0 then
         Left(BadRequest("Invalid movie ID"))
       else
-        UserRepository.get(userId) match
-          case Some(user) =>
+        CommonFunctions.getUser(userId) match
+          case Left(error) => Left(error)
+          case Right(user) =>
             user.favourites.movie match
               case Some(_) =>
                 Left(Conflict("The user already has a favourite movie. Delete it before you add a new one"))
               case None =>
                 val newFavourites = user.favourites.copy(movie = Some(movieId))
                 val updatedUser = user.copy(favourites = newFavourites)
+                UserRepository.put(userId, updatedUser)
                 Right(newFavourites)
-          case None if userId.value <= 0 =>
-            Left(BadRequest("Invalid user ID"))
-          case None =>
-            Left(NotFound(s"User with ID ${userId.value} not found"))
+
     }.handleError {
-      case ex: Exception =>
-        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+      case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
   val addFavouriteTvShow: ((UserId, TvShowId)) => IO[Either[UserError, UserFavourites]] =
@@ -54,22 +47,20 @@ object UserFavouritesLogics {
       if tvShowId.value <= 0 then
         Left(BadRequest("Invalid TV show ID"))
       else
-        UserRepository.get(userId) match
-          case Some(user) =>
+        CommonFunctions.getUser(userId) match
+          case Left(error) => Left(error)
+          case Right(user) =>
             user.favourites.tvShow match
               case Some(_) =>
                 Left(Conflict("The user already has a favourite TV show. Delete it before you add a new one"))
               case None =>
                 val newFavourites = user.favourites.copy(tvShow = Some(tvShowId))
                 val updatedUser = user.copy(favourites = newFavourites)
+                UserRepository.put(userId, updatedUser)
                 Right(newFavourites)
-          case None if userId.value <= 0 =>
-            Left(BadRequest("Invalid user ID"))
-          case None =>
-            Left(NotFound(s"User with ID ${userId.value} not found"))
+
     }.handleError {
-      case ex: Exception =>
-        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+      case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
   val addFavouriteVideogame: ((UserId, VideogameId)) => IO[Either[UserError, UserFavourites]] =
@@ -77,22 +68,20 @@ object UserFavouritesLogics {
       if videogameId.value <= 0 then
         Left(BadRequest("Invalid videogame ID"))
       else
-        UserRepository.get(userId) match
-          case Some(user) =>
+        CommonFunctions.getUser(userId) match
+          case Left(error) => Left(error)
+          case Right(user) =>
             user.favourites.videogame match
               case Some(_) =>
                 Left(Conflict("The user already has a favourite videogame. Delete it before you add a new one"))
               case None =>
                 val newFavourites = user.favourites.copy(videogame = Some(videogameId))
                 val updatedUser = user.copy(favourites = newFavourites)
+                UserRepository.put(userId, updatedUser)
                 Right(newFavourites)
-          case None if userId.value <= 0 =>
-            Left(BadRequest("Invalid user ID"))
-          case None =>
-            Left(NotFound(s"User with ID ${userId.value} not found"))
+
     }.handleError {
-      case ex: Exception =>
-        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+      case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
   val addFavouriteBook: ((UserId, BookId)) => IO[Either[UserError, UserFavourites]] =
@@ -100,22 +89,20 @@ object UserFavouritesLogics {
       if bookId.value == "" then
         Left(BadRequest("Invalid book ID"))
       else
-        UserRepository.get(userId) match
-          case Some(user) =>
+        CommonFunctions.getUser(userId) match
+          case Left(error) => Left(error)
+          case Right(user) =>
             user.favourites.book match
               case Some(_) =>
                 Left(Conflict("The user already has a favourite book. Delete it before you add a new one"))
               case None =>
                 val newFavourites = user.favourites.copy(book = Some(bookId))
                 val updatedUser = user.copy(favourites = newFavourites)
+                UserRepository.put(userId, updatedUser)
                 Right(newFavourites)
-          case None if userId.value <= 0 =>
-            Left(BadRequest("Invalid user ID"))
-          case None =>
-            Left(NotFound(s"User with ID ${userId.value} not found"))
+
     }.handleError {
-      case ex: Exception =>
-        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+      case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
   val deleteFavouriteMovie: ((UserId, MovieId)) => IO[Either[UserError, Unit]] =
@@ -123,18 +110,18 @@ object UserFavouritesLogics {
       if movieId.value <= 0 then
         Left(BadRequest("Invalid movie ID"))
       else
-        UserRepository.get(userId) match
-          case Some(user) =>
+        CommonFunctions.getUser(userId) match
+          case Left(error) => Left(error)
+          case Right(user) =>
             user.favourites.movie match
               case Some(_) =>
                 val newFavourites = user.favourites.copy(movie = None)
+                val updatedUser = user.copy(favourites = newFavourites)
+                UserRepository.put(userId, updatedUser)
                 Right(())
               case None =>
                 Left(NotFound(s"Not found favourite movie with ID: $movieId"))
-          case None if userId.value <= 0 =>
-            Left(BadRequest("Invalid user ID"))
-          case None =>
-            Left(NotFound(s"User with ID ${userId.value} not found"))
+
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
@@ -144,18 +131,18 @@ object UserFavouritesLogics {
       if tvShowId.value <= 0 then
         Left(BadRequest("Invalid TV show ID"))
       else
-        UserRepository.get(userId) match
-          case Some(user) =>
+        CommonFunctions.getUser(userId) match
+          case Left(error) => Left(error)
+          case Right(user) =>
             user.favourites.tvShow match
               case Some(_) =>
                 val newFavourites = user.favourites.copy(tvShow = None)
+                val updatedUser = user.copy(favourites = newFavourites)
+                UserRepository.put(userId, updatedUser)
                 Right(())
               case None =>
                 Left(NotFound(s"Not found favourite TV show with ID: $tvShowId"))
-          case None if userId.value <= 0 =>
-            Left(BadRequest("Invalid user ID"))
-          case None =>
-            Left(NotFound(s"User with ID ${userId.value} not found"))
+
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
@@ -165,18 +152,18 @@ object UserFavouritesLogics {
       if videogameId.value <= 0 then
         Left(BadRequest("Invalid videogame ID"))
       else
-        UserRepository.get(userId) match
-          case Some(user) =>
+        CommonFunctions.getUser(userId) match
+          case Left(error) => Left(error)
+          case Right(user) =>
             user.favourites.videogame match
               case Some(_) =>
                 val newFavourites = user.favourites.copy(videogame = None)
+                val updatedUser = user.copy(favourites = newFavourites)
+                UserRepository.put(userId, updatedUser)
                 Right(())
               case None =>
                 Left(NotFound(s"Not found favourite videogame with ID: $videogameId"))
-          case None if userId.value <= 0 =>
-            Left(BadRequest("Invalid user ID"))
-          case None =>
-            Left(NotFound(s"User with ID ${userId.value} not found"))
+
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
@@ -186,18 +173,18 @@ object UserFavouritesLogics {
       if bookId.value <= "" then
         Left(BadRequest("Invalid book ID"))
       else
-        UserRepository.get(userId) match
-          case Some(user) =>
+        CommonFunctions.getUser(userId) match
+          case Left(error) => Left(error)
+          case Right(user) =>
             user.favourites.book match
               case Some(_) =>
                 val newFavourites = user.favourites.copy(book = None)
+                val updatedUser = user.copy(favourites = newFavourites)
+                UserRepository.put(userId, updatedUser)
                 Right(())
               case None =>
                 Left(NotFound(s"Not found favourite book with ID: $bookId"))
-          case None if userId.value <= 0 =>
-            Left(BadRequest("Invalid user ID"))
-          case None =>
-            Left(NotFound(s"User with ID ${userId.value} not found"))
+
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }

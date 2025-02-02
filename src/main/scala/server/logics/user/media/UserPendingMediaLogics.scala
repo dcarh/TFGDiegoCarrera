@@ -6,14 +6,17 @@ import modelClasses.errors.UserError.*
 import modelClasses.ids.User.UserId
 import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TvShowId, VideogameId}
 
+import server.logics.commonFunctions.CommonFunctions
+
 object UserPendingMediaLogics {
 
   // TODO: Implementar funcionalidad de sortByOption (en caso de seguir adelante con ello)
 
   val getAllPendingMedia: ((UserId, Option[String], Option[List[String]])) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
     (userId, sortByOption, categoryOption) => IO {
-      UserRepository.get(userId) match {
-        case Some(user) =>
+      CommonFunctions.getUser(userId) match
+        case Left(error) => Left(error)
+        case Right(user) =>
           val pendingMedia = user.pending
 
           val filteredPendingMedia = categoryOption match
@@ -29,15 +32,9 @@ object UserPendingMediaLogics {
             case None =>  pendingMedia
 
           Right(filteredPendingMedia)
-        case None if userId.value <= 0 =>
-          Left(BadRequest("Invalid user ID"))
-
-        case None =>
-          Left(NotFound(s"User with ID ${userId.value} not found"))
-      }
+      
     }.handleError {
-      case ex: Exception =>
-        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+      case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
   val addPendingMovie:
@@ -85,14 +82,9 @@ object UserPendingMediaLogics {
   private val addPendingMedia:
     ((UserId, MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]]] =
       (userId, mediaId) => IO {
-        UserRepository.get(userId) match
-          case None if userId.value <= 0 =>
-            Left(BadRequest("Invalid user ID"))
-  
-          case None =>
-            Left(NotFound(s"User with ID ${userId.value} not found"))
-  
-          case Some(user) =>
+        CommonFunctions.getUser(userId) match
+          case Left(error) => Left(error)
+          case Right(user) =>
             if user.pending.contains(mediaId) then
               Left(Conflict("Media already pending"))
             else
@@ -131,9 +123,7 @@ object UserPendingMediaLogics {
                     bookId :: user.pending
   
               updatedPendingMedia match
-                case badRequest: BadRequest =>
-                  Left(badRequest)
-  
+                case badRequest: BadRequest => Left(badRequest)
                 case list: List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId] =>
                   val updatedUser = user.copy(
                     pending = list
@@ -141,24 +131,17 @@ object UserPendingMediaLogics {
                   UserRepository.put(userId, updatedUser)
                   Right(updatedUser.pending)
   
-                case _ =>
-                  Left(Unknown(500, "An unexpected error occurred"))
+                case _ => Left(Unknown(500, "An unexpected error occurred"))
   
       }.handleError {
-        case ex: Exception =>
-          Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+        case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
       }
 
   private val deletePendingMedia: ((UserId, MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId)) => IO[Either[UserError, Unit]] =
     (userId, mediaId) => IO {
-      UserRepository.get(userId) match
-        case None if userId.value <= 0 =>
-          Left(BadRequest("Invalid user ID"))
-
-        case None =>
-          Left(NotFound(s"User with ID ${userId.value} not found"))
-
-        case Some(user) =>
+      CommonFunctions.getUser(userId) match
+        case Left(error) => Left(error)
+        case Right(user) =>
           if !user.pending.contains(mediaId) then
             Left(BadRequest("Media not pending yet"))
           else
@@ -197,9 +180,7 @@ object UserPendingMediaLogics {
                   user.pending.filterNot(_ == bookId)
 
             updatedPendingMedia match
-              case badRequest: BadRequest =>
-                Left(badRequest)
-
+              case badRequest: BadRequest => Left(badRequest)
               case list: List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId] =>
                 val updatedUser = user.copy(
                   pending = list
@@ -207,12 +188,9 @@ object UserPendingMediaLogics {
                 UserRepository.put(userId, updatedUser)
                 Right(())
 
-              case _ =>
-                Left(Unknown(500, "An unexpected error occurred"))
-
-
+              case _ => Left(Unknown(500, "An unexpected error occurred"))
+      
     }.handleError {
-      case ex: Exception =>
-        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+      case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 }

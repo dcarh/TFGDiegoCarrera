@@ -1,10 +1,7 @@
 package server.logics.chatting
 
-import cats.effect.IO
 import dummies.repositories.ChatRepository
-import dummies.repositories.MessageRepository
 import dummies.repositories.UserRepository
-
 import modelClasses.app.chatting.Chat
 import modelClasses.app.chatting.Message
 import modelClasses.app.user.User
@@ -12,79 +9,53 @@ import modelClasses.errors.UserError.*
 import modelClasses.ids.Chatting.ChatId
 import modelClasses.ids.Chatting.MessageId
 import modelClasses.ids.User.UserId
+import server.logics.commonFunctions.CommonFunctions.{getBothUsers, getChat, getMessage, getUser}
 
 object ChattingAuxFunctions {
 
   val assertUserAndChatIds: ((UserId, ChatId)) => Either[UserError, (User, Chat)] =
     (userId, chatId) =>
-      UserRepository.get(userId) match
-        case Some(user) =>
-          ChatRepository.get(chatId) match
-            case Some(chat) =>
-              if userId.value != chat.user1Id.value then
-                Left(BadRequest("User ID introduced and user ID stored in the chat did not match"))
-              else if !user.chats.contains(chatId) && !user.archivedChats.contains(chatId) then
-                Left(BadRequest("Chat ID introduced and chat ID stored in the user did not match"))
-              else
-                Right((user, chat))
-            case None if chatId.value <= 0 =>
-              Left(BadRequest("Invalid chat ID"))
-            case None =>
-              Left(NotFound(s"Chat with ID ${chatId.value} not found"))
-        case None if userId.value <= 0 =>
-          Left(BadRequest("Invalid user ID"))
-        case None =>
-          Left(NotFound(s"User with ID ${userId.value} not found"))
+      getUser(userId) match
+        case Left(error) => Left(error)
+        case Right(user) => getChat(chatId) match
+          case Left(error) => Left(error)
+          case Right(chat) =>
+            if userId.value != chat.user1Id.value then
+              Left(BadRequest("User ID introduced and user ID stored in the chat did not match"))
+            else if !user.chats.contains(chatId) && !user.archivedChats.contains(chatId) then
+              Left(BadRequest("Chat ID introduced and chat ID stored in the user did not match"))
+            else
+              Right((user, chat))
+
+            
 
   val assertUserAndChatAndMessageIds: ((UserId, ChatId, MessageId)) => Either[UserError, (User, Chat, Message)] =
     (userId, chatId, messageId) =>
       assertUserAndChatIds(userId, chatId) match
         case Left(error) => Left(error)
-        case Right(user, chat) =>
-          MessageRepository.get(messageId) match
-            case Some(message) =>
-              if !chat.messagesIds.contains(messageId) then
-                Left(BadRequest("The message ID introduced wasn't stored in the chat specified by the chat ID"))
-              else
-                Right((user, chat, message))
-            case None if messageId.value <= 0 =>
-              Left(BadRequest("Invalid message ID"))
-            case None =>
-              Left(NotFound(s"Message with ID ${messageId.value} not found"))
+        case Right(user, chat) => getMessage(messageId) match
+          case Left(error) => Left(error)
+          case Right(message) =>
+            if !chat.messagesIds.contains(messageId) then
+              Left(BadRequest("The message ID introduced wasn't stored in the chat specified by the chat ID"))
+            else
+              Right((user, chat, message))
+
 
   val assertTwoUsersAndChat: ((UserId, UserId, ChatId)) => Either[UserError, Either[(User, User), (User, User, Chat)]] =
     (user1Id, user2Id, chatId) =>
-      UserRepository.get(user1Id) match
-        case Some(user1) =>
-          UserRepository.get(user2Id) match
-            case Some(user2) =>
-              ChatRepository.get(chatId) match
-                case Some(chat) =>
-                  if chat.user1Id == user1.id && chat.user2Id == user2.id then
-                    Right(Right(user1, user2, chat))
-                  else
-                    Left(BadRequest("Users IDs introduced didn't match with IDs stored by the chat specified"))
+      getBothUsers(user1Id, user2Id) match
+        case Left(error) => Left(error)
+        case Right(user1, user2) => getChat(chatId) match
+          case Left(error) => Left(error)
+          case Right(chat) =>
+            if chat.user1Id == user1.id && chat.user2Id == user2.id then
+              Right(Right(user1, user2, chat))
+            else
+              Left(BadRequest("Users IDs introduced didn't match with IDs stored by the chat specified"))
 
-                case None if chatId.value <= 0 =>
-                  Left(BadRequest("Invalid chat ID"))
-
-                case None =>
-                  Right(Left(user1, user2))
-
-            case None if user2Id.value <= 0 =>
-              Left(BadRequest("Invalid user ID"))
-
-            case None =>
-              Left(NotFound(s"User with ID ${user1Id.value} not found"))
-
-        case None if user1Id.value <= 0 =>
-          Left(BadRequest("Invalid user ID"))
-
-        case None =>
-          Left(NotFound(s"User with ID ${user1Id.value} not found"))
-
-
-  val updateUserAndChatWithNewMessage: ((User, Chat, Message)) => Unit =
+  
+  private val updateUserAndChatWithNewMessage: ((User, Chat, Message)) => Unit =
     (user, chat, message) =>
       val updatedChat = chat.copy(
         messagesIds = message.id :: chat.messagesIds,
@@ -98,7 +69,7 @@ object ChattingAuxFunctions {
       UserRepository.put(user.id, updatedUser)
 
   
-  val updateChatWithNewMessage: ((Chat, Message)) => Unit =
+  private val updateChatWithNewMessage: ((Chat, Message)) => Unit =
     (chat, message) =>
       val updatedChat = chat.copy(
         messagesIds = message.id :: chat.messagesIds,

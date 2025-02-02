@@ -8,18 +8,9 @@ import modelClasses.errors.UserError.*
 import modelClasses.ids.Social.MediaListId
 import modelClasses.ids.User.UserId
 
+import server.logics.commonFunctions.CommonFunctions
+
 object MediaListsLogics {
-
-  private def checkIfUserExistsAndApply(userId: UserId)(mediaListId: MediaListId, f: (User, MediaListId) => Either[UserError, User]): Either[UserError, User] =
-    UserRepository.get(userId) match
-      case Some(user) =>
-        f(user, mediaListId)
-
-      case None if userId.value <= 0 =>
-        Left(BadRequest("Invalid media list ID"))
-
-      case None =>
-        Left(NotFound(s"Media list with ID ${userId.value} not found"))
 
   private val addNewMediaListToUser: (User, MediaListId) => Either[UserError, User] =
     (user, mediaListId) =>
@@ -60,37 +51,19 @@ object MediaListsLogics {
         val mediaLists = MediaListRepository.getAll
 
         val sortedMediaLists = sortByOption match 
-          case Some("earliest_created") =>
-            Right(mediaLists.sortBy(_.creationDate))
-
-          case Some("newest_created") =>
-            Right(mediaLists.sortBy(_.creationDate).reverse)
-
-          case Some("earliest_updated") =>
-            Right(mediaLists.sortBy(_.updateDate))
-
-          case Some("newest_updated") =>
-            Right(mediaLists.sortBy(_.updateDate).reverse)
-
-          case Some("least_liked") =>
-            Right(mediaLists.sortBy(_.likes.size))
-
-          case Some("most_liked") =>
-            Right(mediaLists.sortBy(_.likes.size).reverse)
-
-          case Some("least_replied") =>
-            Right(mediaLists.sortBy(_.replies.size))
-
-          case Some("most_replied") =>
-            Right(mediaLists.sortBy(_.replies.size).reverse)
-
-          case Some(unknown) =>
-            Left(BadRequest(s"Invalid sorting parameter: $unknown"))
-
-          case None =>
-            Right(mediaLists)
+          case Some("earliest_created") => Right(mediaLists.sortBy(_.creationDate))
+          case Some("newest_created") => Right(mediaLists.sortBy(_.creationDate).reverse)
+          case Some("earliest_updated") => Right(mediaLists.sortBy(_.updateDate))
+          case Some("newest_updated") => Right(mediaLists.sortBy(_.updateDate).reverse)
+          case Some("least_liked") => Right(mediaLists.sortBy(_.likes.size))
+          case Some("most_liked") => Right(mediaLists.sortBy(_.likes.size).reverse)
+          case Some("least_replied") => Right(mediaLists.sortBy(_.replies.size))
+          case Some("most_replied") => Right(mediaLists.sortBy(_.replies.size).reverse)
+          case Some(unknown) => Left(BadRequest(s"Invalid sorting parameter: $unknown"))
+          case None => Right(mediaLists)
         
         sortedMediaLists
+        
       }.handleError {
         case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
       }
@@ -99,38 +72,26 @@ object MediaListsLogics {
 
   val getMediaList: MediaListId => IO[Either[UserError, MediaList]] =
     mediaListId => IO {
-      MediaListRepository.get(mediaListId) match 
-        case Some(mediaList) =>
-          Right(mediaList)
-
-        case None if mediaListId.value <= 0 =>
-          Left(BadRequest("Invalid media content list ID"))
-
-        case None =>
-          Left(NotFound(s"Media list with ID ${mediaListId.value} not found"))
+      CommonFunctions.getMediaList(mediaListId) match 
+        case Left(error) => Left(error)
+        case Right(mediaList) => Right(mediaList)
       
     }.handleError {
-      case ex: Exception =>
-        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+      case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
   val createMediaList: MediaList => IO[Either[UserError, MediaList]] =
     newMediaList => IO {
       MediaListRepository.get(newMediaList.id) match
-        case Some(_) =>
-          Left(Conflict(s"Media list with ID ${newMediaList.id.value} already exists"))
-
-        case None if newMediaList.id.value <= 0 =>
-          Left(BadRequest("Invalid media list ID"))
-
+        case Some(_) => Left(Conflict(s"Media list with ID ${newMediaList.id.value} already exists"))
+        case None if newMediaList.id.value <= 0 => Left(BadRequest("Invalid media list ID"))
         case None =>
-          checkIfUserExistsAndApply(newMediaList.userId)(newMediaList.id, addNewMediaListToUser) match
+          CommonFunctions.getUserAndApply(newMediaList.userId)(newMediaList.id, addNewMediaListToUser) match
+            case Left(error) => Left(error)
             case Right(_) =>
               MediaListRepository.put(newMediaList.id, newMediaList)
               Right(newMediaList)
-            
-            case Left(error) => Left(error)
-
+      
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
@@ -138,9 +99,11 @@ object MediaListsLogics {
 
   val editMediaList: ((MediaListId, MediaList)) => IO[Either[UserError, MediaList]] =
     (mediaListId, updatedMediaListData) => IO {
-      MediaListRepository.get(mediaListId) match 
-        case Some(existingMediaList) =>
-          checkIfUserExistsAndApply(existingMediaList.userId)(existingMediaList.id, updateUserFromMediaList) match
+      CommonFunctions.getMediaList(mediaListId) match
+        case Left(error) => Left(error)
+        case Right(existingMediaList) =>
+          CommonFunctions.getUserAndApply(existingMediaList.userId)(existingMediaList.id, updateUserFromMediaList) match
+            case Left(error) => Left(error)
             case Right(_) =>
               val updatedMediaList = existingMediaList.copy(
                 id = updatedMediaListData.id,
@@ -158,14 +121,6 @@ object MediaListsLogics {
               )
               MediaListRepository.put(mediaListId, updatedMediaList)
               Right(updatedMediaList)
-            
-            case Left(error) => Left(error)
-          
-        case None if mediaListId.value <= 0 =>
-          Left(BadRequest("Invalid entry ID"))
-          
-        case None =>
-          Left(NotFound(s"Media list with ID ${mediaListId.value} not found"))
       
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
@@ -174,20 +129,14 @@ object MediaListsLogics {
   
   val deleteMediaList: MediaListId => IO[Either[UserError, Unit]] =
     mediaListId => IO {
-      MediaListRepository.get(mediaListId) match
-        case Some(mediaList) =>
-          checkIfUserExistsAndApply(mediaList.userId)(mediaListId, removeMediaListFromUser) match
+      CommonFunctions.getMediaList(mediaListId) match
+        case Left(error) => Left(error)
+        case Right(mediaList) =>
+          CommonFunctions.getUserAndApply(mediaList.userId)(mediaListId, removeMediaListFromUser) match
+            case Left(error) => Left(error)
             case Right(_) => 
               MediaListRepository.delete(mediaList.id)
               Right(())
-            
-            case Left(error) => Left(error)
-
-        case None =>
-          Left(BadRequest("Invalid entry ID"))
-          
-        case None if mediaListId.value <= 0 =>
-          Left(NotFound(s"Media list with ID ${mediaListId.value} not found"))
         
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))

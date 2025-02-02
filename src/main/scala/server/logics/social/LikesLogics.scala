@@ -9,18 +9,9 @@ import modelClasses.errors.UserError.*
 import modelClasses.ids.Social.LikeId
 import modelClasses.ids.User.UserId
 
+import server.logics.commonFunctions.CommonFunctions
+
 object LikesLogics {
-
-  private def checkIfUserExistsAndApply(userId: UserId)(likeId: LikeId, f: (User, LikeId) => Either[UserError, User]): Either[UserError, User] =
-    UserRepository.get(userId) match
-      case Some(user) =>
-        f(user, likeId)
-
-      case None if userId.value <= 0 =>
-        Left(BadRequest("Invalid like ID"))
-
-      case None =>
-        Left(NotFound(s"Like with ID ${userId.value} not found"))
 
   private val addNewLikeToUser: (User, LikeId) => Either[UserError, User] =
     (user, likeId) =>
@@ -48,38 +39,25 @@ object LikesLogics {
 
   val getLike: LikeId => IO[Either[UserError, Like]] =
     likeId => IO {
-      LikeRepository.get(likeId) match 
-        case Some(like) =>
-          Right(like)
-
-        case None if likeId.value <= 0 =>
-          Left(BadRequest("Invalid like ID"))
-
-        case None =>
-          Left(NotFound(s"Like with ID ${likeId.value} not found"))
+      CommonFunctions.getLike(likeId) match 
+        case Left(error) => Left(error)
+        case Right(like) => Right(like)
       
     }.handleError {
-      case ex: Exception =>
-        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+      case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
   val createLike: Like => IO[Either[UserError, Like]] =
     newLike => IO {
       LikeRepository.get(newLike.id) match
-        case Some(_) =>
-          Left(Conflict(s"Like with ID ${newLike.id.value} already exists"))
-
-        case None if newLike.id.value <= 0 =>
-          Left(BadRequest("Invalid like ID"))
-
+        case Some(_) => Left(Conflict(s"Like with ID ${newLike.id.value} already exists"))
+        case None if newLike.id.value <= 0 => Left(BadRequest("Invalid like ID"))
         case None  =>
-          checkIfUserExistsAndApply(newLike.userId)(newLike.id, addNewLikeToUser) match
+          CommonFunctions.getUserAndApply(newLike.userId)(newLike.id, addNewLikeToUser) match
+            case Left(error) => Left(error)
             case Right(_) =>
               LikeRepository.put(newLike.id, newLike)
               Right(newLike)
-
-            case Left(error) =>
-              Left(error)
 
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
@@ -87,21 +65,15 @@ object LikesLogics {
 
   val deleteLike: LikeId => IO[Either[UserError, Unit]] =
     likeId => IO {
-      LikeRepository.get(likeId) match
-        case Some(like) =>
-          checkIfUserExistsAndApply(like.userId)(like.id, removeLikeFromUser) match
+      CommonFunctions.getLike(likeId) match
+        case Left(error) => Left(error)
+        case Right(like) =>
+          CommonFunctions.getUserAndApply(like.userId)(like.id, removeLikeFromUser) match
+            case Left(error) => Left(error)
             case Right(_) =>
               LikeRepository.delete(like.id)
               Right(())
-            
-            case Left(error) => Left(error)
-          
-        case None if likeId.value <= 0 =>
-          Left(BadRequest("Invalid like ID"))
-
-        case None =>
-          Left(NotFound(s"Like with ID ${likeId.value} not found"))
-
+      
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }

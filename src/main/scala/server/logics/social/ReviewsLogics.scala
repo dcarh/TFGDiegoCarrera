@@ -10,18 +10,9 @@ import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TvS
 import modelClasses.ids.Social.ReviewId
 import modelClasses.ids.User.UserId
 
+import server.logics.commonFunctions.CommonFunctions
+
 object ReviewsLogics {
-
-  private def checkIfUserExistsAndApply(userId: UserId)(reviewId: ReviewId, f: (User, ReviewId) => Either[UserError, User]): Either[UserError, User] =
-    UserRepository.get(userId) match
-      case Some(user) =>
-        f(user, reviewId)
-
-      case None if userId.value <= 0 =>
-        Left(BadRequest("Invalid review ID"))
-
-      case None =>
-        Left(NotFound(s"Review with ID ${userId.value} not found"))
 
   private val addNewReviewToUser: (User, ReviewId) => Either[UserError, User] =
     (user, reviewId) =>
@@ -62,6 +53,7 @@ object ReviewsLogics {
         val reviews = ReviewRepository.getAll
 
         val filteredReviews = categoryOption match
+          case None => reviews
           case Some(categories) =>
             reviews.filter(
               review => review.mediaReviewedId match
@@ -72,29 +64,17 @@ object ReviewsLogics {
                 case videogameId: VideogameId => categories.contains("videogame")
                 case bookId: BookId => categories.contains("book")
             )
-
-          case None => reviews
-
+        
         val sortedReviews = sortByOption match {
-          case Some("least_liked") =>
-            Right(filteredReviews.sortBy(_.likes.size))
-
-          case Some("most_liked") =>
-            Right(filteredReviews.sortBy(_.likes.size).reverse)
-
-          case Some("least_replied") =>
-            Right(filteredReviews.sortBy(_.replies.size))
-
-          case Some("most_replied") =>
-            Right(filteredReviews.sortBy(_.replies.size).reverse)
-
-          case Some(unknown) =>
-            Left(BadRequest(s"Invalid sorting parameter: $unknown"))
-
-          case None =>
-            Right(filteredReviews)
+          case Some("least_liked") => Right(filteredReviews.sortBy(_.likes.size))
+          case Some("most_liked") => Right(filteredReviews.sortBy(_.likes.size).reverse)
+          case Some("least_replied") => Right(filteredReviews.sortBy(_.replies.size))
+          case Some("most_replied") => Right(filteredReviews.sortBy(_.replies.size).reverse)
+          case Some(unknown) => Left(BadRequest(s"Invalid sorting parameter: $unknown"))
+          case None => Right(filteredReviews)
         }
         sortedReviews
+        
       }.handleError {
         case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
       }
@@ -102,47 +82,37 @@ object ReviewsLogics {
 
   val getReview: ReviewId => IO[Either[UserError, Review]] =
     reviewId => IO {
-      ReviewRepository.get(reviewId) match 
-        case Some(review) =>
-          Right(review)
-
-        case None if reviewId.value <= 0 =>
-          Left(BadRequest("Invalid review ID"))
-
-        case None =>
-          Left(NotFound(s"Review with ID ${reviewId.value} not found"))
+      CommonFunctions.getReview(reviewId) match
+        case Left(error) => Left(error)
+        case Right(review) => Right(review)
       
     }.handleError {
-      case ex: Exception =>
-        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+      case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
   val createReview: Review => IO[Either[UserError, Review]] =
     newReview => IO {
       ReviewRepository.get(newReview.id) match
-        case Some(_) =>
-          Left(Conflict(s"Review with ID ${newReview.id.value} already exists"))
-
-        case None if newReview.id.value <= 0 =>
-          Left(BadRequest("Invalid review ID"))
-
+        case Some(_) => Left(Conflict(s"Review with ID ${newReview.id.value} already exists"))
+        case None if newReview.id.value <= 0 => Left(BadRequest("Invalid review ID"))
         case None =>
-          checkIfUserExistsAndApply(newReview.userId)(newReview.id, addNewReviewToUser) match
+          CommonFunctions.getUserAndApply(newReview.userId)(newReview.id, addNewReviewToUser) match
+            case Left(error) => Left(error)
             case Right(_) =>
               ReviewRepository.put(newReview.id, newReview)
               Right(newReview)
 
-            case Left(error) =>
-              Left(error)
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
   val editReview: ((ReviewId, Review)) => IO[Either[UserError, Review]] =
     (reviewId, updatedReviewData) => IO {
-      ReviewRepository.get(reviewId) match 
-        case Some(existingReview) =>
-          checkIfUserExistsAndApply(existingReview.userId)(existingReview.id, updateUserFromReview) match
+      CommonFunctions.getReview(reviewId) match
+        case Left(error) => Left(error)
+        case Right(existingReview) =>
+          CommonFunctions.getUserAndApply(existingReview.userId)(existingReview.id, updateUserFromReview) match
+            case Left(error) => Left(error)
             case Right(value) =>
               val updatedReview = existingReview.copy(
                 id = updatedReviewData.id,
@@ -156,14 +126,6 @@ object ReviewsLogics {
               )
               ReviewRepository.put(reviewId, updatedReview)
               Right(updatedReview)
-            
-            case Left(error) => Left(error)
-
-        case None if reviewId.value <= 0 =>
-          Left(BadRequest("Invalid review ID"))
-          
-        case None =>
-          Left(NotFound(s"Review with ID ${reviewId.value} not found"))
       
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
@@ -171,20 +133,15 @@ object ReviewsLogics {
 
   val deleteReview: ReviewId => IO[Either[UserError, Unit]] =
     reviewId => IO {
-      ReviewRepository.get(reviewId) match
-        case Some(review) =>
-          checkIfUserExistsAndApply(review.userId)(review.id, removeReviewFromUser) match
+      CommonFunctions.getReview(reviewId) match
+        case Left(error) => Left(error)
+        case Right(review) =>
+          CommonFunctions.getUserAndApply(review.userId)(review.id, removeReviewFromUser) match
+            case Left(error) => Left(error)
             case Right(_) =>
               ReviewRepository.delete(review.id)
               Right(())
 
-            case Left(error) => Left(error)
-
-        case None if reviewId.value <= 0 =>
-          Left(BadRequest("Invalid review ID"))
-
-        case None =>
-          Left(NotFound(s"Review with ID ${reviewId.value} not found"))
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }

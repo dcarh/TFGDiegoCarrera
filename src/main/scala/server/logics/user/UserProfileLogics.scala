@@ -6,31 +6,27 @@ import modelClasses.app.user.UserProfile
 import modelClasses.errors.UserError.*
 import modelClasses.ids.User.UserId
 
+import server.logics.commonFunctions.CommonFunctions
+
 object UserProfileLogics {
 
   val getUserProfile: UserId => IO[Either[UserError, UserProfile]] =
     userId => IO {
-      UserRepository.get(userId) match {
-        case Some(user) =>
-          Right(user.profile)
-
-        case None if userId.value <= 0 =>
-          Left(BadRequest("Invalid entry ID"))
-
-        case None =>
-          Left(NotFound(s"User with ID ${userId.value} not found"))
-      }
+      CommonFunctions.getUser(userId) match
+        case Left(error) => Left(error)
+        case Right(user) => Right(user.profile)
+        
     }.handleError {
-      case ex: Exception =>
-        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+      case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
     
   val editUserProfile: ((UserId, UserProfile)) => IO[Either[UserError, UserProfile]] =
     (userId, updatedUserProfileData) => IO {
-      UserRepository.get(userId) match {
-        case Some(existingUser) =>
-          val updatedUser = existingUser.copy(
-            profile = existingUser.profile.copy(
+      CommonFunctions.getUser(userId) match
+        case Left(error) => Left(error)
+        case Right(user) =>
+          val updatedUser = user.copy(
+            profile = user.profile.copy(
               username = updatedUserProfileData.username,
               password = updatedUserProfileData.password,
               email = updatedUserProfileData.email,
@@ -40,9 +36,7 @@ object UserProfileLogics {
           )
           UserRepository.put(userId, updatedUser)
           Right(updatedUser.profile)
-        case None =>
-          Left(NotFound(s"User with ID ${userId.value} not found"))
-      }
+      
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }

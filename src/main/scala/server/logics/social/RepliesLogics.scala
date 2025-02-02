@@ -9,18 +9,9 @@ import modelClasses.errors.UserError.*
 import modelClasses.ids.Social.ReplyId
 import modelClasses.ids.User.UserId
 
+import server.logics.commonFunctions.CommonFunctions
+
 object RepliesLogics {
-
-  private def checkIfUserExistsAndApply(userId: UserId)(replyId: ReplyId, f: (User, ReplyId) => Either[UserError, User]): Either[UserError, User] =
-    UserRepository.get(userId) match
-      case Some(user) =>
-        f(user, replyId)
-
-      case None if userId.value <= 0 =>
-        Left(BadRequest("Invalid reply ID"))
-
-      case None =>
-        Left(NotFound(s"Reply with ID ${userId.value} not found"))
 
   private val addNewReplyToUser: (User, ReplyId) => Either[UserError, User] =
     (user, replyId) =>
@@ -57,38 +48,25 @@ object RepliesLogics {
 
   val getReply: ReplyId => IO[Either[UserError, Reply]] =
     replyId => IO {
-      ReplyRepository.get(replyId) match {
-        case Some(reply) =>
-          Right(reply)
-
-        case None if replyId.value <= 0 =>
-          Left(BadRequest("Invalid reply ID"))
-
-        case None =>
-          Left(NotFound(s"Reply with ID ${replyId.value} not found"))
-      }
+      CommonFunctions.getReply(replyId) match 
+        case Left(error) => Left(error)
+        case Right(reply) => Right(reply)
+      
     }.handleError {
-      case ex: Exception =>
-        Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+      case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
   val createReply: Reply => IO[Either[UserError, Reply]] =
     newReply => IO {
       ReplyRepository.get(newReply.id) match
-        case Some(_) =>
-          Left(Conflict(s"Reply with ID ${newReply.id.value} already exists"))
-
-        case None if newReply.id.value <= 0 =>
-          Left(BadRequest("Invalid reply ID"))
-
+        case Some(_) => Left(Conflict(s"Reply with ID ${newReply.id.value} already exists"))
+        case None if newReply.id.value <= 0 => Left(BadRequest("Invalid reply ID"))
         case None =>
-          checkIfUserExistsAndApply(newReply.userId)(newReply.id, addNewReplyToUser) match
+          CommonFunctions.getUserAndApply(newReply.userId)(newReply.id, addNewReplyToUser) match
+            case Left(error) => Left(error)
             case Right(_) =>
               ReplyRepository.put(newReply.id, newReply)
               Right(newReply)
-
-            case Left(error) =>
-              Left(error)
               
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
@@ -96,9 +74,11 @@ object RepliesLogics {
 
   val editReply: ((ReplyId, Reply)) => IO[Either[UserError, Reply]] =
     (replyId, updatedReplyData) => IO {
-      ReplyRepository.get(replyId) match 
-        case Some(existingReply) =>
-          checkIfUserExistsAndApply(existingReply.userId)(existingReply.id, updateUserFromReply) match
+      CommonFunctions.getReply(replyId) match
+        case Left(error) => Left(error)
+        case Right(existingReply) =>
+          CommonFunctions.getUserAndApply(existingReply.userId)(existingReply.id, updateUserFromReply) match
+            case Left(error) => Left(error)
             case Right(_) =>
               val updatedReply = existingReply.copy(
                 id = updatedReplyData.id,
@@ -110,14 +90,6 @@ object RepliesLogics {
               )
               ReplyRepository.put(replyId, updatedReply)
               Right(updatedReply)
-              
-            case Left(error) => Left(error)
-
-        case None if replyId.value <= 0 =>
-          Left(BadRequest("Invalid reply ID"))
-            
-        case None =>
-          Left(NotFound(s"Reply with ID ${replyId.value} not found"))
       
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
@@ -125,20 +97,14 @@ object RepliesLogics {
 
   val deleteReply: ReplyId => IO[Either[UserError, Unit]] =
     replyId => IO {
-      ReplyRepository.get(replyId) match
-        case Some(reply) =>
-          checkIfUserExistsAndApply(reply.userId)(reply.id, removeReplyFromUser) match
+      CommonFunctions.getReply(replyId) match
+        case Left(error) => Left(error)
+        case Right(reply) =>
+          CommonFunctions.getUserAndApply(reply.userId)(reply.id, removeReplyFromUser) match
+            case Left(error) => Left(error)
             case Right(_) =>
               ReplyRepository.delete(reply.id)
               Right(())
-
-            case Left(error) => Left(error)
-
-        case None if replyId.value <= 0 =>
-          Left(BadRequest("Invalid reply ID"))
-
-        case None =>
-          Left(NotFound(s"Reply with ID ${replyId.value} not found"))
       
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
