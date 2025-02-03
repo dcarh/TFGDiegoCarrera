@@ -85,11 +85,9 @@ object ChattingLogics {
       ChattingAuxFunctions.assertUserAndChatIds(userId, chatId) match
         case Left(error) => Left(error)
         case Right(_, _) =>
-          ChatRepository.delete(chatId) match
-            case "Object deleted successfully!" =>
-              Right(())
-            case otherMessage =>
-              Left(NotFound(s"Chat with ID ${chatId.value} could not be deleted: $otherMessage"))
+          ChatRepository.delete(chatId)
+            Right(())
+            
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
