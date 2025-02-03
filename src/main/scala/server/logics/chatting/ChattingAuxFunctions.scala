@@ -9,23 +9,24 @@ import modelClasses.errors.UserError.*
 import modelClasses.ids.Chatting.ChatId
 import modelClasses.ids.Chatting.MessageId
 import modelClasses.ids.User.UserId
-import server.logics.commonFunctions.CommonFunctions.{getBothUsers, getChat, getMessage, getUser}
+import server.logics.commonFunctions.CommonFunctions
 
 object ChattingAuxFunctions {
 
   val assertUserAndChatIds: ((UserId, ChatId)) => Either[UserError, (User, Chat)] =
     (userId, chatId) =>
-      getUser(userId) match
+      CommonFunctions.getUser(userId) match
         case Left(error) => Left(error)
-        case Right(user) => getChat(chatId) match
-          case Left(error) => Left(error)
-          case Right(chat) =>
-            if userId.value != chat.user1Id.value then
-              Left(BadRequest("User ID introduced and user ID stored in the chat did not match"))
-            else if !user.chats.contains(chatId) && !user.archivedChats.contains(chatId) then
-              Left(BadRequest("Chat ID introduced and chat ID stored in the user did not match"))
-            else
-              Right((user, chat))
+        case Right(user) =>
+          CommonFunctions.getChat(chatId) match
+            case Left(error) => Left(error)
+            case Right(chat) =>
+              if userId.value != chat.user1Id.value then
+                Left(BadRequest("User ID introduced and user ID stored in the chat did not match"))
+              else if !user.chats.contains(chatId) && !user.archivedChats.contains(chatId) then
+                Left(BadRequest("Chat ID introduced and chat ID stored in the user did not match"))
+              else
+                Right((user, chat))
 
             
 
@@ -33,26 +34,29 @@ object ChattingAuxFunctions {
     (userId, chatId, messageId) =>
       assertUserAndChatIds(userId, chatId) match
         case Left(error) => Left(error)
-        case Right(user, chat) => getMessage(messageId) match
-          case Left(error) => Left(error)
-          case Right(message) =>
-            if !chat.messagesIds.contains(messageId) then
-              Left(BadRequest("The message ID introduced wasn't stored in the chat specified by the chat ID"))
-            else
-              Right((user, chat, message))
+        case Right(user, chat) =>
+          CommonFunctions.getMessage(messageId) match
+            case Left(error) => Left(error)
+            case Right(message) =>
+              if !chat.messagesIds.contains(messageId) then
+                Left(BadRequest("The message ID introduced wasn't stored in the chat specified by the chat ID"))
+              else
+                Right((user, chat, message))
 
 
   val assertTwoUsersAndChat: ((UserId, UserId, ChatId)) => Either[UserError, Either[(User, User), (User, User, Chat)]] =
     (user1Id, user2Id, chatId) =>
-      getBothUsers(user1Id, user2Id) match
+      CommonFunctions.getBothUsers(user1Id, user2Id) match
         case Left(error) => Left(error)
-        case Right(user1, user2) => getChat(chatId) match
-          case Left(error) => Left(error)
-          case Right(chat) =>
-            if chat.user1Id == user1.id && chat.user2Id == user2.id then
-              Right(Right(user1, user2, chat))
-            else
-              Left(BadRequest("Users IDs introduced didn't match with IDs stored by the chat specified"))
+        case Right(user1, user2) =>
+          CommonFunctions.getChat(chatId) match
+            case Left(NotFound(_)) => Right(Left(user1, user2))
+            case Left(error) => Left(error)
+            case Right(chat) =>
+              if chat.user1Id == user1.id && chat.user2Id == user2.id then
+                Right(Right(user1, user2, chat))
+              else
+                Left(BadRequest("Users IDs introduced didn't match with IDs stored by the chat specified"))
 
   
   private val updateUserAndChatWithNewMessage: ((User, Chat, Message)) => Unit =
