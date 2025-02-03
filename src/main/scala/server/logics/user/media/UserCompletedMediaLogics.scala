@@ -90,48 +90,46 @@ object UserCompletedMediaLogics {
           else
             val updatedCompletedMedia = mediaId match
               case movieId: MovieId =>
-                if movieId.value <= 0 then BadRequest("Invalid movie ID")
+                if movieId.value <= 0 then Left(BadRequest("Invalid movie ID"))
                 else
-                  movieId :: user.completed
+                  Right(movieId :: user.completed)
 
               case tvShowId: TvShowId =>
-                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
+                if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
                 else
-                  tvShowId :: user.completed
+                  Right(tvShowId :: user.completed)
 
               case (tvShowId: TvShowId, seasonNumber: SeasonNumber) =>
-                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
-                else if seasonNumber.value <= 0 then BadRequest("Invalid season number")
+                if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
+                else if seasonNumber.value <= 0 then Left(BadRequest("Invalid season number"))
                 else
-                  (tvShowId, seasonNumber) :: user.completed
+                  Right((tvShowId, seasonNumber) :: user.completed)
 
               case (tvShowId: TvShowId, seasonNumber: SeasonNumber, episodeNumber: EpisodeNumber) =>
-                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
-                else if seasonNumber.value <= 0 then BadRequest("Invalid season number")
-                else if episodeNumber.value <= 0 then BadRequest("Invalid episode number")
+                if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
+                else if seasonNumber.value <= 0 then Left(BadRequest("Invalid season number"))
+                else if episodeNumber.value <= 0 then Left(BadRequest("Invalid episode number"))
                 else
-                  (tvShowId, seasonNumber, episodeNumber) :: user.completed
+                  Right((tvShowId, seasonNumber, episodeNumber) :: user.completed)
 
               case videogameId: VideogameId =>
-                if videogameId.value <= 0 then BadRequest("Invalid videogame ID")
+                if videogameId.value <= 0 then Left(BadRequest("Invalid videogame ID"))
                 else
-                  videogameId :: user.completed
+                  Right(videogameId :: user.completed)
 
               case bookId: BookId =>
-                if bookId.value == "" then BadRequest("Invalid book ID")
+                if bookId.value == "" then Left(BadRequest("Invalid book ID"))
                 else
-                  bookId :: user.completed
+                  Right(bookId :: user.completed)
 
             updatedCompletedMedia match
-              case badRequest: BadRequest => Left(badRequest)
-              case list: List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId] =>
+              case Left(error) => Left(error)
+              case Right(list) =>
                 val updatedUser = user.copy(
                   completed = list
                 )
                 UserRepository.put(userId, updatedUser)
                 Right(updatedUser.completed)
-
-              case _ => Left(Unknown(500, "An unexpected error occurred"))
 
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
@@ -147,48 +145,46 @@ object UserCompletedMediaLogics {
           else
             val updatedCompletedMedia = mediaId match
               case movieId: MovieId =>
-                if movieId.value <= 0 then BadRequest("Invalid movie ID")
+                if movieId.value <= 0 then Left(BadRequest("Invalid movie ID"))
                 else
-                  user.completed.filterNot(_ == movieId)
+                  Right(user.completed.filterNot(_ == movieId))
 
               case tvShowId: TvShowId =>
-                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
+                if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
                 else
-                  user.completed.filterNot(_ == tvShowId)
+                  Right(user.completed.filterNot(_ == tvShowId))
 
               case (tvShowId: TvShowId, seasonNumber: SeasonNumber) =>
-                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
-                else if seasonNumber.value <= 0 then BadRequest("Invalid season number")
+                if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
+                else if seasonNumber.value <= 0 then Left(BadRequest("Invalid season number"))
                 else
-                  user.completed.filterNot(_ == (tvShowId, seasonNumber))
+                  Right(user.completed.filterNot(_ == (tvShowId, seasonNumber)))
 
               case (tvShowId: TvShowId, seasonNumber: SeasonNumber, episodeNumber: EpisodeNumber) =>
-                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
-                else if seasonNumber.value <= 0 then BadRequest("Invalid season number")
-                else if episodeNumber.value <= 0 then BadRequest("Invalid episode number")
+                if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
+                else if seasonNumber.value <= 0 then Left(BadRequest("Invalid season number"))
+                else if episodeNumber.value <= 0 then Left(BadRequest("Invalid episode number"))
                 else
-                  user.completed.filterNot(_ == (tvShowId, seasonNumber, episodeNumber))
+                  Right(user.completed.filterNot(_ == (tvShowId, seasonNumber, episodeNumber)))
 
               case videogameId: VideogameId =>
-                if videogameId.value <= 0 then BadRequest("Invalid videogame ID")
+                if videogameId.value <= 0 then Left(BadRequest("Invalid videogame ID"))
                 else
-                  user.completed.filterNot(_ == videogameId)
+                  Right(user.completed.filterNot(_ == videogameId))
 
               case bookId: BookId =>
-                if bookId.value == "" then BadRequest("Invalid book ID")
+                if bookId.value == "" then Left(BadRequest("Invalid book ID"))
                 else
-                  user.completed.filterNot(_ == bookId)
+                  Right(user.completed.filterNot(_ == bookId))
 
             updatedCompletedMedia match
-              case badRequest: BadRequest => Left(badRequest)
-              case list: List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId] =>
+              case Left(error) => Left(error)
+              case Right(list) =>
                 val updatedUser = user.copy(
                   completed = list
                 )
                 UserRepository.put(userId, updatedUser)
                 Right(())
-
-              case _ => Left(Unknown(500, "An unexpected error occurred"))
 
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))

@@ -90,48 +90,46 @@ object UserPendingMediaLogics {
             else
               val updatedPendingMedia = mediaId match
                 case movieId: MovieId =>
-                  if movieId.value <= 0 then BadRequest("Invalid movie ID")
+                  if movieId.value <= 0 then Left(BadRequest("Invalid movie ID"))
                   else
-                    movieId :: user.pending
+                    Right(movieId :: user.pending)
   
                 case tvShowId: TvShowId =>
-                  if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
+                  if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
                   else
-                    tvShowId :: user.pending
+                    Right(tvShowId :: user.pending)
   
                 case (tvShowId: TvShowId, seasonNumber: SeasonNumber) =>
-                  if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
-                  else if seasonNumber.value <= 0 then BadRequest("Invalid season number")
+                  if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
+                  else if seasonNumber.value <= 0 then Left(BadRequest("Invalid season number"))
                   else
-                    (tvShowId, seasonNumber) :: user.pending
+                    Right((tvShowId, seasonNumber) :: user.pending)
   
                 case (tvShowId: TvShowId, seasonNumber: SeasonNumber, episodeNumber: EpisodeNumber) =>
-                  if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
-                  else if seasonNumber.value <= 0 then BadRequest("Invalid season number")
-                  else if episodeNumber.value <= 0 then BadRequest("Invalid episode number")
+                  if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
+                  else if seasonNumber.value <= 0 then Left(BadRequest("Invalid season number"))
+                  else if episodeNumber.value <= 0 then Left(BadRequest("Invalid episode number"))
                   else
-                    (tvShowId, seasonNumber, episodeNumber) :: user.pending
+                    Right((tvShowId, seasonNumber, episodeNumber) :: user.pending)
   
                 case videogameId: VideogameId =>
-                  if videogameId.value <= 0 then BadRequest("Invalid videogame ID")
+                  if videogameId.value <= 0 then Left(BadRequest("Invalid videogame ID"))
                   else
-                    videogameId :: user.pending
+                    Right(videogameId :: user.pending)
   
                 case bookId: BookId =>
-                  if bookId.value == "" then BadRequest("Invalid book ID")
+                  if bookId.value == "" then Left(BadRequest("Invalid book ID"))
                   else
-                    bookId :: user.pending
+                    Right(bookId :: user.pending)
   
               updatedPendingMedia match
-                case badRequest: BadRequest => Left(badRequest)
-                case list: List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId] =>
+                case Left(error) => Left(error)
+                case Right(list) =>
                   val updatedUser = user.copy(
                     pending = list
                   )
                   UserRepository.put(userId, updatedUser)
                   Right(updatedUser.pending)
-  
-                case _ => Left(Unknown(500, "An unexpected error occurred"))
   
       }.handleError {
         case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
@@ -147,48 +145,46 @@ object UserPendingMediaLogics {
           else
             val updatedPendingMedia = mediaId match
               case movieId: MovieId =>
-                if movieId.value <= 0 then BadRequest("Invalid movie ID")
+                if movieId.value <= 0 then Left(BadRequest("Invalid movie ID"))
                 else
-                  user.pending.filterNot(_ == movieId)
+                  Right(user.pending.filterNot(_ == movieId))
 
               case tvShowId: TvShowId =>
-                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
+                if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
                 else
-                  user.pending.filterNot(_ == tvShowId)
+                  Right(user.pending.filterNot(_ == tvShowId))
 
               case (tvShowId: TvShowId, seasonNumber: SeasonNumber) =>
-                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
-                else if seasonNumber.value <= 0 then BadRequest("Invalid season number")
+                if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
+                else if seasonNumber.value <= 0 then Left(BadRequest("Invalid season number"))
                 else
-                  user.pending.filterNot(_ == (tvShowId, seasonNumber))
+                  Right(user.pending.filterNot(_ == (tvShowId, seasonNumber)))
 
               case (tvShowId: TvShowId, seasonNumber: SeasonNumber, episodeNumber: EpisodeNumber) =>
-                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
-                else if seasonNumber.value <= 0 then BadRequest("Invalid season number")
-                else if episodeNumber.value <= 0 then BadRequest("Invalid episode number")
+                if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
+                else if seasonNumber.value <= 0 then Left(BadRequest("Invalid season number"))
+                else if episodeNumber.value <= 0 then Left(BadRequest("Invalid episode number"))
                 else
-                  user.pending.filterNot(_ == (tvShowId, seasonNumber, episodeNumber))
+                  Right(user.pending.filterNot(_ == (tvShowId, seasonNumber, episodeNumber)))
 
               case videogameId: VideogameId =>
-                if videogameId.value <= 0 then BadRequest("Invalid videogame ID")
+                if videogameId.value <= 0 then Left(BadRequest("Invalid videogame ID"))
                 else
-                  user.pending.filterNot(_ == videogameId)
+                  Right(user.pending.filterNot(_ == videogameId))
 
               case bookId: BookId =>
-                if bookId.value == "" then BadRequest("Invalid book ID")
+                if bookId.value == "" then Left(BadRequest("Invalid book ID"))
                 else
-                  user.pending.filterNot(_ == bookId)
+                  Right(user.pending.filterNot(_ == bookId))
 
             updatedPendingMedia match
-              case badRequest: BadRequest => Left(badRequest)
-              case list: List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId] =>
+              case Left(error) => Left(error)
+              case Right(list) =>
                 val updatedUser = user.copy(
                   pending = list
                 )
                 UserRepository.put(userId, updatedUser)
                 Right(())
-
-              case _ => Left(Unknown(500, "An unexpected error occurred"))
       
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))

@@ -74,36 +74,34 @@ object UserInProgressMediaLogics {
           else
             val updatedInProgressMedia = mediaId match
               case tvShowId: TvShowId =>
-                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
+                if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
                 else
-                  tvShowId :: user.inProgress
+                  Right(tvShowId :: user.inProgress)
 
               case (tvShowId: TvShowId, seasonNumber: SeasonNumber) =>
-                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
-                else if seasonNumber.value <= 0 then BadRequest("Invalid season number")
+                if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
+                else if seasonNumber.value <= 0 then Left(BadRequest("Invalid season number"))
                 else
-                  (tvShowId, seasonNumber) :: user.inProgress
+                  Right((tvShowId, seasonNumber) :: user.inProgress)
 
               case videogameId: VideogameId =>
-                if videogameId.value <= 0 then BadRequest("Invalid videogame ID")
+                if videogameId.value <= 0 then Left(BadRequest("Invalid videogame ID"))
                 else
-                  videogameId :: user.inProgress
+                  Right(videogameId :: user.inProgress)
 
               case bookId: BookId =>
-                if bookId.value == "" then BadRequest("Invalid book ID")
+                if bookId.value == "" then Left(BadRequest("Invalid book ID"))
                 else
-                  bookId :: user.inProgress
+                  Right(bookId :: user.inProgress)
 
             updatedInProgressMedia match
-              case badRequest: BadRequest => Left(badRequest)
-              case list: List[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId] =>
+              case Left(error) => Left(error)
+              case Right(list) =>
                 val updatedUser = user.copy(
                   inProgress = list
                 )
                 UserRepository.put(userId, updatedUser)
                 Right(updatedUser.inProgress)
-
-              case _ => Left(Unknown(500, "An unexpected error occurred"))
 
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
@@ -119,36 +117,34 @@ object UserInProgressMediaLogics {
           else
             val updatedInProgressMedia = mediaId match
               case tvShowId: TvShowId =>
-                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
+                if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
                 else
-                  user.inProgress.filterNot(_ == tvShowId)
+                  Right(user.inProgress.filterNot(_ == tvShowId))
 
               case (tvShowId: TvShowId, seasonNumber: SeasonNumber) =>
-                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
-                else if seasonNumber.value <= 0 then BadRequest("Invalid season number")
+                if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
+                else if seasonNumber.value <= 0 then Left(BadRequest("Invalid season number"))
                 else
-                  user.inProgress.filterNot(_ == (tvShowId, seasonNumber))
+                  Right(user.inProgress.filterNot(_ == (tvShowId, seasonNumber)))
 
               case videogameId: VideogameId =>
-                if videogameId.value <= 0 then BadRequest("Invalid videogame ID")
+                if videogameId.value <= 0 then Left(BadRequest("Invalid videogame ID"))
                 else
-                  user.inProgress.filterNot(_ == videogameId)
+                  Right(user.inProgress.filterNot(_ == videogameId))
 
               case bookId: BookId =>
-                if bookId.value == "" then BadRequest("Invalid book ID")
+                if bookId.value == "" then Left(BadRequest("Invalid book ID"))
                 else
-                  user.inProgress.filterNot(_ == bookId)
+                  Right(user.inProgress.filterNot(_ == bookId))
 
             updatedInProgressMedia match
-              case badRequest: BadRequest => Left(badRequest)
-              case list: List[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId] =>
+              case Left(error) => Left(error)
+              case Right(list) =>
                 val updatedUser = user.copy(
                   inProgress = list
                 )
                 UserRepository.put(userId, updatedUser)
                 Right(())
-
-              case _ => Left(Unknown(500, "An unexpected error occurred"))
 
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))

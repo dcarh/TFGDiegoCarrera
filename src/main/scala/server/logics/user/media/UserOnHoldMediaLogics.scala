@@ -74,36 +74,34 @@ object UserOnHoldMediaLogics {
           else
             val updatedOnHoldMedia = mediaId match
               case tvShowId: TvShowId =>
-                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
+                if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
                 else
-                  tvShowId :: user.onHold
+                  Right(tvShowId :: user.onHold)
 
               case (tvShowId: TvShowId, seasonNumber: SeasonNumber) =>
-                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
-                else if seasonNumber.value <= 0 then BadRequest("Invalid season number")
+                if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
+                else if seasonNumber.value <= 0 then Left(BadRequest("Invalid season number"))
                 else
-                  (tvShowId, seasonNumber) :: user.onHold
+                  Right((tvShowId, seasonNumber) :: user.onHold)
 
               case videogameId: VideogameId =>
-                if videogameId.value <= 0 then BadRequest("Invalid videogame ID")
+                if videogameId.value <= 0 then Left(BadRequest("Invalid videogame ID"))
                 else
-                  videogameId :: user.onHold
+                  Right(videogameId :: user.onHold)
 
               case bookId: BookId =>
-                if bookId.value == "" then BadRequest("Invalid book ID")
+                if bookId.value == "" then Left(BadRequest("Invalid book ID"))
                 else
-                  bookId :: user.onHold
+                  Right(bookId :: user.onHold)
 
             updatedOnHoldMedia match
-              case badRequest: BadRequest => Left(badRequest)
-              case list: List[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId] =>
+              case Left(error) => Left(error)
+              case Right(list) =>
                 val updatedUser = user.copy(
                   onHold = list
                 )
                 UserRepository.put(userId, updatedUser)
                 Right(updatedUser.onHold)
-
-              case _ => Left(Unknown(500, "An unexpected error occurred"))
 
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
@@ -119,36 +117,34 @@ object UserOnHoldMediaLogics {
           else
             val updatedOnHoldMedia = mediaId match
               case tvShowId: TvShowId =>
-                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
+                if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
                 else
-                  user.onHold.filterNot(_ == tvShowId)
+                  Right(user.onHold.filterNot(_ == tvShowId))
 
               case (tvShowId: TvShowId, seasonNumber: SeasonNumber) =>
-                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
-                else if seasonNumber.value <= 0 then BadRequest("Invalid season number")
+                if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
+                else if seasonNumber.value <= 0 then Left(BadRequest("Invalid season number"))
                 else
-                  user.onHold.filterNot(_ == (tvShowId, seasonNumber))
+                  Right(user.onHold.filterNot(_ == (tvShowId, seasonNumber)))
 
               case videogameId: VideogameId =>
-                if videogameId.value <= 0 then BadRequest("Invalid videogame ID")
+                if videogameId.value <= 0 then Left(BadRequest("Invalid videogame ID"))
                 else
-                  user.onHold.filterNot(_ == videogameId)
+                  Right(user.onHold.filterNot(_ == videogameId))
 
               case bookId: BookId =>
-                if bookId.value == "" then BadRequest("Invalid book ID")
+                if bookId.value == "" then Left(BadRequest("Invalid book ID"))
                 else
-                  user.onHold.filterNot(_ == bookId)
+                  Right(user.onHold.filterNot(_ == bookId))
 
             updatedOnHoldMedia match
-              case badRequest: BadRequest => Left(badRequest)
-              case list: List[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId] =>
+              case Left(error) => Left(error)
+              case Right(list) =>
                 val updatedUser = user.copy(
                   onHold = list
                 )
                 UserRepository.put(userId, updatedUser)
                 Right(())
-
-              case _ => Left(Unknown(500, "An unexpected error occurred"))
 
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))

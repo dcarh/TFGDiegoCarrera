@@ -90,48 +90,46 @@ object UserDroppedMediaLogics {
           else
             val updatedDroppedMedia = mediaId match
               case movieId: MovieId =>
-                if movieId.value <= 0 then BadRequest("Invalid movie ID")
+                if movieId.value <= 0 then Left(BadRequest("Invalid movie ID"))
                 else
-                  movieId :: user.dropped
+                  Right(movieId :: user.dropped)
 
               case tvShowId: TvShowId =>
-                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
+                if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
                 else
-                  tvShowId :: user.dropped
+                  Right(tvShowId :: user.dropped)
 
               case (tvShowId: TvShowId, seasonNumber: SeasonNumber) =>
-                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
-                else if seasonNumber.value <= 0 then BadRequest("Invalid season number")
+                if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
+                else if seasonNumber.value <= 0 then Left(BadRequest("Invalid season number"))
                 else
-                  (tvShowId, seasonNumber) :: user.dropped
+                  Right((tvShowId, seasonNumber) :: user.dropped)
 
               case (tvShowId: TvShowId, seasonNumber: SeasonNumber, episodeNumber: EpisodeNumber) =>
-                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
-                else if seasonNumber.value <= 0 then BadRequest("Invalid season number")
-                else if episodeNumber.value <= 0 then BadRequest("Invalid episode number")
+                if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
+                else if seasonNumber.value <= 0 then Left(BadRequest("Invalid season number"))
+                else if episodeNumber.value <= 0 then Left(BadRequest("Invalid episode number"))
                 else
-                  (tvShowId, seasonNumber, episodeNumber) :: user.dropped
+                  Right((tvShowId, seasonNumber, episodeNumber) :: user.dropped)
 
               case videogameId: VideogameId =>
-                if videogameId.value <= 0 then BadRequest("Invalid videogame ID")
+                if videogameId.value <= 0 then Left(BadRequest("Invalid videogame ID"))
                 else
-                  videogameId :: user.dropped
+                  Right(videogameId :: user.dropped)
 
               case bookId: BookId =>
-                if bookId.value == "" then BadRequest("Invalid book ID")
+                if bookId.value == "" then Left(BadRequest("Invalid book ID"))
                 else
-                  bookId :: user.dropped
+                  Right(bookId :: user.dropped)
 
             updatedDroppedMedia match
-              case badRequest: BadRequest => Left(badRequest)
-              case list: List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId] =>
+              case Left(error) => Left(error)
+              case Right(list) =>
                 val updatedUser = user.copy(
                   dropped = list
                 )
                 UserRepository.put(userId, updatedUser)
                 Right(updatedUser.dropped)
-
-              case _ => Left(Unknown(500, "An unexpected error occurred"))
 
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
@@ -147,48 +145,46 @@ object UserDroppedMediaLogics {
           else
             val updatedDroppedMedia = mediaId match
               case movieId: MovieId =>
-                if movieId.value <= 0 then BadRequest("Invalid movie ID")
+                if movieId.value <= 0 then Left(BadRequest("Invalid movie ID"))
                 else
-                  user.dropped.filterNot(_ == movieId)
+                  Right(user.dropped.filterNot(_ == movieId))
 
               case tvShowId: TvShowId =>
-                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
+                if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
                 else
-                  user.dropped.filterNot(_ == tvShowId)
+                  Right(user.dropped.filterNot(_ == tvShowId))
 
               case (tvShowId: TvShowId, seasonNumber: SeasonNumber) =>
-                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
-                else if seasonNumber.value <= 0 then BadRequest("Invalid season number")
+                if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
+                else if seasonNumber.value <= 0 then Left(BadRequest("Invalid season number"))
                 else
-                  user.dropped.filterNot(_ == (tvShowId, seasonNumber))
+                  Right(user.dropped.filterNot(_ == (tvShowId, seasonNumber)))
 
               case (tvShowId: TvShowId, seasonNumber: SeasonNumber, episodeNumber: EpisodeNumber) =>
-                if tvShowId.value <= 0 then BadRequest("Invalid TV show ID")
-                else if seasonNumber.value <= 0 then BadRequest("Invalid season number")
-                else if episodeNumber.value <= 0 then BadRequest("Invalid episode number")
+                if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
+                else if seasonNumber.value <= 0 then Left(BadRequest("Invalid season number"))
+                else if episodeNumber.value <= 0 then Left(BadRequest("Invalid episode number"))
                 else
-                  user.dropped.filterNot(_ == (tvShowId, seasonNumber, episodeNumber))
+                  Right(user.dropped.filterNot(_ == (tvShowId, seasonNumber, episodeNumber)))
 
               case videogameId: VideogameId =>
-                if videogameId.value <= 0 then BadRequest("Invalid videogame ID")
+                if videogameId.value <= 0 then Left(BadRequest("Invalid videogame ID"))
                 else
-                  user.dropped.filterNot(_ == videogameId)
+                  Right(user.dropped.filterNot(_ == videogameId))
 
               case bookId: BookId =>
-                if bookId.value == "" then BadRequest("Invalid book ID")
+                if bookId.value == "" then Left(BadRequest("Invalid book ID"))
                 else
-                  user.dropped.filterNot(_ == bookId)
+                  Right(user.dropped.filterNot(_ == bookId))
 
             updatedDroppedMedia match
-              case badRequest: BadRequest => Left(badRequest)
-              case list: List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId] =>
+              case Left(error) => Left(error)
+              case Right(list) =>
                 val updatedUser = user.copy(
                   dropped = list
                 )
                 UserRepository.put(userId, updatedUser)
                 Right(())
-
-              case _ => Left(Unknown(500, "An unexpected error occurred"))
 
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
