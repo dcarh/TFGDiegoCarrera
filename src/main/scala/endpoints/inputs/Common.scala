@@ -89,6 +89,12 @@ object Common {
       
     val pathMessageId: EndpointInput[MessageId] =
       path[MessageId]("message_id")
+
+    val pathField: EndpointInput[String] =
+      path[String]("field")
+
+    val pathAction: EndpointInput[String] =
+      path[String]("action")
   }
 
   object JsonInputs {

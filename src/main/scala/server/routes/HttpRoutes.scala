@@ -11,12 +11,8 @@ import server.routes.social.MediaListsRoutes.mediaListsRoutes
 import server.routes.social.RatingsRoutes.ratingsRoutes
 import server.routes.social.RepliesRoutes.repliesRoutes
 import server.routes.social.ReviewsRoutes.reviewsRoutes
-import server.routes.user.media.UserCompletedMediaRoutes.userCompletedMediaRoutes
-import server.routes.user.media.UserDroppedMediaRoutes.userDroppedMediaRoutes
+import server.routes.user.media.UserMediaRoutes.userMediaRoutes
 import server.routes.user.media.UserFavouritesRoutes.userFavouritesRoutes
-import server.routes.user.media.UserInProgressMediaRoutes.userInProgressMediaRoutes
-import server.routes.user.media.UserOnHoldMediaRoutes.userOnHoldMediaRoutes
-import server.routes.user.media.UserPendingMediaRoutes.userPendingMediaRoutes
 import server.routes.user.network.UserNetworkRoutes.userNetworkRoutes
 import server.routes.user.social.UserEntriesRoutes.userEntriesRoutes
 import server.routes.user.social.UserLikesRoutes.userLikesRoutes
@@ -39,12 +35,8 @@ object HttpRoutes {
       ratingsRoutes <+>
       repliesRoutes <+>
       reviewsRoutes <+>
-      userCompletedMediaRoutes <+>
-      userDroppedMediaRoutes <+>
+      userMediaRoutes <+>
       userFavouritesRoutes <+>
-      userInProgressMediaRoutes <+>
-      userOnHoldMediaRoutes <+>
-      userPendingMediaRoutes <+>
       userNetworkRoutes <+>
       userEntriesRoutes <+>
       userLikesRoutes <+>
