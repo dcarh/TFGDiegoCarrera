@@ -1,16 +1,14 @@
 package server.logics.commonFunctions
 
-import cats.effect.IO
 import dummies.repositories.*
 import modelClasses.app.chatting.{Chat, Message}
 import modelClasses.app.social.*
 import modelClasses.app.user.User
-import modelClasses.errors.UserError.{BadRequest, Conflict, NotFound, Unknown, UserError}
+import modelClasses.errors.UserError.{BadRequest, Conflict, NotFound, UserError}
 import modelClasses.ids.Chatting.*
 import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TvShowId, VideogameId}
 import modelClasses.ids.Social.*
 import modelClasses.ids.User.UserId
-import utility.ClassFields.{getFieldAsList, updateField}
 
 
 object CommonFunctions {
@@ -22,9 +20,9 @@ object CommonFunctions {
       case None => Left(NotFound(s"User with ID ${userId.value} not found"))
 
 
-  def getUserAndApply[Id](userId: UserId)(id: Id, f: (User, Id) => Either[UserError, User]): Either[UserError, User] =
+  def getUserAndApply[A](userId: UserId)(elem: A, f: (User, A) => Either[UserError, User]): Either[UserError, User] =
     UserRepository.get(userId) match
-      case Some(user) => f(user, id)
+      case Some(user) => f(user, elem)
       case None if userId.value <= 0 => Left(BadRequest("Invalid user ID"))
       case None => Left(NotFound(s"User with ID ${userId.value} not found"))
         
@@ -150,12 +148,12 @@ object CommonFunctions {
           CommonFunctions.getUser(userId) match
             case Left(error) => Left(error)
             case Right(user) =>
-              val fieldAccessed = field match
-                case "completed" => user.completed
-                case "dropped" => user.dropped
-                case "inProgress" => user.inProgress
-                case "onHold" => user.onHold
-                case "pending" => user.pending
+              val (fieldAccessed, otherFields) = field match
+                case "completed" => (user.completed, List(user.dropped, user.inProgress, user.onHold, user.pending))
+                case "dropped" => (user.dropped, List(user.inProgress, user.onHold, user.pending))
+                case "inProgress" => (user.inProgress, List(user.dropped, user.onHold, user.pending))
+                case "onHold" => (user.onHold, List(user.dropped, user.inProgress, user.pending))
+                case "pending" => (user.pending, List())
 
               if fieldAccessed.contains(mediaId) then Left(Conflict(s"Media already '${field}''"))
               else
@@ -193,15 +191,38 @@ object CommonFunctions {
                   case Right(fieldList) =>
                     val (updatedUser, returnedList) = (field, fieldList) match
                       case ("completed", list: List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]) =>
-                        (user.copy(completed = list), Right(Left(list)))
+                        (user.copy(
+                          completed = list,
+                          dropped = user.dropped.filterNot(_ == mediaId),
+                          inProgress = user.inProgress.filterNot(_ == mediaId),
+                          onHold = user.onHold.filterNot(_ == mediaId),
+                          pending = user.dropped.filterNot(_ == mediaId)
+                        ), Right(Left(list)))
                       case ("dropped", list: List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]) =>
-                        (user.copy(dropped = list), Right(Left(list)))
+                        (user.copy(
+                          dropped = list,
+                          inProgress = user.inProgress.filterNot(_ == mediaId),
+                          onHold = user.onHold.filterNot(_ == mediaId),
+                          pending = user.dropped.filterNot(_ == mediaId)
+                        ), Right(Left(list)))
                       case ("inProgress", list: List[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId]) =>
-                        (user.copy(inProgress = list), Right(Right(list)))
+                        (user.copy(
+                          inProgress = list,
+                          dropped = user.dropped.filterNot(_ == mediaId),
+                          onHold = user.onHold.filterNot(_ == mediaId),
+                          pending = user.dropped.filterNot(_ == mediaId)
+                        ), Right(Right(list)))
                       case ("onHold", list: List[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId]) =>
-                        (user.copy(onHold = list), Right(Right(list)))
+                        (user.copy(
+                          onHold = list,
+                          dropped = user.dropped.filterNot(_ == mediaId),
+                          inProgress = user.inProgress.filterNot(_ == mediaId),
+                          pending = user.dropped.filterNot(_ == mediaId)
+                        ), Right(Right(list)))
                       case ("pending", list: List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]) =>
-                        (user.copy(pending = list), Right(Left(list)))
+                        (user.copy(
+                          pending = list
+                        ), Right(Left(list)))
                       case _ => throw Exception("Internal server error")
 
                     UserRepository.put(userId, updatedUser)

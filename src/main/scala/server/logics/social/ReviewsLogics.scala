@@ -14,11 +14,11 @@ import server.logics.commonFunctions.CommonFunctions
 
 object ReviewsLogics {
 
-  private val addNewReviewToUser: (User, ReviewId) => Either[UserError, User] =
-    (user, reviewId) =>
-      if !user.reviews.contains(reviewId) then
+  private val addNewReviewToUser: (User, Review) => Either[UserError, User] =
+    (user, review) =>
+      if !user.reviews.contains(review.id) then
         val updatedUser = user.copy(
-          reviews = reviewId :: user.reviews
+          reviews = review.id :: user.reviews
         )
         UserRepository.put(updatedUser.id, updatedUser)
         Right(user)
@@ -26,19 +26,19 @@ object ReviewsLogics {
       else
         Left(BadRequest("The user with the ID stored in the review already has an review with the same ID"))
 
-  private val updateUserFromReview: (User, ReviewId) => Either[UserError, User] =
-    (user, reviewId) =>
-      if user.reviews.contains(reviewId) then
+  private val updateUserFromReview: (User, Review) => Either[UserError, User] =
+    (user, review) =>
+      if user.reviews.contains(review.id) then
         Right(user)
 
       else
         Left(BadRequest("The user with the ID stored in the review doesn't own the review"))
 
-  private val removeReviewFromUser: (User, ReviewId) => Either[UserError, User] =
-    (user, reviewId) =>
-      if user.reviews.contains(reviewId) then
+  private val removeReviewFromUser: (User, Review) => Either[UserError, User] =
+    (user, review) =>
+      if user.reviews.contains(review.id) then
         val updatedUser = user.copy(
-          reviews = user.reviews.filterNot(_ == reviewId)
+          reviews = user.reviews.filterNot(_ == review.id)
         )
         UserRepository.put(updatedUser.id, updatedUser)
         Right(user)
@@ -96,7 +96,7 @@ object ReviewsLogics {
         case Some(_) => Left(Conflict(s"Review with ID ${newReview.id.value} already exists"))
         case None if newReview.id.value <= 0 => Left(BadRequest("Invalid review ID"))
         case None =>
-          CommonFunctions.getUserAndApply(newReview.userId)(newReview.id, addNewReviewToUser) match
+          CommonFunctions.getUserAndApply(newReview.userId)(newReview, addNewReviewToUser) match
             case Left(error) => Left(error)
             case Right(_) =>
               ReviewRepository.put(newReview.id, newReview)
@@ -111,7 +111,7 @@ object ReviewsLogics {
       CommonFunctions.getReview(reviewId) match
         case Left(error) => Left(error)
         case Right(existingReview) =>
-          CommonFunctions.getUserAndApply(existingReview.userId)(existingReview.id, updateUserFromReview) match
+          CommonFunctions.getUserAndApply(existingReview.userId)(existingReview, updateUserFromReview) match
             case Left(error) => Left(error)
             case Right(value) =>
               val updatedReview = existingReview.copy(
@@ -136,7 +136,7 @@ object ReviewsLogics {
       CommonFunctions.getReview(reviewId) match
         case Left(error) => Left(error)
         case Right(review) =>
-          CommonFunctions.getUserAndApply(review.userId)(review.id, removeReviewFromUser) match
+          CommonFunctions.getUserAndApply(review.userId)(review, removeReviewFromUser) match
             case Left(error) => Left(error)
             case Right(_) =>
               ReviewRepository.delete(review.id)

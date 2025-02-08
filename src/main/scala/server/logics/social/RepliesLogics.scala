@@ -13,11 +13,11 @@ import server.logics.commonFunctions.CommonFunctions
 
 object RepliesLogics {
 
-  private val addNewReplyToUser: (User, ReplyId) => Either[UserError, User] =
-    (user, replyId) =>
-      if !user.replies.contains(replyId) then
+  private val addNewReplyToUser: (User, Reply) => Either[UserError, User] =
+    (user, reply) =>
+      if !user.replies.contains(reply.id) then
         val updatedUser = user.copy(
-          replies = replyId :: user.replies
+          replies = reply.id :: user.replies
         )
         UserRepository.put(updatedUser.id, updatedUser)
         Right(user)
@@ -25,19 +25,19 @@ object RepliesLogics {
       else
         Left(BadRequest("The user with the ID stored in the reply already has an reply with the same ID"))
 
-  private val updateUserFromReply: (User, ReplyId) => Either[UserError, User] =
-    (user, replyId) =>
-      if user.replies.contains(replyId) then
+  private val updateUserFromReply: (User, Reply) => Either[UserError, User] =
+    (user, reply) =>
+      if user.replies.contains(reply.id) then
         Right(user)
 
       else
         Left(BadRequest("The user with the ID stored in the reply doesn't own the reply"))
 
-  private val removeReplyFromUser: (User, ReplyId) => Either[UserError, User] =
-    (user, replyId) =>
-      if user.replies.contains(replyId) then
+  private val removeReplyFromUser: (User, Reply) => Either[UserError, User] =
+    (user, reply) =>
+      if user.replies.contains(reply.id) then
         val updatedUser = user.copy(
-          replies = user.replies.filterNot(_ == replyId)
+          replies = user.replies.filterNot(_ == reply.id)
         )
         UserRepository.put(updatedUser.id, updatedUser)
         Right(user)
@@ -62,7 +62,7 @@ object RepliesLogics {
         case Some(_) => Left(Conflict(s"Reply with ID ${newReply.id.value} already exists"))
         case None if newReply.id.value <= 0 => Left(BadRequest("Invalid reply ID"))
         case None =>
-          CommonFunctions.getUserAndApply(newReply.userId)(newReply.id, addNewReplyToUser) match
+          CommonFunctions.getUserAndApply(newReply.userId)(newReply, addNewReplyToUser) match
             case Left(error) => Left(error)
             case Right(_) =>
               ReplyRepository.put(newReply.id, newReply)
@@ -77,7 +77,7 @@ object RepliesLogics {
       CommonFunctions.getReply(replyId) match
         case Left(error) => Left(error)
         case Right(existingReply) =>
-          CommonFunctions.getUserAndApply(existingReply.userId)(existingReply.id, updateUserFromReply) match
+          CommonFunctions.getUserAndApply(existingReply.userId)(existingReply, updateUserFromReply) match
             case Left(error) => Left(error)
             case Right(_) =>
               val updatedReply = existingReply.copy(
@@ -100,7 +100,7 @@ object RepliesLogics {
       CommonFunctions.getReply(replyId) match
         case Left(error) => Left(error)
         case Right(reply) =>
-          CommonFunctions.getUserAndApply(reply.userId)(reply.id, removeReplyFromUser) match
+          CommonFunctions.getUserAndApply(reply.userId)(reply, removeReplyFromUser) match
             case Left(error) => Left(error)
             case Right(_) =>
               ReplyRepository.delete(reply.id)

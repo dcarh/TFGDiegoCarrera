@@ -35,7 +35,6 @@ object HttpRoutes {
       ratingsRoutes <+>
       repliesRoutes <+>
       reviewsRoutes <+>
-      userMediaRoutes <+>
       userFavouritesRoutes <+>
       userNetworkRoutes <+>
       userEntriesRoutes <+>
@@ -47,5 +46,6 @@ object HttpRoutes {
       userRoutes <+>
       userProfileRoutes <+>
       userSettingsRoutes <+>
-      searchRoutes
+      searchRoutes <+>
+      userMediaRoutes
 }

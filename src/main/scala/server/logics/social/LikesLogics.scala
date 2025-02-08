@@ -13,11 +13,11 @@ import server.logics.commonFunctions.CommonFunctions
 
 object LikesLogics {
 
-  private val addNewLikeToUser: (User, LikeId) => Either[UserError, User] =
-    (user, likeId) =>
-      if !user.likes.contains(likeId) then
+  private val addNewLikeToUser: (User, Like) => Either[UserError, User] =
+    (user, like) =>
+      if !user.likes.contains(like.id) then
         val updatedUser = user.copy(
-          likes = likeId :: user.likes
+          likes = like.id :: user.likes
         )
         UserRepository.put(updatedUser.id, updatedUser)
         Right(user)
@@ -25,11 +25,11 @@ object LikesLogics {
       else
         Left(BadRequest("The user with the ID stored in the like already has an like with the same ID"))
 
-  private val removeLikeFromUser: (User, LikeId) => Either[UserError, User] =
-    (user, likeId) =>
-      if user.likes.contains(likeId) then
+  private val removeLikeFromUser: (User, Like) => Either[UserError, User] =
+    (user, like) =>
+      if user.likes.contains(like.id) then
         val updatedUser = user.copy(
-          likes = user.likes.filterNot(_ == likeId)
+          likes = user.likes.filterNot(_ == like.id)
         )
         UserRepository.put(updatedUser.id, updatedUser)
         Right(user)
@@ -53,7 +53,7 @@ object LikesLogics {
         case Some(_) => Left(Conflict(s"Like with ID ${newLike.id.value} already exists"))
         case None if newLike.id.value <= 0 => Left(BadRequest("Invalid like ID"))
         case None  =>
-          CommonFunctions.getUserAndApply(newLike.userId)(newLike.id, addNewLikeToUser) match
+          CommonFunctions.getUserAndApply(newLike.userId)(newLike, addNewLikeToUser) match
             case Left(error) => Left(error)
             case Right(_) =>
               LikeRepository.put(newLike.id, newLike)
@@ -68,7 +68,7 @@ object LikesLogics {
       CommonFunctions.getLike(likeId) match
         case Left(error) => Left(error)
         case Right(like) =>
-          CommonFunctions.getUserAndApply(like.userId)(like.id, removeLikeFromUser) match
+          CommonFunctions.getUserAndApply(like.userId)(like, removeLikeFromUser) match
             case Left(error) => Left(error)
             case Right(_) =>
               LikeRepository.delete(like.id)

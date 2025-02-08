@@ -13,11 +13,11 @@ import server.logics.commonFunctions.CommonFunctions
 
 object RatingsLogics {
 
-  private val addNewRatingToUser: (User, RatingId) => Either[UserError, User] =
-    (user, ratingId) =>
-      if !user.ratings.contains(ratingId) then
+  private val addNewRatingToUser: (User, Rating) => Either[UserError, User] =
+    (user, rating) =>
+      if !user.ratings.contains(rating.id) then
         val updatedUser = user.copy(
-          ratings = ratingId :: user.ratings
+          ratings = rating.id :: user.ratings
         )
         UserRepository.put(updatedUser.id, updatedUser)
         Right(user)
@@ -25,19 +25,19 @@ object RatingsLogics {
       else
         Left(BadRequest("The user with the ID stored in the rating already has an rating with the same ID"))
 
-  private val updateUserFromRating: (User, RatingId) => Either[UserError, User] =
-    (user, ratingId) =>
-      if user.ratings.contains(ratingId) then
+  private val updateUserFromRating: (User, Rating) => Either[UserError, User] =
+    (user, rating) =>
+      if user.ratings.contains(rating.id) then
         Right(user)
 
       else
         Left(BadRequest("The user with the ID stored in the rating doesn't own the rating"))
 
-  private val removeRatingFromUser: (User, RatingId) => Either[UserError, User] =
-    (user, ratingId) =>
-      if user.ratings.contains(ratingId) then
+  private val removeRatingFromUser: (User, Rating) => Either[UserError, User] =
+    (user, rating) =>
+      if user.ratings.contains(rating.id) then
         val updatedUser = user.copy(
-          ratings = user.ratings.filterNot(_ == ratingId)
+          ratings = user.ratings.filterNot(_ == rating.id)
         )
         UserRepository.put(updatedUser.id, updatedUser)
         Right(user)
@@ -62,7 +62,7 @@ object RatingsLogics {
         case Some(_) => Left(Conflict(s"Rating with ID ${newRating.id.value} already exists"))
         case None if newRating.id.value <= 0 => Left(BadRequest("Invalid rating ID"))
         case None =>
-          CommonFunctions.getUserAndApply(newRating.userId)(newRating.id, addNewRatingToUser) match
+          CommonFunctions.getUserAndApply(newRating.userId)(newRating, addNewRatingToUser) match
             case Left(error) => Left(error)
             case Right(_) =>
               RatingRepository.put(newRating.id, newRating)
@@ -78,7 +78,7 @@ object RatingsLogics {
       CommonFunctions.getRating(ratingId) match
         case Left(error) => Left(error)
         case Right(existingRating) =>
-          CommonFunctions.getUserAndApply(existingRating.userId)(existingRating.id, updateUserFromRating) match
+          CommonFunctions.getUserAndApply(existingRating.userId)(existingRating, updateUserFromRating) match
             case Left(error) => Left(error)
             case Right(_) =>
               val updatedRating = existingRating.copy(
@@ -99,7 +99,7 @@ object RatingsLogics {
       CommonFunctions.getRating(ratingId) match
         case Left(error) => Left(error)
         case Right(rating) =>
-          CommonFunctions.getUserAndApply(rating.userId)(rating.id, removeRatingFromUser) match
+          CommonFunctions.getUserAndApply(rating.userId)(rating, removeRatingFromUser) match
             case Left(error) => Left(error)
             case Right(_) =>
               RatingRepository.delete(rating.id)

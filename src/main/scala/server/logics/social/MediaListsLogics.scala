@@ -12,11 +12,11 @@ import server.logics.commonFunctions.CommonFunctions
 
 object MediaListsLogics {
 
-  private val addNewMediaListToUser: (User, MediaListId) => Either[UserError, User] =
-    (user, mediaListId) =>
-      if !user.lists.contains(mediaListId) then
+  private val addNewMediaListToUser: (User, MediaList) => Either[UserError, User] =
+    (user, mediaList) =>
+      if !user.lists.contains(mediaList.id) then
         val updatedUser = user.copy(
-          lists = mediaListId :: user.lists
+          lists = mediaList.id :: user.lists
         )
         UserRepository.put(updatedUser.id, updatedUser)
         Right(user)
@@ -24,7 +24,7 @@ object MediaListsLogics {
       else
         Left(BadRequest("The user with the ID stored in the media list already has an media list with the same ID"))
 
-  private val updateUserFromMediaList: (User, MediaListId) => Either[UserError, User] =
+  private val updateUserFromMediaList: (User, MediaList) => Either[UserError, User] =
     (user, mediaListId) =>
       if user.lists.contains(mediaListId) then
         Right(user)
@@ -32,11 +32,11 @@ object MediaListsLogics {
       else
         Left(BadRequest("The user with the ID stored in the mediaList doesn't own the media list"))
 
-  private val removeMediaListFromUser: (User, MediaListId) => Either[UserError, User] =
-    (user, mediaListId) =>
-      if user.lists.contains(mediaListId) then
+  private val removeMediaListFromUser: (User, MediaList) => Either[UserError, User] =
+    (user, mediaList) =>
+      if user.lists.contains(mediaList.id) then
         val updatedUser = user.copy(
-          lists = user.lists.filterNot(_ == mediaListId)
+          lists = user.lists.filterNot(_ == mediaList.id)
         )
         UserRepository.put(updatedUser.id, updatedUser)
         Right(user)
@@ -86,7 +86,7 @@ object MediaListsLogics {
         case Some(_) => Left(Conflict(s"Media list with ID ${newMediaList.id.value} already exists"))
         case None if newMediaList.id.value <= 0 => Left(BadRequest("Invalid media list ID"))
         case None =>
-          CommonFunctions.getUserAndApply(newMediaList.userId)(newMediaList.id, addNewMediaListToUser) match
+          CommonFunctions.getUserAndApply(newMediaList.userId)(newMediaList, addNewMediaListToUser) match
             case Left(error) => Left(error)
             case Right(_) =>
               MediaListRepository.put(newMediaList.id, newMediaList)
@@ -102,7 +102,7 @@ object MediaListsLogics {
       CommonFunctions.getMediaList(mediaListId) match
         case Left(error) => Left(error)
         case Right(existingMediaList) =>
-          CommonFunctions.getUserAndApply(existingMediaList.userId)(existingMediaList.id, updateUserFromMediaList) match
+          CommonFunctions.getUserAndApply(existingMediaList.userId)(existingMediaList, updateUserFromMediaList) match
             case Left(error) => Left(error)
             case Right(_) =>
               val updatedMediaList = existingMediaList.copy(
@@ -132,7 +132,7 @@ object MediaListsLogics {
       CommonFunctions.getMediaList(mediaListId) match
         case Left(error) => Left(error)
         case Right(mediaList) =>
-          CommonFunctions.getUserAndApply(mediaList.userId)(mediaListId, removeMediaListFromUser) match
+          CommonFunctions.getUserAndApply(mediaList.userId)(mediaList, removeMediaListFromUser) match
             case Left(error) => Left(error)
             case Right(_) => 
               MediaListRepository.delete(mediaList.id)
