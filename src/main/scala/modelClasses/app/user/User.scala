@@ -26,7 +26,5 @@ case class User(
                followers    : List[UserId],
                blocked      : List[UserId],
                chats        : List[ChatId],
-               archivedChats: List[ChatId],
-               stats        : UserStats,
-               settings     : UserSettings
+               archivedChats: List[ChatId]
                )

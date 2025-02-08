@@ -22,7 +22,6 @@ import server.routes.user.social.UserRepliesRoutes.userRepliesRoutes
 import server.routes.user.social.UserReviewsRoutes.userReviewsRoutes
 import server.routes.user.UserProfileRoutes.userProfileRoutes
 import server.routes.user.UserRoutes.userRoutes
-import server.routes.user.UserSettingsRoutes.userSettingsRoutes
 import server.routes.search.SearchRoutes.searchRoutes
 
 object HttpRoutes {
@@ -45,7 +44,6 @@ object HttpRoutes {
       userReviewsRoutes <+>
       userRoutes <+>
       userProfileRoutes <+>
-      userSettingsRoutes <+>
       searchRoutes <+>
       userMediaRoutes
 }

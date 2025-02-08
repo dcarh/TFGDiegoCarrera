@@ -6,7 +6,7 @@ import modelClasses.errors.UserError.*
 import modelClasses.app.chatting.{Chat, Message}
 import modelClasses.app.media.{Book, Episode, Movie, Season, TvShow, Videogame}
 import modelClasses.app.social.{Entry, Like, MediaList, Rating, Reply, Review}
-import modelClasses.app.user.{User, UserFavourites, UserProfile, UserSettings}
+import modelClasses.app.user.{User, UserFavourites, UserProfile}
 import modelClasses.ids.Chatting.{ChatId, MessageId}
 import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TvShowId, VideogameId}
 import modelClasses.ids.Social.*
@@ -87,9 +87,6 @@ object Common {
 
     val tupleOfListsOfUserIdsOutput: EndpointOutput[(List[UserId], List[UserId])] =
       jsonBody[(List[UserId], List[UserId])].description("The requested tuple of lists of user IDs")
-
-    val userSettingsOutput: EndpointOutput[UserSettings] =
-      jsonBody[UserSettings].description("The requested settings of the user")
 
     val userProfileOutput: EndpointOutput[UserProfile] =
       jsonBody[UserProfile].description("The requested profile of the user")

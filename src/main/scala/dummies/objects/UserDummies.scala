@@ -67,23 +67,7 @@ object UserDummies {
     List(
       ChatIdDummies.chatId3
     ),
-    List(),
-    UserStats(
-      7.33,
-      Time(0, 2, 0),
-      Time(0, 10, 0),
-      Time(0, 0, 0),
-      Time(0, 3, 15),
-      Time(0, 15, 15),
-      1,
-      1,
-      0,
-      0,
-      2
-    ),
-    UserSettings(
-      false
-    )
+    List()
   )
 
   val user2: User = User(
@@ -151,22 +135,6 @@ object UserDummies {
     ),
     List(
       ChatIdDummies.chatId6
-    ),
-    UserStats(
-      5.33,
-      Time(0, 0, 0),
-      Time(0, 0, 0),
-      Time(0, 17, 0),
-      Time(0, 4, 53),
-      Time(0, 21, 53),
-      0,
-      0,
-      1,
-      1,
-      2
-    ),
-    UserSettings(
-      true
     )
   )
 
@@ -218,23 +186,7 @@ object UserDummies {
     List(),
     List(),
     List(),
-    List(),
-    UserStats(
-      7,
-      Time(0, 1, 28),
-      Time(0, 0, 0),
-      Time(0, 12, 12),
-      Time(0, 0, 0),
-      Time(0, 13, 40),
-      1,
-      0,
-      1,
-      0,
-      2
-    ),
-    UserSettings(
-      false
-    )
+    List()
   )
 
   val user4: User = User(
@@ -303,23 +255,7 @@ object UserDummies {
       ChatIdDummies.chatId4,
       ChatIdDummies.chatId5
     ),
-    List(),
-    UserStats(
-      7,
-      Time(0, 1, 45),
-      Time(0, 0, 0),
-      Time(0, 20, 43),
-      Time(0, 0, 0),
-      Time(0, 22, 28),
-      1,
-      0,
-      0,
-      0,
-      1
-    ),
-    UserSettings(
-      true
-    )
+    List()
   )
 
   val user5: User = User(
@@ -376,23 +312,7 @@ object UserDummies {
     List(
       ChatIdDummies.chatId2
     ),
-    List(),
-    UserStats(
-      9.5,
-      Time(0, 0, 0),
-      Time(0, 22, 0),
-      Time(0, 0, 0),
-      Time(0, 0, 0),
-      Time(0, 22, 0),
-      2,
-      0,
-      0,
-      0,
-      2
-    ),
-    UserSettings(
-      false
-    )
+    List()
   )
 
 }

@@ -6,7 +6,7 @@ import sttp.tapir.json.circe.*
 import io.circe.generic.auto.*
 import modelClasses.app.chatting.{Chat, Message}
 import modelClasses.app.social.{Entry, Like, MediaList, Rating, Reply, Review}
-import modelClasses.app.user.{User, UserProfile, UserSettings}
+import modelClasses.app.user.{User, UserProfile}
 import modelClasses.ids.Chatting.*
 import modelClasses.ids.Media.*
 import modelClasses.ids.Social.*
@@ -125,9 +125,6 @@ object Common {
 
     val jsonProfile: EndpointInput[UserProfile] =
       jsonBody[UserProfile]
-
-    val jsonSettings: EndpointInput[UserSettings] =
-      jsonBody[UserSettings]
   }
 
 }
