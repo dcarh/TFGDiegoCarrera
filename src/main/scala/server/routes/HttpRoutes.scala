@@ -20,7 +20,6 @@ import server.routes.user.social.UserListsRoutes.userMediaListsRoutes
 import server.routes.user.social.UserRatingsRoutes.userRatingsRoutes
 import server.routes.user.social.UserRepliesRoutes.userRepliesRoutes
 import server.routes.user.social.UserReviewsRoutes.userReviewsRoutes
-import server.routes.user.UserProfileRoutes.userProfileRoutes
 import server.routes.user.UserRoutes.userRoutes
 import server.routes.search.SearchRoutes.searchRoutes
 
@@ -28,6 +27,7 @@ object HttpRoutes {
 
   val httpRoutes: HttpRoutes[IO] =
     chattingRoutes <+>
+      userRoutes <+>
       entriesRoutes <+>
       likesRoutes <+>
       mediaListsRoutes <+>
@@ -42,8 +42,6 @@ object HttpRoutes {
       userRatingsRoutes <+>
       userRepliesRoutes <+>
       userReviewsRoutes <+>
-      userRoutes <+>
-      userProfileRoutes <+>
       searchRoutes <+>
       userMediaRoutes
 }

@@ -3,7 +3,6 @@ package dummies.objects
 import modelClasses.app.user.*
 import dummies.ids.*
 import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TvShowId, VideogameId}
-import modelClasses.app.Time
 
 object UserDummies {
   val user1: User = User(
@@ -56,7 +55,6 @@ object UserDummies {
     List(
       ReplyIdDummies.replyId3
     ),
-    List(),
     List(
       UserIdDummies.userId4
     ),
@@ -119,10 +117,6 @@ object UserDummies {
       ReplyIdDummies.replyId2
     ),
     List(
-      "survival horror", 
-      "RE"
-    ),
-    List(
       UserIdDummies.userId4
     ),
     List(
@@ -179,7 +173,6 @@ object UserDummies {
     List(
       ReplyIdDummies.replyId4
     ),
-    List(),
     List(
       UserIdDummies.userId5
     ),
@@ -233,12 +226,6 @@ object UserDummies {
     ),
     List(
       ReplyIdDummies.replyId1
-    ),
-    List(
-      "walking simulator", 
-      "kojima", 
-      "roguelike", 
-      "greek mythology"
     ),
     List(
       UserIdDummies.userId1,
@@ -300,12 +287,6 @@ object UserDummies {
       LikeIdDummies.likeId3
     ),
     List(),
-    List(
-      "disney", 
-      "trauma", 
-      "anime", 
-      "mecha"
-    ),
     List(UserIdDummies.userId2),
     List(UserIdDummies.userId3),
     List(),

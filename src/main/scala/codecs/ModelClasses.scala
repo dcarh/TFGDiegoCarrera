@@ -52,9 +52,9 @@ object ModelClasses {
   }
   
   object User {
-    
+
     import modelClasses.ids.User.UserId
-    
+
     implicit val userIdCodec: Codec[String, UserId, TextPlain] =
       Codec.string.mapDecode(s => DecodeResult.Value(UserId(s.toLong)))(_.value.toString)
   }

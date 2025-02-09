@@ -145,7 +145,6 @@ object EntriesLogics {
       CommonFunctions.getEntry(entryId) match
         case Left(error) => Left(error)
         case Right(entry) => Right(entry)
-
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
@@ -157,11 +156,10 @@ object EntriesLogics {
         case None if newEntry.id.value <= 0 => Left(BadRequest("Invalid entry ID"))
         case None =>
           CommonFunctions.getUserAndApply(newEntry.userId)(newEntry, addNewEntryToUser) match
+            case Left(error) => Left(error)
             case Right(_) =>
               EntryRepository.put(newEntry.id, newEntry)
               Right(newEntry)
-
-            case Left(error) => Left(error)
 
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))

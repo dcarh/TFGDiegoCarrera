@@ -4,7 +4,7 @@ import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*
 import io.circe.generic.auto.*
-import modelClasses.app.chatting.{Chat, Message}
+import modelClasses.app.chatting.Message
 import modelClasses.app.social.{Entry, Like, MediaList, Rating, Reply, Review}
 import modelClasses.app.user.{User, UserProfile}
 import modelClasses.ids.Chatting.*
@@ -14,7 +14,7 @@ import modelClasses.ids.User.UserId
 import codecs.ModelClasses.Chatting.*
 import codecs.ModelClasses.Media.*
 import codecs.ModelClasses.Social.*
-import codecs.ModelClasses.User.*
+import codecs.ModelClasses.User.userIdCodec
 import codecs.Others.*
 import unionTypes.decoders.MediaDecodersForIDs.*
 import unionTypes.encoders.MediaEncodersForIDs.*

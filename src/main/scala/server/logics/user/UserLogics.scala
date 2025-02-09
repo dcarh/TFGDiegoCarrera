@@ -2,30 +2,127 @@ package server.logics.user
 
 import cats.effect.IO
 import dummies.repositories.UserRepository
-
-import modelClasses.app.user.User
+import modelClasses.app.user.{User, UserFavourites, UserProfile}
 import modelClasses.errors.UserError.*
 import modelClasses.ids.User.UserId
-
 import server.logics.commonFunctions.CommonFunctions
 
 object UserLogics {
+
+  private val applyProfileToUser: (User, UserProfile) => Either[UserError, User] =
+    (user, userProfile) =>
+      val allUsers = UserRepository.getAll
+      val profileWithSameEmail = allUsers.exists(_.profile.email == userProfile.email)
+      val profileWithSameUsername = allUsers.exists(_.profile.username == userProfile.username)
+
+      if profileWithSameEmail then Left(Conflict("User with same email already exists"))
+      else
+        if profileWithSameUsername then Left(Conflict("User with same username already exists"))
+        else
+          val updatedUser = user.copy(
+            profile = user.profile.copy(
+              username = userProfile.username,
+              password = userProfile.password,
+              email = userProfile.email,
+              biography = userProfile.biography,
+              location = userProfile.location
+            )
+          )
+
+          UserRepository.put(updatedUser.id, updatedUser)
+          Right(updatedUser)
+
+  val getAllUsers: Option[String] => IO[Either[UserError, List[User]]] = {
+    sortByOption =>
+      IO {
+        println("---------------------------------------------------------------------------------------------")
+        println(1)
+        val users = UserRepository.getAll
+
+        println(2)
+        val sortedUsers = sortByOption match
+          case Some("least_popular") =>
+            println(3)
+            Right(users.sortBy(_.followers.length))
+          case Some("most_popular") =>
+            println(4)
+            Right(users.sortBy(_.followers.length).reverse)
+          case Some(unknown) =>
+            println(5)
+            Left(BadRequest(s"Invalid sorting parameter: $unknown"))
+          case None =>
+            println(6)
+            Right(users)
+
+        println(7)
+        sortedUsers
+
+      }.handleError {
+        case ex: Exception =>
+          println(8)
+          Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
+      }
+  }
 
   val getUser: UserId => IO[Either[UserError, User]] =
     userId => IO {
       CommonFunctions.getUser(userId) match
         case Left(error) => Left(error)
         case Right(user) => Right(user)
-      
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-  // TODO: Puede que, lo más coherente, a la hora de crear el usuario, es que este reciba un UserProfile, en vez de un User
-  val createUser: User => IO[Either[UserError, User]] =
-    newUser => IO {
-      UserRepository.put(newUser.id, newUser)
-      Right(newUser)
+  val getProfile: UserId => IO[Either[UserError, UserProfile]] =
+    userId => IO {
+      CommonFunctions.getUser(userId) match
+        case Left(error) => Left(error)
+        case Right(user) => Right(user.profile)
+
+    }.handleError {
+      case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
+    }
+
+  val createUser: ((UserId, UserProfile)) => IO[Either[UserError, User]] =
+    (newUserId, newUserProfile) => IO {
+      UserRepository.get(newUserId) match
+        case Some(_) => Left(Conflict(s"User with ID ${newUserId.value} already exists"))
+        case None if newUserId.value <= 0 => Left(BadRequest("Invalid entry ID"))
+        case None =>
+          val emptyList = List()
+          val newUser = User(
+            id = newUserId,
+            profile = UserProfile(username = "", password = "", email = "", biography = "", location = ""),
+            favourites = UserFavourites(movie = None, tvShow = None, videogame = None, book = None),
+            completed = emptyList,
+            pending = emptyList,
+            inProgress = emptyList,
+            onHold = emptyList,
+            dropped = emptyList,
+            lists = emptyList,
+            entries = emptyList,
+            reviews = emptyList,
+            ratings = emptyList,
+            likes = emptyList,
+            replies = emptyList,
+            following = emptyList,
+            followers = emptyList,
+            blocked = emptyList,
+            chats = emptyList,
+            archivedChats = emptyList
+          )
+
+          applyProfileToUser(newUser, newUserProfile)
+
+    }.handleError {
+      case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
+    }
+
+  val editUser: ((UserId, UserProfile)) => IO[Either[UserError, User]] =
+    (userId, updatedUserProfileData) => IO {
+      CommonFunctions.getUser(userId) match
+        case Left(error) => Left(error)
+        case Right(user) => applyProfileToUser(user, updatedUserProfileData)
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
