@@ -35,31 +35,22 @@ object UserLogics {
   val getAllUsers: Option[String] => IO[Either[UserError, List[User]]] = {
     sortByOption =>
       IO {
-        println("---------------------------------------------------------------------------------------------")
-        println(1)
         val users = UserRepository.getAll
 
-        println(2)
         val sortedUsers = sortByOption match
           case Some("least_popular") =>
-            println(3)
             Right(users.sortBy(_.followers.length))
           case Some("most_popular") =>
-            println(4)
             Right(users.sortBy(_.followers.length).reverse)
           case Some(unknown) =>
-            println(5)
             Left(BadRequest(s"Invalid sorting parameter: $unknown"))
           case None =>
-            println(6)
             Right(users)
 
-        println(7)
         sortedUsers
 
       }.handleError {
         case ex: Exception =>
-          println(8)
           Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
       }
   }
