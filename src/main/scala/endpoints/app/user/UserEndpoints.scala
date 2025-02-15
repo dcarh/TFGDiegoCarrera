@@ -6,33 +6,19 @@ import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
 import modelClasses.errors.UserError.*
 import modelClasses.app.user.User
+import modelClasses.app.user.UserProfile
 import modelClasses.ids.User.UserId
 
 object UserEndpoints {
 
-  // TODO: ¿Input?
-//  val userSignUpEndpoint: PublicEndpoint[Unit, UserError, User, Any] =
-//    userBaseEndpoint(
-//      "Sign up endpoint",
-//      "With this endpoint, a person can sign up in the app. The endpoint returns the created user in case of success",
-//      "POST"
-//    )
-//      .in("sign-up")
-//      .out(UserOutputs.userOutput)
-
-  // TODO: ¿Input?
-//  val userSignInEndpoint: PublicEndpoint[Unit, UserError, User, Any] =
-//    userBaseEndpoint(
-//      "Sign in endpoint",
-//      "With this endpoint, a person can sign in in the app. The endpoint returns the user in case of success",
-//      "POST"
-//    )
-//      .in("sign-in")
-//      .out(UserOutputs.userOutput)
+  private val userProfileBaseEndpoint:
+    (String, String, String) => PublicEndpoint[UserId, UserError, Unit, Any] =
+    (name, description, method) => specificUserBaseEndpoint(name, description, method)
+      .in("profile")
 
   val getAllUsers: PublicEndpoint[Option[String], UserError, List[User], Any] =
     usersBaseEndpoint(
-      "getAllUsers",
+      "Users endpoint",
       "This endpoint returns a list of all the users in the app",
       "GET"
     )
@@ -41,25 +27,44 @@ object UserEndpoints {
 
   val getUser: PublicEndpoint[UserId, UserError, User, Any] =
     specificUserBaseEndpoint(
-      "getUser",
+      "Get user endpoint",
       "This endpoint returns the user specified by its ID",
       "GET"
     )
       .out(UserOutputs.userOutput)
 
-  val createUser: PublicEndpoint[User, UserError, User, Any] =
+  val getProfile: PublicEndpoint[UserId, UserError, UserProfile, Any] =
+    userProfileBaseEndpoint(
+      "Get user's profile endpoint" ,
+      "This endpoint returns the profile of a user",
+      "GET"
+    )
+      .out(UserOutputs.userProfileOutput)
+
+  val createUser: PublicEndpoint[(UserId, UserProfile), UserError, User, Any] =
     userBaseEndpoint(
-      "createUser",
+      "Create user endpoint",
       "This endpoint creates a user and returns it in case of success",
       "POST"
     )
+      .in(PathInputs.pathUserId)
       .in("create")
-      .in(JsonInputs.jsonUser)
+      .in(JsonInputs.jsonProfile)
+      .out(UserOutputs.userOutput)
+
+  val editUser: PublicEndpoint[(UserId, UserProfile), UserError, User, Any] =
+    specificUserBaseEndpoint(
+      "Edit user's profile endpoint" ,
+      "This endpoint allows the editing of the profile of a user",
+      "PUT"
+    )
+      .in("edit")
+      .in(JsonInputs.jsonProfile)
       .out(UserOutputs.userOutput)
 
   val deleteUser: PublicEndpoint[UserId, UserError, Unit, Any] =
     specificUserBaseEndpoint(
-      "deleteUser",
+      "Delete user endpoint",
       "This endpoint deletes a user and returns it in case of success",
       "DELETE"
     )

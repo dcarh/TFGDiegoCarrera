@@ -1,6 +1,5 @@
 package modelClasses.app.user
 
-import modelClasses.app.media.{Book, Movie, TvShow, Videogame}
 import modelClasses.ids.Media.{MovieId, TvShowId, BookId, VideogameId}
 
 case class UserFavourites(

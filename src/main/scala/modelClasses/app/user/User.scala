@@ -21,7 +21,6 @@ case class User(
                ratings      : List[RatingId],
                likes        : List[LikeId],
                replies      : List[ReplyId],
-               tags         : List[String],
                following    : List[UserId],
                followers    : List[UserId],
                blocked      : List[UserId],
