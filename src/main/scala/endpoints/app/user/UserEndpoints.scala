@@ -30,9 +30,9 @@ object UserEndpoints {
 //      .in("sign-in")
 //      .out(UserOutputs.userOutput)
 
-  val usersEndpoint: PublicEndpoint[Option[String], UserError, List[User], Any] =
+  val getAllUsers: PublicEndpoint[Option[String], UserError, List[User], Any] =
     usersBaseEndpoint(
-      "Users endpoint",
+      "getAllUsers",
       "This endpoint returns a list of all the users in the app",
       "GET"
     )
@@ -41,7 +41,7 @@ object UserEndpoints {
 
   val getUser: PublicEndpoint[UserId, UserError, User, Any] =
     specificUserBaseEndpoint(
-      "Get user endpoint",
+      "getUser",
       "This endpoint returns the user specified by its ID",
       "GET"
     )
@@ -49,7 +49,7 @@ object UserEndpoints {
 
   val createUser: PublicEndpoint[User, UserError, User, Any] =
     userBaseEndpoint(
-      "Create user endpoint",
+      "createUser",
       "This endpoint creates a user and returns it in case of success",
       "POST"
     )
@@ -59,7 +59,7 @@ object UserEndpoints {
 
   val deleteUser: PublicEndpoint[UserId, UserError, Unit, Any] =
     specificUserBaseEndpoint(
-      "Delete user endpoint",
+      "deleteUser",
       "This endpoint deletes a user and returns it in case of success",
       "DELETE"
     )

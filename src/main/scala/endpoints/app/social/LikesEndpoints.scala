@@ -16,7 +16,7 @@ object LikesEndpoints {
 
   val getLike: PublicEndpoint[LikeId, UserError, Like, Any] =
     likeBaseEndpoint(
-      "Get like endpoint", 
+      "getLike", 
       "This endpoint returns a specific like by its Id",
       "GET"
     )
@@ -25,7 +25,7 @@ object LikesEndpoints {
 
   val createLike: PublicEndpoint[Like, UserError, Like, Any] =
     likeBaseEndpoint(
-      "Create like endpoint",
+      "createLike",
       "This endpoint creates a like and returns it in case of success",
       "POST"
     )
@@ -35,7 +35,7 @@ object LikesEndpoints {
 
   val deleteLike: PublicEndpoint[LikeId, UserError, Unit, Any] =
     likeBaseEndpoint(
-      "Delete like endpoint",
+      "deleteLike",
       "This endpoint deletes a like  returns it in case of success",
       "DELETE"
     )

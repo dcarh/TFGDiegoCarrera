@@ -15,7 +15,7 @@ object UserNetworkEndpoints {
 
   val getFollowers: PublicEndpoint[UserId, UserError, List[UserId], Any] =
     specificUserBaseEndpoint(
-      "User's followers endpoint",
+      "getFollowers",
       "This endpoint returns the followers of the user",
       "GET"
     )
@@ -24,7 +24,7 @@ object UserNetworkEndpoints {
 
   val getFollowing: PublicEndpoint[UserId, UserError, List[UserId], Any] =
     specificUserBaseEndpoint(
-      "User's following endpoint",
+      "getFollowing",
       "This endpoint returns the people followed by the user",
       "GET"
     )
@@ -33,7 +33,7 @@ object UserNetworkEndpoints {
 
   val getBlocked: PublicEndpoint[UserId, UserError, List[UserId], Any] =
     specificUserBaseEndpoint(
-      "User's blocked endpoint",
+      "getBlocked",
       "This endpoint returns the people blocked by the user",
       "GET"
     )
@@ -42,7 +42,7 @@ object UserNetworkEndpoints {
 
   val followUser: PublicEndpoint[(UserId, UserId), UserError, (List[UserId], List[UserId]), Any] =
     specificUserBaseEndpoint(
-      "Follow user endpoint",
+      "followUser",
       "This endpoint allows a user to follow another user and returns the list of people followed by the user",
       "POST"
     )
@@ -52,7 +52,7 @@ object UserNetworkEndpoints {
 
   val unfollowUser: PublicEndpoint[(UserId, UserId), UserError, Unit, Any] =
     specificUserBaseEndpoint(
-      "Unfollow user endpoint",
+      "unfollowUser",
       "This endpoint allows a user to unfollow another user",
       "DELETE"
     )
@@ -61,7 +61,7 @@ object UserNetworkEndpoints {
 
   val blockUser: PublicEndpoint[(UserId, UserId), UserError, List[UserId], Any] =
     specificUserBaseEndpoint(
-      "Block user endpoint",
+      "blockUser",
       "This endpoint allows a user to block another user and returns the list of people blocked by the user",
       "POST"
     )
@@ -71,7 +71,7 @@ object UserNetworkEndpoints {
 
   val unblockUser: PublicEndpoint[(UserId, UserId), UserError, Unit, Any] =
     specificUserBaseEndpoint(
-      "Unblock user endpoint",
+      "unblockUser",
       "This endpoint allows a user to unblock another user",
       "DELETE"
     )

@@ -17,7 +17,7 @@ object MediaEndpoints {
 
   val getMovie: PublicEndpoint[MovieId, UserError, Movie, Any] =
     mediaBaseEndpoint(
-      "Get movie endpoint",
+      "getMovie",
       "This endpoint returns the movie specified by the ID introduced",
       "movie"
     )
@@ -26,7 +26,7 @@ object MediaEndpoints {
 
   val getTvShow: PublicEndpoint[TvShowId, UserError, TvShow, Any] =
     mediaBaseEndpoint(
-      "Get TV show endpoint",
+      "getTvShow",
       "This endpoint returns the TV show specified by the ID introduced",
       "tv_show"
     )
@@ -35,7 +35,7 @@ object MediaEndpoints {
 
   val getSeason: PublicEndpoint[(TvShowId, SeasonNumber), UserError, Season, Any] =
     mediaBaseEndpoint(
-      "Get season endpoint",
+      "getSeason",
       "This endpoint returns the season specified by the ID introduced",
       "tv_show"
     )
@@ -46,7 +46,7 @@ object MediaEndpoints {
 
   val getEpisode: PublicEndpoint[(TvShowId, SeasonNumber, EpisodeNumber), UserError, Episode, Any] =
     mediaBaseEndpoint(
-      "Get episode endpoint",
+      "getEpisode",
       "This endpoint returns the episode specified by the ID introduced",
       "tv_show"
     )
@@ -59,7 +59,7 @@ object MediaEndpoints {
 
   val getVideogame: PublicEndpoint[VideogameId, UserError, Videogame, Any] =
     mediaBaseEndpoint(
-      "Get videogame endpoint",
+      "getVideogame",
       "This endpoint returns the videogame specified by the ID introduced",
       "videogame"
     )
@@ -68,7 +68,7 @@ object MediaEndpoints {
 
   val getBook: PublicEndpoint[BookId, UserError, Book, Any] =
     mediaBaseEndpoint(
-      "Get book endpoint",
+      "getBook",
       "This endpoint returns the book specified by the ID introduced",
       "book"
     )

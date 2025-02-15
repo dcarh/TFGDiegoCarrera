@@ -21,7 +21,7 @@ object ReviewsEndpoints {
   
   val getAllReviews: PublicEndpoint[(Option[String], Option[List[String]]), UserError, List[Review], Any] =
     reviewsBaseEndpoint(
-      "Get reviews endpoint",
+      "getAllReviews",
       "This endpoint returns a list with all the reviews in the app",
       "GET"
     )
@@ -31,7 +31,7 @@ object ReviewsEndpoints {
 
   val getReview: PublicEndpoint[ReviewId, UserError, Review, Any] =
     reviewBaseEndpoint(
-      "Get review endpoint",
+      "getReview",
       "This endpoint returns a specific review by its Id",
       "GET"
     )
@@ -40,7 +40,7 @@ object ReviewsEndpoints {
 
   val createReview: PublicEndpoint[Review, UserError, Review, Any] =
     reviewBaseEndpoint(
-      "Create review endpoint",
+      "createReview",
       "This endpoint creates a review and returns it in case of success",
       "POST"
     )
@@ -50,7 +50,7 @@ object ReviewsEndpoints {
 
   val editReview: PublicEndpoint[(ReviewId, Review), UserError, Review, Any] =
     reviewBaseEndpoint(
-      "Edit review endpoint",
+      "editReview",
       "This endpoint allows to edit a review and returns it in case of success. Otherwise returns an error message",
       "PUT"
     )
@@ -61,7 +61,7 @@ object ReviewsEndpoints {
 
   val deleteReview: PublicEndpoint[ReviewId, UserError, Unit, Any] =
     reviewBaseEndpoint(
-      "Delete review endpoint",
+      "deleteReview",
       "This endpoint deletes a review  returns it in case of success",
       "DELETE"
     )

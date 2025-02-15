@@ -22,7 +22,7 @@ object MediaListsEndpoints {
 
   val getAllMediaLists: PublicEndpoint[Option[String], UserError, List[MediaList], Any] =
     listsBaseEndpoint(
-      "Get all media content lists endpoint", 
+      "getAllMediaLists", 
       "This endpoint returns a list with all the media content lists in the app",
       "GET"
     )
@@ -31,7 +31,7 @@ object MediaListsEndpoints {
 
   val getMediaList: PublicEndpoint[MediaListId, UserError, MediaList, Any] =
     listBaseEndpoint(
-      "Get media content list endpoint", 
+      "getMediaList", 
       "This endpoint returns a specific media content list by its ID",
       "GET"
     )
@@ -40,7 +40,7 @@ object MediaListsEndpoints {
 
   val createMediaList: PublicEndpoint[MediaList, UserError, MediaList, Any] =
     listBaseEndpoint(
-      "Create media content list endpoint", 
+      "createMediaList", 
       "This endpoint creates a media content list and returns it in case of success",
       "POST"
     )
@@ -50,7 +50,7 @@ object MediaListsEndpoints {
 
   val editMediaList: PublicEndpoint[(MediaListId, MediaList), UserError, MediaList, Any] =
     listBaseEndpoint(
-      "Edit media content list endpoint", 
+      "editMediaList", 
       "This endpoint allows to edit a media content list and returns it in case of success. Otherwise returns an error message",
       "PUT"
     )
@@ -61,7 +61,7 @@ object MediaListsEndpoints {
 
   val deleteMediaList: PublicEndpoint[MediaListId, UserError, Unit, Any] =
     listBaseEndpoint(
-      "Delete media content list endpoint",
+      "deleteMediaList",
       "This endpoint deletes a media content list and returns it in case of success",
       "DELETE"
     )

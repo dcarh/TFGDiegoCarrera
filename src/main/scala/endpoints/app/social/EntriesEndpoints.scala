@@ -21,7 +21,7 @@ object EntriesEndpoints {
   
   val getAllEntries: PublicEndpoint[(Option[String], Option[List[String]]), UserError, List[Entry], Any] =
     entriesBaseEndpoint(
-      "Get entries endpoint", 
+      "getAllEntries", 
       "This endpoint returns a list with all the entries in the app",
       "GET"
     )
@@ -31,7 +31,7 @@ object EntriesEndpoints {
 
   val getEntry: PublicEndpoint[EntryId, UserError, Entry, Any] =
     entryBaseEndpoint(
-      "Get entry endpoint", 
+      "getAllEntries", 
       "This endpoint returns a specific entry by its Id",
       "GET"
     )
@@ -40,7 +40,7 @@ object EntriesEndpoints {
   
   val createEntry: PublicEndpoint[Entry, UserError, Entry, Any] =
     entryBaseEndpoint(
-      "Create entry endpoint",
+      "createEntry",
       "This endpoint creates a entry of elements and returns it in case of success",
       "POST"
     )
@@ -50,7 +50,7 @@ object EntriesEndpoints {
 
   val editEntry: PublicEndpoint[(EntryId, Entry), UserError, Entry, Any] =
     entryBaseEndpoint(
-      "Edit entry endpoint",
+      "editEntry",
       "This endpoint allows to edit a entry and returns it in case of success. Otherwise returns an error message",
       "PUT"
     )
@@ -61,7 +61,7 @@ object EntriesEndpoints {
 
   val deleteEntry: PublicEndpoint[EntryId, UserError, Unit, Any] =
     entryBaseEndpoint(
-      "Delete entry endpoint",
+      "deleteEntry",
       "This endpoint deletes a entry and returns it in case of success",
       "DELETE"
     )

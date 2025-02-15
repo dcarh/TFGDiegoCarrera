@@ -20,7 +20,7 @@ object ExampleEndpoint {
     jsonBody[List[Long]]
 
   
-  val favouritesEndpoint: PublicEndpoint[Long, String, List[Long], Any] =
+  private val favouritesExampleEndpoint: PublicEndpoint[Long, String, List[Long], Any] =
     userBaseEndpoint
       .name("User Favourites endpoint")
       .description("This endpoint returns the favourite elements IDs of the specified user")
@@ -31,13 +31,13 @@ object ExampleEndpoint {
       .errorOut(stringBody)
 
 
-  val favouritesEndpointLogic: Long => IO[Either[String, List[Long]]] = 
+  private val favouritesExampleLogic: Long => IO[Either[String, List[Long]]] = 
     id =>
       if (id == 1) IO.pure(Right(List(502033, 61222, 113112, 12354)))
       else IO.pure(Left("Item not found"))
 
 
   val returnFavouritesRoutes: HttpRoutes[IO] =
-    Http4sServerInterpreter[IO]().toRoutes(favouritesEndpoint.serverLogic(favouritesEndpointLogic))
+    Http4sServerInterpreter[IO]().toRoutes(favouritesExampleEndpoint.serverLogic(favouritesExampleLogic))
 
 }

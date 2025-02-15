@@ -18,7 +18,7 @@ object SearchEndpoints {
 
   val searchMovie: PublicEndpoint[(String, Option[String]), UserError, List[Movie], Any] =
     searchBaseEndpoint(
-      "Search movie endpoint",
+      "searchMovie",
       "This endpoint searches any movie on the app based on text coincidence"
     )
       .in("movie")
@@ -27,7 +27,7 @@ object SearchEndpoints {
 
   val searchTVShow: PublicEndpoint[(String, Option[String]), UserError, List[TvShow], Any] =
     searchBaseEndpoint(
-      "Search TV show endpoint",
+      "searchTVShow",
       "This endpoint searches any TV show on the app based on text coincidence"
     )
       .in("tv_show")
@@ -36,7 +36,7 @@ object SearchEndpoints {
 
   val searchVideogame: PublicEndpoint[(String, Option[String]), UserError, List[Videogame], Any] =
     searchBaseEndpoint(
-      "Search videogame endpoint",
+      "searchVideogame",
       "This endpoint searches any videogame on the app based on text coincidence"
     )
       .in("videogame")
@@ -45,7 +45,7 @@ object SearchEndpoints {
 
   val searchBook: PublicEndpoint[(String, Option[String]), UserError, List[Book], Any] =
     searchBaseEndpoint(
-      "Search book endpoint",
+      "searchBook",
       "This endpoint searches any book on the app based on text coincidence"
     )
       .in("book")
@@ -54,7 +54,7 @@ object SearchEndpoints {
 
   val searchMediaList: PublicEndpoint[String, UserError, List[MediaList], Any] =
     searchBaseEndpoint(
-      "Search list endpoint",
+      "searchMediaList",
       "This endpoint searches any list on the app based on text coincidence"
     )
       .in("list")
@@ -62,7 +62,7 @@ object SearchEndpoints {
 
   val searchUser: PublicEndpoint[String, UserError, List[User], Any] =
     searchBaseEndpoint(
-      "Search user endpoint",
+      "searchUser",
       "This endpoint searches any user on the app based on text coincidence"
     )
       .in("user")

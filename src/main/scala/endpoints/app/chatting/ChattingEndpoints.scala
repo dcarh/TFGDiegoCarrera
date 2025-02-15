@@ -35,7 +35,7 @@ object ChattingEndpoints {
 
   val getChats: PublicEndpoint[(UserId, Option[String], Option[Boolean]), UserError, List[ChatId], Any] =
     chatsBaseEndpoint(
-      "Get chats endpoint",
+      "getChats",
       "This endpoint returns a list containing the IDs of the chats of the user",
       "GET"
     )
@@ -45,7 +45,7 @@ object ChattingEndpoints {
 
   val getChat: PublicEndpoint[(UserId, ChatId), UserError, Chat, Any] =
     chatBaseEndpoint(
-      "Get chat endpoint",
+      "getChat",
       "This endpoint returns a specific chat by its ID",
       "GET"
     )
@@ -53,7 +53,7 @@ object ChattingEndpoints {
 
   val archiveChat: PublicEndpoint[(UserId, ChatId), UserError, Chat, Any] =
     chatBaseEndpoint(
-      "Archive chat endpoint",
+      "archiveChat",
       "This endpoint archives a specific chat by its ID",
       "PUT"
     )
@@ -62,7 +62,7 @@ object ChattingEndpoints {
 
   val deleteChat: PublicEndpoint[(UserId, ChatId), UserError, Unit, Any] =
     chatBaseEndpoint(
-      "Delete chat endpoint",
+      "deleteChat",
       "This endpoint deletes a specific chat by its ID",
       "DELETE"
     )
@@ -70,7 +70,7 @@ object ChattingEndpoints {
 
   val getChatMessages: PublicEndpoint[(UserId, ChatId), UserError, List[MessageId], Any] =
     messagesBaseEndpoint(
-      "Get chats endpoint",
+      "getChatMessages",
       "This endpoint returns a list containing the IDs of a chat of the user",
       "GET"
     )
@@ -78,7 +78,7 @@ object ChattingEndpoints {
 
   val getMessage: PublicEndpoint[(UserId, ChatId, MessageId), UserError, Message, Any] =
     messageBaseEndpoint(
-      "Get message endpoint",
+      "getMessage",
       "This endpoint returns a specific message by its ID",
       "GET"
     )
@@ -86,7 +86,7 @@ object ChattingEndpoints {
 
   val sendMessage: PublicEndpoint[(UserId, ChatId, UserId, Message), UserError, Message, Any] =
     messagesBaseEndpoint(
-      "Send message endpoint",
+      "sendMessage",
       "This endpoint sends a specific message from one user to another user and returns it",
       "POST"
     )
@@ -97,7 +97,7 @@ object ChattingEndpoints {
 
   val deleteMessage: PublicEndpoint[(UserId, ChatId, MessageId), UserError, Unit, Any] =
     messageBaseEndpoint(
-      "Delete message endpoint",
+      "deleteMessage",
       "This endpoint deletes a specific message by its Id",
       "DELETE"
     )

@@ -17,7 +17,7 @@ object UserProfileEndpoints {
 
   val getUserProfile: PublicEndpoint[UserId, UserError, UserProfile, Any] =
     userProfileBaseEndpoint(
-      "Get user's profile endpoint" ,
+      "getUserProfile" ,
       "This endpoint returns the profile of a user",
       "GET"
     )
@@ -25,7 +25,7 @@ object UserProfileEndpoints {
 
   val editUserProfile: PublicEndpoint[(UserId, UserProfile), UserError, UserProfile, Any] =
     userProfileBaseEndpoint(
-      "Edit user's profile endpoint" ,
+      "editUserProfile" ,
       "This endpoint allows the editing of the profile of a user",
       "PUT"
     )

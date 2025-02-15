@@ -16,7 +16,7 @@ object RepliesEndpoints {
 
   val getReply: PublicEndpoint[ReplyId, UserError, Reply, Any] =
     replyBaseEndpoint(
-      "Get reply endpoint",
+      "getReply",
       "This endpoint returns a specific reply by its Id",
       "GET"
     )
@@ -25,7 +25,7 @@ object RepliesEndpoints {
 
   val createReply: PublicEndpoint[Reply, UserError, Reply, Any] =
     replyBaseEndpoint(
-      "Create reply endpoint",
+      "createReply",
       "This endpoint creates a reply and returns it in case of success",
       "POST"
     )
@@ -35,7 +35,7 @@ object RepliesEndpoints {
 
   val editReply: PublicEndpoint[(ReplyId, Reply), UserError, Reply, Any] =
     replyBaseEndpoint(
-      "Edit reply endpoint",
+      "editReply",
       "This endpoint allows to edit a reply and returns it in case of success. Otherwise returns an error message",
       "PUT"
     )
@@ -46,7 +46,7 @@ object RepliesEndpoints {
 
   val deleteReply: PublicEndpoint[ReplyId, UserError, Unit, Any] =
     replyBaseEndpoint(
-      "Delete reply endpoint",
+      "deleteReply",
       "This endpoint deletes a reply returns it in case of success",
       "DELETE"
     )
