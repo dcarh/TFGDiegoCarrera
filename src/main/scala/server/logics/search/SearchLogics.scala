@@ -1,4 +1,4 @@
-package server.logics
+package server.logics.search
 
 import cats.effect.IO
 import clients.{GoogleBooksClient, IGDBClient, TMDBClient}
@@ -10,11 +10,11 @@ import modelClasses.app.media.{Book, Movie, TvShow, Videogame}
 import modelClasses.app.social.MediaList
 import modelClasses.app.user.User
 import modelClasses.errors.UserError.*
+import modelClasses.googleBooks.BooksRequests.RequestedBook
 import modelClasses.ids.Media.{BookId, MovieId, TvShowId, VideogameId}
+import modelClasses.igdb.VideogameRequests.{RequestedVideogame, VideogameAllFields}
 import modelClasses.tmdb.MovieRequests.RequestedMovie
 import modelClasses.tmdb.TVShowRequests.RequestedTVShow
-import modelClasses.igdb.VideogameRequests.{RequestedVideogame, VideogameAllFields}
-import modelClasses.googleBooks.BooksRequests.RequestedBook
 
 object SearchLogics {
 
@@ -122,7 +122,7 @@ object SearchLogics {
           val sortedVideogames = sortByOption match {
             case Some("oldest") => Right(listOfVideogames.sortBy(_.firstReleaseDate))
             case Some("newest") => Right(listOfVideogames.sortBy(_.firstReleaseDate).reverse)
-            case None => Right(listOfVideogames)
+            case _ => Right(listOfVideogames)
           }
           IO(sortedVideogames)
 

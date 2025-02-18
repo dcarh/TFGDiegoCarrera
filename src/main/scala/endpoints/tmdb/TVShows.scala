@@ -12,7 +12,7 @@ object TVShows {
 
   val searchTvShowsEndpoint: PublicEndpoint[(String, String), UserError, List[RequestedTVShow], Any] =
     Base.searchBaseEndpoint(
-        "Search movies in TMDB",
+        "Search TV shows in TMDB",
         "This endpoint returns a list of movies from TMDB API by their title"
       )
       .out(jsonRequestedTvShowsListOut)

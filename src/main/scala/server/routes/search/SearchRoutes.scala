@@ -4,7 +4,7 @@ import cats.effect.IO
 import cats.implicits.toSemigroupKOps
 import endpoints.app.search.SearchEndpoints
 import org.http4s.HttpRoutes
-import server.logics.SearchLogics
+import server.logics.search.SearchLogics
 import sttp.tapir.server.http4s.Http4sServerInterpreter
 
 object SearchRoutes {
