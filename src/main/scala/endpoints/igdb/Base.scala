@@ -23,7 +23,7 @@ object Base {
   val igdbBaseEndpoint:
     (String, String, String) => PublicEndpoint[(String, String, String, String), UserError, Unit, Any] =
     (name, description, path) =>
-      httpMethodEndpoint(name, description, path, "POST")
+      httpMethodEndpoint(name, description, path, "POST_IGDB")
         .in(Headers.accept)
         .in(Headers.clientId)
         .in(Headers.authorization)

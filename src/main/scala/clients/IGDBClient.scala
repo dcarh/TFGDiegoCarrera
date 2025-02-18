@@ -8,7 +8,7 @@ import org.http4s.ember.client.EmberClientBuilder
 import sttp.tapir.*
 import sttp.tapir.DecodeResult
 import sttp.tapir.client.http4s.Http4sClientInterpreter
-import modelClasses.errors.UserError._
+import modelClasses.errors.UserError.*
 import modelClasses.ids.Media.VideogameId
 import scala.concurrent.duration._
 //import retry._
@@ -19,7 +19,7 @@ class IGDBClient {
 
   private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
 
-  private val responseMaxSize = 1024 * 32576 * 32
+  private val responseMaxSize = 1024 * 32576 * 64
 
   private val headerAccept = "application/json"
   private val headerClientID = "qn2w238rb9gpxxpiv546tgg9th31mk"
@@ -98,6 +98,8 @@ class IGDBClient {
                   IO.pure(Left(BadRequest("Request failed")))
             }
           } yield result
+
+        case badRequest: BadRequest => IO.pure(Left(BadRequest(badRequest.what)))
       }
     }.handleErrorWith { error =>
       IO.pure(println(s"An unexpected error occurred: ${error.getMessage}")).as(Left(Unknown(500, "An unexpected error occurred")))
