@@ -23,7 +23,7 @@ class IGDBClient {
 
   private val headerAccept = "application/json"
   private val headerClientID = "qn2w238rb9gpxxpiv546tgg9th31mk"
-  private val headerAuthorization = "Bearer xss4i4buto7alt34th56mt9wwrjh12"
+  private val headerAuthorization = "Bearer 0bbvtu41ss3duzr13wv4xje3fh59vk"
 
   def executeRequest[I, O](
                             endpoint: PublicEndpoint[I, UserError, O, Any],

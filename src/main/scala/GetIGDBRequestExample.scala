@@ -8,7 +8,7 @@ object GetIGDBRequestExample extends IOApp {
   private val igdbClient = IGDBClient()
 
   override def run(args: List[String]): IO[ExitCode] = {
-    igdbClient.executeRequest(Videogames.requestVideogameAllFieldsEndpoint, VideogameId(19686)).flatMap {
+    igdbClient.executeRequest(Videogames.requestVideogameEndpoint, VideogameId(19686)).flatMap {
       case Right(resource) =>
         IO(println(s"Successfully retrieved resource: $resource")).as(ExitCode.Success)
       case Left(error) =>

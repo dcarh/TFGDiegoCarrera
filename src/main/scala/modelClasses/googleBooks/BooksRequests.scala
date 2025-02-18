@@ -4,7 +4,10 @@ import io.circe.generic.auto.*
 
 object BooksRequests {
 
-  case class RequestedBook(id: String)
+  case class RequestedBook(
+                            id: String,
+                            volumeInfo: VolumeInfo
+                          )
   
   case class RequestedBookSearch(kind: String, totalItems: Long)
 
