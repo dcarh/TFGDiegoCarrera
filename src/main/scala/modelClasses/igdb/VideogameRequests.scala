@@ -13,53 +13,53 @@ object VideogameRequests {
 
   case class VideogameAllFields(
                                id: Long,
-                               age_ratings: List[Long],
-                               aggregated_rating: Option[Double],             // Opcional y me da igual
-                               aggregated_rating_count: Option[Long],         // Opcional y me da igual
-                               alternative_names: List[Long],                 // Me da igual
-                               artworks: List[Long],                          // Me da igual
-                               bundles: List[Long],                           // Me da igual
-                               category: Long,
-                               collection: Option[Long],                      // Opcional
-                               cover: Long,                                   // Me da igual
-                               created_at: Long,                              // Me da igual
-                               dlcs: Option[List[Long]],                      // Opcional
-                               external_games: List[Long],
-                               first_release_date: Long,
-                               follows: Long,                                 // Me da igual
-                               franchises: List[Long],
-                               game_engines: List[Long],
-                               game_modes: List[Long],
-                               genres: List[Long],
-                               hypes: Long,                                   // Me da igual
-                               involved_companies: List[Long],
-                               keywords: List[Long],                          // Me da igual
+                               age_ratings: Option[List[Long]],
+                               aggregated_rating: Option[Double],             // Me da igual
+                               aggregated_rating_count: Option[Long],         // Me da igual
+                               alternative_names: Option[List[Long]],         // Me da igual
+                               artworks: Option[List[Long]],                  // Me da igual
+                               bundles: Option[List[Long]],                   // Me da igual
+                               category: Option[Long],
+                               collection: Option[Long],                     
+                               cover: Option[Long],                           // Me da igual
+                               created_at: Option[Long],                      // Me da igual
+                               dlcs: Option[List[Long]],                     
+                               external_games: Option[List[Long]],
+                               first_release_date: Option[Long],
+                               follows: Option[Long],                         // Me da igual
+                               franchises: Option[List[Long]],
+                               game_engines: Option[List[Long]],
+                               game_modes: Option[List[Long]],
+                               genres: Option[List[Long]],
+                               hypes: Option[Long],                           // Me da igual
+                               involved_companies: Option[List[Long]],
+                               keywords: Option[List[Long]],                  // Me da igual
                                name: String,
-                               parent_game: Option[Long],                     // Opcional
-                               platforms: List[Long],
-                               player_perspectives: List[Long],
-                               rating: List[Double],                          // Me da igual 
-                               rating_count: Long,                            // Me da igual
-                               release_dates: List[Long],                     // Me da igual 
-                               screenshots: List[Long],                       // Me da igual
-                               similar_games: List[Long], 
-                               slug: String,                                  // Me da igual (¿?)
-                               standalone_expansions: Option[List[Long]],      // Opcional
-                               storyline: String,
-                               summary: String,
-                               tags: List[Long],                              // Me da igual
-                               themes: List[Long],
-                               total_rating: Double,                          // Me da igual
-                               total_rating_count: Long,                      // Me da igual
-                               updated_at: Long,                              // Me da igual
-                               url: String,                                   // Me da igual
-                               videos: List[Long],                            // Me da igual
-                               websites: List[Long],                          // Me da igual
-                               checksum: String,                              // Me da igual
-                               remakes: List[Long], 
-                               language_supports: List[Long],                 // Me da igual
-                               game_localizations: List[Long],                // Me da igual
-                               collections: List[Long]                        // Me da igual
+                               parent_game: Option[Long],
+                               platforms: Option[List[Long]],
+                               player_perspectives: Option[List[Long]],
+                               rating: Option[Double],                        // Me da igual
+                               rating_count: Option[Long],                    // Me da igual
+                               release_dates: Option[List[Long]],             // Me da igual
+                               screenshots: Option[List[Long]],               // Me da igual
+                               similar_games: Option[List[Long]],
+                               slug: Option[String],                          // Me da igual (¿?)
+                               standalone_expansions: Option[List[Long]],     
+                               storyline: Option[String],
+                               summary: Option[String],
+                               tags: Option[List[Long]],                      // Me da igual
+                               themes: Option[List[Long]],
+                               total_rating: Option[Double],                  // Me da igual
+                               total_rating_count: Option[Long],              // Me da igual
+                               updated_at: Option[Long],                      // Me da igual
+                               url: Option[String],                           // Me da igual
+                               videos: Option[List[Long]],                    // Me da igual
+                               websites: Option[List[Long]],                  // Me da igual
+                               checksum: Option[String],                      // Me da igual
+                               remakes: Option[List[Long]],
+                               language_supports: Option[List[Long]],         // Me da igual
+                               game_localizations: Option[List[Long]],        // Me da igual
+                               collections: Option[List[Long]]                // Me da igual
                                )
 
 }

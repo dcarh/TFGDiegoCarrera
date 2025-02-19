@@ -44,7 +44,7 @@ class IGDBClient {
       val result = (endpoint, resourceId) match {
 
         case (endpoint: PublicEndpoint[(String, String, String, String), _, _, _], id: VideogameId) =>
-          val bodyQuery = "fields id, category, name, url;where id = " + id.value + ";sort first_release_date desc;limit 100;"
+          val bodyQuery = "fields *;where id = " + id.value + ";sort first_release_date desc;limit 100;"
           println("Videogame requested")
           val (userRequest, parseResponse) =
             Http4sClientInterpreter[IO]()
@@ -53,7 +53,7 @@ class IGDBClient {
           IO.pure(userRequest, parseResponse)
 
         case (endpoint: PublicEndpoint[(String, String, String, String), _, _, _], name: String) =>
-          val bodyQuery = "fields id, category, name, url;where name ~ \"" + name + "\";sort first_release_date desc;limit 100;"
+          val bodyQuery = "fields *;where name ~ \"" + name + "\";sort first_release_date desc;limit 100;"
           println("Videogame requested")
           val (userRequest, parseResponse) =
             Http4sClientInterpreter[IO]()
