@@ -116,7 +116,7 @@ class TMDBClient {
                       }
                     case Left(error) =>
                       IO(println(s"Failed to parse response: ${error.toString}")) >>
-                        IO.pure(Left(Unknown(500, "Failed to parse response")))
+                        IO.pure(Left(Unknown(500, s"Failed to parse response ${error.toString}")))
                   }
               case Left(error) =>
                 IO(println(s"Request failed")) >>

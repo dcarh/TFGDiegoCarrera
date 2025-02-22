@@ -9,10 +9,10 @@ case class TvShow(
 //                   cast               : List[(String, String)], Temporal (23/12/2024)
 //                   creator            : String, Temporal
 //                   episodeRuntime     : Int, Temporal
-                   firstAirDate       : String,
+                   firstAirDate       : Option[String],
 //                   genres             : List[(Int, String)], Temporal (23/12/2024)
                    id                 : TvShowId,
-                   lastAirDate        : String,
+                   lastAirDate        : Option[String],
                    numberOfEpisodes   : Long,
                    numberOfSeasons    : Long,
                    overview           : String,

@@ -1,15 +1,15 @@
 import cats.effect.*
 import clients.TMDBClient
-import endpoints.tmdb.{Movies, TVShows, Seasons, Episodes}
-import modelClasses.app.media.{Movie, TvShow, Season, Episode}
-import modelClasses.ids.Media.{MovieId, TvShowId}
+import endpoints.tmdb.{Episodes, Movies, Seasons, TVShows}
+import modelClasses.app.media.{Episode, Movie, Season, TvShow}
+import modelClasses.ids.Media.{EpisodeNumber, MovieId, SeasonNumber, TvShowId}
 
 object GetTMDBRequestExample extends IOApp {
 
   private val tmdbClient = TMDBClient()
 
   override def run(args: List[String]): IO[ExitCode] = {
-    tmdbClient.executeRequest(Movies.requestedSimilarMoviesEndpoint, MovieId(550)).flatMap {
+    tmdbClient.executeRequest(Episodes.requestEpisodeEndpoint, (TvShowId(244623), SeasonNumber(1), EpisodeNumber(1))).flatMap {
       case Right(resource) =>
         IO(println(s"Successfully retrieved resource: $resource")).as(ExitCode.Success)
       case Left(error) =>

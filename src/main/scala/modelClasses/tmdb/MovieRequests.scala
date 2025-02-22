@@ -2,39 +2,64 @@ package modelClasses.tmdb
 
 import io.circe.generic.auto.*
 
+import modelClasses.tmdb.Common.*
+
 object MovieRequests {
 
   case class RequestedMovie(
-                             budget: Long,
-                             // genres: List[Map[String, String | Long]], Quitado temporalmente
-                             id: Long,
-                             overview: String,
-                             // production_companies: List[Map[String, String | Long]], Quitado temporalmente
-                             // production_countries: List[Map[String, String]],  Quitado temporalmente
-                             release_date: String,
-                             revenue: Long,
-                             runtime: Long,
-                             status: String,
-                             title: String
+                              adult: Boolean,
+                              backdrop_path: Option[String],
+                              belongs_to_collection: Option[Collection],
+                              budget: Long,
+                              genres: List[Genre],
+                              homepage: String,
+                              id: Long,
+                              imdb_id: String,
+                              origin_country: Option[List[String]],
+                              original_language: String,
+                              original_title: String,
+                              overview: String,
+                              popularity: Double,
+                              poster_path: Option[String],
+                              production_companies: List[ProductionCompany],
+                              production_countries: List[ProductionCountry],
+                              release_date: Option[String],
+                              revenue: Long,
+                              runtime: Option[Long],
+                              spoken_languages: List[SpokenLanguage],
+                              status: String,
+                              tagline: String,
+                              title: String,
+                              video: Boolean,
+                              vote_average: Double,
+                              vote_count: Int
                            )
 
+  case class Collection(
+                          id: Long,
+                          name: String,
+                          poster_path: Option[String],
+                          backdrop_path: Option[String]
+                       )
+
   case class RequestedSimilarMovies(
-                                    page: Long,          // Prueba, quitar cuando se vaya a implementar cliente definitivo
-                                    total_pages: Long,   // Prueba, quitar cuando se vaya a implementar cliente definitivo
-                                    total_results: Long, // Prueba, quitar cuando se vaya a implementar cliente definitivo
-                                    // results: List[Map[String, String | Long | Double | Boolean | List[Long]]]  Quitado temporalmente
+                                    page: Long,
+                                    results: List[Results],
+                                    total_pages: Long,
+                                    total_results: Long
                                    )
   
   case class RequestedRecommendedMovies(
-                                        page: Long,          // Prueba, quitar cuando se vaya a implementar cliente definitivo
-                                        total_pages: Long,   // Prueba, quitar cuando se vaya a implementar cliente definitivo
-                                        total_results: Long, // Prueba, quitar cuando se vaya a implementar cliente definitivo
-                                        // results: List[Map[String, String | Long | Double | Boolean | List[Long]]] Quitado temporalmente
+                                        page: Long,
+                                        results: List[Results],
+                                        total_pages: Long,
+                                        total_results: Long
                                        )
   
   case class RequestedCreditsForMovie(
-                                       id: Long,  // Prueba, quitar cuando se vaya a implementar cliente definitivo                               
-                                       // cast: List[Map[String, String | Long | Double | Boolean]], Quitado temporalmente
-                                       // crew: List[Map[String, String | Long | Double | Boolean]]  Quitado temporalmente
+                                       id: Long,
+                                       cast: List[Member],
+                                       crew: List[Member]
                                      )
+
 }

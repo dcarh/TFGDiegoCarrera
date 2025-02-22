@@ -1,24 +1,29 @@
 package modelClasses.tmdb
 
 import io.circe.generic.auto.*
+import modelClasses.tmdb.Common.Member
 
 object EpisodeRequests {
 
   case class RequestedEpisode(
-                               air_date: String,
-                               //crew: List[Map[String, String | Long | Double | Boolean]],        Quitado temporalmente
-                               //guest_stars: List[Map[String, String | Long | Double | Boolean]], Quitado temporalmente
+                               air_date: Option[String],
+                               crew: List[Member],
                                episode_number: Long,
-                               id: Long,
+                               guest_stars: List[Member],
                                name: String,
                                overview: String,
-                               runtime: Long,
-                               season_number: Long
+                               id: Option[Long],
+                               production_code: Option[String],
+                               runtime: Option[Long],
+                               season_number: Long,
+                               still_path: Option[String],
+                               vote_average: Double,
+                               vote_count: Int
                              )
 
   case class RequestedCreditsForEpisode(
-                                         id: Long, // Prueba, quitar cuando se vaya a implementar cliente definitivo
-                                         // cast: List[Map[String, String | Long | Double | Boolean]], Quitado temporalmente
-                                         // crew: List[Map[String, String | Long | Double | Boolean]]  Quitado temporalmente
+                                         id: Long,
+                                         cast: List[Member],
+                                         crew: List[Member]
                                        )
 }

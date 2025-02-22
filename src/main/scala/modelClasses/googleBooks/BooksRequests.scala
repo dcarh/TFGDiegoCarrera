@@ -28,7 +28,7 @@ object BooksRequests {
   case class VolumeInfo(
                        title: String,
                        subtitle: Option[String],
-                       authors: List[String],
+                       authors: Option[List[String]],
                        publisher: Option[String],
                        publishedDate: Option[String],
                        description: Option[String]

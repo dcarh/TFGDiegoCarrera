@@ -36,7 +36,8 @@ object SearchLogics {
               runtime = requestedMovie.runtime,
               status = requestedMovie.status,
               title = requestedMovie.title,
-              year = requestedMovie.release_date.split("-")(0)
+              year = "2025"
+//              year = requestedMovie.release_date.split("-")(0) TODO: Para después
             )
           }
 
@@ -71,7 +72,8 @@ object SearchLogics {
                 overview = requestedTvShow.overview,
                 status = requestedTvShow.status,
                 title = requestedTvShow.name,
-                year = requestedTvShow.first_air_date.split("-")(0) // Extraer el año de release_date
+                year = "2025"
+//                year = requestedTvShow.first_air_date.split("-")(0) // Extraer el año de release_date TODO: Ya gestionaré esto
               )
           )
           val sortedTvShows = sortByOption match {
