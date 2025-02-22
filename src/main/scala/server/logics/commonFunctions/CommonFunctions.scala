@@ -6,7 +6,7 @@ import modelClasses.app.social.*
 import modelClasses.app.user.User
 import modelClasses.errors.UserError.{BadRequest, Conflict, NotFound, UserError}
 import modelClasses.ids.Chatting.*
-import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TvShowId, VideogameId}
+import modelClasses.ids.Media.{BookId, TvEpisodeNumber, MovieId, TvSeasonNumber, TvShowId, VideogameId}
 import modelClasses.ids.Social.*
 import modelClasses.ids.User.UserId
 

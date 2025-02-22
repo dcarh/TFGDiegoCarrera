@@ -20,7 +20,7 @@ object UserMediaEndpoints {
     PublicEndpoint[
       (UserId, String, Option[String], Option[List[String]]), 
       UserError, 
-      List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId],
+      List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId],
       Any] =
     specificUserBaseEndpoint(
         "getAllMedia",
@@ -33,7 +33,7 @@ object UserMediaEndpoints {
         .out(MediaOutputs.listOfAllMediaIdsOutput)
 
   val addMovie:
-    PublicEndpoint[(UserId, String, MovieId), UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId], Any] =
+    PublicEndpoint[(UserId, String, MovieId), UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId], Any] =
       userMediaBaseEndpoint(
         "addMovie",
         "This endpoint adds a movie to a media content list from the fields of the user",
@@ -44,7 +44,7 @@ object UserMediaEndpoints {
         .out(MediaOutputs.listOfAllMediaIdsOutput)
 
   val addTvShow:
-    PublicEndpoint[(UserId, String, TvShowId), UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId], Any] =
+    PublicEndpoint[(UserId, String, TvShowId), UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId], Any] =
       userMediaBaseEndpoint(
         "addTvShow",
         "This endpoint adds a TV show to a media content list from the fields of the user",
@@ -55,7 +55,7 @@ object UserMediaEndpoints {
         .out(MediaOutputs.listOfAllMediaIdsOutput)
 
   val addSeason:
-    PublicEndpoint[(UserId, String, TvShowId, SeasonNumber), UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId], Any] =
+    PublicEndpoint[(UserId, String, TvShowId, TvSeasonNumber), UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId], Any] =
       userMediaBaseEndpoint(
         "addSeason",
         "This endpoint adds a season to a media content list from the fields of the user",
@@ -63,11 +63,11 @@ object UserMediaEndpoints {
       )
         .in("add_season")
         .in(PathInputs.pathTvShowId)
-        .in(PathInputs.pathSeasonNumber)
+        .in(PathInputs.pathTvSeasonNumber)
         .out(MediaOutputs.listOfAllMediaIdsOutput)
 
   val addEpisode:
-    PublicEndpoint[(UserId, String, TvShowId, SeasonNumber, EpisodeNumber), UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId], Any] =
+    PublicEndpoint[(UserId, String, TvShowId, TvSeasonNumber, TvEpisodeNumber), UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId], Any] =
       userMediaBaseEndpoint(
         "addEpisode",
         "This endpoint adds a episode to a media content list from the fields of the user",
@@ -75,12 +75,12 @@ object UserMediaEndpoints {
       )
         .in("add_episode")
         .in(PathInputs.pathTvShowId)
-        .in(PathInputs.pathSeasonNumber)
-        .in(PathInputs.pathEpisodeNumber)
+        .in(PathInputs.pathTvSeasonNumber)
+        .in(PathInputs.pathTvEpisodeNumber)
         .out(MediaOutputs.listOfAllMediaIdsOutput)
 
   val addVideogame:
-    PublicEndpoint[(UserId, String, VideogameId), UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId], Any] =
+    PublicEndpoint[(UserId, String, VideogameId), UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId], Any] =
       userMediaBaseEndpoint(
         "addVideogame",
         "This endpoint adds a videogame to a media content list from the fields of the user",
@@ -91,7 +91,7 @@ object UserMediaEndpoints {
         .out(MediaOutputs.listOfAllMediaIdsOutput)
 
   val addBook:
-    PublicEndpoint[(UserId, String, BookId), UserError, List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId], Any] =
+    PublicEndpoint[(UserId, String, BookId), UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId], Any] =
       userMediaBaseEndpoint(
         "addBook",
         "This endpoint adds a book to a media content list from the fields of the user",
@@ -119,7 +119,7 @@ object UserMediaEndpoints {
       .in("delete_tv_show")
       .in(PathInputs.pathTvShowId)
 
-  val deleteSeason: PublicEndpoint[(UserId, String, TvShowId, SeasonNumber), UserError, Unit, Any] =
+  val deleteSeason: PublicEndpoint[(UserId, String, TvShowId, TvSeasonNumber), UserError, Unit, Any] =
     userMediaBaseEndpoint(
       "deleteSeason",
       "This endpoint deletes a season from a media content list from the fields of the user",
@@ -127,9 +127,9 @@ object UserMediaEndpoints {
     )
       .in("delete_season")
       .in(PathInputs.pathTvShowId)
-      .in(PathInputs.pathSeasonNumber)
+      .in(PathInputs.pathTvSeasonNumber)
 
-  val deleteEpisode: PublicEndpoint[(UserId, String, TvShowId, SeasonNumber, EpisodeNumber), UserError, Unit, Any] =
+  val deleteEpisode: PublicEndpoint[(UserId, String, TvShowId, TvSeasonNumber, TvEpisodeNumber), UserError, Unit, Any] =
     userMediaBaseEndpoint(
       "deleteEpisode",
       "This endpoint deletes a episode from a media content list from the fields of the user",
@@ -137,8 +137,8 @@ object UserMediaEndpoints {
     )
       .in("delete_episode")
       .in(PathInputs.pathTvShowId)
-      .in(PathInputs.pathSeasonNumber)
-      .in(PathInputs.pathEpisodeNumber)
+      .in(PathInputs.pathTvSeasonNumber)
+      .in(PathInputs.pathTvEpisodeNumber)
 
   val deleteVideogame: PublicEndpoint[(UserId, String, VideogameId), UserError, Unit, Any] =
     userMediaBaseEndpoint(

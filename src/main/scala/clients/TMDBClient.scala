@@ -9,7 +9,7 @@ import sttp.tapir.*
 import sttp.tapir.DecodeResult
 import sttp.tapir.client.http4s.Http4sClientInterpreter
 import modelClasses.errors.UserError.*
-import modelClasses.ids.Media.{EpisodeNumber, MovieId, SeasonNumber, TvShowId}
+import modelClasses.ids.Media.{TvEpisodeNumber, MovieId, TvSeasonNumber, TvShowId}
 import modelClasses.tmdb.MovieRequests.RequestedMovie
 
 import scala.concurrent.duration.*
@@ -27,8 +27,8 @@ class TMDBClient {
                                resource:
                                  MovieId |
                                  TvShowId |
-                                 (TvShowId, SeasonNumber) |
-                                 (TvShowId, SeasonNumber, EpisodeNumber) |
+                                 (TvShowId, TvSeasonNumber) |
+                                 (TvShowId, TvSeasonNumber, TvEpisodeNumber) |
                                  String
                              ): IO[Either[UserError, O]] = {
 
@@ -58,8 +58,8 @@ class TMDBClient {
           IO.pure(userRequest, parseResponse)
 
         case (
-          endpoint: PublicEndpoint[(String, TvShowId, SeasonNumber), _, _, _],
-          seasonNumber: (TvShowId, SeasonNumber)
+          endpoint: PublicEndpoint[(String, TvShowId, TvSeasonNumber), _, _, _],
+          seasonNumber: (TvShowId, TvSeasonNumber)
           ) =>
           println("Season requested")
             val (userRequest, parseResponse) =
@@ -69,8 +69,8 @@ class TMDBClient {
             IO.pure(userRequest, parseResponse)
 
         case (
-          endpoint: PublicEndpoint[(String, TvShowId, SeasonNumber, EpisodeNumber), _, _, _],
-          episodeNumber: (TvShowId, SeasonNumber, EpisodeNumber)
+          endpoint: PublicEndpoint[(String, TvShowId, TvSeasonNumber, TvEpisodeNumber), _, _, _],
+          episodeNumber: (TvShowId, TvSeasonNumber, TvEpisodeNumber)
           ) =>
             println("Episode requested")
             val (userRequest, parseResponse) =

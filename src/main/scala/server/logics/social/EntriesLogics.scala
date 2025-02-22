@@ -5,7 +5,7 @@ import dummies.repositories.{EntryRepository, RatingRepository, UserRepository}
 import modelClasses.app.social.Entry
 import modelClasses.app.user.User
 import modelClasses.errors.UserError.*
-import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TvShowId, VideogameId}
+import modelClasses.ids.Media.{BookId, TvEpisodeNumber, MovieId, TvSeasonNumber, TvShowId, VideogameId}
 import modelClasses.ids.Social.EntryId
 import modelClasses.ids.User.UserId
 import server.logics.commonFunctions.CommonFunctions
@@ -44,7 +44,7 @@ object EntriesLogics {
       entry.onHold match
         case Some(boolean) if boolean =>
           entry.mediaId match
-            case id: (TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId) =>
+            case id: (TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId) =>
               user.copy(
                 onHold = id :: user.onHold,
                 dropped = user.dropped.filterNot(_ == entry.mediaId),
@@ -105,8 +105,8 @@ object EntriesLogics {
               entry => entry.mediaId match
                 case _: MovieId => categories.contains("movie")
                 case _: TvShowId => categories.contains("tv_show")
-                case (_: TvShowId, _: SeasonNumber) => categories.contains("season")
-                case (_: TvShowId, _: SeasonNumber, _: EpisodeNumber) => categories.contains("episode")
+                case (_: TvShowId, _: TvSeasonNumber) => categories.contains("season")
+                case (_: TvShowId, _: TvSeasonNumber, _: TvEpisodeNumber) => categories.contains("episode")
                 case videogameId: VideogameId => categories.contains("videogame")
                 case bookId: BookId => categories.contains("book") 
             )

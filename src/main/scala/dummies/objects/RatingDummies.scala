@@ -2,7 +2,7 @@ package dummies.objects
 
 import dummies.ids.{RatingIdDummies, UserIdDummies}
 import modelClasses.app.social.Rating
-import modelClasses.ids.Media.{BookId, MovieId, SeasonNumber, TvShowId, VideogameId}
+import modelClasses.ids.Media.{BookId, MovieId, TvSeasonNumber, TvShowId, VideogameId}
 
 object RatingDummies {
   val rating1: Rating = Rating(
@@ -76,7 +76,7 @@ object RatingDummies {
   val rating12: Rating = Rating(
     RatingIdDummies.ratingId12,
     UserIdDummies.userId1,
-    (TvShowId(63247), SeasonNumber(1)),
+    (TvShowId(63247), TvSeasonNumber(1)),
     8
   )
 }

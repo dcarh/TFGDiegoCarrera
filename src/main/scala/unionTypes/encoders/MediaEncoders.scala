@@ -15,17 +15,17 @@ object MediaEncoders {
     case book: Book => book.asJson
   }
 
-  implicit val progressMediaUnionEncoder: Encoder[TvShow | Season | Videogame | Book] = Encoder.instance {
+  implicit val progressMediaUnionEncoder: Encoder[TvShow | TvSeason | Videogame | Book] = Encoder.instance {
     case tvShow: TvShow => tvShow.asJson
-    case season: Season => season.asJson
+    case season: TvSeason => season.asJson
     case videogame: Videogame => videogame.asJson
     case book: Book => book.asJson
   }
 
-  implicit val pendingMediaUnionEncoder: Encoder[Movie | TvShow | Season | Videogame | Book] = Encoder.instance {
+  implicit val pendingMediaUnionEncoder: Encoder[Movie | TvShow | TvSeason | Videogame | Book] = Encoder.instance {
     case movie: Movie => movie.asJson
     case tvShow: TvShow => tvShow.asJson
-    case season: Season => season.asJson
+    case season: TvSeason => season.asJson
     case videogame: Videogame => videogame.asJson
     case book: Book => book.asJson
   }

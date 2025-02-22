@@ -4,11 +4,11 @@ import io.circe.*
 import io.circe.generic.auto.*
 import modelClasses.errors.UserError.*
 import modelClasses.app.chatting.{Chat, Message}
-import modelClasses.app.media.{Book, Episode, Movie, Season, TvShow, Videogame}
+import modelClasses.app.media.{Book, TvEpisode, Movie, TvSeason, TvShow, Videogame}
 import modelClasses.app.social.{Entry, Like, MediaList, Rating, Reply, Review}
 import modelClasses.app.user.{User, UserFavourites, UserProfile}
 import modelClasses.ids.Chatting.{ChatId, MessageId}
-import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TvShowId, VideogameId}
+import modelClasses.ids.Media.{BookId, TvEpisodeNumber, MovieId, TvSeasonNumber, TvShowId, VideogameId}
 import modelClasses.ids.Social.*
 import modelClasses.ids.User.UserId
 import sttp.tapir.*
@@ -160,11 +160,11 @@ object Common {
     val tvShowOutput: EndpointOutput[TvShow] =
       jsonBody[TvShow].description("The requested TV show")
 
-    val seasonOutput: EndpointOutput[Season] =
-      jsonBody[Season].description("The requested season")
+    val seasonOutput: EndpointOutput[TvSeason] =
+      jsonBody[TvSeason].description("The requested season")
 
-    val episodeOutput: EndpointOutput[Episode] =
-      jsonBody[Episode].description("The requested episode")
+    val episodeOutput: EndpointOutput[TvEpisode] =
+      jsonBody[TvEpisode].description("The requested episode")
 
     val videogameOutput: EndpointOutput[Videogame] =
       jsonBody[Videogame].description("The requested videogame")
@@ -175,17 +175,17 @@ object Common {
     val favouritesOutput: EndpointOutput[UserFavourites] =
       jsonBody[UserFavourites].description("The requested object with the favourite media for a user")
 
-    val listOfAllMediaOutput: EndpointOutput[List[Movie | TvShow | Season | Episode | Videogame | Book]] =
-      jsonBody[List[Movie | TvShow | Season | Episode | Videogame | Book]].description("The requested list of all media possible")
+    val listOfAllMediaOutput: EndpointOutput[List[Movie | TvShow | TvSeason | TvEpisode | Videogame | Book]] =
+      jsonBody[List[Movie | TvShow | TvSeason | TvEpisode | Videogame | Book]].description("The requested list of all media possible")
 
-    val listOfAllMediaIdsOutput: EndpointOutput[List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]] =
-      jsonBody[List[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId]].description("The requested list of all media IDs possible")
+    val listOfAllMediaIdsOutput: EndpointOutput[List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]] =
+      jsonBody[List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]].description("The requested list of all media IDs possible")
 
-    val listOfProgressOutput: EndpointOutput[List[TvShow | Season | Videogame | Book]] =
-      jsonBody[List[TvShow | Season | Videogame | Book]].description("The requested list of the elements that can have a certain progress")
+    val listOfProgressOutput: EndpointOutput[List[TvShow | TvSeason | Videogame | Book]] =
+      jsonBody[List[TvShow | TvSeason | Videogame | Book]].description("The requested list of the elements that can have a certain progress")
       
-    val listOfProgressIdsOutput: EndpointOutput[List[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId]] =
-      jsonBody[List[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId]].description("The requested list of the elements IDs that can have a certain progress")
+    val listOfProgressIdsOutput: EndpointOutput[List[TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId]] =
+      jsonBody[List[TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId]].description("The requested list of the elements IDs that can have a certain progress")
 
     val listOfMoviesOutput: EndpointOutput[List[Movie]] =
       jsonBody[List[Movie]].description("The requested list of movies")
@@ -193,11 +193,11 @@ object Common {
     val listOfTvShowsOutput: EndpointOutput[List[TvShow]] =
       jsonBody[List[TvShow]].description("The requested list of TV shows")
 
-    val listOfSeasonsOutput: EndpointOutput[List[Season]] =
-      jsonBody[List[Season]].description("The requested list of seasons")
+    val listOfSeasonsOutput: EndpointOutput[List[TvSeason]] =
+      jsonBody[List[TvSeason]].description("The requested list of seasons")
 
-    val listOfEpisodesOutput: EndpointOutput[List[Episode]] =
-      jsonBody[List[Episode]].description("The requested list of episodes")
+    val listOfEpisodesOutput: EndpointOutput[List[TvEpisode]] =
+      jsonBody[List[TvEpisode]].description("The requested list of episodes")
 
     val listOfVideogamesOutput: EndpointOutput[List[Videogame]] =
       jsonBody[List[Videogame]].description("The requested list of videogames")

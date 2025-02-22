@@ -6,8 +6,8 @@ object Media {
 
   case class MovieId(value: Long)
   case class TvShowId(value: Long)
-  case class SeasonNumber(value: Long)
-  case class EpisodeNumber(value: Long)
+  case class TvSeasonNumber(value: Long)
+  case class TvEpisodeNumber(value: Long)
   case class BookId(value: String)
   case class VideogameId(value: Long)
   

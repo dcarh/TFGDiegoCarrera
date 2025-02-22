@@ -259,7 +259,7 @@ object EntryDummies {
     // The Bear 07x02
     EntryIdDummies.entryId14,
     UserIdDummies.userId5,
-    (TvShowId(136315), SeasonNumber(2), EpisodeNumber(7)),
+    (TvShowId(136315), TvSeasonNumber(2), TvEpisodeNumber(7)),
     None,
     None,
     true,
@@ -278,7 +278,7 @@ object EntryDummies {
     // Westworld S.01
     EntryIdDummies.entryId15,
     UserIdDummies.userId1,
-    (TvShowId(63247), SeasonNumber(1)),
+    (TvShowId(63247), TvSeasonNumber(1)),
     Some(RatingIdDummies.ratingId12),
     None,
     true,

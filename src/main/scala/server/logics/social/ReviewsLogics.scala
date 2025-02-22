@@ -6,7 +6,7 @@ import dummies.repositories.{ReviewRepository, UserRepository}
 import modelClasses.app.social.Review
 import modelClasses.app.user.User
 import modelClasses.errors.UserError.*
-import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TvShowId, VideogameId}
+import modelClasses.ids.Media.{BookId, TvEpisodeNumber, MovieId, TvSeasonNumber, TvShowId, VideogameId}
 import modelClasses.ids.Social.ReviewId
 import modelClasses.ids.User.UserId
 
@@ -59,8 +59,8 @@ object ReviewsLogics {
               review => review.mediaReviewedId match
                 case _: MovieId => categories.contains("movie")
                 case _: TvShowId => categories.contains("tv_show")
-                case (_: TvShowId, _: SeasonNumber) => categories.contains("season")
-                case (_: TvShowId, _: SeasonNumber, _: EpisodeNumber) => categories.contains("episode")
+                case (_: TvShowId, _: TvSeasonNumber) => categories.contains("season")
+                case (_: TvShowId, _: TvSeasonNumber, _: TvEpisodeNumber) => categories.contains("episode")
                 case videogameId: VideogameId => categories.contains("videogame")
                 case bookId: BookId => categories.contains("book")
             )

@@ -3,9 +3,9 @@ import cats.implicits.*
 import clients.TMDBClient
 
 import concurrent.duration.DurationInt
-import endpoints.tmdb.{Episodes, Movies, Seasons, TVShows}
-import modelClasses.app.media.{Episode, Movie, Season, TvShow}
-import modelClasses.ids.Media.{EpisodeNumber, MovieId, SeasonNumber, TvShowId}
+import endpoints.tmdb.{TvEpisodes, Movies, TvSeasons, TVShows}
+import modelClasses.app.media.{TvEpisode, Movie, TvSeason, TvShow}
+import modelClasses.ids.Media.{TvEpisodeNumber, MovieId, TvSeasonNumber, TvShowId}
 
 object GetTMDBRequestExampleFOR extends IOApp {
 
@@ -16,7 +16,7 @@ object GetTMDBRequestExampleFOR extends IOApp {
     val requests = (1 to 300).toList // Limito a 300 para evitar un problema de rendimiento
       .map(i =>
         IO.sleep(1.second) *>
-        tmdbClient.executeRequest(Episodes.requestEpisodeEndpoint, (TvShowId(i), SeasonNumber(1), EpisodeNumber(1)))
+        tmdbClient.executeRequest(TvEpisodes.requestTvEpisodeEndpoint, (TvShowId(i), TvSeasonNumber(1), TvEpisodeNumber(1)))
         .flatMap {
           case Right(resource) => IO(println(s"$i Successfully retrieved resource: $resource"))
           case Left(error) => IO(println(s"$i Failed to retrieve resource: $error"))

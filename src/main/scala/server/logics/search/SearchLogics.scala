@@ -14,7 +14,7 @@ import modelClasses.googleBooks.BooksRequests.RequestedBook
 import modelClasses.ids.Media.{BookId, MovieId, TvShowId, VideogameId}
 import modelClasses.igdb.VideogameRequests.{RequestedVideogame, VideogameAllFields}
 import modelClasses.tmdb.MovieRequests.RequestedMovie
-import modelClasses.tmdb.TVShowRequests.RequestedTVShow
+import modelClasses.tmdb.TvShowRequests.RequestedTVShow
 
 object SearchLogics {
 
@@ -57,7 +57,7 @@ object SearchLogics {
         case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
       }
 
-  val searchTVShow: ((String, Option[String])) => IO[Either[UserError, List[TvShow]]] =
+  val searchTvShow: ((String, Option[String])) => IO[Either[UserError, List[TvShow]]] =
     (title, sortByOption) =>
       tmdbClient.executeRequest(TVShows.searchTvShowsEndpoint, title).flatMap {
         case Right(requestedListOfTvShows: List[RequestedTVShow]) =>

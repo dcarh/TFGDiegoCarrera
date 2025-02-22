@@ -31,7 +31,7 @@ object TMDB {
 
   object TVShowsOutputs {
 
-    import TVShowRequests.*
+    import TvShowRequests.*
 
     val jsonRequestedTvShowOut: EndpointOutput[RequestedTVShow] =
       jsonBody[RequestedTVShow]
@@ -39,42 +39,42 @@ object TMDB {
     val jsonRequestedTvShowsListOut: EndpointOutput[List[RequestedTVShow]] =
       jsonBody[List[RequestedTVShow]]
 
-    val jsonRequestedSimilarTvShowsOut: EndpointOutput[RequestedSimilarTVShows] =
-      jsonBody[RequestedSimilarTVShows]
+    val jsonRequestedSimilarTvShowsOut: EndpointOutput[RequestedSimilarTvShows] =
+      jsonBody[RequestedSimilarTvShows]
 
-    val jsonRequestedRecommendedTvShowsOut: EndpointOutput[RequestedRecommendedTVShows] =
-      jsonBody[RequestedRecommendedTVShows]
+    val jsonRequestedRecommendedTvShowsOut: EndpointOutput[RequestedRecommendedTvShows] =
+      jsonBody[RequestedRecommendedTvShows]
 
-    val jsonRequestedCreditsForTvShowOut: EndpointOutput[RequestedCreditsForTVShow] =
-      jsonBody[RequestedCreditsForTVShow]
+    val jsonRequestedCreditsForTvShowOut: EndpointOutput[RequestedCreditsForTvShow] =
+      jsonBody[RequestedCreditsForTvShow]
 
-    val jsonRequestedAggregateCreditsForTvShowOut: EndpointOutput[RequestedAggregateCreditsForTVShow] =
-      jsonBody[RequestedAggregateCreditsForTVShow]
+    val jsonRequestedAggregateCreditsForTvShowOut: EndpointOutput[RequestedAggregateCreditsForTvShow] =
+      jsonBody[RequestedAggregateCreditsForTvShow]
   }
 
   object SeasonsOutputs {
 
-    import SeasonRequests.*
+    import TvSeasonRequests.*
 
-    val jsonRequestedSeasonOut: EndpointOutput[RequestedSeason] =
-      jsonBody[RequestedSeason]
+    val jsonRequestedTvSeasonOut: EndpointOutput[RequestedTvSeason] =
+      jsonBody[RequestedTvSeason]
 
-    val jsonRequestedCreditsForSeasonOut: EndpointOutput[RequestedCreditsForSeason] =
-      jsonBody[RequestedCreditsForSeason]
+    val jsonRequestedCreditsForTvSeasonOut: EndpointOutput[RequestedCreditsForTvSeason] =
+      jsonBody[RequestedCreditsForTvSeason]
 
-    val jsonRequestedAggregateCreditsForSeasonOut: EndpointOutput[RequestedAggregateCreditsForSeason] =
-      jsonBody[RequestedAggregateCreditsForSeason]
+    val jsonRequestedAggregateCreditsForTvSeasonOut: EndpointOutput[RequestedAggregateCreditsForTvSeason] =
+      jsonBody[RequestedAggregateCreditsForTvSeason]
   }
 
   object EpisodesOutputs {
 
-    import EpisodeRequests.*
+    import TvEpisodeRequests.*
 
-    val jsonRequestedEpisodeOut: EndpointOutput[RequestedEpisode] =
-      jsonBody[RequestedEpisode]
+    val jsonRequestedTvEpisodeOut: EndpointOutput[RequestedTvEpisode] =
+      jsonBody[RequestedTvEpisode]
 
-    val jsonRequestedCreditsForEpisodeOut: EndpointOutput[RequestedCreditsForEpisode] =
-      jsonBody[RequestedCreditsForEpisode]
+    val jsonRequestedCreditsForTvEpisodeOut: EndpointOutput[RequestedCreditsForTvEpisode] =
+      jsonBody[RequestedCreditsForTvEpisode]
   }
 
 }

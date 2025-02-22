@@ -33,7 +33,7 @@ object MediaEndpoints {
       .in(PathInputs.pathTvShowId)
       .out(MediaOutputs.tvShowOutput)
 
-  val getSeason: PublicEndpoint[(TvShowId, SeasonNumber), UserError, Season, Any] =
+  val getSeason: PublicEndpoint[(TvShowId, TvSeasonNumber), UserError, TvSeason, Any] =
     mediaBaseEndpoint(
       "getSeason",
       "This endpoint returns the season specified by the ID introduced",
@@ -41,10 +41,10 @@ object MediaEndpoints {
     )
       .in(PathInputs.pathTvShowId)
       .in("season")
-      .in(PathInputs.pathSeasonNumber)
+      .in(PathInputs.pathTvSeasonNumber)
       .out(MediaOutputs.seasonOutput)
 
-  val getEpisode: PublicEndpoint[(TvShowId, SeasonNumber, EpisodeNumber), UserError, Episode, Any] =
+  val getEpisode: PublicEndpoint[(TvShowId, TvSeasonNumber, TvEpisodeNumber), UserError, TvEpisode, Any] =
     mediaBaseEndpoint(
       "getEpisode",
       "This endpoint returns the episode specified by the ID introduced",
@@ -52,9 +52,9 @@ object MediaEndpoints {
     )
       .in(PathInputs.pathTvShowId)
       .in("season")
-      .in(PathInputs.pathSeasonNumber)
+      .in(PathInputs.pathTvSeasonNumber)
       .in("episode")
-      .in(PathInputs.pathEpisodeNumber)
+      .in(PathInputs.pathTvEpisodeNumber)
       .out(MediaOutputs.episodeOutput)
 
   val getVideogame: PublicEndpoint[VideogameId, UserError, Videogame, Any] =

@@ -7,7 +7,7 @@ import modelClasses.app.media.*
 
 object MediaSchemasAll {
 
-  implicit val allMediaUnionSchema: Schema[Movie | TvShow | Season | Episode | Videogame | Book] = Schema.derivedUnion
+  implicit val allMediaUnionSchema: Schema[Movie | TvShow | TvSeason | TvEpisode | Videogame | Book] = Schema.derivedUnion
 
 }
 

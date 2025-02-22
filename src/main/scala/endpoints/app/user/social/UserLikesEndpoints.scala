@@ -5,7 +5,7 @@ import endpoints.app.user.UserEndpointsUtils.specificUserBaseEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
 import modelClasses.errors.UserError.*
-import modelClasses.app.media.{Book, Episode, Movie, Season, TvShow, Videogame}
+import modelClasses.app.media.{Book, TvEpisode, Movie, TvSeason, TvShow, Videogame}
 import modelClasses.app.social.{Like, MediaList, Reply, Review}
 import modelClasses.ids.Social.LikeId
 import modelClasses.ids.User.UserId

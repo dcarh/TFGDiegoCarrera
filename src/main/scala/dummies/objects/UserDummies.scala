@@ -2,7 +2,7 @@ package dummies.objects
 
 import modelClasses.app.user.*
 import dummies.ids.*
-import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TvShowId, VideogameId}
+import modelClasses.ids.Media.{BookId, TvEpisodeNumber, MovieId, TvSeasonNumber, TvShowId, VideogameId}
 
 object UserDummies {
   val user1: User = User(
@@ -23,7 +23,7 @@ object UserDummies {
     List(
       MovieId(502033),
       BookId("ZEfWEAAAQBAJ"),
-      (TvShowId(63247), SeasonNumber(1)),
+      (TvShowId(63247), TvSeasonNumber(1)),
     ),
     List(),
     List(),
@@ -263,7 +263,7 @@ object UserDummies {
     List(
       TvShowId(136315),
       TvShowId(100565),
-      (TvShowId(136315), SeasonNumber(2), EpisodeNumber(7)),
+      (TvShowId(136315), TvSeasonNumber(2), TvEpisodeNumber(7)),
     ),
     List(),
     List(),

@@ -25,42 +25,42 @@ object MediaSchemasForIDs {
       "BookId" -> Schema.derived[BookId]
     )
   
-  private val extractDiscriminator2: (MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId) => String = {
+  private val extractDiscriminator2: (MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId) => String = {
     case _: MovieId => "MovieId"
     case _: TvShowId => "TvShowId"
-    case _: (TvShowId, SeasonNumber) => "SeasonNumber"
-    case _: (TvShowId, SeasonNumber, EpisodeNumber) => "EpisodeNumber"
+    case _: (TvShowId, TvSeasonNumber) => "SeasonNumber"
+    case _: (TvShowId, TvSeasonNumber, TvEpisodeNumber) => "EpisodeNumber"
     case _: VideogameId => "VideogameId"
     case _: BookId => "BookId"
   }
 
-  implicit val listMediaUnionSchema22: Schema[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId] =
-    Schema.oneOfUsingField[MovieId | TvShowId | (TvShowId, SeasonNumber) | (TvShowId, SeasonNumber, EpisodeNumber) | VideogameId | BookId, String](
+  implicit val listMediaUnionSchema22: Schema[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId] =
+    Schema.oneOfUsingField[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId, String](
       extractDiscriminator2,
       identity
     )(
       "MovieId" -> Schema.derived[MovieId],
       "TvShowId" -> Schema.derived[TvShowId],
-      "SeasonNumber" -> Schema.derived[(TvShowId, SeasonNumber)],
-      "EpisodeNumber" -> Schema.derived[(TvShowId, SeasonNumber, EpisodeNumber)],
+      "SeasonNumber" -> Schema.derived[(TvShowId, TvSeasonNumber)],
+      "EpisodeNumber" -> Schema.derived[(TvShowId, TvSeasonNumber, TvEpisodeNumber)],
       "VideogameId" -> Schema.derived[VideogameId],
       "BookId" -> Schema.derived[BookId]
     )
   
-  private val extractDiscriminator3: (TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId) => String = {
+  private val extractDiscriminator3: (TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId) => String = {
     case _: TvShowId => "TvShowId"
-    case _: (TvShowId, SeasonNumber) => "SeasonNumber"
+    case _: (TvShowId, TvSeasonNumber) => "SeasonNumber"
     case _: VideogameId => "VideogameId"
     case _: BookId => "BookId"
   }
 
-  implicit val listMediaUnionSchema3: Schema[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId] =
-    Schema.oneOfUsingField[TvShowId | (TvShowId, SeasonNumber) | VideogameId | BookId, String](
+  implicit val listMediaUnionSchema3: Schema[TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId] =
+    Schema.oneOfUsingField[TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId, String](
       extractDiscriminator3,
       identity
     )(
       "TvShowId" -> Schema.derived[TvShowId],
-      "SeasonNumber" -> Schema.derived[(TvShowId, SeasonNumber)],
+      "SeasonNumber" -> Schema.derived[(TvShowId, TvSeasonNumber)],
       "VideogameId" -> Schema.derived[VideogameId],
       "BookId" -> Schema.derived[BookId]
     )

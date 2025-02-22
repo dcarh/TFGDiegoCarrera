@@ -3,22 +3,22 @@ package modelClasses.tmdb
 import io.circe.generic.auto.*
 import modelClasses.tmdb.Common.*
 
-object SeasonRequests {
+object TvSeasonRequests {
 
-  case class RequestedSeason(
-                              _id: String,
-                              air_date: Option[String],
-                              episodes: List[EpisodeForSeason],
-                              name: String,
-                              overview: String,
-                              id: Long,
-                              poster_path: Option[String],
-                              runtime: Option[Long],
-                              season_number: Int,
-                              vote_average: Double
+  case class RequestedTvSeason(
+                                _id: String,
+                                air_date: Option[String],
+                                episodes: List[TvEpisodeForTvSeason],
+                                name: String,
+                                overview: String,
+                                id: Long,
+                                poster_path: Option[String],
+                                runtime: Option[Long],
+                                season_number: Int,
+                                vote_average: Double
                             )
 
-  case class EpisodeForSeason(
+  case class TvEpisodeForTvSeason(
                               air_date:Option[String],
                               episode_number: Int,
                               episode_type: String,
@@ -36,13 +36,13 @@ object SeasonRequests {
                               guest_stars: List[Member]
                              )
 
-  case class RequestedCreditsForSeason(
+  case class RequestedCreditsForTvSeason(
                                         id: Long,
                                         cast: List[Member],
                                         crew: List[Member]  
                                       )
 
-  case class RequestedAggregateCreditsForSeason(
+  case class RequestedAggregateCreditsForTvSeason(
                                                  id: Long,
                                                  cast: List[Member],
                                                  crew: List[Member]

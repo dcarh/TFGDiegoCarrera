@@ -2,7 +2,7 @@ package dummies.objects
 
 import dummies.ids.{LikeIdDummies, ReplyIdDummies, ReviewIdDummies, UserIdDummies}
 import modelClasses.app.social.Review
-import modelClasses.ids.Media.{BookId, EpisodeNumber, MovieId, SeasonNumber, TvShowId, VideogameId}
+import modelClasses.ids.Media.{BookId, TvEpisodeNumber, MovieId, TvSeasonNumber, TvShowId, VideogameId}
 
 object ReviewDummies {
   val review1: Review = Review(
@@ -64,7 +64,7 @@ object ReviewDummies {
   val review6: Review = Review(
     ReviewIdDummies.reviewId6,
     UserIdDummies.userId5,
-    (TvShowId(136315), SeasonNumber(2), EpisodeNumber(7)),
+    (TvShowId(136315), TvSeasonNumber(2), TvEpisodeNumber(7)),
     "Wow!",
     List(),
     false,

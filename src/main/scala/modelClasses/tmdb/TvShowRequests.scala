@@ -4,7 +4,7 @@ import io.circe.generic.auto.*
 
 import modelClasses.tmdb.Common.*
 
-object TVShowRequests {
+object TvShowRequests {
 
   case class RequestedTVShow(
                               adult: Boolean,
@@ -18,9 +18,9 @@ object TVShowRequests {
                               in_production: Boolean,
                               languages: List[String],
                               last_air_date: Option[String],
-                              last_episode_to_air: Option[EpisodeInTvShow],
+                              last_episode_to_air: Option[TvEpisodeInTvShow],
                               name: String,
-                              next_episode_to_air: Option[EpisodeInTvShow],
+                              next_episode_to_air: Option[TvEpisodeInTvShow],
                               networks: List[Network],
                               number_of_episodes: Int,
                               number_of_seasons: Int,
@@ -32,7 +32,7 @@ object TVShowRequests {
                               poster_path: Option[String],
                               production_companies: List[ProductionCompany],
                               production_countries: List[ProductionCountry],
-                              seasons: List[SeasonInTvShow],
+                              seasons: List[TvSeasonInTvShow],
                               spoken_languages: Option[List[SpokenLanguage]],
                               status: String,
                               tagline: String,
@@ -41,7 +41,7 @@ object TVShowRequests {
                               vote_count: Int
                             )
 
-  case class EpisodeInTvShow(
+  case class TvEpisodeInTvShow(
                               id: Long,
                               name: String,
                               overview: String,
@@ -64,7 +64,7 @@ object TVShowRequests {
                       origin_country: String
                     )
 
-  case class SeasonInTvShow(
+  case class TvSeasonInTvShow(
                             air_date: Option[String],
                             episode_count: Int,
                             id: Long,
@@ -75,7 +75,7 @@ object TVShowRequests {
                             vote_average: Option[Double]
                            )
 
-  case class RequestedSimilarTVShows(
+  case class RequestedSimilarTvShows(
                                       page: Long,
                                       total_pages: Long,
                                       total_results: Long,
@@ -83,7 +83,7 @@ object TVShowRequests {
                                     )
 
 
-  case class RequestedRecommendedTVShows(
+  case class RequestedRecommendedTvShows(
                                           page: Long,
                                           total_pages: Long,
                                           total_results: Long,
@@ -91,13 +91,13 @@ object TVShowRequests {
                                         )
 
 
-  case class RequestedCreditsForTVShow(
+  case class RequestedCreditsForTvShow(
                                         id: Long,
                                         cast: List[Member],
                                         crew: List[Member]
                                       )
 
-  case class RequestedAggregateCreditsForTVShow(
+  case class RequestedAggregateCreditsForTvShow(
                                                  id: Long,
                                                  cast: List[Member],
                                                  crew: List[Member]

@@ -3,9 +3,9 @@ package modelClasses.tmdb
 import io.circe.generic.auto.*
 import modelClasses.tmdb.Common.Member
 
-object EpisodeRequests {
+object TvEpisodeRequests {
 
-  case class RequestedEpisode(
+  case class RequestedTvEpisode(
                                air_date: Option[String],
                                crew: List[Member],
                                episode_number: Long,
@@ -21,7 +21,7 @@ object EpisodeRequests {
                                vote_count: Int
                              )
 
-  case class RequestedCreditsForEpisode(
+  case class RequestedCreditsForTvEpisode(
                                          id: Long,
                                          cast: List[Member],
                                          crew: List[Member]
