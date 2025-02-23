@@ -1,24 +1,25 @@
 package modelClasses.app.media
 
 import io.circe.generic.auto.*
-
+import modelClasses.googleBooks.BooksRequests.RequestedBook
 import modelClasses.ids.Media.BookId
 import modelClasses.ids.Social.{LikeId, MediaListId, ReviewId}
 
 case class Book(
-                 authors           : List[String],
-                 categories        : List[String],
-                 description       : String,
-                 id                : BookId,
-                 title             : String,
-
-                 averageRating     : Double,
-                 lists             : List[MediaListId],
-                 numberOfAbandoned : Long,
-                 numberOfCompleted : Long,
-                 numberOfInProgress: Option[Long],
-                 numberOfPaused    : Option[Long],
-                 numberOfPending   : Long,
-                 ratings           : Long,
-                 reviews           : List[ReviewId]
+                  requestedBook: RequestedBook
+//                 authors           : List[String],
+//                 categories        : List[String],
+//                 description       : String,
+//                 id                : BookId,
+//                 title             : String,
+//
+//                 averageRating     : Double,
+//                 lists             : List[MediaListId],
+//                 numberOfAbandoned : Long,
+//                 numberOfCompleted : Long,
+//                 numberOfInProgress: Option[Long],
+//                 numberOfPaused    : Option[Long],
+//                 numberOfPending   : Long,
+//                 ratings           : Long,
+//                 reviews           : List[ReviewId]
                )

@@ -1,12 +1,12 @@
 package modelClasses.tmdb
 
 import io.circe.generic.auto.*
-
+import modelClasses.ids.Media.TvShowId
 import modelClasses.tmdb.Common.*
 
 object TvShowRequests {
 
-  case class RequestedTVShow(
+  case class RequestedTvShow(
                               adult: Boolean,
                               backdrop_path: Option[String],
                               created_by: List[Creator],

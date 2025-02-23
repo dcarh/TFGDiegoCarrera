@@ -33,11 +33,11 @@ object TMDB {
 
     import TvShowRequests.*
 
-    val jsonRequestedTvShowOut: EndpointOutput[RequestedTVShow] =
-      jsonBody[RequestedTVShow]
+    val jsonRequestedTvShowOut: EndpointOutput[RequestedTvShow] =
+      jsonBody[RequestedTvShow]
 
-    val jsonRequestedTvShowsListOut: EndpointOutput[List[RequestedTVShow]] =
-      jsonBody[List[RequestedTVShow]]
+    val jsonRequestedTvShowsListOut: EndpointOutput[List[RequestedTvShow]] =
+      jsonBody[List[RequestedTvShow]]
 
     val jsonRequestedSimilarTvShowsOut: EndpointOutput[RequestedSimilarTvShows] =
       jsonBody[RequestedSimilarTvShows]

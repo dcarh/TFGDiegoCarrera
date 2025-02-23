@@ -3,7 +3,7 @@ import cats.implicits.*
 import clients.TMDBClient
 
 import concurrent.duration.DurationInt
-import endpoints.tmdb.{TvEpisodes, Movies, TvSeasons, TVShows}
+import endpoints.tmdb.{TvEpisodes, Movies, TvSeasons, TvShows}
 import modelClasses.app.media.{TvEpisode, Movie, TvSeason, TvShow}
 import modelClasses.ids.Media.{TvEpisodeNumber, MovieId, TvSeasonNumber, TvShowId}
 

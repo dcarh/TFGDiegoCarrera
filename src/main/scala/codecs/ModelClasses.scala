@@ -15,10 +15,10 @@ object ModelClasses {
     implicit val tvShowIdCodec: Codec[String, TvShowId, TextPlain] =
       Codec.string.mapDecode(s => DecodeResult.Value(TvShowId(s.toLong)))(_.value.toString)
 
-    implicit val seasonNumberCodec: Codec[String, TvSeasonNumber, TextPlain] =
+    implicit val tvSeasonNumberCodec: Codec[String, TvSeasonNumber, TextPlain] =
       Codec.string.mapDecode(s => DecodeResult.Value(TvSeasonNumber(s.toLong)))(_.value.toString)
 
-    implicit val episodeNumberCodec: Codec[String, TvEpisodeNumber, TextPlain] =
+    implicit val tvEpisodeNumberCodec: Codec[String, TvEpisodeNumber, TextPlain] =
       Codec.string.mapDecode(s => DecodeResult.Value(TvEpisodeNumber(s.toLong)))(_.value.toString)
 
     implicit val bookIdCodec: Codec[String, BookId, TextPlain] =
