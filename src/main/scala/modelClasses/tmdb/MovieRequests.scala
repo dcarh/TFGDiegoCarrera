@@ -41,25 +41,4 @@ object MovieRequests {
                           poster_path: Option[String],
                           backdrop_path: Option[String]
                        )
-
-  case class RequestedSimilarMovies(
-                                    page: Long,
-                                    results: List[Results],
-                                    total_pages: Long,
-                                    total_results: Long
-                                   )
-  
-  case class RequestedRecommendedMovies(
-                                        page: Long,
-                                        results: List[Results],
-                                        total_pages: Long,
-                                        total_results: Long
-                                       )
-  
-  case class RequestedCreditsForMovie(
-                                       id: Long,
-                                       cast: List[Member],
-                                       crew: List[Member]
-                                     )
-
 }

@@ -1,9 +1,7 @@
 package modelClasses.app.media
 
 import io.circe.generic.auto.*
-import modelClasses.ids.Media.VideogameId
-import modelClasses.ids.Social.{LikeId, MediaListId, ReviewId}
-import modelClasses.app.social.{Like, MediaList, Review}
+import modelClasses.ids.Social.{MediaListId, ReviewId}
 import modelClasses.igdb.VideogameRequests.VideogameAllFields
 
 case class Videogame(

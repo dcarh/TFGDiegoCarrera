@@ -36,16 +36,4 @@ object TvSeasonRequests {
                                    crew: List[Member],
                                    guest_stars: List[Member]
                                  )
-
-  case class RequestedCreditsForTvSeason(
-                                        id: Long,
-                                        cast: List[Member],
-                                        crew: List[Member]  
-                                      )
-
-  case class RequestedAggregateCreditsForTvSeason(
-                                                 id: Long,
-                                                 cast: List[Member],
-                                                 crew: List[Member]
-                                               )
 }

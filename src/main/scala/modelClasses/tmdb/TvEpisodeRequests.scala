@@ -21,10 +21,4 @@ object TvEpisodeRequests {
                                  vote_average: Double,
                                  vote_count: Int
                              )
-
-  case class RequestedCreditsForTvEpisode(
-                                         id: Long,
-                                         cast: List[Member],
-                                         crew: List[Member]
-                                       )
 }

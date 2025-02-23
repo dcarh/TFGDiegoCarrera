@@ -68,7 +68,7 @@ object Common {
                      order: Option[Long]
                    )
 
-  case class Results(
+  case class Result(
                       adult: Boolean,
                       backdrop_path: Option[String],
                       first_air_date: Option[String],       // TV Show
@@ -87,6 +87,20 @@ object Common {
                       video: Option[Boolean],
                       vote_average: Double,
                       vote_count: Long
+                    )
+
+  case class Results(
+                     page: Long,
+                     results: List[Result],
+                     total_pages: Long,
+                     total_results: Long
+                    )
+
+  
+  case class Credits(
+                      id: Long,
+                      cast: List[Member],
+                      crew: List[Member]
                     )
 
 }

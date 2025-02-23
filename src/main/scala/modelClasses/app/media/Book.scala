@@ -2,8 +2,7 @@ package modelClasses.app.media
 
 import io.circe.generic.auto.*
 import modelClasses.googleBooks.BooksRequests.RequestedBook
-import modelClasses.ids.Media.BookId
-import modelClasses.ids.Social.{LikeId, MediaListId, ReviewId}
+import modelClasses.ids.Social.{MediaListId, ReviewId}
 
 case class Book(
                   requestedBook: RequestedBook

@@ -1,9 +1,7 @@
 package modelClasses.app.media
 
 import io.circe.generic.auto.*
-import modelClasses.ids.Media.TvShowId
-import modelClasses.ids.Social.{LikeId, MediaListId, ReviewId}
-import modelClasses.app.social.{Like, MediaList, Review}
+import modelClasses.ids.Social.{MediaListId, ReviewId}
 import modelClasses.tmdb.TvShowRequests.RequestedTvShow
 
 case class TvShow(

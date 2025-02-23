@@ -79,12 +79,12 @@ class TMDBClient {
                 .apply(apiKey, episodeNumber._1, episodeNumber._2, episodeNumber._3)
             IO.pure(userRequest, parseResponse)
 
-//        case (endpoint: PublicEndpoint[(String, String), _, List[RequestedMovie], _], title: String) =>
-//          val (userRequest, parseResponse) =
-//            Http4sClientInterpreter[IO]()
-//              .toRequest(endpoint, baseUri = Some(uri"https://api.themoviedb.org/3"))
-//              .apply(apiKey, title)
-//            IO.pure(userRequest, parseResponse)
+        case (endpoint: PublicEndpoint[(String, String), _, _, _], title: String) =>
+          val (userRequest, parseResponse) =
+            Http4sClientInterpreter[IO]()
+              .toRequest(endpoint, baseUri = Some(uri"https://api.themoviedb.org/3"))
+              .apply(apiKey, title)
+          IO.pure(userRequest, parseResponse)
 
         case _ => IO.pure(BadRequest("Wrong number of parameters for specified endpoint"))
       }

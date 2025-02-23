@@ -75,32 +75,4 @@ object TvShowRequests {
                             vote_average: Option[Double]
                            )
 
-  case class RequestedSimilarTvShows(
-                                      page: Long,
-                                      total_pages: Long,
-                                      total_results: Long,
-                                      results: List[Results]
-                                    )
-
-
-  case class RequestedRecommendedTvShows(
-                                          page: Long,
-                                          total_pages: Long,
-                                          total_results: Long,
-                                          results: List[Results]
-                                        )
-
-
-  case class RequestedCreditsForTvShow(
-                                        id: Long,
-                                        cast: List[Member],
-                                        crew: List[Member]
-                                      )
-
-  case class RequestedAggregateCreditsForTvShow(
-                                                 id: Long,
-                                                 cast: List[Member],
-                                                 crew: List[Member]
-                                               )
-
 }

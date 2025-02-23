@@ -10,16 +10,6 @@ import modelClasses.ids.Media.{TvEpisodeNumber, MovieId, TvSeasonNumber, TvShowI
 
 object Base {
 
-//  private val tmdbBaseEndpoint:
-//    (String, String) => PublicEndpoint[String, ErrorInfo, Unit, Any] =
-//      (name, description) =>
-//        endpoint
-//          .name(name)
-//          .description(description)
-//          .get
-//          .in(queryApiKey)
-//          .errorOut(ErrorOutputs.jsonErrorInfoOut)
-
   private val tmdbBaseEndpoint:
     (String, String, String) => PublicEndpoint[String, UserError, Unit, Any] =
       (name, description, path) =>

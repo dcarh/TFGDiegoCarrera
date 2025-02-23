@@ -9,7 +9,7 @@ object GetTMDBRequestExample extends IOApp {
   private val tmdbClient = TMDBClient()
 
   override def run(args: List[String]): IO[ExitCode] = {
-    tmdbClient.executeRequest(TvShows.requestTvShowEndpoint, TvShowId(244623)).flatMap {
+    tmdbClient.executeRequest(Movies.requestedCreditsForMovieEndpoint, MovieId(299534)).flatMap {
       case Right(resource) =>
         IO(println(s"Successfully retrieved resource: $resource")).as(ExitCode.Success)
       case Left(error) =>
