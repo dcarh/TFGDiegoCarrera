@@ -9,13 +9,13 @@ import sttp.tapir.server.http4s.Http4sServerInterpreter
 
 object SearchRoutes {
 
-//  private val searchMovie: HttpRoutes[IO] =
-//    Http4sServerInterpreter[IO]().
-//      toRoutes(SearchEndpoints.searchMovie.serverLogic(SearchLogics.searchMovie))
-//
-//  private val searchTvShow: HttpRoutes[IO] =
-//    Http4sServerInterpreter[IO]().
-//      toRoutes(SearchEndpoints.searchTVShow.serverLogic(SearchLogics.searchTvShow))
+  private val searchMovie: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]().
+      toRoutes(SearchEndpoints.searchMovie.serverLogic(SearchLogics.searchMovie))
+
+  private val searchTvShow: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]().
+      toRoutes(SearchEndpoints.searchTvShow.serverLogic(SearchLogics.searchTvShow))
 
   private val searchVideogame: HttpRoutes[IO] =
     Http4sServerInterpreter[IO]().

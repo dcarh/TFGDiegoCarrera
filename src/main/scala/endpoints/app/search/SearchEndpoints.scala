@@ -25,9 +25,9 @@ object SearchEndpoints {
       .in(QueryInputs.querySortBy)
       .out(MediaOutputs.listOfMoviesOutput)
 
-  val searchTVShow: PublicEndpoint[(String, Option[String]), UserError, List[TvShow], Any] =
+  val searchTvShow: PublicEndpoint[(String, Option[String]), UserError, List[TvShow], Any] =
     searchBaseEndpoint(
-      "searchTVShow",
+      "searchTvShow",
       "This endpoint searches any TV show on the app based on text coincidence"
     )
       .in("tv_show")
