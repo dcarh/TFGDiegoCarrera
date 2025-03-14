@@ -7,6 +7,8 @@ import modelClasses.app.media.{Book, Movie, TvShow, Videogame}
 import modelClasses.app.social.MediaList
 import modelClasses.app.user.User
 import modelClasses.errors.UserError.*
+import modelClasses.tmdb.Common.{Result, Results}
+import endpoints.outputs.TMDB.{jsonListOfResultOut, jsonResultsOut}
 import sttp.tapir.*
 
 object SearchEndpoints {
@@ -16,23 +18,23 @@ object SearchEndpoints {
       (name, description) => httpMethodEndpoint(name, description, "search", "GET")
         .in(QueryInputs.querySearch)
 
-  val searchMovie: PublicEndpoint[(String, Option[String]), UserError, List[Movie], Any] =
+  val searchMovie: PublicEndpoint[(String, Option[String]), UserError, List[Result], Any] =
     searchBaseEndpoint(
       "searchMovie",
       "This endpoint searches any movie on the app based on text coincidence"
     )
       .in("movie")
       .in(QueryInputs.querySortBy)
-      .out(MediaOutputs.listOfMoviesOutput)
+      .out(jsonListOfResultOut)
 
-  val searchTvShow: PublicEndpoint[(String, Option[String]), UserError, List[TvShow], Any] =
+  val searchTvShow: PublicEndpoint[(String, Option[String]), UserError, List[Result], Any] =
     searchBaseEndpoint(
       "searchTvShow",
       "This endpoint searches any TV show on the app based on text coincidence"
     )
       .in("tv_show")
       .in(QueryInputs.querySortBy)
-      .out(MediaOutputs.listOfTvShowsOutput)
+      .out(jsonListOfResultOut)
 
   val searchVideogame: PublicEndpoint[(String, Option[String]), UserError, List[Videogame], Any] =
     searchBaseEndpoint(

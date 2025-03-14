@@ -3,7 +3,7 @@ package endpoints.outputs
 import io.circe.*
 import io.circe.generic.auto.*
 import modelClasses.tmdb.*
-import modelClasses.tmdb.Common.{Credits, Results}
+import modelClasses.tmdb.Common.{Credits, Results, Result}
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*
@@ -12,6 +12,9 @@ object TMDB {
   
   val jsonResultsOut: EndpointOutput[Results] =
     jsonBody[Results]
+  
+  val jsonListOfResultOut: EndpointOutput[List[Result]] =
+    jsonBody[List[Result]]
     
   val jsonCreditsOut: EndpointOutput[Credits] =
     jsonBody[Credits]

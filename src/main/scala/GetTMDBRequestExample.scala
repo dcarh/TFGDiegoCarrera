@@ -9,11 +9,17 @@ object GetTMDBRequestExample extends IOApp {
   private val tmdbClient = TMDBClient()
 
   override def run(args: List[String]): IO[ExitCode] = {
-    tmdbClient.executeRequest(Movies.requestedCreditsForMovieEndpoint, MovieId(299534)).flatMap {
+    tmdbClient.executeRequest(Movies.searchMoviesEndpoint, "Avengers: Endgame").flatMap {
       case Right(resource) =>
         IO(println(s"Successfully retrieved resource: $resource")).as(ExitCode.Success)
       case Left(error) =>
         IO(println(s"Failed to retrieve resource: $error")).as(ExitCode.Error)
     }
+//    tmdbClient.executeRequest(Movies.requestMovieEndpoint, MovieId(299534)).flatMap {
+//      case Right(resource) =>
+//        IO(println(s"Successfully retrieved resource: $resource")).as(ExitCode.Success)
+//      case Left(error) =>
+//        IO(println(s"Failed to retrieve resource: $error")).as(ExitCode.Error)
+//    }
   }
 }

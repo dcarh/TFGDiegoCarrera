@@ -14,7 +14,7 @@ import modelClasses.errors.UserError.*
 import modelClasses.googleBooks.BooksRequests.RequestedBook
 import modelClasses.ids.Media.{BookId, MovieId, TvShowId, VideogameId}
 import modelClasses.igdb.VideogameRequests.{RequestedVideogame, VideogameAllFields}
-import modelClasses.tmdb.Common.Results
+import modelClasses.tmdb.Common.{Results, Result}
 import modelClasses.tmdb.MovieRequests.RequestedMovie
 import modelClasses.tmdb.TvShowRequests.RequestedTvShow
 
@@ -24,54 +24,50 @@ object SearchLogics {
   private val igdbClient = IGDBClient()
   private val googleBooksClient = GoogleBooksClient()
 
-  val searchMovie: ((String, Option[String])) => IO[Either[UserError, List[Movie]]] =
+
+  val searchMovie: ((String, Option[String])) => IO[Either[UserError, List[Result]]] =
     (title, sortByOption) =>
       tmdbClient.executeRequest(Movies.searchMoviesEndpoint, title).flatMap {
         case Right(results: Results) =>
-          results.results.traverse { result =>
-            tmdbClient.executeRequest(Movies.requestMovieEndpoint, MovieId(result.id)).flatMap {
-              case Right(movie: RequestedMovie) => IO(Movie(requestedMovie = movie))
-              case Left(error) => IO(Left(error))
-            }
-          }.flatMap { listOfEither =>
-            val listOfMovies = listOfEither.collect { case movie: Movie => movie }
+          val listOfMovies = results.results
 
-            val sortedMovies: Either[UserError, List[Movie]] = sortByOption match {
-              case Some("shortest") => Right(listOfMovies.sortBy(_.requestedMovie.runtime))
-              case Some("longest") => Right(listOfMovies.sortBy(_.requestedMovie.runtime).reverse)
-              case Some("oldest") => Right(listOfMovies.sortBy(_.requestedMovie.release_date))
-              case Some("newest") => Right(listOfMovies.sortBy(_.requestedMovie.release_date).reverse)
-              case None => Right(listOfMovies)
-              case _ => Left(BadRequest("Parameter not supported"))
-            }
-            IO(sortedMovies)
+          val sortedMovies: Either[UserError, List[Result]] = sortByOption match {
+            case Some("least_popular") => Right(listOfMovies.sortBy(_.popularity))
+            case Some("most_popular") => Right(listOfMovies.sortBy(_.popularity).reverse)
+            case Some("oldest") => Right(listOfMovies.sortBy(_.release_date))
+            case Some("newest") => Right(listOfMovies.sortBy(_.release_date).reverse)
+            case Some("worst_voted") => Right(listOfMovies.sortBy(_.vote_average))
+            case Some("best_voted") => Right(listOfMovies.sortBy(_.vote_average).reverse)
+            case None => Right(listOfMovies)
+            case _ => Left(BadRequest("Parameter not supported"))
           }
+
+          IO(sortedMovies)
 
         case Left(error) => IO(Left(error))
       }.handleError {
         case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
       }
 
-  val searchTvShow: ((String, Option[String])) => IO[Either[UserError, List[TvShow]]] =
+
+  val searchTvShow: ((String, Option[String])) => IO[Either[UserError, List[Result]]] =
     (title, sortByOption) =>
       tmdbClient.executeRequest(TvShows.searchTvShowsEndpoint, title).flatMap {
         case Right(results: Results) =>
-          results.results.traverse { result =>
-            tmdbClient.executeRequest(TvShows.requestTvShowEndpoint, MovieId(result.id)).flatMap {
-              case Right(tvShow: RequestedTvShow) => IO(TvShow(requestedTvShow = tvShow))
-              case Left(error) => IO(Left(error))
-            }
-          }.flatMap { listOfEither =>
-            val listOfTvShows = listOfEither.collect { case tvShow: TvShow => tvShow }
+          val listOfTvShows = results.results
 
-            val sortedTvShows: Either[UserError, List[TvShow]] = sortByOption match {
-              case Some("oldest") => Right(listOfTvShows.sortBy(_.requestedTvShow.first_air_date))
-              case Some("newest") => Right(listOfTvShows.sortBy(_.requestedTvShow.first_air_date).reverse)
-              case None => Right(listOfTvShows)
-              case _ => Left(BadRequest("Parameter not supported"))
-            }
-            IO(sortedTvShows)
+          val sortedTvShows: Either[UserError, List[Result]] = sortByOption match {
+            case Some("least_popular") => Right(listOfTvShows.sortBy(_.popularity))
+            case Some("most_popular") => Right(listOfTvShows.sortBy(_.popularity).reverse)
+            case Some("oldest") => Right(listOfTvShows.sortBy(_.first_air_date))
+            case Some("newest") => Right(listOfTvShows.sortBy(_.first_air_date).reverse)
+            case Some("worst_voted") => Right(listOfTvShows.sortBy(_.vote_average))
+            case Some("best_voted") => Right(listOfTvShows.sortBy(_.vote_average).reverse)
+            case None => Right(listOfTvShows)
+            case _ => Left(BadRequest("Parameter not supported"))
           }
+
+          IO(sortedTvShows)
 
         case Left(error) => IO(Left(error))
       }.handleError {
