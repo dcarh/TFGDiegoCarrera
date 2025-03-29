@@ -3,3 +3,4 @@
 project/
 target/
 src/main/scala/dummies/testingFiles/
+src/main/scala/clients/backups/

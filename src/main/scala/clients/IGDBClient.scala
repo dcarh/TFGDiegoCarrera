@@ -15,11 +15,11 @@ import scala.concurrent.duration._
 //import retry.cats.effect._
 //import scala.concurrent.duration._
 
-class IGDBClient {
+object IGDBClient {
 
   private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
 
-  private val responseMaxSize = 1024 * 32576 * 64
+  private val responseMaxSize = 1024 * 1024
 
   private val headerAccept = "application/json"
   private val headerClientID = "qn2w238rb9gpxxpiv546tgg9th31mk"
@@ -34,7 +34,6 @@ class IGDBClient {
 
 
     val httpClientResource: Resource[IO, Client[IO]] = EmberClientBuilder.default[IO]
-      .withMaxResponseHeaderSize(responseMaxSize)
       .withChunkSize(responseMaxSize)
       .withTimeout(5.seconds)
       .build
@@ -91,18 +90,18 @@ class IGDBClient {
                       }
                     case Left(error) =>
                       IO(println(s"Failed to parse response: ${error.toString}")) >>
-                        IO.pure(Left(Unknown(500, "Failed to parse response")))
+                        IO.pure(Left(Unknown(500, s"Failed to parse response: ${error.toString}")))
                   }
               case Left(error) =>
-                IO(println(s"Request failed")) >>
-                  IO.pure(Left(BadRequest("Request failed")))
+                IO(println(s"Request failed: ${error.toString}")) >>
+                  IO.pure(Left(BadRequest(s"Request failed: ${error.toString}")))
             }
           } yield result
-
-        case badRequest: BadRequest => IO.pure(Left(BadRequest(badRequest.what)))
+          
+        case badRequest: BadRequest => IO.pure(Left(BadRequest("Bad Request: " + badRequest.what)))
       }
     }.handleErrorWith { error =>
-      IO.pure(println(s"An unexpected error occurred: ${error.getMessage}")).as(Left(Unknown(500, "An unexpected error occurred")))
+      IO.pure(println(s"An unexpected error occurred: ${error.getMessage}")).as(Left(Unknown(500, s"An unexpected error occurred: ${error.toString}")))
     }
   }
 }

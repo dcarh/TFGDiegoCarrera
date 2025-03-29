@@ -9,6 +9,8 @@ import modelClasses.app.user.User
 import modelClasses.errors.UserError.*
 import modelClasses.tmdb.Common.{Result, Results}
 import endpoints.outputs.TMDB.{jsonListOfResultOut, jsonResultsOut}
+import endpoints.outputs.GoogleBooks.{jsonSearchedBookListOut, listOfSearchedBooks}
+import modelClasses.googleBooks.BooksRequests.{ListOfSearchedBooks, SearchedBook}
 import sttp.tapir.*
 
 object SearchEndpoints {
@@ -45,14 +47,14 @@ object SearchEndpoints {
       .in(QueryInputs.querySortBy)
       .out(MediaOutputs.listOfVideogamesOutput)
 
-  val searchBook: PublicEndpoint[(String, Option[String]), UserError, List[Book], Any] =
+  val searchBook: PublicEndpoint[(String, Option[String]), UserError, List[SearchedBook], Any] =
     searchBaseEndpoint(
       "searchBook",
       "This endpoint searches any book on the app based on text coincidence"
     )
       .in("book")
       .in(QueryInputs.querySortBy)
-      .out(MediaOutputs.listOfBooksOutput)
+      .out(jsonSearchedBookListOut)
 
   val searchMediaList: PublicEndpoint[String, UserError, List[MediaList], Any] =
     searchBaseEndpoint(

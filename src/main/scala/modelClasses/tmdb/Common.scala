@@ -85,8 +85,8 @@ object Common {
                       title: Option[String],                // Movie
                       name: Option[String],                 // TV Show
                       video: Option[Boolean],
-                      vote_average: Double,
-                      vote_count: Long
+                      vote_average: Option[Double],
+                      vote_count: Option[Long]
                     )
 
   case class Results(

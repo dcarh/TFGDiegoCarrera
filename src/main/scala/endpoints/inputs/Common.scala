@@ -28,7 +28,7 @@ object Common {
   object QueryInputs {
 
     val querySortBy: EndpointInput[Option[String]] =
-      query[Option[String]]("sort_by")
+      query[Option[String]]("sort_by").default(None)
       
     val queryArchived: EndpointInput[Option[Boolean]] =
       query[Option[Boolean]]("archived")

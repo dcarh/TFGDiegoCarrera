@@ -1,100 +1,47 @@
 package clients
 
 import cats.effect.*
+import modelClasses.errors.UserError.*
 import org.http4s.*
-import org.http4s.implicits.*
 import org.http4s.client.Client
 import org.http4s.ember.client.EmberClientBuilder
-import sttp.tapir.*
-import sttp.tapir.DecodeResult
+import org.http4s.implicits.*
+import sttp.tapir.{DecodeResult, *}
 import sttp.tapir.client.http4s.Http4sClientInterpreter
-import modelClasses.errors.UserError.*
-import modelClasses.app.media.Book
-import modelClasses.ids.Media.BookId
-import scala.concurrent.duration._
-//import retry._
-//import retry.cats.effect._
-//import scala.concurrent.duration._
 
-class GoogleBooksClient {
+import scala.concurrent.duration.*
+
+object GoogleBooksClient {
 
   private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
 
-  private val responseMaxSize = 1024 * 32576 * 64
+  private var responseMaxSize = 1024 * 1024
 
-  def executeRequest[I, O](
-                                          endpoint: PublicEndpoint[I, UserError, O, Any],
-                                          resourceId: 
-                                            BookId | 
-                                            (String, String, String, String)
-                                        ): IO[Either[UserError, O]] = {
+  def setResponseMaxSize(size: Int): Unit =
+    responseMaxSize = size
 
-    val httpClientResource: Resource[IO, Client[IO]] = EmberClientBuilder.default[IO]
-      .withMaxResponseHeaderSize(responseMaxSize)
-      .withChunkSize(responseMaxSize)
-      .withTimeout(5.seconds)
-      .build
+  def executeRequest[I, O](endpoint: PublicEndpoint[I, UserError, O, Any], resourceId: I): IO[Either[UserError, O]] = {
+    val httpClientResource: Resource[IO, Client[IO]] =
+      EmberClientBuilder.default[IO]
+        .withChunkSize(responseMaxSize)
+        .withTimeout(5.seconds)
+        .build
 
-    httpClientResource.use { client =>
-      // Interpret the endpoint as a request and a response parser.
-      val result = (endpoint, resourceId) match {
+    val (userRequest, parseResponse) = Http4sClientInterpreter[IO]()
+      .toRequest(endpoint, baseUri = Some(uri"https://www.googleapis.com/books/v1"))
+      .apply(resourceId)
 
-        case (endpoint: PublicEndpoint[BookId, _, _, _], bookId: BookId) =>
-          println("Book requested")
-          val (userRequest, parseResponse) =
-            Http4sClientInterpreter[IO]()
-              .toRequest(endpoint, baseUri = Some(uri"https://www.googleapis.com/books/v1"))
-              .apply(bookId)
-          IO.pure(userRequest, parseResponse)
-
-        case (endpoint: PublicEndpoint[(String, String, String, String), _, _, _], query: (String, String, String, String)) =>
-          println("Search requested")
-          val (userRequest, parseResponse) =
-            Http4sClientInterpreter[IO]()
-              .toRequest(endpoint, baseUri = Some(uri"https://www.googleapis.com/books/v1"))
-              .apply(query._1, query._2, query._3, query._4)
-          IO.pure(userRequest, parseResponse)
-
-        case _ => IO.pure(BadRequest("Wrong number of parameters for specified endpoint"))
+    httpClientResource.use { httpClient =>
+      httpClient.run(userRequest).use { response =>
+        parseResponse(response).attempt.flatMap {
+          case Right(DecodeResult.Value(Right(result))) => IO.pure(Right(result))
+          case Right(DecodeResult.Value(Left(error)))   => IO.pure(Left(error))
+          case Right(failure: DecodeResult.Failure)    => IO.pure(Left(Unknown(500, s"Failed to decode response: $failure")))
+          case Left(error)                             => IO.pure(Left(Unknown(500, s"Failed to parse response: ${error.getMessage}")))
+        }
+      }.handleErrorWith { error =>
+        IO.pure(Left(Unknown(500, s"Unexpected error: ${error.getMessage}")))
       }
-
-      result.flatMap {
-        case (userRequest, parseResponse) =>
-          for {
-            _ <- IO(println("Welcome to the http4s client interpreter example!"))
-            _ <- IO(println(s"The following request was derived from the endpoint definition: $userRequest"))
-            _ <- IO(println(s"Now we'll run the request against the real API..."))
-            response <- client.run(userRequest).use(IO.pure).attempt
-            //response <- retryingOnAllErrors[Response[IO]](
-            //  policy = retryPolicy,
-            //  onError = (e: Throwable, details: RetryDetails) => IO(println(s"Request failed: ${e.getMessage}. Retrying..."))
-            //)(client.run(userRequest).use(IO.pure))
-            result <- response match {
-              case Right(res) =>
-                IO(println(s"We received the following response: $res")) >>
-                  parseResponse(res).attempt.flatMap {
-                    case Right(decodeResult) =>
-                      decodeResult match {
-                        case DecodeResult.Value(Right(requestedResource)) =>
-                          IO.pure(Right(requestedResource))
-                        case DecodeResult.Value(Left(errorInfo)) =>
-                          IO(s"DecodeResult.Value.Left: $errorInfo") >>
-                            IO.pure(Left(errorInfo))
-                        case failure: DecodeResult.Failure =>
-                          IO.pure(Left(Unknown(500, s"Failed to decode response: $failure")))
-                      }
-                    case Left(error) =>
-                      IO(println(s"Failed to parse response: ${error.toString}")) >>
-                        IO.pure(Left(Unknown(500, "Failed to parse response")))
-                  }
-              case Left(error) =>
-                IO(println(s"Request failed")) >>
-                  IO.pure(Left(BadRequest("Request failed")))
-            }
-          } yield result
-      }
-    }.handleErrorWith { error =>
-      IO.pure(println(s"An unexpected error occurred: ${error.getMessage}")).as(Left(Unknown(500, "An unexpected error occurred")))
     }
   }
 }

@@ -17,10 +17,10 @@ import scala.concurrent.duration.*
 //import retry.cats.effect._
 //import scala.concurrent.duration._
 
-class TMDBClient {
+object TMDBClient {
 
   private val apiKey = "6c004411738609c1a39b5f11582a04b7"
-  private val responseMaxSize = 1024 * 32576 * 64
+  private val responseMaxSize = 1024 * 1024
 
   def executeRequest[I, O](
                                endpoint: PublicEndpoint[I, UserError, O, Any],
@@ -33,7 +33,6 @@ class TMDBClient {
                              ): IO[Either[UserError, O]] = {
 
     val httpClientResource: Resource[IO, Client[IO]] = EmberClientBuilder.default[IO]
-      .withMaxResponseHeaderSize(responseMaxSize)
       .withChunkSize(responseMaxSize)
       .withTimeout(5.seconds)
       .build
@@ -119,13 +118,15 @@ class TMDBClient {
                         IO.pure(Left(Unknown(500, s"Failed to parse response ${error.toString}")))
                   }
               case Left(error) =>
-                IO(println(s"Request failed")) >>
-                  IO.pure(Left(BadRequest("Request failed")))
+                IO(println(s"Request failed: ${error.toString}")) >>
+                  IO.pure(Left(BadRequest(s"Request failed: ${error.toString}")))
             }
           } yield result
+          
+        case badRequest: BadRequest => IO.pure(Left(BadRequest("Bad Request: " + badRequest.what)))
       }
     }.handleErrorWith { error =>
-      IO.pure(println(s"An unexpected error occurred: ${error.getMessage}")).as(Left(Unknown(500, "An unexpected error occurred")))
+      IO.pure(println(s"An unexpected error occurred: ${error.getMessage}")).as(Left(Unknown(500, s"An unexpected error occurred: ${error.toString}")))
     }
   }
 }

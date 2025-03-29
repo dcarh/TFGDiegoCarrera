@@ -15,4 +15,7 @@ object GoogleBooks {
 
   val queryProjection: EndpointInput[String] =
     query[String]("projection")
+
+  val queryMaxResults: EndpointInput[Int] =
+    query[Int]("maxResults")
 }

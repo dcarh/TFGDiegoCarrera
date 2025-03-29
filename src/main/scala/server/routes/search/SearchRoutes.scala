@@ -21,9 +21,9 @@ object SearchRoutes {
     Http4sServerInterpreter[IO]().
       toRoutes(SearchEndpoints.searchVideogame.serverLogic(SearchLogics.searchVideogame))
 
-//  private val searchBook: HttpRoutes[IO] =
-//    Http4sServerInterpreter[IO]().
-//      toRoutes(SearchEndpoints.searchBook.serverLogic(SearchLogics.searchBook))
+  private val searchBook: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]().
+      toRoutes(SearchEndpoints.searchBook.serverLogic(SearchLogics.searchBook))
 
   private val searchMediaList: HttpRoutes[IO] =
     Http4sServerInterpreter[IO]().
@@ -37,7 +37,7 @@ object SearchRoutes {
     searchMovie <+>
       searchTvShow <+>
       searchVideogame <+>
-//      searchBook <+>
+      searchBook <+>
       searchMediaList <+>
       searchUser
 
