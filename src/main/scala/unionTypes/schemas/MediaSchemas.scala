@@ -7,6 +7,11 @@ import modelClasses.app.media.*
 
 object MediaSchemas {
 
+  implicit val movieSchema: Schema[Movie] = Schema.derived[Movie]
+  implicit val tvShowSchema: Schema[TvShow] = Schema.derived[TvShow]
+  implicit val videogameSchema: Schema[Videogame] = Schema.derived[Videogame]
+  implicit val bookSchema: Schema[Book] = Schema.derived[Book]
+
   implicit val favouritesMediaUnionSchema: Schema[Movie | TvShow | Videogame | Book] = Schema.derivedUnion
 
   implicit val progressMediaUnionSchema: Schema[TvShow | TvSeason | Videogame | Book] = Schema.derivedUnion

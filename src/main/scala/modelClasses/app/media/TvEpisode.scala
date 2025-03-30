@@ -2,10 +2,13 @@ package modelClasses.app.media
 
 import io.circe.generic.auto.*
 import modelClasses.ids.Social.ReviewId
+import modelClasses.tmdb.Common.Member
 import modelClasses.tmdb.TvEpisodeRequests.RequestedTvEpisode
 
 case class TvEpisode(
-                      requestedTvEpisode: RequestedTvEpisode
+                      requestedTvEpisode: RequestedTvEpisode,
+                      cast: Option[List[Member]],
+                      crew: Option[List[Member]]
 //                      airDate      : String,
 //                      crew         : List[(String, String)],
 //                      // episodeNumber: EpisodeNumber,

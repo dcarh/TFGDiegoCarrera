@@ -11,16 +11,15 @@ import modelClasses.ids.Media.*
 object MediaEndpoints {
 
   private val mediaBaseEndpoint:
-    (String, String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
-      (name, description, category) => httpMethodEndpoint(name, description, "display/" + category, "GET")
-//        .in(category)
+    (String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
+      (name, description) => httpMethodEndpoint(name, description, "display", "GET")
 
   val getMovie: PublicEndpoint[MovieId, UserError, Movie, Any] =
     mediaBaseEndpoint(
       "getMovie",
       "This endpoint returns the movie specified by the ID introduced",
-      "movie"
     )
+      .in("movie")
       .in(PathInputs.pathMovieId)
       .out(MediaOutputs.movieOutput)
 
@@ -28,28 +27,28 @@ object MediaEndpoints {
     mediaBaseEndpoint(
       "getTvShow",
       "This endpoint returns the TV show specified by the ID introduced",
-      "tv_show"
     )
+      .in("tv_show")
       .in(PathInputs.pathTvShowId)
       .out(MediaOutputs.tvShowOutput)
 
-  val getSeason: PublicEndpoint[(TvShowId, TvSeasonNumber), UserError, TvSeason, Any] =
+  val getTvSeason: PublicEndpoint[(TvShowId, TvSeasonNumber), UserError, TvSeason, Any] =
     mediaBaseEndpoint(
       "getSeason",
       "This endpoint returns the season specified by the ID introduced",
-      "tv_show"
     )
+      .in("tv_show")
       .in(PathInputs.pathTvShowId)
       .in("season")
       .in(PathInputs.pathTvSeasonNumber)
       .out(MediaOutputs.seasonOutput)
 
-  val getEpisode: PublicEndpoint[(TvShowId, TvSeasonNumber, TvEpisodeNumber), UserError, TvEpisode, Any] =
+  val getTvEpisode: PublicEndpoint[(TvShowId, TvSeasonNumber, TvEpisodeNumber), UserError, TvEpisode, Any] =
     mediaBaseEndpoint(
       "getEpisode",
       "This endpoint returns the episode specified by the ID introduced",
-      "tv_show"
     )
+      .in("tv_show")
       .in(PathInputs.pathTvShowId)
       .in("season")
       .in(PathInputs.pathTvSeasonNumber)
@@ -61,8 +60,8 @@ object MediaEndpoints {
     mediaBaseEndpoint(
       "getVideogame",
       "This endpoint returns the videogame specified by the ID introduced",
-      "videogame"
     )
+      .in("videogame")
       .in(PathInputs.pathVideogameId)
       .out(MediaOutputs.videogameOutput)
 
@@ -70,8 +69,8 @@ object MediaEndpoints {
     mediaBaseEndpoint(
       "getBook",
       "This endpoint returns the book specified by the ID introduced",
-      "book"
     )
+      .in("book")
       .in(PathInputs.pathBookId)
       .out(MediaOutputs.bookOutput)
 

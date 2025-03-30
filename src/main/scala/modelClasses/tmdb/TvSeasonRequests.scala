@@ -15,7 +15,7 @@ object TvSeasonRequests {
                                 id: Long,
                                 poster_path: Option[String],
                                 runtime: Option[Long],
-                                season_number: TvSeasonNumber,
+                                season_number: Int,
                                 vote_average: Double
                             )
 

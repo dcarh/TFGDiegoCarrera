@@ -2,10 +2,15 @@ package modelClasses.app.media
 
 import io.circe.generic.auto.*
 import modelClasses.ids.Social.{MediaListId, ReviewId}
+import modelClasses.tmdb.Common.{Credits, Member, Result}
 import modelClasses.tmdb.MovieRequests.RequestedMovie
 
 case class Movie(
-                  requestedMovie: RequestedMovie
+                  requestedMovie: RequestedMovie,
+                  similarMovies: Option[List[Result]],
+                  recommendedMovies: Option[List[Result]],
+                  cast: Option[List[Member]],
+                  crew: Option[List[Member]]
 //                  budget             : Long,
                   //                  cast               : List[(String, String)],
                   //                  director           : String,
