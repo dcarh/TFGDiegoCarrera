@@ -22,5 +22,8 @@ object GoogleBooks {
 
   val listOfSearchedBooks: EndpointOutput[ListOfSearchedBooks] =
     jsonBody[ListOfSearchedBooks]
+    
+  val searchedBook: EndpointOutput[SearchedBook] =
+    jsonBody[SearchedBook]
 
 }

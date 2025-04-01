@@ -25,20 +25,20 @@ object MediaRoutes {
     Http4sServerInterpreter[IO]().
       toRoutes(MediaEndpoints.getTvEpisode.serverLogic(MediaLogics.getTvEpisode))
 
-//  private val getVideogame: HttpRoutes[IO] =
-//    Http4sServerInterpreter[IO]().
-//      toRoutes(MediaEndpoints.getVideogame.serverLogic(MediaLogics.getVideogame))
-//
-//  private val getBook: HttpRoutes[IO] =
-//    Http4sServerInterpreter[IO]().
-//      toRoutes(MediaEndpoints.getBook.serverLogic(MediaLogics.getBook))
+  private val getVideogame: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]().
+      toRoutes(MediaEndpoints.getVideogame.serverLogic(MediaLogics.getVideogame))
+  
+  private val getBook: HttpRoutes[IO] =
+    Http4sServerInterpreter[IO]().
+      toRoutes(MediaEndpoints.getBook.serverLogic(MediaLogics.getBook))
 
   val mediaRoutes: HttpRoutes[IO] =
     getMovie <+>
       getTvShow <+>
       getTvSeason <+>
-      getTvEpisode
-//      getVideogame <+>
-//      getBook
+      getTvEpisode <+>
+      getVideogame <+>
+      getBook
 
 }

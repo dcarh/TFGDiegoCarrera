@@ -50,6 +50,7 @@ object EndpointsUtils {
           .post
           .errorOut(
             oneOf[UserError](
+              oneOfVariant(StatusCode.NotFound, ErrorOutputsTraits.notFoundOutput),
               oneOfVariant(StatusCode.BadRequest, ErrorOutputsTraits.badRequestOutput),
               oneOfVariant(StatusCode.Conflict, ErrorOutputsTraits.conflictOutput),
               oneOfDefaultVariant(ErrorOutputsTraits.unknownOutput)

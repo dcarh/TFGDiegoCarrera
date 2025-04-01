@@ -9,7 +9,7 @@ object Videogames {
 
   val requestVideogameEndpoint: PublicEndpoint[(String, String, String, String), UserError, List[RequestedVideogame], Any] =
     Base.igdbBaseEndpoint(
-        "Get videogame from IGDB",
+        "requestVideogameEndpoint",
         "This endpoint returns a list of videogames from IGDB API, whether we want a specific videogame by its ID " +
           "or a list of videogames that meet a certain criteria",
         "games"
@@ -18,7 +18,7 @@ object Videogames {
 
   val requestVideogameAllFieldsEndpoint: PublicEndpoint[(String, String, String, String), UserError, List[VideogameAllFields], Any] =
     Base.igdbBaseEndpoint(
-        "Get videogame from IGDB",
+        "requestVideogameAllFieldsEndpoint",
         "This endpoint returns a list of videogames from IGDB API, whether we want a specific videogame by its ID " +
           "or a list of videogames that meet a certain criteria",
         "games"

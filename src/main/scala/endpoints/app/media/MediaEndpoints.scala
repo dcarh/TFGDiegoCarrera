@@ -17,7 +17,7 @@ object MediaEndpoints {
   val getMovie: PublicEndpoint[MovieId, UserError, Movie, Any] =
     mediaBaseEndpoint(
       "getMovie",
-      "This endpoint returns the movie specified by the ID introduced",
+      "This endpoint returns the movie specified by the ID introduced"
     )
       .in("movie")
       .in(PathInputs.pathMovieId)
@@ -26,7 +26,7 @@ object MediaEndpoints {
   val getTvShow: PublicEndpoint[TvShowId, UserError, TvShow, Any] =
     mediaBaseEndpoint(
       "getTvShow",
-      "This endpoint returns the TV show specified by the ID introduced",
+      "This endpoint returns the TV show specified by the ID introduced"
     )
       .in("tv_show")
       .in(PathInputs.pathTvShowId)
@@ -35,7 +35,7 @@ object MediaEndpoints {
   val getTvSeason: PublicEndpoint[(TvShowId, TvSeasonNumber), UserError, TvSeason, Any] =
     mediaBaseEndpoint(
       "getSeason",
-      "This endpoint returns the season specified by the ID introduced",
+      "This endpoint returns the season specified by the ID introduced"
     )
       .in("tv_show")
       .in(PathInputs.pathTvShowId)
@@ -46,7 +46,7 @@ object MediaEndpoints {
   val getTvEpisode: PublicEndpoint[(TvShowId, TvSeasonNumber, TvEpisodeNumber), UserError, TvEpisode, Any] =
     mediaBaseEndpoint(
       "getEpisode",
-      "This endpoint returns the episode specified by the ID introduced",
+      "This endpoint returns the episode specified by the ID introduced"
     )
       .in("tv_show")
       .in(PathInputs.pathTvShowId)
@@ -59,7 +59,7 @@ object MediaEndpoints {
   val getVideogame: PublicEndpoint[VideogameId, UserError, Videogame, Any] =
     mediaBaseEndpoint(
       "getVideogame",
-      "This endpoint returns the videogame specified by the ID introduced",
+      "This endpoint returns the videogame specified by the ID introduced"
     )
       .in("videogame")
       .in(PathInputs.pathVideogameId)
@@ -68,7 +68,7 @@ object MediaEndpoints {
   val getBook: PublicEndpoint[BookId, UserError, Book, Any] =
     mediaBaseEndpoint(
       "getBook",
-      "This endpoint returns the book specified by the ID introduced",
+      "This endpoint returns the book specified by the ID introduced"
     )
       .in("book")
       .in(PathInputs.pathBookId)

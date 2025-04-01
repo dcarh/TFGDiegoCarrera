@@ -4,11 +4,15 @@ import cats.effect.IO
 import cats.effect.IO.{IOCont, Uncancelable}
 import cats.implicits.*
 import clients.{GoogleBooksClient, IGDBClient, TMDBClient}
+import endpoints.igdb.Videogames
+import endpoints.googleBooks.Books
 import endpoints.tmdb.{Movies, TvEpisodes, TvSeasons, TvShows}
+import modelClasses.app.media.*
 import modelClasses.app.user.User
 import modelClasses.errors.UserError.*
+import modelClasses.googleBooks.BooksRequests.RequestedBook
 import modelClasses.ids.Media.*
-import modelClasses.app.media.*
+import modelClasses.igdb.VideogameRequests.VideogameAllFields
 import modelClasses.tmdb.Common.{Credits, Results}
 import modelClasses.tmdb.MovieRequests.RequestedMovie
 
@@ -167,9 +171,30 @@ object MediaLogics {
           Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
       }
 
-//  val getVideogame: VideogameId => IO[Either[UserError, Videogame]] = ???
-//
-//  val getBook: BookId => IO[Either[UserError, Book]] = ???
+  val getVideogame: VideogameId => IO[Either[UserError, Videogame]] =
+    videogameId =>
+      IGDBClient.executeRequest(Videogames.requestVideogameAllFieldsEndpoint, videogameId).flatMap {
+        case Right(requestedListOfVideogames: List[VideogameAllFields]) =>
+          requestedListOfVideogames match
+            case head :: tail => IO.pure(Right(Videogame(head)))
+            case Nil => IO.pure(Left(NotFound("Not found videogame with ID introduced")))
+
+        case Left(error: UserError) => IO(Left(error))
+          
+      }.handleError {
+        case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
+      }
+
+  val getBook: BookId => IO[Either[UserError, Book]] =
+    bookId =>
+      GoogleBooksClient.executeRequest(Books.requestBookEndpoint, bookId).flatMap {
+        case Right(requestedBook: RequestedBook) =>
+          IO.pure(Right(Book(requestedBook)))
+
+        case Left(error: UserError) => IO(Left(error))
+      }.handleError {
+        case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
+      }
 
 }
 
