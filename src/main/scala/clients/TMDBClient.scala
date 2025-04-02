@@ -20,6 +20,7 @@ object TMDBClient {
 
   private val apiKey = "6c004411738609c1a39b5f11582a04b7"
   private val responseMaxSize = 1024 * 1024
+  private val baseUri = uri"https://api.themoviedb.org/3"
 
   def executeRequest[I, O](
                             endpoint: PublicEndpoint[I, UserError, O, Any],
@@ -36,24 +37,23 @@ object TMDBClient {
         .withTimeout(5.seconds)
         .build
 
-    val requestResult =
-      (endpoint, resource) match
-        case (ep: PublicEndpoint[(String, MovieId), _, _, _], movieId: MovieId) =>
-          Right(Http4sClientInterpreter[IO]().toRequest(ep, baseUri = Some(uri"https://api.themoviedb.org/3")).apply(apiKey, movieId))
+    val requestResult = (endpoint, resource) match
+      case (endpoint: PublicEndpoint[(String, MovieId), _, _, _], movieId: MovieId) =>
+        Right(Http4sClientInterpreter[IO]().toRequest(endpoint, baseUri = Some(baseUri)).apply(apiKey, movieId))
 
-        case (ep: PublicEndpoint[(String, TvShowId), _, _, _], tvShowId: TvShowId) =>
-          Right(Http4sClientInterpreter[IO]().toRequest(ep, baseUri = Some(uri"https://api.themoviedb.org/3")).apply(apiKey, tvShowId))
+      case (endpoint: PublicEndpoint[(String, TvShowId), _, _, _], tvShowId: TvShowId) =>
+        Right(Http4sClientInterpreter[IO]().toRequest(endpoint, baseUri = Some(baseUri)).apply(apiKey, tvShowId))
 
-        case (ep: PublicEndpoint[(String, TvShowId, TvSeasonNumber), _, _, _], (tvShowId: TvShowId, tvSeasonNumber: TvSeasonNumber)) =>
-          Right(Http4sClientInterpreter[IO]().toRequest(ep, baseUri = Some(uri"https://api.themoviedb.org/3")).apply(apiKey, tvShowId, tvSeasonNumber))
+      case (endpoint: PublicEndpoint[(String, TvShowId, TvSeasonNumber), _, _, _], (tvShowId: TvShowId, tvSeasonNumber: TvSeasonNumber)) =>
+        Right(Http4sClientInterpreter[IO]().toRequest(endpoint, baseUri = Some(baseUri)).apply(apiKey, tvShowId, tvSeasonNumber))
 
-        case (ep: PublicEndpoint[(String, TvShowId, TvSeasonNumber, TvEpisodeNumber), _, _, _], (tvShowId: TvShowId, tvSeasonNumber: TvSeasonNumber, tvEpisodeNumber: TvEpisodeNumber)) =>
-          Right(Http4sClientInterpreter[IO]().toRequest(ep, baseUri = Some(uri"https://api.themoviedb.org/3")).apply(apiKey, tvShowId, tvSeasonNumber, tvEpisodeNumber))
+      case (endpoint: PublicEndpoint[(String, TvShowId, TvSeasonNumber, TvEpisodeNumber), _, _, _], (tvShowId: TvShowId, tvSeasonNumber: TvSeasonNumber, tvEpisodeNumber: TvEpisodeNumber)) =>
+        Right(Http4sClientInterpreter[IO]().toRequest(endpoint, baseUri = Some(baseUri)).apply(apiKey, tvShowId, tvSeasonNumber, tvEpisodeNumber))
 
-        case (ep: PublicEndpoint[(String, String), _, _, _], title: String) =>
-          Right(Http4sClientInterpreter[IO]().toRequest(ep, baseUri = Some(uri"https://api.themoviedb.org/3")).apply(apiKey, title))
+      case (endpoint: PublicEndpoint[(String, String), _, _, _], title: String) =>
+        Right(Http4sClientInterpreter[IO]().toRequest(endpoint, baseUri = Some(baseUri)).apply(apiKey, title))
 
-        case _ => Left(BadRequest("Wrong number of parameters for specified endpoint"))
+      case _ => Left(BadRequest("Wrong number of parameters for specified endpoint"))
 
     requestResult match {
       case Left(error) => IO.pure(Left(error))
