@@ -15,10 +15,8 @@ object GoogleBooksClient {
 
   private type PublicEndpoint[I, E, O, -R] = Endpoint[Unit, I, E, O, R]
 
-  private var responseMaxSize = 1024 * 1024
-
-  def setResponseMaxSize(size: Int): Unit =
-    responseMaxSize = size
+  private val responseMaxSize = 1024 * 1024
+  private val baseUri = uri"https://www.googleapis.com/books/v1"
 
   def executeRequest[I, O](endpoint: PublicEndpoint[I, UserError, O, Any], resourceId: I): IO[Either[UserError, O]] = {
     val httpClientResource: Resource[IO, Client[IO]] =
@@ -28,7 +26,7 @@ object GoogleBooksClient {
         .build
 
     val (userRequest, parseResponse) = Http4sClientInterpreter[IO]()
-      .toRequest(endpoint, baseUri = Some(uri"https://www.googleapis.com/books/v1"))
+      .toRequest(endpoint, baseUri = Some(baseUri))
       .apply(resourceId)
 
     httpClientResource.use { httpClient =>
