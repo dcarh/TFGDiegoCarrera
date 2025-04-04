@@ -8,7 +8,7 @@ import modelClasses.tmdb.TvSeasonRequests.RequestedTvSeason
 case class TvSeason(
                      requestedTvSeason: RequestedTvSeason,
                      cast: Option[List[Member]],
-                     crew: Option[List[Member]]
+                     crew: Option[List[Member]],
 //                     airDate: String,
 //                     // episodesIds: List[EpisodeId],
 //                     numberOfEpisodes: Int,
@@ -17,12 +17,13 @@ case class TvSeason(
 //                     title: String,
 //                     tvShowId: TvShowId,
 //
-//                     abandoned: Long,
 //                     averageRating: Double,
-//                     completed: Long,
-//                     inProgress: Long,
-//                     paused: Long,
-//                     pending: Long,
+//                     lists: List[MediaListId],
+                     numberOfCompleted: Long,
+                     numberOfDropped: Long,
+                     numberOfInProgress: Long,
+                     numberOfOnHold: Long,
+                     numberOfPending: Long,
 //                     ratings: Long,
 //                     reviews: List[ReviewId]
                  )

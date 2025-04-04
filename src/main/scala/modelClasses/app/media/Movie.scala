@@ -10,7 +10,7 @@ case class Movie(
                   similarMovies: Option[List[Result]],
                   recommendedMovies: Option[List[Result]],
                   cast: Option[List[Member]],
-                  crew: Option[List[Member]]
+                  crew: Option[List[Member]],
 //                  budget             : Long,
                   //                  cast               : List[(String, String)],
                   //                  director           : String,
@@ -28,13 +28,11 @@ case class Movie(
 //                  title              : String,
 //                  year               : String,
 
-                  //                  averageRating      : Double, 
-                  //                  lists              : List[MediaListId],
-                  //                  numberOfAbandoned  : Long,
-                  //                  numberOfCompleted  : Long,
-                  //                  numberOfInProgress : Option[Long],
-                  //                  numberOfPaused     : Option[Long],
-                  //                  numberOfPending    : Long,
-                  //                  ratings            : Long,
-                  //                  reviews            : List[ReviewId]
+//                  averageRating      : Double, 
+//                  lists              : List[MediaListId],
+                  numberOfCompleted  : Long,
+                  numberOfDropped    : Long,
+                  numberOfPending    : Long,
+//                  ratings            : Long,
+//                  reviews            : List[ReviewId]
                 )

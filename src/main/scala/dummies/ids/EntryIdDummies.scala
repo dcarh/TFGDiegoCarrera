@@ -18,4 +18,9 @@ object EntryIdDummies {
   val entryId13: EntryId = EntryId(13)
   val entryId14: EntryId = EntryId(14)
   val entryId15: EntryId = EntryId(15)
+  val entryId16: EntryId = EntryId(16)
+  val entryId17: EntryId = EntryId(17)
+  val entryId18: EntryId = EntryId(18)
+  val entryId19: EntryId = EntryId(19)
+  val entryId20: EntryId = EntryId(20)
 }

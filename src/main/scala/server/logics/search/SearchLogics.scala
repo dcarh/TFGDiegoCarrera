@@ -69,24 +69,17 @@ object SearchLogics {
       }
 
   // TODO: Seguir por aquí, comprobar si va bien o no
-  val searchVideogame: ((String, Option[String])) => IO[Either[UserError, List[Videogame]]] =
+  val searchVideogame: ((String, Option[String])) => IO[Either[UserError, List[VideogameAllFields]]] =
     (title, sortByOption) =>
       IGDBClient.executeRequest(Videogames.requestVideogameAllFieldsEndpoint, title).flatMap {
-        case Right(requestedListOfVideogames: List[VideogameAllFields]) =>
-          val listOfVideogames = requestedListOfVideogames.map(
-            requestedVideogame =>
-              Videogame(
-                requestedVideogame = requestedVideogame
-              )
-              // TODO: Podría devolver directamente el objeto VideogameAllFields y ya está
-          )
+        case Right(listOfRequestedVideogames: List[VideogameAllFields]) =>
 
           val sortedVideogames = sortByOption match {
-            case Some("oldest") => Right(listOfVideogames.sortBy(_.requestedVideogame.first_release_date))
-            case Some("newest") => Right(listOfVideogames.sortBy(_.requestedVideogame.first_release_date).reverse)
-            case Some("worst_igdb_rated") => Right(listOfVideogames.sortBy(_.requestedVideogame.total_rating))
-            case Some("best_igdb_rated") => Right(listOfVideogames.sortBy(_.requestedVideogame.total_rating).reverse)
-            case None => Right(listOfVideogames)
+            case Some("oldest") => Right(listOfRequestedVideogames.sortBy(_.first_release_date))
+            case Some("newest") => Right(listOfRequestedVideogames.sortBy(_.first_release_date).reverse)
+            case Some("worst_igdb_rated") => Right(listOfRequestedVideogames.sortBy(_.total_rating))
+            case Some("best_igdb_rated") => Right(listOfRequestedVideogames.sortBy(_.total_rating).reverse)
+            case None => Right(listOfRequestedVideogames)
             case _ => Left(BadRequest("Parameter not supported"))
           }
           IO(sortedVideogames)

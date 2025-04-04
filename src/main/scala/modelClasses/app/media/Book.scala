@@ -5,7 +5,7 @@ import modelClasses.googleBooks.BooksRequests.RequestedBook
 import modelClasses.ids.Social.{MediaListId, ReviewId}
 
 case class Book(
-                  requestedBook: RequestedBook
+                  requestedBook: RequestedBook,
 //                 authors           : List[String],
 //                 categories        : List[String],
 //                 description       : String,
@@ -14,11 +14,11 @@ case class Book(
 //
 //                 averageRating     : Double,
 //                 lists             : List[MediaListId],
-//                 numberOfAbandoned : Long,
-//                 numberOfCompleted : Long,
-//                 numberOfInProgress: Option[Long],
-//                 numberOfPaused    : Option[Long],
-//                 numberOfPending   : Long,
+                 numberOfCompleted : Long,
+                 numberOfDropped   : Long,
+                 numberOfInProgress: Long,
+                 numberOfOnHold    : Long,
+                 numberOfPending   : Long,
 //                 ratings           : Long,
 //                 reviews           : List[ReviewId]
                )

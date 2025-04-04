@@ -86,6 +86,7 @@ object UserDummies {
     List(
       BookId("UU-VAAAACAAJ"),
       VideogameId(284925),
+      BookId("WLmqonsyH0QC"),
     ),
     List(),
     List(),
@@ -99,7 +100,8 @@ object UserDummies {
     List(
       EntryIdDummies.entryId5,
       EntryIdDummies.entryId6,
-      EntryIdDummies.entryId9
+      EntryIdDummies.entryId9,
+      EntryIdDummies.entryId18
       
     ),
     List(
@@ -108,7 +110,8 @@ object UserDummies {
     List(
       RatingIdDummies.ratingId5,
       RatingIdDummies.ratingId6,
-      RatingIdDummies.ratingId9
+      RatingIdDummies.ratingId9,
+      RatingIdDummies.ratingId14
     ),
     List(
       LikeIdDummies.likeId1
@@ -150,6 +153,7 @@ object UserDummies {
     List(
       VideogameId(144022),
       MovieId(837),
+      VideogameId(19564),
     ),
     List(),
     List(),
@@ -264,6 +268,7 @@ object UserDummies {
       TvShowId(136315),
       TvShowId(100565),
       (TvShowId(136315), TvSeasonNumber(2), TvEpisodeNumber(7)),
+      VideogameId(19564),
     ),
     List(),
     List(),
@@ -273,7 +278,8 @@ object UserDummies {
     List(
       EntryIdDummies.entryId1,
       EntryIdDummies.entryId8,
-      EntryIdDummies.entryId14
+      EntryIdDummies.entryId14,
+      EntryIdDummies.entryId16,
     ),
     List(
       ReviewIdDummies.reviewId1,
@@ -281,7 +287,8 @@ object UserDummies {
     ),
     List(
       RatingIdDummies.ratingId1,
-      RatingIdDummies.ratingId8
+      RatingIdDummies.ratingId8,
+      RatingIdDummies.ratingId13
     ),
     List(
       LikeIdDummies.likeId3

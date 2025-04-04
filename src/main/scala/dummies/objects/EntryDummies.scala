@@ -61,7 +61,7 @@ object EntryDummies {
     None,
     Some(48),
     Some(Time(0, 20, 43)),
-    List("walking simulator", "kojima"),
+    List("walking simulator", "kojima", "boring"),
     LocalDateTime.of(2024, 10, 22, 16, 7, 58)
   )
 
@@ -291,6 +291,63 @@ object EntryDummies {
     Some(Time(0, 10, 0)),
     List(),
     LocalDateTime.of(2024, 7, 6, 14, 26, 8)
+  )
+
+  val entry16: Entry = Entry(
+    // Death Stranding
+    EntryIdDummies.entryId16,
+    UserIdDummies.userId5,
+    VideogameId(19564),
+    Some(RatingIdDummies.ratingId13),
+    None,
+    true,
+    Some(false),
+    false,
+    false,
+    Some(LocalDate.of(2025, 4, 4)),
+    Some(LocalDate.of(2025, 5, 18)),
+    Some(48),
+    Some(Time(0, 72, 9)),
+    List("cool", "great story"),
+    LocalDateTime.of(2025, 5, 18, 20, 19, 18)
+  )
+
+  val entry17: Entry = Entry(
+    // Death Stranding
+    EntryIdDummies.entryId17,
+    UserIdDummies.userId3,
+    VideogameId(19564),
+    None,
+    None,
+    true,
+    Some(false),
+    false,
+    false,
+    Some(LocalDate.of(2024, 11, 30)),
+    Some(LocalDate.of(2024, 12, 16)),
+    Some(48),
+    Some(Time(0, 46, 51)),
+    List(),
+    LocalDateTime.of(2024, 12, 16, 21, 50, 12)
+  )
+
+  val entry18: Entry = Entry(
+    // El coronel no tiene quien le escriba
+    EntryIdDummies.entryId18,
+    UserIdDummies.userId2,
+    BookId("WLmqonsyH0QC"),
+    Some(RatingIdDummies.ratingId14),
+    None,
+    true,
+    Some(false),
+    false,
+    false,
+    Some(LocalDate.of(2024, 8, 12)),
+    Some(LocalDate.of(2024, 8, 21)),
+    None,
+    None,
+    List(),
+    LocalDateTime.of(2024, 8, 21, 23, 9, 11)
   )
 
 }

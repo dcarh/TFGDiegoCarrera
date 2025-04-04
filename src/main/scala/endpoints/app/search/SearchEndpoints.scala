@@ -3,6 +3,7 @@ package endpoints.app.search
 import endpoints.EndpointsUtils.httpMethodEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
+import endpoints.outputs.IGDB.*
 import modelClasses.app.media.{Book, Movie, TvShow, Videogame}
 import modelClasses.app.social.MediaList
 import modelClasses.app.user.User
@@ -11,6 +12,7 @@ import modelClasses.tmdb.Common.{Result, Results}
 import endpoints.outputs.TMDB.{jsonListOfResultOut, jsonResultsOut}
 import endpoints.outputs.GoogleBooks.{jsonSearchedBookListOut, listOfSearchedBooks}
 import modelClasses.googleBooks.BooksRequests.{ListOfSearchedBooks, SearchedBook}
+import modelClasses.igdb.VideogameRequests.VideogameAllFields
 import sttp.tapir.*
 
 object SearchEndpoints {
@@ -38,14 +40,14 @@ object SearchEndpoints {
       .in(QueryInputs.querySortBy)
       .out(jsonListOfResultOut)
 
-  val searchVideogame: PublicEndpoint[(String, Option[String]), UserError, List[Videogame], Any] =
+  val searchVideogame: PublicEndpoint[(String, Option[String]), UserError, List[VideogameAllFields], Any] =
     searchBaseEndpoint(
       "searchVideogame",
       "This endpoint searches any videogame on the app based on text coincidence"
     )
       .in("videogame")
       .in(QueryInputs.querySortBy)
-      .out(MediaOutputs.listOfVideogamesOutput)
+      .out(jsonListRequestedVideogameAllFieldsOut)
 
   val searchBook: PublicEndpoint[(String, Option[String]), UserError, List[SearchedBook], Any] =
     searchBaseEndpoint(

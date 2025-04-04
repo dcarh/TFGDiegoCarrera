@@ -9,8 +9,8 @@ case class TvShow(
                    requestedTvShow: RequestedTvShow,
                    similarTvShows: Option[List[Result]],
                    recommendedTvShows: Option[List[Result]],
-                   cast: Option[List[Member]],                // Viene de los Aggregate Credits y habría que ordenarlos según el campo order.
-                   crew: Option[List[Member]]                 // Viene de los Aggregate Credits también, aunque no se me ocurre la forma de ordenarlos (Pooularidad?)
+                   cast: Option[List[Member]],                 // Viene de los Aggregate Credits y habría que ordenarlos según el campo order.
+                   crew: Option[List[Member]],                 // Viene de los Aggregate Credits también, aunque no se me ocurre la forma de ordenarlos (Pooularidad?)
 //                   cast               : List[(String, String)], Temporal (23/12/2024)
 //                   creator            : String, Temporal
 //                   episodeRuntime     : Int, Temporal
@@ -30,16 +30,12 @@ case class TvShow(
 //                   year               : String
 
 //                   averageRating      : Double, Temporal (23/12/2024)
-//                   episodesIds        : List[Episode.Id],
-//                   episodesNumbers    : List[Episode.Number],
-//                   seasonsIds         : List[Season.Id],
-//                   seasonsNumbers     : List[Season.Number],
 //                   lists              : List[MediaListId], Temporal (23/12/2024)
-//                   numberOfAbandoned  : Long, Temporal (23/12/2024)
-//                   numberOfCompleted  : Long, Temporal (23/12/2024)
-//                   numberOfInProgress : Option[Long], Temporal (23/12/2024)
-//                   numberOfPaused     : Option[Long], Temporal (23/12/2024)
-//                   numberOfPending    : Long, Temporal (23/12/2024)
+                   numberOfCompleted  : Long,                                         // Temporal (23/12/2024)
+                   numberOfDropped    : Long,                                         // Temporal (23/12/2024)
+                   numberOfInProgress : Long,                                 // Temporal (23/12/2024)
+                   numberOfOnHold     : Long,                                 // Temporal (23/12/2024)
+                   numberOfPending    : Long,                                         // Temporal (23/12/2024)
 //                   ratings            : Long, Temporal (23/12/2024)
 //                   reviews            : List[ReviewId], Temporal (23/12/2024)
 //                   totalRuntime       : Int Temporal (23/12/2024)

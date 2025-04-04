@@ -15,6 +15,7 @@ import modelClasses.ids.Media.*
 import modelClasses.igdb.VideogameRequests.VideogameAllFields
 import modelClasses.tmdb.Common.{Credits, Results}
 import modelClasses.tmdb.MovieRequests.RequestedMovie
+import server.logics.media.MediaAuxFunctions.getStatusCountForMedia
 
 object MediaLogics {
 
@@ -48,6 +49,9 @@ object MediaLogics {
             }
   
           // TODO: Calcular atributos de la Movie de dentro de la app (listas, votos, etc)
+          val completedTimes  = getStatusCountForMedia(movieId, "completed")
+          val droppedTimes    = getStatusCountForMedia(movieId, "dropped")
+          val pendingTimes    = getStatusCountForMedia(movieId, "pending")
   
           for {
             similarMovies <- similarMoviesTmdb
@@ -58,7 +62,10 @@ object MediaLogics {
             similarMovies = similarMovies,
             recommendedMovies = recommendedMovies,
             cast = credits.map(_.cast),
-            crew = credits.map(_.crew)
+            crew = credits.map(_.crew),
+            numberOfCompleted = completedTimes,
+            numberOfDropped = droppedTimes,
+            numberOfPending = pendingTimes
           ))
       }.handleError {
         case ex: Exception =>
@@ -97,6 +104,11 @@ object MediaLogics {
             }
 
           // TODO: Calcular atributos de la Movie de dentro de la app (listas, votos, etc)
+          val completedTimes  = getStatusCountForMedia(tvShowId, "completed")
+          val droppedTimes    = getStatusCountForMedia(tvShowId, "dropped")
+          val inProgressTimes    = getStatusCountForMedia(tvShowId, "inProgress")
+          val onHoldTimes    = getStatusCountForMedia(tvShowId, "onHold")
+          val pendingTimes    = getStatusCountForMedia(tvShowId, "pending")
 
           for {
             similarTvShows <- similarTvShowsTmdb
@@ -107,7 +119,12 @@ object MediaLogics {
             similarTvShows = similarTvShows,
             recommendedTvShows = recommendedTvShows,
             cast = aggregateCredits.map(_.cast),        // TODO: Ordenarlos según el campo "order" que hay dentro de Member
-            crew = aggregateCredits.map(_.crew)
+            crew = aggregateCredits.map(_.crew),
+            numberOfCompleted = completedTimes,
+            numberOfDropped = droppedTimes,
+            numberOfInProgress = inProgressTimes,
+            numberOfOnHold = onHoldTimes,
+            numberOfPending = pendingTimes
           ))
       }.handleError {
         case ex: Exception =>
@@ -129,13 +146,23 @@ object MediaLogics {
             }
 
           // TODO: Calcular atributos de la Movie de dentro de la app (listas, votos, etc)
+          val completedTimes  = getStatusCountForMedia(tvShowId, "completed")
+          val droppedTimes    = getStatusCountForMedia(tvShowId, "dropped")
+          val inProgressTimes    = getStatusCountForMedia(tvShowId, "inProgress")
+          val onHoldTimes    = getStatusCountForMedia(tvShowId, "onHold")
+          val pendingTimes    = getStatusCountForMedia(tvShowId, "pending")
 
           for {
             aggregateCredits <- aggregateCreditsTmdb
           } yield Right(TvSeason(
             requestedTvSeason = requestedTvSeason,
             cast = aggregateCredits.map(_.cast), // TODO: Ordenarlos según el campo "order" que hay dentro de Member
-            crew = aggregateCredits.map(_.crew)
+            crew = aggregateCredits.map(_.crew),
+            numberOfCompleted = completedTimes,
+            numberOfDropped = droppedTimes,
+            numberOfInProgress = inProgressTimes,
+            numberOfOnHold = onHoldTimes,
+            numberOfPending = pendingTimes
           ))
       }.handleError {
         case ex: Exception =>
@@ -157,13 +184,19 @@ object MediaLogics {
             }
 
           // TODO: Calcular atributos de la Movie de dentro de la app (listas, votos, etc)
+          val completedTimes  = getStatusCountForMedia(tvShowId, "completed")
+          val droppedTimes    = getStatusCountForMedia(tvShowId, "dropped")
+          val pendingTimes    = getStatusCountForMedia(tvShowId, "pending")
 
           for {
             credits <- creditsTmdb
           } yield Right(TvEpisode(
             requestedTvEpisode = requestedTvEpisode,
             cast = credits.map(_.cast),               // TODO: Ordenarlos según el campo "order" que hay dentro de Member
-            crew = credits.map(_.crew)
+            crew = credits.map(_.crew),
+            numberOfCompleted = completedTimes,
+            numberOfDropped = droppedTimes,
+            numberOfPending = pendingTimes
           ))
       }.handleError {
         case ex: Exception =>
@@ -176,7 +209,23 @@ object MediaLogics {
       IGDBClient.executeRequest(Videogames.requestVideogameAllFieldsEndpoint, videogameId).flatMap {
         case Right(requestedListOfVideogames: List[VideogameAllFields]) =>
           requestedListOfVideogames match
-            case head :: tail => IO.pure(Right(Videogame(head)))
+            case head :: tail =>
+              val completedTimes  = getStatusCountForMedia(videogameId, "completed")
+              val droppedTimes    = getStatusCountForMedia(videogameId, "dropped")
+              val inProgressTimes    = getStatusCountForMedia(videogameId, "inProgress")
+              val onHoldTimes    = getStatusCountForMedia(videogameId, "onHold")
+              val pendingTimes    = getStatusCountForMedia(videogameId, "pending")
+              
+              IO.pure(Right(
+                Videogame(
+                  requestedVideogame = head, 
+                  numberOfCompleted = completedTimes, 
+                  numberOfDropped = droppedTimes, 
+                  numberOfInProgress = inProgressTimes, 
+                  numberOfOnHold = onHoldTimes, 
+                  numberOfPending = pendingTimes
+                )
+              ))
             case Nil => IO.pure(Left(NotFound("Not found videogame with ID introduced")))
 
         case Left(error: UserError) => IO(Left(error))
@@ -189,7 +238,22 @@ object MediaLogics {
     bookId =>
       GoogleBooksClient.executeRequest(Books.requestBookEndpoint, bookId).flatMap {
         case Right(requestedBook: RequestedBook) =>
-          IO.pure(Right(Book(requestedBook)))
+          val completedTimes  = getStatusCountForMedia(bookId, "completed")
+          val droppedTimes    = getStatusCountForMedia(bookId, "dropped")
+          val inProgressTimes    = getStatusCountForMedia(bookId, "inProgress")
+          val onHoldTimes    = getStatusCountForMedia(bookId, "onHold")
+          val pendingTimes    = getStatusCountForMedia(bookId, "pending")
+          
+          IO.pure(Right(
+            Book(
+              requestedBook = requestedBook,
+              numberOfCompleted = completedTimes, 
+              numberOfDropped = droppedTimes, 
+              numberOfInProgress = inProgressTimes, 
+              numberOfOnHold = onHoldTimes, 
+              numberOfPending = pendingTimes
+            )
+          ))
 
         case Left(error: UserError) => IO(Left(error))
       }.handleError {

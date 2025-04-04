@@ -5,7 +5,7 @@ import modelClasses.ids.Social.{MediaListId, ReviewId}
 import modelClasses.igdb.VideogameRequests.VideogameAllFields
 
 case class Videogame(
-                      requestedVideogame: VideogameAllFields
+                      requestedVideogame: VideogameAllFields,
 //                      category            : Option[Long],
 //                      collection          : Option[Long],
 //                      collections         : Option[List[Long]],
@@ -33,11 +33,11 @@ case class Videogame(
 
 //                      averageRating       : Double,
 //                      lists               : List[MediaListId],
-//                      numberOfAbandoned   : Long,
-//                      numberOfCompleted   : Long,
-//                      numberOfInProgress  : Option[Long],
-//                      numberOfPaused      : Option[Long],
-//                      numberOfPending     : Long,
+                      numberOfCompleted   : Long,
+                      numberOfDropped     : Long,
+                      numberOfInProgress  : Long,
+                      numberOfOnHold      : Long,
+                      numberOfPending     : Long,
 //                      ratings             : Long,
 //                      reviews             : List[ReviewId],
                     )

@@ -79,4 +79,18 @@ object RatingDummies {
     (TvShowId(63247), TvSeasonNumber(1)),
     8
   )
+
+  val rating13: Rating = Rating(
+    RatingIdDummies.ratingId13,
+    UserIdDummies.userId5,
+    VideogameId(19564),
+    8
+  )
+
+  val rating14: Rating = Rating(
+    RatingIdDummies.ratingId14,
+    UserIdDummies.userId2,
+    BookId("WLmqonsyH0QC"),
+    7
+  )
 }
