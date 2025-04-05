@@ -6,9 +6,9 @@ import modelClasses.tmdb.Common.Member
 import modelClasses.tmdb.TvSeasonRequests.RequestedTvSeason
 
 case class TvSeason(
-                     requestedTvSeason: RequestedTvSeason,
-                     cast: Option[List[Member]],
-                     crew: Option[List[Member]],
+                     requestedTvSeason : RequestedTvSeason,
+                     cast              : Option[List[Member]],
+                     crew              : Option[List[Member]],
 
                      averageRating     : Option[Double],
                      entriesIds        : Option[List[EntryId]],

@@ -1,21 +1,18 @@
 package server.logics.media
 
 import cats.effect.IO
-import cats.effect.IO.{IOCont, Uncancelable}
 import cats.implicits.*
 import clients.{GoogleBooksClient, IGDBClient, TMDBClient}
 import endpoints.igdb.Videogames
 import endpoints.googleBooks.Books
 import endpoints.tmdb.{Movies, TvEpisodes, TvSeasons, TvShows}
 import modelClasses.app.media.*
-import modelClasses.app.user.User
 import modelClasses.errors.UserError.*
 import modelClasses.googleBooks.BooksRequests.RequestedBook
 import modelClasses.ids.Media.*
 import modelClasses.igdb.VideogameRequests.VideogameAllFields
-import modelClasses.tmdb.Common.{Credits, Results}
 import modelClasses.tmdb.MovieRequests.RequestedMovie
-import server.logics.media.MediaAuxFunctions.{getAverageRatingForMedia, getEntriesIdsForMedia, getListsIdsForMedia, getStatusCountForMedia, getTotalRatingsForMedia}
+import server.logics.media.MediaAuxFunctions.getMetricsForMedia
 
 object MediaLogics {
 
@@ -31,7 +28,7 @@ object MediaLogics {
                 println(s"Some error occurred while requesting similar movies: ${ex.getMessage}")
                 None
             }
-  
+
           val recommendedMoviesTmdb = TMDBClient.executeRequest(Movies.requestedRecommendedMoviesEndpoint, movieId)
             .map(_.toOption.map(_.results))
             .handleError {
@@ -39,7 +36,7 @@ object MediaLogics {
                 println(s"Some error occurred while requesting recommended movies: ${ex.getMessage}")
                 None
             }
-  
+
           val creditsTmdb = TMDBClient.executeRequest(Movies.requestedCreditsForMovieEndpoint, movieId)
             .map(_.toOption)
             .handleError {
@@ -47,39 +44,29 @@ object MediaLogics {
                 println(s"Some error occurred while requesting credits for the movie: ${ex.getMessage}")
                 None
             }
-  
-          // TODO: Calcular atributos de la Movie de dentro de la app (listas, votos, etc)
-          val completedTimes  = getStatusCountForMedia(movieId, "completed")
-          val droppedTimes    = getStatusCountForMedia(movieId, "dropped")
-          val pendingTimes    = getStatusCountForMedia(movieId, "pending")
-          
-          val averageRating   = getAverageRatingForMedia(movieId)
-          val totalRatings    = getTotalRatingsForMedia(movieId)
-          
-          val listsIds        = getListsIdsForMedia(movieId)
-          val entriesIds      = getEntriesIdsForMedia(movieId)
-  
+
+          val metrics = getMetricsForMedia(movieId)
+
           for {
-            similarMovies <- similarMoviesTmdb
+            similarMovies     <- similarMoviesTmdb
             recommendedMovies <- recommendedMoviesTmdb
-            credits <- creditsTmdb
+            credits           <- creditsTmdb
           } yield Right(Movie(
-            requestedMovie = requestedMovie,
-            similarMovies = similarMovies,
+            requestedMovie    = requestedMovie,
+            similarMovies     = similarMovies,
             recommendedMovies = recommendedMovies,
-            cast = credits.map(_.cast),
-            crew = credits.map(_.crew),
-            averageRating = averageRating,
-            entriesIds = entriesIds,
-            listsIds = listsIds,
-            numberOfCompleted = completedTimes,
-            numberOfDropped = droppedTimes,
-            numberOfPending = pendingTimes,
-            totalRatings = totalRatings
+            cast              = credits.map(_.cast),
+            crew              = credits.map(_.crew),
+            averageRating     = metrics.averageRating,
+            entriesIds        = metrics.entriesIds,
+            listsIds          = metrics.listsIds,
+            numberOfCompleted = metrics.statusCounts.completed,
+            numberOfDropped   = metrics.statusCounts.dropped,
+            numberOfPending   = metrics.statusCounts.pending,
+            totalRatings      = metrics.totalRatings
           ))
       }.handleError {
         case ex: Exception =>
-          println(s"Unexpected error: ${ex.getMessage}")
           Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
       }
 
@@ -113,42 +100,30 @@ object MediaLogics {
                 None
             }
 
-          // TODO: Calcular atributos de la Movie de dentro de la app (listas, votos, etc)
-          val completedTimes  = getStatusCountForMedia(tvShowId, "completed")
-          val droppedTimes    = getStatusCountForMedia(tvShowId, "dropped")
-          val inProgressTimes = getStatusCountForMedia(tvShowId, "inProgress")
-          val onHoldTimes     = getStatusCountForMedia(tvShowId, "onHold")
-          val pendingTimes    = getStatusCountForMedia(tvShowId, "pending")
-          
-          val averageRating   = getAverageRatingForMedia(tvShowId)
-          val totalRatings    = getTotalRatingsForMedia(tvShowId)
-
-          val listsIds        = getListsIdsForMedia(tvShowId)
-          val entriesIds      = getEntriesIdsForMedia(tvShowId)
+          val metrics = getMetricsForMedia(tvShowId)
 
           for {
-            similarTvShows <- similarTvShowsTmdb
+            similarTvShows     <- similarTvShowsTmdb
             recommendedTvShows <- recommendedTvShowsTmdb
-            aggregateCredits <- aggregateCreditsTmdb
+            aggregateCredits   <- aggregateCreditsTmdb
           } yield Right(TvShow(
-            requestedTvShow = requestedTvShow,
-            similarTvShows = similarTvShows,
+            requestedTvShow    = requestedTvShow,
+            similarTvShows     = similarTvShows,
             recommendedTvShows = recommendedTvShows,
-            cast = aggregateCredits.map(_.cast),        // TODO: Ordenarlos según el campo "order" que hay dentro de Member
-            crew = aggregateCredits.map(_.crew),
-            averageRating = averageRating,
-            entriesIds = entriesIds,
-            listsIds = listsIds,
-            numberOfCompleted = completedTimes,
-            numberOfDropped = droppedTimes,
-            numberOfInProgress = inProgressTimes,
-            numberOfOnHold = onHoldTimes,
-            numberOfPending = pendingTimes,
-            totalRatings = totalRatings
+            cast               = aggregateCredits.map(_.cast.sortBy(_.order)),
+            crew               = aggregateCredits.map(_.crew),
+            averageRating      = metrics.averageRating,
+            entriesIds         = metrics.entriesIds,
+            listsIds           = metrics.listsIds,
+            numberOfCompleted  = metrics.statusCounts.completed,
+            numberOfDropped    = metrics.statusCounts.dropped,
+            numberOfInProgress = metrics.statusCounts.inProgress,
+            numberOfOnHold     = metrics.statusCounts.onHold,
+            numberOfPending    = metrics.statusCounts.pending,
+            totalRatings       = metrics.totalRatings
           ))
       }.handleError {
         case ex: Exception =>
-          println(s"Unexpected error: ${ex.getMessage}")
           Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
       }
   
@@ -165,38 +140,26 @@ object MediaLogics {
                 None
             }
 
-          // TODO: Calcular atributos de la Movie de dentro de la app (listas, votos, etc)
-          val completedTimes  = getStatusCountForMedia((tvShowId, tvSeasonNumber), "completed")
-          val droppedTimes    = getStatusCountForMedia((tvShowId, tvSeasonNumber), "dropped")
-          val inProgressTimes = getStatusCountForMedia((tvShowId, tvSeasonNumber), "inProgress")
-          val onHoldTimes     = getStatusCountForMedia((tvShowId, tvSeasonNumber), "onHold")
-          val pendingTimes    = getStatusCountForMedia((tvShowId, tvSeasonNumber), "pending")
-          
-          val averageRating   = getAverageRatingForMedia((tvShowId, tvSeasonNumber))
-          val totalRatings    = getTotalRatingsForMedia((tvShowId, tvSeasonNumber))
-
-          val listsIds        = getListsIdsForMedia((tvShowId, tvSeasonNumber))
-          val entriesIds      = getEntriesIdsForMedia((tvShowId, tvSeasonNumber))
+          val metrics = getMetricsForMedia((tvShowId, tvSeasonNumber))
 
           for {
             aggregateCredits <- aggregateCreditsTmdb
           } yield Right(TvSeason(
-            requestedTvSeason = requestedTvSeason,
-            cast = aggregateCredits.map(_.cast), // TODO: Ordenarlos según el campo "order" que hay dentro de Member
-            crew = aggregateCredits.map(_.crew),
-            averageRating = averageRating,
-            entriesIds = entriesIds,
-            listsIds = listsIds,
-            numberOfCompleted = completedTimes,
-            numberOfDropped = droppedTimes,
-            numberOfInProgress = inProgressTimes,
-            numberOfOnHold = onHoldTimes,
-            numberOfPending = pendingTimes,
-            totalRatings = totalRatings
+            requestedTvSeason  = requestedTvSeason,
+            cast               = aggregateCredits.map(_.cast.sortBy(_.order)),
+            crew               = aggregateCredits.map(_.crew),
+            averageRating      = metrics.averageRating,
+            entriesIds         = metrics.entriesIds,
+            listsIds           = metrics.listsIds,
+            numberOfCompleted  = metrics.statusCounts.completed,
+            numberOfDropped    = metrics.statusCounts.dropped,
+            numberOfInProgress = metrics.statusCounts.inProgress,
+            numberOfOnHold     = metrics.statusCounts.onHold,
+            numberOfPending    = metrics.statusCounts.pending,
+            totalRatings       = metrics.totalRatings
           ))
       }.handleError {
         case ex: Exception =>
-          println(s"Unexpected error: ${ex.getMessage}")
           Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
       }
 
@@ -213,34 +176,24 @@ object MediaLogics {
                 None
             }
 
-          // TODO: Calcular atributos de la Movie de dentro de la app (listas, votos, etc)
-          val completedTimes = getStatusCountForMedia((tvShowId, tvSeasonNumber, tvEpisodeNumber), "completed")
-          val droppedTimes   = getStatusCountForMedia((tvShowId, tvSeasonNumber, tvEpisodeNumber), "dropped")
-          val pendingTimes   = getStatusCountForMedia((tvShowId, tvSeasonNumber, tvEpisodeNumber), "pending")
-          
-          val averageRating  = getAverageRatingForMedia((tvShowId, tvSeasonNumber, tvEpisodeNumber))
-          val totalRatings   = getTotalRatingsForMedia((tvShowId, tvSeasonNumber, tvEpisodeNumber))
-
-          val listsIds       = getListsIdsForMedia((tvShowId, tvSeasonNumber, tvEpisodeNumber))
-          val entriesIds     = getEntriesIdsForMedia((tvShowId, tvSeasonNumber, tvEpisodeNumber))
+          val metrics = getMetricsForMedia((tvShowId, tvSeasonNumber, tvEpisodeNumber))
 
           for {
             credits <- creditsTmdb
           } yield Right(TvEpisode(
             requestedTvEpisode = requestedTvEpisode,
-            cast = credits.map(_.cast),               // TODO: Ordenarlos según el campo "order" que hay dentro de Member
-            crew = credits.map(_.crew),
-            averageRating = averageRating,
-            entriesIds = entriesIds,
-            listsIds = listsIds,
-            numberOfCompleted = completedTimes,
-            numberOfDropped = droppedTimes,
-            numberOfPending = pendingTimes,
-            totalRatings = totalRatings
+            cast               = credits.map(_.cast.sortBy(_.order)),
+            crew               = credits.map(_.crew),
+            averageRating      = metrics.averageRating,
+            entriesIds         = metrics.entriesIds,
+            listsIds           = metrics.listsIds,
+            numberOfCompleted  = metrics.statusCounts.completed,
+            numberOfDropped    = metrics.statusCounts.dropped,
+            numberOfPending    = metrics.statusCounts.pending,
+            totalRatings       = metrics.totalRatings
           ))
       }.handleError {
         case ex: Exception =>
-          println(s"Unexpected error: ${ex.getMessage}")
           Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
       }
 
@@ -250,30 +203,20 @@ object MediaLogics {
         case Right(requestedListOfVideogames: List[VideogameAllFields]) =>
           requestedListOfVideogames match
             case head :: tail =>
-              val completedTimes  = getStatusCountForMedia(videogameId, "completed")
-              val droppedTimes    = getStatusCountForMedia(videogameId, "dropped")
-              val inProgressTimes = getStatusCountForMedia(videogameId, "inProgress")
-              val onHoldTimes     = getStatusCountForMedia(videogameId, "onHold")
-              val pendingTimes    = getStatusCountForMedia(videogameId, "pending")
-              
-              val averageRating   = getAverageRatingForMedia(videogameId)
-              val totalRatings    = getTotalRatingsForMedia(videogameId)
-
-              val listsIds        = getListsIdsForMedia(videogameId)
-              val entriesIds      = getEntriesIdsForMedia(videogameId)
+              val metrics = getMetricsForMedia(videogameId)
               
               IO.pure(Right(
                 Videogame(
                   requestedVideogame = head,
-                  averageRating = averageRating,
-                  entriesIds = entriesIds,
-                  listsIds = listsIds,
-                  numberOfCompleted = completedTimes, 
-                  numberOfDropped = droppedTimes, 
-                  numberOfInProgress = inProgressTimes, 
-                  numberOfOnHold = onHoldTimes, 
-                  numberOfPending = pendingTimes,
-                  totalRatings = totalRatings
+                  averageRating      = metrics.averageRating,
+                  entriesIds         = metrics.entriesIds,
+                  listsIds           = metrics.listsIds,
+                  numberOfCompleted  = metrics.statusCounts.completed,
+                  numberOfDropped    = metrics.statusCounts.dropped,
+                  numberOfInProgress = metrics.statusCounts.inProgress,
+                  numberOfOnHold     = metrics.statusCounts.onHold,
+                  numberOfPending    = metrics.statusCounts.pending,
+                  totalRatings       = metrics.totalRatings
                 )
               ))
             case Nil => IO.pure(Left(NotFound("Not found videogame with ID introduced")))
@@ -288,30 +231,20 @@ object MediaLogics {
     bookId =>
       GoogleBooksClient.executeRequest(Books.requestBookEndpoint, bookId).flatMap {
         case Right(requestedBook: RequestedBook) =>
-          val completedTimes  = getStatusCountForMedia(bookId, "completed")
-          val droppedTimes    = getStatusCountForMedia(bookId, "dropped")
-          val inProgressTimes = getStatusCountForMedia(bookId, "inProgress")
-          val onHoldTimes     = getStatusCountForMedia(bookId, "onHold")
-          val pendingTimes    = getStatusCountForMedia(bookId, "pending")
-          
-          val averageRating   = getAverageRatingForMedia(bookId)
-          val totalRatings    = getTotalRatingsForMedia(bookId)
-
-          val listsIds        = getListsIdsForMedia(bookId)
-          val entriesIds      = getEntriesIdsForMedia(bookId)
+          val metrics = getMetricsForMedia(bookId)
           
           IO.pure(Right(
             Book(
-              requestedBook = requestedBook,
-              averageRating = averageRating,
-              entriesIds = entriesIds,
-              listsIds = listsIds,
-              numberOfCompleted = completedTimes, 
-              numberOfDropped = droppedTimes, 
-              numberOfInProgress = inProgressTimes, 
-              numberOfOnHold = onHoldTimes, 
-              numberOfPending = pendingTimes,
-              totalRatings = totalRatings
+              requestedBook      = requestedBook,
+              averageRating      = metrics.averageRating,
+              entriesIds         = metrics.entriesIds,
+              listsIds           = metrics.listsIds,
+              numberOfCompleted  = metrics.statusCounts.completed,
+              numberOfDropped    = metrics.statusCounts.dropped,
+              numberOfInProgress = metrics.statusCounts.inProgress,
+              numberOfOnHold     = metrics.statusCounts.onHold,
+              numberOfPending    = metrics.statusCounts.pending,
+              totalRatings       = metrics.totalRatings
             )
           ))
 

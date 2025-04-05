@@ -6,11 +6,11 @@ import modelClasses.tmdb.Common.{Member, Result}
 import modelClasses.tmdb.MovieRequests.RequestedMovie
 
 case class Movie(
-                  requestedMovie: RequestedMovie,
-                  similarMovies: Option[List[Result]],
+                  requestedMovie   : RequestedMovie,
+                  similarMovies    : Option[List[Result]],
                   recommendedMovies: Option[List[Result]],
-                  cast: Option[List[Member]],
-                  crew: Option[List[Member]],
+                  cast             : Option[List[Member]],
+                  crew             : Option[List[Member]],
 
                   averageRating    : Option[Double],
                   entriesIds       : Option[List[EntryId]],

@@ -7,15 +7,15 @@ import modelClasses.tmdb.TvEpisodeRequests.RequestedTvEpisode
 
 case class TvEpisode(
                       requestedTvEpisode: RequestedTvEpisode,
-                      cast: Option[List[Member]],
-                      crew: Option[List[Member]],
+                      cast              : Option[List[Member]],
+                      crew              : Option[List[Member]],
 
-                      averageRating    : Option[Double],
-                      entriesIds       : Option[List[EntryId]],
-                      listsIds         : Option[List[MediaListId]],
-                      numberOfCompleted: Long,
-                      numberOfDropped  : Long,
-                      numberOfPending  : Long,
-                      totalRatings     : Long
+                      averageRating     : Option[Double],
+                      entriesIds        : Option[List[EntryId]],
+                      listsIds          : Option[List[MediaListId]],
+                      numberOfCompleted : Long,
+                      numberOfDropped   : Long,
+                      numberOfPending   : Long,
+                      totalRatings      : Long
 // TODO: Meter más campos
                   )

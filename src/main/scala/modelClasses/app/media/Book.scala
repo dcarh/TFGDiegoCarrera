@@ -5,7 +5,7 @@ import modelClasses.googleBooks.BooksRequests.RequestedBook
 import modelClasses.ids.Social.{EntryId, MediaListId}
 
 case class Book(
-                 requestedBook: RequestedBook,
+                 requestedBook     : RequestedBook,
 
                  averageRating     : Option[Double],
                  entriesIds        : Option[List[EntryId]],
