@@ -7,4 +7,5 @@ object MediaListIdDummies {
   val mediaListId2: MediaListId = MediaListId(2)
   val mediaListId3: MediaListId = MediaListId(3)
   val mediaListId4: MediaListId = MediaListId(4)
+  val mediaListId5: MediaListId = MediaListId(5)
 }

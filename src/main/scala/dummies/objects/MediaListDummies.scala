@@ -104,5 +104,40 @@ object MediaListDummies {
     List(LikeIdDummies.likeId2),
     List()
   )
+
+  val mediaContentList5: MediaList = MediaList(
+    MediaListIdDummies.mediaListId5,
+    UserIdDummies.userId4,
+    "A generic list",
+    "",
+    List(
+      MovieId(10402),
+      MovieId(632617),
+      MovieId(749004),
+      VideogameId(7346),
+      BookId("zyUpEQAAQBAJ"),
+      BookId("RDooAQAAIAAJ"),
+      VideogameId(21865),
+      TvShowId(135918),
+      TvShowId(1402),
+      VideogameId(144022),
+      MovieId(14756),
+      MovieId(37472),
+      MovieId(365222),
+      MovieId(449924),
+      MovieId(12580),
+      VideogameId(1267),
+      VideogameId(11397),
+      TvShowId(56425),
+      BookId("kHh_EAAAQBAJ")
+    ),
+    Visibility.Followers,
+    true,
+    false,
+    LocalDateTime.of(2025, 5, 5, 21, 14, 2),
+    LocalDateTime.of(2025, 5, 5, 21, 14, 57),
+    List(),
+    List()
+  )
   
 }

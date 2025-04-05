@@ -11,7 +11,8 @@ object MediaListRepository {
       MediaListIdDummies.mediaListId1 -> MediaListDummies.mediaContentList1,
       MediaListIdDummies.mediaListId2 -> MediaListDummies.mediaContentList2,
       MediaListIdDummies.mediaListId3 -> MediaListDummies.mediaContentList3,
-      MediaListIdDummies.mediaListId4 -> MediaListDummies.mediaContentList4
+      MediaListIdDummies.mediaListId4 -> MediaListDummies.mediaContentList4,
+      MediaListIdDummies.mediaListId5 -> MediaListDummies.mediaContentList5
     )
   )
 

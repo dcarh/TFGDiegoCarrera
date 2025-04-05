@@ -22,7 +22,10 @@ object EntryRepository {
       EntryIdDummies.entryId12 -> EntryDummies.entry12,
       EntryIdDummies.entryId13 -> EntryDummies.entry13,
       EntryIdDummies.entryId14 -> EntryDummies.entry14,
-      EntryIdDummies.entryId15 -> EntryDummies.entry15
+      EntryIdDummies.entryId15 -> EntryDummies.entry15,
+      EntryIdDummies.entryId16 -> EntryDummies.entry16,
+      EntryIdDummies.entryId17 -> EntryDummies.entry17,
+      EntryIdDummies.entryId18 -> EntryDummies.entry18,
     )
   )
 

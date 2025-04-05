@@ -19,7 +19,9 @@ object RatingRepository {
       RatingIdDummies.ratingId9 -> RatingDummies.rating9,
       RatingIdDummies.ratingId10 -> RatingDummies.rating10,
       RatingIdDummies.ratingId11 -> RatingDummies.rating11,
-      RatingIdDummies.ratingId12 -> RatingDummies.rating12
+      RatingIdDummies.ratingId12 -> RatingDummies.rating12,
+      RatingIdDummies.ratingId13 -> RatingDummies.rating13,
+      RatingIdDummies.ratingId14 -> RatingDummies.rating14
     )
   )
 

@@ -212,7 +212,9 @@ object UserDummies {
     List(
       VideogameId(19564),
     ),
-    List(),
+    List(
+      MediaListIdDummies.mediaListId5,
+    ),
     List(
       EntryIdDummies.entryId3,
       EntryIdDummies.entryId11,

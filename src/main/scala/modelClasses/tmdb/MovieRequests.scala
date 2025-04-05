@@ -1,7 +1,5 @@
 package modelClasses.tmdb
 
-import io.circe.generic.auto.*
-import modelClasses.ids.Media.MovieId
 import modelClasses.tmdb.Common.*
 
 object MovieRequests {
