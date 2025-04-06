@@ -18,6 +18,7 @@ object UserRepository {
 
   def get(id: UserId): Option[User] = repository.get(id)
   def getAll: List[User] = repository.getAll
+  def getMany(ids: List[UserId]) = repository.getMany(ids)
   def findByUsername(username: String): List[User] = repository.getAll.filter(_.profile.username.contains(username))
   def put(id: UserId, value: User): String = repository.put(id, value)
   def delete(id: UserId): String = repository.delete(id)

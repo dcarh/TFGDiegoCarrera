@@ -19,6 +19,7 @@ object ChatRepository {
 
   def get(id: ChatId): Option[Chat] = repository.get(id)
   def getAll: List[Chat] = repository.getAll
+  def getMany(ids: List[ChatId]) = repository.getMany(ids)
   def put(id: ChatId, value: Chat): String = repository.put(id, value)
   def delete(id: ChatId): String = repository.delete(id)
 }

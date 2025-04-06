@@ -18,6 +18,7 @@ object MediaListRepository {
 
   def get(id: MediaListId): Option[MediaList] = repository.get(id)
   def getAll: List[MediaList] = repository.getAll
+  def getMany(ids: List[MediaListId]) = repository.getMany(ids)
   def findByTitle(title: String): List[MediaList] = repository.getAll.filter(_.title.contains(title))
   def put(id: MediaListId, value: MediaList): String = repository.put(id, value)
   def delete(id: MediaListId): String = repository.delete(id)

@@ -5,7 +5,13 @@ import cats.implicits.toSemigroupKOps
 import org.http4s.HttpRoutes
 
 import server.routes.chatting.ChattingRoutes.chattingRoutes
-import server.routes.media.MediaRoutes.mediaRoutes
+import server.routes.media.MovieRoutes.movieRoutes
+import server.routes.media.TvShowRoutes.tvShowRoutes
+import server.routes.media.TvSeasonRoutes.tvSeasonRoutes
+import server.routes.media.TvEpisodeRoutes.tvEpisodeRoutes
+import server.routes.media.VideogameRoutes.videogameRoutes
+import server.routes.media.BookRoutes.bookRoutes
+import server.routes.media.MovieRoutes.movieRoutes
 import server.routes.social.EntriesRoutes.entriesRoutes
 import server.routes.social.LikesRoutes.likesRoutes
 import server.routes.social.MediaListsRoutes.mediaListsRoutes
@@ -30,7 +36,12 @@ object HttpRoutes {
     chattingRoutes <+>
       entriesRoutes <+>
       likesRoutes <+>
-      mediaRoutes <+>
+      movieRoutes <+>
+      tvShowRoutes <+>
+      tvSeasonRoutes <+>
+      tvEpisodeRoutes <+>
+      videogameRoutes <+>
+      bookRoutes <+>
       mediaListsRoutes <+>
       ratingsRoutes <+>
       repliesRoutes <+>

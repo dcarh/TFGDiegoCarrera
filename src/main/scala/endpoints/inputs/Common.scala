@@ -104,12 +104,18 @@ object Common {
       
     val jsonEntry: EndpointInput[Entry] =
       jsonBody[Entry]
+
+    val jsonListOfEntriesIds: EndpointInput[List[EntryId]] =
+      jsonBody[List[EntryId]]
       
     val jsonLike: EndpointInput[Like] =
       jsonBody[Like]
       
     val jsonMediaList: EndpointInput[MediaList] =
       jsonBody[MediaList]
+      
+    val jsonListOfMediaListsIds: EndpointInput[List[MediaListId]] =
+      jsonBody[List[MediaListId]]
       
     val jsonRating: EndpointInput[Rating] =
       jsonBody[Rating]

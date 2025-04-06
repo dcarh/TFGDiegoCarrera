@@ -31,6 +31,7 @@ object EntryRepository {
 
   def get(id: EntryId): Option[Entry] = repository.get(id)
   def getAll: List[Entry] = repository.getAll
+  def getMany(ids: List[EntryId]) = repository.getMany(ids)
   def put(id: EntryId, value: Entry): String = repository.put(id, value)
   def delete(id: EntryId): String = repository.delete(id)
 }

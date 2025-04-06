@@ -17,6 +17,7 @@ object LikeRepository {
 
   def get(id: LikeId): Option[Like] = repository.get(id)
   def getAll: List[Like] = repository.getAll
+  def getMany(ids: List[LikeId]) = repository.getMany(ids)
   def put(id: LikeId, value: Like): String = repository.put(id, value)
   def delete(id: LikeId): String = repository.delete(id)
 }

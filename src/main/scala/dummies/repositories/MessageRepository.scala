@@ -22,6 +22,7 @@ object MessageRepository {
 
   def get(id: MessageId): Option[Message] = repository.get(id)
   def getAll: List[Message] = repository.getAll
+  def getMany(ids: List[MessageId]) = repository.getMany(ids)
   def put(id: MessageId, value: Message): String = repository.put(id, value)
   def delete(id: MessageId): String = repository.delete(id)
 }
