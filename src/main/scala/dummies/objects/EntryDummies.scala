@@ -22,7 +22,7 @@ object EntryDummies {
     Some(LocalDate.of(2024, 11, 10)),
     Some(LocalDate.of(2024, 12, 2)),
     None,
-    Some(Time(0, 13, 0)),
+    Some(Time(13, 0)),
     List("disney", "trauma"),
     LocalDateTime.of(2024, 12, 2, 20, 16, 41)
   )
@@ -41,7 +41,7 @@ object EntryDummies {
     Some(LocalDate.of(2024, 8, 29)),
     Some(LocalDate.of(2024, 9, 5)),
     Some(6),
-    Some(Time(0, 12, 12)),
+    Some(Time(12, 12)),
     List(),
     LocalDateTime.of(2024, 9, 6, 10, 45, 24)
   )
@@ -60,7 +60,7 @@ object EntryDummies {
     Some(LocalDate.of(2024, 9, 13)),
     None,
     Some(48),
-    Some(Time(0, 20, 43)),
+    Some(Time(20, 43)),
     List("walking simulator", "kojima", "boring"),
     LocalDateTime.of(2024, 10, 22, 16, 7, 58)
   )
@@ -79,7 +79,7 @@ object EntryDummies {
     None,
     Some(LocalDate.of(2024, 11, 2)),
     None,
-    Some(Time(0, 2, 0)),
+    Some(Time(2, 0)),
     List(),
     LocalDateTime.of(2024, 11, 2, 23, 51, 20)
   )
@@ -98,7 +98,7 @@ object EntryDummies {
     Some(LocalDate.of(2024, 8, 12)),
     Some(LocalDate.of(2024, 8, 13)),
     None,
-    Some(Time(0, 4, 53)),
+    Some(Time(4, 53)),
     List(),
     LocalDateTime.of(2024, 8, 14, 12, 7, 38)
   )
@@ -117,7 +117,7 @@ object EntryDummies {
     Some(LocalDate.of(2024, 12, 28)),
     Some(LocalDate.of(2025, 1, 4)),
     Some(12),
-    Some(Time(0, 13, 0)),
+    Some(Time(13, 0)),
     List("survival horror", "RE"),
     LocalDateTime.of(2025, 1, 4, 23, 2, 36)
   )
@@ -136,7 +136,7 @@ object EntryDummies {
     None,
     Some(LocalDate.of(2024, 9, 21)),
     None,
-    Some(Time(0, 1, 28)),
+    Some(Time(1, 28)),
     List(),
     LocalDateTime.of(2024, 9, 21, 18, 16, 3)
   )
@@ -155,7 +155,7 @@ object EntryDummies {
     Some(LocalDate.of(2024, 10, 21)),
     Some(LocalDate.of(2024, 10, 31)),
     None,
-    Some(Time(0, 0, 9)),
+    Some(Time(0, 9)),
     List("anime", "mecha"),
     LocalDateTime.of(2024, 10, 31, 19, 42, 10)
   )
@@ -174,7 +174,7 @@ object EntryDummies {
     Some(LocalDate.of(2024, 9, 2)),
     Some(LocalDate.of(2024, 9, 2)),
     Some(6),
-    Some(Time(0, 4, 0)),
+    Some(Time(4, 0)),
     List(),
     LocalDateTime.of(2024, 9, 2, 21, 15, 3)
   )
@@ -193,7 +193,7 @@ object EntryDummies {
     Some(LocalDate.of(2024, 10, 19)),
     Some(LocalDate.of(2024, 10, 24)),
     None,
-    Some(Time(0, 3, 15)),
+    Some(Time(3, 15)),
     List(),
     LocalDateTime.of(2024, 10, 24, 13, 20, 39)
   )
@@ -212,7 +212,7 @@ object EntryDummies {
     None,
     Some(LocalDate.of(24, 7, 28)),
     None,
-    Some(Time(0, 1, 45)),
+    Some(Time(1, 45)),
     List(),
     LocalDateTime.of(24, 8, 3, 19, 12, 9)
   )
@@ -269,7 +269,7 @@ object EntryDummies {
     None,
     Some(LocalDate.of(2024, 11, 25)),
     None,
-    Some(Time(0, 0, 30)),
+    Some(Time(0, 30)),
     List(),
     LocalDateTime.of(2024, 11, 25, 18, 15, 49)
   )
@@ -288,7 +288,7 @@ object EntryDummies {
     Some(LocalDate.of(2024, 7, 3)),
     Some(LocalDate.of(2024, 7, 6)),
     None,
-    Some(Time(0, 10, 0)),
+    Some(Time(10, 0)),
     List(),
     LocalDateTime.of(2024, 7, 6, 14, 26, 8)
   )
@@ -307,7 +307,7 @@ object EntryDummies {
     Some(LocalDate.of(2025, 4, 4)),
     Some(LocalDate.of(2025, 5, 18)),
     Some(48),
-    Some(Time(0, 72, 9)),
+    Some(Time(72, 9)),
     List("cool", "great story"),
     LocalDateTime.of(2025, 5, 18, 20, 19, 18)
   )
@@ -326,7 +326,7 @@ object EntryDummies {
     Some(LocalDate.of(2024, 11, 30)),
     Some(LocalDate.of(2024, 12, 16)),
     Some(48),
-    Some(Time(0, 46, 51)),
+    Some(Time(46, 51)),
     List(),
     LocalDateTime.of(2024, 12, 16, 21, 50, 12)
   )
