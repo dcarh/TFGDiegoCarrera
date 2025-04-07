@@ -31,7 +31,7 @@ object EntriesEndpoints {
 
   val getEntry: PublicEndpoint[EntryId, UserError, Entry, Any] =
     entryBaseEndpoint(
-      "getAllEntries", 
+      "getEntry", 
       "This endpoint returns a specific entry by its Id",
       "GET"
     )
