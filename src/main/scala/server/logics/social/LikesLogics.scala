@@ -27,6 +27,7 @@ object LikesLogics {
 
   private val removeLikeFromUser: (User, Like) => Either[UserError, User] =
     (user, like) =>
+      // TODO: Hace falta comprobar esto?
       if user.likes.contains(like.id) then
         val updatedUser = user.copy(
           likes = user.likes.filterNot(_ == like.id)
@@ -38,7 +39,7 @@ object LikesLogics {
         Left(BadRequest("The user ID stored in the like doesn't own the like"))
 
   val getLike: LikeId => IO[Either[UserError, Like]] =
-    likeId => IO {
+    likeId => IO.pure {
       CommonFunctions.getLike(likeId) match 
         case Left(error) => Left(error)
         case Right(like) => Right(like)
@@ -48,7 +49,7 @@ object LikesLogics {
     }
 
   val createLike: Like => IO[Either[UserError, Like]] =
-    newLike => IO {
+    newLike => IO.pure {
       LikeRepository.get(newLike.id) match
         case Some(_) => Left(Conflict(s"Like with ID ${newLike.id.value} already exists"))
         case None if newLike.id.value <= 0 => Left(BadRequest("Invalid like ID"))
@@ -64,7 +65,7 @@ object LikesLogics {
     }
 
   val deleteLike: LikeId => IO[Either[UserError, Unit]] =
-    likeId => IO {
+    likeId => IO.pure {
       CommonFunctions.getLike(likeId) match
         case Left(error) => Left(error)
         case Right(like) =>

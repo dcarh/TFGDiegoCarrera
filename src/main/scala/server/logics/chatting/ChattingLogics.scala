@@ -12,7 +12,7 @@ import modelClasses.ids.Chatting.ChatId
 import modelClasses.ids.Chatting.MessageId
 import modelClasses.ids.User.UserId
 
-import server.logics.commonFunctions.CommonFunctions.{getUser, getBothUsers}
+import server.logics.commonFunctions.CommonFunctions.getUser
 
 object ChattingLogics {
 
@@ -21,21 +21,19 @@ object ChattingLogics {
   //  los ChatId según el creationDate de los Chats completos)
 
   val getChats: ((UserId, Option[String], Option[Boolean])) => IO[Either[UserError, List[ChatId]]] =
-    (userId, sortByOption, archivedOption) => IO {
+    (userId, sortByOption, archivedOption) => IO.pure {
       getUser(userId) match
         case Left(error) => Left(error)
         case Right(user) => archivedOption match
             case Some(archived) if archived => Right(user.archivedChats)
             case _ => Right(user.chats)
 
-
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-
   val getChat: ((UserId, ChatId)) => IO[Either[UserError, Chat]] =
-    (userId, chatId) => IO {
+    (userId, chatId) => IO.pure {
       ChattingAuxFunctions.assertUserAndChatIds(userId, chatId) match
         case Left(error) => Left(error)
         case Right(_, chat) => Right(chat)
@@ -43,9 +41,8 @@ object ChattingLogics {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-
   val archiveChat: ((UserId, ChatId)) => IO[Either[UserError, Chat]] =
-    (userId, chatId) => IO {
+    (userId, chatId) => IO.pure {
       ChattingAuxFunctions.assertUserAndChatIds(userId, chatId) match
         case Left(error) => Left(error)
         case Right(user, chat) =>
@@ -54,8 +51,8 @@ object ChattingLogics {
               archived = true
             )
             val updatedUser = user.copy(
-              chats = user.chats.filterNot(_ == chatId),
-              archivedChats = chatId :: user.archivedChats
+              chats = user.chats.filterNot(_ == chat.id),
+              archivedChats = chat.id :: user.archivedChats
             )
             (updatedChat, updatedUser)
 
@@ -64,24 +61,23 @@ object ChattingLogics {
               archived = false
             )
             val updatedUser = user.copy(
-              chats = chatId :: user.chats,
-              archivedChats = user.archivedChats.filterNot(_ == chatId)
+              chats = chat.id :: user.chats,
+              archivedChats = user.archivedChats.filterNot(_ == chat.id)
             )
             (updatedChat, updatedUser)
           else
             throw Exception("Internal server error")
 
-          ChatRepository.put(chatId, updatedChat)
-          UserRepository.put(userId, updatedUser)
+          ChatRepository.put(chat.id, updatedChat)
+          UserRepository.put(user.id, updatedUser)
 
           Right(updatedChat)
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
-
   val deleteChat: ((UserId, ChatId)) => IO[Either[UserError, Unit]] =
-    (userId, chatId) => IO {
+    (userId, chatId) => IO.pure {
       ChattingAuxFunctions.assertUserAndChatIds(userId, chatId) match
         case Left(error) => Left(error)
         case Right(_, _) =>
@@ -92,9 +88,8 @@ object ChattingLogics {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
 
-
   val getChatMessages: ((UserId, ChatId)) => IO[Either[UserError, List[MessageId]]] =
-    (userId, chatId) => IO {
+    (userId, chatId) => IO.pure {
       ChattingAuxFunctions.assertUserAndChatIds(userId, chatId) match
         case Left(error) => Left(error)
         case Right(_, chat) =>
@@ -103,9 +98,8 @@ object ChattingLogics {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-
   val getMessage: ((UserId, ChatId, MessageId)) => IO[Either[UserError, Message]] =
-    (userId, chatId, messageId) => IO {
+    (userId, chatId, messageId) => IO.pure {
       ChattingAuxFunctions.assertUserAndChatAndMessageIds(userId, chatId, messageId) match
         case Left(error) => Left(error)
         case Right(_, _, message) => Right(message)
@@ -113,9 +107,8 @@ object ChattingLogics {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-
   val sendMessage: ((UserId, ChatId, UserId, Message)) => IO[Either[UserError, Message]] =
-    (user1Id, chatId, user2Id, message) => IO {
+    (user1Id, chatId, user2Id, message) => IO.pure {
       ChattingAuxFunctions.assertTwoUsersAndChat(user1Id, user2Id, chatId) match
         case Left(error) => Left(error)
         case Right(tuple) => tuple match
@@ -141,11 +134,8 @@ object ChattingLogics {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-
-  // TODO: Se podría ampliar más este método en caso de que quisiéramos borrar el mensaje también de la versión de Chat
-  //  del otro usuario, pero creo que es mucho lío
   val deleteMessage: ((UserId, ChatId, MessageId)) => IO[Either[UserError, Unit]] =
-    (userId, chatId, messageId) => IO {
+    (userId, chatId, messageId) => IO.pure {
       ChattingAuxFunctions.assertUserAndChatAndMessageIds(userId, chatId, messageId) match
         case Left(error) => Left(error)
         case Right(_, _, _) =>

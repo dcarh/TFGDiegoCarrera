@@ -71,7 +71,7 @@ object MediaListsLogics {
 
 
   val getMediaList: MediaListId => IO[Either[UserError, MediaList]] =
-    mediaListId => IO {
+    mediaListId => IO.pure {
       CommonFunctions.getMediaList(mediaListId) match 
         case Left(error) => Left(error)
         case Right(mediaList) => Right(mediaList)
@@ -81,7 +81,7 @@ object MediaListsLogics {
     }
 
   val createMediaList: MediaList => IO[Either[UserError, MediaList]] =
-    newMediaList => IO {
+    newMediaList => IO.pure {
       MediaListRepository.get(newMediaList.id) match
         case Some(_) => Left(Conflict(s"Media list with ID ${newMediaList.id.value} already exists"))
         case None if newMediaList.id.value <= 0 => Left(BadRequest("Invalid media list ID"))
@@ -98,7 +98,7 @@ object MediaListsLogics {
 
 
   val editMediaList: ((MediaListId, MediaList)) => IO[Either[UserError, MediaList]] =
-    (mediaListId, updatedMediaListData) => IO {
+    (mediaListId, updatedMediaListData) => IO.pure {
       CommonFunctions.getMediaList(mediaListId) match
         case Left(error) => Left(error)
         case Right(existingMediaList) =>
@@ -128,7 +128,7 @@ object MediaListsLogics {
 
   
   val deleteMediaList: MediaListId => IO[Either[UserError, Unit]] =
-    mediaListId => IO {
+    mediaListId => IO.pure {
       CommonFunctions.getMediaList(mediaListId) match
         case Left(error) => Left(error)
         case Right(mediaList) =>

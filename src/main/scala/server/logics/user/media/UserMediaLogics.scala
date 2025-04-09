@@ -17,7 +17,7 @@ object UserMediaLogics {
       List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]
     ]
   ] =
-    (userId, field, sortByOption, categoryOption) => IO {
+    (userId, field, sortByOption, categoryOption) => IO.pure {
       getAllMedia(userId, field, sortByOption, categoryOption) match
         case Left(error) => Left(error)
         case Right(Left(list)) => Right(list)
@@ -28,7 +28,7 @@ object UserMediaLogics {
 
   val addMovie:
     ((UserId, String, MovieId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]]] =
-    (userId, field, movieId) => IO {
+    (userId, field, movieId) => IO.pure {
       addMedia(userId, field, movieId) match
         case Left(error) => Left(error)
         case Right(Left(list)) => Right(list)
@@ -39,7 +39,7 @@ object UserMediaLogics {
 
   val addTvShow:
     ((UserId, String, TvShowId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]]] =
-    (userId, field, tvShowId) => IO {
+    (userId, field, tvShowId) => IO.pure {
       addMedia(userId, field, tvShowId) match
         case Left(error) => Left(error)
         case Right(Left(list)) => Right(list)
@@ -50,7 +50,7 @@ object UserMediaLogics {
 
   val addSeason:
     ((UserId, String, TvShowId, TvSeasonNumber)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]]] =
-    (userId, field, tvShowId, seasonNumber) => IO {
+    (userId, field, tvShowId, seasonNumber) => IO.pure {
       addMedia(userId, field, (tvShowId, seasonNumber)) match
         case Left(error) => Left(error)
         case Right(Left(list)) => Right(list)
@@ -61,7 +61,7 @@ object UserMediaLogics {
 
   val addEpisode:
     ((UserId, String, TvShowId, TvSeasonNumber, TvEpisodeNumber)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]]] =
-    (userId, field, tvShowId, seasonNumber, episodeNumber) => IO {
+    (userId, field, tvShowId, seasonNumber, episodeNumber) => IO.pure {
       addMedia(userId, field, (tvShowId, seasonNumber, episodeNumber)) match
         case Left(error) => Left(error)
         case Right(Left(list)) => Right(list)
@@ -72,7 +72,7 @@ object UserMediaLogics {
 
   val addVideogame:
     ((UserId, String, VideogameId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]]] =
-    (userId, field, videogameId) => IO {
+    (userId, field, videogameId) => IO.pure {
       addMedia(userId, field, videogameId) match
         case Left(error) => Left(error)
         case Right(Left(list)) => Right(list)
@@ -83,7 +83,7 @@ object UserMediaLogics {
 
   val addBook:
     ((UserId, String, BookId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]]] =
-    (userId, field, bookId) => IO {
+    (userId, field, bookId) => IO.pure {
       addMedia(userId, field, bookId) match
         case Left(error) => Left(error)
         case Right(Left(list)) => Right(list)
@@ -93,42 +93,42 @@ object UserMediaLogics {
     }
 
   val deleteMovie: ((UserId, String, MovieId)) => IO[Either[UserError, Unit]] =
-    (userId, field, movieId) => IO {
+    (userId, field, movieId) => IO.pure {
       deleteMedia(userId, field, movieId)
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
   val deleteTvShow: ((UserId, String, TvShowId)) => IO[Either[UserError, Unit]] =
-    (userId, field, tvShowId) => IO {
+    (userId, field, tvShowId) => IO.pure {
       deleteMedia(userId, field, tvShowId)
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
   val deleteSeason: ((UserId, String, TvShowId, TvSeasonNumber)) => IO[Either[UserError, Unit]] =
-    (userId, field, tvShowId, seasonNumber) => IO {
+    (userId, field, tvShowId, seasonNumber) => IO.pure {
       deleteMedia(userId, field, (tvShowId, seasonNumber))
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
   val deleteEpisode: ((UserId, String, TvShowId, TvSeasonNumber, TvEpisodeNumber)) => IO[Either[UserError, Unit]] =
-    (userId, field, tvShowId, seasonNumber, episodeNumber) => IO {
+    (userId, field, tvShowId, seasonNumber, episodeNumber) => IO.pure {
       deleteMedia(userId, field, (tvShowId, seasonNumber, episodeNumber))
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
   val deleteVideogame: ((UserId, String, VideogameId)) => IO[Either[UserError, Unit]] =
-    (userId, field, videogameId) => IO {
+    (userId, field, videogameId) => IO.pure {
       deleteMedia(userId, field, videogameId)
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
   val deleteBook: ((UserId, String, BookId)) => IO[Either[UserError, Unit]] =
-    (userId, field, bookId) => IO {
+    (userId, field, bookId) => IO.pure {
       deleteMedia(userId, field, bookId)
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))

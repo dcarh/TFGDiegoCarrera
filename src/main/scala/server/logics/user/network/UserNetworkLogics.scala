@@ -11,7 +11,7 @@ import server.logics.commonFunctions.CommonFunctions.{getUser, getBothUsers}
 object UserNetworkLogics {
 
   val getFollowers: UserId => IO[Either[UserError, List[UserId]]] =
-    userId => IO {
+    userId => IO.pure {
       getUser(userId) match
         case Left(error) => Left(error)
         case Right(user) => Right(user.followers)
@@ -21,7 +21,7 @@ object UserNetworkLogics {
     }
 
   val getFollowing: UserId => IO[Either[UserError, List[UserId]]] =
-    userId => IO {
+    userId => IO.pure {
       getUser(userId) match
         case Left(error) => Left(error)
         case Right(user) => Right(user.following)
@@ -31,7 +31,7 @@ object UserNetworkLogics {
     }
 
   val getBlocked: UserId => IO[Either[UserError, List[UserId]]] =
-    userId => IO {
+    userId => IO.pure {
       getUser(userId) match
         case Left(error) => Left(error)
         case Right(user) => Right(user.blocked)
@@ -41,7 +41,7 @@ object UserNetworkLogics {
     }
 
   val followUser: ((UserId, UserId)) => IO[Either[UserError, (List[UserId], List[UserId])]] =
-    (userId, followedUserId) => IO {
+    (userId, followedUserId) => IO.pure {
       getBothUsers(userId, followedUserId) match
         case Left(error) => Left(error)
         case Right(user, followedUser) =>
@@ -63,7 +63,7 @@ object UserNetworkLogics {
     }
 
   val unfollowUser: ((UserId, UserId)) => IO[Either[UserError, Unit]] =
-    (userId, unfollowedUserId) => IO {
+    (userId, unfollowedUserId) => IO.pure {
       getBothUsers(userId, unfollowedUserId) match
         case Left(error) => Left(error)
         case Right(user, unfollowedUser) =>
@@ -85,7 +85,7 @@ object UserNetworkLogics {
     }
 
   val blockUser: ((UserId, UserId)) => IO[Either[UserError, List[UserId]]] =
-    (userId, blockedUserId) => IO {
+    (userId, blockedUserId) => IO.pure {
       getBothUsers(userId, blockedUserId) match
         case Left(error) => Left(error)
         case Right(user, blockedUser) =>
@@ -103,7 +103,7 @@ object UserNetworkLogics {
     }
 
   val unblockUser: ((UserId, UserId)) => IO[Either[UserError, Unit]] =
-    (userId, unblockedUserId) => IO {
+    (userId, unblockedUserId) => IO.pure {
       getBothUsers(userId, unblockedUserId) match
         case Left(error) => Left(error)
         case Right(user, unblockedUser) =>

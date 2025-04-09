@@ -47,7 +47,7 @@ object RepliesLogics {
 
 
   val getReply: ReplyId => IO[Either[UserError, Reply]] =
-    replyId => IO {
+    replyId => IO.pure {
       CommonFunctions.getReply(replyId) match 
         case Left(error) => Left(error)
         case Right(reply) => Right(reply)
@@ -57,7 +57,7 @@ object RepliesLogics {
     }
 
   val createReply: Reply => IO[Either[UserError, Reply]] =
-    newReply => IO {
+    newReply => IO.pure {
       ReplyRepository.get(newReply.id) match
         case Some(_) => Left(Conflict(s"Reply with ID ${newReply.id.value} already exists"))
         case None if newReply.id.value <= 0 => Left(BadRequest("Invalid reply ID"))
@@ -73,7 +73,7 @@ object RepliesLogics {
     }
 
   val editReply: ((ReplyId, Reply)) => IO[Either[UserError, Reply]] =
-    (replyId, updatedReplyData) => IO {
+    (replyId, updatedReplyData) => IO.pure {
       CommonFunctions.getReply(replyId) match
         case Left(error) => Left(error)
         case Right(existingReply) =>
@@ -96,7 +96,7 @@ object RepliesLogics {
     }
 
   val deleteReply: ReplyId => IO[Either[UserError, Unit]] =
-    replyId => IO {
+    replyId => IO.pure {
       CommonFunctions.getReply(replyId) match
         case Left(error) => Left(error)
         case Right(reply) =>

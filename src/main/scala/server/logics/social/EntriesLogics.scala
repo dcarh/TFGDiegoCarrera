@@ -13,18 +13,8 @@ import server.logics.commonFunctions.CommonFunctions
 
 object EntriesLogics {
 
-//  private val getUserAndApply: UserId => (EntryId, (User, EntryId) => Either[UserError, User]) => Either[UserError, User] =
-//    userId =>
-//      (entryId, function) =>
-//      UserRepository.get(userId) match
-//        case Some(user) =>
-//          function(user, entryId)
-//        case None if userId.value <= 0 =>
-//          Left(BadRequest("Invalid user ID"))
-//        case None =>
-//          Left(NotFound(s"User with ID ${userId.value} not found"))
-
   private def userMediaUpdated(user: User, entry: Entry): User =
+    // TODO: Comprobar si el mediaId se encuentra ya en completed (en cuyo caso no se añadiría)
     if entry.completed then
       user.copy(
         completed = entry.mediaId :: user.completed,
@@ -33,6 +23,7 @@ object EntriesLogics {
         onHold = user.onHold.filterNot(_ == entry.mediaId),
         pending = user.pending.filterNot(_ == entry.mediaId),
       )
+    // TODO: Comprobar si el mediaId se encuentra ya en dropped (en cuyo caso no se añadiría)
     else if entry.dropped then
       user.copy(
         dropped = entry.mediaId :: user.dropped,
@@ -44,6 +35,7 @@ object EntriesLogics {
       entry.onHold match
         case Some(boolean) if boolean =>
           entry.mediaId match
+            // TODO: Comprobar si el mediaId se encuentra ya en onHold (en cuyo caso no se añadiría)
             case id: (TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId) =>
               user.copy(
                 onHold = id :: user.onHold,
@@ -72,6 +64,7 @@ object EntriesLogics {
     (user, entry) =>
       if user.entries.contains(entry.id) then
         val mediaUpdate = userMediaUpdated(user, entry)
+        // TODO: Aquí primero habría que eliminar el entry.id de user.entries
         val updatedUser = mediaUpdate.copy(
           entries = entry.id :: user.entries
         )
@@ -96,7 +89,7 @@ object EntriesLogics {
 
   val getAllEntries: ((Option[String], Option[List[String]])) => IO[Either[UserError, List[Entry]]] = {
     (sortByOption, categoryOption) =>
-      IO {
+      IO.pure {
         val entries = EntryRepository.getAll
         
         val filteredEntries = categoryOption match
@@ -141,7 +134,7 @@ object EntriesLogics {
   }
 
   val getEntry: EntryId => IO[Either[UserError, Entry]] =
-    entryId => IO {
+    entryId => IO.pure {
       CommonFunctions.getEntry(entryId) match
         case Left(error) => Left(error)
         case Right(entry) => Right(entry)
@@ -150,7 +143,7 @@ object EntriesLogics {
     }
 
   val createEntry: Entry => IO[Either[UserError, Entry]] =
-    newEntry => IO {
+    newEntry => IO.pure {
       EntryRepository.get(newEntry.id) match
         case Some(_) => Left(Conflict(s"Entry with ID ${newEntry.id.value} already exists"))
         case None if newEntry.id.value <= 0 => Left(BadRequest("Invalid entry ID"))
@@ -166,7 +159,7 @@ object EntriesLogics {
     }
 
   val editEntry: ((EntryId, Entry)) => IO[Either[UserError, Entry]] =
-    (entryId, updatedEntryData) => IO {
+    (entryId, updatedEntryData) => IO.pure {
       CommonFunctions.getEntry(entryId) match
         case Left(error) => Left(error)
         case Right(existingEntry) =>
@@ -198,7 +191,7 @@ object EntriesLogics {
     }
 
   val deleteEntry: EntryId => IO[Either[UserError, Unit]] =
-    entryId => IO {
+    entryId => IO.pure {
       CommonFunctions.getEntry(entryId) match
         case Left(error) => Left (error)
         case Right(entry) =>

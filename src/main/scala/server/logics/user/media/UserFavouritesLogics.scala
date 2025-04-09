@@ -13,7 +13,7 @@ import server.logics.commonFunctions.CommonFunctions
 object UserFavouritesLogics {
 
   val getFavourites: UserId => IO[Either[UserError, UserFavourites]] =
-    userId => IO {
+    userId => IO.pure {
       CommonFunctions.getUser(userId) match
         case Left(error) => Left(error)
         case Right(user) => Right(user.favourites)
@@ -94,7 +94,7 @@ object UserFavouritesLogics {
 
 
   val addFavouriteMovie: ((UserId, MovieId)) => IO[Either[UserError, UserFavourites]] =
-    (userId, movieId) => IO {
+    (userId, movieId) => IO.pure {
       if movieId.value <= 0 then
         Left(BadRequest("Invalid movie ID"))
       else
@@ -105,7 +105,7 @@ object UserFavouritesLogics {
     }
 
   val addFavouriteTvShow: ((UserId, TvShowId)) => IO[Either[UserError, UserFavourites]] =
-    (userId, tvShowId) => IO {
+    (userId, tvShowId) => IO.pure {
       if tvShowId.value <= 0 then
         Left(BadRequest("Invalid TV show ID"))
       else
@@ -116,7 +116,7 @@ object UserFavouritesLogics {
     }
 
   val addFavouriteVideogame: ((UserId, VideogameId)) => IO[Either[UserError, UserFavourites]] =
-    (userId, videogameId) => IO {
+    (userId, videogameId) => IO.pure {
       if videogameId.value <= 0 then
         Left(BadRequest("Invalid videogame ID"))
       else
@@ -127,7 +127,7 @@ object UserFavouritesLogics {
     }
   
   val addFavouriteBook: ((UserId, BookId)) => IO[Either[UserError, UserFavourites]] =
-    (userId, bookId) => IO {
+    (userId, bookId) => IO.pure {
       if bookId.value == "" then
         Left(BadRequest("Invalid book ID"))
       else
@@ -138,7 +138,7 @@ object UserFavouritesLogics {
     }
 
   val deleteFavouriteMovie: ((UserId, MovieId)) => IO[Either[UserError, Unit]] =
-    (userId, movieId) => IO {
+    (userId, movieId) => IO.pure {
       if movieId.value <= 0 then
         Left(BadRequest("Invalid movie ID"))
       else
@@ -149,7 +149,7 @@ object UserFavouritesLogics {
     }
 
   val deleteFavouriteTvShow: ((UserId, TvShowId)) => IO[Either[UserError, Unit]] =
-    (userId, tvShowId) => IO {
+    (userId, tvShowId) => IO.pure {
       if tvShowId.value <= 0 then
         Left(BadRequest("Invalid TV show ID"))
       else
@@ -160,7 +160,7 @@ object UserFavouritesLogics {
     }
 
   val deleteFavouriteVideogame: ((UserId, VideogameId)) => IO[Either[UserError, Unit]] =
-    (userId, videogameId) => IO {
+    (userId, videogameId) => IO.pure {
       if videogameId.value <= 0 then
         Left(BadRequest("Invalid videogame ID"))
       else
@@ -171,7 +171,7 @@ object UserFavouritesLogics {
     }
 
   val deleteFavouriteBook: ((UserId, BookId)) => IO[Either[UserError, Unit]] =
-    (userId, bookId) => IO {
+    (userId, bookId) => IO.pure {
       if bookId.value <= "" then
         Left(BadRequest("Invalid book ID"))
       else

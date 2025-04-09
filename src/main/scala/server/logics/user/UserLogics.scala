@@ -34,7 +34,7 @@ object UserLogics {
 
   val getAllUsers: Option[String] => IO[Either[UserError, List[User]]] = {
     sortByOption =>
-      IO {
+      IO.pure {
         val users = UserRepository.getAll
 
         val sortedUsers = sortByOption match
@@ -56,7 +56,7 @@ object UserLogics {
   }
 
   val getUser: UserId => IO[Either[UserError, User]] =
-    userId => IO {
+    userId => IO.pure {
       CommonFunctions.getUser(userId) match
         case Left(error) => Left(error)
         case Right(user) => Right(user)
@@ -65,7 +65,7 @@ object UserLogics {
     }
 
   val getProfile: UserId => IO[Either[UserError, UserProfile]] =
-    userId => IO {
+    userId => IO.pure {
       CommonFunctions.getUser(userId) match
         case Left(error) => Left(error)
         case Right(user) => Right(user.profile)
@@ -75,7 +75,7 @@ object UserLogics {
     }
 
   val createUser: ((UserId, UserProfile)) => IO[Either[UserError, User]] =
-    (newUserId, newUserProfile) => IO {
+    (newUserId, newUserProfile) => IO.pure {
       UserRepository.get(newUserId) match
         case Some(_) => Left(Conflict(s"User with ID ${newUserId.value} already exists"))
         case None if newUserId.value <= 0 => Left(BadRequest("Invalid entry ID"))
@@ -110,7 +110,7 @@ object UserLogics {
     }
 
   val editUser: ((UserId, UserProfile)) => IO[Either[UserError, User]] =
-    (userId, updatedUserProfileData) => IO {
+    (userId, updatedUserProfileData) => IO.pure {
       CommonFunctions.getUser(userId) match
         case Left(error) => Left(error)
         case Right(user) => applyProfileToUser(user, updatedUserProfileData)
@@ -119,7 +119,7 @@ object UserLogics {
     }
 
   val deleteUser: UserId => IO[Either[UserError, Unit]] =
-    userId => IO {
+    userId => IO.pure {
       CommonFunctions.getUser(userId) match
         case Left(error) => Left(error)
         case Right(user) =>

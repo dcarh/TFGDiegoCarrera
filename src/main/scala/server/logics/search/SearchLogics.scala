@@ -7,7 +7,6 @@ import dummies.repositories.{MediaListRepository, UserRepository}
 import endpoints.googleBooks.Books
 import endpoints.igdb.Videogames
 import endpoints.tmdb.{Movies, TvShows}
-import modelClasses.app.media.Videogame
 import modelClasses.app.social.MediaList
 import modelClasses.app.user.User
 import modelClasses.errors.UserError.*
@@ -35,9 +34,9 @@ object SearchLogics {
             case _ => Left(BadRequest("Parameter not supported"))
           }
 
-          IO(sortedMovies)
+          IO.pure(sortedMovies)
 
-        case Left(error) => IO(Left(error))
+        case Left(error) => IO.pure(Left(error))
       }.handleError {
         case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
       }
@@ -61,9 +60,9 @@ object SearchLogics {
             case _ => Left(BadRequest("Parameter not supported"))
           }
 
-          IO(sortedTvShows)
+          IO.pure(sortedTvShows)
 
-        case Left(error) => IO(Left(error))
+        case Left(error) => IO.pure(Left(error))
       }.handleError {
         case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
       }
@@ -82,9 +81,9 @@ object SearchLogics {
             case None => Right(listOfRequestedVideogames)
             case _ => Left(BadRequest("Parameter not supported"))
           }
-          IO(sortedVideogames)
+          IO.pure(sortedVideogames)
 
-        case Left(error: UserError) => IO(Left(error))
+        case Left(error: UserError) => IO.pure(Left(error))
       }.handleError {
         case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
       }
@@ -102,35 +101,16 @@ object SearchLogics {
             case None => Right(listOfBooks)
             case _ => Left(BadRequest("Parameter not supported"))
           }
-          IO(sortedBooks)
+          IO.pure(sortedBooks)
 
-        case Left(error: UserError) => IO(Left(error))
+        case Left(error: UserError) => IO.pure(Left(error))
       }.handleError {
         case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
       }
 
-//  val searchBook2: ((String, Option[String])) => IO[Either[UserError, List[SearchedBook]]] =
-//    (title, sortByOption) =>
-//      GoogleBooksClient.executeRequest(Books.searchBooksEndpoint2, (title, "relevance", "lite", "en")).flatMap {
-//        case Right(listOfSearchedBooks: ListOfSearchedBooks) =>
-//          val listOfBooks = listOfSearchedBooks.items
-//
-//          val sortedBooks = sortByOption match {
-//            case Some("oldest") => Right(listOfBooks.sortBy(_.volumeInfo.publishedDate))
-//            case Some("newest") => Right(listOfBooks.sortBy(_.volumeInfo.publishedDate).reverse)
-//            case None => Right(listOfBooks)
-//            case _ => Left(BadRequest("Parameter not supported"))
-//          }
-//          IO(sortedBooks)
-//
-//        case Left(error: UserError) => IO(Left(error))
-//      }.handleError {
-//        case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
-//      }
-
   val searchMediaList: String => IO[Either[UserError, List[MediaList]]] = {
     title =>
-      IO(Right(MediaListRepository.findByTitle(title)))
+      IO.pure(Right(MediaListRepository.findByTitle(title)))
         .handleError {
           case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
         }
@@ -138,7 +118,7 @@ object SearchLogics {
 
   val searchUser: String => IO[Either[UserError, List[User]]] = {
     username =>
-      IO(Right(UserRepository.findByUsername(username)))
+      IO.pure(Right(UserRepository.findByUsername(username)))
         .handleError {
           case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
         }

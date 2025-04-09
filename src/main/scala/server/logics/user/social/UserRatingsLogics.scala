@@ -11,7 +11,7 @@ import server.logics.commonFunctions.CommonFunctions
 object UserRatingsLogics {
 
   val getUserRatings: ((UserId, Option[List[String]], Option[String])) => IO[Either[UserError, List[RatingId]]] =
-    (userId, sortByOption, filterByOption) => IO {
+    (userId, sortByOption, filterByOption) => IO.pure {
       CommonFunctions.getUser(userId) match
         case Left(error) => Left(error)
         case Right(user) => Right(user.ratings)

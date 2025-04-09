@@ -35,7 +35,7 @@ object BookLogics {
             )
           ))
 
-        case Left(error: UserError) => IO(Left(error))
+        case Left(error: UserError) => IO.pure(Left(error))
       }.handleError {
         case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
       }

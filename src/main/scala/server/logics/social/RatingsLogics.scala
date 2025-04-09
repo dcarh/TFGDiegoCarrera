@@ -47,7 +47,7 @@ object RatingsLogics {
 
 
   val getRating: RatingId => IO[Either[UserError, Rating]] =
-    ratingId => IO {
+    ratingId => IO.pure {
       CommonFunctions.getRating(ratingId) match 
         case Left(error) => Left(error)
         case Right(rating) => Right(rating)
@@ -57,7 +57,7 @@ object RatingsLogics {
     }
 
   val createRating: Rating => IO[Either[UserError, Rating]] =
-    newRating => IO {
+    newRating => IO.pure {
       RatingRepository.get(newRating.id) match
         case Some(_) => Left(Conflict(s"Rating with ID ${newRating.id.value} already exists"))
         case None if newRating.id.value <= 0 => Left(BadRequest("Invalid rating ID"))
@@ -74,7 +74,7 @@ object RatingsLogics {
     }
 
   val editRating: ((RatingId, Rating)) => IO[Either[UserError, Rating]] =
-    (ratingId, updatedRatingData) => IO {
+    (ratingId, updatedRatingData) => IO.pure {
       CommonFunctions.getRating(ratingId) match
         case Left(error) => Left(error)
         case Right(existingRating) =>
@@ -95,7 +95,7 @@ object RatingsLogics {
     }
 
   val deleteRating: RatingId => IO[Either[UserError, Unit]] =
-    ratingId => IO {
+    ratingId => IO.pure {
       CommonFunctions.getRating(ratingId) match
         case Left(error) => Left(error)
         case Right(rating) =>
