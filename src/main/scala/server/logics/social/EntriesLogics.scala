@@ -14,19 +14,17 @@ import server.logics.commonFunctions.CommonFunctions
 object EntriesLogics {
 
   private def userMediaUpdated(user: User, entry: Entry): User =
-    // TODO: Comprobar si el mediaId se encuentra ya en completed (en cuyo caso no se añadiría)
     if entry.completed then
       user.copy(
-        completed = entry.mediaId :: user.completed,
+        completed = entry.mediaId :: user.completed.filterNot(_ == entry.mediaId),
         dropped = user.dropped.filterNot(_ == entry.mediaId),
         inProgress = user.inProgress.filterNot(_ == entry.mediaId),
         onHold = user.onHold.filterNot(_ == entry.mediaId),
         pending = user.pending.filterNot(_ == entry.mediaId),
       )
-    // TODO: Comprobar si el mediaId se encuentra ya en dropped (en cuyo caso no se añadiría)
     else if entry.dropped then
       user.copy(
-        dropped = entry.mediaId :: user.dropped,
+        dropped = entry.mediaId :: user.dropped.filterNot(_ == entry.mediaId),
         inProgress = user.inProgress.filterNot(_ == entry.mediaId),
         onHold = user.onHold.filterNot(_ == entry.mediaId),
         pending = user.pending.filterNot(_ == entry.mediaId),
@@ -35,13 +33,12 @@ object EntriesLogics {
       entry.onHold match
         case Some(boolean) if boolean =>
           entry.mediaId match
-            // TODO: Comprobar si el mediaId se encuentra ya en onHold (en cuyo caso no se añadiría)
             case id: (TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId) =>
               user.copy(
-                onHold = id :: user.onHold,
-                dropped = user.dropped.filterNot(_ == entry.mediaId),
-                inProgress = user.inProgress.filterNot(_ == entry.mediaId),
-                pending = user.pending.filterNot(_ == entry.mediaId)
+                onHold = id :: user.onHold.filterNot(_ == id),
+                dropped = user.dropped.filterNot(_ == id),
+                inProgress = user.inProgress.filterNot(_ == id),
+                pending = user.pending.filterNot(_ == id)
               )
             case _ => throw Exception("'On Hold' does not support movies nor episodes")
         case _ => user
@@ -63,11 +60,7 @@ object EntriesLogics {
   private val updateUserFromEntry: (User, Entry) => Either[UserError, User] =
     (user, entry) =>
       if user.entries.contains(entry.id) then
-        val mediaUpdate = userMediaUpdated(user, entry)
-        // TODO: Aquí primero habría que eliminar el entry.id de user.entries
-        val updatedUser = mediaUpdate.copy(
-          entries = entry.id :: user.entries
-        )
+        val updatedUser = userMediaUpdated(user, entry)
         UserRepository.put(updatedUser.id, updatedUser)
         Right(updatedUser)
       else 
@@ -77,6 +70,8 @@ object EntriesLogics {
   private val removeEntryFromUser: (User, Entry) => Either[UserError, User] =
     (user, entry) =>
       if user.entries.contains(entry.id) then
+        // TODO: Habría que revisar otras Entries del usuario, porque si no existe ninguna otra Entry con el mismo 
+        //  status, habría que eliminar el Media de la lista de Media del usuario para un determinado status
         val updatedUser = user.copy(
           entries = user.entries.filterNot(_ == entry.id)
         )

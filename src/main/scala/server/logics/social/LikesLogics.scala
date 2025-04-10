@@ -12,6 +12,8 @@ import modelClasses.ids.User.UserId
 import server.logics.commonFunctions.CommonFunctions
 
 object LikesLogics {
+  
+  // TODO: Falta añadir o eliminar el LikeId de las listas de LikeId de aquellos elementos a los que hacen referencia
 
   private val addNewLikeToUser: (User, Like) => Either[UserError, User] =
     (user, like) =>
@@ -27,7 +29,6 @@ object LikesLogics {
 
   private val removeLikeFromUser: (User, Like) => Either[UserError, User] =
     (user, like) =>
-      // TODO: Hace falta comprobar esto?
       if user.likes.contains(like.id) then
         val updatedUser = user.copy(
           likes = user.likes.filterNot(_ == like.id)

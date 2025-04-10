@@ -90,7 +90,7 @@ object UserLogics {
             inProgress = emptyList,
             onHold = emptyList,
             dropped = emptyList,
-            lists = emptyList,
+            mediaLists = emptyList,
             entries = emptyList,
             reviews = emptyList,
             ratings = emptyList,

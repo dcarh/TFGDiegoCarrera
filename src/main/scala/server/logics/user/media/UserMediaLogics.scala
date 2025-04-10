@@ -10,6 +10,8 @@ import server.logics.commonFunctions.CommonFunctions
 object UserMediaLogics {
 
   // TODO: Implementar funcionalidad de sortByOption (en caso de seguir adelante con ello)
+  
+  // TODO: Habría que retocar algo en caso de hacer lo de las Entry's invisibles para estos endpoints, supongo
 
   val getAllMedia: ((UserId, String, Option[String], Option[List[String]])) => IO[
     Either[

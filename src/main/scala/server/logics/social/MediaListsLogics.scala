@@ -14,9 +14,9 @@ object MediaListsLogics {
 
   private val addNewMediaListToUser: (User, MediaList) => Either[UserError, User] =
     (user, mediaList) =>
-      if !user.lists.contains(mediaList.id) then
+      if !user.mediaLists.contains(mediaList.id) then
         val updatedUser = user.copy(
-          lists = mediaList.id :: user.lists
+          mediaLists = mediaList.id :: user.mediaLists
         )
         UserRepository.put(updatedUser.id, updatedUser)
         Right(user)
@@ -26,7 +26,7 @@ object MediaListsLogics {
 
   private val updateUserFromMediaList: (User, MediaList) => Either[UserError, User] =
     (user, mediaListId) =>
-      if user.lists.contains(mediaListId) then
+      if user.mediaLists.contains(mediaListId) then
         Right(user)
 
       else
@@ -34,9 +34,9 @@ object MediaListsLogics {
 
   private val removeMediaListFromUser: (User, MediaList) => Either[UserError, User] =
     (user, mediaList) =>
-      if user.lists.contains(mediaList.id) then
+      if user.mediaLists.contains(mediaList.id) then
         val updatedUser = user.copy(
-          lists = user.lists.filterNot(_ == mediaList.id)
+          mediaLists = user.mediaLists.filterNot(_ == mediaList.id)
         )
         UserRepository.put(updatedUser.id, updatedUser)
         Right(user)
@@ -46,27 +46,26 @@ object MediaListsLogics {
 
 
   val getAllMediaLists: Option[String] => IO[Either[UserError, List[MediaList]]] = {
-    sortByOption =>
-      IO {
-        val mediaLists = MediaListRepository.getAll
+    sortByOption => IO.pure {
+      val mediaLists = MediaListRepository.getAll
 
-        val sortedMediaLists = sortByOption match 
-          case Some("earliest_created") => Right(mediaLists.sortBy(_.creationDate))
-          case Some("newest_created") => Right(mediaLists.sortBy(_.creationDate).reverse)
-          case Some("earliest_updated") => Right(mediaLists.sortBy(_.updateDate))
-          case Some("newest_updated") => Right(mediaLists.sortBy(_.updateDate).reverse)
-          case Some("least_liked") => Right(mediaLists.sortBy(_.likes.size))
-          case Some("most_liked") => Right(mediaLists.sortBy(_.likes.size).reverse)
-          case Some("least_replied") => Right(mediaLists.sortBy(_.replies.size))
-          case Some("most_replied") => Right(mediaLists.sortBy(_.replies.size).reverse)
-          case Some(unknown) => Left(BadRequest(s"Invalid sorting parameter: $unknown"))
-          case None => Right(mediaLists)
-        
-        sortedMediaLists
-        
-      }.handleError {
-        case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
-      }
+      val sortedMediaLists = sortByOption match 
+        case Some("earliest_created") => Right(mediaLists.sortBy(_.creationDate))
+        case Some("newest_created") => Right(mediaLists.sortBy(_.creationDate).reverse)
+        case Some("earliest_updated") => Right(mediaLists.sortBy(_.updateDate))
+        case Some("newest_updated") => Right(mediaLists.sortBy(_.updateDate).reverse)
+        case Some("least_liked") => Right(mediaLists.sortBy(_.likes.size))
+        case Some("most_liked") => Right(mediaLists.sortBy(_.likes.size).reverse)
+        case Some("least_replied") => Right(mediaLists.sortBy(_.replies.size))
+        case Some("most_replied") => Right(mediaLists.sortBy(_.replies.size).reverse)
+        case Some(unknown) => Left(BadRequest(s"Invalid sorting parameter: $unknown"))
+        case None => Right(mediaLists)
+      
+      sortedMediaLists
+      
+    }.handleError {
+      case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
+    }
   }
 
 

@@ -15,7 +15,7 @@ case class User(
                  inProgress   : List[TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId],
                  onHold       : List[TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId],
                  dropped      : List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId],
-                 lists        : List[MediaListId],
+                 mediaLists   : List[MediaListId],
                  entries      : List[EntryId],
                  reviews      : List[ReviewId],
                  ratings      : List[RatingId],

@@ -13,6 +13,8 @@ import server.logics.commonFunctions.CommonFunctions
 
 object RepliesLogics {
 
+  // TODO: Falta añadir o eliminar el ReplyId de las listas de ReplyId de aquellos elementos a los que hacen referencia
+
   private val addNewReplyToUser: (User, Reply) => Either[UserError, User] =
     (user, reply) =>
       if !user.replies.contains(reply.id) then

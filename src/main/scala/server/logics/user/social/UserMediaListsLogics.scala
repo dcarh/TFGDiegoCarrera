@@ -14,7 +14,7 @@ object UserMediaListsLogics {
     (userId, sortByOption) => IO.pure {
       CommonFunctions.getUser(userId) match
         case Left(error) => Left(error)
-        case Right(user) => Right(user.lists)
+        case Right(user) => Right(user.mediaLists)
       
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
