@@ -15,6 +15,7 @@ case class Entry(
                   rating       : Option[RatingId],
                   review       : Option[ReviewId],
                   completed    : Boolean,
+                  inProgress   : Option[Boolean],
                   onHold       : Option[Boolean],
                   dropped      : Boolean,
                   repeat       : Boolean,

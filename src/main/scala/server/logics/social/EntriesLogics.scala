@@ -168,6 +168,7 @@ object EntriesLogics {
                 rating = updatedEntryData.rating,
                 review = updatedEntryData.review,
                 completed = updatedEntryData.completed,
+                inProgress = updatedEntryData.inProgress,
                 onHold = updatedEntryData.onHold,
                 dropped = updatedEntryData.dropped,
                 repeat = updatedEntryData.repeat,
