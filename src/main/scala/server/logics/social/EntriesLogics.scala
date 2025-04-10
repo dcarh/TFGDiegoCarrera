@@ -31,7 +31,7 @@ object EntriesLogics {
       )
     else
       entry.onHold match
-        case Some(boolean) if boolean =>
+        case Some(onHold) if onHold =>
           entry.mediaId match
             case id: (TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId) =>
               user.copy(
@@ -41,7 +41,19 @@ object EntriesLogics {
                 pending = user.pending.filterNot(_ == id)
               )
             case _ => throw Exception("'On Hold' does not support movies nor episodes")
-        case _ => user
+        case _ =>
+          entry.inProgress match
+            case Some(inProgress) if inProgress =>
+              entry.mediaId match
+                case id: (TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId) =>
+                  user.copy(
+                    inProgress = id :: user.inProgress.filterNot(_ == id),
+                    dropped = user.dropped.filterNot(_ == id),
+                    onHold = user.onHold.filterNot(_ == id),
+                    pending = user.pending.filterNot(_ == id)
+                  )
+                case _ => throw Exception("'In Progress' does not support movies nor episodes")
+            case _ => user
 
   private val addNewEntryToUser: (User, Entry) => Either[UserError, User] =
     (user, entry) =>
