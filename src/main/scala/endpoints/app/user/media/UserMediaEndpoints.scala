@@ -14,8 +14,7 @@ object UserMediaEndpoints {
     (String, String, String) => PublicEndpoint[(UserId, String), UserError, Unit, Any] =
       (name, description, method) => specificUserBaseEndpoint(name, description, method)
         .in(PathInputs.pathField)
-//        .in(PathInputs.pathAction)
-      
+
   val getAllMedia:
     PublicEndpoint[
       (UserId, String, Option[String], Option[List[String]]), 

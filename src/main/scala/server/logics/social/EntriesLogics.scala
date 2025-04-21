@@ -109,10 +109,10 @@ object EntriesLogics {
                 case (_: TvShowId, _: TvSeasonNumber, _: TvEpisodeNumber) => categories.contains("episode")
                 case videogameId: VideogameId => categories.contains("videogame")
                 case bookId: BookId => categories.contains("book") 
-            )
+            ).filterNot(!_.hidden)
           
           case None => entries
-
+        
         val ratings = RatingRepository.getAll
         val ratingMap = ratings.map(rating => rating.id -> rating).toMap
 
@@ -212,5 +212,4 @@ object EntriesLogics {
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
-
 }
