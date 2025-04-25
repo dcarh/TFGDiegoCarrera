@@ -25,8 +25,7 @@ object EntryDummies {
     None,
     Some(Time(13, 0)),
     List("disney", "trauma"),
-    LocalDateTime.of(2024, 12, 2, 20, 16, 41),
-    false
+    LocalDateTime.of(2024, 12, 2, 20, 16, 41)
   )
 
   val entry2: Entry = Entry(
@@ -46,8 +45,7 @@ object EntryDummies {
     Some(6),
     Some(Time(12, 12)),
     List(),
-    LocalDateTime.of(2024, 9, 6, 10, 45, 24),
-    false
+    LocalDateTime.of(2024, 9, 6, 10, 45, 24)
   )
 
   val entry3: Entry = Entry(
@@ -67,8 +65,7 @@ object EntryDummies {
     Some(48),
     Some(Time(20, 43)),
     List("walking simulator", "kojima", "boring"),
-    LocalDateTime.of(2024, 10, 22, 16, 7, 58),
-    false
+    LocalDateTime.of(2024, 10, 22, 16, 7, 58)
   )
 
   val entry4: Entry = Entry(
@@ -88,8 +85,7 @@ object EntryDummies {
     None,
     Some(Time(2, 0)),
     List(),
-    LocalDateTime.of(2024, 11, 2, 23, 51, 20),
-    false
+    LocalDateTime.of(2024, 11, 2, 23, 51, 20)
   )
 
   val entry5: Entry = Entry(
@@ -109,8 +105,7 @@ object EntryDummies {
     None,
     Some(Time(4, 53)),
     List(),
-    LocalDateTime.of(2024, 8, 14, 12, 7, 38),
-    false
+    LocalDateTime.of(2024, 8, 14, 12, 7, 38)
   )
 
   val entry6: Entry = Entry(
@@ -130,8 +125,7 @@ object EntryDummies {
     Some(12),
     Some(Time(13, 0)),
     List("survival horror", "RE"),
-    LocalDateTime.of(2025, 1, 4, 23, 2, 36),
-    false
+    LocalDateTime.of(2025, 1, 4, 23, 2, 36)
   )
 
   val entry7: Entry = Entry(
@@ -151,8 +145,7 @@ object EntryDummies {
     None,
     Some(Time(1, 28)),
     List(),
-    LocalDateTime.of(2024, 9, 21, 18, 16, 3),
-    false
+    LocalDateTime.of(2024, 9, 21, 18, 16, 3)
   )
 
   val entry8: Entry = Entry(
@@ -172,8 +165,7 @@ object EntryDummies {
     None,
     Some(Time(0, 9)),
     List("anime", "mecha"),
-    LocalDateTime.of(2024, 10, 31, 19, 42, 10),
-    false
+    LocalDateTime.of(2024, 10, 31, 19, 42, 10)
   )
 
   val entry9: Entry = Entry(
@@ -193,8 +185,7 @@ object EntryDummies {
     Some(6),
     Some(Time(4, 0)),
     List(),
-    LocalDateTime.of(2024, 9, 2, 21, 15, 3),
-    false
+    LocalDateTime.of(2024, 9, 2, 21, 15, 3)
   )
 
   val entry10: Entry = Entry(
@@ -214,8 +205,7 @@ object EntryDummies {
     None,
     Some(Time(3, 15)),
     List(),
-    LocalDateTime.of(2024, 10, 24, 13, 20, 39),
-    false
+    LocalDateTime.of(2024, 10, 24, 13, 20, 39)
   )
 
   val entry11: Entry = Entry(
@@ -235,8 +225,7 @@ object EntryDummies {
     None,
     Some(Time(1, 45)),
     List(),
-    LocalDateTime.of(24, 8, 3, 19, 12, 9),
-    false
+    LocalDateTime.of(24, 8, 3, 19, 12, 9)
   )
 
   val entry12: Entry = Entry(
@@ -256,8 +245,7 @@ object EntryDummies {
     None,
     None,
     List(),
-    LocalDateTime.of(2024, 7, 19, 17, 51, 24),
-    false
+    LocalDateTime.of(2024, 7, 19, 17, 51, 24)
   )
 
   val entry13: Entry = Entry(
@@ -277,8 +265,7 @@ object EntryDummies {
     Some(130),
     None,
     List("roguelike", "greek mythology"),
-    LocalDateTime.of(2024, 9, 14, 23, 56, 12),
-    false
+    LocalDateTime.of(2024, 9, 14, 23, 56, 12)
   )
 
   val entry14: Entry = Entry(
@@ -298,8 +285,7 @@ object EntryDummies {
     None,
     Some(Time(0, 30)),
     List(),
-    LocalDateTime.of(2024, 11, 25, 18, 15, 49),
-    false
+    LocalDateTime.of(2024, 11, 25, 18, 15, 49)
   )
 
   val entry15: Entry = Entry(
@@ -319,8 +305,7 @@ object EntryDummies {
     None,
     Some(Time(10, 0)),
     List(),
-    LocalDateTime.of(2024, 7, 6, 14, 26, 8),
-    false
+    LocalDateTime.of(2024, 7, 6, 14, 26, 8)
   )
 
   val entry16: Entry = Entry(
@@ -340,8 +325,7 @@ object EntryDummies {
     Some(48),
     Some(Time(72, 9)),
     List("cool", "great story"),
-    LocalDateTime.of(2025, 5, 18, 20, 19, 18),
-    false
+    LocalDateTime.of(2025, 5, 18, 20, 19, 18)
   )
 
   val entry17: Entry = Entry(
@@ -361,8 +345,7 @@ object EntryDummies {
     Some(48),
     Some(Time(46, 51)),
     List(),
-    LocalDateTime.of(2024, 12, 16, 21, 50, 12),
-    false
+    LocalDateTime.of(2024, 12, 16, 21, 50, 12)
   )
 
   val entry18: Entry = Entry(
@@ -382,8 +365,7 @@ object EntryDummies {
     None,
     None,
     List(),
-    LocalDateTime.of(2024, 8, 21, 23, 9, 11),
-    false
+    LocalDateTime.of(2024, 8, 21, 23, 9, 11)
   )
 
 }

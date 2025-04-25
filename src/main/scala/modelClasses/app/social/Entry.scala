@@ -25,5 +25,4 @@ case class Entry(
                   timeSpent    : Option[Time],
                   tags         : List[String],
                   creationDate : LocalDateTime,
-                  hidden       : Boolean
                 )

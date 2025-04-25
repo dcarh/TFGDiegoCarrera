@@ -2,15 +2,11 @@ package server.logics.user.media
 
 import cats.effect.IO
 import dummies.repositories.UserRepository
-import dummies.repositories.EntryRepository
-import modelClasses.app.social.Entry
 import modelClasses.errors.UserError.*
 import modelClasses.ids.User.UserId
 import modelClasses.ids.Media.{BookId, MovieId, TvEpisodeNumber, TvSeasonNumber, TvShowId, VideogameId}
 import modelClasses.ids.Social.EntryId
 import server.logics.commonFunctions.CommonFunctions
-
-import java.time.{LocalDateTime, ZoneId}
 
 object UserMediaLogics {
 
@@ -142,7 +138,6 @@ object UserMediaLogics {
     }
 
 
-
   private def getAllMedia(userId: UserId, field: String, sortByOption: Option[String], categoryOption:Option[List[String]]):
   Either[
     UserError,
@@ -155,7 +150,7 @@ object UserMediaLogics {
       case Left(error) => Left(error)
       case Right(user) =>
         val fieldAccessed = field match
-          case "completed" => user.completed
+          case "completed" => user.completed.distinct
           case "dropped" => user.dropped
           case "inProgress" => user.inProgress
           case "onHold" => user.onHold
@@ -179,141 +174,6 @@ object UserMediaLogics {
           case ("inProgress" | "onHold", list: List[TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId]) =>
             Right(Right(list))
           case _ => throw Exception("Internal server error")
-
-
-  private def addMedia(userId: UserId, field: String, mediaId: MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId):
-  Either[
-    UserError,
-    Either[
-      List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId],
-      List[TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId]
-    ]
-  ] =
-    val maxEntryId = EntryRepository.getAll.maxBy(_.id.value).id.value
-    var hiddenEntry = Entry(
-      id = EntryId(maxEntryId + 1),
-      userId = userId,
-      mediaId = mediaId,
-      rating = None,
-      review = None,
-      completed = false,
-      inProgress = None,
-      onHold = None,
-      dropped = false,
-      repeat = false,
-      startedDate = None,
-      finishedDate = None,
-      platform = None,
-      timeSpent = None,
-      tags = List(),
-      creationDate = LocalDateTime.now(),
-      hidden = true
-    )
-    
-    (field, mediaId) match
-      case ("inProgress", movieId: MovieId) =>
-        Left(BadRequest("'In Progress' does not support movies"))
-      case ("inProgress", episodeNumber: (TvShowId, TvSeasonNumber, TvEpisodeNumber)) =>
-        Left(BadRequest("'In Progress' does not support episodes"))
-      case ("onHold", movieId: MovieId) =>
-        Left(BadRequest("'On Hold' does not support movies"))
-      case ("onHold", episodeNumber: (TvShowId, TvSeasonNumber, TvEpisodeNumber)) =>
-        Left(BadRequest("'On Hold' does not support episodes"))
-      case _ =>
-        CommonFunctions.getUser(userId) match
-          case Left(error) => Left(error)
-          case Right(user) =>
-            val (fieldAccessed, otherFields) = field match
-              case "completed" => 
-                hiddenEntry = hiddenEntry.copy(completed = true)
-                
-                (user.completed, List(user.dropped, user.inProgress, user.onHold, user.pending))
-              case "dropped" => 
-                
-                (user.dropped, List(user.inProgress, user.onHold, user.pending))
-              case "inProgress" => 
-                
-                (user.inProgress, List(user.dropped, user.onHold, user.pending))
-              case "onHold" => 
-                
-                (user.onHold, List(user.dropped, user.inProgress, user.pending))
-              case "pending" => 
-                
-                (user.pending, List())
-
-            if fieldAccessed.contains(mediaId) then Left(Conflict(s"Media already '${field}''"))
-            else
-              val updatedMediaField = mediaId match
-                case movieId: MovieId =>
-                  if movieId.value <= 0 then Left(BadRequest("Invalid movie ID"))
-                  else Right(movieId :: fieldAccessed)
-
-                case tvShowId: TvShowId =>
-                  if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
-                  else Right(tvShowId :: fieldAccessed)
-
-                case (tvShowId: TvShowId, seasonNumber: TvSeasonNumber) =>
-                  if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
-                  else if seasonNumber.value <= 0 then Left(BadRequest("Invalid season number"))
-                  else Right((tvShowId, seasonNumber) :: fieldAccessed)
-
-                case (tvShowId: TvShowId, seasonNumber: TvSeasonNumber, episodeNumber: TvEpisodeNumber) =>
-                  if tvShowId.value <= 0 then Left(BadRequest("Invalid TV show ID"))
-                  else if seasonNumber.value <= 0 then Left(BadRequest("Invalid season number"))
-                  else if episodeNumber.value <= 0 then Left(BadRequest("Invalid episode number"))
-                  else Right((tvShowId, seasonNumber, episodeNumber) :: fieldAccessed)
-
-                case videogameId: VideogameId =>
-                  if videogameId.value <= 0 then Left(BadRequest("Invalid videogame ID"))
-                  else Right(videogameId :: fieldAccessed)
-
-                case bookId: BookId =>
-                  if bookId.value == "" then Left(BadRequest("Invalid book ID"))
-                  else Right(bookId :: fieldAccessed)
-
-
-              updatedMediaField match
-                case Left(error) => Left(error)
-                case Right(fieldList) =>
-                  val (updatedUser, returnedList) = (field, fieldList) match
-                    case ("completed", list: List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]) =>
-                      (user.copy(
-                        completed = list,
-                        dropped = user.dropped.filterNot(_ == mediaId),
-                        inProgress = user.inProgress.filterNot(_ == mediaId),
-                        onHold = user.onHold.filterNot(_ == mediaId),
-                        pending = user.dropped.filterNot(_ == mediaId)
-                      ), Right(Left(list)))
-                    case ("dropped", list: List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]) =>
-                      (user.copy(
-                        dropped = list,
-                        inProgress = user.inProgress.filterNot(_ == mediaId),
-                        onHold = user.onHold.filterNot(_ == mediaId),
-                        pending = user.dropped.filterNot(_ == mediaId)
-                      ), Right(Left(list)))
-                    case ("inProgress", list: List[TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId]) =>
-                      (user.copy(
-                        inProgress = list,
-                        dropped = user.dropped.filterNot(_ == mediaId),
-                        onHold = user.onHold.filterNot(_ == mediaId),
-                        pending = user.dropped.filterNot(_ == mediaId)
-                      ), Right(Right(list)))
-                    case ("onHold", list: List[TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId]) =>
-                      (user.copy(
-                        onHold = list,
-                        dropped = user.dropped.filterNot(_ == mediaId),
-                        inProgress = user.inProgress.filterNot(_ == mediaId),
-                        pending = user.dropped.filterNot(_ == mediaId)
-                      ), Right(Right(list)))
-                    case ("pending", list: List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]) =>
-                      (user.copy(
-                        pending = list
-                      ), Right(Left(list)))
-                    case _ => throw Exception("Internal server error")
-
-                  UserRepository.put(userId, updatedUser)
-                  returnedList
-
 
   private def addMedia(userId: UserId, field: String, mediaId: MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId):
   Either[
@@ -343,7 +203,7 @@ object UserMediaLogics {
               case "onHold" => (user.onHold, List(user.dropped, user.inProgress, user.pending))
               case "pending" => (user.pending, List())
 
-            if fieldAccessed.contains(mediaId) then Left(Conflict(s"Media already '${field}''"))
+            if fieldAccessed.contains(mediaId) && !(field == "completed") then Left(Conflict(s"Media already '${field}''"))
             else
               val updatedMediaField = mediaId match
                 case movieId: MovieId =>

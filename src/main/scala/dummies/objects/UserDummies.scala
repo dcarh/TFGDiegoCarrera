@@ -24,6 +24,7 @@ object UserDummies {
       MovieId(502033),
       BookId("ZEfWEAAAQBAJ"),
       (TvShowId(63247), TvSeasonNumber(1)),
+      MovieId(502033)
     ),
     List(),
     List(),
@@ -84,9 +85,12 @@ object UserDummies {
       Some(BookId("kHh_EAAAQBAJ"))
     ),
     List(
+      MovieId(502033),
       BookId("UU-VAAAACAAJ"),
       VideogameId(284925),
       BookId("WLmqonsyH0QC"),
+      MovieId(502033),
+      MovieId(502033)
     ),
     List(),
     List(),
@@ -153,6 +157,7 @@ object UserDummies {
     List(
       VideogameId(144022),
       MovieId(837),
+      MovieId(502033),
       VideogameId(19564),
     ),
     List(),
@@ -203,6 +208,7 @@ object UserDummies {
     ),
     List(
       MovieId(55347),
+      MovieId(502033)
     ),
     List(),
     List(),
