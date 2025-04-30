@@ -38,15 +38,4 @@ object Books {
       .in(queryProjection)
       .out(listOfSearchedBooks)
 
-//  val searchBooksEndpoint2: PublicEndpoint[(String, String, String, String), UserError, ListOfSearchedBooks, Any] =
-//    Base.bookBaseEndpoint(
-//        "Get books search from Google Books",
-//        "This endpoint returns a list of books from Google Books API by a search query"
-//      )
-//      .in(queryQ)
-//      .in(queryOrderBy)
-//      .in(queryProjection)
-//      .in(queryLangRestrict)
-//      .out(listOfSearchedBooks)
-
 }

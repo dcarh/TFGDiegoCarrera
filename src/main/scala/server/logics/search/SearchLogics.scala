@@ -67,7 +67,6 @@ object SearchLogics {
         case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
       }
 
-  // TODO: Seguir por aquí, comprobar si va bien o no
   val searchVideogame: ((String, Option[String])) => IO[Either[UserError, List[VideogameAllFields]]] =
     (title, sortByOption) =>
       IGDBClient.executeRequest(Videogames.requestVideogameAllFieldsEndpoint, title).flatMap {

@@ -74,7 +74,7 @@ object EntriesLogics {
   private val addNewEntryToUser: (User, Entry, Boolean) => Either[UserError, User] =
     (user, entry, edit) =>
       if !user.entries.contains(entry.id) || edit then
-        val mediaUpdate = userMediaUpdated(user, entry, true)
+        val mediaUpdate = userMediaUpdated(user, entry, edit)
         val updatedUser = mediaUpdate.copy(
           entries = entry.id :: user.entries
         )

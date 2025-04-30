@@ -9,19 +9,15 @@ import modelClasses.ids.Social.EntryId
 import server.logics.commonFunctions.CommonFunctions
 
 object UserMediaLogics {
-
-  // TODO: Implementar funcionalidad de sortByOption (en caso de seguir adelante con ello)
   
-  // TODO: Habría que retocar algo en caso de hacer lo de las Entry's invisibles para estos endpoints, supongo
-
-  val getAllMedia: ((UserId, String, Option[String], Option[List[String]])) => IO[
+  val getAllMedia: ((UserId, String, Option[List[String]])) => IO[
     Either[
       UserError,
       List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]
     ]
   ] =
-    (userId, field, sortByOption, categoryOption) => IO.pure {
-      getAllMedia(userId, field, sortByOption, categoryOption) match
+    (userId, field, categoryOption) => IO.pure {
+      getAllMedia(userId, field, categoryOption) match
         case Left(error) => Left(error)
         case Right(Left(list)) => Right(list)
         case Right(Right(list)) => Right(list)
@@ -138,7 +134,7 @@ object UserMediaLogics {
     }
 
 
-  private def getAllMedia(userId: UserId, field: String, sortByOption: Option[String], categoryOption:Option[List[String]]):
+  private def getAllMedia(userId: UserId, field: String, categoryOption:Option[List[String]]):
   Either[
     UserError,
     Either[
@@ -203,7 +199,7 @@ object UserMediaLogics {
               case "onHold" => (user.onHold, List(user.dropped, user.inProgress, user.pending))
               case "pending" => (user.pending, List())
 
-            if fieldAccessed.contains(mediaId) && !(field == "completed") then Left(Conflict(s"Media already '${field}''"))
+            if fieldAccessed.contains(mediaId) then Left(Conflict(s"Media already '${field}''"))
             else
               val updatedMediaField = mediaId match
                 case movieId: MovieId =>

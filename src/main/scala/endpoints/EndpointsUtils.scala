@@ -31,31 +31,28 @@ object EndpointsUtils {
 
   private val postBaseEndpoint:
     (String, String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
-      (name, description, path) =>
-        baseEndpoint(name, description, path)
-          .post
-          .errorOut(
-            oneOf[UserError](
-              oneOfVariant(StatusCode.BadRequest, ErrorOutputsTraits.badRequestOutput),
-              oneOfVariant(StatusCode.Conflict, ErrorOutputsTraits.conflictOutput),
-              oneOfDefaultVariant(ErrorOutputsTraits.unknownOutput)
-            )
+    (name, description, path) =>
+      baseEndpoint(name, description, path)
+        .post
+        .errorOut(
+          oneOf[UserError](
+            oneOfVariant(StatusCode.NotFound, ErrorOutputsTraits.notFoundOutput),
+            oneOfVariant(StatusCode.BadRequest, ErrorOutputsTraits.badRequestOutput),
+            oneOfVariant(StatusCode.Conflict, ErrorOutputsTraits.conflictOutput),
+            oneOfDefaultVariant(ErrorOutputsTraits.unknownOutput)
           )
-          .out(statusCode(StatusCode.Created))
+        )
 
-  private val igdbPostBaseEndpoint:
+  private val postEndpoint:
     (String, String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
       (name, description, path) =>
-        baseEndpoint(name, description, path)
-          .post
-          .errorOut(
-            oneOf[UserError](
-              oneOfVariant(StatusCode.NotFound, ErrorOutputsTraits.notFoundOutput),
-              oneOfVariant(StatusCode.BadRequest, ErrorOutputsTraits.badRequestOutput),
-              oneOfVariant(StatusCode.Conflict, ErrorOutputsTraits.conflictOutput),
-              oneOfDefaultVariant(ErrorOutputsTraits.unknownOutput)
-            )
-          )
+        postBaseEndpoint(name, description, path)
+          .out(statusCode(StatusCode.Created))
+
+  private val igdbPostEndpoint:
+    (String, String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
+      (name, description, path) =>
+        postBaseEndpoint(name, description, path)
           .out(statusCode(StatusCode.Ok))
 
   private val putBaseEndpoint:
@@ -91,8 +88,8 @@ object EndpointsUtils {
     (String, String, String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
       {
         case (name, description, path, "GET") => getBaseEndpoint(name, description, path)
-        case (name, description, path, "POST") => postBaseEndpoint(name, description, path)
-        case (name, description, path, "POST_IGDB") => igdbPostBaseEndpoint(name, description, path)
+        case (name, description, path, "POST") => postEndpoint(name, description, path)
+        case (name, description, path, "POST_IGDB") => igdbPostEndpoint(name, description, path)
         case (name, description, path, "PUT") => putBaseEndpoint(name, description, path)
         case (name, description, path, "DELETE") => deleteBaseEndpoint(name, description, path)
       }

@@ -24,7 +24,7 @@ object ReviewDummies {
       "It feels great when played on PS5",
     List(),
     true,
-    List(ReplyIdDummies.replyId2),
+    List(),
     false
   )
 
@@ -57,7 +57,7 @@ object ReviewDummies {
     "In less than 100 pages, this book will make you appreciate your non-fishing hobbies.",
     List(),
     true,
-    List(),
+    List(ReplyIdDummies.replyId2),
     false
   )
 

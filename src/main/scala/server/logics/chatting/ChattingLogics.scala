@@ -16,12 +16,8 @@ import server.logics.commonFunctions.CommonFunctions.getUser
 
 object ChattingLogics {
 
-  // TODO: Implementar la funcionalidad del sortByOption, si es que es posible (habría que meter funcionalidad de case
-  //  classes simplificadas que contengan un creationDate, o pasarse por el repositorio de Chats y obtenerlos y filtrar
-  //  los ChatId según el creationDate de los Chats completos)
-
-  val getChats: ((UserId, Option[String], Option[Boolean])) => IO[Either[UserError, List[ChatId]]] =
-    (userId, sortByOption, archivedOption) => IO.pure {
+  val getChats: ((UserId, Option[Boolean])) => IO[Either[UserError, List[ChatId]]] =
+    (userId, archivedOption) => IO.pure {
       getUser(userId) match
         case Left(error) => Left(error)
         case Right(user) => archivedOption match

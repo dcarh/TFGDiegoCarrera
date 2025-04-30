@@ -33,13 +33,12 @@ object ChattingEndpoints {
     (name, description, method) => messagesBaseEndpoint(name, description, method)
       .in(PathInputs.pathMessageId)
 
-  val getChats: PublicEndpoint[(UserId, Option[String], Option[Boolean]), UserError, List[ChatId], Any] =
+  val getChats: PublicEndpoint[(UserId, Option[Boolean]), UserError, List[ChatId], Any] =
     chatsBaseEndpoint(
       "getChats",
       "This endpoint returns a list containing the IDs of the chats of the user",
       "GET"
     )
-      .in(QueryInputs.querySortBy)
       .in(QueryInputs.queryArchived)
       .out(ChattingOutputs.listOfChatIdsOutput)
 

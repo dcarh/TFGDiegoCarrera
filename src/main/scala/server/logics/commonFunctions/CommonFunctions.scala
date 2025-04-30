@@ -25,6 +25,27 @@ object CommonFunctions {
       case Some(user) => f(user, elem)
       case None if userId.value <= 0 => Left(BadRequest("Invalid user ID"))
       case None => Left(NotFound(s"User with ID ${userId.value} not found"))
+
+
+  def getMediaListAndApply[A](mediaListId: MediaListId)(elem: A, f: (MediaList, A) => Either[UserError, MediaList]): Either[UserError, MediaList] =
+    MediaListRepository.get(mediaListId) match
+      case Some(mediaList) => f(mediaList, elem)
+      case None if mediaListId.value <= 0 => Left(BadRequest("Invalid media list ID"))
+      case None => Left(NotFound(s"Media list with ID ${mediaListId.value} not found"))
+
+
+  def getReviewAndApply[A](reviewId: ReviewId)(elem: A, f: (Review, A) => Either[UserError, Review]): Either[UserError, Review] =
+    ReviewRepository.get(reviewId) match
+      case Some(review) => f(review, elem)
+      case None if reviewId.value <= 0 => Left(BadRequest("Invalid review ID"))
+      case None => Left(NotFound(s"Review with ID ${reviewId.value} not found"))
+
+
+  def getReplyAndApply[A](replyId: ReplyId)(elem: A, f: (Reply, A) => Either[UserError, Reply]): Either[UserError, Reply] =
+    ReplyRepository.get(replyId) match
+      case Some(reply) => f(reply, elem)
+      case None if replyId.value <= 0 => Left(BadRequest("Invalid reply ID"))
+      case None => Left(NotFound(s"Reply with ID ${replyId.value} not found"))
         
 
   def getBothUsers(userId1: UserId, userId2: UserId): Either[UserError, (User, User)] =

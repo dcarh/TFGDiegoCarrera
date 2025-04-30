@@ -17,7 +17,7 @@ object UserMediaEndpoints {
 
   val getAllMedia:
     PublicEndpoint[
-      (UserId, String, Option[String], Option[List[String]]), 
+      (UserId, String, Option[List[String]]), 
       UserError, 
       List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId],
       Any] =
@@ -27,7 +27,6 @@ object UserMediaEndpoints {
         "GET"
       )
         .in(PathInputs.pathField)
-        .in(QueryInputs.querySortBy)
         .in(QueryInputs.queryCategories)
         .out(MediaOutputs.listOfAllMediaIdsOutput)
 

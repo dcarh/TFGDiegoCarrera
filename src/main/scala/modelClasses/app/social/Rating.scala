@@ -10,5 +10,3 @@ case class Rating(
                    mediaRatedId: MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId,
                    rating      : Int
                  )
-
-// TODO: ¿Realmente hace falta esta clase cuando ya tenemos al atributo "rating" en Entry?

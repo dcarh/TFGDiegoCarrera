@@ -17,5 +17,4 @@ case class TvEpisode(
                       numberOfDropped   : Long,
                       numberOfPending   : Long,
                       totalRatings      : Long
-// TODO: Meter más campos
                   )
