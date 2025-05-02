@@ -1,7 +1,5 @@
 package modelClasses.tmdb
 
-import io.circe.generic.auto.*
-
 object Common {
   
   case class Creator(
@@ -69,24 +67,24 @@ object Common {
                    )
 
   case class Result(
-                      adult: Boolean,
-                      backdrop_path: Option[String],
-                      first_air_date: Option[String],       // TV Show
-                      genre_ids: List[Int],
-                      id: Long,
-                      media_type: Option[String],
-                      original_name: Option[String],        // TV Show
-                      original_language: String,
-                      original_title: Option[String],       // Movie
-                      overview: String,
-                      popularity: Double,
-                      poster_path: Option[String],
-                      release_date: Option[String],         // Movie
-                      title: Option[String],                // Movie
-                      name: Option[String],                 // TV Show
-                      video: Option[Boolean],
-                      vote_average: Option[Double],
-                      vote_count: Option[Long]
+                     adult: Boolean,
+                     backdrop_path: Option[String],
+                     first_air_date: Option[String], // TV Show
+                     genre_ids: List[Int],
+                     id: Long,
+                     media_type: Option[String],
+                     original_name: Option[String], // TV Show
+                     original_language: String,
+                     original_title: Option[String], // Movie
+                     overview: String,
+                     popularity: Double,
+                     poster_path: Option[String],
+                     release_date: Option[String], // Movie
+                     title: Option[String], // Movie
+                     name: Option[String], // TV Show
+                     video: Option[Boolean],
+                     vote_average: Option[Double],
+                     vote_count: Option[Long]
                     )
 
   case class Results(

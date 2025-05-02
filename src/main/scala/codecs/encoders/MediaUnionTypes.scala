@@ -1,4 +1,4 @@
-package unionTypes.encoders
+package codecs.encoders
 
 import io.circe.generic.auto.*
 import io.circe.syntax.*
@@ -6,7 +6,7 @@ import io.circe.Encoder
 
 import modelClasses.app.media.*
 
-object MediaEncoders {
+object MediaUnionTypes {
   
   implicit val favouritesMediaUnionEncoder: Encoder[Movie | TvShow | Videogame | Book] = Encoder.instance {
     case movie: Movie => movie.asJson

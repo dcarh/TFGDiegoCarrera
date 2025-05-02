@@ -15,20 +15,20 @@ object TvSeasonRequests {
                                 id: Long,
                                 poster_path: Option[String],
                                 runtime: Option[Long],
-                                season_number: Int,
+                                season_number: TvSeasonNumber,
                                 vote_average: Double
                             )
 
   case class TvEpisodeForTvSeason(
                                    air_date:Option[String],
-                                   episode_number: Int,
+                                   episode_number: TvEpisodeNumber,
                                    episode_type: String,
                                    id: Long,
                                    name: String,
                                    overview: String,
                                    production_code: String,
                                    runtime: Option[Int],
-                                   season_number: Int,
+                                   season_number: TvSeasonNumber,
                                    show_id: Long,
                                    still_path: Option[String],
                                    vote_average: Double,

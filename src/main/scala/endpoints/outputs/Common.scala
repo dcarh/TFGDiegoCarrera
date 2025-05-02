@@ -14,21 +14,21 @@ import modelClasses.ids.User.UserId
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*
-import unionTypes.decoders.MediaDecoders.*
-import unionTypes.decoders.MediaDecodersForIDs.*
-import unionTypes.decoders.MediaDecodersAll.*
-import unionTypes.decoders.SocialDecoders.*
-import unionTypes.decoders.SocialDecodersForIDs.*
-import unionTypes.encoders.MediaEncoders.*
-import unionTypes.encoders.MediaEncodersForIDs.*
-import unionTypes.encoders.MediaEncodersAll.*
-import unionTypes.encoders.SocialEncoders.*
-import unionTypes.encoders.SocialEncodersForIDs.*
-import unionTypes.schemas.MediaSchemas.*
-import unionTypes.schemas.MediaSchemasForIDs.*
-import unionTypes.schemas.MediaSchemasAll.*
-import unionTypes.schemas.SocialSchemas.*
-import unionTypes.schemas.SocialSchemasForIDs.*
+import codecs.decoders.MediaUnionTypes.*
+import codecs.decoders.MediaIDsUnionTypes.*
+import codecs.decoders.AllMediaUnionType.*
+import codecs.decoders.SocialUnionTypes.*
+import codecs.decoders.SocialIDsUnionTypes.*
+import codecs.encoders.MediaUnionTypes.*
+import codecs.encoders.MediaIDsUnionTypes.*
+import codecs.encoders.AllMediaUnionType.*
+import codecs.encoders.SocialUnionTypes.*
+import codecs.encoders.SocialIDsUnionTypes.*
+import codecs.schemas.MediaUnionTypes.*
+import codecs.schemas.MediaIDsUnionTypes.*
+import codecs.schemas.AllMediaUnionType.*
+import codecs.schemas.SocialUnionTypes.*
+import codecs.schemas.SocialIDsUnionTypes.*
 
 object Common {
   

@@ -1,6 +1,5 @@
 package endpoints.tmdb
 
-import endpoints.inputs.Common.QueryInputs
 import sttp.tapir.*
 import endpoints.outputs.TMDB.{jsonCreditsOut, jsonResultsOut}
 import endpoints.outputs.TMDB.MoviesOutputs.*

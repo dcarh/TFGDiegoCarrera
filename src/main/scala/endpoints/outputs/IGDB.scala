@@ -6,6 +6,8 @@ import modelClasses.igdb._
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*
+import codecs.decoders.MediaIDs.*
+import codecs.encoders.MediaIDs.*
 
 object IGDB {
 

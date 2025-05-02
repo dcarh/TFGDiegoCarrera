@@ -4,7 +4,6 @@ import sttp.tapir.*
 import endpoints.EndpointsUtils.httpMethodEndpoint
 import endpoints.inputs.Common.*
 import endpoints.inputs.TMDB.Query.*
-import endpoints.outputs.Common.*
 import modelClasses.errors.UserError.*
 import modelClasses.ids.Media.{TvEpisodeNumber, MovieId, TvSeasonNumber, TvShowId}
 

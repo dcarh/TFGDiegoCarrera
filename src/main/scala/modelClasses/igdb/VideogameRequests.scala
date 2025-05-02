@@ -1,18 +1,19 @@
 package modelClasses.igdb
 
 import io.circe.generic.auto.*
+import modelClasses.ids.Media.VideogameId
 
 object VideogameRequests {
 
   case class RequestedVideogame(
-                               id: Long,
-                               category: Long,
-                               name: String,
-                               url: String
+                                 id: VideogameId,
+                                 category: Long,
+                                 name: String,
+                                 url: String
                                )
 
   case class VideogameAllFields(
-                               id: Long,
+                               id: VideogameId,
                                age_ratings: Option[List[Long]],
                                aggregated_rating: Option[Double],             // Me da igual
                                aggregated_rating_count: Option[Long],         // Me da igual

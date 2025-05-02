@@ -1,10 +1,10 @@
-package unionTypes.decoders
+package codecs.decoders
 
 import io.circe.{Decoder, DecodingFailure}
 
 import modelClasses.ids.Media.*
 
-object MediaDecodersForIDs {
+object MediaIDsUnionTypes {
 
   implicit val listMediaUnionDecoder: Decoder[MovieId | TvShowId | VideogameId | BookId] = Decoder.instance { cursor =>
     cursor.downField("type").as[String].flatMap {

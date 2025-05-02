@@ -1,4 +1,4 @@
-package unionTypes.decoders
+package codecs.decoders
 
 import io.circe.generic.auto.*
 import io.circe.Decoder
@@ -7,7 +7,7 @@ import cats.syntax.functor.*
 
 import modelClasses.app.media.*
 
-object MediaDecodersAll {
+object AllMediaUnionType {
 
   implicit val allMediaUnionDecoder: Decoder[Movie | TvShow | TvSeason | TvEpisode | Videogame | Book] = Decoder.instance { cursor =>
     List[Decoder[Movie | TvShow | TvSeason | TvEpisode | Videogame | Book]](

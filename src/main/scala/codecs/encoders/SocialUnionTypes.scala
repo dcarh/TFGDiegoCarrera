@@ -1,4 +1,4 @@
-package unionTypes.encoders
+package codecs.encoders
 
 import io.circe.generic.auto.*
 import io.circe.syntax.*
@@ -6,10 +6,10 @@ import io.circe.Encoder
 
 import modelClasses.app.social.{MediaList, Reply, Review}
 
-import unionTypes.encoders.MediaEncodersForIDs.*
-import unionTypes.encoders.SocialEncodersForIDs.*
+import MediaIDsUnionTypes.*
+import SocialIDsUnionTypes.*
 
-object SocialEncoders {
+object SocialUnionTypes {
 
   implicit val likeableUnionEncoder: Encoder[MediaList | Review | Reply] = Encoder.instance {
     case mediaList: MediaList => mediaList.asJson

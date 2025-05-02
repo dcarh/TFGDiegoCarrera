@@ -16,12 +16,12 @@ import codecs.ModelClasses.Media.*
 import codecs.ModelClasses.Social.*
 import codecs.ModelClasses.User.userIdCodec
 import codecs.Others.*
-import unionTypes.decoders.MediaDecodersForIDs.*
-import unionTypes.encoders.MediaEncodersForIDs.*
-import unionTypes.schemas.MediaSchemasForIDs.*
-import unionTypes.encoders.SocialEncodersForIDs.*
-import unionTypes.decoders.SocialDecodersForIDs.*
-import unionTypes.schemas.SocialSchemasForIDs.*
+import codecs.decoders.MediaIDsUnionTypes.*
+import codecs.encoders.MediaIDsUnionTypes.*
+import codecs.schemas.MediaIDsUnionTypes.*
+import codecs.encoders.SocialIDsUnionTypes.*
+import codecs.decoders.SocialIDsUnionTypes.*
+import codecs.schemas.SocialIDsUnionTypes.*
 
 object Common {
 

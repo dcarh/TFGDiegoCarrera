@@ -1,11 +1,11 @@
-package unionTypes.encoders
+package codecs.encoders
 
 import io.circe.syntax.*
 import io.circe.{Encoder, Json}
 
 import modelClasses.ids.Media.*
 
-object MediaEncodersForIDs {
+object MediaIDsUnionTypes {
 
   implicit val listMediaUnionEncoder: Encoder[MovieId | TvShowId | VideogameId | BookId] = Encoder.instance {
     case movieId: MovieId => Json.obj("type" -> "MovieId".asJson, "value" -> movieId.value.asJson)

@@ -1,5 +1,4 @@
-package unionTypes.decoders
-
+package codecs.decoders
 
 import io.circe.generic.auto.*
 import io.circe.Decoder
@@ -8,10 +7,10 @@ import cats.syntax.functor.*
 
 import modelClasses.app.social.{MediaList, Reply, Review}
 
-import unionTypes.decoders.MediaDecodersForIDs.*
-import unionTypes.decoders.SocialDecodersForIDs.*
+import MediaIDsUnionTypes.*
+import SocialIDsUnionTypes.*
 
-object SocialDecoders {
+object SocialUnionTypes {
 
   implicit val likeableUnionDecoder: Decoder[MediaList | Review | Reply] = Decoder.instance { cursor =>
     List[Decoder[MediaList | Review | Reply]](

@@ -1,4 +1,4 @@
-package unionTypes.schemas
+package codecs.schemas
 
 import modelClasses.ids.Social.{MediaListId, ReplyId, ReviewId}
 
@@ -8,7 +8,7 @@ import sttp.tapir.generic.auto.*
 import sttp.tapir.Schema
 import sttp.tapir.SchemaType.*
 
-object SocialSchemasForIDs {
+object SocialIDsUnionTypes {
 
   private val extractDiscriminator: (MediaListId | ReviewId | ReplyId) => String =
     {

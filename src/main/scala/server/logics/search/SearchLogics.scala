@@ -13,6 +13,7 @@ import modelClasses.errors.UserError.*
 import modelClasses.googleBooks.BooksRequests.{ListOfSearchedBooks, SearchedBook}
 import modelClasses.igdb.VideogameRequests.VideogameAllFields
 import modelClasses.tmdb.Common.{Result, Results}
+import utility.DateParser.*
 
 object SearchLogics {
 
@@ -26,8 +27,8 @@ object SearchLogics {
           val sortedMovies: Either[UserError, List[Result]] = sortByOption match {
             case Some("least_tmdb_popular") => Right(listOfMovies.sortBy(_.popularity))
             case Some("most_tmdb_popular") => Right(listOfMovies.sortBy(_.popularity).reverse)
-            case Some("oldest") => Right(listOfMovies.sortBy(_.release_date))
-            case Some("newest") => Right(listOfMovies.sortBy(_.release_date).reverse)
+            case Some("oldest") => Right(listOfMovies.sortBy(r => parseDate(r.release_date).map(_.toEpochDay).getOrElse(Long.MaxValue)))
+            case Some("newest") => Right(listOfMovies.sortBy(r => parseDate(r.release_date).map(_.toEpochDay).getOrElse(Long.MinValue)).reverse)
             case Some("worst_tmdb_voted") => Right(listOfMovies.sortBy(_.vote_average))
             case Some("best_tmdb_voted") => Right(listOfMovies.sortBy(_.vote_average).reverse)
             case None => Right(listOfMovies)
@@ -52,8 +53,8 @@ object SearchLogics {
           val sortedTvShows: Either[UserError, List[Result]] = sortByOption match {
             case Some("least_tmdb_popular") => Right(listOfTvShows.sortBy(_.popularity))
             case Some("most_tmdb_popular") => Right(listOfTvShows.sortBy(_.popularity).reverse)
-            case Some("oldest") => Right(listOfTvShows.sortBy(_.first_air_date))
-            case Some("newest") => Right(listOfTvShows.sortBy(_.first_air_date).reverse)
+            case Some("oldest") => Right(listOfTvShows.sortBy(r => parseDate(r.first_air_date).map(_.toEpochDay).getOrElse(Long.MaxValue)))
+            case Some("newest") => Right(listOfTvShows.sortBy(r => parseDate(r.first_air_date).map(_.toEpochDay).getOrElse(Long.MinValue)).reverse)
             case Some("worst_tmdb_voted") => Right(listOfTvShows.sortBy(_.vote_average))
             case Some("best_tmdb_voted") => Right(listOfTvShows.sortBy(_.vote_average).reverse)
             case None => Right(listOfTvShows)
@@ -95,8 +96,8 @@ object SearchLogics {
 
           // TODO: De momento esto no da errores pero no funciona, ya que las fechas son Strings
           val sortedBooks = sortByOption match {
-            case Some("oldest") => Right(listOfBooks.sortBy(_.volumeInfo.publishedDate))
-            case Some("newest") => Right(listOfBooks.sortBy(_.volumeInfo.publishedDate).reverse)
+            case Some("oldest") => Right(listOfBooks.sortBy(r => parseDate(r.volumeInfo.publishedDate).map(_.toEpochDay).getOrElse(Long.MaxValue)))
+            case Some("newest") => Right(listOfBooks.sortBy(r => parseDate(r.volumeInfo.publishedDate).map(_.toEpochDay).getOrElse(Long.MinValue)).reverse)
             case None => Right(listOfBooks)
             case _ => Left(BadRequest("Parameter not supported"))
           }

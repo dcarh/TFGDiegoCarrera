@@ -1,11 +1,11 @@
-package unionTypes.schemas
+package codecs.schemas
 
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 
 import modelClasses.ids.Media.*
 
-object MediaSchemasForIDs {
+object MediaIDsUnionTypes {
 
   private val extractDiscriminator: (MovieId | TvShowId | VideogameId | BookId) => String = {
     case _: MovieId => "MovieId"

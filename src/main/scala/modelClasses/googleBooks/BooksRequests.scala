@@ -1,11 +1,12 @@
 package modelClasses.googleBooks
 
 import io.circe.generic.auto.*
+import modelClasses.ids.Media.BookId
 
 object BooksRequests {
 
   case class RequestedBook(
-                            id: String,
+                            id: BookId,
                             volumeInfo: VolumeInfo
                           )
   
@@ -19,19 +20,19 @@ object BooksRequests {
 
   case class SearchedBook(
                          kind: String,
-                         id: String,
+                         id: BookId,
                          etag: String,
                          selfLink: String,
                          volumeInfo: VolumeInfo
                          )
 
   case class VolumeInfo(
-                       title: String,
-                       subtitle: Option[String],
-                       authors: Option[List[String]],
-                       publisher: Option[String],
-                       publishedDate: Option[String],
-                       description: Option[String]
+                         title: String,
+                         subtitle: Option[String],
+                         authors: Option[List[String]],
+                         publisher: Option[String],
+                         publishedDate: Option[String],
+                         description: Option[String]
                        )
 
 }

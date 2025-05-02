@@ -7,6 +7,8 @@ import modelClasses.tmdb.Common.{Credits, Results, Result}
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*
+import codecs.decoders.MediaIDs.*
+import codecs.encoders.MediaIDs.*
 
 object TMDB {
   

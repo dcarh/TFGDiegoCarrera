@@ -1,11 +1,11 @@
-package unionTypes.schemas
+package codecs.schemas
 
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 
 import modelClasses.app.media.*
 
-object MediaSchemas {
+object MediaUnionTypes {
 
   implicit val movieSchema: Schema[Movie] = Schema.derived[Movie]
   implicit val tvShowSchema: Schema[TvShow] = Schema.derived[TvShow]

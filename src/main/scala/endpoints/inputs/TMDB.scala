@@ -1,6 +1,5 @@
 package endpoints.inputs
 
-
 import sttp.tapir.*
 
 object TMDB {

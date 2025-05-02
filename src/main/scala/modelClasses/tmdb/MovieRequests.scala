@@ -1,5 +1,6 @@
 package modelClasses.tmdb
 
+import modelClasses.ids.Media.MovieId
 import modelClasses.tmdb.Common.*
 
 object MovieRequests {
@@ -11,7 +12,7 @@ object MovieRequests {
                              budget: Option[Long],
                              genres: List[Genre],
                              homepage: String,
-                             id: Long,
+                             id: MovieId,
                              imdb_id: String,
                              origin_country: Option[List[String]],
                              original_language: Option[String],
