@@ -105,7 +105,6 @@ object SearchLogics {
         case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
       }
 
-  // TODO: SortBy aquí también, no?
   val searchMediaList: ((String, Option[String])) => IO[Either[UserError, List[MediaList]]] = {
     (title, sortByOption) =>
       val mediaListsObtained = MediaListRepository.findByTitle(title)
@@ -129,7 +128,6 @@ object SearchLogics {
         }
   }
 
-  // TODO: SortBy aquí también, no?
   val searchUser: ((String, Option[String])) => IO[Either[UserError, List[User]]] = {
     (username, sortByOption) =>
       val usersObtained = UserRepository.findByUsername(username)
