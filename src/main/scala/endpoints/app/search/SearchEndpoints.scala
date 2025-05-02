@@ -58,20 +58,22 @@ object SearchEndpoints {
       .in(QueryInputs.querySortBy)
       .out(jsonSearchedBookListOut)
 
-  val searchMediaList: PublicEndpoint[String, UserError, List[MediaList], Any] =
+  val searchMediaList: PublicEndpoint[(String, Option[String]), UserError, List[MediaList], Any] =
     searchBaseEndpoint(
       "searchMediaList",
       "This endpoint searches any list on the app based on text coincidence"
     )
       .in("list")
+      .in(QueryInputs.querySortBy)
       .out(SocialOutputs.listOfMediaListsOutput)
 
-  val searchUser: PublicEndpoint[String, UserError, List[User], Any] =
+  val searchUser: PublicEndpoint[(String, Option[String]), UserError, List[User], Any] =
     searchBaseEndpoint(
       "searchUser",
       "This endpoint searches any user on the app based on text coincidence"
     )
       .in("user")
+      .in(QueryInputs.querySortBy)
       .out(UserOutputs.listOfUsersOutput)
 
 }

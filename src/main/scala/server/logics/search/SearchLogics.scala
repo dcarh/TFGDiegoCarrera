@@ -23,7 +23,6 @@ object SearchLogics {
         case Right(results: Results) =>
           val listOfMovies = results.results
 
-          // TODO: De momento esto no da errores pero no funciona para las fechas, ya que son Strings
           val sortedMovies: Either[UserError, List[Result]] = sortByOption match {
             case Some("least_tmdb_popular") => Right(listOfMovies.sortBy(_.popularity))
             case Some("most_tmdb_popular") => Right(listOfMovies.sortBy(_.popularity).reverse)
@@ -49,7 +48,6 @@ object SearchLogics {
         case Right(results: Results) =>
           val listOfTvShows = results.results
           
-          // TODO: De momento esto no da errores pero no funciona para las fechas, ya que son Strings
           val sortedTvShows: Either[UserError, List[Result]] = sortByOption match {
             case Some("least_tmdb_popular") => Right(listOfTvShows.sortBy(_.popularity))
             case Some("most_tmdb_popular") => Right(listOfTvShows.sortBy(_.popularity).reverse)
@@ -94,7 +92,6 @@ object SearchLogics {
         case Right(listOfSearchedBooks: ListOfSearchedBooks) =>
           val listOfBooks = listOfSearchedBooks.items
 
-          // TODO: De momento esto no da errores pero no funciona, ya que las fechas son Strings
           val sortedBooks = sortByOption match {
             case Some("oldest") => Right(listOfBooks.sortBy(r => parseDate(r.volumeInfo.publishedDate).map(_.toEpochDay).getOrElse(Long.MaxValue)))
             case Some("newest") => Right(listOfBooks.sortBy(r => parseDate(r.volumeInfo.publishedDate).map(_.toEpochDay).getOrElse(Long.MinValue)).reverse)
@@ -108,17 +105,53 @@ object SearchLogics {
         case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
       }
 
-  val searchMediaList: String => IO[Either[UserError, List[MediaList]]] = {
-    title =>
-      IO.pure(Right(MediaListRepository.findByTitle(title)))
+  // TODO: SortBy aquí también, no?
+  val searchMediaList: ((String, Option[String])) => IO[Either[UserError, List[MediaList]]] = {
+    (title, sortByOption) =>
+      val mediaListsObtained = MediaListRepository.findByTitle(title)
+
+      val sortedMediaLists = sortByOption match {
+        case Some("oldest") => Right(mediaListsObtained.sortBy(_.creationDate))
+        case Some("newest") => Right(mediaListsObtained.sortBy(_.creationDate).reverse)
+        case Some("least_recently_updated") => Right(mediaListsObtained.sortBy(_.updateDate))
+        case Some("most_recently_updated") => Right(mediaListsObtained.sortBy(_.updateDate).reverse)
+        case Some("least_liked") => Right(mediaListsObtained.sortBy(_.likes.size))
+        case Some("most_liked") => Right(mediaListsObtained.sortBy(_.likes.size).reverse)
+        case Some("least_replied") => Right(mediaListsObtained.sortBy(_.replies.size))
+        case Some("most_replied") => Right(mediaListsObtained.sortBy(_.replies.size).reverse)
+        case None => Right(mediaListsObtained)
+        case _ => Left(BadRequest("Parameter not supported"))
+      }
+
+      IO.pure(sortedMediaLists)
         .handleError {
           case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
         }
   }
 
-  val searchUser: String => IO[Either[UserError, List[User]]] = {
-    username =>
-      IO.pure(Right(UserRepository.findByUsername(username)))
+  // TODO: SortBy aquí también, no?
+  val searchUser: ((String, Option[String])) => IO[Either[UserError, List[User]]] = {
+    (username, sortByOption) =>
+      val usersObtained = UserRepository.findByUsername(username)
+
+      val sortedUsers = sortByOption match {
+        case Some("least_popular") => Right(usersObtained.sortBy(_.followers.size))
+        case Some("most_popular") => Right(usersObtained.sortBy(_.followers.size).reverse)
+        case Some("least_media_lists") => Right(usersObtained.sortBy(_.mediaLists.size))
+        case Some("most_media_lists") => Right(usersObtained.sortBy(_.mediaLists.size).reverse)
+        case Some("least_reviews") => Right(usersObtained.sortBy(_.reviews.size))
+        case Some("most_reviews") => Right(usersObtained.sortBy(_.reviews.size).reverse)
+        case Some("least_ratings") => Right(usersObtained.sortBy(_.ratings.size))
+        case Some("most_ratings") => Right(usersObtained.sortBy(_.ratings.size).reverse)
+        case Some("least_completed_media") => Right(usersObtained.sortBy(_.completed.size))
+        case Some("most_completed_media") => Right(usersObtained.sortBy(_.completed.size).reverse)
+        case Some("least_dropped_media") => Right(usersObtained.sortBy(_.dropped.size))
+        case Some("most_dropped_media") => Right(usersObtained.sortBy(_.dropped.size).reverse)
+        case None => Right(usersObtained)
+        case _ => Left(BadRequest("Parameter not supported"))
+      }
+
+      IO.pure(sortedUsers)
         .handleError {
           case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
         }
