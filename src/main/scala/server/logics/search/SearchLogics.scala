@@ -28,8 +28,8 @@ object SearchLogics {
             case Some("most_tmdb_popular") => Right(listOfMovies.sortBy(_.popularity).reverse)
             case Some("oldest") => Right(listOfMovies.sortBy(r => parseDate(r.release_date).map(_.toEpochDay).getOrElse(Long.MaxValue)))
             case Some("newest") => Right(listOfMovies.sortBy(r => parseDate(r.release_date).map(_.toEpochDay).getOrElse(Long.MinValue)).reverse)
-            case Some("worst_tmdb_voted") => Right(listOfMovies.sortBy(_.vote_average))
-            case Some("best_tmdb_voted") => Right(listOfMovies.sortBy(_.vote_average).reverse)
+            case Some("worst_tmdb_rated") => Right(listOfMovies.sortBy(_.vote_average))
+            case Some("best_tmdb_rated") => Right(listOfMovies.sortBy(_.vote_average).reverse)
             case None => Right(listOfMovies)
             case _ => Left(BadRequest("Parameter not supported"))
           }
@@ -53,8 +53,8 @@ object SearchLogics {
             case Some("most_tmdb_popular") => Right(listOfTvShows.sortBy(_.popularity).reverse)
             case Some("oldest") => Right(listOfTvShows.sortBy(r => parseDate(r.first_air_date).map(_.toEpochDay).getOrElse(Long.MaxValue)))
             case Some("newest") => Right(listOfTvShows.sortBy(r => parseDate(r.first_air_date).map(_.toEpochDay).getOrElse(Long.MinValue)).reverse)
-            case Some("worst_tmdb_voted") => Right(listOfTvShows.sortBy(_.vote_average))
-            case Some("best_tmdb_voted") => Right(listOfTvShows.sortBy(_.vote_average).reverse)
+            case Some("worst_tmdb_rated") => Right(listOfTvShows.sortBy(_.vote_average))
+            case Some("best_tmdb_rated") => Right(listOfTvShows.sortBy(_.vote_average).reverse)
             case None => Right(listOfTvShows)
             case _ => Left(BadRequest("Parameter not supported"))
           }
