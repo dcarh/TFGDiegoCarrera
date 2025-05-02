@@ -16,17 +16,17 @@ object MediaAuxFunctions {
                            | BookId
                         ): MediaMetrics =
     val averageRating = getAverageRatingForMedia(mediaId)
-    val entriesIds = getEntriesIdsForMedia(mediaId)
-    val listsIds = getListsIdsForMedia(mediaId)
-    val statusCounts = getStatusCountsForMedia(mediaId)
-    val totalRatings = getTotalRatingsForMedia(mediaId)
+    val entriesIds    = getEntriesIdsForMedia(mediaId)
+    val listsIds      = getListsIdsForMedia(mediaId)
+    val statusCounts  = getStatusCountsForMedia(mediaId)
+    val totalRatings  = getTotalRatingsForMedia(mediaId)
 
     MediaMetrics(
       averageRating = averageRating, 
-      entriesIds = entriesIds,
-      listsIds = listsIds,
-      statusCounts = statusCounts,
-      totalRatings = totalRatings
+      entriesIds    = entriesIds,
+      mediaListsIds = listsIds,
+      statusCounts  = statusCounts,
+      totalRatings  = totalRatings
     )
 
   private def getStatusCountsForMedia(mediaId:
@@ -80,7 +80,7 @@ object MediaAuxFunctions {
                                  ): Option[List[MediaListId]] =
     val mediaListsIdsForMedia = MediaListRepository
       .getAll
-      .filter(_.mediaContentsIds.contains(mediaId))
+      .filter(_.mediaIds.contains(mediaId))
       .map(_.id)
 
     if (mediaListsIdsForMedia.nonEmpty) Some(mediaListsIdsForMedia)

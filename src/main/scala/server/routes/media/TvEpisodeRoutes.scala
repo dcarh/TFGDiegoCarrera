@@ -22,8 +22,8 @@ object TvEpisodeRoutes {
       toRoutes(TvEpisodeEndpoints.getMediaListsForTvEpisode.serverLogic(TvEpisodeLogics.getMediaListsForTvEpisode))
 
   val tvEpisodeRoutes: HttpRoutes[IO] =
-    getTvEpisode <+>
-      getEntriesForTvEpisode <+>
+    getTvEpisode                <+>
+      getEntriesForTvEpisode    <+>
       getMediaListsForTvEpisode
 
 }

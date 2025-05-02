@@ -22,8 +22,8 @@ object TvShowRoutes {
       toRoutes(TvShowEndpoints.getMediaListsForTvShow.serverLogic(TvShowLogics.getMediaListsForTvShow))
 
   val tvShowRoutes: HttpRoutes[IO] =
-    getTvShow <+>
-      getEntriesForTvShow <+>
+    getTvShow                <+>
+      getEntriesForTvShow    <+>
       getMediaListsForTvShow
 
 }

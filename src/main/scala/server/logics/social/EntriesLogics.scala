@@ -17,11 +17,11 @@ object EntriesLogics {
     if entry.completed then
       if add then
         user.copy(
-          completed = entry.mediaId :: user.completed,
-          dropped = user.dropped.filterNot(_ == entry.mediaId),
+          completed  = entry.mediaId :: user.completed,
+          dropped    = user.dropped.filterNot(_ == entry.mediaId),
           inProgress = user.inProgress.filterNot(_ == entry.mediaId),
-          onHold = user.onHold.filterNot(_ == entry.mediaId),
-          pending = user.pending.filterNot(_ == entry.mediaId),
+          onHold     = user.onHold.filterNot(_ == entry.mediaId),
+          pending    = user.pending.filterNot(_ == entry.mediaId),
         )
       else
         val index = user.completed.indexOf(entry.mediaId)
@@ -32,10 +32,10 @@ object EntriesLogics {
     else if entry.dropped then
       if add then
         user.copy(
-          dropped = entry.mediaId :: user.dropped.filterNot(_ == entry.mediaId),
+          dropped    = entry.mediaId :: user.dropped.filterNot(_ == entry.mediaId),
           inProgress = user.inProgress.filterNot(_ == entry.mediaId),
-          onHold = user.onHold.filterNot(_ == entry.mediaId),
-          pending = user.pending.filterNot(_ == entry.mediaId),
+          onHold     = user.onHold.filterNot(_ == entry.mediaId),
+          pending    = user.pending.filterNot(_ == entry.mediaId),
         )
       else
         user.copy(dropped = user.dropped.filterNot(_ == entry.mediaId))
@@ -46,10 +46,10 @@ object EntriesLogics {
             case id: (TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId) =>
               if add then
                 user.copy(
-                  onHold = id :: user.onHold.filterNot(_ == id),
-                  dropped = user.dropped.filterNot(_ == id),
+                  onHold     = id :: user.onHold.filterNot(_ == id),
+                  dropped    = user.dropped.filterNot(_ == id),
                   inProgress = user.inProgress.filterNot(_ == id),
-                  pending = user.pending.filterNot(_ == id)
+                  pending    = user.pending.filterNot(_ == id)
                 )
               else
                 user.copy(onHold = user.onHold.filterNot(_ == entry.mediaId))
@@ -62,9 +62,9 @@ object EntriesLogics {
                   if add then
                     user.copy(
                       inProgress = id :: user.inProgress.filterNot(_ == id),
-                      dropped = user.dropped.filterNot(_ == id),
-                      onHold = user.onHold.filterNot(_ == id),
-                      pending = user.pending.filterNot(_ == id)
+                      dropped    = user.dropped.filterNot(_ == id),
+                      onHold     = user.onHold.filterNot(_ == id),
+                      pending    = user.pending.filterNot(_ == id)
                     )
                   else
                     user.copy(inProgress = user.inProgress.filterNot(_ == entry.mediaId))
@@ -108,22 +108,22 @@ object EntriesLogics {
           case Some(categories) =>
             entries.filter(
               entry => entry.mediaId match
-                case _: MovieId => categories.contains("movie")
-                case _: TvShowId => categories.contains("tv_show")
-                case (_: TvShowId, _: TvSeasonNumber) => categories.contains("season")
+                case _: MovieId                                           => categories.contains("movie")
+                case _: TvShowId                                          => categories.contains("tv_show")
+                case (_: TvShowId, _: TvSeasonNumber)                     => categories.contains("season")
                 case (_: TvShowId, _: TvSeasonNumber, _: TvEpisodeNumber) => categories.contains("episode")
-                case videogameId: VideogameId => categories.contains("videogame")
-                case bookId: BookId => categories.contains("book") 
+                case videogameId: VideogameId                             => categories.contains("videogame")
+                case bookId: BookId                                       => categories.contains("book") 
             )
           
           case None => entries
         
-        val ratings = RatingRepository.getAll
+        val ratings   = RatingRepository.getAll
         val ratingMap = ratings.map(rating => rating.id -> rating).toMap
 
         val sortedEntries = sortByOption match
           case Some("earliest") => Right(filteredEntries.sortBy(_.creationDate))
-          case Some("newest") => Right(filteredEntries.sortBy(_.creationDate).reverse)
+          case Some("newest")   => Right(filteredEntries.sortBy(_.creationDate).reverse)
 
           case Some(s"${order}_rating") =>
             var ordered_entries = filteredEntries.sortBy { 
@@ -136,7 +136,7 @@ object EntriesLogics {
             Right(ordered_entries)
 
           case Some(unknown) => Left(BadRequest(s"Invalid sorting parameter: $unknown"))
-          case None => Right(filteredEntries)
+          case None          => Right(filteredEntries)
 
         sortedEntries
         
@@ -148,7 +148,7 @@ object EntriesLogics {
   val getEntry: EntryId => IO[Either[UserError, Entry]] =
     entryId => IO.pure {
       CommonFunctions.getEntry(entryId) match
-        case Left(error) => Left(error)
+        case Left(error)  => Left(error)
         case Right(entry) => Right(entry)
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
@@ -157,12 +157,12 @@ object EntriesLogics {
   val createEntry: Entry => IO[Either[UserError, Entry]] =
     newEntry => IO.pure {
       EntryRepository.get(newEntry.id) match
-        case Some(_) => Left(Conflict(s"Entry with ID ${newEntry.id.value} already exists"))
+        case Some(_)                        => Left(Conflict(s"Entry with ID ${newEntry.id.value} already exists"))
         case None if newEntry.id.value <= 0 => Left(BadRequest("Invalid entry ID"))
-        case None =>
+        case None                           =>
           CommonFunctions.getUserAndApply(newEntry.userId)(newEntry, addNewEntryToUser(_, _, false)) match
             case Left(error) => Left(error)
-            case Right(_) =>
+            case Right(_)    =>
               EntryRepository.put(newEntry.id, newEntry)
               Right(newEntry)
 
@@ -173,14 +173,14 @@ object EntriesLogics {
   val editEntry: ((EntryId, Entry)) => IO[Either[UserError, Entry]] =
     (entryId, updatedEntryData) => IO.pure {
       CommonFunctions.getEntry(entryId) match
-        case Left(error) => Left(error)
+        case Left(error)          => Left(error)
         case Right(existingEntry) =>
           CommonFunctions.getUserAndApply(existingEntry.userId)(existingEntry, removeEntryFromUser) match
             case Left(error) => Left(error)
-            case Right(_) =>
+            case Right(_)    =>
               CommonFunctions.getUserAndApply(updatedEntryData.userId)(updatedEntryData, addNewEntryToUser(_, _, true)) match
                 case Left(error) => Left(error)
-                case Right(_) =>
+                case Right(_)    =>
                   EntryRepository.put(updatedEntryData.id, updatedEntryData)
                   Right(updatedEntryData)
 
@@ -191,11 +191,11 @@ object EntriesLogics {
   val deleteEntry: EntryId => IO[Either[UserError, Unit]] =
     entryId => IO.pure {
       CommonFunctions.getEntry(entryId) match
-        case Left(error) => Left (error)
+        case Left(error)  => Left (error)
         case Right(entry) =>
           CommonFunctions.getUserAndApply(entry.userId)(entry, removeEntryFromUser) match
             case Left(error) => Left(error)
-            case Right(_) =>
+            case Right(_)    =>
               EntryRepository.delete(entry.id)
               Right(())
       

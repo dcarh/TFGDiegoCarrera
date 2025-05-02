@@ -49,7 +49,7 @@ object RatingsLogics {
   val getRating: RatingId => IO[Either[UserError, Rating]] =
     ratingId => IO.pure {
       CommonFunctions.getRating(ratingId) match 
-        case Left(error) => Left(error)
+        case Left(error)   => Left(error)
         case Right(rating) => Right(rating)
       
     }.handleError {
@@ -59,16 +59,15 @@ object RatingsLogics {
   val createRating: Rating => IO[Either[UserError, Rating]] =
     newRating => IO.pure {
       RatingRepository.get(newRating.id) match
-        case Some(_) => Left(Conflict(s"Rating with ID ${newRating.id.value} already exists"))
+        case Some(_)                         => Left(Conflict(s"Rating with ID ${newRating.id.value} already exists"))
         case None if newRating.id.value <= 0 => Left(BadRequest("Invalid rating ID"))
-        case None =>
+        case None                            =>
           CommonFunctions.getUserAndApply(newRating.userId)(newRating, addNewRatingToUser) match
             case Left(error) => Left(error)
-            case Right(_) =>
+            case Right(_)    =>
               RatingRepository.put(newRating.id, newRating)
               Right(newRating)
-
-        
+      
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
     }
@@ -76,16 +75,16 @@ object RatingsLogics {
   val editRating: ((RatingId, Rating)) => IO[Either[UserError, Rating]] =
     (ratingId, updatedRatingData) => IO.pure {
       CommonFunctions.getRating(ratingId) match
-        case Left(error) => Left(error)
+        case Left(error)           => Left(error)
         case Right(existingRating) =>
           CommonFunctions.getUserAndApply(existingRating.userId)(existingRating, updateUserFromRating) match
             case Left(error) => Left(error)
-            case Right(_) =>
+            case Right(_)    =>
               val updatedRating = existingRating.copy(
-                id = updatedRatingData.id,
-                userId = updatedRatingData.userId,
+                id           = updatedRatingData.id,
+                userId       = updatedRatingData.userId,
                 mediaRatedId = updatedRatingData.mediaRatedId,
-                rating = updatedRatingData.rating
+                rating       = updatedRatingData.rating
               )
               RatingRepository.put(ratingId, updatedRating)
               Right(updatedRating)
@@ -97,11 +96,11 @@ object RatingsLogics {
   val deleteRating: RatingId => IO[Either[UserError, Unit]] =
     ratingId => IO.pure {
       CommonFunctions.getRating(ratingId) match
-        case Left(error) => Left(error)
+        case Left(error)   => Left(error)
         case Right(rating) =>
           CommonFunctions.getUserAndApply(rating.userId)(rating, removeRatingFromUser) match
             case Left(error) => Left(error)
-            case Right(_) =>
+            case Right(_)    =>
               RatingRepository.delete(rating.id)
               Right(())
 

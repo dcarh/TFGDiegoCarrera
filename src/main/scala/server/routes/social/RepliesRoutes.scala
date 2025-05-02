@@ -27,9 +27,9 @@ object RepliesRoutes {
       .toRoutes(RepliesEndpoints.deleteReply.serverLogic(RepliesLogics.deleteReply))
 
   val repliesRoutes: HttpRoutes[IO] =
-    getReply <+>
+    getReply      <+>
       createReply <+>
-      editReply <+>
+      editReply   <+>
       deleteReply
 
 }

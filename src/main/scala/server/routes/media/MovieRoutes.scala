@@ -22,8 +22,8 @@ object MovieRoutes {
       toRoutes(MovieEndpoints.getMediaListsForMovie.serverLogic(MovieLogics.getMediaListsForMovie))
 
   val movieRoutes: HttpRoutes[IO] =
-    getMovie <+>
-      getEntriesForMovie <+>
+    getMovie                <+>
+      getEntriesForMovie    <+>
       getMediaListsForMovie
 
 }

@@ -3,8 +3,8 @@ package modelClasses.app.user
 case class UserProfile(
                         username : String,
                         password : String,
-                        // TODO: usernamePassword: UsernamePassword,
+                        // TODO: usernamePassword: UsernamePassword?
                         email    : String,
                         biography: String,
-                        location : String // TODO: Cambiar por Location
+                        location : String // TODO: ¿Cambiar por Location?
                       )

@@ -43,13 +43,13 @@ object ChattingRoutes {
       .toRoutes(ChattingEndpoints.deleteMessage.serverLogic(ChattingLogics.deleteMessage))
 
   val chattingRoutes: HttpRoutes[IO] =
-    getChats <+>
-      getChat <+>
-      archiveChat <+>
-      deleteChat <+>
+    getChats          <+>
+      getChat         <+>
+      archiveChat     <+>
+      deleteChat      <+>
       getChatMessages <+>
-      getMessage <+>
-      sendMessage <+>
+      getMessage      <+>
+      sendMessage     <+>
       deleteMessage
 
 }

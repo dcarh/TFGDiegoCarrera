@@ -62,17 +62,17 @@ object UserMediaRoutes {
       .toRoutes(UserMediaEndpoints.deleteBook.serverLogic(UserMediaLogics.deleteBook))
     
   val userMediaRoutes: HttpRoutes[IO] =
-    getAllMedia <+>
-      addMovie <+>
-      addTvShow <+>
-      addSeason <+>
-      addEpisode <+>
-      addVideogame <+>
-      addBook <+>
-      deleteMovie <+>
-      deleteTvShow <+>
-      deleteSeason <+>
-      deleteEpisode <+>
+    getAllMedia       <+>
+      addMovie        <+>
+      addTvShow       <+>
+      addSeason       <+>
+      addEpisode      <+>
+      addVideogame    <+>
+      addBook         <+>
+      deleteMovie     <+>
+      deleteTvShow    <+>
+      deleteSeason    <+>
+      deleteEpisode   <+>
       deleteVideogame <+>
       deleteBook
 }

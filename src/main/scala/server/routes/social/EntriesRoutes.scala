@@ -32,9 +32,9 @@ object EntriesRoutes {
 
   val entriesRoutes: HttpRoutes[IO] =
     getAllEntries <+>
-      getEntry <+>
+      getEntry    <+>
       createEntry <+>
-      editEntry <+>
+      editEntry   <+>
       deleteEntry
 
 }

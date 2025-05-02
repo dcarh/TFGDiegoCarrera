@@ -39,11 +39,11 @@ object UserNetworkRoutes {
       .toRoutes(UserNetworkEndpoints.unblockUser.serverLogic(UserNetworkLogics.unblockUser))
 
   val userNetworkRoutes: HttpRoutes[IO] =
-    getFollowers <+>
+    getFollowers   <+>
       getFollowing <+>
-      getBlocked <+>
-      followUser <+>
+      getBlocked   <+>
+      followUser   <+>
       unfollowUser <+>
-      blockUser <+>
+      blockUser    <+>
       unblockUser
 }

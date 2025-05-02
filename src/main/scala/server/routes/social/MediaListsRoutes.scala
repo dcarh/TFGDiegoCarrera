@@ -31,10 +31,10 @@ object MediaListsRoutes {
       .toRoutes(MediaListsEndpoints.deleteMediaList.serverLogic(MediaListsLogics.deleteMediaList))
 
   val mediaListsRoutes: HttpRoutes[IO] =
-    getAllMediaLists <+>
-      getMediaList <+>
+    getAllMediaLists  <+>
+      getMediaList    <+>
       createMediaList <+>
-      editMediaList <+>
+      editMediaList   <+>
       deleteMediaList
 
 }

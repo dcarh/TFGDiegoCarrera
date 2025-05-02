@@ -14,7 +14,7 @@ case class Movie(
 
                   averageRating    : Option[Double],
                   entriesIds       : Option[List[EntryId]],
-                  listsIds         : Option[List[MediaListId]],
+                  mediaListsIds    : Option[List[MediaListId]],
                   numberOfCompleted: Long,
                   numberOfDropped  : Long,
                   numberOfPending  : Long,

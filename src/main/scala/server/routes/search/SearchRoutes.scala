@@ -34,10 +34,10 @@ object SearchRoutes {
       toRoutes(SearchEndpoints.searchUser.serverLogic(SearchLogics.searchUser))
 
   val searchRoutes: HttpRoutes[IO] =
-    searchMovie <+>
-      searchTvShow <+>
+    searchMovie       <+>
+      searchTvShow    <+>
       searchVideogame <+>
-      searchBook <+>
+      searchBook      <+>
       searchMediaList <+>
       searchUser
 

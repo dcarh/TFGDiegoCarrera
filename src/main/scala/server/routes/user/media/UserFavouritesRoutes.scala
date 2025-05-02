@@ -47,13 +47,13 @@ object UserFavouritesRoutes {
       .toRoutes(UserFavouritesEndpoints.deleteFavouriteBook.serverLogic(UserFavouritesLogics.deleteFavouriteBook))
     
   val userFavouritesRoutes: HttpRoutes[IO] =
-    getFavourites <+>
-      addFavouriteMovie <+>
-      addFavouriteTvShow <+>
-      addFavouriteVideogame <+>
-      addFavouriteBook <+>
-      deleteFavouriteMovie <+>
-      deleteFavouriteTvShow <+>
+    getFavourites              <+>
+      addFavouriteMovie        <+>
+      addFavouriteTvShow       <+>
+      addFavouriteVideogame    <+>
+      addFavouriteBook         <+>
+      deleteFavouriteMovie     <+>
+      deleteFavouriteTvShow    <+>
       deleteFavouriteVideogame <+>
       deleteFavouriteBook
 }

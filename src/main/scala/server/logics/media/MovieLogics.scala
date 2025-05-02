@@ -17,7 +17,7 @@ object MovieLogics {
   val getMovie: MovieId => IO[Either[UserError, Movie]] = 
     movieId =>
       TMDBClient.executeRequest(Movies.requestMovieEndpoint, movieId).flatMap {
-        case Left(error) => IO.pure(Left(error))
+        case Left(error)           => IO.pure(Left(error))
         case Right(requestedMovie) =>
           val similarMoviesTmdb = TMDBClient.executeRequest(Movies.requestedSimilarMoviesEndpoint, movieId)
             .map(_.toOption.map(_.results))
@@ -57,7 +57,7 @@ object MovieLogics {
             crew              = credits.map(_.crew),
             averageRating     = metrics.averageRating,
             entriesIds        = metrics.entriesIds,
-            listsIds          = metrics.listsIds,
+            mediaListsIds     = metrics.mediaListsIds,
             numberOfCompleted = metrics.statusCounts.completed,
             numberOfDropped   = metrics.statusCounts.dropped,
             numberOfPending   = metrics.statusCounts.pending,

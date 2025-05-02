@@ -17,7 +17,7 @@ object TvEpisodeLogics {
   val getTvEpisode: ((TvShowId, TvSeasonNumber, TvEpisodeNumber)) => IO[Either[UserError, TvEpisode]] =
     (tvShowId, tvSeasonNumber, tvEpisodeNumber) =>
       TMDBClient.executeRequest(TvEpisodes.requestTvEpisodeEndpoint, (tvShowId, tvSeasonNumber, tvEpisodeNumber)).flatMap {
-        case Left(error) => IO.pure(Left(error))
+        case Left(error)               => IO.pure(Left(error))
         case Right(requestedTvEpisode) =>
           val creditsTmdb = TMDBClient.executeRequest(TvEpisodes.requestedCreditsForTvEpisodeEndpoint, (tvShowId, tvSeasonNumber, tvEpisodeNumber))
             .map(_.toOption)
@@ -37,7 +37,7 @@ object TvEpisodeLogics {
             crew               = credits.map(_.crew),
             averageRating      = metrics.averageRating,
             entriesIds         = metrics.entriesIds,
-            listsIds           = metrics.listsIds,
+            mediaListsIds      = metrics.mediaListsIds,
             numberOfCompleted  = metrics.statusCounts.completed,
             numberOfDropped    = metrics.statusCounts.dropped,
             numberOfPending    = metrics.statusCounts.pending,

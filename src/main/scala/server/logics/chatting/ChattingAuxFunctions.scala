@@ -32,10 +32,10 @@ object ChattingAuxFunctions {
   val assertUserAndChatAndMessageIds: ((UserId, ChatId, MessageId)) => Either[UserError, (User, Chat, Message)] =
     (userId, chatId, messageId) =>
       assertUserAndChatIds(userId, chatId) match
-        case Left(error) => Left(error)
+        case Left(error)       => Left(error)
         case Right(user, chat) =>
           CommonFunctions.getMessage(messageId) match
-            case Left(error) => Left(error)
+            case Left(error)    => Left(error)
             case Right(message) =>
               if !chat.messagesIds.contains(messageId) then
                 Left(BadRequest("The message ID introduced wasn't stored in the chat specified by the chat ID"))
@@ -46,12 +46,12 @@ object ChattingAuxFunctions {
   val assertTwoUsersAndChat: ((UserId, UserId, ChatId)) => Either[UserError, Either[(User, User), (User, User, Chat)]] =
     (user1Id, user2Id, chatId) =>
       CommonFunctions.getBothUsers(user1Id, user2Id) match
-        case Left(error) => Left(error)
+        case Left(error)         => Left(error)
         case Right(user1, user2) =>
           CommonFunctions.getChat(chatId) match
             case Left(NotFound(_)) => Right(Left(user1, user2))
-            case Left(error) => Left(error)
-            case Right(chat) =>
+            case Left(error)       => Left(error)
+            case Right(chat)       =>
               if chat.user1Id == user1.id && chat.user2Id == user2.id then
                 Right(Right(user1, user2, chat))
               else
@@ -61,12 +61,12 @@ object ChattingAuxFunctions {
   val newChatAndUpdateUserWithMessage: ((User, UserId, ChatId, Message)) => Unit =
     (user, user2Id, chatId, message) =>
       val newChat = Chat(
-        id = chatId,
-        user1Id = user.id,
-        user2Id = user2Id,
-        messagesIds = List(message.id),
+        id           = chatId,
+        user1Id      = user.id,
+        user2Id      = user2Id,
+        messagesIds  = List(message.id),
         creationDate = message.creationDate,
-        archived = false
+        archived     = false
       )
       val updatedUser = user.copy(
         chats = chatId :: user.chats
@@ -79,17 +79,17 @@ object ChattingAuxFunctions {
       if user.chats.contains(chat.id) && !user.archivedChats.contains(chat.id) then
         val updatedChat = chat.copy(
           messagesIds = message.id :: chat.messagesIds,
-          archived = false
+          archived    = false
         )
         ChatRepository.put(chat.id, updatedChat)
 
       else if !user.chats.contains(chat.id) && user.archivedChats.contains(chat.id) then
         val updatedChat = chat.copy(
           messagesIds = message.id :: chat.messagesIds,
-          archived = false
+          archived    = false
         )
         val updatedUser = user.copy(
-          chats = chat.id :: user.chats,
+          chats         = chat.id :: user.chats,
           archivedChats = user.archivedChats.filterNot(_ == chat.id)
         )
         ChatRepository.put(chat.id, updatedChat)

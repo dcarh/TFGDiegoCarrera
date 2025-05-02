@@ -13,7 +13,7 @@ object RepliesLogics {
   val getReply: ReplyId => IO[Either[UserError, Reply]] =
     replyId => IO.pure {
       CommonFunctions.getReply(replyId) match 
-        case Left(error) => Left(error)
+        case Left(error)  => Left(error)
         case Right(reply) => Right(reply)
       
     }.handleError {
@@ -23,31 +23,31 @@ object RepliesLogics {
   val createReply: Reply => IO[Either[UserError, Reply]] =
     newReply => IO.pure {
       ReplyRepository.get(newReply.id) match
-        case Some(_) => Left(Conflict(s"Reply with ID ${newReply.id.value} already exists"))
+        case Some(_)                        => Left(Conflict(s"Reply with ID ${newReply.id.value} already exists"))
         case None if newReply.id.value <= 0 => Left(BadRequest("Invalid reply ID"))
-        case None =>
+        case None                           =>
           CommonFunctions.getUserAndApply(newReply.userId)(newReply, RepliesAuxFunctions.addNewReplyToUser) match
             case Left(error) => Left(error)
-            case Right(_) =>
+            case Right(_)    =>
               val result = newReply.objectRepliedId match
                 case mediaListId: MediaListId =>
                   CommonFunctions.getMediaListAndApply(mediaListId)(newReply, RepliesAuxFunctions.addNewReplyToMediaList) match
                     case Left(error) => Left(error)
-                    case Right(_) => Right(())
+                    case Right(_)    => Right(())
 
                 case reviewId: ReviewId =>
                   CommonFunctions.getReviewAndApply(reviewId)(newReply, RepliesAuxFunctions.addNewReplyToReview) match
                     case Left(error) => Left(error)
-                    case Right(_) => Right(())
+                    case Right(_)    => Right(())
 
                 case replyId: ReplyId =>
                   CommonFunctions.getReplyAndApply(replyId)(newReply, RepliesAuxFunctions.addNewReplyToReply) match
                     case Left(error) => Left(error)
-                    case Right(_) => Right(())
+                    case Right(_)    => Right(())
 
               result match
                 case Left(error) => Left(error)
-                case Right(_) =>
+                case Right(_)    =>
                   ReplyRepository.put(newReply.id, newReply)
                   Right(newReply)
               
@@ -58,36 +58,36 @@ object RepliesLogics {
   val editReply: ((ReplyId, Reply)) => IO[Either[UserError, Reply]] =
     (replyId, updatedReplyData) => IO.pure {
       CommonFunctions.getReply(replyId) match
-        case Left(error) => Left(error)
+        case Left(error)          => Left(error)
         case Right(existingReply) =>
           CommonFunctions.getUserAndApply(existingReply.userId)(existingReply, RepliesAuxFunctions.updateUserFromReply) match
             case Left(error) => Left(error)
-            case Right(_) =>
+            case Right(_)    =>
               val result = existingReply.objectRepliedId match
                 case mediaListId: MediaListId =>
                   CommonFunctions.getMediaListAndApply(mediaListId)(existingReply, RepliesAuxFunctions.updateMediaListFromReply) match
                     case Left(error) => Left(error)
-                    case Right(_) => Right(())
+                    case Right(_)    => Right(())
 
                 case reviewId: ReviewId =>
                   CommonFunctions.getReviewAndApply(reviewId)(existingReply, RepliesAuxFunctions.updateReviewFromReply) match
                     case Left(error) => Left(error)
-                    case Right(_) => Right(())
+                    case Right(_)    => Right(())
 
                 case replyId: ReplyId =>
                   CommonFunctions.getReplyAndApply(replyId)(existingReply, RepliesAuxFunctions.updateReplyFromReply) match
                     case Left(error) => Left(error)
-                    case Right(_) => Right(())
+                    case Right(_)    => Right(())
 
               result match
                 case Right(_) =>
                   val updatedReply = existingReply.copy(
-                    id = updatedReplyData.id,
-                    userId = updatedReplyData.userId,
+                    id              = updatedReplyData.id,
+                    userId          = updatedReplyData.userId,
                     objectRepliedId = updatedReplyData.objectRepliedId,
-                    reply = updatedReplyData.reply,
-                    likes = updatedReplyData.likes,
-                    replies = updatedReplyData.replies
+                    reply           = updatedReplyData.reply,
+                    likes           = updatedReplyData.likes,
+                    replies         = updatedReplyData.replies
                   )
                   ReplyRepository.put(replyId, updatedReply)
                   Right(updatedReply)
@@ -101,30 +101,30 @@ object RepliesLogics {
   val deleteReply: ReplyId => IO[Either[UserError, Unit]] =
     replyId => IO.pure {
       CommonFunctions.getReply(replyId) match
-        case Left(error) => Left(error)
+        case Left(error)  => Left(error)
         case Right(reply) =>
           CommonFunctions.getUserAndApply(reply.userId)(reply, RepliesAuxFunctions.removeReplyFromUser) match
             case Left(error) => Left(error)
-            case Right(_) =>
+            case Right(_)    =>
               val result = reply.objectRepliedId match
                 case mediaListId: MediaListId =>
                   CommonFunctions.getMediaListAndApply(mediaListId)(reply, RepliesAuxFunctions.removeReplyFromMediaList) match
                     case Left(error) => Left(error)
-                    case Right(_) => Right(())
+                    case Right(_)    => Right(())
 
                 case reviewId: ReviewId =>
                   CommonFunctions.getReviewAndApply(reviewId)(reply, RepliesAuxFunctions.removeReplyFromReview) match
                     case Left(error) => Left(error)
-                    case Right(_) => Right(())
+                    case Right(_)    => Right(())
 
                 case replyId: ReplyId =>
                   CommonFunctions.getReplyAndApply(replyId)(reply, RepliesAuxFunctions.removeReplyFromReply) match
                     case Left(error) => Left(error)
-                    case Right(_) => Right(())
+                    case Right(_)    => Right(())
 
               result match
                 case Left(error) => Left(error)
-                case Right(_) =>
+                case Right(_)    =>
                   ReplyRepository.delete(reply.id)
                   Right(())
       

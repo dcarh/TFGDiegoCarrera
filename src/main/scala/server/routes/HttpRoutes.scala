@@ -24,7 +24,7 @@ import server.routes.user.media.UserFavouritesRoutes.userFavouritesRoutes
 import server.routes.user.network.UserNetworkRoutes.userNetworkRoutes
 import server.routes.user.social.UserEntriesRoutes.userEntriesRoutes
 import server.routes.user.social.UserLikesRoutes.userLikesRoutes
-import server.routes.user.social.UserListsRoutes.userMediaListsRoutes
+import server.routes.user.social.UserMediaListsRoutes.userMediaListsRoutes
 import server.routes.user.social.UserRatingsRoutes.userRatingsRoutes
 import server.routes.user.social.UserRepliesRoutes.userRepliesRoutes
 import server.routes.user.social.UserReviewsRoutes.userReviewsRoutes
@@ -33,28 +33,28 @@ import server.routes.user.UserRoutes.userRoutes
 object HttpRoutes {
 
   val httpRoutes: HttpRoutes[IO] =
-    chattingRoutes <+>
-      entriesRoutes <+>
-      likesRoutes <+>
-      movieRoutes <+>
-      tvShowRoutes <+>
-      tvSeasonRoutes <+>
-      tvEpisodeRoutes <+>
-      videogameRoutes <+>
-      bookRoutes <+>
-      mediaListsRoutes <+>
-      ratingsRoutes <+>
-      repliesRoutes <+>
-      reviewsRoutes <+>
-      searchRoutes <+>
-      userRoutes <+>
+    chattingRoutes         <+>
+      entriesRoutes        <+>
+      likesRoutes          <+>
+      movieRoutes          <+>
+      tvShowRoutes         <+>
+      tvSeasonRoutes       <+>
+      tvEpisodeRoutes      <+>
+      videogameRoutes      <+>
+      bookRoutes           <+>
+      mediaListsRoutes     <+>
+      ratingsRoutes        <+>
+      repliesRoutes        <+>
+      reviewsRoutes        <+>
+      searchRoutes         <+>
+      userRoutes           <+>
       userFavouritesRoutes <+>
-      userNetworkRoutes <+>
-      userEntriesRoutes <+>
-      userLikesRoutes <+>
-      userMediaRoutes <+>
+      userNetworkRoutes    <+>
+      userEntriesRoutes    <+>
+      userLikesRoutes      <+>
+      userMediaRoutes      <+>
       userMediaListsRoutes <+>
-      userRatingsRoutes <+>
-      userRepliesRoutes <+>
+      userRatingsRoutes    <+>
+      userRepliesRoutes    <+>
       userReviewsRoutes
 }

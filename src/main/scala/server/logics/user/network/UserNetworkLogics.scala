@@ -43,7 +43,7 @@ object UserNetworkLogics {
   val followUser: ((UserId, UserId)) => IO[Either[UserError, (List[UserId], List[UserId])]] =
     (userId, followedUserId) => IO.pure {
       getBothUsers(userId, followedUserId) match
-        case Left(error) => Left(error)
+        case Left(error)               => Left(error)
         case Right(user, followedUser) =>
           if user.following.contains(followedUserId) then
             Left(Conflict("User already followed"))
@@ -65,7 +65,7 @@ object UserNetworkLogics {
   val unfollowUser: ((UserId, UserId)) => IO[Either[UserError, Unit]] =
     (userId, unfollowedUserId) => IO.pure {
       getBothUsers(userId, unfollowedUserId) match
-        case Left(error) => Left(error)
+        case Left(error)                 => Left(error)
         case Right(user, unfollowedUser) =>
           if user.following.contains(unfollowedUserId) then
             val updatedUser = user.copy(
@@ -87,7 +87,7 @@ object UserNetworkLogics {
   val blockUser: ((UserId, UserId)) => IO[Either[UserError, List[UserId]]] =
     (userId, blockedUserId) => IO.pure {
       getBothUsers(userId, blockedUserId) match
-        case Left(error) => Left(error)
+        case Left(error)              => Left(error)
         case Right(user, blockedUser) =>
           if user.blocked.contains(blockedUserId) then
             Left(Conflict("User already blocked"))
@@ -105,7 +105,7 @@ object UserNetworkLogics {
   val unblockUser: ((UserId, UserId)) => IO[Either[UserError, Unit]] =
     (userId, unblockedUserId) => IO.pure {
       getBothUsers(userId, unblockedUserId) match
-        case Left(error) => Left(error)
+        case Left(error)                => Left(error)
         case Right(user, unblockedUser) =>
           if user.blocked.contains(unblockedUserId) then
             val updatedUser = user.copy(

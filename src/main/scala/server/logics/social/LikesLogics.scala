@@ -23,31 +23,31 @@ object LikesLogics {
   val createLike: Like => IO[Either[UserError, Like]] =
     newLike => IO.pure {
       LikeRepository.get(newLike.id) match
-        case Some(_) => Left(Conflict(s"Like with ID ${newLike.id.value} already exists"))
+        case Some(_)                       => Left(Conflict(s"Like with ID ${newLike.id.value} already exists"))
         case None if newLike.id.value <= 0 => Left(BadRequest("Invalid like ID"))
-        case None  =>
+        case None                          =>
           CommonFunctions.getUserAndApply(newLike.userId)(newLike, LikesAuxFunctions.addNewLikeToUser) match
             case Left(error) => Left(error)
-            case Right(_) =>
+            case Right(_)    =>
               val result = newLike.elementLikedId match
                 case mediaListId: MediaListId =>
                   CommonFunctions.getMediaListAndApply(mediaListId)(newLike, LikesAuxFunctions.addNewLikeToMediaList) match
                     case Left(error) => Left(error)
-                    case Right(_) => Right(())
+                    case Right(_)    => Right(())
 
                 case reviewId: ReviewId =>
                   CommonFunctions.getReviewAndApply(reviewId)(newLike, LikesAuxFunctions.addNewLikeToReview) match
                     case Left(error) => Left(error)
-                    case Right(_) => Right(())
+                    case Right(_)    => Right(())
 
                 case replyId: ReplyId =>
                   CommonFunctions.getReplyAndApply(replyId)(newLike, LikesAuxFunctions.addNewLikeToReply) match
                     case Left(error) => Left(error)
-                    case Right(_) => Right(())
+                    case Right(_)    => Right(())
 
               result match
                 case Left(error) => Left(error)
-                case Right(_) =>
+                case Right(_)    =>
                   LikeRepository.put(newLike.id, newLike)
                   Right(newLike)
 
@@ -62,26 +62,26 @@ object LikesLogics {
         case Right(like) =>
           CommonFunctions.getUserAndApply(like.userId)(like, LikesAuxFunctions.removeLikeFromUser) match
             case Left(error) => Left(error)
-            case Right(_) =>
+            case Right(_)    =>
               val result = like.elementLikedId match
                 case mediaListId: MediaListId =>
                   CommonFunctions.getMediaListAndApply(mediaListId)(like, LikesAuxFunctions.removeLikeFromMediaList) match
                     case Left(error) => Left(error)
-                    case Right(_) => Right(())
+                    case Right(_)    => Right(())
 
                 case reviewId: ReviewId =>
                   CommonFunctions.getReviewAndApply(reviewId)(like, LikesAuxFunctions.removeLikeFromReview) match
                     case Left(error) => Left(error)
-                    case Right(_) => Right(())
+                    case Right(_)    => Right(())
 
                 case replyId: ReplyId =>
                   CommonFunctions.getReplyAndApply(replyId)(like, LikesAuxFunctions.removeLikeFromReply) match
                     case Left(error) => Left(error)
-                    case Right(_) => Right(())
+                    case Right(_)    => Right(())
 
               result match
                 case Left(error) => Left(error)
-                case Right(_) =>
+                case Right(_)    =>
                   LikeRepository.delete(like.id)
                   Right(())
       

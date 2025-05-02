@@ -33,25 +33,25 @@ object UserFavouritesLogics {
             case movieId: MovieId =>
               user.favourites.movie match
                 case Some(_) => Left(Conflict("The user already has a favourite movie. Delete it before you add a new one"))
-                case None => Right(user.favourites.copy(movie = Some(movieId)))
+                case None    => Right(user.favourites.copy(movie = Some(movieId)))
 
             case tvShowId: TvShowId =>
               user.favourites.tvShow match
                 case Some(_) => Left(Conflict("The user already has a favourite TV show. Delete it before you add a new one"))
-                case None => Right(user.favourites.copy(tvShow = Some(tvShowId)))
+                case None    => Right(user.favourites.copy(tvShow = Some(tvShowId)))
 
             case videogameId: VideogameId =>
               user.favourites.videogame match
                 case Some(_) => Left(Conflict("The user already has a favourite videogame. Delete it before you add a new one"))
-                case None => Right(user.favourites.copy(videogame = Some(videogameId)))
+                case None    => Right(user.favourites.copy(videogame = Some(videogameId)))
 
             case bookId: BookId =>
               user.favourites.book match
                 case Some(_) => Left(Conflict("The user already has a favourite book. Delete it before you add a new one"))
-                case None => Right(user.favourites.copy(book = Some(bookId)))
+                case None    => Right(user.favourites.copy(book = Some(bookId)))
 
           updatedFavourites match
-            case Left(error) => Left(error)
+            case Left(error)       => Left(error)
             case Right(favourites) =>
               val updatedUser = user.copy(favourites = favourites)
               UserRepository.put(userId, user)
@@ -68,25 +68,25 @@ object UserFavouritesLogics {
             case movieId: MovieId =>
               user.favourites.movie match
                 case Some(_) => Right(user.favourites.copy(movie = None))
-                case None => Left(NotFound("The user does not have a favourite movie"))
+                case None    => Left(NotFound("The user does not have a favourite movie"))
 
             case tvShowId: TvShowId =>
               user.favourites.tvShow match
                 case Some(_) => Right(user.favourites.copy(tvShow = None))
-                case None => Left(NotFound("The user does not have a favourite TV show"))
+                case None    => Left(NotFound("The user does not have a favourite TV show"))
 
             case videogameId: VideogameId =>
               user.favourites.videogame match
                 case Some(_) => Right(user.favourites.copy(videogame = None))
-                case None => Left(NotFound("The user does not have a favourite videogame"))
+                case None    => Left(NotFound("The user does not have a favourite videogame"))
 
             case bookId: BookId =>
               user.favourites.book match
                 case Some(_) => Right(user.favourites.copy(book = None))
-                case None => Left(NotFound("The user does not have a favourite book"))
+                case None    => Left(NotFound("The user does not have a favourite book"))
 
           updatedFavourites match
-            case Left(error) => Left(error)
+            case Left(error)       => Left(error)
             case Right(favourites) =>
               val updatedUser = user.copy(favourites = favourites)
               UserRepository.put(userId, user)

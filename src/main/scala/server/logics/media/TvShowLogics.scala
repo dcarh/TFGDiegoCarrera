@@ -16,7 +16,7 @@ object TvShowLogics {
   val getTvShow: TvShowId => IO[Either[UserError, TvShow]] =
     tvShowId =>
       TMDBClient.executeRequest(TvShows.requestTvShowEndpoint, tvShowId).flatMap {
-        case Left(error) => IO.pure(Left(error))
+        case Left(error)           => IO.pure(Left(error))
         case Right(requestedTvShow) =>
           val similarTvShowsTmdb = TMDBClient.executeRequest(TvShows.requestedSimilarTvShowsEndpoint, tvShowId)
             .map(_.toOption.map(_.results))
@@ -56,7 +56,7 @@ object TvShowLogics {
             crew               = aggregateCredits.map(_.crew),
             averageRating      = metrics.averageRating,
             entriesIds         = metrics.entriesIds,
-            listsIds           = metrics.listsIds,
+            mediaListsIds      = metrics.mediaListsIds,
             numberOfCompleted  = metrics.statusCounts.completed,
             numberOfDropped    = metrics.statusCounts.dropped,
             numberOfInProgress = metrics.statusCounts.inProgress,

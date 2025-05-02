@@ -11,8 +11,8 @@ object UserLogics {
 
   private val applyProfileToUser: (User, UserProfile) => Either[UserError, User] =
     (user, userProfile) =>
-      val allUsers = UserRepository.getAll
-      val profileWithSameEmail = allUsers.exists(_.profile.email == userProfile.email)
+      val allUsers                = UserRepository.getAll
+      val profileWithSameEmail    = allUsers.exists(_.profile.email == userProfile.email)
       val profileWithSameUsername = allUsers.exists(_.profile.username == userProfile.username)
 
       if profileWithSameEmail then Left(Conflict("User with same email already exists"))
@@ -21,11 +21,11 @@ object UserLogics {
         else
           val updatedUser = user.copy(
             profile = user.profile.copy(
-              username = userProfile.username,
-              password = userProfile.password,
-              email = userProfile.email,
+              username  = userProfile.username,
+              password  = userProfile.password,
+              email     = userProfile.email,
               biography = userProfile.biography,
-              location = userProfile.location
+              location  = userProfile.location
             )
           )
 
@@ -38,14 +38,10 @@ object UserLogics {
         val users = UserRepository.getAll
 
         val sortedUsers = sortByOption match
-          case Some("least_popular") =>
-            Right(users.sortBy(_.followers.length))
-          case Some("most_popular") =>
-            Right(users.sortBy(_.followers.length).reverse)
-          case Some(unknown) =>
-            Left(BadRequest(s"Invalid sorting parameter: $unknown"))
-          case None =>
-            Right(users)
+          case Some("least_popular") => Right(users.sortBy(_.followers.length))
+          case Some("most_popular")  => Right(users.sortBy(_.followers.length).reverse)
+          case Some(unknown)         => Left(BadRequest(s"Invalid sorting parameter: $unknown"))
+          case None                  => Right(users)
 
         sortedUsers
 
@@ -77,29 +73,29 @@ object UserLogics {
   val createUser: ((UserId, UserProfile)) => IO[Either[UserError, User]] =
     (newUserId, newUserProfile) => IO.pure {
       UserRepository.get(newUserId) match
-        case Some(_) => Left(Conflict(s"User with ID ${newUserId.value} already exists"))
+        case Some(_)                      => Left(Conflict(s"User with ID ${newUserId.value} already exists"))
         case None if newUserId.value <= 0 => Left(BadRequest("Invalid entry ID"))
-        case None =>
+        case None                         =>
           val emptyList = List()
           val newUser = User(
-            id = newUserId,
-            profile = UserProfile(username = "", password = "", email = "", biography = "", location = ""),
-            favourites = UserFavourites(movie = None, tvShow = None, videogame = None, book = None),
-            completed = emptyList,
-            pending = emptyList,
-            inProgress = emptyList,
-            onHold = emptyList,
-            dropped = emptyList,
-            mediaLists = emptyList,
-            entries = emptyList,
-            reviews = emptyList,
-            ratings = emptyList,
-            likes = emptyList,
-            replies = emptyList,
-            following = emptyList,
-            followers = emptyList,
-            blocked = emptyList,
-            chats = emptyList,
+            id            = newUserId,
+            profile       = UserProfile(username = "", password = "", email = "", biography = "", location = ""),
+            favourites    = UserFavourites(movie = None, tvShow = None, videogame = None, book = None),
+            completed     = emptyList,
+            pending       = emptyList,
+            inProgress    = emptyList,
+            onHold        = emptyList,
+            dropped       = emptyList,
+            mediaLists    = emptyList,
+            entries       = emptyList,
+            reviews       = emptyList,
+            ratings       = emptyList,
+            likes         = emptyList,
+            replies       = emptyList,
+            following     = emptyList,
+            followers     = emptyList,
+            blocked       = emptyList,
+            chats         = emptyList,
             archivedChats = emptyList
           )
 

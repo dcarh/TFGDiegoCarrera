@@ -27,7 +27,7 @@ object VideogameLogics {
                   requestedVideogame = head,
                   averageRating      = metrics.averageRating,
                   entriesIds         = metrics.entriesIds,
-                  listsIds           = metrics.listsIds,
+                  mediaListsIds      = metrics.mediaListsIds,
                   numberOfCompleted  = metrics.statusCounts.completed,
                   numberOfDropped    = metrics.statusCounts.dropped,
                   numberOfInProgress = metrics.statusCounts.inProgress,

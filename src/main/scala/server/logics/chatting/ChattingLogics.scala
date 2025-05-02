@@ -22,7 +22,7 @@ object ChattingLogics {
         case Left(error) => Left(error)
         case Right(user) => archivedOption match
             case Some(archived) if archived => Right(user.archivedChats)
-            case _ => Right(user.chats)
+            case _                          => Right(user.chats)
 
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
@@ -31,7 +31,7 @@ object ChattingLogics {
   val getChat: ((UserId, ChatId)) => IO[Either[UserError, Chat]] =
     (userId, chatId) => IO.pure {
       ChattingAuxFunctions.assertUserAndChatIds(userId, chatId) match
-        case Left(error) => Left(error)
+        case Left(error)    => Left(error)
         case Right(_, chat) => Right(chat)
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
@@ -40,14 +40,14 @@ object ChattingLogics {
   val archiveChat: ((UserId, ChatId)) => IO[Either[UserError, Chat]] =
     (userId, chatId) => IO.pure {
       ChattingAuxFunctions.assertUserAndChatIds(userId, chatId) match
-        case Left(error) => Left(error)
+        case Left(error)       => Left(error)
         case Right(user, chat) =>
           val (updatedChat, updatedUser) = if user.chats.contains(chat.id) && !user.archivedChats.contains(chat.id) then
             val updatedChat = chat.copy(
               archived = true
             )
             val updatedUser = user.copy(
-              chats = user.chats.filterNot(_ == chat.id),
+              chats         = user.chats.filterNot(_ == chat.id),
               archivedChats = chat.id :: user.archivedChats
             )
             (updatedChat, updatedUser)
@@ -57,7 +57,7 @@ object ChattingLogics {
               archived = false
             )
             val updatedUser = user.copy(
-              chats = chat.id :: user.chats,
+              chats         = chat.id :: user.chats,
               archivedChats = user.archivedChats.filterNot(_ == chat.id)
             )
             (updatedChat, updatedUser)
@@ -87,9 +87,8 @@ object ChattingLogics {
   val getChatMessages: ((UserId, ChatId)) => IO[Either[UserError, List[MessageId]]] =
     (userId, chatId) => IO.pure {
       ChattingAuxFunctions.assertUserAndChatIds(userId, chatId) match
-        case Left(error) => Left(error)
-        case Right(_, chat) =>
-          Right(chat.messagesIds)
+        case Left(error)    => Left(error)
+        case Right(_, chat) => Right(chat.messagesIds)
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
@@ -97,7 +96,7 @@ object ChattingLogics {
   val getMessage: ((UserId, ChatId, MessageId)) => IO[Either[UserError, Message]] =
     (userId, chatId, messageId) => IO.pure {
       ChattingAuxFunctions.assertUserAndChatAndMessageIds(userId, chatId, messageId) match
-        case Left(error) => Left(error)
+        case Left(error)          => Left(error)
         case Right(_, _, message) => Right(message)
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
@@ -106,12 +105,12 @@ object ChattingLogics {
   val sendMessage: ((UserId, ChatId, UserId, Message)) => IO[Either[UserError, Message]] =
     (user1Id, chatId, user2Id, message) => IO.pure {
       ChattingAuxFunctions.assertTwoUsersAndChat(user1Id, user2Id, chatId) match
-        case Left(error) => Left(error)
+        case Left(error)  => Left(error)
         case Right(tuple) => tuple match
           case Right(user1, user2, chat) =>
             ChattingAuxFunctions.checkIfUsersBlocked(user1, user2) match
               case Left(error) => Left(error)
-              case Right(()) =>
+              case Right(())   =>
                 ChattingAuxFunctions.checkUserChatsAndUpdate(user1, chat, message)
                 ChattingAuxFunctions.findSecondUserChatAndUpdate(user1Id, chatId, user2, message)
                 MessageRepository.put(message.id, message)
@@ -120,7 +119,7 @@ object ChattingLogics {
           case Left(user1, user2) =>
             ChattingAuxFunctions.checkIfUsersBlocked(user1, user2) match
               case Left(error) => Left(error)
-              case Right(()) =>
+              case Right(())   =>
                 ChattingAuxFunctions.newChatAndUpdateUserWithMessage(user1, user2Id, chatId, message)
                 ChattingAuxFunctions.findSecondUserChatAndUpdate(user1Id, chatId, user2, message)
                 MessageRepository.put(message.id, message)
@@ -133,7 +132,7 @@ object ChattingLogics {
   val deleteMessage: ((UserId, ChatId, MessageId)) => IO[Either[UserError, Unit]] =
     (userId, chatId, messageId) => IO.pure {
       ChattingAuxFunctions.assertUserAndChatAndMessageIds(userId, chatId, messageId) match
-        case Left(error) => Left(error)
+        case Left(error)    => Left(error)
         case Right(_, _, _) =>
           MessageRepository.delete(messageId) 
           Right(())

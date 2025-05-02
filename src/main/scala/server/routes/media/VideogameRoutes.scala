@@ -22,8 +22,8 @@ object VideogameRoutes {
       toRoutes(VideogameEndpoints.getMediaListsForVideogame.serverLogic(VideogameLogics.getMediaListsForVideogame))
 
   val videogameRoutes: HttpRoutes[IO] =
-    getVideogame <+>
-      getEntriesForVideogame <+>
+    getVideogame                <+>
+      getEntriesForVideogame    <+>
       getMediaListsForVideogame
 
 }

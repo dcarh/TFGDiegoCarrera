@@ -18,8 +18,8 @@ object UserMediaLogics {
   ] =
     (userId, field, categoryOption) => IO.pure {
       getAllMedia(userId, field, categoryOption) match
-        case Left(error) => Left(error)
-        case Right(Left(list)) => Right(list)
+        case Left(error)        => Left(error)
+        case Right(Left(list))  => Right(list)
         case Right(Right(list)) => Right(list)
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
@@ -29,9 +29,9 @@ object UserMediaLogics {
     ((UserId, String, MovieId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]]] =
     (userId, field, movieId) => IO.pure {
       addMedia(userId, field, movieId) match
-        case Left(error) => Left(error)
+        case Left(error)       => Left(error)
         case Right(Left(list)) => Right(list)
-        case Right(Right(_)) => Left(Unknown(500, "Internal server error"))
+        case Right(Right(_))   => Left(Unknown(500, "Internal server error"))
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
@@ -40,8 +40,8 @@ object UserMediaLogics {
     ((UserId, String, TvShowId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]]] =
     (userId, field, tvShowId) => IO.pure {
       addMedia(userId, field, tvShowId) match
-        case Left(error) => Left(error)
-        case Right(Left(list)) => Right(list)
+        case Left(error)        => Left(error)
+        case Right(Left(list))  => Right(list)
         case Right(Right(list)) => Right(list)
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
@@ -51,8 +51,8 @@ object UserMediaLogics {
     ((UserId, String, TvShowId, TvSeasonNumber)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]]] =
     (userId, field, tvShowId, seasonNumber) => IO.pure {
       addMedia(userId, field, (tvShowId, seasonNumber)) match
-        case Left(error) => Left(error)
-        case Right(Left(list)) => Right(list)
+        case Left(error)        => Left(error)
+        case Right(Left(list))  => Right(list)
         case Right(Right(list)) => Right(list)
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
@@ -62,9 +62,9 @@ object UserMediaLogics {
     ((UserId, String, TvShowId, TvSeasonNumber, TvEpisodeNumber)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]]] =
     (userId, field, tvShowId, seasonNumber, episodeNumber) => IO.pure {
       addMedia(userId, field, (tvShowId, seasonNumber, episodeNumber)) match
-        case Left(error) => Left(error)
+        case Left(error)       => Left(error)
         case Right(Left(list)) => Right(list)
-        case Right(Right(_)) => Left(Unknown(500, "Internal server error"))
+        case Right(Right(_))   => Left(Unknown(500, "Internal server error"))
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
@@ -73,8 +73,8 @@ object UserMediaLogics {
     ((UserId, String, VideogameId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]]] =
     (userId, field, videogameId) => IO.pure {
       addMedia(userId, field, videogameId) match
-        case Left(error) => Left(error)
-        case Right(Left(list)) => Right(list)
+        case Left(error)        => Left(error)
+        case Right(Left(list))  => Right(list)
         case Right(Right(list)) => Right(list)
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
@@ -84,8 +84,8 @@ object UserMediaLogics {
     ((UserId, String, BookId)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]]] =
     (userId, field, bookId) => IO.pure {
       addMedia(userId, field, bookId) match
-        case Left(error) => Left(error)
-        case Right(Left(list)) => Right(list)
+        case Left(error)        => Left(error)
+        case Right(Left(list))  => Right(list)
         case Right(Right(list)) => Right(list)
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
@@ -146,21 +146,21 @@ object UserMediaLogics {
       case Left(error) => Left(error)
       case Right(user) =>
         val fieldAccessed = field match
-          case "completed" => user.completed.distinct
-          case "dropped" => user.dropped
+          case "completed"  => user.completed.distinct
+          case "dropped"    => user.dropped
           case "inProgress" => user.inProgress
-          case "onHold" => user.onHold
-          case "pending" => user.pending
+          case "onHold"     => user.onHold
+          case "pending"    => user.pending
 
         val filteredField = categoryOption match
           case Some(categories) =>
             fieldAccessed.filter {
-              case _: MovieId => categories.contains("movie")
-              case _: TvShowId => categories.contains("tv_show")
-              case (_: TvShowId, _: TvSeasonNumber) => categories.contains("season")
+              case _: MovieId                                           => categories.contains("movie")
+              case _: TvShowId                                          => categories.contains("tv_show")
+              case (_: TvShowId, _: TvSeasonNumber)                     => categories.contains("season")
               case (_: TvShowId, _: TvSeasonNumber, _: TvEpisodeNumber) => categories.contains("episode")
-              case videogameId: VideogameId => categories.contains("videogame")
-              case bookId: BookId => categories.contains("book")
+              case videogameId: VideogameId                             => categories.contains("videogame")
+              case bookId: BookId                                       => categories.contains("book")
             }
           case None => fieldAccessed
 
@@ -193,11 +193,11 @@ object UserMediaLogics {
           case Left(error) => Left(error)
           case Right(user) =>
             val (fieldAccessed, otherFields) = field match
-              case "completed" => (user.completed, List(user.dropped, user.inProgress, user.onHold, user.pending))
-              case "dropped" => (user.dropped, List(user.inProgress, user.onHold, user.pending))
+              case "completed"  => (user.completed, List(user.dropped, user.inProgress, user.onHold, user.pending))
+              case "dropped"    => (user.dropped, List(user.inProgress, user.onHold, user.pending))
               case "inProgress" => (user.inProgress, List(user.dropped, user.onHold, user.pending))
-              case "onHold" => (user.onHold, List(user.dropped, user.inProgress, user.pending))
-              case "pending" => (user.pending, List())
+              case "onHold"     => (user.onHold, List(user.dropped, user.inProgress, user.pending))
+              case "pending"    => (user.pending, List())
 
             if fieldAccessed.contains(mediaId) then Left(Conflict(s"Media already '${field}''"))
             else
@@ -236,32 +236,32 @@ object UserMediaLogics {
                   val (updatedUser, returnedList) = (field, fieldList) match
                     case ("completed", list: List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]) =>
                       (user.copy(
-                        completed = list,
-                        dropped = user.dropped.filterNot(_ == mediaId),
+                        completed  = list,
+                        dropped    = user.dropped.filterNot(_ == mediaId),
                         inProgress = user.inProgress.filterNot(_ == mediaId),
-                        onHold = user.onHold.filterNot(_ == mediaId),
-                        pending = user.dropped.filterNot(_ == mediaId)
+                        onHold     = user.onHold.filterNot(_ == mediaId),
+                        pending    = user.dropped.filterNot(_ == mediaId)
                       ), Right(Left(list)))
                     case ("dropped", list: List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]) =>
                       (user.copy(
-                        dropped = list,
+                        dropped    = list,
                         inProgress = user.inProgress.filterNot(_ == mediaId),
-                        onHold = user.onHold.filterNot(_ == mediaId),
-                        pending = user.dropped.filterNot(_ == mediaId)
+                        onHold     = user.onHold.filterNot(_ == mediaId),
+                        pending    = user.dropped.filterNot(_ == mediaId)
                       ), Right(Left(list)))
                     case ("inProgress", list: List[TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId]) =>
                       (user.copy(
                         inProgress = list,
-                        dropped = user.dropped.filterNot(_ == mediaId),
-                        onHold = user.onHold.filterNot(_ == mediaId),
-                        pending = user.dropped.filterNot(_ == mediaId)
+                        dropped    = user.dropped.filterNot(_ == mediaId),
+                        onHold     = user.onHold.filterNot(_ == mediaId),
+                        pending    = user.dropped.filterNot(_ == mediaId)
                       ), Right(Right(list)))
                     case ("onHold", list: List[TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId]) =>
                       (user.copy(
-                        onHold = list,
-                        dropped = user.dropped.filterNot(_ == mediaId),
+                        onHold     = list,
+                        dropped    = user.dropped.filterNot(_ == mediaId),
                         inProgress = user.inProgress.filterNot(_ == mediaId),
-                        pending = user.dropped.filterNot(_ == mediaId)
+                        pending    = user.dropped.filterNot(_ == mediaId)
                       ), Right(Right(list)))
                     case ("pending", list: List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]) =>
                       (user.copy(
@@ -289,11 +289,11 @@ object UserMediaLogics {
           case Left(error) => Left(error)
           case Right(user) =>
             val fieldAccessed = field match
-              case "completed" => user.completed
-              case "dropped" => user.dropped
+              case "completed"  => user.completed
+              case "dropped"    => user.dropped
               case "inProgress" => user.inProgress
-              case "onHold" => user.onHold
-              case "pending" => user.pending
+              case "onHold"     => user.onHold
+              case "pending"    => user.pending
 
             if !fieldAccessed.contains(mediaId) then Left(BadRequest(s"Media not '${field}' yet"))
             else

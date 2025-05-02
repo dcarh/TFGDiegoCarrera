@@ -31,10 +31,10 @@ object ReviewsRoutes {
       .toRoutes(ReviewsEndpoints.deleteReview.serverLogic(ReviewsLogics.deleteReview))
 
   val reviewsRoutes: HttpRoutes[IO] =
-    getAllReviews <+>
-      getReview <+>
+    getAllReviews  <+>
+      getReview    <+>
       createReview <+>
-      editReview <+>
+      editReview   <+>
       deleteReview
 
 }

@@ -7,16 +7,16 @@ import modelClasses.ids.User.UserId
 import java.time.LocalDateTime
 
 case class MediaList(
-                             id              : MediaListId,
-                             userId          : UserId,
-                             title           : String,
-                             description     : String,
-                             mediaContentsIds: List[MovieId | TvShowId | VideogameId | BookId],
-                             visibility      : Visibility,
-                             allowReplies    : Boolean,
-                             ranked          : Boolean,
-                             creationDate    : LocalDateTime,
-                             updateDate      : LocalDateTime,
-                             likes           : List[LikeId],
-                             replies         : List[ReplyId]
+                      id          : MediaListId,
+                      userId      : UserId,
+                      title       : String,
+                      description : String,
+                      mediaIds    : List[MovieId | TvShowId | VideogameId | BookId],
+                      visibility  : Visibility,
+                      allowReplies: Boolean,
+                      ranked      : Boolean,
+                      creationDate: LocalDateTime,
+                      updateDate  : LocalDateTime,
+                      likes       : List[LikeId],
+                      replies     : List[ReplyId]
                            )

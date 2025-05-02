@@ -1,7 +1,6 @@
 package server.routes.user.social
 
 import cats.effect.IO
-import cats.implicits.toSemigroupKOps
 import org.http4s.HttpRoutes
 import sttp.tapir.server.http4s.Http4sServerInterpreter
 

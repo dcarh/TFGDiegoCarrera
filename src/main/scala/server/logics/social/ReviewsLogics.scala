@@ -52,25 +52,25 @@ object ReviewsLogics {
       val reviews = ReviewRepository.getAll
 
       val filteredReviews = categoryOption match
-        case None => reviews
+        case None             => reviews
         case Some(categories) =>
           reviews.filter(
             review => review.mediaReviewedId match
-              case _: MovieId => categories.contains("movie")
-              case _: TvShowId => categories.contains("tv_show")
-              case (_: TvShowId, _: TvSeasonNumber) => categories.contains("season")
+              case _: MovieId                                           => categories.contains("movie")
+              case _: TvShowId                                          => categories.contains("tv_show")
+              case (_: TvShowId, _: TvSeasonNumber)                     => categories.contains("season")
               case (_: TvShowId, _: TvSeasonNumber, _: TvEpisodeNumber) => categories.contains("episode")
-              case videogameId: VideogameId => categories.contains("videogame")
-              case bookId: BookId => categories.contains("book")
+              case videogameId: VideogameId                             => categories.contains("videogame")
+              case bookId: BookId                                       => categories.contains("book")
           )
       
       val sortedReviews = sortByOption match {
-        case Some("least_liked") => Right(filteredReviews.sortBy(_.likes.size))
-        case Some("most_liked") => Right(filteredReviews.sortBy(_.likes.size).reverse)
+        case Some("least_liked")   => Right(filteredReviews.sortBy(_.likes.size))
+        case Some("most_liked")    => Right(filteredReviews.sortBy(_.likes.size).reverse)
         case Some("least_replied") => Right(filteredReviews.sortBy(_.replies.size))
-        case Some("most_replied") => Right(filteredReviews.sortBy(_.replies.size).reverse)
-        case Some(unknown) => Left(BadRequest(s"Invalid sorting parameter: $unknown"))
-        case None => Right(filteredReviews)
+        case Some("most_replied")  => Right(filteredReviews.sortBy(_.replies.size).reverse)
+        case Some(unknown)         => Left(BadRequest(s"Invalid sorting parameter: $unknown"))
+        case None                  => Right(filteredReviews)
       }
       sortedReviews
         
@@ -82,7 +82,7 @@ object ReviewsLogics {
   val getReview: ReviewId => IO[Either[UserError, Review]] =
     reviewId => IO.pure {
       CommonFunctions.getReview(reviewId) match
-        case Left(error) => Left(error)
+        case Left(error)   => Left(error)
         case Right(review) => Right(review)
       
     }.handleError {
@@ -92,12 +92,12 @@ object ReviewsLogics {
   val createReview: Review => IO[Either[UserError, Review]] =
     newReview => IO.pure {
       ReviewRepository.get(newReview.id) match
-        case Some(_) => Left(Conflict(s"Review with ID ${newReview.id.value} already exists"))
+        case Some(_)                         => Left(Conflict(s"Review with ID ${newReview.id.value} already exists"))
         case None if newReview.id.value <= 0 => Left(BadRequest("Invalid review ID"))
-        case None =>
+        case None                            =>
           CommonFunctions.getUserAndApply(newReview.userId)(newReview, addNewReviewToUser) match
             case Left(error) => Left(error)
-            case Right(_) =>
+            case Right(_)    =>
               ReviewRepository.put(newReview.id, newReview)
               Right(newReview)
 
@@ -108,20 +108,20 @@ object ReviewsLogics {
   val editReview: ((ReviewId, Review)) => IO[Either[UserError, Review]] =
     (reviewId, updatedReviewData) => IO.pure {
       CommonFunctions.getReview(reviewId) match
-        case Left(error) => Left(error)
+        case Left(error)           => Left(error)
         case Right(existingReview) =>
           CommonFunctions.getUserAndApply(existingReview.userId)(existingReview, updateUserFromReview) match
-            case Left(error) => Left(error)
+            case Left(error)  => Left(error)
             case Right(value) =>
               val updatedReview = existingReview.copy(
-                id = updatedReviewData.id,
-                userId = updatedReviewData.userId,
+                id              = updatedReviewData.id,
+                userId          = updatedReviewData.userId,
                 mediaReviewedId = updatedReviewData.mediaReviewedId,
-                review = updatedReviewData.review,
-                likes = updatedReviewData.likes,
-                allowReplies = updatedReviewData.allowReplies,
-                replies = updatedReviewData.replies,
-                spoilers = updatedReviewData.spoilers
+                review          = updatedReviewData.review,
+                likes           = updatedReviewData.likes,
+                allowReplies    = updatedReviewData.allowReplies,
+                replies         = updatedReviewData.replies,
+                spoilers        = updatedReviewData.spoilers
               )
               ReviewRepository.put(reviewId, updatedReview)
               Right(updatedReview)
@@ -133,11 +133,11 @@ object ReviewsLogics {
   val deleteReview: ReviewId => IO[Either[UserError, Unit]] =
     reviewId => IO.pure {
       CommonFunctions.getReview(reviewId) match
-        case Left(error) => Left(error)
+        case Left(error)   => Left(error)
         case Right(review) =>
           CommonFunctions.getUserAndApply(review.userId)(review, removeReviewFromUser) match
             case Left(error) => Left(error)
-            case Right(_) =>
+            case Right(_)    =>
               ReviewRepository.delete(review.id)
               Right(())
 

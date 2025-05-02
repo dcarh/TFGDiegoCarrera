@@ -9,7 +9,7 @@ case class Videogame(
 
                       averageRating     : Option[Double],
                       entriesIds        : Option[List[EntryId]],
-                      listsIds          : Option[List[MediaListId]],
+                      mediaListsIds     : Option[List[MediaListId]],
                       numberOfCompleted : Long,
                       numberOfDropped   : Long,
                       numberOfInProgress: Long,

@@ -23,7 +23,7 @@ object LikesRoutes {
       .toRoutes(LikesEndpoints.deleteLike.serverLogic(LikesLogics.deleteLike))
 
   val likesRoutes: HttpRoutes[IO] =
-    getLike <+>
+    getLike      <+>
       createLike <+>
       deleteLike
 

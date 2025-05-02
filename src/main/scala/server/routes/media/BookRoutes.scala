@@ -22,8 +22,8 @@ object BookRoutes {
       toRoutes(BookEndpoints.getMediaListsForBook.serverLogic(BookLogics.getMediaListsForBook))
 
   val bookRoutes: HttpRoutes[IO] =
-    getBook <+>
-      getEntriesForBook <+>
+    getBook                 <+>
+      getEntriesForBook     <+>
       getMediaListsForBooks
 
 }

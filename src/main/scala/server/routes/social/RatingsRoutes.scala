@@ -27,9 +27,9 @@ object RatingsRoutes {
       .toRoutes(RatingsEndpoints.deleteRating.serverLogic(RatingsLogics.deleteRating))
 
   val ratingsRoutes: HttpRoutes[IO] =
-    getRating <+>
+    getRating      <+>
       createRating <+>
-      editRating <+>
+      editRating   <+>
       deleteRating
 
 }

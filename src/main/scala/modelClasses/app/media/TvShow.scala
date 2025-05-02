@@ -9,12 +9,12 @@ case class TvShow(
                    requestedTvShow   : RequestedTvShow,
                    similarTvShows    : Option[List[Result]],
                    recommendedTvShows: Option[List[Result]],
-                   cast              : Option[List[Member]],                 // Viene de los Aggregate Credits y habría que ordenarlos según el campo order.
-                   crew              : Option[List[Member]],                 // Viene de los Aggregate Credits también, aunque no se me ocurre la forma de ordenarlos (Pooularidad?)
+                   cast              : Option[List[Member]], // Viene de los Aggregate Credits y habría que ordenarlos según el campo order.
+                   crew              : Option[List[Member]], // Viene de los Aggregate Credits también, aunque no se me ocurre la forma de ordenarlos (Pooularidad?)
 
                    averageRating     : Option[Double],
                    entriesIds        : Option[List[EntryId]],
-                   listsIds          : Option[List[MediaListId]],
+                   mediaListsIds     : Option[List[MediaListId]],
                    numberOfCompleted : Long,
                    numberOfDropped   : Long,
                    numberOfInProgress: Long,

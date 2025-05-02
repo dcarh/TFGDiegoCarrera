@@ -35,11 +35,11 @@ object UserRoutes {
       .toRoutes(UserEndpoints.deleteUser.serverLogic(UserLogics.deleteUser))
   
   val userRoutes: HttpRoutes[IO] =
-    getAllUsers <+>
-      getUser <+>
+    getAllUsers  <+>
+      getUser    <+>
       getProfile <+>
       createUser <+>
-      editUser <+>
+      editUser   <+>
       deleteUser
 
 }

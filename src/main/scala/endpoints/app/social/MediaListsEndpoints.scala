@@ -11,17 +11,17 @@ import modelClasses.ids.Social.MediaListId
 
 object MediaListsEndpoints {
     
-  private val listsBaseEndpoint:
+  private val mediaListsBaseEndpoint:
     (String, String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
-      (name, description, method) => httpMethodEndpoint(name, description, "lists", method)
+      (name, description, method) => httpMethodEndpoint(name, description, "media_lists", method)
 
-  private val listBaseEndpoint:
+  private val mediaListBaseEndpoint:
     (String, String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
       (name, description, method) =>
-        httpMethodEndpoint(name, description, "list", method)
+        httpMethodEndpoint(name, description, "media_list", method)
 
   val getAllMediaLists: PublicEndpoint[Option[String], UserError, List[MediaList], Any] =
-    listsBaseEndpoint(
+    mediaListsBaseEndpoint(
       "getAllMediaLists", 
       "This endpoint returns a list with all the media content lists in the app",
       "GET"
@@ -30,7 +30,7 @@ object MediaListsEndpoints {
       .out(SocialOutputs.listOfMediaListsOutput)
 
   val getMediaList: PublicEndpoint[MediaListId, UserError, MediaList, Any] =
-    listBaseEndpoint(
+    mediaListBaseEndpoint(
       "getMediaList", 
       "This endpoint returns a specific media content list by its ID",
       "GET"
@@ -39,7 +39,7 @@ object MediaListsEndpoints {
       .out(SocialOutputs.mediaContentListOutput)
 
   val createMediaList: PublicEndpoint[MediaList, UserError, MediaList, Any] =
-    listBaseEndpoint(
+    mediaListBaseEndpoint(
       "createMediaList", 
       "This endpoint creates a media content list and returns it in case of success",
       "POST"
@@ -49,7 +49,7 @@ object MediaListsEndpoints {
       .out(SocialOutputs.mediaContentListOutput)
 
   val editMediaList: PublicEndpoint[(MediaListId, MediaList), UserError, MediaList, Any] =
-    listBaseEndpoint(
+    mediaListBaseEndpoint(
       "editMediaList", 
       "This endpoint allows to edit a media content list and returns it in case of success. Otherwise returns an error message",
       "PUT"
@@ -60,7 +60,7 @@ object MediaListsEndpoints {
       .out(SocialOutputs.mediaContentListOutput)
 
   val deleteMediaList: PublicEndpoint[MediaListId, UserError, Unit, Any] =
-    listBaseEndpoint(
+    mediaListBaseEndpoint(
       "deleteMediaList",
       "This endpoint deletes a media content list and returns it in case of success",
       "DELETE"

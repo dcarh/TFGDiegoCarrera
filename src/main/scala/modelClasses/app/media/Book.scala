@@ -9,11 +9,11 @@ case class Book(
 
                  averageRating     : Option[Double],
                  entriesIds        : Option[List[EntryId]],
-                 listsIds          : Option[List[MediaListId]],
+                 mediaListsIds     : Option[List[MediaListId]],
                  numberOfCompleted : Long,
                  numberOfDropped   : Long,
                  numberOfInProgress: Long,
                  numberOfOnHold    : Long,
-                 numberOfPending   : Long, 
+                 numberOfPending   : Long,
                  totalRatings      : Long,
                )
