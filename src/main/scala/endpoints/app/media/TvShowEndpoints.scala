@@ -42,7 +42,7 @@ object TvShowEndpoints {
       "This endpoint returns a list of all the media lists for a specific TV show",
       "POST_IGDB"
     )
-      .in("mediaLists")
+      .in("media_lists")
       .in(JsonInputs.jsonListOfMediaListsIds)
       .out(SocialOutputs.listOfMediaListsOutput)
 

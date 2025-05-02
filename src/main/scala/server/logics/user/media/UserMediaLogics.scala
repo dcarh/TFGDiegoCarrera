@@ -148,8 +148,8 @@ object UserMediaLogics {
         val fieldAccessed = field match
           case "completed"  => user.completed.distinct
           case "dropped"    => user.dropped
-          case "inProgress" => user.inProgress
-          case "onHold"     => user.onHold
+          case "in_progress" => user.inProgress
+          case "on_hold"     => user.onHold
           case "pending"    => user.pending
 
         val filteredField = categoryOption match
@@ -167,7 +167,7 @@ object UserMediaLogics {
         (field, filteredField) match
           case ("completed" | "dropped" | "pending", list: List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]) =>
             Right(Left(list))
-          case ("inProgress" | "onHold", list: List[TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId]) =>
+          case ("in_progress" | "on_hold", list: List[TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId]) =>
             Right(Right(list))
           case _ => throw Exception("Internal server error")
 
@@ -180,13 +180,13 @@ object UserMediaLogics {
     ]
   ] =
     (field, mediaId) match
-      case ("inProgress", movieId: MovieId) =>
+      case ("in_progress", movieId: MovieId) =>
         Left(BadRequest("'In Progress' does not support movies"))
-      case ("inProgress", episodeNumber: (TvShowId, TvSeasonNumber, TvEpisodeNumber)) =>
+      case ("in_progress", episodeNumber: (TvShowId, TvSeasonNumber, TvEpisodeNumber)) =>
         Left(BadRequest("'In Progress' does not support episodes"))
-      case ("onHold", movieId: MovieId) =>
+      case ("on_hold", movieId: MovieId) =>
         Left(BadRequest("'On Hold' does not support movies"))
-      case ("onHold", episodeNumber: (TvShowId, TvSeasonNumber, TvEpisodeNumber)) =>
+      case ("on_hold", episodeNumber: (TvShowId, TvSeasonNumber, TvEpisodeNumber)) =>
         Left(BadRequest("'On Hold' does not support episodes"))
       case _ =>
         CommonFunctions.getUser(userId) match
@@ -195,8 +195,8 @@ object UserMediaLogics {
             val (fieldAccessed, otherFields) = field match
               case "completed"  => (user.completed, List(user.dropped, user.inProgress, user.onHold, user.pending))
               case "dropped"    => (user.dropped, List(user.inProgress, user.onHold, user.pending))
-              case "inProgress" => (user.inProgress, List(user.dropped, user.onHold, user.pending))
-              case "onHold"     => (user.onHold, List(user.dropped, user.inProgress, user.pending))
+              case "in_progress" => (user.inProgress, List(user.dropped, user.onHold, user.pending))
+              case "on_hold"     => (user.onHold, List(user.dropped, user.inProgress, user.pending))
               case "pending"    => (user.pending, List())
 
             if fieldAccessed.contains(mediaId) then Left(Conflict(s"Media already '${field}''"))
@@ -249,14 +249,14 @@ object UserMediaLogics {
                         onHold     = user.onHold.filterNot(_ == mediaId),
                         pending    = user.dropped.filterNot(_ == mediaId)
                       ), Right(Left(list)))
-                    case ("inProgress", list: List[TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId]) =>
+                    case ("in_progress", list: List[TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId]) =>
                       (user.copy(
                         inProgress = list,
                         dropped    = user.dropped.filterNot(_ == mediaId),
                         onHold     = user.onHold.filterNot(_ == mediaId),
                         pending    = user.dropped.filterNot(_ == mediaId)
                       ), Right(Right(list)))
-                    case ("onHold", list: List[TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId]) =>
+                    case ("on_hold", list: List[TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId]) =>
                       (user.copy(
                         onHold     = list,
                         dropped    = user.dropped.filterNot(_ == mediaId),
@@ -276,13 +276,13 @@ object UserMediaLogics {
   private def deleteMedia(userId: UserId, field: String, mediaId: MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId):
   Either[UserError, Unit] =
     (field, mediaId) match
-      case ("inProgress", movieId: MovieId) =>
+      case ("in_progress", movieId: MovieId) =>
         Left(BadRequest("'In Progress' does not support movies"))
-      case ("inProgress", episodeNumber: (TvShowId, TvSeasonNumber, TvEpisodeNumber)) =>
+      case ("in_progress", episodeNumber: (TvShowId, TvSeasonNumber, TvEpisodeNumber)) =>
         Left(BadRequest("'In Progress' does not support episodes"))
-      case ("onHold", movieId: MovieId) =>
+      case ("on_hold", movieId: MovieId) =>
         Left(BadRequest("'On Hold' does not support movies"))
-      case ("onHold", episodeNumber: (TvShowId, TvSeasonNumber, TvEpisodeNumber)) =>
+      case ("on_hold", episodeNumber: (TvShowId, TvSeasonNumber, TvEpisodeNumber)) =>
         Left(BadRequest("'On Hold' does not support episodes"))
       case _ =>
         CommonFunctions.getUser(userId) match
@@ -291,8 +291,8 @@ object UserMediaLogics {
             val fieldAccessed = field match
               case "completed"  => user.completed
               case "dropped"    => user.dropped
-              case "inProgress" => user.inProgress
-              case "onHold"     => user.onHold
+              case "in_progress" => user.inProgress
+              case "on_hold"     => user.onHold
               case "pending"    => user.pending
 
             if !fieldAccessed.contains(mediaId) then Left(BadRequest(s"Media not '${field}' yet"))
@@ -333,9 +333,9 @@ object UserMediaLogics {
                       user.copy(completed = list)
                     case ("dropped", list: List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]) =>
                       user.copy(dropped = list)
-                    case ("inProgress", list: List[TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId]) =>
+                    case ("in_progress", list: List[TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId]) =>
                       user.copy(inProgress = list)
-                    case ("onHold", list: List[TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId]) =>
+                    case ("on_hold", list: List[TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId]) =>
                       user.copy(onHold = list)
                     case ("pending", list: List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]) =>
                       user.copy(pending = list)

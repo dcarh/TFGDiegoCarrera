@@ -13,7 +13,7 @@ object UserMediaListsEndpoints {
   private val userMediaListsBaseEndpoint:
     (String, String, String) => PublicEndpoint[UserId, UserError, Unit, Any] =
       (name, description, method) => specificUserBaseEndpoint(name, description, method)
-        .in("mediaLists")
+        .in("media_lists")
 
   val getUserMediaLists: PublicEndpoint[(UserId, Option[String]), UserError, List[MediaListId], Any] =
     userMediaListsBaseEndpoint(
