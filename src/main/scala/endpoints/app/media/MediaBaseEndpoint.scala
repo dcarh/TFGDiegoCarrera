@@ -7,6 +7,6 @@ import modelClasses.errors.UserError.*
 object MediaBaseEndpoint {
 
   val mediaBaseEndpoint:
-    (String, String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
-      (name, description, method) => httpMethodEndpoint(name, description, "display", method)
+    (String, String) => PublicEndpoint[Unit, UserError, Unit, Any] =
+      (name, description) => httpMethodEndpoint(name, description, "display", "GET")
 }

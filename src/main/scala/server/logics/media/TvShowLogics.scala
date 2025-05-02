@@ -69,23 +69,23 @@ object TvShowLogics {
           Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
       }
 
-  val getEntriesForTvShow: ((TvShowId, List[EntryId])) => IO[Either[UserError, List[Entry]]] =
-    (_, entriesIds) =>
-      val entries = EntryRepository.getMany(entriesIds)
+  val getEntriesForTvShow: TvShowId => IO[Either[UserError, List[Entry]]] =
+    tvShowId =>
+      val entries = EntryRepository.getAll.filter(_.mediaId == tvShowId)
 
       if (entries.nonEmpty)
         IO.pure(Right(entries))
       else
-        IO.pure(Left(BadRequest("No entries found for such IDs")))
+        IO.pure(Left(BadRequest("No entries found for TV show with ID: " + tvShowId.value)))
 
-  val getMediaListsForTvShow: ((TvShowId, List[MediaListId])) => IO[Either[UserError, List[MediaList]]] =
-    (_, mediaListsIds) =>
-      val mediaLists = MediaListRepository.getMany(mediaListsIds)
+  val getMediaListsForTvShow: TvShowId => IO[Either[UserError, List[MediaList]]] =
+    tvShowId =>
+      val mediaLists = MediaListRepository.getAll.filter(_.mediaIds.contains(tvShowId))
 
       if (mediaLists.nonEmpty)
         IO.pure(Right(mediaLists))
       else
-        IO.pure(Left(BadRequest("No mediaLists found for such IDs")))
+        IO.pure(Left(BadRequest("No mediaLists found for TV show with ID: " + tvShowId.value)))
 
 }
 

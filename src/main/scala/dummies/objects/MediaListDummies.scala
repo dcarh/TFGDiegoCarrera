@@ -7,7 +7,7 @@ import modelClasses.ids.Media.{BookId, MovieId, TvShowId, VideogameId}
 import java.time.LocalDateTime
 
 object MediaListDummies {
-  val mediaContentList1: MediaList = MediaList(
+  val mediaList1: MediaList = MediaList(
     MediaListIdDummies.mediaListId1,
     UserIdDummies.userId3,
     "Martial arts",
@@ -38,7 +38,7 @@ object MediaListDummies {
     List()
   )
   
-  val mediaContentList2: MediaList = MediaList(
+  val mediaList2: MediaList = MediaList(
     MediaListIdDummies.mediaListId2,
     UserIdDummies.userId1,
     "Top 5 movies 2021",
@@ -59,7 +59,7 @@ object MediaListDummies {
     List(ReplyIdDummies.replyId1)
   )
   
-  val mediaContentList3: MediaList = MediaList(
+  val mediaList3: MediaList = MediaList(
     MediaListIdDummies.mediaListId3,
     UserIdDummies.userId1,
     "Books read in 2024",
@@ -79,7 +79,7 @@ object MediaListDummies {
     List()
   )
   
-  val mediaContentList4: MediaList = MediaList(
+  val mediaList4: MediaList = MediaList(
     MediaListIdDummies.mediaListId4,
     UserIdDummies.userId2,
     "Movies, games, etc. to get to know me",
@@ -105,7 +105,7 @@ object MediaListDummies {
     List()
   )
 
-  val mediaContentList5: MediaList = MediaList(
+  val mediaList5: MediaList = MediaList(
     MediaListIdDummies.mediaListId5,
     UserIdDummies.userId4,
     "A generic list",

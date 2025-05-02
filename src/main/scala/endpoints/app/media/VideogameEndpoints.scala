@@ -13,8 +13,8 @@ import modelClasses.ids.Social.{EntryId, MediaListId}
 object VideogameEndpoints {
 
   private val getVideogameBaseEndpoint:
-    (String, String, String) => PublicEndpoint[VideogameId, UserError, Unit, Any] =
-    (name, description, method) => mediaBaseEndpoint(name, description, method)
+    (String, String) => PublicEndpoint[VideogameId, UserError, Unit, Any] =
+    (name, description) => mediaBaseEndpoint(name, description)
       .in("videogame")
       .in(PathInputs.pathVideogameId)
 
@@ -22,28 +22,23 @@ object VideogameEndpoints {
     getVideogameBaseEndpoint(
       "getVideogame",
       "This endpoint returns the videogame specified by the ID introduced",
-      "GET"
     )
       .out(MediaOutputs.videogameOutput)
 
-  val getEntriesForVideogame: PublicEndpoint[(VideogameId, List[EntryId]), UserError, List[Entry], Any] =
+  val getEntriesForVideogame: PublicEndpoint[VideogameId, UserError, List[Entry], Any] =
     getVideogameBaseEndpoint(
       "getEntriesForVideogame",
       "This endpoint returns a list of all the entries for a specific videogame",
-      "POST_IGDB"
     )
       .in("entries")
-      .in(JsonInputs.jsonListOfEntriesIds)
       .out(SocialOutputs.listOfEntriesOutput)
 
-  val getMediaListsForVideogame: PublicEndpoint[(VideogameId, List[MediaListId]), UserError, List[MediaList], Any] =
+  val getMediaListsForVideogame: PublicEndpoint[VideogameId, UserError, List[MediaList], Any] =
     getVideogameBaseEndpoint(
       "getMediaListsForVideogame",
       "This endpoint returns a list of all the media lists for a specific videogame",
-      "POST_IGDB"
     )
       .in("media_lists")
-      .in(JsonInputs.jsonListOfMediaListsIds)
       .out(SocialOutputs.listOfMediaListsOutput)
 
 }

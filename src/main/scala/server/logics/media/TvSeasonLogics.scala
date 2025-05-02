@@ -49,23 +49,23 @@ object TvSeasonLogics {
           Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
       }
 
-  val getEntriesForTvSeason: ((TvShowId, TvSeasonNumber, List[EntryId])) => IO[Either[UserError, List[Entry]]] =
-    (_, _, entriesIds) =>
-      val entries = EntryRepository.getMany(entriesIds)
+  val getEntriesForTvSeason: ((TvShowId, TvSeasonNumber)) => IO[Either[UserError, List[Entry]]] =
+    (tvShowId, tvSeasonNumber) =>
+      val entries = EntryRepository.getAll.filter(_.mediaId == (tvShowId, tvSeasonNumber))
 
       if (entries.nonEmpty)
         IO.pure(Right(entries))
       else
-        IO.pure(Left(BadRequest("No entries found for such IDs")))
+        IO.pure(Left(BadRequest("No entries found for season " + tvSeasonNumber.value + " from TV show with ID: " + tvShowId.value)))
 
-  val getMediaListsForTvSeason: ((TvShowId, TvSeasonNumber, List[MediaListId])) => IO[Either[UserError, List[MediaList]]] =
-    (_, _, mediaListsIds) =>
-      val mediaLists = MediaListRepository.getMany(mediaListsIds)
+  val getMediaListsForTvSeason: ((TvShowId, TvSeasonNumber)) => IO[Either[UserError, List[MediaList]]] =
+    (tvShowId, tvSeasonNumber) =>
+      val mediaLists = MediaListRepository.getAll.filter(_.mediaIds.contains((tvShowId, tvSeasonNumber)))  // TODO: ¿Decidir si quiero que haya seasons en MediaLists?
 
       if (mediaLists.nonEmpty)
         IO.pure(Right(mediaLists))
       else
-        IO.pure(Left(BadRequest("No mediaLists found for such IDs")))
+        IO.pure(Left(BadRequest("No mediaLists found for season " + tvSeasonNumber.value + " from TV show with ID: " + tvShowId.value)))
 
 }
 

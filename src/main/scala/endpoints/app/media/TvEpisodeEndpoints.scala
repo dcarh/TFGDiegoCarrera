@@ -13,8 +13,8 @@ import modelClasses.ids.Social.{EntryId, MediaListId}
 object TvEpisodeEndpoints {
 
   private val getTvEpisodeBaseEndpoint:
-    (String, String, String) => PublicEndpoint[(TvShowId, TvSeasonNumber, TvEpisodeNumber), UserError, Unit, Any] =
-    (name, description, method) => getTvSeasonBaseEndpoint(name, description, method)
+    (String, String) => PublicEndpoint[(TvShowId, TvSeasonNumber, TvEpisodeNumber), UserError, Unit, Any] =
+    (name, description) => getTvSeasonBaseEndpoint(name, description)
       .in("episode")
       .in(PathInputs.pathTvEpisodeNumber)
 
@@ -22,28 +22,23 @@ object TvEpisodeEndpoints {
     getTvEpisodeBaseEndpoint(
       "getEpisode",
       "This endpoint returns the episode specified by the ID introduced",
-      "GET"
     )
       .out(MediaOutputs.episodeOutput)
 
-  val getEntriesForTvEpisode: PublicEndpoint[(TvShowId, TvSeasonNumber, TvEpisodeNumber, List[EntryId]), UserError, List[Entry], Any] =
+  val getEntriesForTvEpisode: PublicEndpoint[(TvShowId, TvSeasonNumber, TvEpisodeNumber), UserError, List[Entry], Any] =
     getTvEpisodeBaseEndpoint(
       "getEntriesForTvEpisode",
       "This endpoint returns a list of all the entries for a specific TV episode",
-      "POST_IGDB"
     )
       .in("entries")
-      .in(JsonInputs.jsonListOfEntriesIds)
       .out(SocialOutputs.listOfEntriesOutput)
 
-  val getMediaListsForTvEpisode: PublicEndpoint[(TvShowId, TvSeasonNumber, TvEpisodeNumber, List[MediaListId]), UserError, List[MediaList], Any] =
+  val getMediaListsForTvEpisode: PublicEndpoint[(TvShowId, TvSeasonNumber, TvEpisodeNumber), UserError, List[MediaList], Any] =
     getTvEpisodeBaseEndpoint(
       "getMediaListsForTvEpisode",
       "This endpoint returns a list of all the media lists for a specific TV episode",
-      "POST_IGDB"
     )
       .in("media_lists")
-      .in(JsonInputs.jsonListOfMediaListsIds)
       .out(SocialOutputs.listOfMediaListsOutput)
 
 }

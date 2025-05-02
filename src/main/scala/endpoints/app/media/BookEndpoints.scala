@@ -13,37 +13,32 @@ import modelClasses.ids.Social.{EntryId, MediaListId}
 object BookEndpoints {
 
   private val getBookBaseEndpoint:
-    (String, String, String) => PublicEndpoint[BookId, UserError, Unit, Any] =
-    (name, description, method) => mediaBaseEndpoint(name, description, method)
+    (String, String) => PublicEndpoint[BookId, UserError, Unit, Any] =
+    (name, description) => mediaBaseEndpoint(name, description)
       .in("book")
       .in(PathInputs.pathBookId)
 
   val getBook: PublicEndpoint[BookId, UserError, Book, Any] =
     getBookBaseEndpoint(
       "getBook",
-      "This endpoint returns the book specified by the ID introduced",
-      "GET"
+      "This endpoint returns the book specified by the ID introduced"
     )
       .out(MediaOutputs.bookOutput)
 
-  val getEntriesForBook: PublicEndpoint[(BookId, List[EntryId]), UserError, List[Entry], Any] =
+  val getEntriesForBook: PublicEndpoint[BookId, UserError, List[Entry], Any] =
     getBookBaseEndpoint(
       "getEntriesForBook",
       "This endpoint returns a list of all the entries for a specific book",
-      "POST_IGDB"
     )
       .in("entries")
-      .in(JsonInputs.jsonListOfEntriesIds)
       .out(SocialOutputs.listOfEntriesOutput)
 
-  val getMediaListsForBook: PublicEndpoint[(BookId, List[MediaListId]), UserError, List[MediaList], Any] =
+  val getMediaListsForBook: PublicEndpoint[BookId, UserError, List[MediaList], Any] =
     getBookBaseEndpoint(
       "getMediaListsForBook",
       "This endpoint returns a list of all the media lists for a specific book",
-      "POST_IGDB"
     )
       .in("media_lists")
-      .in(JsonInputs.jsonListOfMediaListsIds)
       .out(SocialOutputs.listOfMediaListsOutput)
 
 }

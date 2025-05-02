@@ -13,8 +13,8 @@ import modelClasses.ids.Social.{EntryId, MediaListId}
 object MovieEndpoints {
 
   private val getMovieBaseEndpoint:
-    (String, String, String) => PublicEndpoint[MovieId, UserError, Unit, Any] =
-    (name, description, method) => mediaBaseEndpoint(name, description, method)
+    (String, String) => PublicEndpoint[MovieId, UserError, Unit, Any] =
+    (name, description) => mediaBaseEndpoint(name, description)
       .in("movie")
       .in(PathInputs.pathMovieId)
 
@@ -22,28 +22,23 @@ object MovieEndpoints {
     getMovieBaseEndpoint(
       "getMovie",
       "This endpoint returns the movie specified by the ID introduced",
-      "GET"
     )
       .out(MediaOutputs.movieOutput)
 
-  val getEntriesForMovie: PublicEndpoint[(MovieId, List[EntryId]), UserError, List[Entry], Any] =
+  val getEntriesForMovie: PublicEndpoint[MovieId, UserError, List[Entry], Any] =
     getMovieBaseEndpoint(
       "getEntriesForMovie",
       "This endpoint returns a list of all the entries for a specific movie",
-      "POST_IGDB"
     )
       .in("entries")
-      .in(JsonInputs.jsonListOfEntriesIds)
       .out(SocialOutputs.listOfEntriesOutput)
 
-  val getMediaListsForMovie: PublicEndpoint[(MovieId, List[MediaListId]), UserError, List[MediaList], Any] =
+  val getMediaListsForMovie: PublicEndpoint[MovieId, UserError, List[MediaList], Any] =
     getMovieBaseEndpoint(
       "getMediaListsForMovie",
       "This endpoint returns a list of all the media lists for a specific movie",
-      "POST_IGDB"
     )
       .in("media_lists")
-      .in(JsonInputs.jsonListOfMediaListsIds)
       .out(SocialOutputs.listOfMediaListsOutput)
 
 }
