@@ -10,8 +10,8 @@ import server.logics.commonFunctions.CommonFunctions
 
 object UserEntriesLogics {
 
-  val getUserEntries: ((UserId, Option[List[String]], Option[String])) => IO[Either[UserError, List[EntryId]]] =
-    (userId, sortByOption, filterByOption) => IO.pure {
+  val getUserEntries: UserId => IO[Either[UserError, List[EntryId]]] =
+    userId => IO.pure {
       CommonFunctions.getUser(userId) match
         case Left(error) => Left(error)
         case Right(user) => Right(user.entries)

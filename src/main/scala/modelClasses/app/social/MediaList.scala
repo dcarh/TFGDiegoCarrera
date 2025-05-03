@@ -1,6 +1,6 @@
 package modelClasses.app.social
 
-import modelClasses.ids.Media.{BookId, MovieId, TvShowId, VideogameId}
+import modelClasses.ids.Media.{BookId, MovieId, TvEpisodeNumber, TvSeasonNumber, TvShowId, VideogameId}
 import modelClasses.ids.Social.{LikeId, MediaListId, ReplyId}
 import modelClasses.ids.User.UserId
 
@@ -11,7 +11,7 @@ case class MediaList(
                       userId      : UserId,
                       title       : String,
                       description : String,
-                      mediaIds    : List[MovieId | TvShowId | VideogameId | BookId],
+                      mediaIds    : List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId],
                       visibility  : Visibility,
                       allowReplies: Boolean,
                       ranked      : Boolean,

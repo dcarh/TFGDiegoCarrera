@@ -52,9 +52,9 @@ object HttpRoutes {
       userNetworkRoutes    <+>
       userEntriesRoutes    <+>
       userLikesRoutes      <+>
-      userMediaRoutes      <+>
       userMediaListsRoutes <+>
       userRatingsRoutes    <+>
       userRepliesRoutes    <+>
-      userReviewsRoutes
+      userReviewsRoutes    <+>
+      userMediaRoutes      
 }

@@ -25,8 +25,8 @@ object MediaListsLogics {
         Left(BadRequest("The user with the ID stored in the media list already has an media list with the same ID"))
 
   private val updateUserFromMediaList: (User, MediaList) => Either[UserError, User] =
-    (user, mediaListId) =>
-      if user.mediaLists.contains(mediaListId) then
+    (user, mediaList) =>
+      if user.mediaLists.contains(mediaList.id) then
         Right(user)
 
       else

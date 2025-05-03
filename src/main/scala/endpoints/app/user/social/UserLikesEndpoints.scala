@@ -17,13 +17,11 @@ object UserLikesEndpoints {
       (name, description, method) => specificUserBaseEndpoint(name, description, method)
         .in("likes")
   
-  val getUserLikes: PublicEndpoint[(UserId, Option[List[String]], Option[String]), UserError, List[LikeId], Any] =
+  val getUserLikes: PublicEndpoint[UserId, UserError, List[LikeId], Any] =
     userLikesBaseEndpoint(
       "User's likes endpoint",
       "This endpoint returns a list of all the likes for a user",
       "GET"
     )
-      .in(QueryInputs.queryCategories)
-      .in(QueryInputs.querySortBy)
       .out(SocialOutputs.listOfLikesIdsOutput)
 }

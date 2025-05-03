@@ -15,13 +15,11 @@ object UserRatingsEndpoints {
     (name, description, method) => specificUserBaseEndpoint(name, description, method)
       .in("ratings")
 
-  val getUserRatings: PublicEndpoint[(UserId, Option[List[String]], Option[String]), UserError, List[RatingId], Any] =
+  val getUserRatings: PublicEndpoint[UserId, UserError, List[RatingId], Any] =
     userRatingsBaseEndpoint(
       "User's ratings endpoint",
       "This endpoint returns a list of all the ratings of a user",
       "GET"
     )
-      .in(QueryInputs.queryCategories)
-      .in(QueryInputs.querySortBy)
       .out(SocialOutputs.listOfRatingsIdsOutput)
 }

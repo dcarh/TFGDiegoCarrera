@@ -15,12 +15,11 @@ object UserMediaListsEndpoints {
       (name, description, method) => specificUserBaseEndpoint(name, description, method)
         .in("media_lists")
 
-  val getUserMediaLists: PublicEndpoint[(UserId, Option[String]), UserError, List[MediaListId], Any] =
+  val getUserMediaLists: PublicEndpoint[UserId, UserError, List[MediaListId], Any] =
     userMediaListsBaseEndpoint(
       "User's media lists endpoint",
       "This endpoint returns all the media lists for a user",
       "GET"
     )
-      .in(QueryInputs.querySortBy)
       .out(SocialOutputs.listOfMediaListsIdsOutput)
 }

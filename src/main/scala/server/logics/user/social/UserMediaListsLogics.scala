@@ -10,8 +10,8 @@ import server.logics.commonFunctions.CommonFunctions
 
 object UserMediaListsLogics {
   
-  val getUserMediaLists: ((UserId, Option[String])) => IO[Either[UserError, List[MediaListId]]] =
-    (userId, sortByOption) => IO.pure {
+  val getUserMediaLists: UserId => IO[Either[UserError, List[MediaListId]]] =
+    userId => IO.pure {
       CommonFunctions.getUser(userId) match
         case Left(error) => Left(error)
         case Right(user) => Right(user.mediaLists)

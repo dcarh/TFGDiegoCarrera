@@ -16,13 +16,11 @@ object UserRepliesEndpoints {
     (name, description, method) => specificUserBaseEndpoint(name, description, method)
       .in("replies")
 
-  val getUserReplies: PublicEndpoint[(UserId, Option[List[String]], Option[String]), UserError, List[ReplyId], Any] =
+  val getUserReplies: PublicEndpoint[UserId, UserError, List[ReplyId], Any] =
     userRepliesBaseEndpoint(
       "User's replies endpoint",
       "This endpoint returns all the replies made by a user",
       "GET"
     )
-      .in(QueryInputs.queryCategories)
-      .in(QueryInputs.querySortBy)
       .out(SocialOutputs.listOfRepliesIdsOutput)
 }
