@@ -10,17 +10,17 @@ import modelClasses.errors.UserError.*
 
 object Books {
 
-  val requestBookEndpoint: PublicEndpoint[BookId, UserError, RequestedBook, Any] =
+  val requestBook: PublicEndpoint[BookId, UserError, RequestedBook, Any] =
     Base.bookBaseEndpoint(
-        "Get book from Google Books",
+        "requestBook",
         "This endpoint returns a specific book from Google Books API by its ID"
       )
       .in(PathInputs.pathBookId)
       .out(jsonRequestedBookOut)
 
-  val requestBookSearchEndpoint: PublicEndpoint[(String, String, String, String), UserError, RequestedBookSearch, Any] =
+  val requestBookSearch: PublicEndpoint[(String, String, String, String), UserError, RequestedBookSearch, Any] =
     Base.bookBaseEndpoint(
-        "Get book search from Google Books",
+        "requestBookSearch",
         "This endpoint returns a list of books from Google Books API by a search query"
       )
       .in(queryQ)
@@ -29,9 +29,9 @@ object Books {
       .in(queryLangRestrict)
       .out(jsonRequestedBookSearchOut)
   
-  val searchBooksEndpoint: PublicEndpoint[(String, String), UserError, ListOfSearchedBooks, Any] =
+  val searchBooks: PublicEndpoint[(String, String), UserError, ListOfSearchedBooks, Any] =
     Base.bookBaseEndpoint(
-        "Get books search from Google Books",
+        "searchBooks",
         "This endpoint returns a list of books from Google Books API by a search query"
       )
       .in(queryQ)

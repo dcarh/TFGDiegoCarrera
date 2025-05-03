@@ -21,13 +21,13 @@ object UserMediaRoutes {
     Http4sServerInterpreter[IO]()
       .toRoutes(UserMediaEndpoints.addTvShow.serverLogic(UserMediaLogics.addTvShow))
 
-  private val addSeason: HttpRoutes[IO] =
+  private val addTvSeason: HttpRoutes[IO] =
     Http4sServerInterpreter[IO]()
-      .toRoutes(UserMediaEndpoints.addSeason.serverLogic(UserMediaLogics.addSeason))
+      .toRoutes(UserMediaEndpoints.addTvSeason.serverLogic(UserMediaLogics.addTvSeason))
 
-  private val addEpisode: HttpRoutes[IO] =
+  private val addTvEpisode: HttpRoutes[IO] =
     Http4sServerInterpreter[IO]()
-      .toRoutes(UserMediaEndpoints.addEpisode.serverLogic(UserMediaLogics.addEpisode))
+      .toRoutes(UserMediaEndpoints.addTvEpisode.serverLogic(UserMediaLogics.addTvEpisode))
 
   private val addVideogame: HttpRoutes[IO] =
     Http4sServerInterpreter[IO]()
@@ -45,13 +45,13 @@ object UserMediaRoutes {
     Http4sServerInterpreter[IO]()
       .toRoutes(UserMediaEndpoints.deleteTvShow.serverLogic(UserMediaLogics.deleteTvShow))
 
-  private val deleteSeason: HttpRoutes[IO] =
+  private val deleteTvSeason: HttpRoutes[IO] =
     Http4sServerInterpreter[IO]()
-      .toRoutes(UserMediaEndpoints.deleteSeason.serverLogic(UserMediaLogics.deleteSeason))
+      .toRoutes(UserMediaEndpoints.deleteTvSeason.serverLogic(UserMediaLogics.deleteTvSeason))
 
-  private val deleteEpisode: HttpRoutes[IO] =
+  private val deleteTvEpisode: HttpRoutes[IO] =
     Http4sServerInterpreter[IO]()
-      .toRoutes(UserMediaEndpoints.deleteEpisode.serverLogic(UserMediaLogics.deleteEpisode))
+      .toRoutes(UserMediaEndpoints.deleteTvEpisode.serverLogic(UserMediaLogics.deleteTvEpisode))
 
   private val deleteVideogame: HttpRoutes[IO] =
     Http4sServerInterpreter[IO]()
@@ -65,14 +65,14 @@ object UserMediaRoutes {
     getAllMedia       <+>
       addMovie        <+>
       addTvShow       <+>
-      addSeason       <+>
-      addEpisode      <+>
+      addTvSeason       <+>
+      addTvEpisode      <+>
       addVideogame    <+>
       addBook         <+>
       deleteMovie     <+>
       deleteTvShow    <+>
-      deleteSeason    <+>
-      deleteEpisode   <+>
+      deleteTvSeason    <+>
+      deleteTvEpisode   <+>
       deleteVideogame <+>
       deleteBook
 }

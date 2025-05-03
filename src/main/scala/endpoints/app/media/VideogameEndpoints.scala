@@ -8,7 +8,6 @@ import modelClasses.errors.UserError.*
 import modelClasses.app.media.*
 import modelClasses.app.social.{Entry, MediaList}
 import modelClasses.ids.Media.*
-import modelClasses.ids.Social.{EntryId, MediaListId}
 
 object VideogameEndpoints {
 

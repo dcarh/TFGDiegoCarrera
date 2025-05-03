@@ -15,10 +15,10 @@ object TvShowLogics {
   
   val getTvShow: TvShowId => IO[Either[UserError, TvShow]] =
     tvShowId =>
-      TMDBClient.executeRequest(TvShows.requestTvShowEndpoint, tvShowId).flatMap {
+      TMDBClient.executeRequest(TvShows.requestTvShow, tvShowId).flatMap {
         case Left(error)           => IO.pure(Left(error))
         case Right(requestedTvShow) =>
-          val similarTvShowsTmdb = TMDBClient.executeRequest(TvShows.requestedSimilarTvShowsEndpoint, tvShowId)
+          val similarTvShowsTmdb = TMDBClient.executeRequest(TvShows.requestedSimilarTvShows, tvShowId)
             .map(_.toOption.map(_.results))
             .handleError {
               case ex: Exception =>
@@ -26,7 +26,7 @@ object TvShowLogics {
                 None
             }
 
-          val recommendedTvShowsTmdb = TMDBClient.executeRequest(TvShows.requestedRecommendedTvShowsEndpoint, tvShowId)
+          val recommendedTvShowsTmdb = TMDBClient.executeRequest(TvShows.requestedRecommendedTvShows, tvShowId)
             .map(_.toOption.map(_.results))
             .handleError {
               case ex: Exception =>
@@ -34,7 +34,7 @@ object TvShowLogics {
                 None
             }
 
-          val aggregateCreditsTmdb = TMDBClient.executeRequest(TvShows.requestedAggregateCreditsForTvShowEndpoint, tvShowId)
+          val aggregateCreditsTmdb = TMDBClient.executeRequest(TvShows.requestedAggregateCreditsForTvShow, tvShowId)
             .map(_.toOption)
             .handleError {
               case ex: Exception =>

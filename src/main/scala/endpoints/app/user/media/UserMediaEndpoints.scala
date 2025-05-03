@@ -52,26 +52,26 @@ object UserMediaEndpoints {
         .in(PathInputs.pathTvShowId)
         .out(MediaOutputs.listOfAllMediaIdsOutput)
 
-  val addSeason:
+  val addTvSeason:
     PublicEndpoint[(UserId, String, TvShowId, TvSeasonNumber), UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId], Any] =
       userMediaBaseEndpoint(
-        "addSeason",
+        "addTvSeason",
         "This endpoint adds a season to a media content list from the fields of the user",
         "PUT"
       )
-        .in("add_season")
+        .in("add_tv_season")
         .in(PathInputs.pathTvShowId)
         .in(PathInputs.pathTvSeasonNumber)
         .out(MediaOutputs.listOfAllMediaIdsOutput)
 
-  val addEpisode:
+  val addTvEpisode:
     PublicEndpoint[(UserId, String, TvShowId, TvSeasonNumber, TvEpisodeNumber), UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId], Any] =
       userMediaBaseEndpoint(
-        "addEpisode",
+        "addTvEpisode",
         "This endpoint adds a episode to a media content list from the fields of the user",
         "PUT"
       )
-        .in("add_episode")
+        .in("add_tv_episode")
         .in(PathInputs.pathTvShowId)
         .in(PathInputs.pathTvSeasonNumber)
         .in(PathInputs.pathTvEpisodeNumber)
@@ -117,23 +117,23 @@ object UserMediaEndpoints {
       .in("delete_tv_show")
       .in(PathInputs.pathTvShowId)
 
-  val deleteSeason: PublicEndpoint[(UserId, String, TvShowId, TvSeasonNumber), UserError, Unit, Any] =
+  val deleteTvSeason: PublicEndpoint[(UserId, String, TvShowId, TvSeasonNumber), UserError, Unit, Any] =
     userMediaBaseEndpoint(
-      "deleteSeason",
+      "deleteTvSeason",
       "This endpoint deletes a season from a media content list from the fields of the user",
       "DELETE"
     )
-      .in("delete_season")
+      .in("delete_tv_season")
       .in(PathInputs.pathTvShowId)
       .in(PathInputs.pathTvSeasonNumber)
 
-  val deleteEpisode: PublicEndpoint[(UserId, String, TvShowId, TvSeasonNumber, TvEpisodeNumber), UserError, Unit, Any] =
+  val deleteTvEpisode: PublicEndpoint[(UserId, String, TvShowId, TvSeasonNumber, TvEpisodeNumber), UserError, Unit, Any] =
     userMediaBaseEndpoint(
-      "deleteEpisode",
+      "deleteTvEpisode",
       "This endpoint deletes a episode from a media content list from the fields of the user",
       "DELETE"
     )
-      .in("delete_episode")
+      .in("delete_tv_episode")
       .in(PathInputs.pathTvShowId)
       .in(PathInputs.pathTvSeasonNumber)
       .in(PathInputs.pathTvEpisodeNumber)

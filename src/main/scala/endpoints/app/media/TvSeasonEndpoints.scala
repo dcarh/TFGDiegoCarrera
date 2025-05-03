@@ -8,7 +8,6 @@ import modelClasses.errors.UserError.*
 import modelClasses.app.media.*
 import modelClasses.app.social.{Entry, MediaList}
 import modelClasses.ids.Media.*
-import modelClasses.ids.Social.{EntryId, MediaListId}
 
 object TvSeasonEndpoints {
 
@@ -20,7 +19,7 @@ object TvSeasonEndpoints {
 
   val getTvSeason: PublicEndpoint[(TvShowId, TvSeasonNumber), UserError, TvSeason, Any] =
     getTvSeasonBaseEndpoint(
-      "getSeason",
+      "getTvSeason",
       "This endpoint returns the season specified by the ID introduced",
     )
       .out(MediaOutputs.seasonOutput)

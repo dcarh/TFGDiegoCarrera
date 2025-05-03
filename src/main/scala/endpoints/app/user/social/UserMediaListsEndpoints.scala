@@ -2,7 +2,6 @@ package endpoints.app.user.social
 
 import sttp.tapir.*
 import endpoints.app.user.UserEndpointsUtils.specificUserBaseEndpoint
-import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
 import modelClasses.errors.UserError.*
 import modelClasses.ids.Social.MediaListId
@@ -17,7 +16,7 @@ object UserMediaListsEndpoints {
 
   val getUserMediaLists: PublicEndpoint[UserId, UserError, List[MediaListId], Any] =
     userMediaListsBaseEndpoint(
-      "User's media lists endpoint",
+      "getUserMediaLists",
       "This endpoint returns all the media lists for a user",
       "GET"
     )

@@ -10,48 +10,48 @@ import modelClasses.tmdb.Common.{Credits, Results}
 
 object TvShows {
 
-  val searchTvShowsEndpoint: PublicEndpoint[(String, String), UserError, Results, Any] =
+  val searchTvShows: PublicEndpoint[(String, String), UserError, Results, Any] =
     Base.searchBaseEndpoint(
-        "Search TV shows in TMDB",
+        "searchTvShows",
         "This endpoint returns a list of movies from TMDB API by their title"
       )
       .in("tv")
       .out(jsonResultsOut)
   
-  val requestTvShowEndpoint: PublicEndpoint[(String, TvShowId), UserError, RequestedTvShow, Any] =
+  val requestTvShow: PublicEndpoint[(String, TvShowId), UserError, RequestedTvShow, Any] =
     Base.tvShowBaseEndpoint(
-        "Get TV Show from TMDB", 
+        "requestTvShow", 
         "This endpoint returns a specific TV Show from TMDB API by its ID"
       )
       .out(jsonRequestedTvShowOut)
 
-  val requestedSimilarTvShowsEndpoint: PublicEndpoint[(String, TvShowId), UserError, Results, Any] =
+  val requestedSimilarTvShows: PublicEndpoint[(String, TvShowId), UserError, Results, Any] =
     Base.tvShowBaseEndpoint(
-        "Get similar TV shows from TMDB", 
+        "requestedSimilarTvShows", 
         "This endpoint returns a list of similar TV shows to a show specified by its ID from TMDB API"
       )
       .in("similar")
       .out(jsonResultsOut)
 
-  val requestedRecommendedTvShowsEndpoint: PublicEndpoint[(String, TvShowId), UserError, Results, Any] =
+  val requestedRecommendedTvShows: PublicEndpoint[(String, TvShowId), UserError, Results, Any] =
     Base.tvShowBaseEndpoint(
-        "Get recommended TV shows from TMDB", 
+        "requestedRecommendedTvShows", 
         "This endpoint returns a list of recommended TV shows by a show specified by its ID from TMDB API"
       )
       .in("recommendations")
       .out(jsonResultsOut)
 
-  val requestedCreditsForTvShowEndpoint: PublicEndpoint[(String, TvShowId), UserError, Credits, Any] =
+  val requestedCreditsForTvShow: PublicEndpoint[(String, TvShowId), UserError, Credits, Any] =
     Base.tvShowBaseEndpoint(
-        "Get credits for a TV show from TMDB",
+        "requestedCreditsForTvShow",
         "This endpoint returns the credits of a TV show specified by its ID from TMDB API"
       )
       .in("credits")
       .out(jsonCreditsOut)
 
-  val requestedAggregateCreditsForTvShowEndpoint: PublicEndpoint[(String, TvShowId), UserError, Credits, Any] =
+  val requestedAggregateCreditsForTvShow: PublicEndpoint[(String, TvShowId), UserError, Credits, Any] =
     Base.tvShowBaseEndpoint(
-        "Get aggregate credits for a TV show from TMDB",
+        "requestedAggregateCreditsForTvShow",
         "This endpoint returns the aggregate credits of a TV show specified by its ID from TMDB API"
       )
       .in("aggregate_credits")

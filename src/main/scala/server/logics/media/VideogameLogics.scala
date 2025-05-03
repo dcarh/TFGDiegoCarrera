@@ -16,7 +16,7 @@ object VideogameLogics {
 
   val getVideogame: VideogameId => IO[Either[UserError, Videogame]] =
     videogameId =>
-      IGDBClient.executeRequest(Videogames.requestVideogameAllFieldsEndpoint, videogameId).flatMap {
+      IGDBClient.executeRequest(Videogames.requestVideogameAllFields, videogameId).flatMap {
         case Right(requestedListOfVideogames: List[VideogameAllFields]) =>
           requestedListOfVideogames match
             case head :: tail =>

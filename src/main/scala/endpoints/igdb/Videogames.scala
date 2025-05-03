@@ -7,18 +7,18 @@ import modelClasses.errors.UserError.*
 
 object Videogames {
 
-  val requestVideogameEndpoint: PublicEndpoint[(String, String, String, String), UserError, List[RequestedVideogame], Any] =
+  val requestVideogame: PublicEndpoint[(String, String, String, String), UserError, List[RequestedVideogame], Any] =
     Base.igdbBaseEndpoint(
-        "requestVideogameEndpoint",
+        "requestVideogame",
         "This endpoint returns a list of videogames from IGDB API, whether we want a specific videogame by its ID " +
           "or a list of videogames that meet a certain criteria",
         "games"
       )
       .out(jsonListRequestedVideogameOut)
 
-  val requestVideogameAllFieldsEndpoint: PublicEndpoint[(String, String, String, String), UserError, List[VideogameAllFields], Any] =
+  val requestVideogameAllFields: PublicEndpoint[(String, String, String, String), UserError, List[VideogameAllFields], Any] =
     Base.igdbBaseEndpoint(
-        "requestVideogameAllFieldsEndpoint",
+        "requestVideogameAllFields",
         "This endpoint returns a list of videogames from IGDB API, whether we want a specific videogame by its ID " +
           "or a list of videogames that meet a certain criteria",
         "games"

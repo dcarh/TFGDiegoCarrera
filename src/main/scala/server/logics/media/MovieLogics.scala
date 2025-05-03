@@ -16,10 +16,10 @@ object MovieLogics {
 
   val getMovie: MovieId => IO[Either[UserError, Movie]] = 
     movieId =>
-      TMDBClient.executeRequest(Movies.requestMovieEndpoint, movieId).flatMap {
+      TMDBClient.executeRequest(Movies.requestMovie, movieId).flatMap {
         case Left(error)           => IO.pure(Left(error))
         case Right(requestedMovie) =>
-          val similarMoviesTmdb = TMDBClient.executeRequest(Movies.requestedSimilarMoviesEndpoint, movieId)
+          val similarMoviesTmdb = TMDBClient.executeRequest(Movies.requestedSimilarMovies, movieId)
             .map(_.toOption.map(_.results))
             .handleError {
               case ex: Exception =>
@@ -27,7 +27,7 @@ object MovieLogics {
                 None
             }
 
-          val recommendedMoviesTmdb = TMDBClient.executeRequest(Movies.requestedRecommendedMoviesEndpoint, movieId)
+          val recommendedMoviesTmdb = TMDBClient.executeRequest(Movies.requestedRecommendedMovies, movieId)
             .map(_.toOption.map(_.results))
             .handleError {
               case ex: Exception =>
@@ -35,7 +35,7 @@ object MovieLogics {
                 None
             }
 
-          val creditsTmdb = TMDBClient.executeRequest(Movies.requestedCreditsForMovieEndpoint, movieId)
+          val creditsTmdb = TMDBClient.executeRequest(Movies.requestedCreditsForMovie, movieId)
             .map(_.toOption)
             .handleError {
               case ex: Exception =>

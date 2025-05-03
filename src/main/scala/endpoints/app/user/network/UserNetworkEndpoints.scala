@@ -9,10 +9,6 @@ import modelClasses.ids.User.UserId
 
 object UserNetworkEndpoints {
 
-//  private val userNetworkBaseEndpoint:
-//    (String, String, String) => PublicEndpoint[UserId, UserError, Unit, Any] =
-//      (name, description, method) => userBaseEndpoint(name, description, method)
-
   val getFollowers: PublicEndpoint[UserId, UserError, List[UserId], Any] =
     specificUserBaseEndpoint(
       "getFollowers",

@@ -19,7 +19,7 @@ object SearchLogics {
 
   val searchMovie: ((String, Option[String])) => IO[Either[UserError, List[Result]]] =
     (title, sortByOption) =>
-      TMDBClient.executeRequest(Movies.searchMoviesEndpoint, title).flatMap {
+      TMDBClient.executeRequest(Movies.searchMovies, title).flatMap {
         case Right(results: Results) =>
           val listOfMovies = results.results
 
@@ -44,7 +44,7 @@ object SearchLogics {
 
   val searchTvShow: ((String, Option[String])) => IO[Either[UserError, List[Result]]] =
     (title, sortByOption) =>
-      TMDBClient.executeRequest(TvShows.searchTvShowsEndpoint, title).flatMap {
+      TMDBClient.executeRequest(TvShows.searchTvShows, title).flatMap {
         case Right(results: Results) =>
           val listOfTvShows = results.results
           
@@ -68,7 +68,7 @@ object SearchLogics {
 
   val searchVideogame: ((String, Option[String])) => IO[Either[UserError, List[VideogameAllFields]]] =
     (title, sortByOption) =>
-      IGDBClient.executeRequest(Videogames.requestVideogameAllFieldsEndpoint, title).flatMap {
+      IGDBClient.executeRequest(Videogames.requestVideogameAllFields, title).flatMap {
         case Right(listOfRequestedVideogames: List[VideogameAllFields]) =>
 
           val sortedVideogames = sortByOption match {
@@ -88,7 +88,7 @@ object SearchLogics {
 
   val searchBook: ((String, Option[String])) => IO[Either[UserError, List[SearchedBook]]] =
     (title, sortByOption) =>
-      GoogleBooksClient.executeRequest(Books.searchBooksEndpoint, (title, "lite")).flatMap {
+      GoogleBooksClient.executeRequest(Books.searchBooks, (title, "lite")).flatMap {
         case Right(listOfSearchedBooks: ListOfSearchedBooks) =>
           val listOfBooks = listOfSearchedBooks.items
 

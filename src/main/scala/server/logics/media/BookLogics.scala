@@ -16,7 +16,7 @@ object BookLogics {
 
   val getBook: BookId => IO[Either[UserError, Book]] =
     bookId =>
-      GoogleBooksClient.executeRequest(Books.requestBookEndpoint, bookId).flatMap {
+      GoogleBooksClient.executeRequest(Books.requestBook, bookId).flatMap {
         case Right(requestedBook: RequestedBook) =>
           val metrics = getMetricsForMedia(bookId)
           

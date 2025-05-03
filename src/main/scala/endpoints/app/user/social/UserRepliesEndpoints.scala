@@ -2,10 +2,8 @@ package endpoints.app.user.social
 
 import sttp.tapir.*
 import endpoints.app.user.UserEndpointsUtils.specificUserBaseEndpoint
-import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
 import modelClasses.errors.UserError.*
-import modelClasses.app.social.Reply
 import modelClasses.ids.Social.ReplyId
 import modelClasses.ids.User.UserId
 
@@ -18,7 +16,7 @@ object UserRepliesEndpoints {
 
   val getUserReplies: PublicEndpoint[UserId, UserError, List[ReplyId], Any] =
     userRepliesBaseEndpoint(
-      "User's replies endpoint",
+      "getUserReplies",
       "This endpoint returns all the replies made by a user",
       "GET"
     )

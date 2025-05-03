@@ -1,7 +1,6 @@
 package endpoints.app.user.social
 
 import endpoints.app.user.UserEndpointsUtils.specificUserBaseEndpoint
-import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
 import modelClasses.errors.UserError.*
 import modelClasses.ids.Social.RatingId
@@ -17,7 +16,7 @@ object UserRatingsEndpoints {
 
   val getUserRatings: PublicEndpoint[UserId, UserError, List[RatingId], Any] =
     userRatingsBaseEndpoint(
-      "User's ratings endpoint",
+      "getUserRatings",
       "This endpoint returns a list of all the ratings of a user",
       "GET"
     )

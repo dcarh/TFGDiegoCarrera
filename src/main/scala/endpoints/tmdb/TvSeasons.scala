@@ -10,24 +10,24 @@ import modelClasses.tmdb.Common.Credits
 
 object TvSeasons {
 
-  val requestTvSeasonEndpoint: PublicEndpoint[(String, TvShowId, TvSeasonNumber), UserError, RequestedTvSeason, Any] =
+  val requestTvSeason: PublicEndpoint[(String, TvShowId, TvSeasonNumber), UserError, RequestedTvSeason, Any] =
     Base.tvSeasonBaseEndpoint(
-        "Get TV show season from TMDB", 
+        "requestTvSeason", 
         "This endpoint returns a specific TV show season from TMDB API by its ID"
       )
       .out(jsonRequestedTvSeasonOut)
 
-  val requestedCreditsForTvSeasonEndpoint: PublicEndpoint[(String, TvShowId, TvSeasonNumber), UserError, Credits, Any] =
+  val requestedCreditsForTvSeason: PublicEndpoint[(String, TvShowId, TvSeasonNumber), UserError, Credits, Any] =
     Base.tvSeasonBaseEndpoint(
-        "Get credits for a TV show season from TMDB",
+        "requestedCreditsForTvSeason",
         "This endpoint returns the credits of a TV show season specified by its ID from TMDB API"
       )
       .in("credits")
       .out(jsonCreditsOut)
 
-  val requestedAggregateCreditsForTvSeasonEndpoint: PublicEndpoint[(String, TvShowId, TvSeasonNumber), UserError, Credits, Any] =
+  val requestedAggregateCreditsForTvSeason: PublicEndpoint[(String, TvShowId, TvSeasonNumber), UserError, Credits, Any] =
     Base.tvSeasonBaseEndpoint(
-        "Get aggregate credits for a TV show season from TMDB",
+        "requestedAggregateCreditsForTvSeason",
         "This endpoint returns the aggregate credits of a TV show season specified by its ID from TMDB API"
       )
       .in("aggregate_credits")

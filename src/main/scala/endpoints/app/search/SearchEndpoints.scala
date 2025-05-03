@@ -4,14 +4,13 @@ import endpoints.EndpointsUtils.httpMethodEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
 import endpoints.outputs.IGDB.*
-import modelClasses.app.media.{Book, Movie, TvShow, Videogame}
 import modelClasses.app.social.MediaList
 import modelClasses.app.user.User
 import modelClasses.errors.UserError.*
-import modelClasses.tmdb.Common.{Result, Results}
-import endpoints.outputs.TMDB.{jsonListOfResultOut, jsonResultsOut}
-import endpoints.outputs.GoogleBooks.{jsonSearchedBookListOut, listOfSearchedBooks}
-import modelClasses.googleBooks.BooksRequests.{ListOfSearchedBooks, SearchedBook}
+import modelClasses.tmdb.Common.Result
+import endpoints.outputs.TMDB.jsonListOfResultOut
+import endpoints.outputs.GoogleBooks.jsonSearchedBookListOut
+import modelClasses.googleBooks.BooksRequests.SearchedBook
 import modelClasses.igdb.VideogameRequests.VideogameAllFields
 import sttp.tapir.*
 

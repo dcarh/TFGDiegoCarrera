@@ -47,7 +47,7 @@ object UserMediaLogics {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-  val addSeason:
+  val addTvSeason:
     ((UserId, String, TvShowId, TvSeasonNumber)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]]] =
     (userId, field, tvShowId, seasonNumber) => IO.pure {
       addMedia(userId, field, (tvShowId, seasonNumber)) match
@@ -58,7 +58,7 @@ object UserMediaLogics {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-  val addEpisode:
+  val addTvEpisode:
     ((UserId, String, TvShowId, TvSeasonNumber, TvEpisodeNumber)) => IO[Either[UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId]]] =
     (userId, field, tvShowId, seasonNumber, episodeNumber) => IO.pure {
       addMedia(userId, field, (tvShowId, seasonNumber, episodeNumber)) match
@@ -105,14 +105,14 @@ object UserMediaLogics {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-  val deleteSeason: ((UserId, String, TvShowId, TvSeasonNumber)) => IO[Either[UserError, Unit]] =
+  val deleteTvSeason: ((UserId, String, TvShowId, TvSeasonNumber)) => IO[Either[UserError, Unit]] =
     (userId, field, tvShowId, seasonNumber) => IO.pure {
       deleteMedia(userId, field, (tvShowId, seasonNumber))
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
     }
 
-  val deleteEpisode: ((UserId, String, TvShowId, TvSeasonNumber, TvEpisodeNumber)) => IO[Either[UserError, Unit]] =
+  val deleteTvEpisode: ((UserId, String, TvShowId, TvSeasonNumber, TvEpisodeNumber)) => IO[Either[UserError, Unit]] =
     (userId, field, tvShowId, seasonNumber, episodeNumber) => IO.pure {
       deleteMedia(userId, field, (tvShowId, seasonNumber, episodeNumber))
     }.handleError {
