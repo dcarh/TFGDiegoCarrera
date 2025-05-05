@@ -59,7 +59,7 @@ object TvEpisodeLogics {
 
   val getMediaListsForTvEpisode: ((TvShowId, TvSeasonNumber, TvEpisodeNumber)) => IO[Either[UserError, List[MediaList]]] =
     (tvShowId, tvSeasonNumber, tvEpisodeNumber) =>
-      val mediaLists = MediaListRepository.getAll.filter(_.mediaIds.contains((tvShowId, tvSeasonNumber, tvEpisodeNumber)))  // TODO: ¿Decidir si quiero que haya seasons en MediaLists?
+      val mediaLists = MediaListRepository.getAll.filter(_.mediaIds.contains((tvShowId, tvSeasonNumber, tvEpisodeNumber)))
 
       if (mediaLists.nonEmpty)
         IO.pure(Right(mediaLists))
