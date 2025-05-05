@@ -106,25 +106,18 @@ object ReviewsLogics {
     }
 
   val editReview: ((ReviewId, Review)) => IO[Either[UserError, Review]] =
-    (reviewId, updatedReviewData) => IO.pure {
-      CommonFunctions.getReview(reviewId) match
-        case Left(error)           => Left(error)
-        case Right(existingReview) =>
-          CommonFunctions.getUserAndApply(existingReview.userId)(existingReview, updateUserFromReview) match
-            case Left(error)  => Left(error)
-            case Right(value) =>
-              val updatedReview = existingReview.copy(
-                id              = updatedReviewData.id,
-                userId          = updatedReviewData.userId,
-                mediaReviewedId = updatedReviewData.mediaReviewedId,
-                review          = updatedReviewData.review,
-                likes           = updatedReviewData.likes,
-                allowReplies    = updatedReviewData.allowReplies,
-                replies         = updatedReviewData.replies,
-                spoilers        = updatedReviewData.spoilers
-              )
-              ReviewRepository.put(reviewId, updatedReview)
-              Right(updatedReview)
+    (reviewId, updatedReview) => IO.pure {
+      if (reviewId.value != updatedReview.id.value)
+        Left(BadRequest("Review ID in path and updated review ID did not match"))
+      else
+        CommonFunctions.getReview(reviewId) match
+          case Left(error)           => Left(error)
+          case Right(existingReview) =>
+            CommonFunctions.getUserAndApply(existingReview.userId)(existingReview, updateUserFromReview) match
+              case Left(error)  => Left(error)
+              case Right(value) =>
+                ReviewRepository.put(reviewId, updatedReview)
+                Right(updatedReview)
       
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
