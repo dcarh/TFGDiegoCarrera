@@ -13,7 +13,7 @@ object Books {
   val requestBook: PublicEndpoint[BookId, UserError, RequestedBook, Any] =
     Base.bookBaseEndpoint(
         "requestBook",
-        "This endpoint returns a specific book from Google Books API by its ID"
+        "This endpoint returns a book from Google Books API by its ID"
       )
       .in(PathInputs.pathBookId)
       .out(jsonRequestedBookOut)

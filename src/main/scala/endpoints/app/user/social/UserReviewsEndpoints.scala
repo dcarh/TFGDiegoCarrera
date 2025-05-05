@@ -17,7 +17,7 @@ object UserReviewsEndpoints {
   val getUserReviews: PublicEndpoint[UserId, UserError, List[ReviewId], Any] =
     userReviewsBaseEndpoint(
       "getUserReviews",
-      "This endpoint returns a list of all the reviews written by a user",
+      "This endpoint returns all the reviews written by a user",
       "GET"
     )
       .out(SocialOutputs.listOfReviewsIdsOutput)

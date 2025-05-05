@@ -19,7 +19,7 @@ object UserEndpoints {
   val getAllUsers: PublicEndpoint[Option[String], UserError, List[User], Any] =
     usersBaseEndpoint(
       "getAllUsers",
-      "This endpoint returns a list of all the users in the app",
+      "This endpoint returns all the users in the app",
       "GET"
     )
       .in(QueryInputs.querySortBy)
@@ -28,7 +28,7 @@ object UserEndpoints {
   val getUser: PublicEndpoint[UserId, UserError, User, Any] =
     specificUserBaseEndpoint(
       "getUser",
-      "This endpoint returns the user specified by its ID",
+      "This endpoint returns a user by its ID",
       "GET"
     )
       .out(UserOutputs.userOutput)
@@ -44,7 +44,7 @@ object UserEndpoints {
   val createUser: PublicEndpoint[(UserId, UserProfile), UserError, User, Any] =
     userBaseEndpoint(
       "createUser",
-      "This endpoint creates a user and returns it in case of success",
+      "This endpoint creates a user",
       "POST"
     )
       .in(PathInputs.pathUserId)
@@ -55,7 +55,7 @@ object UserEndpoints {
   val editUser: PublicEndpoint[(UserId, UserProfile), UserError, User, Any] =
     specificUserBaseEndpoint(
       "editUser" ,
-      "This endpoint allows the editing of the profile of a user",
+      "This endpoint allows editing the profile of a user",
       "PUT"
     )
       .in("edit")
@@ -65,7 +65,7 @@ object UserEndpoints {
   val deleteUser: PublicEndpoint[UserId, UserError, Unit, Any] =
     specificUserBaseEndpoint(
       "deleteUser",
-      "This endpoint deletes a user and returns it in case of success",
+      "This endpoint deletes a user",
       "DELETE"
     )
       .in("delete")

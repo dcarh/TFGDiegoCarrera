@@ -21,14 +21,14 @@ object TvShows {
   val requestTvShow: PublicEndpoint[(String, TvShowId), UserError, RequestedTvShow, Any] =
     Base.tvShowBaseEndpoint(
         "requestTvShow", 
-        "This endpoint returns a specific TV Show from TMDB API by its ID"
+        "This endpoint returns a TV show from TMDB API by its ID"
       )
       .out(jsonRequestedTvShowOut)
 
   val requestedSimilarTvShows: PublicEndpoint[(String, TvShowId), UserError, Results, Any] =
     Base.tvShowBaseEndpoint(
         "requestedSimilarTvShows", 
-        "This endpoint returns a list of similar TV shows to a show specified by its ID from TMDB API"
+        "This endpoint returns a list of TV shows similar to the show specified by its ID from TMDB API"
       )
       .in("similar")
       .out(jsonResultsOut)
@@ -36,7 +36,7 @@ object TvShows {
   val requestedRecommendedTvShows: PublicEndpoint[(String, TvShowId), UserError, Results, Any] =
     Base.tvShowBaseEndpoint(
         "requestedRecommendedTvShows", 
-        "This endpoint returns a list of recommended TV shows by a show specified by its ID from TMDB API"
+        "This endpoint returns a list of recommended TV shows if you liked the TV show specified by its ID"
       )
       .in("recommendations")
       .out(jsonResultsOut)

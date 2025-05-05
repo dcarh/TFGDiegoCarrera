@@ -17,7 +17,7 @@ object UserEntriesEndpoints {
   val getUserEntries: PublicEndpoint[UserId, UserError, List[EntryId], Any] =
     userEntriesBaseEndpoint(
       "getUserEntries",
-      "This endpoint returns all the entries for a user",
+      "This endpoint returns all the entries of a user",
       "GET"
     )
       .out(SocialOutputs.listOfEntriesIdsOutput)

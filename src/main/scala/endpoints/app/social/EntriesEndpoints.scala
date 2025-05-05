@@ -32,7 +32,7 @@ object EntriesEndpoints {
   val getEntry: PublicEndpoint[EntryId, UserError, Entry, Any] =
     entryBaseEndpoint(
       "getEntry", 
-      "This endpoint returns a specific entry by its Id",
+      "This endpoint returns an entry by its Id",
       "GET"
     )
       .in(PathInputs.pathEntryId)
@@ -41,7 +41,7 @@ object EntriesEndpoints {
   val createEntry: PublicEndpoint[Entry, UserError, Entry, Any] =
     entryBaseEndpoint(
       "createEntry",
-      "This endpoint creates a entry of elements and returns it in case of success",
+      "This endpoint creates an entry",
       "POST"
     )
       .in("create")
@@ -51,7 +51,7 @@ object EntriesEndpoints {
   val editEntry: PublicEndpoint[(EntryId, Entry), UserError, Entry, Any] =
     entryBaseEndpoint(
       "editEntry",
-      "This endpoint allows to edit a entry and returns it in case of success. Otherwise returns an error message",
+      "This endpoint edits an entry",
       "PUT"
     )
       .in(PathInputs.pathEntryId)
@@ -62,7 +62,7 @@ object EntriesEndpoints {
   val deleteEntry: PublicEndpoint[EntryId, UserError, Unit, Any] =
     entryBaseEndpoint(
       "deleteEntry",
-      "This endpoint deletes a entry and returns it in case of success",
+      "This endpoint deletes an entry",
       "DELETE"
     )
       .in(PathInputs.pathEntryId)

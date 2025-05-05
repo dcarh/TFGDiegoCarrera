@@ -20,14 +20,14 @@ object BookEndpoints {
   val getBook: PublicEndpoint[BookId, UserError, Book, Any] =
     getBookBaseEndpoint(
       "getBook",
-      "This endpoint returns the book specified by the ID introduced"
+      "This endpoint returns a book by its ID"
     )
       .out(MediaOutputs.bookOutput)
 
   val getEntriesForBook: PublicEndpoint[BookId, UserError, List[Entry], Any] =
     getBookBaseEndpoint(
       "getEntriesForBook",
-      "This endpoint returns a list of all the entries for a specific book",
+      "This endpoint returns a list of all the entries for a book",
     )
       .in("entries")
       .out(SocialOutputs.listOfEntriesOutput)
@@ -35,7 +35,7 @@ object BookEndpoints {
   val getMediaListsForBook: PublicEndpoint[BookId, UserError, List[MediaList], Any] =
     getBookBaseEndpoint(
       "getMediaListsForBook",
-      "This endpoint returns a list of all the media lists for a specific book",
+      "This endpoint returns a list of all the media lists for a book",
     )
       .in("media_lists")
       .out(SocialOutputs.listOfMediaListsOutput)

@@ -23,7 +23,7 @@ object MediaListsEndpoints {
   val getAllMediaLists: PublicEndpoint[Option[String], UserError, List[MediaList], Any] =
     mediaListsBaseEndpoint(
       "getAllMediaLists", 
-      "This endpoint returns a list with all the media content lists in the app",
+      "This endpoint returns a list with all the media lists in the app",
       "GET"
     )
       .in(QueryInputs.querySortBy)
@@ -32,7 +32,7 @@ object MediaListsEndpoints {
   val getMediaList: PublicEndpoint[MediaListId, UserError, MediaList, Any] =
     mediaListBaseEndpoint(
       "getMediaList", 
-      "This endpoint returns a specific media content list by its ID",
+      "This endpoint returns a media list by its ID",
       "GET"
     )
       .in(PathInputs.pathListId)
@@ -41,7 +41,7 @@ object MediaListsEndpoints {
   val createMediaList: PublicEndpoint[MediaList, UserError, MediaList, Any] =
     mediaListBaseEndpoint(
       "createMediaList", 
-      "This endpoint creates a media content list and returns it in case of success",
+      "This endpoint creates a media list",
       "POST"
     )
       .in("create")
@@ -51,7 +51,7 @@ object MediaListsEndpoints {
   val editMediaList: PublicEndpoint[(MediaListId, MediaList), UserError, MediaList, Any] =
     mediaListBaseEndpoint(
       "editMediaList", 
-      "This endpoint allows to edit a media content list and returns it in case of success. Otherwise returns an error message",
+      "This endpoint edits a media list",
       "PUT"
     )
       .in(PathInputs.pathListId)
@@ -62,7 +62,7 @@ object MediaListsEndpoints {
   val deleteMediaList: PublicEndpoint[MediaListId, UserError, Unit, Any] =
     mediaListBaseEndpoint(
       "deleteMediaList",
-      "This endpoint deletes a media content list and returns it in case of success",
+      "This endpoint deletes a media list",
       "DELETE"
     )
       .in(PathInputs.pathListId)

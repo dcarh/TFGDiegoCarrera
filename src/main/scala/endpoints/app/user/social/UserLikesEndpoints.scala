@@ -17,7 +17,7 @@ object UserLikesEndpoints {
   val getUserLikes: PublicEndpoint[UserId, UserError, List[LikeId], Any] =
     userLikesBaseEndpoint(
       "getUserLikes",
-      "This endpoint returns a list of all the likes for a user",
+      "This endpoint returns all the likes of a user",
       "GET"
     )
       .out(SocialOutputs.listOfLikesIdsOutput)

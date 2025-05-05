@@ -36,7 +36,7 @@ object ChattingEndpoints {
   val getChats: PublicEndpoint[(UserId, Option[Boolean]), UserError, List[ChatId], Any] =
     chatsBaseEndpoint(
       "getChats",
-      "This endpoint returns a list containing the IDs of the chats of the user",
+      "This endpoint returns a list of the user's chat IDs",
       "GET"
     )
       .in(QueryInputs.queryArchived)
@@ -70,7 +70,7 @@ object ChattingEndpoints {
   val getChatMessages: PublicEndpoint[(UserId, ChatId), UserError, List[MessageId], Any] =
     messagesBaseEndpoint(
       "getChatMessages",
-      "This endpoint returns a list containing the IDs of a chat of the user",
+      "This endpoint returns a list of the messages IDs of a user's chat",
       "GET"
     )
       .out(ChattingOutputs.listOfMessagesIdsOutput)
@@ -78,7 +78,7 @@ object ChattingEndpoints {
   val getMessage: PublicEndpoint[(UserId, ChatId, MessageId), UserError, Message, Any] =
     messageBaseEndpoint(
       "getMessage",
-      "This endpoint returns a specific message by its ID",
+      "This endpoint returns a specific message of a user's chat by its ID",
       "GET"
     )
       .out(ChattingOutputs.messageOutput)
@@ -97,7 +97,7 @@ object ChattingEndpoints {
   val deleteMessage: PublicEndpoint[(UserId, ChatId, MessageId), UserError, Unit, Any] =
     messageBaseEndpoint(
       "deleteMessage",
-      "This endpoint deletes a specific message by its Id",
+      "This endpoint deletes a specific message of a user's chat by its Id",
       "DELETE"
     )
       .in("delete")

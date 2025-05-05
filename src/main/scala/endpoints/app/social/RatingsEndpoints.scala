@@ -17,7 +17,7 @@ object RatingsEndpoints {
   val getRating: PublicEndpoint[RatingId, UserError, Rating, Any] =
     ratingBaseEndpoint(
       "getRating",
-      "This endpoint returns a specific rating by its Id",
+      "This endpoint returns a rating by its Id",
       "GET"
     )
       .in(PathInputs.pathRatingId)
@@ -26,7 +26,7 @@ object RatingsEndpoints {
   val createRating: PublicEndpoint[Rating, UserError, Rating, Any] =
     ratingBaseEndpoint(
       "createRating",
-      "This endpoint creates a rating and returns it in case of success",
+      "This endpoint creates a rating",
       "POST"
     )
       .in("create")
@@ -36,7 +36,7 @@ object RatingsEndpoints {
   val editRating: PublicEndpoint[(RatingId, Rating), UserError, Rating, Any] =
     ratingBaseEndpoint(
       "editRating",
-      "This endpoint allows to edit a rating and returns it in case of success. Otherwise returns an error message",
+      "This endpoint edits a rating",
       "PUT"
     )
       .in(PathInputs.pathRatingId)
@@ -47,7 +47,7 @@ object RatingsEndpoints {
   val deleteRating: PublicEndpoint[RatingId, UserError, Unit, Any] =
     ratingBaseEndpoint(
       "deleteRating",
-      "This endpoint deletes a rating returns it in case of success",
+      "This endpoint deletes a rating",
       "DELETE"
     )
       .in(PathInputs.pathRatingId)

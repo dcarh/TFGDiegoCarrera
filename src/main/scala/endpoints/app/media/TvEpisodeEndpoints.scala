@@ -20,14 +20,14 @@ object TvEpisodeEndpoints {
   val getTvEpisode: PublicEndpoint[(TvShowId, TvSeasonNumber, TvEpisodeNumber), UserError, TvEpisode, Any] =
     getTvEpisodeBaseEndpoint(
       "getTvEpisode",
-      "This endpoint returns the episode specified by the ID introduced",
+      "This endpoint returns a TV episode by its ID",
     )
       .out(MediaOutputs.episodeOutput)
 
   val getEntriesForTvEpisode: PublicEndpoint[(TvShowId, TvSeasonNumber, TvEpisodeNumber), UserError, List[Entry], Any] =
     getTvEpisodeBaseEndpoint(
       "getEntriesForTvEpisode",
-      "This endpoint returns a list of all the entries for a specific TV episode",
+      "This endpoint returns a list of all the entries for a TV episode",
     )
       .in("entries")
       .out(SocialOutputs.listOfEntriesOutput)
@@ -35,7 +35,7 @@ object TvEpisodeEndpoints {
   val getMediaListsForTvEpisode: PublicEndpoint[(TvShowId, TvSeasonNumber, TvEpisodeNumber), UserError, List[MediaList], Any] =
     getTvEpisodeBaseEndpoint(
       "getMediaListsForTvEpisode",
-      "This endpoint returns a list of all the media lists for a specific TV episode",
+      "This endpoint returns a list of all the media lists for a TV episode",
     )
       .in("media_lists")
       .out(SocialOutputs.listOfMediaListsOutput)

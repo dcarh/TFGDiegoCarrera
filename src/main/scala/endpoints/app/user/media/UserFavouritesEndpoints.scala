@@ -19,7 +19,7 @@ object UserFavouritesEndpoints {
   val getFavourites: PublicEndpoint[UserId, UserError, UserFavourites, Any] =
     userFavouritesBaseEndpoint(
       "getFavourites",
-      "This endpoint returns the favourite media content (one movie, one TV show, one videogame, one book) for a user",
+      "This endpoint returns the favourite media (one movie, one TV show, one videogame, one book) of a user",
       "GET"
     )
       .out(MediaOutputs.favouritesOutput)
@@ -47,7 +47,7 @@ object UserFavouritesEndpoints {
   val addFavouriteVideogame: PublicEndpoint[(UserId, VideogameId), UserError, UserFavourites, Any] =
     userFavouritesBaseEndpoint(
       "addFavouriteVideogame",
-      "This endpoint adds a videogame to the list of all the 'Favourites' of a user",
+      "This endpoint adds a videogame to the 'Favourites' of a user",
       "PUT"
     )
       .in("add_videogame")
@@ -57,7 +57,7 @@ object UserFavouritesEndpoints {
   val addFavouriteBook: PublicEndpoint[(UserId, BookId), UserError, UserFavourites, Any] =
     userFavouritesBaseEndpoint(
       "addFavouriteBook",
-      "This endpoint adds a book to the list of all the 'Favourites' of a user",
+      "This endpoint adds a book to the 'Favourites' of a user",
       "PUT"
     )
       .in("add_book")

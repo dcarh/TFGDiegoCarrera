@@ -32,7 +32,7 @@ object ReviewsEndpoints {
   val getReview: PublicEndpoint[ReviewId, UserError, Review, Any] =
     reviewBaseEndpoint(
       "getReview",
-      "This endpoint returns a specific review by its Id",
+      "This endpoint returns a review by its Id",
       "GET"
     )
       .in(PathInputs.pathReviewId)
@@ -41,7 +41,7 @@ object ReviewsEndpoints {
   val createReview: PublicEndpoint[Review, UserError, Review, Any] =
     reviewBaseEndpoint(
       "createReview",
-      "This endpoint creates a review and returns it in case of success",
+      "This endpoint creates a review",
       "POST"
     )
       .in("create")
@@ -51,7 +51,7 @@ object ReviewsEndpoints {
   val editReview: PublicEndpoint[(ReviewId, Review), UserError, Review, Any] =
     reviewBaseEndpoint(
       "editReview",
-      "This endpoint allows to edit a review and returns it in case of success. Otherwise returns an error message",
+      "This endpoint edits a review",
       "PUT"
     )
       .in(PathInputs.pathReviewId)
@@ -62,7 +62,7 @@ object ReviewsEndpoints {
   val deleteReview: PublicEndpoint[ReviewId, UserError, Unit, Any] =
     reviewBaseEndpoint(
       "deleteReview",
-      "This endpoint deletes a review  returns it in case of success",
+      "This endpoint deletes a review",
       "DELETE"
     )
       .in(PathInputs.pathReviewId)

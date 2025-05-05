@@ -20,14 +20,14 @@ object MovieEndpoints {
   val getMovie: PublicEndpoint[MovieId, UserError, Movie, Any] =
     getMovieBaseEndpoint(
       "getMovie",
-      "This endpoint returns the movie specified by the ID introduced",
+      "This endpoint returns a movie by its ID",
     )
       .out(MediaOutputs.movieOutput)
 
   val getEntriesForMovie: PublicEndpoint[MovieId, UserError, List[Entry], Any] =
     getMovieBaseEndpoint(
       "getEntriesForMovie",
-      "This endpoint returns a list of all the entries for a specific movie",
+      "This endpoint returns a list of all the entries for a movie",
     )
       .in("entries")
       .out(SocialOutputs.listOfEntriesOutput)
@@ -35,7 +35,7 @@ object MovieEndpoints {
   val getMediaListsForMovie: PublicEndpoint[MovieId, UserError, List[MediaList], Any] =
     getMovieBaseEndpoint(
       "getMediaListsForMovie",
-      "This endpoint returns a list of all the media lists for a specific movie",
+      "This endpoint returns a list of all the media lists for a movie",
     )
       .in("media_lists")
       .out(SocialOutputs.listOfMediaListsOutput)

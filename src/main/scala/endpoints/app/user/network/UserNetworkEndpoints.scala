@@ -12,7 +12,7 @@ object UserNetworkEndpoints {
   val getFollowers: PublicEndpoint[UserId, UserError, List[UserId], Any] =
     specificUserBaseEndpoint(
       "getFollowers",
-      "This endpoint returns the followers of the user",
+      "This endpoint returns the followers of a user",
       "GET"
     )
       .in("followers")
@@ -21,7 +21,7 @@ object UserNetworkEndpoints {
   val getFollowing: PublicEndpoint[UserId, UserError, List[UserId], Any] =
     specificUserBaseEndpoint(
       "getFollowing",
-      "This endpoint returns the people followed by the user",
+      "This endpoint returns the users followed by a user",
       "GET"
     )
       .in("following")
@@ -30,7 +30,7 @@ object UserNetworkEndpoints {
   val getBlocked: PublicEndpoint[UserId, UserError, List[UserId], Any] =
     specificUserBaseEndpoint(
       "getBlocked",
-      "This endpoint returns the people blocked by the user",
+      "This endpoint returns the users blocked by the user",
       "GET"
     )
       .in("blocked")
@@ -39,7 +39,7 @@ object UserNetworkEndpoints {
   val followUser: PublicEndpoint[(UserId, UserId), UserError, (List[UserId], List[UserId]), Any] =
     specificUserBaseEndpoint(
       "followUser",
-      "This endpoint allows a user to follow another user and returns the list of people followed by the user",
+      "This endpoint allows a user to follow another user",
       "POST"
     )
       .in("follow")
@@ -58,7 +58,7 @@ object UserNetworkEndpoints {
   val blockUser: PublicEndpoint[(UserId, UserId), UserError, List[UserId], Any] =
     specificUserBaseEndpoint(
       "blockUser",
-      "This endpoint allows a user to block another user and returns the list of people blocked by the user",
+      "This endpoint allows a user to block another user",
       "POST"
     )
       .in("block")

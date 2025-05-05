@@ -21,14 +21,14 @@ object Movies {
   val requestMovie: PublicEndpoint[(String, MovieId), UserError, RequestedMovie, Any] =
     Base.movieBaseEndpoint(
         "requestMovie", 
-        "This endpoint returns a specific movie from TMDB API by its ID"
+        "This endpoint returns a movie from TMDB API by its ID"
       )
       .out(jsonRequestedMovieOut)
 
   val requestedSimilarMovies: PublicEndpoint[(String, MovieId), UserError, Results, Any] =
     Base.movieBaseEndpoint(
         "requestedSimilarMovies",
-        "This endpoint returns a list of similar movies to a movie specified by its ID from TMDB API"
+        "This endpoint returns a list of movies similar to the movie specified by its ID from TMDB API"
       )
       .in("similar")
       .out(jsonResultsOut)
@@ -36,7 +36,7 @@ object Movies {
   val requestedRecommendedMovies: PublicEndpoint[(String, MovieId), UserError, Results, Any] =
     Base.movieBaseEndpoint(
         "requestedRecommendedMovies",
-        "This endpoint returns a list of recommended movies by a movie specified by its ID from TMDB API"
+        "This endpoint returns a list of recommended movies if you liked the movie specified by its ID"
       )
       .in("recommendations")
       .out(jsonResultsOut)

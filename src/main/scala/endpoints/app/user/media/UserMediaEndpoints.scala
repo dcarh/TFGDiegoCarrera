@@ -23,7 +23,7 @@ object UserMediaEndpoints {
       Any] =
     specificUserBaseEndpoint(
         "getAllMedia",
-        "This endpoint returns a media content list from a field of the user",
+        "This endpoint returns all the media marked by a user as 'Completed', 'In Progress', 'On Hold', 'Dropped' or 'Pending'",
         "GET"
       )
         .in(PathInputs.pathField)
@@ -34,7 +34,7 @@ object UserMediaEndpoints {
     PublicEndpoint[(UserId, String, MovieId), UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId], Any] =
       userMediaBaseEndpoint(
         "addMovie",
-        "This endpoint adds a movie to a media content list from the fields of the user",
+        "This endpoint adds a movie to one of the following fields of a user: 'Completed', 'In Progress', 'On Hold', 'Dropped' or 'Pending'",
         "PUT"
       )
         .in("add_movie")
@@ -45,7 +45,7 @@ object UserMediaEndpoints {
     PublicEndpoint[(UserId, String, TvShowId), UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId], Any] =
       userMediaBaseEndpoint(
         "addTvShow",
-        "This endpoint adds a TV show to a media content list from the fields of the user",
+        "This endpoint adds a TV show to one of the following fields of a user: 'Completed', 'In Progress', 'On Hold', 'Dropped' or 'Pending'",
         "PUT"
       )
         .in("add_tv_show")
@@ -56,7 +56,7 @@ object UserMediaEndpoints {
     PublicEndpoint[(UserId, String, TvShowId, TvSeasonNumber), UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId], Any] =
       userMediaBaseEndpoint(
         "addTvSeason",
-        "This endpoint adds a season to a media content list from the fields of the user",
+        "This endpoint adds a season to one of the following fields of a user: 'Completed', 'In Progress', 'On Hold', 'Dropped' or 'Pending'",
         "PUT"
       )
         .in("add_tv_season")
@@ -68,7 +68,7 @@ object UserMediaEndpoints {
     PublicEndpoint[(UserId, String, TvShowId, TvSeasonNumber, TvEpisodeNumber), UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId], Any] =
       userMediaBaseEndpoint(
         "addTvEpisode",
-        "This endpoint adds a episode to a media content list from the fields of the user",
+        "This endpoint adds a episode to one of the following fields of a user: 'Completed', 'In Progress', 'On Hold', 'Dropped' or 'Pending'",
         "PUT"
       )
         .in("add_tv_episode")
@@ -81,7 +81,7 @@ object UserMediaEndpoints {
     PublicEndpoint[(UserId, String, VideogameId), UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId], Any] =
       userMediaBaseEndpoint(
         "addVideogame",
-        "This endpoint adds a videogame to a media content list from the fields of the user",
+        "This endpoint adds a videogame to one of the following fields of a user: 'Completed', 'In Progress', 'On Hold', 'Dropped' or 'Pending'",
         "PUT"
       )
         .in("add_videogame")
@@ -92,7 +92,7 @@ object UserMediaEndpoints {
     PublicEndpoint[(UserId, String, BookId), UserError, List[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId], Any] =
       userMediaBaseEndpoint(
         "addBook",
-        "This endpoint adds a book to a media content list from the fields of the user",
+        "This endpoint adds a book to one of the following fields of a user: 'Completed', 'In Progress', 'On Hold', 'Dropped' or 'Pending'",
         "PUT"
       )
         .in("add_book")
@@ -102,7 +102,7 @@ object UserMediaEndpoints {
   val deleteMovie: PublicEndpoint[(UserId, String, MovieId), UserError, Unit, Any] =
     userMediaBaseEndpoint(
       "deleteMovie",
-      "This endpoint deletes a movie form a media content list from the fields of the user",
+      "This endpoint deletes a movie from one of the following fields of a user: 'Completed', 'In Progress', 'On Hold', 'Dropped' or 'Pending'",
       "DELETE"
     )
       .in("delete_movie")
@@ -111,7 +111,7 @@ object UserMediaEndpoints {
   val deleteTvShow: PublicEndpoint[(UserId, String, TvShowId), UserError, Unit, Any] =
     userMediaBaseEndpoint(
       "deleteTvShow",
-      "This endpoint deletes a TV show from a media content list from the fields of the user",
+      "This endpoint deletes a TV show from one of the following fields of a user: 'Completed', 'In Progress', 'On Hold', 'Dropped' or 'Pending'",
       "DELETE"
     )
       .in("delete_tv_show")
@@ -120,7 +120,7 @@ object UserMediaEndpoints {
   val deleteTvSeason: PublicEndpoint[(UserId, String, TvShowId, TvSeasonNumber), UserError, Unit, Any] =
     userMediaBaseEndpoint(
       "deleteTvSeason",
-      "This endpoint deletes a season from a media content list from the fields of the user",
+      "This endpoint deletes a season from one of the following fields of a user: 'Completed', 'In Progress', 'On Hold', 'Dropped' or 'Pending'",
       "DELETE"
     )
       .in("delete_tv_season")
@@ -130,7 +130,7 @@ object UserMediaEndpoints {
   val deleteTvEpisode: PublicEndpoint[(UserId, String, TvShowId, TvSeasonNumber, TvEpisodeNumber), UserError, Unit, Any] =
     userMediaBaseEndpoint(
       "deleteTvEpisode",
-      "This endpoint deletes a episode from a media content list from the fields of the user",
+      "This endpoint deletes a episode from one of the following fields of a user: 'Completed', 'In Progress', 'On Hold', 'Dropped' or 'Pending'",
       "DELETE"
     )
       .in("delete_tv_episode")
@@ -141,7 +141,7 @@ object UserMediaEndpoints {
   val deleteVideogame: PublicEndpoint[(UserId, String, VideogameId), UserError, Unit, Any] =
     userMediaBaseEndpoint(
       "deleteVideogame",
-      "This endpoint deletes a videogame from a media content list from the fields of the user",
+      "This endpoint deletes a videogame from one of the following fields of a user: 'Completed', 'In Progress', 'On Hold', 'Dropped' or 'Pending'",
       "DELETE"
     )
       .in("delete_videogame")
@@ -150,7 +150,7 @@ object UserMediaEndpoints {
   val deleteBook: PublicEndpoint[(UserId, String, BookId), UserError, Unit, Any] =
     userMediaBaseEndpoint(
       "deleteBook",
-      "This endpoint deletes a book from a media content list from the fields of the user",
+      "This endpoint deletes a book from one of the following fields of a user: 'Completed', 'In Progress', 'On Hold', 'Dropped' or 'Pending'",
       "DELETE"
     )
       .in("delete_book")

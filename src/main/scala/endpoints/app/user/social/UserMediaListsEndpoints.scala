@@ -17,7 +17,7 @@ object UserMediaListsEndpoints {
   val getUserMediaLists: PublicEndpoint[UserId, UserError, List[MediaListId], Any] =
     userMediaListsBaseEndpoint(
       "getUserMediaLists",
-      "This endpoint returns all the media lists for a user",
+      "This endpoint returns all the media lists of a user",
       "GET"
     )
       .out(SocialOutputs.listOfMediaListsIdsOutput)
