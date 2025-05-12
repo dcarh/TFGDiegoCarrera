@@ -1,0 +1,391 @@
+{
+  "page": 1,
+  "results": [
+      {
+          "adult": false,
+          "backdrop_path": "/pEorzFzCyREJl9EytNMT6m2uroc.jpg",
+          "genre_ids": [
+              53,
+              18,
+              10749
+          ],
+          "id": 25290,
+          "original_language": "fr",
+          "original_title": "L'Année des méduses",
+          "overview": "Chris, a sexy teenager who appears mostly bare-breasted on the French Riviera, has a crush on Romain, her mother's lover. In reaction to her inability to attract his attention, she experiments with other risque affairs.",
+          "popularity": 4.492,
+          "poster_path": "/xo3vLT7Qyq0TmzRZb8TERO2hwrn.jpg",
+          "release_date": "1984-11-07",
+          "title": "Year of the Jellyfish",
+          "video": false,
+          "vote_average": 5.8,
+          "vote_count": 57
+      },
+      {
+          "adult": false,
+          "backdrop_path": "/4N5oLbTNXzvT8dr8XLdXYeEHINL.jpg",
+          "genre_ids": [
+              18,
+              10749
+          ],
+          "id": 25297,
+          "original_language": "en",
+          "original_title": "Cannery Row",
+          "overview": "Doc, who has just moved to Cannery Row, realizes that the only entertainment is the brothel. There he meets the spunky Suzy and they fall in love, giving them both a renewed chance at life.",
+          "popularity": 3.55,
+          "poster_path": "/4U0NCom1slWMgGL9dCKsQdq82fP.jpg",
+          "release_date": "1982-02-12",
+          "title": "Cannery Row",
+          "video": false,
+          "vote_average": 5.9,
+          "vote_count": 43
+      },
+      {
+          "adult": false,
+          "backdrop_path": "/vPZiV7yihBqQ6icvrc05k8vlXuJ.jpg",
+          "genre_ids": [
+              18,
+              10749
+          ],
+          "id": 25313,
+          "original_language": "en",
+          "original_title": "P.S.",
+          "overview": "Louise, an unfulfilled divorced woman with regrets, gets the chance to relive her past when she meets a young man who bears an uncanny resemblance, in name and appearance, to her high school sweetheart who died many years before.",
+          "popularity": 4.601,
+          "poster_path": "/hcf2pZUjtqa6BpV84VwNZvZf6mg.jpg",
+          "release_date": "2004-10-15",
+          "title": "P.S.",
+          "video": false,
+          "vote_average": 5.541,
+          "vote_count": 73
+      },
+      {
+          "adult": false,
+          "backdrop_path": "/jr6l9e5tg7tOeoSjkcKKeJcz9Fy.jpg",
+          "genre_ids": [
+              80,
+              18
+          ],
+          "id": 25335,
+          "original_language": "fi",
+          "original_title": "Rööperi",
+          "overview": "In the mid-1960s, three small-time Finnish bootleggers seize control of their Helsinki neighborhood's black-market liquor business.",
+          "popularity": 2.077,
+          "poster_path": "/yafmxsqHx3IVqlMdoPpuvbvg3dv.jpg",
+          "release_date": "2009-01-09",
+          "title": "Hellsinki",
+          "video": false,
+          "vote_average": 6.424,
+          "vote_count": 46
+      },
+      {
+          "adult": false,
+          "backdrop_path": "/obVQL8KGFzh6c3jt3Bay75Fxeet.jpg",
+          "genre_ids": [
+              18,
+              53
+          ],
+          "id": 25338,
+          "original_language": "en",
+          "original_title": "The Silent Partner",
+          "overview": "Toronto, Canada. A few days before Christmas, Miles Cullen, a bored teller working at a bank branch located in a shopping mall, accidentally learns that the place is about to be robbed when he finds a disconcerting note on one of the counters.",
+          "popularity": 6.713,
+          "poster_path": "/mN5kB6uXIKETr2DcsG0u3wSFolN.jpg",
+          "release_date": "1978-09-07",
+          "title": "The Silent Partner",
+          "video": false,
+          "vote_average": 7.0,
+          "vote_count": 139
+      },
+      {
+          "adult": false,
+          "backdrop_path": "/3RKBbSG68HdAeXmVa3h9G7nBMbh.jpg",
+          "genre_ids": [
+              878,
+              12,
+              18
+          ],
+          "id": 25392,
+          "original_language": "en",
+          "original_title": "Destination Moon",
+          "overview": "A team composed of an aerospace scientist, an ex-Air Force general, and an industrialist conceives an ambitious plan to land Americans on the moon. From their base in the Mojave Desert, they construct and successfully launch a spacecraft named \"Luna\" that contains a cargo of four astronauts. But a critical miscalculation of needed power to escape the moon's gravitational pull may put the astronauts' lives in danger.",
+          "popularity": 3.491,
+          "poster_path": "/2dsJUooqTX5BkOmkfnuuFlkmbB6.jpg",
+          "release_date": "1950-06-27",
+          "title": "Destination Moon",
+          "video": false,
+          "vote_average": 5.9,
+          "vote_count": 85
+      },
+      {
+          "adult": false,
+          "backdrop_path": "/bSTvvll9gIOcoavWRIVYL5RoTkn.jpg",
+          "genre_ids": [
+              18
+          ],
+          "id": 25430,
+          "original_language": "en",
+          "original_title": "All the King's Men",
+          "overview": "A man of humble beginnings and honest intentions rises to power by nefarious means. Along for the wild ride are an earnest reporter, a heretofore classy society girl, and a too-clever-for-her-own-good political flack.",
+          "popularity": 7.989,
+          "poster_path": "/ett22fgwPN4MvESKV1bttgdb8eu.jpg",
+          "release_date": "1949-11-16",
+          "title": "All the King's Men",
+          "video": false,
+          "vote_average": 7.0,
+          "vote_count": 219
+      },
+      {
+          "adult": false,
+          "backdrop_path": null,
+          "genre_ids": [
+              18
+          ],
+          "id": 273649,
+          "original_language": "cs",
+          "original_title": "Zlatá reneta",
+          "overview": "A man returns to his native village in search of renewed faith and his old girlfriend. But she, now a middleaged woman, does not recognise him and he goes home, more disillusioned than ever.",
+          "popularity": 0.582,
+          "poster_path": "/arfozbia7eZk2upOc5C7VTuW9bc.jpg",
+          "release_date": "1965-10-22",
+          "title": "Golden Queen",
+          "video": false,
+          "vote_average": 6.5,
+          "vote_count": 2
+      },
+      {
+          "adult": false,
+          "backdrop_path": "/7LmUoCDyeReVXKOaW0ksBS3UjTI.jpg",
+          "genre_ids": [
+              10749,
+              878,
+              10752,
+              18
+          ],
+          "id": 1292666,
+          "original_language": "en",
+          "original_title": "WAR TIMES",
+          "overview": "An exploration of two souls inhabiting bodies from 1940's Hungary, and the beginning of the digital age.",
+          "popularity": 0.344,
+          "poster_path": "/o84YtwUSUwOmTLy9QStGM4wjfUr.jpg",
+          "release_date": "2024-06-03",
+          "title": "WAR TIMES",
+          "video": false,
+          "vote_average": 0.0,
+          "vote_count": 0
+      },
+      {
+          "adult": false,
+          "backdrop_path": "/ueVnDMPdDDtAAjS8XniAiZkXes9.jpg",
+          "genre_ids": [
+              18,
+              14,
+              10749,
+              27
+          ],
+          "id": 437583,
+          "original_language": "et",
+          "original_title": "November",
+          "overview": "In a poor Estonian village, a group of peasants use magic and folk remedies to survive the winter, and a young woman tries to get a young man to love her.",
+          "popularity": 5.373,
+          "poster_path": "/yMqtCSzSAB9Aiw8yiuUKBoxEeAm.jpg",
+          "release_date": "2017-02-03",
+          "title": "November",
+          "video": false,
+          "vote_average": 7.1,
+          "vote_count": 153
+      },
+      {
+          "adult": false,
+          "backdrop_path": "/1HL7hxoUsQ4qMs7HovwqE5BKo7y.jpg",
+          "genre_ids": [
+              18,
+              9648
+          ],
+          "id": 437619,
+          "original_language": "ja",
+          "original_title": "氷菓",
+          "overview": "Energy-conservative high school student Houtarou Oreki ends up with more than he bargained for when he signs up for the Classics Club at his sister's behest—especially when he realizes how deep-rooted the club's history really is. Begrudgingly, Oreki is dragged into an investigation concerning the 45-year-old mystery that surrounds the club room.  Accompanied by his fellow club members, the knowledgeable Satoshi Fukube, the stern but benign Mayaka Ibara, and the ever-curious Eru Chitanda, Oreki must combat deadlines and lack of information with resourcefulness and hidden talent, in order to not only find the truth buried beneath the dust of works created years before them, but of other small side cases as well.",
+          "popularity": 2.095,
+          "poster_path": "/82aujfdMhUFIvJfTFu8nU4x29yv.jpg",
+          "release_date": "2017-11-03",
+          "title": "Hyouka: Forbidden Secrets",
+          "video": false,
+          "vote_average": 5.7,
+          "vote_count": 14
+      },
+      {
+          "adult": false,
+          "backdrop_path": "/boWGkChbHWH5MQk24h0xuGCrhjp.jpg",
+          "genre_ids": [
+              18,
+              35
+          ],
+          "id": 437299,
+          "original_language": "es",
+          "original_title": "La higuera de los bastardos",
+          "overview": "A trigger-happy Nationalist fears retribution from the son of a man he executed. To mollify the boy's anger, he takes a drastic step: he keeps constant watch over the fig tree the boy has planted at his father's gravesite. As the years pass, the man's lonely vigil makes him a tourist attraction, much to the chagrin of his former colleagues.",
+          "popularity": 2.749,
+          "poster_path": "/eBQw41u55jdeDrqWUCDFmS13tmT.jpg",
+          "release_date": "2017-11-22",
+          "title": "The Bastards' Fig Tree",
+          "video": false,
+          "vote_average": 6.0,
+          "vote_count": 11
+      },
+      {
+          "adult": false,
+          "backdrop_path": "/iFsp89nZTOpBVGVyfZfOkqHwsYj.jpg",
+          "genre_ids": [
+              18,
+              10749
+          ],
+          "id": 961306,
+          "original_language": "mr",
+          "original_title": "चंद्रमुखी",
+          "overview": "A political background based musical love story set in 80's. Vishwas Patil's Chandramukhi is an excellent novel that weaves together the worlds of Politics and Tamasha",
+          "popularity": 0.44,
+          "poster_path": "/nhPxuXvRnv2hP20Jsemt8A0Ww1.jpg",
+          "release_date": "2022-04-29",
+          "title": "Chandramukhi",
+          "video": false,
+          "vote_average": 5.0,
+          "vote_count": 2
+      },
+      {
+          "adult": false,
+          "backdrop_path": "/iCLVN0ESQMDxj7aFKLNZT0Zoen7.jpg",
+          "genre_ids": [
+              18
+          ],
+          "id": 605497,
+          "original_language": "en",
+          "original_title": "Second Screen",
+          "overview": "Second Screen follows David, a fitness influencer who begins to develop an addiction to social media. As this takes a drastic turn in order to keep his online persona intact, will he able to deal with the reality he faces in front of him?",
+          "popularity": 1.23,
+          "poster_path": "/8OPCzTQygi9nuQY9hNEJ9grSx7b.jpg",
+          "release_date": "2019-05-16",
+          "title": "Second Screen",
+          "video": true,
+          "vote_average": 0.0,
+          "vote_count": 0
+      },
+      {
+          "adult": false,
+          "backdrop_path": "/wiUJmoTut7x7FdWB9s0kapnVXjQ.jpg",
+          "genre_ids": [
+              18
+          ],
+          "id": 25142,
+          "original_language": "ru",
+          "original_title": "Изгнание",
+          "overview": "While vacationing in the countryside at his childhood home, a woman suddenly reveals to her husband that she is expecting a child – but not his.",
+          "popularity": 6.445,
+          "poster_path": "/hD5Dg3VztZbvk2aqQsHh1e5jUP4.jpg",
+          "release_date": "2008-03-27",
+          "title": "The Banishment",
+          "video": false,
+          "vote_average": 7.2,
+          "vote_count": 143
+      },
+      {
+          "adult": false,
+          "backdrop_path": "/dWqE64mFDsOxkzn8Sx6pu3NEVva.jpg",
+          "genre_ids": [
+              18,
+              10749
+          ],
+          "id": 25147,
+          "original_language": "en",
+          "original_title": "Jude",
+          "overview": "In late 19th-century England, Jude aspires to be an academic, but is hobbled by his blue-collar background. Instead, he works as a stonemason and is trapped in an unloving marriage to a farmer's daughter named Arabella. But when his wife leaves him, Jude sees an opportunity to improve himself. He moves to the city and begins an affair with his married cousin, Sue, courting tragedy every step of the way.",
+          "popularity": 9.126,
+          "poster_path": "/o0ZEG22VHIzd0IHN3Z32cao5ZtI.jpg",
+          "release_date": "1996-02-06",
+          "title": "Jude",
+          "video": false,
+          "vote_average": 6.3,
+          "vote_count": 129
+      },
+      {
+          "adult": false,
+          "backdrop_path": "/fvmbYtOzQJqj0Y60UwyIB9iAaMD.jpg",
+          "genre_ids": [
+              18
+          ],
+          "id": 25188,
+          "original_language": "en",
+          "original_title": "The Last Picture Show",
+          "overview": "High school seniors and best friends, Sonny and Duane, live in a dying Texas town. The handsome Duane is dating a local beauty, while Sonny is having an affair with the coach's wife. As graduation nears and both boys contemplate their futures, Duane eyes the army and Sonny takes over a local business. Each struggles to figure out if he can escape this dead-end town and build a better life somewhere else.",
+          "popularity": 8.121,
+          "poster_path": "/7NYePZc0lZrRomtmQsjOJMePTEb.jpg",
+          "release_date": "1971-10-03",
+          "title": "The Last Picture Show",
+          "video": false,
+          "vote_average": 7.7,
+          "vote_count": 697
+      },
+      {
+          "adult": false,
+          "backdrop_path": "/a9R2ZfRtGzE1pNEoxZcN7kRdRwu.jpg",
+          "genre_ids": [
+              18,
+              10749
+          ],
+          "id": 25190,
+          "original_language": "en",
+          "original_title": "The Sun Also Rises",
+          "overview": "A group of disillusioned American expatriate writers live a dissolute, hedonistic lifestyle in 1920's France and Spain.",
+          "popularity": 3.34,
+          "poster_path": "/aUmBezgVtjtYTzw9k2tNbHEfCWI.jpg",
+          "release_date": "1957-08-23",
+          "title": "The Sun Also Rises",
+          "video": false,
+          "vote_average": 5.9,
+          "vote_count": 32
+      },
+      {
+          "adult": false,
+          "backdrop_path": "/zi8WVzUrVA90L6D4vauNdXeU3kB.jpg",
+          "genre_ids": [
+              14,
+              35,
+              18
+          ],
+          "id": 25211,
+          "original_language": "sv",
+          "original_title": "Ett öga rött",
+          "overview": "Halim has seen through it all. He has seen through the Integration plan a secret conspiracy that tries to turn all immigrants into Swedes. Unfortunately he has also seen through his own father, who has fallen victim to the Integration plan. But Halim has his own plan; he is going to be Sweden’s mightiest revolution immigrant and take a stand to save his father from forgetting his Arabic roots.",
+          "popularity": 0.643,
+          "poster_path": "/bwlMPYgPDkh1naVlgFXL0dKVPmX.jpg",
+          "release_date": "2007-09-07",
+          "title": "One Eye Red",
+          "video": false,
+          "vote_average": 5.2,
+          "vote_count": 8
+      },
+      {
+          "adult": false,
+          "backdrop_path": "/fRtQdiESAdt9rjXCvZhvkmprvac.jpg",
+          "genre_ids": [
+              16,
+              10752,
+              18,
+              10751
+          ],
+          "id": 435129,
+          "original_language": "en",
+          "original_title": "The Breadwinner",
+          "overview": "A headstrong young girl in Afghanistan, ruled by the Taliban, disguises herself as a boy in order to provide for her family.",
+          "popularity": 10.28,
+          "poster_path": "/2d6qmkJz9AWqmk9wBWtd2uFX89t.jpg",
+          "release_date": "2017-11-17",
+          "title": "The Breadwinner",
+          "video": false,
+          "vote_average": 7.844,
+          "vote_count": 845
+      }
+  ],
+  "total_pages": 12552,
+  "total_results": 251023
+}

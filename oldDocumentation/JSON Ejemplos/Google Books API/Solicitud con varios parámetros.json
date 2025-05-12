@@ -1,0 +1,682 @@
+{
+    "kind": "books#volumes",
+    "totalItems": 2006,
+    "items": [
+        {
+            "kind": "books#volume",
+            "id": "8ePrzgEACAAJ",
+            "etag": "iXNVVaeiT3M",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/8ePrzgEACAAJ",
+            "volumeInfo": {
+                "title": "Guerra y paz",
+                "authors": [
+                    "Lev Nikolaevich Tolstoï"
+                ],
+                "publishedDate": "1967",
+                "readingModes": {
+                    "text": false,
+                    "image": false
+                },
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "preview-1.0.0",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "previewLink": "http://books.google.com/books?id=8ePrzgEACAAJ&dq=Guerra+y+paz&hl=&cd=1&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=8ePrzgEACAAJ&dq=Guerra+y+paz&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/Guerra_y_paz.html?hl=&id=8ePrzgEACAAJ"
+            },
+            "saleInfo": {
+                "country": "US"
+            },
+            "accessInfo": {
+                "country": "US",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": false
+                },
+                "accessViewStatus": "NONE"
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "M2G-DwAAQBAJ",
+            "etag": "McrIij83KkI",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/M2G-DwAAQBAJ",
+            "volumeInfo": {
+                "title": "Guerra y paz",
+                "subtitle": "Un clásico de la literatura rusa",
+                "authors": [
+                    "Lev Tolstói"
+                ],
+                "publisher": "Mestas Ediciones",
+                "publishedDate": "2018-07-02",
+                "description": "¡Un referente de la literatura universal, considerada como la mejor novela de la historia! Considerada por muchos eruditos como la mejor novela de la historia, Guerra y Paz es un referente de la literatura universal que en pleno siglo XXI sigue conmoviendo tanto como el año de su primera publicación. Con las guerras napoleónicas de trasfondo, esta obra infinita nos habla de unas batallas aún mayores: los combates internos del ser humano entre el bien y el mal, entre lo correcto y lo incorrecto, entre la belleza y la destrucción, sin nunca olvidar las profundas luchas por el amor... ese amor que parece que todo lo cura y que puede dar felicidad al hombre hasta en los momentos más insospechados. Un libro en el que se trata de los combates internos del ser humano entre el bien y el mal, entre lo correcto y lo incorrecto, entre la belleza y la destrucción, sin nunca olvidar las profundas luchas por el amor... FRAGMENTO Natacha no salió de su habitación esa mañana. Miraba inquieta y atentamente a cuantos pasaban por la calle con sus labios agrietados fruncidos y los ojos secos; se volvía si alguien entraba en la habitación con andares masculinos. Sin duda aguardaba noticias de Anatole o que viniese él mismo. Cuando el conde entró, se giró sobresaltada y su rostro adquirió de nuevo una expresión fría e iracunda. No se levantó para salir a su encuentro. —¿Qué te pasa, ángel? ¿Estás enferma? —preguntó el conde. Natacha guardó silencio. —Sí, estoy enferma —dijo. A las preguntas preocupadas de su padre sobre por qué estaba tan triste y si había ocurrido algo al príncipe Andréi, repuso que no ocurría nada y le pidió que no se preocupase. María Dmitrievna confirmó las palabras de Natacha. EL AUTOR Lev Nikoláyevich Tolstói fue un novelista ruso ampliamente considerado como uno de los más grandes escritores de occidente y de la literatura mundial. Sus más famosas obras son Guerra y Paz y Anna Karénina, y son tenidas como la cúspide del realismo. Sus ideas sobre la «no violencia activa», expresadas en libros como El Reino de Dios está en Vosotros tuvieron un profundo impacto en grandes personajes como Gandhi y Martin Luther King.",
+                "readingModes": {
+                    "text": true,
+                    "image": true
+                },
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "1.3.2.0.preview.3",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=M2G-DwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=M2G-DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "previewLink": "http://books.google.com/books?id=M2G-DwAAQBAJ&printsec=frontcover&dq=Guerra+y+paz&hl=&cd=2&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=M2G-DwAAQBAJ&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=M2G-DwAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "US",
+                "listPrice": {
+                    "amount": 13.13,
+                    "currencyCode": "USD"
+                },
+                "retailPrice": {
+                    "amount": 13.13,
+                    "currencyCode": "USD"
+                },
+                "buyLink": "https://play.google.com/store/books/details?id=M2G-DwAAQBAJ&rdid=book-M2G-DwAAQBAJ&rdot=1&source=gbs_api",
+                "offers": [
+                    {
+                        "finskyOfferType": 1,
+                        "listPrice": {
+                            "amountInMicros": 13130000,
+                            "currencyCode": "USD"
+                        },
+                        "retailPrice": {
+                            "amountInMicros": 13130000,
+                            "currencyCode": "USD"
+                        },
+                        "giftable": true
+                    }
+                ]
+            },
+            "accessInfo": {
+                "country": "US",
+                "epub": {
+                    "isAvailable": true
+                },
+                "pdf": {
+                    "isAvailable": true
+                },
+                "accessViewStatus": "SAMPLE"
+            },
+            "searchInfo": {
+                "textSnippet": "Considerada por muchos eruditos como la mejor novela de la historia, Guerra y Paz es un referente de la literatura universal que en pleno siglo XXI sigue conmoviendo tanto como el año de su primera publicación."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "va8jEAAAQBAJ",
+            "etag": "KOl1ViHdSz8",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/va8jEAAAQBAJ",
+            "volumeInfo": {
+                "title": "Guerra y paz",
+                "authors": [
+                    "Lev Tolstoi"
+                ],
+                "publisher": "RANDOM HOUSE",
+                "publishedDate": "2021-03-18",
+                "description": "Una de las obras cumbre de la literatura mundial: la historia de varias familias aristócratas durante la invasión napoleónica de Rusia Edición de la Academia Soviética de Ciencias Traducción de Gala Arias Rubio Obra cumbre de Lev Tolstói (junto a Anna Karénina) y de la narrativa del XIX, Guerra y paz constituye un vasto fresco histórico y épico. Con la campaña napoleónica -Austerlitz, Borodinó o el incendio de Moscú- como trasfondo, se narra la historia de dos familias de la nobleza rusa, los Bolkonski y los Rostov, protagonistas de un mundo que empieza a escenificar su propia desaparición. Hasta hace pocos años, todas las traducciones de Guerra y paz se basaban en la edición canónica de 1873. Sin embargo, en 1983, la Academia Soviética de Ciencias publicó lo que ellos llamaron la «edición original», es decir, la primera versión que Tolstói escribió en 1866. Es la espléndida traducción de ese manuscrito original, de la mano de Gala Arias Rubio, la que publicamos en este volumen.",
+                "readingModes": {
+                    "text": true,
+                    "image": true
+                },
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": true,
+                "contentVersion": "0.3.3.0.preview.3",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=va8jEAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=va8jEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "previewLink": "http://books.google.com/books?id=va8jEAAAQBAJ&printsec=frontcover&dq=Guerra+y+paz&hl=&cd=3&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=va8jEAAAQBAJ&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=va8jEAAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "US",
+                "listPrice": {
+                    "amount": 7.99,
+                    "currencyCode": "USD"
+                },
+                "retailPrice": {
+                    "amount": 7.99,
+                    "currencyCode": "USD"
+                },
+                "buyLink": "https://play.google.com/store/books/details?id=va8jEAAAQBAJ&rdid=book-va8jEAAAQBAJ&rdot=1&source=gbs_api",
+                "offers": [
+                    {
+                        "finskyOfferType": 1,
+                        "listPrice": {
+                            "amountInMicros": 7990000,
+                            "currencyCode": "USD"
+                        },
+                        "retailPrice": {
+                            "amountInMicros": 7990000,
+                            "currencyCode": "USD"
+                        },
+                        "giftable": true
+                    }
+                ]
+            },
+            "accessInfo": {
+                "country": "US",
+                "epub": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com/books/download/Guerra_y_paz-sample-epub.acsm?id=va8jEAAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com/books/download/Guerra_y_paz-sample-pdf.acsm?id=va8jEAAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "accessViewStatus": "SAMPLE"
+            },
+            "searchInfo": {
+                "textSnippet": "Una de las obras cumbre de la literatura mundial: la historia de varias familias aristócratas durante la invasión napoleónica de Rusia Edición de la Academia Soviética de Ciencias Traducción de Gala Arias Rubio Obra cumbre de Lev ..."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "u2WPDwAAQBAJ",
+            "etag": "ITu0cKCJxkU",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/u2WPDwAAQBAJ",
+            "volumeInfo": {
+                "title": "La guerra y la paz",
+                "authors": [
+                    "David García Hernán"
+                ],
+                "publisher": "Ediciones Cátedra",
+                "publishedDate": "2019-05-02",
+                "description": "Durante mucho tiempo en la civilización occidental predominó la cultura de la guerra en cuanto a las normas, hechos y representaciones. El autor de este libro defiende, sin embargo, que en Occidente ha ido prevaleciendo desde hace un siglo la cultura de la paz. Hoy, muy pocos argumentan que la mejor forma de solventar un conflicto internacional sea a través de la guerra, pero no ocurría así en otros tiempos: no solo era esta una vía de solución, sino la mejor de las posibles, la más admirada social y culturalmente. Este inmenso cambio se ha debido a muchos factores, pero uno de los más importantes es la experiencia cultural acumulada de siglos que nos ha hecho ver que la guerra es esencialmente destructiva y cruel, independientemente de las razones que se pudieran tener para llegar a ella. Este libro expone los acontecimientos más importantes que han hecho posible este decisivo acercamiento progresivo y todavía incompleto a la paz, incidiendo en las herramientas culturales que lo han motivado, y, sobre todo, con el ánimo de intentar mantener alejado el fantasma de la guerra.",
+                "readingModes": {
+                    "text": true,
+                    "image": false
+                },
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "1.2.2.0.preview.2",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=u2WPDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=u2WPDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "previewLink": "http://books.google.com/books?id=u2WPDwAAQBAJ&printsec=frontcover&dq=Guerra+y+paz&hl=&cd=4&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=u2WPDwAAQBAJ&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=u2WPDwAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "US",
+                "listPrice": {
+                    "amount": 12.96,
+                    "currencyCode": "USD"
+                },
+                "retailPrice": {
+                    "amount": 12.96,
+                    "currencyCode": "USD"
+                },
+                "buyLink": "https://play.google.com/store/books/details?id=u2WPDwAAQBAJ&rdid=book-u2WPDwAAQBAJ&rdot=1&source=gbs_api",
+                "offers": [
+                    {
+                        "finskyOfferType": 1,
+                        "listPrice": {
+                            "amountInMicros": 12960000,
+                            "currencyCode": "USD"
+                        },
+                        "retailPrice": {
+                            "amountInMicros": 12960000,
+                            "currencyCode": "USD"
+                        },
+                        "giftable": true
+                    }
+                ]
+            },
+            "accessInfo": {
+                "country": "US",
+                "epub": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com/books/download/La_guerra_y_la_paz-sample-epub.acsm?id=u2WPDwAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "pdf": {
+                    "isAvailable": false
+                },
+                "accessViewStatus": "SAMPLE"
+            },
+            "searchInfo": {
+                "textSnippet": "Este libro expone los acontecimientos más importantes que han hecho posible este decisivo acercamiento progresivo y todavía incompleto a la paz, incidiendo en las herramientas culturales que lo han motivado, y, sobre todo, con el ánimo ..."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "fqtRDgAAQBAJ",
+            "etag": "3LZ0yWaYDVw",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/fqtRDgAAQBAJ",
+            "volumeInfo": {
+                "title": "Tiempos de guerra y paz",
+                "subtitle": "Los pilares de la diplomacia: de Westfalia a San Francisco",
+                "authors": [
+                    "Juan José Bremer"
+                ],
+                "publisher": "TAURUS",
+                "publishedDate": "2017-04-14",
+                "description": "Una revisión de los momentos históricos que han conducido a la realidad actual. Una nueva edición, revisada por el autor, que ofrece una breve reflexión final sobre los sucesos políticos más relevantes de la actualidad. Este libro revisa los grandes conflictos bélicos más decisivos de la humanidad y los acuerdos de paz que aspiraron a darles solución. De la Pazde Westfalia de 1648 a la fundación de la Organización de las Naciones Unidas ( ONU) en 1945, Tiempos de guerra y paz va más allá del recuento de los hechos para analizar las acciones y omisiones de los individuos que marcaron las pautas y determinaron el curso de estos acontecimientos. De la globalización y la revolución tecnológica a la reemergencia de los nacionalismos, las nuevas migraciones, el inesperadotriunfo del Brexit y la controvertida victoria de Donald Trump, Juan José Bremer apunta posibles rutas para la actualización de nuestro debilitado sistema internacional. Otros autores han opinado: \"Una brillante historia de la modernidad. Que es nuestra modernidad sólo si la conocemos.\" -Carlos Fuentes-",
+                "readingModes": {
+                    "text": true,
+                    "image": true
+                },
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": true,
+                "contentVersion": "1.7.8.0.preview.3",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=fqtRDgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=fqtRDgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "previewLink": "http://books.google.com/books?id=fqtRDgAAQBAJ&printsec=frontcover&dq=Guerra+y+paz&hl=&cd=5&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=fqtRDgAAQBAJ&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=fqtRDgAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "US",
+                "listPrice": {
+                    "amount": 6.99,
+                    "currencyCode": "USD"
+                },
+                "retailPrice": {
+                    "amount": 6.99,
+                    "currencyCode": "USD"
+                },
+                "buyLink": "https://play.google.com/store/books/details?id=fqtRDgAAQBAJ&rdid=book-fqtRDgAAQBAJ&rdot=1&source=gbs_api",
+                "offers": [
+                    {
+                        "finskyOfferType": 1,
+                        "listPrice": {
+                            "amountInMicros": 6990000,
+                            "currencyCode": "USD"
+                        },
+                        "retailPrice": {
+                            "amountInMicros": 6990000,
+                            "currencyCode": "USD"
+                        },
+                        "giftable": true
+                    }
+                ]
+            },
+            "accessInfo": {
+                "country": "US",
+                "epub": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com/books/download/Tiempos_de_guerra_y_paz-sample-epub.acsm?id=fqtRDgAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com/books/download/Tiempos_de_guerra_y_paz-sample-pdf.acsm?id=fqtRDgAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "accessViewStatus": "SAMPLE"
+            },
+            "searchInfo": {
+                "textSnippet": "De la Pazde Westfalia de 1648 a la fundación de la Organización de las Naciones Unidas ( ONU) en 1945, Tiempos de guerra y paz va más allá del recuento de los hechos para analizar las acciones y omisiones de los individuos que marcaron ..."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "adVGEAAAQBAJ",
+            "etag": "SqkbW/cF6lo",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/adVGEAAAQBAJ",
+            "volumeInfo": {
+                "title": "En el ombligo. Diarios de guerra y paz en Colombia",
+                "authors": [
+                    "Anna-Lina Mattar",
+                    "Gala Rocabert Navarro"
+                ],
+                "publisher": "SALAMANDRA GRAPHIC",
+                "publishedDate": "2021-11-11",
+                "description": "En el ombligo. Diarios de guerra y paz en Colombia (XIV Premio Fnac-Salamandra Graphic) recoge la historia de exguerrilleros y exguerrilleras de las FARC-EP durante los tres años posteriores a la firma del Acuerdo de Paz de 2016. Reportaje gráfico, diario de campo y bitácora de viaje, cuenta la historia de Gala, una joven antropóloga catalana que acompaña y documentaese proceso in situ, aportando la mirada genuina y singular de alguien ajeno a la lucha armada y a la realidad del país. En el ombligo es una obra de cruces y contradicciones que indaga sobre la necesidad de conocer el mundo y los valores de otros para posicionarnos sobre problemáticas sociales distantes, así como también, para construir una memoria histórica que sea justa para todos.",
+                "readingModes": {
+                    "text": true,
+                    "image": true
+                },
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "1.3.2.0.preview.3",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=adVGEAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=adVGEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "previewLink": "http://books.google.com/books?id=adVGEAAAQBAJ&printsec=frontcover&dq=Guerra+y+paz&hl=&cd=6&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=adVGEAAAQBAJ&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=adVGEAAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "US",
+                "listPrice": {
+                    "amount": 7.99,
+                    "currencyCode": "USD"
+                },
+                "retailPrice": {
+                    "amount": 7.99,
+                    "currencyCode": "USD"
+                },
+                "buyLink": "https://play.google.com/store/books/details?id=adVGEAAAQBAJ&rdid=book-adVGEAAAQBAJ&rdot=1&source=gbs_api",
+                "offers": [
+                    {
+                        "finskyOfferType": 1,
+                        "listPrice": {
+                            "amountInMicros": 7990000,
+                            "currencyCode": "USD"
+                        },
+                        "retailPrice": {
+                            "amountInMicros": 7990000,
+                            "currencyCode": "USD"
+                        },
+                        "giftable": true
+                    }
+                ]
+            },
+            "accessInfo": {
+                "country": "US",
+                "epub": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com/books/download/En_el_ombligo_Diarios_de_guerra_y_paz_en-sample-epub.acsm?id=adVGEAAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com/books/download/En_el_ombligo_Diarios_de_guerra_y_paz_en-sample-pdf.acsm?id=adVGEAAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "accessViewStatus": "SAMPLE"
+            },
+            "searchInfo": {
+                "textSnippet": "Reportaje gráfico, diario de campo y bitácora de viaje, cuenta la historia de Gala, una joven antropóloga catalana que acompaña y documentaese proceso in situ, aportando la mirada genuina y singular de alguien ajeno a la lucha armada y ..."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "N9A7BAAAQBAJ",
+            "etag": "GVlVNnWfTxw",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/N9A7BAAAQBAJ",
+            "volumeInfo": {
+                "title": "La guerra y la paz",
+                "authors": [
+                    "Santiago Gamboa"
+                ],
+                "publisher": "DEBATE",
+                "publishedDate": "2014-08-01",
+                "description": "¿Guerra o paz? A través de la pluma de Santiago Gamboa un recorrido histórico sobre este controvertido tema. Santiago Gamboa se propone, con este ensayo, hacer un aporte a la reflexión que hoy se plantea el país acerca de los temas del conflicto y la reconciliación. Y lo hace por medio de un rico e ilustrador viaje a través de la historia, para mostrar las distintas caras de la guerra y el camino que otros pueblos han recorrido en la construcción de la paz, la creación más elaborada y valiosa de la civilización. La paz, afirma Gamboa, será posiblemente #el más decisivo y contundente de todos los combates librados por la sociedad colombiana en las últimas décadas#. #A lo largo de este libro pretendo interrogar, desde una perspectiva humanista y cultural, el modo como la guerra ha ido transformando a las sociedades y lo que ha significado la paz en algunos momentos claves. Y aunque no soy un historiador ni un teórico, he querido ver los avatares de esa experiencia a través de la historia, la literatura, la filosofía e incluso las religiones; también, en algún caso concreto, desde mi propia experiencia directa de cronista y viajero curioso.# SANTIAGO GAMBOA",
+                "readingModes": {
+                    "text": true,
+                    "image": true
+                },
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "0.10.10.0.preview.3",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=N9A7BAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=N9A7BAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "previewLink": "http://books.google.com/books?id=N9A7BAAAQBAJ&printsec=frontcover&dq=Guerra+y+paz&hl=&cd=7&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=N9A7BAAAQBAJ&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=N9A7BAAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "US",
+                "listPrice": {
+                    "amount": 6.99,
+                    "currencyCode": "USD"
+                },
+                "retailPrice": {
+                    "amount": 6.99,
+                    "currencyCode": "USD"
+                },
+                "buyLink": "https://play.google.com/store/books/details?id=N9A7BAAAQBAJ&rdid=book-N9A7BAAAQBAJ&rdot=1&source=gbs_api",
+                "offers": [
+                    {
+                        "finskyOfferType": 1,
+                        "listPrice": {
+                            "amountInMicros": 6990000,
+                            "currencyCode": "USD"
+                        },
+                        "retailPrice": {
+                            "amountInMicros": 6990000,
+                            "currencyCode": "USD"
+                        },
+                        "giftable": true
+                    }
+                ]
+            },
+            "accessInfo": {
+                "country": "US",
+                "epub": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com/books/download/La_guerra_y_la_paz-sample-epub.acsm?id=N9A7BAAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com/books/download/La_guerra_y_la_paz-sample-pdf.acsm?id=N9A7BAAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "accessViewStatus": "SAMPLE"
+            },
+            "searchInfo": {
+                "textSnippet": "# SANTIAGO GAMBOA"
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "87cmEAAAQBAJ",
+            "etag": "OCoLtQcFfMo",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/87cmEAAAQBAJ",
+            "volumeInfo": {
+                "title": "Guerra y paz",
+                "authors": [
+                    "Lev N. Tolstói"
+                ],
+                "publisher": "ALBA Editorial",
+                "publishedDate": "2021-03-18",
+                "description": "«No es una novela, aún menos un poema y aún menos una crónica histórica»: así pre-sentaba Lev N. Tolstói su monumental Guerra y paz, que, publicada por entregas en la revista El Mensajero Ruso entre 1865 y 1867 y en forma de libro en 1869, no dejó de causar desconcierto en su tiempo y luego, hasta nuestros días, apasionados intentos de definición. El propio autor decía que los libros más relevantes de la literatura rusa -como Almas muertas de Gógol y Memorias de la casa muerta de Dostoievski- se resistían a encajar en ningún género literario «europeo». Y tal resistencia no es difícil de apreciar en una obra que sostiene que tanto la vida humana individual como el curso colectivo de la historia avanzan no por el «camino del pensamiento lógico» sino por «un camino distinto, directo y misterioso»... que tal vez se encuentre únicamente cuando no se busca. Los principales personajes componen un cuadro representativo de la aristocracia rusa de principios del siglo XIX: la aristocracia terrateniente, como la familia Bolkonski, histórico orgullo del Imperio, o su contrafigura los Rostov, torpes, atribulados, sin prestigio; la aristocracia cortesana, como los Kuraguin, consumados profesiona-les de la intriga; y, en el centro, la figura del ocioso conde Pierre Bezújov, heredero de una inmensa fortuna que se dedicará a gastar en la accidentada búsqueda de algo que dé sentido a su vida. Tolstói une sus peripecias en la época de las guerras napoleónicas a los de las figuras históricas y a los de la gente común, abarcando lo épico y lo doméstico, lo público y lo íntimo, a menudo desde perspectivas inesperadas: no solo la de un alto mando contrapuesta a la de un ordenanza, sino hasta la de una niña de seis años... o la de un caballo. Esta traducción, a cargo de Joaquín Fernández-Valdés, es la primera completamente nueva en español en más de cuarenta años.",
+                "readingModes": {
+                    "text": true,
+                    "image": true
+                },
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": true,
+                "contentVersion": "1.1.2.0.preview.3",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=87cmEAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=87cmEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "previewLink": "http://books.google.com/books?id=87cmEAAAQBAJ&printsec=frontcover&dq=Guerra+y+paz&hl=&cd=8&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=87cmEAAAQBAJ&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=87cmEAAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "US",
+                "listPrice": {
+                    "amount": 21.99,
+                    "currencyCode": "USD"
+                },
+                "retailPrice": {
+                    "amount": 21.99,
+                    "currencyCode": "USD"
+                },
+                "buyLink": "https://play.google.com/store/books/details?id=87cmEAAAQBAJ&rdid=book-87cmEAAAQBAJ&rdot=1&source=gbs_api",
+                "offers": [
+                    {
+                        "finskyOfferType": 1,
+                        "listPrice": {
+                            "amountInMicros": 21990000,
+                            "currencyCode": "USD"
+                        },
+                        "retailPrice": {
+                            "amountInMicros": 21990000,
+                            "currencyCode": "USD"
+                        },
+                        "giftable": true
+                    }
+                ]
+            },
+            "accessInfo": {
+                "country": "US",
+                "epub": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com/books/download/Guerra_y_paz-sample-epub.acsm?id=87cmEAAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com/books/download/Guerra_y_paz-sample-pdf.acsm?id=87cmEAAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "accessViewStatus": "SAMPLE"
+            },
+            "searchInfo": {
+                "textSnippet": "«No es una novela, aún menos un poema y aún menos una crónica histórica»: así pre-sentaba Lev N. Tolstói su monumental Guerra y paz, que, publicada por entregas en la revista El Mensajero Ruso entre 1865 y 1867 y en forma de libro ..."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "Uy6JEAAAQBAJ",
+            "etag": "sAKpClRe72E",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/Uy6JEAAAQBAJ",
+            "volumeInfo": {
+                "title": "Guerra y paz",
+                "subtitle": "Prólogo de Eduardo Mendoza",
+                "authors": [
+                    "Lev Tolstói"
+                ],
+                "publisher": "Editorial Planeta",
+                "publishedDate": "2022-11-16",
+                "description": "De las suntuosas fiestas de la aristocracia de San Petersburgo y Moscú al frente ruso donde las tropas luchan contra el ejército napoleónico, Guerra y paz nos presenta un amplio fresco de la sociedad rusa del momento a través de las vivencias de algunos miembros de varias familias rusas aristocráticas. Considerada una de las obras cumbres de la historia de la literatura, la novela no sólo plasma magistralmente una época irrepetible sino que aborda las cuestiones esenciales de la condición humana, entre ellas, las consecuencias devastadoras de la guerra y las irremediables transformaciones que sufren con ella los individuos, las familias y la sociedad entera. Guerra y paz no ha perdido un ápice de su actualidad y conserva la capacidad de deslumbrar a cualquiera que se adentre en ella. «Hay que reconocer en Guerra y paz, la fuerza sobrehumana, casi física del relato, la vivacidad de algunos pasajes que impresionan la imaginación del lector con la agudeza y precisión casi dolorosas de una luz repentina, demasiado potente.» Eduardo Mendoza « Guerra y paz es uno de esos raros milagros que, de siglo en siglo, ocurren en el universo de la literatura.» Mario Vargas Llosa",
+                "readingModes": {
+                    "text": true,
+                    "image": true
+                },
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "1.2.2.0.preview.3",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=Uy6JEAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=Uy6JEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "previewLink": "http://books.google.com/books?id=Uy6JEAAAQBAJ&printsec=frontcover&dq=Guerra+y+paz&hl=&cd=9&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=Uy6JEAAAQBAJ&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=Uy6JEAAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "US",
+                "listPrice": {
+                    "amount": 8.99,
+                    "currencyCode": "USD"
+                },
+                "retailPrice": {
+                    "amount": 8.99,
+                    "currencyCode": "USD"
+                },
+                "buyLink": "https://play.google.com/store/books/details?id=Uy6JEAAAQBAJ&rdid=book-Uy6JEAAAQBAJ&rdot=1&source=gbs_api",
+                "offers": [
+                    {
+                        "finskyOfferType": 1,
+                        "listPrice": {
+                            "amountInMicros": 8990000,
+                            "currencyCode": "USD"
+                        },
+                        "retailPrice": {
+                            "amountInMicros": 8990000,
+                            "currencyCode": "USD"
+                        },
+                        "giftable": true
+                    }
+                ]
+            },
+            "accessInfo": {
+                "country": "US",
+                "epub": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com/books/download/Guerra_y_paz-sample-epub.acsm?id=Uy6JEAAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com/books/download/Guerra_y_paz-sample-pdf.acsm?id=Uy6JEAAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "accessViewStatus": "SAMPLE"
+            },
+            "searchInfo": {
+                "textSnippet": "Guerra y paz no ha perdido un ápice de su actualidad y conserva la capacidad de deslumbrar a cualquiera que se adentre en ella. «Hay que reconocer en Guerra y paz, la fuerza sobrehumana, casi física del relato, la vivacidad de algunos ..."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "HZH1MgEACAAJ",
+            "etag": "O3vxE4/nMt0",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/HZH1MgEACAAJ",
+            "volumeInfo": {
+                "title": "ANNA KARENINA - ESTUCHE",
+                "authors": [
+                    "LIEV TOLSTOI"
+                ],
+                "description": "Basado en incidentes reales y marcado por las preocupaciones éticas generadas por la crisis espiritual que atravesaba el autor, el relato de 'Anna Karenina' se centra en el adulterio de la protagonista, una de las tres historias conyugales que se entrelazan en la obra.",
+                "readingModes": {
+                    "text": false,
+                    "image": false
+                },
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "preview-1.0.0",
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=HZH1MgEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=HZH1MgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                },
+                "previewLink": "http://books.google.com/books?id=HZH1MgEACAAJ&dq=Guerra+y+paz&hl=&cd=10&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=HZH1MgEACAAJ&dq=Guerra+y+paz&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/ANNA_KARENINA_ESTUCHE.html?hl=&id=HZH1MgEACAAJ"
+            },
+            "saleInfo": {
+                "country": "US"
+            },
+            "accessInfo": {
+                "country": "US",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": false
+                },
+                "accessViewStatus": "NONE"
+            },
+            "searchInfo": {
+                "textSnippet": "En 1887, ocho años después de la publicación de Guerra y paz, León Tolstoi (1828-1910) pone punto final a su novela Anna Karenina, uno de los más grandes monumentos de la historia de la literatura."
+            }
+        }
+    ]
+}

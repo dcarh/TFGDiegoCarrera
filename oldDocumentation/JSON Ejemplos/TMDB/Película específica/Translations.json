@@ -1,0 +1,434 @@
+{
+    "id": 3175,
+    "translations": [
+      {
+        "iso_3166_1": "US",
+        "iso_639_1": "en",
+        "name": "English",
+        "english_name": "English",
+        "data": {
+          "homepage": "",
+          "overview": "An Irish rogue uses his cunning and wit to work his way up the social classes of 18th century England, transforming himself from the humble Redmond Barry into the noble Barry Lyndon.",
+          "runtime": 185,
+          "tagline": "At long last Redmond Barry became a gentleman—and that was his tragedy.",
+          "title": ""
+        }
+      },
+      {
+        "iso_3166_1": "TR",
+        "iso_639_1": "tr",
+        "name": "Türkçe",
+        "english_name": "Turkish",
+        "data": {
+          "homepage": "",
+          "overview": "1700'lerin tam ortasındayız. Genç bir İrlandalı olan Redmond Barry, bir subayı düelloda öldürünce kaçıp yeni bir hayat kurmak ister. Serüvenler sonucu kendisini savaşın ortasında Prusya ordusunda bulur. Savaştan sonra casuslukla görevlendirilip İrlandalı bir Şövalye'nin peşine takılır. Onunla birlikte Prusya'dan kaçar ve kumarbazlığa başlayarak Avrupa'nın kalburüstü sosyetesine burnunun ucunu sokmayı başarır. Ama gözü daha yükseklerdedir.",
+          "runtime": 0,
+          "tagline": "",
+          "title": ""
+        }
+      },
+      {
+        "iso_3166_1": "FR",
+        "iso_639_1": "fr",
+        "name": "Français",
+        "english_name": "French",
+        "data": {
+          "homepage": "",
+          "overview": "Chassé de son Irlande natale après une série d'exactions et d'inconvenances, Redmond Barry s'engage dans l'armée britannique et combat les Prussiens. Le métier des armes lui devient vite insupportable et il déserte. Capturé par l'ennemi, le jeune homme, ambitieux mais naïf, ne doit sa survie qu'à son empressement à servir ses nouveaux maîtres. La guerre finie, Redmond devient espion, puis joueur professionnel. Il fréquente la haute société, dont il apprend les usages et les bonnes manières. Ce talent lui permet de conquérir le cœur d'une jeune veuve, la comtesse de Lyndon, dont le fils, lord Bullingdon, lui voue bientôt la plus vive animosité…",
+          "runtime": 187,
+          "tagline": "Finalement, Redmond Barry devint un gentleman et ce fut sa tragédie.",
+          "title": ""
+        }
+      },
+      {
+        "iso_3166_1": "PT",
+        "iso_639_1": "pt",
+        "name": "Português",
+        "english_name": "Portuguese",
+        "data": {
+          "homepage": "",
+          "overview": "A história de um pobre irlandês do século XVIII que se tornou parte da nobreza. Baseado na obra de William Makepeace Thackeray.",
+          "runtime": 185,
+          "tagline": "Finalmente Redmond Barry tornou-se um cavalheiro - e essa foi a sua tragédia",
+          "title": "Barry Lyndon"
+        }
+      },
+      {
+        "iso_3166_1": "DE",
+        "iso_639_1": "de",
+        "name": "Deutsch",
+        "english_name": "German",
+        "data": {
+          "homepage": "",
+          "overview": "Wie gelingt es einem irischen Burschen ohne Zukunftsaussichten, in den englischen Adel des 18. Jahrhunderts aufzusteigen? Barry Lyndon will es schaffen – auf Teufel komm raus! Er schmachtet nach den Frauenzimmern, sieht im Duell dem Tod ins Auge, versucht sich als Vagabund, Soldat im Siebenjährigen Krieg, als Lebemann, Spion und Falschspieler – und erklimmt dabei stetig die Sprossen, die Karriere, Erfolg und Reichtum versprechen.",
+          "runtime": 187,
+          "tagline": "Endlich wurde Redmond Barry ein Gentleman – und das war seine Tragödie.",
+          "title": ""
+        }
+      },
+      {
+        "iso_3166_1": "IT",
+        "iso_639_1": "it",
+        "name": "Italiano",
+        "english_name": "Italian",
+        "data": {
+          "homepage": "",
+          "overview": "La storia dell'avventuriero Redmond Barry, ambientata nell'Inghilterra del Settecento. Un eroe ambiguo e traballante, spinto da una cieca ambizione all'interno di una società violenta e classista.",
+          "runtime": 178,
+          "tagline": "Alla fine Redmond Barry divenne un gentiluomo, e quella fu la sua tragedia.",
+          "title": ""
+        }
+      },
+      {
+        "iso_3166_1": "ES",
+        "iso_639_1": "es",
+        "name": "Español",
+        "english_name": "Spanish",
+        "data": {
+          "homepage": "",
+          "overview": "Siglo XVIII. El joven Redmond Barry, huérfano de padre, se ha enamorado de su prima, a la que también pretende el Capitán John Quin. El asunto se resuelve por medio de un duelo, del que Redmond resulta vencedor. A continuación se va a Dublín y decide alistarse en el ejército inglés, donde empieza a desarrollar sus extraordinarias habilidades para sobrevivir. Estando en Alemania, se le presenta la posibilidad de desertar, pero es capturado por el Capitán Potzdorf, un oficial prusiano que le ofrece la posibilidad de unirse a sus tropas o ser colgado por desertor. Una vez en el ejército prusiano, tiene la fortuna de salvarle la vida a Potzdorf, lo que le abre las puertas del servicio secreto prusiano.",
+          "runtime": 0,
+          "tagline": "",
+          "title": "Barry Lyndon"
+        }
+      },
+      {
+        "iso_3166_1": "CN",
+        "iso_639_1": "zh",
+        "name": "普通话",
+        "english_name": "Mandarin",
+        "data": {
+          "homepage": "",
+          "overview": "爱尔兰青年雷德蒙·巴里因父亲去世，不得不与母亲投靠舅舅。不久英法爆发战争，原来与巴里有染的表妹爱上了招兵的上尉，巴里与上尉决斗，枪击了上尉。他为了躲避追捕，成了步兵团的新兵。在部队里他从一名参与当时决斗的军人那里得知原来上尉并未死，因为舅舅一家为了攀亲，在手枪上做了手脚，如今表妹和上尉早已成亲。军队中死伤甚多，巴里心生厌倦，冒充军官混进普鲁士盟军部队，但被识破，不得不加入普军。因在战斗中救了主帅而受器重，被派调查一个爱尔兰骑士是否是间谍。巴里和骑士一见投缘，借机离开普鲁士到法国经营赌场。巴里决定混迹上流社会，并设法和有财产、身份的林登夫人结婚，改名巴里·林登，用手段得到爵位。但林登夫人与前夫的儿子布林登离家出走，巴里的亲子也因意外夭折。林登夫人也企图服毒自杀。在与布林登的决斗中，巴里失去一条腿。加上债务缠身，巴里不得不以离开林登夫人为条件换取年金维生。他曾试图东山再起，但已失去了往日的好运。　　  　　根据英国著名小说家萨克雷作品改编，影坛奇才斯坦利·库伯力克以近乎完美的电影技术将一个18世纪的欧洲传奇人物故事搬上银幕，颇具史诗风范。",
+          "runtime": 184,
+          "tagline": "",
+          "title": "巴里·林登"
+        }
+      },
+      {
+        "iso_3166_1": "RU",
+        "iso_639_1": "ru",
+        "name": "Pусский",
+        "english_name": "Russian",
+        "data": {
+          "homepage": "",
+          "overview": "История жизни простого ирландского парня Редмонда Барри. Будучи еще совсем молодым, он убил на дуэли офицера английской армии. Чтобы не попасть в руки полиции, ему пришлось покинуть родной дом и отправиться странствовать по Ирландии. Но странствия его были недолгими. Отдав грабителям все деньги, коня и оружие, он вынужден был записаться в ряды английской армии. Попав на войну и насмотревшись всех ее ужасов, он решает дезертировать. Украв офицерскую форму, Барри отправляется в расположение союзников, надеясь оттуда тайком перебраться в Ирландию. Но и здесь его ожидает неудача: его разоблачает капитан прусской армии, заставляя вступить в ее ряды. По окончании войны Барри смог, наконец, вернуться в свою страну.",
+          "runtime": 185,
+          "tagline": "",
+          "title": "Барри Линдон"
+        }
+      },
+      {
+        "iso_3166_1": "NL",
+        "iso_639_1": "nl",
+        "name": "Nederlands",
+        "english_name": "Dutch",
+        "data": {
+          "homepage": "",
+          "overview": "Ierland, 18e eeuw. De jonge Redmond Barry blijft na de dood van zijn vader alleen achter met zijn moeder. Hij wordt verliefd op zijn nichtje Nora Brady en gaat een duel aan met haar verloofde Captain Quin.",
+          "runtime": 184,
+          "tagline": "",
+          "title": ""
+        }
+      },
+      {
+        "iso_3166_1": "CZ",
+        "iso_639_1": "cs",
+        "name": "Český",
+        "english_name": "Czech",
+        "data": {
+          "homepage": "",
+          "overview": "Jmenuje se Redmond Barry a je irským mladíčkem bez budoucnosti. Kdyby zůstal v rodném hnízdě, kde se o něj po otcově smrti s láskou a péčí stará jeho matka, asi by se nikdy ničím jiným nestal. Ale osud chtěl, aby Barry vyrazil do světa. A svět osmnáctého století se sice s jedincem bez haléře v kapse a bez konexí příliš nemazlí, také ovšem skýtá člověku, nezatíženému přílišnými skrupulemi, řadu možností. A Barry jich dokáže využít dokonale. Je málo rolí, jimiž by na své cestě „nahoru“ neprošel: duelant, pobuda, voják, flamendr, sukničkář, špion, falešný karetní hráč… A před očima stále jeden cíl: bohatství, společenské uznání, postavení…",
+          "runtime": 0,
+          "tagline": "Vzestup a pád jednoho ambiciózního mladíka.",
+          "title": ""
+        }
+      },
+      {
+        "iso_3166_1": "JP",
+        "iso_639_1": "ja",
+        "name": "日本語",
+        "english_name": "Japanese",
+        "data": {
+          "homepage": "",
+          "overview": "18世紀ヨーロッパ貴族社会の風俗や世界観を鮮やかに再現し、日和見主義で英国貴族に成り上がっていくアイルランド青年の栄華と没落の半生を描いたヒューマン・ドラマ。",
+          "runtime": 186,
+          "tagline": "《風雲児》バリーの華麗なる愛と冒険の大ロマン！",
+          "title": "バリー・リンドン"
+        }
+      },
+      {
+        "iso_3166_1": "IR",
+        "iso_639_1": "fa",
+        "name": "فارسی",
+        "english_name": "Persian",
+        "data": {
+          "homepage": "",
+          "overview": "استان مردی در سده ۱۸ که در یک خانواده روستایی ساده به دنیا آمده‌است و با مادرش زندگی می‌کند، عاشق دختر عموی خود می‌شود، موفق به ازدواج با او نمی‌شود یه جنگ می‌رود و پس از آن اتفاقات زیادی در زندگی او پیش می‌آید، با یک دوشس بیوه برای ثروت او ازدواج می‌کند، و به این وسیله راه ترقی او باز می‌شود.",
+          "runtime": 0,
+          "tagline": "",
+          "title": "بری لیندون"
+        }
+      },
+      {
+        "iso_3166_1": "HU",
+        "iso_639_1": "hu",
+        "name": "Magyar",
+        "english_name": "Hungarian",
+        "data": {
+          "homepage": "",
+          "overview": "Barry Lyndon kilátástalan helyzetű, jövő nélküli ír fiatalember. Semmi esélye, hogy a tizennyolcadik századi Angliában nemesi rangot szerezzen. Vagy mégis? Barry Lyndon ugyanis nem gondolkodik, hanem cselekszik, és eközben úgy váltogatja a szerepeit, mint más a gatyáját. Ha kell epekedő udvarló, ha kell párbajhős, vagy éppen szélhámos, katona a hétéves háborúban, kém és hamiskártyás - bárki, ha a helyzet úgy kívánja. Végigkövethetjük, hogyan kapaszkodik egyre feljebb a ranglétrán, hogyan szerzi meg a kiváltságokat és a vagyont.",
+          "runtime": 0,
+          "tagline": "",
+          "title": "Barry Lyndon"
+        }
+      },
+      {
+        "iso_3166_1": "SE",
+        "iso_639_1": "sv",
+        "name": "svenska",
+        "english_name": "Swedish",
+        "data": {
+          "homepage": "",
+          "overview": "Berättelsen om Redmond Barrys uppgång och fall. Han börjar som en irländsk ungtupp, av fin men fattig familj. Genom dueller, falskspel, spioneri och kurtiserande klättrar han i anseende.",
+          "runtime": 0,
+          "tagline": "",
+          "title": ""
+        }
+      },
+      {
+        "iso_3166_1": "DK",
+        "iso_639_1": "da",
+        "name": "Dansk",
+        "english_name": "Danish",
+        "data": {
+          "homepage": "",
+          "overview": "Hvordan bliver en irsk knægt uden fremtidsmuligheder en del af 1700-tallets engelske adel? For Barry Lyndon er svaret: Ved hjælp af alle kneb. Han er på ingen måde tilfreds med sin ydmyge herkomst og opvækst, så han er fast besluttet på at søge lykke, magt og penge ved at drage ud i verden. Gennem held, handlekraft og romantiske eskapader lykkes det Barry at blive en holden mand i det krigshærgede Europa i 1700-tallet. Men i processen er han også blevet kold og beregnende, og prisen for succes viser sig at være høj.",
+          "runtime": 185,
+          "tagline": "",
+          "title": "Barry Lyndon"
+        }
+      },
+      {
+        "iso_3166_1": "IL",
+        "iso_639_1": "he",
+        "name": "עִבְרִית",
+        "english_name": "Hebrew",
+        "data": {
+          "homepage": "",
+          "overview": "סרטו העשירי של קובריק מעביר אל הבד את ספרו של ויליאם מאקפי טקריי. בארי לינדון, עריק מצבא הוד מלכותה לצבא הקיסר הפרוסי הוא מרגל מקצועי, מהמר, פלייבוי אופנתי, בן איכרים ששואף לכבוש מקום של כבוד במבצר האריסטוקרטיה האנגלית של המאה ה19-. תוך שהוא נסמך על ציורים מהמאה השמונה עשרה קובריק העמיד סצנות מרהיבות, מוקפדות ועמוסות כל טוב. הוא ניצל את עברו כצלם כדי לפתח עדשות מיוחדות איתן ניתן לצלם לאור נרות בלבד, ויחד עם שאר כישוריו הקולנועיים הביא למסך יצירה מרשימה, עוצרת נשימה וצינית ששואבת את כוחה מההקרנה על המסך הגדול.",
+          "runtime": 0,
+          "tagline": "",
+          "title": "בארי לינדון"
+        }
+      },
+      {
+        "iso_3166_1": "GR",
+        "iso_639_1": "el",
+        "name": "ελληνικά",
+        "english_name": "Greek",
+        "data": {
+          "homepage": "",
+          "overview": "Κάτα τη διάρκεια του Επταετούς Πολέμου στην Ευρώπη ένας νεαρός Ιρλανδός ζαλισμένος από τον έρωτα και το νεανικό αυθορμητισμό του βρέθηκε χωρίς καλά καλά να το καταλάβει παγιδευμένος στην τρέλα ενός πολέμου όπου τακτικά σώματα στρατού παρατάσσονταν με απόλυτη πειθαρχία το ένα απέναντι από το άλλο και πυροβολούσαν στο ψαχνό στέλνοντας μιλούνια νέων στο θάνατο με φρικαλέα οργάνωση κι αποτρόπαιο σύστημα.  Ο ήρωας της ιστορίας αποφάσιζει να ξεφύγει από αυτό το μαζικό ντελίριο παριστάνοντας τον στρατιωτικό αγγελιαφόρο για να καταλήξει μετά από σκαμπανεβάσματα στην κοινωνική του ανέλιξη με τίτλο και πλούτη ευγενούς, ονόματι Barry Lyndon.",
+          "runtime": 0,
+          "tagline": "",
+          "title": "Μπάρι Λίντον"
+        }
+      },
+      {
+        "iso_3166_1": "BR",
+        "iso_639_1": "pt",
+        "name": "Português",
+        "english_name": "Portuguese",
+        "data": {
+          "homepage": "",
+          "overview": "Um trapaceiro irlandês conquista o coração de uma viúva rica e assume a posição aristocrárica do seu falecido marido na Inglaterra do século 18.",
+          "runtime": 185,
+          "tagline": "Finalmente Redmond Barry tornou-se um cavalheiro... e essa foi sua tragédia.",
+          "title": "Barry Lyndon"
+        }
+      },
+      {
+        "iso_3166_1": "PL",
+        "iso_639_1": "pl",
+        "name": "Polski",
+        "english_name": "Polish",
+        "data": {
+          "homepage": "",
+          "overview": "Barry Lyndon (Ryan O'Neal) był irlandzkim młodzieńcem bez perspektyw, który wkradł się w szeregi osiemnastowiecznej angielskiej arystokracji. Jak mu się to udało? Po prostu - robił, co w jego mocy: był bawidamkiem, zawadiaką, włóczęgą, żołnierzem w wojnie siedmioletniej, rozpustnikiem, szpiegiem i szulerem karcianym. Bohater klasycznej powieści Williama Makepeace'a Thackeraya, którą przeniósł na ekran Stanley Kubrick, nie cofnął się przed niczym, byle osiągnąć upragniony cel.",
+          "runtime": 184,
+          "tagline": "",
+          "title": ""
+        }
+      },
+      {
+        "iso_3166_1": "BG",
+        "iso_639_1": "bg",
+        "name": "български език",
+        "english_name": "Bulgarian",
+        "data": {
+          "homepage": "",
+          "overview": "Как през 18-и век един ирландски момък без никакво бъдеще може да стане английски благородник? За Бари Линдън отговорът е: с всички възможни средства!",
+          "runtime": 0,
+          "tagline": "Най-накрая той става джентълмен - и това беше неговата трагедия.",
+          "title": "Бари Линдън"
+        }
+      },
+      {
+        "iso_3166_1": "KR",
+        "iso_639_1": "ko",
+        "name": "한국어/조선말",
+        "english_name": "Korean",
+        "data": {
+          "homepage": "",
+          "overview": "18세기 아일랜드의 한 작은 마을. 친척인 노라 브래디를 사랑하고 있던 청년 레드먼드 배리는 그녀가 영국 장교 존 퀸과 약혼하자 그에게 권총 결투를 신청한다. 결투에서 이긴 배리는 그대로 더블린으로 달아나지만, 도중에 강도를 당하고 만다. 달리 뾰족한 수가 없었던 그는 영국군에 입대해 7년 전쟁에 참전하게 되는데...",
+          "runtime": 0,
+          "tagline": "",
+          "title": "배리 린든"
+        }
+      },
+      {
+        "iso_3166_1": "UA",
+        "iso_639_1": "uk",
+        "name": "Український",
+        "english_name": "Ukrainian",
+        "data": {
+          "homepage": "",
+          "overview": "Історія життя простого ірландського хлопця Редмонда Баррі. Ще зовсім юним, він вбиває на дуелі офіцера англійської армії. Щоб не потрапити в руки поліції, він змушений покинути рідний дім і відправляється мандрувати Ірландією. Але мандрівка була недовгою. Віддавши грабіжникам усі гроші, коня та зброю, він записується в ряди англійської армії. Пройшовши підготовку, Редмонд потрапляє в Європу, де в цей час йде Семилітня війна. Надивившись на всі страхіття війни, він вирішує дезертирувати.",
+          "runtime": 0,
+          "tagline": "",
+          "title": "Баррі Ліндон"
+        }
+      },
+      {
+        "iso_3166_1": "NO",
+        "iso_639_1": "no",
+        "name": "Norsk",
+        "english_name": "Norwegian",
+        "data": {
+          "homepage": "",
+          "overview": "I Barry Lyndon tar Kubrick utypisk nok utgangspunkt i en 1800-talls roman og ønsker å lage et periodedrama, men som alltid på sin måte. Tiden er det sene 1700-tall i England og Irland, der en karaktersvak opportunists fremgang og fall portretteres. Etter 7 år i utlendighet kommer bondegutten og eventyreren Barry tilbake til England og får innpass i aristokratiet. Ved hjelp av diverse taskenspilleri lykkes han med å gifte seg med en av de rikeste enkene i landet. Deretter går det imidlertid bare en vei...",
+          "runtime": 0,
+          "tagline": "",
+          "title": ""
+        }
+      },
+      {
+        "iso_3166_1": "MX",
+        "iso_639_1": "es",
+        "name": "Español",
+        "english_name": "Spanish",
+        "data": {
+          "homepage": "",
+          "overview": "Adaptación de una novela del escritor inglés William Tackeray. Barry Lyndon, un joven irlandés ambicioso y sin escrúpulos, se ve obligado a emigrar a causa de un duelo. Lleva a partir de entonces una vida errante y llena de aventuras. Sin embargo, su sueño es alcanzar una elevada posición social. Y lo hace realidad al contraer un provechoso matrimonio, gracias al cual entra a formar parte de la nobleza inglesa del siglo XVIII.",
+          "runtime": 0,
+          "tagline": "",
+          "title": ""
+        }
+      },
+      {
+        "iso_3166_1": "TW",
+        "iso_639_1": "zh",
+        "name": "普通话",
+        "english_name": "Mandarin",
+        "data": {
+          "homepage": "",
+          "overview": "故事背景是18世紀，講述一位愛爾蘭青年的坎坷經歷。  愛爾蘭青年雷德蒙·巴里因父親去世，不得不與母親投靠舅舅。  不久英法爆發戰爭（1756年－1763年），原來與巴里有感情的表姐[1]愛上了有財有勢的上尉，巴里於是與上尉決鬥，槍擊了上尉。他為了躲避追捕，成了步兵團的新兵。在部隊裡他從一名參與當時決鬥的軍人那裡得知原來上尉並未死，因為舅舅一家為了攀親，在手槍上做了手腳，如今表姐和上尉早已成親。  英軍中死傷甚多，巴里心生厭倦，他冒充軍官騎馬企圖逃離戰場，被盟軍普魯士部隊識破，被迫又加入普軍。因在戰鬥中救了主帥而受器重，被派調查一個愛爾蘭騎士是否是間諜。巴里和騎士一見投緣，藉機離開普魯士到法國經營賭場。  巴里決定混跡英國上流社會，並設法和有財產、身份的林登夫人結婚，改名巴里·林登，用手段得到爵位。但林登夫人與前夫的兒子布林登則對巴里懷恨在心並離家出走。  巴里與林登夫人所生的兒子因騎馬被摔而意外夭折。林登夫人在痛苦中企圖服毒自殺而未能成功。  後來布林登找他決鬥，他在決鬥中被對方擊中小腿，被迫截肢失去一條腿。加上債務纏身，巴里被迫以離開林登夫人為條件換取布林登支付給他的年金維生，最終他和母親離開了英國。  影片結束語：「最後，上述的人物活在喬治三世時代受到誹謗，無論好壞、美醜、貧富，現在都已經不重要了。」",
+          "runtime": 0,
+          "tagline": "亂世兒女",
+          "title": "亂世兒女"
+        }
+      },
+      {
+        "iso_3166_1": "SA",
+        "iso_639_1": "ar",
+        "name": "العربية",
+        "english_name": "Arabic",
+        "data": {
+          "homepage": "",
+          "overview": "يستخدم المارق الأيرلندي ماكره وذكائه ليشق طريقه نحو الطبقات الاجتماعية في إنجلترا في القرن الثامن عشر ، ليحول نفسه من ريدموند باري المتواضع إلى النبيل باري ليندون.",
+          "runtime": 0,
+          "tagline": "أخيرًا أصبح ريدموند باري رجلاً نبيلًا - وكانت تلك مأساته.",
+          "title": ""
+        }
+      },
+      {
+        "iso_3166_1": "HK",
+        "iso_639_1": "zh",
+        "name": "普通话",
+        "english_name": "Mandarin",
+        "data": {
+          "homepage": "",
+          "overview": "",
+          "runtime": 0,
+          "tagline": "",
+          "title": "亂世兒女"
+        }
+      },
+      {
+        "iso_3166_1": "VN",
+        "iso_639_1": "vi",
+        "name": "Tiếng Việt",
+        "english_name": "Vietnamese",
+        "data": {
+          "homepage": "",
+          "overview": "Thế kỉ 18, tại một ngôi làng nhỏ ở Ai Len, Redmond Barry, một cậu bé nông thôn đem lòng yêu người chị họ Nora Brady. Khi Nora chuẩn bị kết hôn với một đại úy người Anh tên John Quin, Barry đã thách đấu súng với John. Barry thắng và phải bỏ trốn tới Dublin nhưng lại bị cướp dọc đường. Không có sự lựa chọn nào, Barry phải gia nhập vào quân đội Anh và chiến đấu trong Cuộc chiến 7 năm với Pháp. Chuyến phiếu lưu định mệnh thay đổi cả cuộc đời của chàng trai Ailen bắt đầu từ đây...",
+          "runtime": 0,
+          "tagline": "",
+          "title": "Chàng Barry May Mắn"
+        }
+      },
+      {
+        "iso_3166_1": "FI",
+        "iso_639_1": "fi",
+        "name": "suomi",
+        "english_name": "Finnish",
+        "data": {
+          "homepage": "",
+          "overview": "Kuinka voi irlantilainen, vailla mahdollisuuksia oleva poika päästä osaksi 1700-luvun englantilaista aatelistoa? Barry Lyndonille vastaus on: millä keinolla tahansa. Barry esiintyy kiihkeänä kosiskelijana, kaksintaistelijana, kulkurina, seitsenvuotisen sodan sotilaana, elostelijana, vakoojana ja korttihaina - nämä roolit vain petaavat hänen nousuaan rikkaiden ja etuoikeutettujen joukkoon.",
+          "runtime": 0,
+          "tagline": "",
+          "title": ""
+        }
+      },
+      {
+        "iso_3166_1": "LT",
+        "iso_639_1": "lt",
+        "name": "Lietuvių",
+        "english_name": "Lithuanian",
+        "data": {
+          "homepage": "",
+          "overview": "Epiška anglų literatūros klasiko Williamo Makepeace’o Thackeray’aus kūrinio ekranizacija, pasižyminti ypatingu vaizdiniu sprendimu, estetizmu, operatoriaus ir dailininko meistriškumu. Šis Stanley Kubrick’o filmas – vienas svarbiausių jo kūrybinėje biografijoje, kartu ir svarbus pasaulinio kino etapas. Pasakojimas apie airį, kosmopolitiškoje XVIII a. Europoje tampantį Prūsijos karaliaus tarnu, režisieriui tapo pretekstu pasvarstyti apie kultūros vertybes.",
+          "runtime": 0,
+          "tagline": "",
+          "title": "Baris Lindonas"
+        }
+      },
+      {
+        "iso_3166_1": "TH",
+        "iso_639_1": "th",
+        "name": "ภาษาไทย",
+        "english_name": "Thai",
+        "data": {
+          "homepage": "",
+          "overview": "",
+          "runtime": 0,
+          "tagline": "",
+          "title": "แบร์รี่ ลินดอน ขอฝันจนวันสุดท้าย"
+        }
+      },
+      {
+        "iso_3166_1": "ES",
+        "iso_639_1": "ca",
+        "name": "Català",
+        "english_name": "Catalan",
+        "data": {
+          "homepage": "",
+          "overview": "Segle XVIII. El jove Redmond Barry, orfe de pare, s'ha enamorat de la seva cosina, que també pretén el Capità John Quin. L'assumpte es resol per mitjà d'un duel, del qual Redmond en resulta vencedor. A continuació se'n va a Dublín i decideix allistar-se a l'exèrcit anglès, on comença a desenvolupar les seves extraordinàries habilitats per sobreviure. Estant a Alemanya, se li presenta la possibilitat de desertar, però és capturat pel Capità Potzdorf, un oficial prussià que li ofereix la possibilitat d'unir-se a les tropes o ser penjat per desertor. Un cop a l'exèrcit prussià, té la fortuna de salvar la vida a Potzdorf, cosa que li obre les portes del servei secret prussià.",
+          "runtime": 0,
+          "tagline": "",
+          "title": ""
+        }
+      }
+    ]
+}

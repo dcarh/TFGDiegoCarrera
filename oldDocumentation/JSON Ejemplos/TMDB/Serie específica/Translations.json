@@ -1,0 +1,545 @@
+{
+    "id": 1396,
+    "translations": [
+      {
+        "iso_3166_1": "US",
+        "iso_639_1": "en",
+        "name": "English",
+        "english_name": "English",
+        "data": {
+          "name": "",
+          "overview": "Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer and given a prognosis of only two years left to live. He becomes filled with a sense of fearlessness and an unrelenting desire to secure his family's financial future at any cost as he enters the dangerous world of drugs and crime.",
+          "homepage": "",
+          "tagline": "Change the equation."
+        }
+      },
+      {
+        "iso_3166_1": "DE",
+        "iso_639_1": "de",
+        "name": "Deutsch",
+        "english_name": "German",
+        "data": {
+          "name": "",
+          "overview": "Walter White ist ein schlafwandelnd durchs Leben gehender Highschool Chemielehrer. An seinem 50. Geburtstag wird bei ihm Krebs im Endstadium diagnostiziert. Um die finanzielle Zukunft für seine schwangere Frau und seinen behinderten Sohn zu sichern und weil er an der Schwelle des Todes nichts mehr zu verlieren hat, beschließt er seine Fähigkeiten als Chemiker gewinnbringend einzusetzen. Gemeinsam mit seinem ehemaligen Schüler Jesse Pinkman beginnt er Methamphetamin zu kochen.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "FR",
+        "iso_639_1": "fr",
+        "name": "Français",
+        "english_name": "French",
+        "data": {
+          "name": "",
+          "overview": "Walter White, professeur de chimie dans un lycée d'Albuquerque au Nouveau-Mexique, est atteint d'un cancer pulmonaire en phase terminale. Il s'associe à Jesse Pinkman, un ancien élève, cancre, toxicomane et dealer, afin d'assurer l'avenir financier de sa famille après son décès. L'improbable duo va alors synthétiser et commercialiser la plus pure méthamphétamine en cristaux jamais vue dans les Amériques.",
+          "homepage": "",
+          "tagline": "Souviens-toi de mon nom."
+        }
+      },
+      {
+        "iso_3166_1": "NL",
+        "iso_639_1": "nl",
+        "name": "Nederlands",
+        "english_name": "Dutch",
+        "data": {
+          "name": "",
+          "overview": "Walter White is scheikundeleraar. Op het moment dat zijn vrouw zwanger is van hun tweede kind, stort Walters wereld in. De dokter heeft namelijk vastgesteld dat hij terminaal ziek is. Walter heeft longkanker en lijkt niet lang meer te zullen leven. Om ervoor te zorgen dat zijn gezin na zijn dood niet in een financiële crisis belandt, besluit Walter over te schakelen naar een leven als crimineel. Met de hulp van Jesse Pinkman, een uitgevallen leerling die in zijn klas heeft gezeten, maakt en verkoopt hij de drug crystal meth.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "TR",
+        "iso_639_1": "tr",
+        "name": "Türkçe",
+        "english_name": "Turkish",
+        "data": {
+          "name": "",
+          "overview": "Kanserden öleceğini öğrenen bir kimya öğretmeni, ailesinin geleceğini garanti altına almak için metamfetamin üretip satmak üzere eski bir öğrencisiyle kafa kafaya verir.",
+          "homepage": "",
+          "tagline": "Tehlike benim!"
+        }
+      },
+      {
+        "iso_3166_1": "SK",
+        "iso_639_1": "sk",
+        "name": "Slovenčina",
+        "english_name": "Slovak",
+        "data": {
+          "name": "Perníkový tatko",
+          "overview": "Stredoškolskému učiteľovi chémie je diagnostikovaná rakovina a tak sa rozhodne pred svojou smrťou zaopatriť výrobou metam­fetamínu svoju rodinu. Seriál vyniká úplne famóznou premenou hlavnej postavy z obyčajného človeka na kľúčovú postavu drogového obchodu a skutočného bossa.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "RU",
+        "iso_639_1": "ru",
+        "name": "Pусский",
+        "english_name": "Russian",
+        "data": {
+          "name": "Во все тяжкие",
+          "overview": "Вся жизнь немолодого школьного учителя химии Уолтера Уайта — это борьба. Его зарплаты не хватает на содержание беременной жены и сына-инвалида, поэтому учитель вынужден подрабатывать на автомойке. Но всё меняется, когда Уолтеру ставят страшный диагноз — неоперабельный рак лёгких.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "HU",
+        "iso_639_1": "hu",
+        "name": "Magyar",
+        "english_name": "Hungarian",
+        "data": {
+          "name": "Totál szívás",
+          "overview": "Walter (Bryan Cranstom), a kémiatanár az 50. születésnapján tudja meg, hogy végső stádiumú tüdőrákban szenved és alig egy éve van hátra. Szereti a várandós feleségét és gondozásra szoruló tinédzser fiát, ezért úgy dönt, hátralevő idejében a lehető legtöbb pénzt gyűjti össze. Erre azonban csak a törvény másik oldalán van lehetősége, ezért szövetkezik egykori, drogdíler diákjával és belefognak a metamfetamin gyártásába. Hamar kiderül, hogy Walterrel ellentétben Jesse egy pancser, és már az első üzletkötésnél összehoz másfél hullát. Walter elindul a lejtőn, ahol nincs megállás.\n\n",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "CN",
+        "iso_639_1": "zh",
+        "name": "普通话",
+        "english_name": "Mandarin",
+        "data": {
+          "name": "绝命毒师",
+          "overview": "新墨西哥州的高中化学老师沃尔特·H·怀特（布莱恩·科兰斯顿BryanCranston饰）是拮据家庭的唯一经济来源。他大半生安分守己，兢兢业业，却在50岁生日之际突然得知自己罹患肺癌晚期的噩耗，原本便不甚顺意的人生顿时雪上加霜。为了保障怀孕的妻子斯凯勒（安娜·冈AnnaGunn饰）和残疾的儿子小沃特能在自己死后衣食无忧，沃尔特决意铤而走险。他主动找到曾经的学生、而今的毒贩小混混杰西·平克曼（亚伦·保尔AaronPaul饰）谈合作，并运用娴熟高超的化学技术提炼出高纯度冰毒交给后者贩售。孰料事态的发展却在平克曼带回毒品供销商疯狂小八及其表弟后急转直下，沃尔特的人生也由此彻底步向失控。他被迫开始了教书与制毒的双重生活，逐渐坠落至万劫不复的深渊。",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "ES",
+        "iso_639_1": "es",
+        "name": "Español",
+        "english_name": "Spanish",
+        "data": {
+          "name": "",
+          "overview": "Tras cumplir 50 años, Walter White (Bryan Cranston), un profesor de química de un instituto de Albuquerque, Nuevo México, se entera de que tiene un cáncer de pulmón incurable. Casado con Skyler (Anna Gunn) y con un hijo discapacitado (RJ Mitte), la brutal noticia lo impulsa a dar un drástico cambio a su vida: decide, con la ayuda de un antiguo alumno (Aaron Paul), fabricar anfetaminas y ponerlas a la venta. Lo que pretende es liberar a su familia de problemas económicos cuando se produzca el fatal desenlace.",
+          "homepage": "",
+          "tagline": "Recuerda mi nombre"
+        }
+      },
+      {
+        "iso_3166_1": "GR",
+        "iso_639_1": "el",
+        "name": "ελληνικά",
+        "english_name": "Greek",
+        "data": {
+          "name": "",
+          "overview": "Ένας καθηγητής που πάσχει από καρκίνο συνεργάζεται με έναν πρώην μαθητή για να εξασφαλίσει το μέλλον της οικογένειάς του, παρασκευάζοντας και πουλώντας μεθαμφεταμίνη.",
+          "homepage": "",
+          "tagline": "Να θυμάσαι το όνομά μου"
+        }
+      },
+      {
+        "iso_3166_1": "PT",
+        "iso_639_1": "pt",
+        "name": "Português",
+        "english_name": "Portuguese",
+        "data": {
+          "name": "Ruptura Total",
+          "overview": "A vida de Walter White, um professor de química do secundário, muda diante de um diagnóstico perturbador: cancro do pulmão sem possibilidade de cura. Com poucos anos de vida e nada mais a perder, Walter junta-se a um ex-aluno para fabricar e vender metanfetaminas como forma de garantir o futuro da sua família.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "IT",
+        "iso_639_1": "it",
+        "name": "Italiano",
+        "english_name": "Italian",
+        "data": {
+          "name": "",
+          "overview": "Un insegnante di chimica con un cancro allo stadio terminale comincia a produrre e spacciare metanfetamina con un suo ex studente per assicurare un futuro alla famiglia.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "BG",
+        "iso_639_1": "bg",
+        "name": "български език",
+        "english_name": "Bulgarian",
+        "data": {
+          "name": "В обувките на Сатаната",
+          "overview": "Обикновения и нехаризматичен учител по химия – Уолтър открива нова страст в живота си, след като разбира, че е болен от рак в последен стадий. Освен че е пожънал множество успехи в химията, Уолтър обучава апатични гимназисти и работи на непълен работен ден в една автомивка, за да издържа семейството си. Доходите на жена му са съвсем скромни, а синът им Уолтър младши - твърдоглав 17-годишен тийнейджър, страда от церебрална парализа. За да осигури прехраната на любимите си хора Уолтър си поставя нови цели и се отдава на вълнуващ престъпен живот.",
+          "homepage": "",
+          "tagline": "Запомнете името ми"
+        }
+      },
+      {
+        "iso_3166_1": "RO",
+        "iso_639_1": "ro",
+        "name": "Română",
+        "english_name": "Romanian",
+        "data": {
+          "name": "",
+          "overview": "Dramă premiată cu două statuete Emmy de mare audiență, serialul spune povestea lui Walter, un profesor de chimie care, lovit în plin de criza de la mijlocul vieții - cea mai gravă criză din câte s-au văzut vreodată -, începe să încalce legea prin fapte de o gravitate din ce în ce mai mare.",
+          "homepage": "",
+          "tagline": "Amintește-ți numele meu."
+        }
+      },
+      {
+        "iso_3166_1": "KR",
+        "iso_639_1": "ko",
+        "name": "한국어/조선말",
+        "english_name": "Korean",
+        "data": {
+          "name": "브레이킹 배드",
+          "overview": "2008년 1월 AMC에서 방영을 시작한 범죄 스릴러. Breaking Bad는 막가기를 뜻하는 미국 남부 지방의 속어이다. 한때 노벨화학상까지 바라 볼 정도로 뛰어난 과학자였던 고등학교 화학 교사 월터 화이트는 자신의 50세 생일 날에 폐암 3기 진단을 받는다. 어느 날 동서와 함께 마약 단속 현장을 참관한 그는 현장에서 달아나는 옛 제자 제시를 발견한다. 뇌성마비에 걸린 고등학생 아들과 임신한 아내를 위해 제시에게 동업을 제의한 월터는 자신의 화학지식을 이용해 전례없는 고순도 고품질의 메스암페타민을 제조한다.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "IL",
+        "iso_639_1": "he",
+        "name": "עִבְרִית",
+        "english_name": "Hebrew",
+        "data": {
+          "name": "שובר שורות",
+          "overview": "סדרת דרמה המתמקדת בוולטר וויט, מורה לכימיה בתיכון שסובל ממקרה חמור של משבר אמצע החיים, בנוסף הוא מתבשר שהינו גוסס ממחלה קשה. על מנת לממן את הטיפולים היקרים ולדאוג לעתיד משפחתו הוא חובר לתלמיד לשעבר והופך ליצרן וסוחר במתאמפטמין.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "PL",
+        "iso_639_1": "pl",
+        "name": "Polski",
+        "english_name": "Polish",
+        "data": {
+          "name": "",
+          "overview": "Głównym bohaterem \"Breaking Bad\" jest Walter White (Bryan Cranston), nauczyciel chemii mieszkający w Nowym Meksyku wraz z żoną (Anna Gunn) oraz nastoletnim synem (RJ Mitte) cierpiącym na porażenie mózgowe. Kiedy u Waltera zostaje zdiagnozowany rak w trzecim stadium, lekarze rokują, że pozostały mu dwa lata życia. Dzięki tym prognozom Walter wyzbywa się wszelkich lęków i pragnąc zabezpieczyć swoją rodzinę finansowo decyduje się wkroczyć do niebezpiecznego świata narkotyków i zbrodni. Serial ukazuje jak śmiertelna diagnoza jaką postawiono White'owi, zwyczajnemu mężczyźnie z typowymi, codziennymi problemami zmienia go z łagodnego domatora w trzon narkotykowej branży.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "DK",
+        "iso_639_1": "da",
+        "name": "Dansk",
+        "english_name": "Danish",
+        "data": {
+          "name": "",
+          "overview": "Efter at være blevet diagnosticeret med kræft og givet blot to år tilbage at leve i forsøger kemilæreren Walter at sikre sin families fremtidige økonomiske situation ved at slå sig sammen med en tidligere studerende, Jesse, for at producere og sælge det ulovlige stof amfetamin. Mens Walter langsomt bygger sit imperium op, begynder hans kone Skyler at undre sig over hans uregelmæssige adfærd, og politiet sætter jagten ind på kvarterets nye bagmand.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "CZ",
+        "iso_639_1": "cs",
+        "name": "Český",
+        "english_name": "Czech",
+        "data": {
+          "name": "Perníkový táta",
+          "overview": "Co se stane, když u středoškolského oceňovaného učitele chemie diagnostikují rakovinu plic v pokročilém stádiu? Dá se na kriminální dráhu jako drogový dealer, aby stihl vydělat co nejvíce peněz pro svou těhotnou ženu...",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "JP",
+        "iso_639_1": "ja",
+        "name": "日本語",
+        "english_name": "Japanese",
+        "data": {
+          "name": "ブレイキング・バッド",
+          "overview": "主人公のウォルターは冴えない高校の化学教師だが、自身が末期がんに冒されていることを知った後、新しい人生に目覚める。かつては成功を嘱望される化学者だったウォルターだが、今はやる気のない高校生に授業を行うかたわら、洗車のアルバイトをして家計を助ける身。妻のスカイラーは、eBayでの売買でほどほどの稼ぎを得ていた。息子のウォルター・ジュニアは17才。意志の強い若者だったが、脳性まひに苦しんでいた。家族に残せるものがほとんどないことに気がついたウォルターは、新しい人生の目的に目覚め、愛する家族に財産を残すため犯罪に手を染めていく。",
+          "homepage": "",
+          "tagline": "私の名は…"
+        }
+      },
+      {
+        "iso_3166_1": "UA",
+        "iso_639_1": "uk",
+        "name": "Український",
+        "english_name": "Ukrainian",
+        "data": {
+          "name": "Пуститися берега",
+          "overview": "Шкільний учитель хімії Волтер Вайт дізнається, що хворий на рак легенів. З огляду на складний фінансовий стан справ сім'ї, а також перспективи, Волтер вирішує зайнятися виготовленням метамфетаміну. Для цього він залучає свого колишнього учня Джессі Пінкмана, колись виключеного зі школи за активного сприяння Вайта. Пінкман сам займався «варінням мету», але напередодні, в ході рейду УБН, він позбувся напарника і лабораторії.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "SE",
+        "iso_639_1": "sv",
+        "name": "svenska",
+        "english_name": "Swedish",
+        "data": {
+          "name": "",
+          "overview": "Walter White, en alldaglig high school-kemilärare i 50-årsåldern som även extraknäcker på en biltvätt lever ett stillsamt liv, i ett oengagerat äktenskap med sin gravida, TV-shoppande fru Skyler och deras tonårige son Walter Jr., som lider av en lätt CP-skada När Walt Senior blir diagnostiserad med lungcancer, bestämmer han sig för att slå sig in på den brottsliga banan, för att kunna få ihop ett kapital att lämna efter sig vid sin kommande död. Han sätter upp ett \"meth lab\" och kokar metamfetamin tillsammans med sin tidigare elev, Jesse Pinkman.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "BS",
+        "iso_639_1": "bs",
+        "name": "Bosanski",
+        "english_name": "Bosnian",
+        "data": {
+          "name": "",
+          "overview": "Walter White je srednjovječni profesor kemije koji jednog dana doznaje da boluje od neizlječivog raka pluća, a prognoze nisu sjajne. Uz sve to, ima hendikepirano dijete i trudnu ženu. Prije nego umre, odlučuje da će se pobrinuti za svoju obitelj pa u podrumu stvori laboratorij za proizvodnju droge. Seriju je stvorio Vince Gilligan koji je radio i na „Dosjeima X“, omiljenoj seriji svih zaljubljenika u mistično i natprirodno. Mnogi kritičari pohvalili su odličnu glumu, a serija je općenito dobro prihvaćena i spada među favorite svih fanova pomaknutog humora.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "HR",
+        "iso_639_1": "hr",
+        "name": "Hrvatski",
+        "english_name": "Croatian",
+        "data": {
+          "name": "Na putu prema dolje",
+          "overview": "'Na putu prema dolje' prati neobičan i opasan životni put nimalo karizmatičnog i isprva vrlo prosječnog profesora kemije, Waltera Whitea, čiji život se potpuno preokrene kada sazna da je obolio od karcinoma.",
+          "homepage": "",
+          "tagline": "Upamti moje ime."
+        }
+      },
+      {
+        "iso_3166_1": "LT",
+        "iso_639_1": "lt",
+        "name": "Lietuvių",
+        "english_name": "Lithuanian",
+        "data": {
+          "name": "Bręstantis blogis",
+          "overview": "Chemijos mokytojas su žmona ir neįgaliu paaugliu sūnumi gyvena Naujojoje Meksikoje. Netikėtai jam nustatomas trečios stadijos vėžys, medikai teigia, kad gyventi beliko metai. Ši žinia ramų vyriškį išlaisvina iš bet kokių baimių ir visuomenės normų. Norėdamas užtikrinti šeimai gerą materialinę ateitį, jis pradeda gaminti aukščiausios kokybės amfetaminą. Mirtina diagnozė tykų namisėdą paverčia narkotikų pasaulio karaliuku.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "EE",
+        "iso_639_1": "et",
+        "name": "Eesti",
+        "english_name": "Estonian",
+        "data": {
+          "name": "Halvale teele",
+          "overview": "\"Halvale teele\" on huumorivarjundiga draamasari keemiaõpetaja Walter White'ist (rolli eest Emmy auhinna võitnud Bryan Cranston), keda on tabanud pingeline keskeakriis. Lisaks erivajadustega teismelisele pojale ja naisele, kes temasse külmalt suhtub, diagnoositakse tal ravimatu kopsuvähk. Jõudnud otsusele, et tema elu väärtus on äärmiselt kaheldav, otsustab ta oma endise õpilase, narkomaanist eluheidiku Jesse Pinkmaniga (Aaron Paul) hakata keetma metamfetamiini, ja kus oleks seda parem teha, kui keset kõrbe ja vagunelamus?",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "SA",
+        "iso_639_1": "ar",
+        "name": "العربية",
+        "english_name": "Arabic",
+        "data": {
+          "name": "اختلال ضال",
+          "overview": "تدور أحداث المسلسل بشكل رئيسي عن والتر وايت أستاذ في مدرسة ثانوية لمادة الكيمياء وعبقري في اختصاصه يكتشف اصابته بمرض السرطان، وبسبب عدم امتلاكه للمال الكافي لتغطية تكاليف العلاج اللازم له يتجه نحو إنتاج المخدرات مع طالب سابق عنده  جيسي بينكمان وبعد بدئه في الإنتاج واكتشافه للمردود القادم من بيع المخدرات تصبح إرادته في كسب المزيد من المال لتأمين مستقبل أفضل لعائلته بعد وفاته.",
+          "homepage": "",
+          "tagline": "هايزنبرغ"
+        }
+      },
+      {
+        "iso_3166_1": "IR",
+        "iso_639_1": "fa",
+        "name": "فارسی",
+        "english_name": "Persian",
+        "data": {
+          "name": "بریکینگ بد",
+          "overview": "داستان سریال درباره یک معلم شیمی میانسال است که متوجه می‌شود که دارای سرطان ریه است و ۲ سال بیشتر وقت برای زندگی ندارد. او که وضع مالی خوبی ندارد و دارای همسر و پسری معلول می‌باشد، به این فکر می‌افتد که باید قبل از مردن زندگی خانواده خود را تامین کند. پس با توجه به آشناییش به علم شیمی، همراه با یکی از شاگردان سابقش شروع به ساخت و فروش مواد مخدر می‌کند…",
+          "homepage": "",
+          "tagline": "نام من را به خاطر بسپار"
+        }
+      },
+      {
+        "iso_3166_1": "FI",
+        "iso_639_1": "fi",
+        "name": "suomi",
+        "english_name": "Finnish",
+        "data": {
+          "name": "",
+          "overview": "Parhaan miespuolisen draamanäyttelijän Emmyn voittanut Bryan Cranston esittää Walter Whitea, taitavaa kemistiä, joka on päätynyt kohtalon oikuista opettajaksi ja osa-aikaiseksi autopesulatyöntekijäksi. Kaikki muuttuu, kun Walter kuulee sairastavansa parantumatonta syöpää. Hän miettii keinoja turvata perheensä toimeentulo jatkossakin ja keksii yllättävän ratkaisun: huumekaupan. Walter ottaa kemistintaitonsa käyttöön ja lähtee rikoksen poluille johtoajatuksenaan, ettei hänellä ole mitään hävittävää. Vaarallisiin huumekuvioihin sekaantuminen ei kuitenkaan tee kiltistä Walterista hirviötä, päinvastoin.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "TH",
+        "iso_639_1": "th",
+        "name": "ภาษาไทย",
+        "english_name": "Thai",
+        "data": {
+          "name": "ดับเครื่องชน คนดีแตก",
+          "overview": "ครูสอนเคมีในโรงเรียนมัธยมซึ่งกำลังใกล้ตายด้วยโรคมะเร็งต้องมาร่วมมือกับอดีตนักเรียน เพื่อสร้างความมั่นคงให้กับครอบครัวก่อนที่เขาจะตายด้วยการผลิตยาไอซ์ขาย",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "BR",
+        "iso_639_1": "pt",
+        "name": "Português",
+        "english_name": "Portuguese",
+        "data": {
+          "name": "Breaking Bad: A Química do Mal",
+          "overview": "Ao saber que tem câncer, um professor passa a fabricar metanfetamina pelo futuro da família, mudando o destino de todos.",
+          "homepage": "",
+          "tagline": "Se Lembre do meu Nome"
+        }
+      },
+      {
+        "iso_3166_1": "CA",
+        "iso_639_1": "fr",
+        "name": "Français",
+        "english_name": "French",
+        "data": {
+          "name": "Breaking Bad : Le chimiste",
+          "overview": "En phase terminale d'un cancer, un professeur de chimie s'allie à un ancien élève pour assurer l'avenir de sa famille en fabriquant et en vendant de la méthamphétamine.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "MX",
+        "iso_639_1": "es",
+        "name": "Español",
+        "english_name": "Spanish",
+        "data": {
+          "name": "",
+          "overview": "Tras cumplir 50 años, Walter White , un profesor de química de un instituto de Albuquerque, Nuevo México,  se entera de que tiene un cáncer de pulmón incurable. Casado con Skyler  y con un hijo discapacitado , la brutal noticia lo impulsa a dar un drástico cambio a su vida: decide, con la ayuda de un antiguo alumno ,  fabricar anfetaminas y ponerlas a la venta. Lo que pretende es liberar a su familia de problemas económicos cuando se produzca el fatal desenlace.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "RS",
+        "iso_639_1": "sr",
+        "name": "Srpski",
+        "english_name": "Serbian",
+        "data": {
+          "name": "Чиста хемија",
+          "overview": "Волтер Вајт је професор хемије у средњој школи, који се окреће другој страни закона да би прехранио трудну жену и сина са парализом, након што му је постављена дијагноза рака плућа у поодмаклој фази.",
+          "homepage": "",
+          "tagline": "Упамти моје име"
+        }
+      },
+      {
+        "iso_3166_1": "TW",
+        "iso_639_1": "zh",
+        "name": "普通话",
+        "english_name": "Mandarin",
+        "data": {
+          "name": "絕命毒師",
+          "overview": "故事講述一名高中化學老師沃特·懷特生活陷入困頓，為了扶養懷孕的妻子和患有腦性麻痹的兒子，在被診斷出肺癌末期後，與過去的學生、如今販毒的傑西合謀，以化學知識製作冰毒獲取巨大利益，然而鋌而走險的販毒過程卻逐漸失控且瀕臨多次生命危險。",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "VN",
+        "iso_639_1": "vi",
+        "name": "Tiếng Việt",
+        "english_name": "Vietnamese",
+        "data": {
+          "name": "Tập làm người xấu",
+          "overview": "Một giáo viên dạy hóa ở trường trung học mắc bệnh ung thư bắt tay với một cựu học sinh để bảo vệ tương lai của gia đình bằng cách sản xuất và bán ma túy đá.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "NO",
+        "iso_639_1": "no",
+        "name": "Norsk",
+        "english_name": "Norwegian",
+        "data": {
+          "name": "Breaking Bad",
+          "overview": "En kreftsyk kjemilærer slår seg sammen med en tidligere elev for å produsere og selge metamfetamin slik at han kan sikre familiens framtid.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "ES",
+        "iso_639_1": "ca",
+        "name": "Català",
+        "english_name": "Catalan",
+        "data": {
+          "name": "",
+          "overview": "Walter White és un aplicat professor d'institut, pare de Walter White Jr, un jove discapacitat i marit de Skyler White qui està embarassada. Quan la vida ja era prou complicada per a Walter, li diagnostiquen un càncer de pulmó terminal, i això el porta a infringir la llei tot instal·lant un laboratori de metamfetamina amb el seu antic estudiant Jesse Pinkman per així assegurar el benestar econòmic de la seva família quan ell ja no hi sigui.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "ID",
+        "iso_639_1": "id",
+        "name": "Bahasa indonesia",
+        "english_name": "Indonesian",
+        "data": {
+          "name": "",
+          "overview": "Ketika Walter White, seorang guru kimia New Mexico, didiagnosis dengan kanker stadium III dan diberi prognosis hanya dua tahun lagi untuk hidup. Dia dipenuhi dengan rasa tidak takut dan keinginan yang tak henti-hentinya untuk mengamankan masa depan keuangan keluarganya dengan biaya berapa pun ketika dia memasuki dunia narkoba dan kejahatan yang berbahaya.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "LV",
+        "iso_639_1": "lv",
+        "name": "Latviešu",
+        "english_name": "Latvian",
+        "data": {
+          "name": "Pārkāpt robežu",
+          "overview": "",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "GE",
+        "iso_639_1": "ka",
+        "name": "ქართული",
+        "english_name": "Georgian",
+        "data": {
+          "name": "მძიმე დანაშაული",
+          "overview": "უოლტერ უაიტი ქიმიის მასწავლებელია სკოლაში, რომელსაც ფილტვის სიმსივნე აღმოაჩნდა. იმ მიზნით რომ სიკვდილის შემდეგ ოჯახს კარგი ფინანსურ მდგომარეობა დაუტოვოს, იგი ცვლის საკუთარ ცხოვრებას - იწყებს მეტამფეტამინის წარმოებას და გაყიდვას, რაშიც მისი ყოფილი მოწაფე ჯესი პინკმენი ეხმარება.",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "SI",
+        "iso_639_1": "sl",
+        "name": "Slovenščina",
+        "english_name": "Slovenian",
+        "data": {
+          "name": "Breaking Bad",
+          "overview": "Serija nam prikaže kako lahko usodna diagnoza vpliva na povsem običajnega, pridnega človeka in na njegovo moralo ter ga spremeni v glavnega akterja trgovine z mamili. Učitelj kemije Walter White živi s sinom najstnikom, ki ima cerebralno paralizo in ženo povsem običajno življenje v Novi Mehiki. Ko mu postavijo diagnozo 3. stopnje raka in napovejo le še dve leti življenja spozna, da nima več kaj za izgubiti. Odloči se, da bo pred smrtjo svoji družini zagotovil varno prihodnost, zato se Walt poda na pot drog in kriminala. Začne proizvajati in prodajati metamfetamin z enim od svojih nekdanjih študentov in kmalu se izkaže, da je v tem zanj novem svetu izjemno vešč...",
+          "homepage": "",
+          "tagline": "Spremenite enačbo."
+        }
+      },
+      {
+        "iso_3166_1": "HK",
+        "iso_639_1": "zh",
+        "name": "普通话",
+        "english_name": "Mandarin",
+        "data": {
+          "name": "絕命毒師",
+          "overview": "該劇講述了一比特普通的高中化學老師在得知自己身患絕症之後，為了給家人留下財產，而利用自己超凡的化學知識製造毒品，並成為世界頂級毒王的傳奇犯罪故事。",
+          "homepage": "",
+          "tagline": ""
+        }
+      },
+      {
+        "iso_3166_1": "MY",
+        "iso_639_1": "my",
+        "name": "",
+        "english_name": "Burmese",
+        "data": {
+          "name": "",
+          "overview": "",
+          "homepage": "",
+          "tagline": ""
+        }
+      }
+    ]
+}

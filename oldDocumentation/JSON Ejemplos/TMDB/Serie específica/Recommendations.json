@@ -1,0 +1,481 @@
+{
+    "page": 1,
+    "results": [
+      {
+        "adult": false,
+        "backdrop_path": "/hPea3Qy5Gd6z4kJLUruBbwAH8Rm.jpg",
+        "id": 60059,
+        "name": "Better Call Saul",
+        "original_language": "en",
+        "original_name": "Better Call Saul",
+        "overview": "Esta precuela de \"Breaking Bad\" nominada al Emmy narra la vida del picapleitos Jimmy McGill y su transformación en Saul Goodman, el abogado de moral laxa.",
+        "poster_path": "/fC2HDm5t0kHl7mTm7jxMR31b7by.jpg",
+        "media_type": "tv",
+        "genre_ids": [
+          80,
+          18
+        ],
+        "popularity": 394.316,
+        "first_air_date": "2015-02-08",
+        "vote_average": 8.661,
+        "vote_count": 4669,
+        "origin_country": [
+          "US"
+        ]
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/rIe3PnM6S7IBUmvNwDkBMX0i9EZ.jpg",
+        "id": 1399,
+        "name": "Juego de tronos",
+        "original_language": "en",
+        "original_name": "Game of Thrones",
+        "overview": "En una tierra donde los veranos duran décadas y los inviernos pueden durar toda una vida, los problemas acechan. Desde las maquinaciones del sur a las salvajes tierras del este, pasando por el helado norte y el milenario muro que protege el reino de las fuerzas tenebrosas, dos poderosas familias mantienen un enfrentamiento letal por gobernar los Siete Reinos de Poniente. Mientras la traición, la lujuria y las fuerzas sobrenaturales sacuden los pilares de los reinos, la sangrienta batalla por el trono de Hierro tendrá consecuencias imprevistas y trascendentales. El invierno se acerca. Que empiece 'Juego de tronos'.",
+        "poster_path": "/z9gCSwIObDOD2BEtmUwfasar3xs.jpg",
+        "media_type": "tv",
+        "genre_ids": [
+          10765,
+          18,
+          10759
+        ],
+        "popularity": 686.792,
+        "first_air_date": "2011-04-17",
+        "vote_average": 8.445,
+        "vote_count": 22630,
+        "origin_country": [
+          "US"
+        ]
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/56v2KjBlU4XaOv9rVYEQypROD7P.jpg",
+        "id": 66732,
+        "name": "Stranger Things",
+        "original_language": "en",
+        "original_name": "Stranger Things",
+        "overview": "A raíz de la desaparición de un niño, un pueblo desvela un misterio relacionado con experimentos secretos, fuerzas sobrenaturales aterradoras y una niña muy extraña.",
+        "poster_path": "/wHhjZMlYGT9yUEyGpP9jmR6Jq3I.jpg",
+        "media_type": "tv",
+        "genre_ids": [
+          18,
+          10765,
+          9648
+        ],
+        "popularity": 260.831,
+        "first_air_date": "2016-07-15",
+        "vote_average": 8.615,
+        "vote_count": 16696,
+        "origin_country": [
+          "US"
+        ]
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/aSGSxGMTP893DPMCvMl9AdnEICE.jpg",
+        "id": 1405,
+        "name": "Dexter",
+        "original_language": "en",
+        "original_name": "Dexter",
+        "overview": "Serie de suspense que narra la historia de un hombre extraño llamado Dexter Morgan. Cuando era niño, Dexter fue maltratado y abandonado por sus padres, ahora es un exitoso e importante forense patológico... pero bajo su carismática personalidad, se esconde una terrible verdad. Dexter ha canalizado sus innatas necesidades homicidas en una segunda profesión que guarda celosamente en secreto: buscar, dar caza y asesinar brutalmente a despiadados criminales.",
+        "poster_path": "/q8dWfc4JwQuv3HayIZeO84jAXED.jpg",
+        "media_type": "tv",
+        "genre_ids": [
+          80,
+          18,
+          9648
+        ],
+        "popularity": 192.592,
+        "first_air_date": "2006-10-01",
+        "vote_average": 8.2,
+        "vote_count": 3856,
+        "origin_country": [
+          "US"
+        ]
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/x4salpjB11umlUOltfNvSSrjSXm.jpg",
+        "id": 1402,
+        "name": "The Walking Dead",
+        "original_language": "en",
+        "original_name": "The Walking Dead",
+        "overview": "\"The Walking Dead\" está ambientada en un futuro apocalíptico con la Tierra devastada por el efecto de un cataclismo, que ha provocado la mutación en zombies de la mayor parte de los habitantes del planeta. La serie, explora las dificultades de los protagonistas para sobrevivir en un mundo poblado por el horror, así como las relaciones personales que se establecen entre ellos, en ocasiones también una amenaza para su supervivencia.",
+        "poster_path": "/hUblG1KZCTRpHc3wqqoU0DW98Q3.jpg",
+        "media_type": "tv",
+        "genre_ids": [
+          10759,
+          18,
+          10765
+        ],
+        "popularity": 385.209,
+        "first_air_date": "2010-10-31",
+        "vote_average": 8.1,
+        "vote_count": 15809,
+        "origin_country": [
+          "US"
+        ]
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/hmLTIRtVyTHShJl2Wb8LHmvUgJm.jpg",
+        "id": 19885,
+        "name": "Sherlock",
+        "original_language": "en",
+        "original_name": "Sherlock",
+        "overview": "En esta renovada versión de las historias de misterio de Arthur Conan Doyle, el excéntrico detective merodea por las calles del Londres de hoy en día en busca de pistas.",
+        "poster_path": "/iyfSdeZeAqj2farduoh5bvnZC5k.jpg",
+        "media_type": "tv",
+        "genre_ids": [
+          80,
+          18,
+          9648
+        ],
+        "popularity": 125.069,
+        "first_air_date": "2010-07-25",
+        "vote_average": 8.526,
+        "vote_count": 4973,
+        "origin_country": [
+          "GB"
+        ]
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/rBF8wVQN8hTWHspVZBlI3h7HZJ.jpg",
+        "id": 60625,
+        "name": "Rick y Morty",
+        "original_language": "en",
+        "original_name": "Rick and Morty",
+        "overview": "Comedia animada que narra las aventuras de un científico loco Rick Sánchez, que regresa después de 20 años para vivir con su hija, su marido y sus hijos Morty y Summer.",
+        "poster_path": "/5Yiep9EwcQgLolg013ETBVqHxuD.jpg",
+        "media_type": "tv",
+        "genre_ids": [
+          16,
+          35,
+          10765,
+          10759
+        ],
+        "popularity": 1061.479,
+        "first_air_date": "2013-12-02",
+        "vote_average": 8.7,
+        "vote_count": 9152,
+        "origin_country": [
+          "US"
+        ]
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/l0qVZIpXtIo7km9u5Yqh0nKPOr5.jpg",
+        "id": 1668,
+        "name": "Friends",
+        "original_language": "en",
+        "original_name": "Friends",
+        "overview": "Las aventuras de seis jóvenes neoyorquinos unidos por una divertida amistad. Entre el amor, el trabajo y la familia, comparten sus alegrías y preocupaciones en el Central Perk, su café favorito.",
+        "poster_path": "/rkKCSlr8OH5tbKEdgwtzvEiemrl.jpg",
+        "media_type": "tv",
+        "genre_ids": [
+          35
+        ],
+        "popularity": 478.637,
+        "first_air_date": "1994-09-22",
+        "vote_average": 8.444,
+        "vote_count": 7520,
+        "origin_country": [
+          "US"
+        ]
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/rkB4LyZHo1NHXFEDHl9vSD9r1lI.jpg",
+        "id": 94605,
+        "name": "Arcane",
+        "original_language": "en",
+        "original_name": "Arcane",
+        "overview": "Con las dispares ciudades de Piltover y Zaun como telón de fondo, dos hermanas luchan en bandos opuestos de una guerra entre tecnologías mágicas y creencias enfrentadas.",
+        "poster_path": "/fqldf2t8ztc9aiwn3k6mlX3tvRT.jpg",
+        "media_type": "tv",
+        "genre_ids": [
+          16,
+          18,
+          10765,
+          10759
+        ],
+        "popularity": 77.619,
+        "first_air_date": "2021-11-06",
+        "vote_average": 8.7,
+        "vote_count": 3604,
+        "origin_country": [
+          "US"
+        ]
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/lHe8iwM4Cdm6RSEiara4PN8ZcBd.jpg",
+        "id": 44217,
+        "name": "Vikingos",
+        "original_language": "en",
+        "original_name": "Vikings",
+        "overview": "Sigue las aventuras de Ragnar Lothbrok, el héroe más grande de su época. La serie narra las sagas de la banda de hermanos vikingos de Ragnar y su familia, cuando él se levanta para convertirse en el rey de las tribus vikingas. Además de ser un guerrero valiente, Ragnar encarna las tradiciones nórdicas de la devoción a los dioses, la leyenda dice que él era un descendiente directo de Odín, el dios de la guerra y los guerreros.",
+        "poster_path": "/uNFSCxeZsZVIQ1TrD6mzu6uMQEb.jpg",
+        "media_type": "tv",
+        "genre_ids": [
+          10759,
+          18,
+          10768,
+          99
+        ],
+        "popularity": 471.305,
+        "first_air_date": "2013-03-03",
+        "vote_average": 8.089,
+        "vote_count": 6565,
+        "origin_country": [
+          "CA"
+        ]
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/7RySzFeK3LPVMXcPtqfZnl6u4p1.jpg",
+        "id": 1418,
+        "name": "Big Bang",
+        "original_language": "en",
+        "original_name": "The Big Bang Theory",
+        "overview": "Leonard y Sheldon son dos físicos superdotados que comparten piso. Ambos son capaces de calcular las probabilidades de existencia de vida en otros planetas, pero son incapaces de relacionarse con los demás y especialmente con las chicas. Penny, su nueva vecina, es el polo opuesto a ellos, por lo que su llegada al edificio alterará la tranquila vida sentimental de Leonard y el desorden obsesivo-compulsivo de Sheldon.",
+        "poster_path": "/2bDQWCvFxRGhdvThTJvVxueEoLl.jpg",
+        "media_type": "tv",
+        "genre_ids": [
+          35
+        ],
+        "popularity": 216.001,
+        "first_air_date": "2007-09-24",
+        "vote_average": 7.896,
+        "vote_count": 10684,
+        "origin_country": [
+          "US"
+        ]
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/r0Q6eeN9L1ORL9QsV0Sg8ZV3vnv.jpg",
+        "id": 1408,
+        "name": "House",
+        "original_language": "en",
+        "original_name": "House",
+        "overview": "House M. D. es un drama médico Estadounidense que se emitió originalmente por la cadena Fox durante ocho temporadas, desde el 16 de noviembre de 2004 al 21 de mayo de 2012. El protagonista de la serie es el Dr. Gregory House, un médico nada convencional, genio, misántropo y adicto a las drogas que dirige un equipo de diagnósticos en el \"Princeton-Plainsboro Teaching Hospital\" (nombre ficticio) en Nueva Jersey.",
+        "poster_path": "/8yG2CZwRfZAkIGVLhy8aW1VXTJX.jpg",
+        "media_type": "tv",
+        "genre_ids": [
+          18,
+          9648
+        ],
+        "popularity": 490.624,
+        "first_air_date": "2004-11-16",
+        "vote_average": 8.593,
+        "vote_count": 6047,
+        "origin_country": [
+          "US"
+        ]
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/20eIP9o5ebArmu2HxJutaBjhLf4.jpg",
+        "id": 87108,
+        "name": "Chernobyl",
+        "original_language": "en",
+        "original_name": "Chernobyl",
+        "overview": "En Abril de 1986, la Central Nuclear de Chernóbil en Ucrania (en aquel entonces, la Unión Soviética), sufrió una explosión masiva que liberó material radioactivo en Bielorrusia, Rusia, Ucrania, así como en zonas de Escandinavia y Europa Central. La serie relata lo que aconteció en 1986, en uno de los mayores desastres provocados por el hombre en la historia reciente, así como los sacrificios realizados para salvar al continente de un desastre sin precedentes.",
+        "poster_path": "/hlLXt2tOPT6RRnjiUmoxyG1LTFi.jpg",
+        "media_type": "tv",
+        "genre_ids": [
+          18
+        ],
+        "popularity": 94.731,
+        "first_air_date": "2019-05-06",
+        "vote_average": 8.659,
+        "vote_count": 5716,
+        "origin_country": [
+          "US"
+        ]
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/7w165QdHmJuTHSQwEyJDBDpuDT7.jpg",
+        "id": 2288,
+        "name": "Prison Break",
+        "original_language": "en",
+        "original_name": "Prison Break",
+        "overview": "Michael Scofield (Wentworth Miller) es un hombre desesperado en un situación desesperada. Su hermano Lincoln Burrows (Dominic Purcell), condenado a la pena capital está a la espera de ser ejecutado. A pesar de todas las evidencias, Michael cree en su inocencia, por lo que decide robar un banco para dejarse atrapar y ser encarcelado en la misma prisión que su hermano. Su objetivo: escapar juntos.",
+        "poster_path": "/hEZSM0pRHDqslA0rG4DBFvWD64u.jpg",
+        "media_type": "tv",
+        "genre_ids": [
+          10759,
+          80,
+          18
+        ],
+        "popularity": 276.739,
+        "first_air_date": "2005-08-29",
+        "vote_average": 8.1,
+        "vote_count": 4680,
+        "origin_country": [
+          "US"
+        ]
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/gFZriCkpJYsApPZEF3jhxL4yLzG.jpg",
+        "id": 71446,
+        "name": "La Casa de Papel",
+        "original_language": "es",
+        "original_name": "La Casa de Papel",
+        "overview": "Un enigmático personaje llamado el Profesor planea algo grande: llevar a cabo el mayor atraco de la historia. Para ello recluta una banda de ocho personas que reúnen un único requisito, ninguno tiene nada que perder. Cinco meses de reclusión memorizando cada paso, cada detalle, cada probabilidad… y por fin, once días de encierro en la Fábrica Nacional de Moneda, rodeados de cuerpos de policía y con decenas de rehenes en su poder para saber si su apuesta suicida será todo o nada.",
+        "poster_path": "/z01Dc0Ly2GmCpLe6Scx4d3dPP1S.jpg",
+        "media_type": "tv",
+        "genre_ids": [
+          80,
+          18
+        ],
+        "popularity": 124.952,
+        "first_air_date": "2017-05-02",
+        "vote_average": 8.3,
+        "vote_count": 18108,
+        "origin_country": [
+          "ES"
+        ]
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/kfUWupX3phYp7AleZA2U1dmVcjX.jpg",
+        "id": 60574,
+        "name": "Peaky Blinders",
+        "original_language": "en",
+        "original_name": "Peaky Blinders",
+        "overview": "Una familia de pandilleros asentada en Birmingham, Reino Unido, tras la Primera Guerra Mundial (1914-1918), dirige un local de apuestas hípicas. Las actividades del ambicioso jefe de la banda llaman la atención del Inspector jefe Chester Campbell, un detective de la Real Policía Irlandesa que es enviado desde Belfast para limpiar la ciudad y acabar con la banda.",
+        "poster_path": "/tNjutGgaJpP30xUhfHihbcDgQUu.jpg",
+        "media_type": "tv",
+        "genre_ids": [
+          18,
+          80
+        ],
+        "popularity": 391.81,
+        "first_air_date": "2013-09-12",
+        "vote_average": 8.538,
+        "vote_count": 9277,
+        "origin_country": [
+          "GB"
+        ]
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/wZMY9X8jtSS5GXFue2lvhgaJkii.jpg",
+        "id": 42009,
+        "name": "Black Mirror",
+        "original_language": "en",
+        "original_name": "Black Mirror",
+        "overview": "Black Mirror es una serie de televisión británica creada por Charlie Brooker que muestra el lado oscuro de la vida y la tecnología. La serie es producida por Zeppotron para Endemol. En cuanto al contenido del programa y la estructura, Brooker ha señalado que \"cada episodio tiene un tono diferente, un entorno diferente, incluso una realidad diferente, pero todos son acerca de la forma en que vivimos ahora - y la forma en que podríamos estar viviendo en 10 minutos si somos torpes\".",
+        "poster_path": "/6nDRo824oyBwg1prOZHc8UtonVB.jpg",
+        "media_type": "tv",
+        "genre_ids": [
+          10765,
+          18,
+          9648
+        ],
+        "popularity": 410.512,
+        "first_air_date": "2011-12-04",
+        "vote_average": 8.296,
+        "vote_count": 4633,
+        "origin_country": [
+          "GB"
+        ]
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/yUOFocKDW7MCC5isx4FK8A68QFp.jpg",
+        "id": 4607,
+        "name": "Perdidos",
+        "original_language": "en",
+        "original_name": "Lost",
+        "overview": "Historia de un variopinto grupo de supervivientes de un accidente de aviación en una isla del Pacífico aparentemente desierta, una isla en la que suceden cosas muy extrañas. Luchando por la supervivencia, casi medio centenar de personas mostrarán lo mejor y lo peor de sí mismas.",
+        "poster_path": "/erSaxxOLj16ue9FOyMBp3kFa8qN.jpg",
+        "media_type": "tv",
+        "genre_ids": [
+          9648,
+          10759,
+          18
+        ],
+        "popularity": 191.814,
+        "first_air_date": "2004-09-22",
+        "vote_average": 7.962,
+        "vote_count": 3844,
+        "origin_country": [
+          "US"
+        ]
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/uJUe985oIuRiD3hmHQYskIMc2WU.jpg",
+        "id": 62560,
+        "name": "Mr. Robot",
+        "original_language": "en",
+        "original_name": "Mr. Robot",
+        "overview": "Sigue a un misterioso anarquista que recluta a un joven programador de computadoras (Malek) que sufre de un trastorno antisocial y se conecta a la gente pirateándolos.",
+        "poster_path": "/oKIBhzZzDX07SoE2bOLhq2EE8rf.jpg",
+        "media_type": "tv",
+        "genre_ids": [
+          80,
+          18
+        ],
+        "popularity": 244.156,
+        "first_air_date": "2015-06-24",
+        "vote_average": 8.24,
+        "vote_count": 4304,
+        "origin_country": [
+          "US"
+        ]
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/75HgaphatW0PDI3XIHQWZUpbhn6.jpg",
+        "id": 70523,
+        "name": "Dark",
+        "original_language": "de",
+        "original_name": "Dark",
+        "overview": "Tras la desaparición de un niño, cuatro familias desesperadas tratan de entender lo ocurrido a medida que van desvelando un retorcido misterio que abarca tres décadas.",
+        "poster_path": "/hRP7N2uI0pokxnkcMFONoOZnxbv.jpg",
+        "media_type": "tv",
+        "genre_ids": [
+          80,
+          18,
+          10765,
+          9648
+        ],
+        "popularity": 121.412,
+        "first_air_date": "2017-12-01",
+        "vote_average": 8.428,
+        "vote_count": 6256,
+        "origin_country": [
+          "DE"
+        ]
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/lNpkvX2s8LGB0mjGODMT4o6Up7j.jpg",
+        "id": 1398,
+        "name": "Los Soprano",
+        "original_language": "en",
+        "original_name": "The Sopranos",
+        "overview": "Los Soprano (The Sopranos) es una serie de televisión estadounidense creada y producida por David Chase. La serie se estrenó en Estados Unidos el 10 de enero de 1999 por el canal de televisión por cable HBO, que la emitió ininterrumpidamente hasta su desenlace, el 10 de junio de 2007. La trama de la serie gira en torno al mafioso de Nueva Jersey Tony Soprano (James Gandolfini) y las dificultades que enfrenta tanto en su hogar como en la organización criminal que dirige. A su vez, la serie también se centra en la historia de los personajes cercanos a Tony, especialmente su esposa Carmela (Edie Falco) y su sobrino y protegido Christopher Moltisanti (Michael Imperioli).",
+        "poster_path": "/p7XPjx5jTFl32TGbbIW8exdY8QW.jpg",
+        "media_type": "tv",
+        "genre_ids": [
+          18
+        ],
+        "popularity": 299.484,
+        "first_air_date": "1999-01-10",
+        "vote_average": 8.629,
+        "vote_count": 2439,
+        "origin_country": [
+          "US"
+        ]
+      }
+    ],
+    "total_pages": 2,
+    "total_results": 40
+}

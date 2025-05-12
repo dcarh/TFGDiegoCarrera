@@ -1,0 +1,561 @@
+{
+  "kind": "books#volumes",
+  "totalItems": 1000000,
+  "items": [
+    {
+      "kind": "books#volume",
+      "id": "hsgoZXNvT4IC",
+      "etag": "ZTmRIkrFjb8",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/hsgoZXNvT4IC",
+      "volumeInfo": {
+        "title": "Trilogía de la Fundación",
+        "authors": [
+          "Isaac Asimov"
+        ],
+        "publisher": "DEBOLS!LLO",
+        "publishedDate": "2010-11-26",
+        "description": "La «Trilogía de la Fundación» está considerada la mejor serie de la ciencia ficción universal. Como tal, fue galardonada en 1966 con un premio Hugo, y ahora reunida en un único volumen: una lectura imprescindible para los amantes del género. El hombre se ha dispersado por toda la galaxia. La capital del Imperio es Trántor, nido de intrigas y corrupción. Gracias a su ciencia, fundada en el estudio matemático de los hechos históricos y el comportamiento de las masas, el psicohistoriador Hari Seldon prevé la caída del Imperio y el retorno a la barbarie durante varios milenios. A fin de reducir este período de barbarie a mil años, Seldon decide crear una Fundación en un extremo de la galaxia. El poderío de la Fundación alcanza límites insospechados, su dominio se sostiene en la energía, la religión y el comercio. Sin embargo, la aparición del Mulo, un individuo dotado de poderes paranormales, desafía todas las previsiones. Conquistando planeta tras planeta, le gana terreno a la Fundación de manera vertiginosa. La salvación de la galaxia queda en manos de una Segunda Fundación totalmente secreta y cuyo emplazamiento es desconocido incluso para los dirigentes de la Primera. Reseña: «Cualquier aportación a la interminable controversia sobre el futuro debería mostrarse agradecida, en primer lugar, a Isaac Asimov.» The New Yorker",
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "2.47.38.0.preview.3",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=hsgoZXNvT4IC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=hsgoZXNvT4IC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "previewLink": "http://books.google.es/books?id=hsgoZXNvT4IC&printsec=frontcover&dq=Foundation&hl=&cd=1&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=hsgoZXNvT4IC&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=hsgoZXNvT4IC"
+      },
+      "saleInfo": {
+        "country": "ES",
+        "listPrice": {
+          "amount": 11.99,
+          "currencyCode": "EUR"
+        },
+        "retailPrice": {
+          "amount": 11.39,
+          "currencyCode": "EUR"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=hsgoZXNvT4IC&rdid=book-hsgoZXNvT4IC&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 11990000,
+              "currencyCode": "EUR"
+            },
+            "retailPrice": {
+              "amountInMicros": 11390000,
+              "currencyCode": "EUR"
+            },
+            "giftable": true
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "ES",
+        "epub": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.es/books/download/Trilog%C3%ADa_de_la_Fundaci%C3%B3n-sample-epub.acsm?id=hsgoZXNvT4IC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.es/books/download/Trilog%C3%ADa_de_la_Fundaci%C3%B3n-sample-pdf.acsm?id=hsgoZXNvT4IC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "accessViewStatus": "SAMPLE"
+      },
+      "searchInfo": {
+        "textSnippet": "Reseña: «Cualquier aportación a la interminable controversia sobre el futuro debería mostrarse agradecida, en primer lugar, a Isaac Asimov.» The New Yorker"
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "Dlk1zD_NUwwC",
+      "etag": "KEqkEDuJ/JQ",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/Dlk1zD_NUwwC",
+      "volumeInfo": {
+        "title": "Hacia la Fundación",
+        "authors": [
+          "Issac Asimov"
+        ],
+        "publisher": "La Factoría de Ideas",
+        "publishedDate": "2012-03-30",
+        "description": "Mientras Hari Seldon se esfuerza por perfeccionar su revolucionaria teoría de la psicohistoria, el gran Imperio Galáctico está al borde de un colapso apocalíptico. Seldon y aquellos a los que más quiere se convierten en peones en la lucha por el poder: quien lo controle a él controlará la psicohistoria, y con ella el futuro de la Galaxia. Entre los que desean convertir la psicohistoria en un arma se encuentran un político, el emperador Cleón, y un despiadado general. En su último acto de servicio a la humanidad, Seldon debe apañárselas para salvar el trabajo de toda su vida de las garras de ambos e ir en busca de sus verdaderos herederos y del sueño de una nueva Fundación.",
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "1.3.5.0.preview.3",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=Dlk1zD_NUwwC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=Dlk1zD_NUwwC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "previewLink": "http://books.google.es/books?id=Dlk1zD_NUwwC&printsec=frontcover&dq=Foundation&hl=&cd=2&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=Dlk1zD_NUwwC&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=Dlk1zD_NUwwC"
+      },
+      "saleInfo": {
+        "country": "ES",
+        "listPrice": {
+          "amount": 9.99,
+          "currencyCode": "EUR"
+        },
+        "retailPrice": {
+          "amount": 9.49,
+          "currencyCode": "EUR"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=Dlk1zD_NUwwC&rdid=book-Dlk1zD_NUwwC&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 9990000,
+              "currencyCode": "EUR"
+            },
+            "retailPrice": {
+              "amountInMicros": 9490000,
+              "currencyCode": "EUR"
+            },
+            "giftable": true
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "ES",
+        "epub": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.es/books/download/Hacia_la_Fundaci%C3%B3n-sample-epub.acsm?id=Dlk1zD_NUwwC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.es/books/download/Hacia_la_Fundaci%C3%B3n-sample-pdf.acsm?id=Dlk1zD_NUwwC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "accessViewStatus": "SAMPLE"
+      },
+      "searchInfo": {
+        "textSnippet": "Mientras Hari Seldon se esfuerza por perfeccionar su revolucionaria teoría de la psicohistoria, el gran Imperio Galáctico está al borde de un colapso apocalíptico."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "eOI3T8AznrgC",
+      "etag": "qvldAD0WT7Y",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/eOI3T8AznrgC",
+      "volumeInfo": {
+        "title": "Philanthropic Foundations",
+        "subtitle": "New Scholarship, New Possibilities",
+        "authors": [
+          "Ellen Condliffe Lagemann"
+        ],
+        "publisher": "Indiana University Press",
+        "publishedDate": "1999-07-22",
+        "description": "\"Foundations are socially and politically significant, but this simple fact... has mostly been ignored by students of American history.... This collection represents an important contribution to an emerging field.\" -- Kenneth Prewitt, Social Science Research Council",
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "6.5.5.0.preview.1",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=eOI3T8AznrgC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=eOI3T8AznrgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "previewLink": "http://books.google.es/books?id=eOI3T8AznrgC&pg=PA97&dq=Foundation&hl=&cd=3&source=gbs_api",
+        "infoLink": "http://books.google.es/books?id=eOI3T8AznrgC&dq=Foundation&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Philanthropic_Foundations.html?hl=&id=eOI3T8AznrgC"
+      },
+      "saleInfo": {
+        "country": "ES"
+      },
+      "accessInfo": {
+        "country": "ES",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.es/books/download/Philanthropic_Foundations-sample-pdf.acsm?id=eOI3T8AznrgC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "accessViewStatus": "SAMPLE"
+      },
+      "searchInfo": {
+        "textSnippet": "... \u003cb\u003eFoundation\u003c/b\u003e News 24 , no . 4 ( 1983a ) : 43 . 46. Martha R. Wallace , &quot; The \u003cb\u003eFoundation\u003c/b\u003e Meets the Fund Raiser , &quot; 4 . Bibliography Andrews , F. Emerson . Philanthropic ... \u003cb\u003eFoundation\u003c/b\u003e News Private \u003cb\u003eFoundations\u003c/b\u003e as Public Institutions | 97."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "QW2-PQAACAAJ",
+      "etag": "sfc0fH/gExI",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/QW2-PQAACAAJ",
+      "volumeInfo": {
+        "title": "Fundacion",
+        "authors": [
+          "Isaac Asimov"
+        ],
+        "publisher": "Plaza y Janes",
+        "publishedDate": "2002-01-22",
+        "description": "First published in 1951, Fundacion won the prestigious Hugo Award in 1965 for its breathtaking vision of a future where planet Earth is all but forgotten by humans who live throughout the galaxy. Only one psycho-historian and mathematician can foresee the imminent, catastrophic plunge into a new Dark Age that is facing human kind. In order to preserve our past and present, he concocts a scheme to save the knowledge of the race in an Encyclopedia Galactica.",
+        "readingModes": {
+          "text": false,
+          "image": false
+        },
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "preview-1.0.0",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=QW2-PQAACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=QW2-PQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        },
+        "previewLink": "http://books.google.es/books?id=QW2-PQAACAAJ&dq=Foundation&hl=&cd=4&source=gbs_api",
+        "infoLink": "http://books.google.es/books?id=QW2-PQAACAAJ&dq=Foundation&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Fundacion.html?hl=&id=QW2-PQAACAAJ"
+      },
+      "saleInfo": {
+        "country": "ES"
+      },
+      "accessInfo": {
+        "country": "ES",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "accessViewStatus": "NONE"
+      },
+      "searchInfo": {
+        "textSnippet": "First published in 1951, Fundacion won the prestigious Hugo Award in 1965 for its breathtaking vision of a future where planet Earth is all but forgotten by humans who live throughout the galaxy."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "mE_cAwAAQBAJ",
+      "etag": "WXeib/DBftg",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/mE_cAwAAQBAJ",
+      "volumeInfo": {
+        "title": "Private Foundations",
+        "subtitle": "Tax Law and Compliance",
+        "authors": [
+          "Bruce R. Hopkins",
+          "Jody Blazek"
+        ],
+        "publisher": "John Wiley & Sons",
+        "publishedDate": "2014-06-16",
+        "description": "Stay updated on the latest tax regulations with this private foundation tax manual Knowledge of tax regulations surrounding private foundations isn't enough if you're an executive of such an organization or a professional supporting a tax-exempt foundation. Annual changes to IRS rules and increased scrutiny by regulators mean it's necessary for you to keep abreast of myriad changes that come into existence each year. From authors Bruce R. Hopkins and Jody Blazek comes the definitive guide for those responsible for guiding the financial and tax filing operations of private foundations. The complexity of tax regulations related to private foundations extends to a level that is out of proportion to the relatively small number of such entities. Nonetheless, recent statutory requirements that apply solely to private foundations can make untangling filing and reporting activities overly burdensome without a developed knowledge of the underlying theory and practice. To navigate this maze of add-on regulations, Hopkins and Blazek provide background knowledge, in-depth explanations of regulatory changes, and real-world examples to bring as much simplicity to the process as possible. Receive guidance from the 2007 Outstanding Nonprofit Lawyer Award recipient Learn about the details of private foundation taxes from leading experts in the field Make use of checklists and sample documents to prepare organizational filings Utilize line-by-line instructions for completing exemption applications and forms For professionals working closely with private foundations, including accountants, lawyers, and foundation executives, Private Foundations: Tax Law and Compliance, 4th Edition is a welcome resource for keeping your clients or your organization on the right track. Brings clarity, real-world examples, and checklists to help professionals deal with the burdensome process of complying with IRS regulations governing private foundations Clarifies the underlying logic behind statutory tax regulations governing private foundations and the practical implications of maintaining compliance Supplemented annually online to keep subscribers up-to-date on relevant changes in IRS forms requirements, and related tax procedures Includes easy-to-use checklists highlighting such critical concerns as tax-exempt eligibility and tax compliance Offers line-by-line instructions for completing a variety of exemption applications and tax forms“/li\u003e Features sample documents, letters of application, completed forms and practice aids summarizing the differences between public and private charitable organizations",
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.3.4.0.preview.3",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=mE_cAwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=mE_cAwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "previewLink": "http://books.google.es/books?id=mE_cAwAAQBAJ&pg=PA683&dq=Foundation&hl=&cd=5&source=gbs_api",
+        "infoLink": "http://books.google.es/books?id=mE_cAwAAQBAJ&dq=Foundation&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Private_Foundations.html?hl=&id=mE_cAwAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "ES"
+      },
+      "accessInfo": {
+        "country": "ES",
+        "epub": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.es/books/download/Private_Foundations-sample-epub.acsm?id=mE_cAwAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.es/books/download/Private_Foundations-sample-pdf.acsm?id=mE_cAwAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "accessViewStatus": "SAMPLE"
+      },
+      "searchInfo": {
+        "textSnippet": "... \u003cb\u003efoundation\u003c/b\u003e will qualify as a public charity, it files a Form 990 for the final year of the termination period.75 In one instance, a private \u003cb\u003efoundation\u003c/b\u003e filed the requisite notice with the IRS that it was terminating its private \u003cb\u003efoundation\u003c/b\u003e&nbsp;..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "Wag0k5zjcJIC",
+      "etag": "aRfvLb5FXNA",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/Wag0k5zjcJIC",
+      "volumeInfo": {
+        "title": "Cumulative List of Organizations Described in Section 170 (c) of the Internal Revenue Code of 1954",
+        "authors": [
+          "United States. Internal Revenue Service"
+        ],
+        "publishedDate": "1979",
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.5.6.0.full.1",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=Wag0k5zjcJIC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=Wag0k5zjcJIC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "previewLink": "http://books.google.es/books?id=Wag0k5zjcJIC&pg=PA921&dq=Foundation&hl=&cd=6&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=Wag0k5zjcJIC&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=Wag0k5zjcJIC"
+      },
+      "saleInfo": {
+        "country": "ES",
+        "buyLink": "https://play.google.com/store/books/details?id=Wag0k5zjcJIC&rdid=book-Wag0k5zjcJIC&rdot=1&source=gbs_api"
+      },
+      "accessInfo": {
+        "country": "ES",
+        "epub": {
+          "isAvailable": false,
+          "downloadLink": "http://books.google.es/books/download/Cumulative_List_of_Organizations_Describ.epub?id=Wag0k5zjcJIC&hl=&output=epub&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "accessViewStatus": "FULL_PUBLIC_DOMAIN"
+      },
+      "searchInfo": {
+        "textSnippet": "... \u003cb\u003eFoundation\u003c/b\u003e of New Jersey , Skillman , N. J. Schizophrenia \u003cb\u003eFoundation\u003c/b\u003e of New York Inc. , New York , N. Y. Schizophrenia \u003cb\u003eFoundation\u003c/b\u003e of Virginia , Virginia Beach , Va . Schizophrenic Care &amp; Treatment Society , Until 8312 , St Louis , Mo&nbsp;..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "x7tFAQAAMAAJ",
+      "etag": "Bt4TEov7/7Y",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/x7tFAQAAMAAJ",
+      "volumeInfo": {
+        "title": "National Arts and Humanities Foundations",
+        "authors": [
+          "United States. Congress. House. Committee on Education and Labor. Special Subcommittee on Labor"
+        ],
+        "publishedDate": "1965",
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.5.6.0.full.1",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=x7tFAQAAMAAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=x7tFAQAAMAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "previewLink": "http://books.google.es/books?id=x7tFAQAAMAAJ&pg=PA174&dq=Foundation&hl=&cd=7&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=x7tFAQAAMAAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=x7tFAQAAMAAJ"
+      },
+      "saleInfo": {
+        "country": "ES",
+        "buyLink": "https://play.google.com/store/books/details?id=x7tFAQAAMAAJ&rdid=book-x7tFAQAAMAAJ&rdot=1&source=gbs_api"
+      },
+      "accessInfo": {
+        "country": "ES",
+        "epub": {
+          "isAvailable": false,
+          "downloadLink": "http://books.google.es/books/download/National_Arts_and_Humanities_Foundations.epub?id=x7tFAQAAMAAJ&hl=&output=epub&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "accessViewStatus": "FULL_PUBLIC_DOMAIN"
+      },
+      "searchInfo": {
+        "textSnippet": "... \u003cb\u003eFoundation\u003c/b\u003e is that the scope of functions authorized by Congress for the Council extends far beyond the more limited range of the \u003cb\u003eFoundation&#39;s\u003c/b\u003e functions . It would seem logical to assume that membership on the Council calls for very&nbsp;..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "DF4EAAAAMBAJ",
+      "etag": "AMzeKvc72AM",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/DF4EAAAAMBAJ",
+      "volumeInfo": {
+        "title": "Los Angeles Magazine",
+        "publishedDate": "2006-02",
+        "description": "Los Angeles magazine is a regional magazine of national stature. Our combination of award-winning feature writing, investigative reporting, service journalism, and design covers the people, lifestyle, culture, entertainment, fashion, art and architecture, and news that define Southern California. Started in the spring of 1961, Los Angeles magazine has been addressing the needs and interests of our region for 48 years. The magazine continues to be the definitive resource for an affluent population that is intensely interested in a lifestyle that is uniquely Southern Californian.",
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.0.1.0.preview.1",
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=DF4EAAAAMBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=DF4EAAAAMBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "previewLink": "http://books.google.es/books?id=DF4EAAAAMBAJ&pg=PA39&dq=Foundation&hl=&cd=8&source=gbs_api",
+        "infoLink": "http://books.google.es/books?id=DF4EAAAAMBAJ&dq=Foundation&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Los_Angeles_Magazine.html?hl=&id=DF4EAAAAMBAJ"
+      },
+      "saleInfo": {
+        "country": "ES"
+      },
+      "accessInfo": {
+        "country": "ES",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "accessViewStatus": "SAMPLE"
+      },
+      "searchInfo": {
+        "textSnippet": "... \u003cb\u003eFoundation\u003c/b\u003e. (888)886-1785. •. www.wellsfargo.com/donations. Kendall-Jackson KJ.com/truth ©2006 Kendali-JacKson wine Estates The crimson holiday calls. Lindberg Middle School Little Citizens Childcare Group Little Company of Mary Community&nbsp;..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "HRyqzwEACAAJ",
+      "etag": "TPDXkAniDhA",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/HRyqzwEACAAJ",
+      "volumeInfo": {
+        "title": "Los límites de la fundación",
+        "authors": [
+          "Isaac Asimov"
+        ],
+        "publishedDate": "2004",
+        "readingModes": {
+          "text": false,
+          "image": false
+        },
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "preview-1.0.0",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "previewLink": "http://books.google.es/books?id=HRyqzwEACAAJ&dq=Foundation&hl=&cd=9&source=gbs_api",
+        "infoLink": "http://books.google.es/books?id=HRyqzwEACAAJ&dq=Foundation&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Los_l%C3%ADmites_de_la_fundaci%C3%B3n.html?hl=&id=HRyqzwEACAAJ"
+      },
+      "saleInfo": {
+        "country": "ES"
+      },
+      "accessInfo": {
+        "country": "ES",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "accessViewStatus": "NONE"
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "2kEjEAAAQBAJ",
+      "etag": "N4aDqh528nE",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/2kEjEAAAQBAJ",
+      "volumeInfo": {
+        "title": "Philanthropic Foundations in International Development",
+        "subtitle": "Rockefeller, Ford and Gates",
+        "authors": [
+          "Patrick Kilby"
+        ],
+        "publisher": "Routledge",
+        "publishedDate": "2021-05-03",
+        "description": "This book focuses on the influence of philanthropic foundations in global development, and on how the global south has engaged with them. The idea of corporate philanthropy stretches back a long way, with the late 19th industrialist Andrew Carnegie seeing it as an important obligation of the very wealthy. In the modern day, Bill Gates has taken up this call, suggesting that the very wealthy should donate half their wealth to philanthropic causes, and endowing his own foundation with something in the order of $50 billion. This book brings together case studies of the most influential of these foundations over the last one hundred years: the Rockefeller, Ford, and Gates' Foundations, investigating their impact on education and research, health and agriculture. The book concludes by asking whether global south foundations such as Al Waleed Philanthropies, Tata Trusts, and those from China may point to the future of global philanthropic foundations. The sheer scale of resources that foundations can devote to their work results in significant influence in global politics, to the point that Foundations can drive and even set government policy. This influence is likely to grow in the post-Covid environment, making this book an important resource for researchers, practitioners and policy makers working on global development.",
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.1.1.0.preview.3",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=2kEjEAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=2kEjEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "previewLink": "http://books.google.es/books?id=2kEjEAAAQBAJ&pg=PT52&dq=Foundation&hl=&cd=10&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=2kEjEAAAQBAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=2kEjEAAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "ES",
+        "listPrice": {
+          "amount": 24.95,
+          "currencyCode": "EUR"
+        },
+        "retailPrice": {
+          "amount": 23.7,
+          "currencyCode": "EUR"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=2kEjEAAAQBAJ&rdid=book-2kEjEAAAQBAJ&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 24950000,
+              "currencyCode": "EUR"
+            },
+            "retailPrice": {
+              "amountInMicros": 23700000,
+              "currencyCode": "EUR"
+            },
+            "giftable": true
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "ES",
+        "epub": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.es/books/download/Philanthropic_Foundations_in_Internation-sample-epub.acsm?id=2kEjEAAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.es/books/download/Philanthropic_Foundations_in_Internation-sample-pdf.acsm?id=2kEjEAAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "accessViewStatus": "SAMPLE"
+      },
+      "searchInfo": {
+        "textSnippet": "Rockefeller, Ford and Gates Patrick Kilby. Rockefeller \u003cb\u003eFoundation\u003c/b\u003e . 1916. &#39; Rockefeller \u003cb\u003eFoundation\u003c/b\u003e annual report 1916 &#39; . Reading Room . Rockefeller Archive Center . Tarrytown NY . Rockefeller \u003cb\u003eFoundation\u003c/b\u003e . 1918. &#39; Rockefeller&nbsp;..."
+      }
+    }
+  ]
+}

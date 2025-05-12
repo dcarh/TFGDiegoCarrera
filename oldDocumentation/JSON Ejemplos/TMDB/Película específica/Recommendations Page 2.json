@@ -1,0 +1,414 @@
+{
+    "page": 2,
+    "results": [
+      {
+        "adult": false,
+        "backdrop_path": "/sw7mordbZxgITU877yTpZCud90M.jpg",
+        "id": 769,
+        "title": "Uno de los nuestros",
+        "original_language": "en",
+        "original_title": "GoodFellas",
+        "overview": "Henry, un niño de trece años de Brooklyn, vive fascinado con el mundo de los gángsters. Su sueño se hace realidad cuando entra a formar parte de la familia Pauline, dueña absoluta de la zona, que lo educan como un miembro más de la banda convirtiéndole en un destacado mafioso.",
+        "poster_path": "/l80O2wzJRHQUPtlTlgVGVrlFtvg.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          18,
+          80
+        ],
+        "popularity": 51.172,
+        "release_date": "1990-09-12",
+        "video": false,
+        "vote_average": 8.467,
+        "vote_count": 12144
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/yY76zq9XSuJ4nWyPDuwkdV7Wt0c.jpg",
+        "id": 577922,
+        "title": "Tenet",
+        "original_language": "en",
+        "original_title": "Tenet",
+        "overview": "Armado solamente con una palabra, Tenet, el protagonista deberá luchar por la supervivencia del mundo entero y evitar la Tercera Guerra Mundial, en una historia de espionaje internacional. La misión se desplegará más allá del tiempo real. No son viajes en el tiempo, es inversión.",
+        "poster_path": "/buSr2RIxzJ5Zh6dLaLBsqAdvz3I.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          28,
+          53,
+          878
+        ],
+        "popularity": 47.283,
+        "release_date": "2020-08-22",
+        "video": false,
+        "vote_average": 7.182,
+        "vote_count": 9107
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/kGzFbGhp99zva6oZODW5atUtnqi.jpg",
+        "id": 240,
+        "title": "El padrino. Parte II",
+        "original_language": "en",
+        "original_title": "The Godfather Part II",
+        "overview": "Continuación de la saga de los Corleone con dos historias paralelas: la elección de Michael Corleone como jefe de los negocios familiares y los orígenes del patriarca, el ya fallecido Don Vito, primero en Sicilia y luego en Estados Unidos, donde, empezando desde abajo, llegó a ser un poderosísimo jefe de la mafia de Nueva York.",
+        "poster_path": "/mbry0W5PRylSUHsYzdiY2FSJwze.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          18,
+          80
+        ],
+        "popularity": 58.113,
+        "release_date": "1974-12-20",
+        "video": false,
+        "vote_average": 8.591,
+        "vote_count": 11713
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/ApB0mF2d5Oqioi3yxjuogiotSLI.jpg",
+        "id": 985,
+        "title": "Cabeza borradora",
+        "original_language": "en",
+        "original_title": "Eraserhead",
+        "overview": "Henry Spencer y su novia tienen un bebé no humano, más bien un bebé reptil. Henrry pasa todo el día intentando que él bebe deje de hacer travesuras por el apartamento. Todo se tuerce aún más cuando la madre del pequeño abandona a padre e hijo por el aspecto del bebé. De todos modos, Henry es una hombre fuerte y una serie de acontecimientos inesperados harán que se esfuerce aún más, en su condición como padre soltero.",
+        "poster_path": "/j8Z0M4rUmxVFtvpN7bZ2JTASrsy.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          27
+        ],
+        "popularity": 17.738,
+        "release_date": "1977-03-19",
+        "video": false,
+        "vote_average": 7.399,
+        "vote_count": 2259
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/nMKdUUepR0i5zn0y1T4CsSB5chy.jpg",
+        "id": 155,
+        "title": "El caballero oscuro",
+        "original_language": "en",
+        "original_title": "The Dark Knight",
+        "overview": "Batman/Bruce Wayne regresa para continuar su guerra contra el crimen. Con la ayuda del teniente Jim Gordon y del Fiscal del Distrito Harvey Dent, Batman se propone destruir el crimen organizado en la ciudad de Gotham. El triunvirato demuestra su eficacia, pero, de repente, aparece Joker, un nuevo criminal que desencadena el caos y tiene aterrados a los ciudadanos.",
+        "poster_path": "/8QDQExnfNFOtabLDKqfDQuHDsIg.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          18,
+          28,
+          80,
+          53
+        ],
+        "popularity": 99.589,
+        "release_date": "2008-07-16",
+        "video": false,
+        "vote_average": 8.515,
+        "vote_count": 31436
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/hZkgoQYus5vegHoetLkCJzb17zJ.jpg",
+        "id": 550,
+        "title": "El club de la lucha",
+        "original_language": "en",
+        "original_title": "Fight Club",
+        "overview": "Un joven sin ilusiones lucha contra su insomnio, consecuencia quizás de su hastío por su gris y rutinaria vida. En un viaje en avión conoce a Tyler Durden, un carismático vendedor de jabón que sostiene una filosofía muy particular: el perfeccionismo es cosa de gentes débiles; en cambio, la autodestrucción es lo único que hace que realmente la vida merezca la pena. Ambos deciden entonces formar un club secreto de lucha donde descargar sus frustaciones y su ira que tendrá un éxito arrollador.",
+        "poster_path": "/1yWmCAIGSVNuTOGyz9F48W9g1Ux.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          18
+        ],
+        "popularity": 74.994,
+        "release_date": "1999-10-15",
+        "video": false,
+        "vote_average": 8.44,
+        "vote_count": 28022
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/ddIkmH3TpR6XSc47jj0BrGK5Rbz.jpg",
+        "id": 374720,
+        "title": "Dunkerque",
+        "original_language": "en",
+        "original_title": "Dunkirk",
+        "overview": "II Guerra Mundial. Cientos de miles de británicos y tropas aliadas están rodeados por las fuerzas enemigas. Atrapados en la playa con el mar a sus espaldas se enfrentan a una situación imposible mientras el enemigo se acerca. La película relata la Operación Dinamo, también conocida como el milagro de Dunkerque. Se trató de una operación de evacuación de las tropas aliadas en territorio francés, que tuvo lugar a finales de mayo de 1940. La operación permitió el rescate de más de 200.000 soldados británicos y más de 100.000 franceses y belgas.",
+        "poster_path": "/iWzrUYxUfnpmLbm0rwyGKuFwpTO.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          10752,
+          28,
+          18
+        ],
+        "popularity": 37.986,
+        "release_date": "2017-07-19",
+        "video": false,
+        "vote_average": 7.456,
+        "vote_count": 15809
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/2P0toWq3feNvFAzf28j7vNc1IuZ.jpg",
+        "id": 106646,
+        "title": "El lobo de Wall Street",
+        "original_language": "en",
+        "original_title": "The Wolf of Wall Street",
+        "overview": "Película basada en hechos reales del corredor de bolsa neoyorquino Jordan Belfort. A mediados de los años 80, Belfort era un joven honrado que perseguía el sueño americano, pero pronto en la agencia de valores aprendió que lo más importante no era hacer ganar a sus clientes, sino ser ambicioso y ganar una buena comisión. Su enorme éxito y fortuna le valió el mote de \"El lobo de Wall Street\". Dinero. Poder. Mujeres. Drogas. Las tentaciones abundaban y el temor a la ley era irrelevante. Jordan y su manada de lobos consideraban que la discreción era una cualidad anticuada; nunca se conformaban con lo que tenían.",
+        "poster_path": "/jTlIYjvS16XOpsfvYCTmtEHV10K.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          80,
+          18,
+          35
+        ],
+        "popularity": 92.676,
+        "release_date": "2013-12-25",
+        "video": false,
+        "vote_average": 8.036,
+        "vote_count": 22872
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/y1giivdsGLyo1LCvlsL6mLKyTZ7.jpg",
+        "id": 1018,
+        "title": "Mulholland Drive",
+        "original_language": "en",
+        "original_title": "Mulholland Drive",
+        "overview": "Betty, una joven aspirante a actriz, llega a Los Ángeles para convertirse en estrella de cine y se aloja en el apartamento de su tía. Allí conoce a Rita, una mujer que padece amnesia a causa de un accidente en Mulholland Drive. Las dos juntas deciden investigar quién es Rita y cómo llegó hasta allí.",
+        "poster_path": "/kLpwkbimTwTbsYixCO3eAdNCQJ8.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          53,
+          18,
+          9648
+        ],
+        "popularity": 27.058,
+        "release_date": "2001-06-06",
+        "video": false,
+        "vote_average": 7.8,
+        "vote_count": 5841
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/Ugn7ekAwY8FtaBjRBlbkt0zom2.jpg",
+        "id": 578,
+        "title": "Tiburón",
+        "original_language": "en",
+        "original_title": "Jaws",
+        "overview": "En la costa de un pequeño pueblo del Este de Estados Unidos, un enorme tiburón ataca a varias personas. Temiendo las fatales consecuencias que esto puede provocar en el negocio turístico, el alcalde se niega a cerrar las playas y a difundir la noticia. Pero un nuevo ataque del tiburón, en la propia playa, termina con la vida de otro bañista. El terror se ha hecho público, así que un veterano cazador de tiburones, un científico y el jefe de la policía local se unen para dar caza al temible escualo...",
+        "poster_path": "/aCqHb3eFQV8raX30OfGurqPlpjh.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          27,
+          53,
+          12
+        ],
+        "popularity": 41.607,
+        "release_date": "1975-06-20",
+        "video": false,
+        "vote_average": 7.66,
+        "vote_count": 9839
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/8yE6wv1l570zWyh6zmkFxysw3Kc.jpg",
+        "id": 530385,
+        "title": "Midsommar",
+        "original_language": "en",
+        "original_title": "Midsommar",
+        "overview": "Una pareja estadounidense que no está pasando por su mejor momento acude con unos amigos a un festival de verano que se celebra cada noventa años en una aldea remota de Suecia. Lo que comienza como unas vacaciones de ensueño en un lugar en el que el sol no se pone nunca, poco a poco se convierte en una oscura pesadilla cuando los misteriosos aldeanos les invitan a participar en sus perturbadoras actividades festivas.",
+        "poster_path": "/brxVQ3LpzYMp3IJ1Qg3O8bo0nQt.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          27,
+          18,
+          9648
+        ],
+        "popularity": 53.663,
+        "release_date": "2019-07-03",
+        "video": false,
+        "vote_average": 7.165,
+        "vote_count": 6533
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/a5zBQfXmLk3qqRYF7AioWpiAxk2.jpg",
+        "id": 11778,
+        "title": "El cazador",
+        "original_language": "en",
+        "original_title": "The Deer Hunter",
+        "overview": "Unos amigos de un pequeño pueblo industrial acuden a la llamada del ejército para combatir en la guerra del Vietnam. Michael Cimino divide el film en dos partes: en la primera nos hace partícipes de la humilde vida de los personajes, de sus sueños, juergas y esperanzas; en la segunda nos muestra con dureza los efectos de la guerra y sus penosas consecuencias.",
+        "poster_path": "/mXosJ8Z7FnwyNXBTQ9jvHhlt9Yk.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          18,
+          10752
+        ],
+        "popularity": 18.794,
+        "release_date": "1978-12-08",
+        "video": false,
+        "vote_average": 8,
+        "vote_count": 3575
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/bODIl4B857k20AhrHylKzpLprk4.jpg",
+        "id": 10774,
+        "title": "Network, un mundo implacable",
+        "original_language": "en",
+        "original_title": "Network",
+        "overview": "Tras 25 años trabajando en una cadena, el veterano presentador Howard Beale debe abandonar su puesto por el bajo nivel de audiencia. Su jefe y mejor amigo, Max Schumacher, le da dos semanas para despedirse de los espectadores. Beale, viudo y alcohólico, queda trastocado y decide anunciar durante una emisión que se suicidará en su último programa ante las cámaras. El hecho sin precedentes provoca una gran expectación y los propios compañeros tratarán de convertir la destrucción de este hombre en un negocio rentable.",
+        "poster_path": "/r8CrxsvFK8JIBUpIZX0rBmojsC9.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          18
+        ],
+        "popularity": 22.074,
+        "release_date": "1976-11-14",
+        "video": false,
+        "vote_average": 7.822,
+        "vote_count": 1580
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/qvZ91FwMq6O47VViAr8vZNQz3WI.jpg",
+        "id": 346,
+        "title": "Los siete samuráis",
+        "original_language": "ja",
+        "original_title": "七人の侍",
+        "overview": "Una banda de forajidos atemorizan a los habitantes de un pequeño pueblo, saqueándolos periódicamente sin piedad. Para repeler estos ataques, los aldeanos deciden contratar a mercenarios. Finalmente, consiguen los servicios de 7 guerreros, 7 samurais dispuestos a defenderlos a cambio, tan solo, de cobijo y comida.",
+        "poster_path": "/zr4DkzWIMjaWtj6hlsbN6dnNeTX.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          28,
+          18
+        ],
+        "popularity": 38.053,
+        "release_date": "1954-04-26",
+        "video": false,
+        "vote_average": 8.455,
+        "vote_count": 3394
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/l2iY1AgqQ8dEa3FtWkN5TQ5aVbU.jpg",
+        "id": 1092,
+        "title": "El tercer hombre",
+        "original_language": "en",
+        "original_title": "The Third Man",
+        "overview": "Orson Welles es Harry Lime y Joseph Cotten actúa como su amigo de la infancia, Holly Martins, en este clásico thriller de Graham Greene, dirigido por Carol Reed. Martins busca a Lime en la caótica postguerra de Viena, y se encuentra así mismo metido en un entorno de amores, decepción y asesinatos.",
+        "poster_path": "/trsJPVYVnZMPhBrFhAx0jPEVrqa.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          53,
+          9648
+        ],
+        "popularity": 19.79,
+        "release_date": "1949-08-31",
+        "video": false,
+        "vote_average": 7.938,
+        "vote_count": 1726
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/oje9d0EXQyQcxsqHQor4xFVGjrd.jpg",
+        "id": 510,
+        "title": "Alguien voló sobre el nido del cuco",
+        "original_language": "en",
+        "original_title": "One Flew Over the Cuckoo's Nest",
+        "overview": "Randle McMurphy (Jack Nicholson), un violador de espíritu libre, que vive contracorriente, es recluido en un hospital psiquiátrico. La inflexible disciplina del centro acentúa su contagiosa tendencia al desorden, que acabará desencadenando una guerra entre los pacientes y el personal de la clínica con la fría y severa enfermera Ratched (Louise Fletcher) a la cabeza. La suerte de cada paciente del pabellón está en juego.",
+        "poster_path": "/lBYmCynNEPt7HVaJvuXgfHvLhbJ.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          18
+        ],
+        "popularity": 46.352,
+        "release_date": "1975-11-19",
+        "video": false,
+        "vote_average": 8.421,
+        "vote_count": 9930
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/4qCqAdHcNKeAHcK8tJ8wNJZa9cx.jpg",
+        "id": 11,
+        "title": "La guerra de las galaxias",
+        "original_language": "en",
+        "original_title": "Star Wars",
+        "overview": "La princesa Leia, líder del movimiento rebelde que desea reinstaurar la República en la galaxia en los tiempos ominosos del Imperio, es capturada por las malévolas Fuerzas Imperiales, capitaneadas por el implacable Darth Vader, el sirviente más fiel del emperador. El intrépido Luke Skywalker, ayudado por Han Solo, capitán de la nave espacial \"El Halcón Milenario\", y los androides, R2D2 y C3PO, serán los encargados de luchar contra el enemigo y rescatar a la princesa para volver a instaurar la justicia en el seno de la Galaxia.",
+        "poster_path": "/ahT4ObS7XKedQkOSpGr1wQ97aKA.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          12,
+          28,
+          878
+        ],
+        "popularity": 67.307,
+        "release_date": "1977-05-25",
+        "video": false,
+        "vote_average": 8.205,
+        "vote_count": 19657
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/ncEsesgOJDNrTUED89hYbA117wo.jpg",
+        "id": 603,
+        "title": "Matrix",
+        "original_language": "en",
+        "original_title": "The Matrix",
+        "overview": "Thomas Anderson lleva una doble vida: por el día es programador en una importante empresa de software, y por la noche un hacker informático llamado Neo. Su vida no volverá a ser igual cuando unos misteriosos personajes le inviten a descubrir la respuesta a la pregunta que no le deja dormir: ¿qué es Matrix?",
+        "poster_path": "/qK76PKQLd6zlMn0u83Ej9YQOqPL.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          28,
+          878
+        ],
+        "popularity": 70.897,
+        "release_date": "1999-03-31",
+        "video": false,
+        "vote_average": 8.212,
+        "vote_count": 24460
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/oRiUKwDpcqDdoLwPoA4FIRh3hqY.jpg",
+        "id": 466272,
+        "title": "Érase una vez en… Hollywood",
+        "original_language": "en",
+        "original_title": "Once Upon a Time… in Hollywood",
+        "overview": "Los Angeles, 1969. La estrella de televisión Rick Dalton, un actor en horas bajas especializado en westerns, y el doble de acción Cliff Booth, su mejor amigo, tratan de sobrevivir a una industria cinematográfica en constante cambio. Dalton es vecino de la joven y prometedora actriz y modelo Sharon Tate, que acaba de casarse con el prestigioso director polaco Roman Polanski…",
+        "poster_path": "/abGUZXIPQa2nIa4J88WTxdygWKs.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          35,
+          18,
+          53
+        ],
+        "popularity": 80.788,
+        "release_date": "2019-07-24",
+        "video": false,
+        "vote_average": 7.44,
+        "vote_count": 12652
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/gj2TBYmOIy4E2GjMIpnbAEZNCQx.jpg",
+        "id": 4808,
+        "title": "Charada",
+        "original_language": "en",
+        "original_title": "Charade",
+        "overview": "Charles Lampert, buscado por el gobierno de los Estados Unidos bajo la acusacion de haberse apoderado de un cuarto de millón de dólares en oro del fondo federal suma entregada a Charles y a cuatro compañeros de armas de éste, durante la guerra, para ayudar a la Resistencia francesa es asesinado cuando viajaba en tren en las proximidades de Burdeos. La esposa de Lampert -Regine- es sometida a vigilancia en Paris no solo por miembros de la embajada americana, sino por los individuos a los que Charles defraudó y que acusan a Regine de ocultar el dinero. Pero Regine es ajena, al parecer, a toda la maniobra montada por su difunto esposo.",
+        "poster_path": "/yOKbNqwMoGxYXGEF1IOvawQhDWH.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          35,
+          9648,
+          10749
+        ],
+        "popularity": 26.385,
+        "release_date": "1963-12-05",
+        "video": false,
+        "vote_average": 7.685,
+        "vote_count": 1285
+      }
+    ],
+    "total_pages": 2,
+    "total_results": 40
+}

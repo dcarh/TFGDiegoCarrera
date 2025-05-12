@@ -1,0 +1,663 @@
+{
+    "kind": "books#volumes",
+    "totalItems": 87,
+    "items": [
+        {
+            "kind": "books#volume",
+            "id": "0eYdAQAAIAAJ",
+            "etag": "0dQmdW/Pd10",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/0eYdAQAAIAAJ",
+            "volumeInfo": {
+                "title": "Requiem for a Spanish Peasant",
+                "authors": [
+                    "Ramón José Sender"
+                ],
+                "publisher": "Aris & Phillips Hispanic Class",
+                "publishedDate": "2007",
+                "description": "Ramón José Sender Gracés was born on 3rd February 1901. He was a prolific writer, who published a vast quantity of novels, stories, plays, essays, poetry and articles throughout his life. He wrote Réquiem por un campesino español during one week in 1952, with the intention that it be part of a collection of short stories.",
+                "industryIdentifiers": [
+                    {
+                        "type": "OTHER",
+                        "identifier": "STANFORD:36105124042610"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": false
+                },
+                "pageCount": 154,
+                "printType": "BOOK",
+                "categories": [
+                    "Fiction"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "1.4.2.0.preview.0",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=0eYdAQAAIAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=0eYdAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=0eYdAQAAIAAJ&q=R%C3%A9quiem+por+un+campesiono+inauthor:sender&dq=R%C3%A9quiem+por+un+campesiono+inauthor:sender&hl=&cd=1&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=0eYdAQAAIAAJ&dq=R%C3%A9quiem+por+un+campesiono+inauthor:sender&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/Requiem_for_a_Spanish_Peasant.html?hl=&id=0eYdAQAAIAAJ"
+            },
+            "saleInfo": {
+                "country": "US",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "US",
+                "viewability": "NO_PAGES",
+                "embeddable": false,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=0eYdAQAAIAAJ&hl=&source=gbs_api",
+                "accessViewStatus": "NONE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "Ramón José Sender Gracés was born on 3rd February 1901."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "AwBAABhSFJ0C",
+            "etag": "BnHAmnTNOes",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/AwBAABhSFJ0C",
+            "volumeInfo": {
+                "title": "Réquiem por un campesino español",
+                "authors": [
+                    "Ramón José Sender"
+                ],
+                "publisher": "Stockcero, Inc",
+                "publishedDate": "2006",
+                "description": "El relato corto, elegante y conmovedor de los efectos tragicos de la guerra civil espaǫla (1936-1939) sobre una pequeą poblacin̤ de Aragn̤, es frecuentemente considerada la obra mas lograda de Ramn̤ J. Sender.",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9789871136483"
+                    },
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "987113648X"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": true
+                },
+                "pageCount": 14,
+                "printType": "BOOK",
+                "categories": [
+                    "Spain"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "preview-1.0.0",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=AwBAABhSFJ0C&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=AwBAABhSFJ0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "es",
+                "previewLink": "http://books.google.com/books?id=AwBAABhSFJ0C&printsec=frontcover&dq=R%C3%A9quiem+por+un+campesiono+inauthor:sender&hl=&cd=2&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=AwBAABhSFJ0C&dq=R%C3%A9quiem+por+un+campesiono+inauthor:sender&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/R%C3%A9quiem_por_un_campesino_espa%C3%B1ol.html?hl=&id=AwBAABhSFJ0C"
+            },
+            "saleInfo": {
+                "country": "US",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "US",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com/books/download/R%C3%A9quiem_por_un_campesino_espa%C3%B1ol-sample-pdf.acsm?id=AwBAABhSFJ0C&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=AwBAABhSFJ0C&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "El relato corto, elegante y conmovedor de los efectos tragicos de la guerra civil espaǫla (1936-1939) sobre una pequeą poblacin̤ de Aragn̤, es frecuentemente considerada la obra mas lograda de Ramn̤ J. Sender."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "UU-VAAAACAAJ",
+            "etag": "LblALpeG704",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/UU-VAAAACAAJ",
+            "volumeInfo": {
+                "title": "Requiem for a Spanish Peasant",
+                "authors": [
+                    "Ramón José Sender"
+                ],
+                "publisher": "Aris & Phillips Hispanic Class",
+                "publishedDate": "2007",
+                "description": "Ramón José Sender Gracés was born on 3rd February 1901. He was a prolific writer, who published a vast quantity of novels, stories, plays, essays, poetry and articles throughout his life. He wrote Réquiem por un campesino español during one week in 1952, with the intention that it be part of a collection of short stories.",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "0856687820"
+                    },
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9780856687822"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": false
+                },
+                "pageCount": 0,
+                "printType": "BOOK",
+                "categories": [
+                    "Fiction"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "preview-1.0.0",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=UU-VAAAACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=UU-VAAAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=UU-VAAAACAAJ&dq=R%C3%A9quiem+por+un+campesiono+inauthor:sender&hl=&cd=3&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=UU-VAAAACAAJ&dq=R%C3%A9quiem+por+un+campesiono+inauthor:sender&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/Requiem_for_a_Spanish_Peasant.html?hl=&id=UU-VAAAACAAJ"
+            },
+            "saleInfo": {
+                "country": "US",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "US",
+                "viewability": "NO_PAGES",
+                "embeddable": false,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=UU-VAAAACAAJ&hl=&source=gbs_api",
+                "accessViewStatus": "NONE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "Ram n Jos Sender Grac s was born on 3rd February 1901."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "vpWOGwAACAAJ",
+            "etag": "kS0z0eqAtew",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/vpWOGwAACAAJ",
+            "volumeInfo": {
+                "title": "Requiem for a Spanish peasant",
+                "subtitle": "novel",
+                "authors": [
+                    "Ramón José Sender",
+                    "Mair José Bernardete"
+                ],
+                "publishedDate": "1960",
+                "industryIdentifiers": [
+                    {
+                        "type": "OTHER",
+                        "identifier": "OCLC:63444221"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": false
+                },
+                "pageCount": 123,
+                "printType": "BOOK",
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "preview-1.0.0",
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=vpWOGwAACAAJ&dq=R%C3%A9quiem+por+un+campesiono+inauthor:sender&hl=&cd=4&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=vpWOGwAACAAJ&dq=R%C3%A9quiem+por+un+campesiono+inauthor:sender&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/Requiem_for_a_Spanish_peasant.html?hl=&id=vpWOGwAACAAJ"
+            },
+            "saleInfo": {
+                "country": "US",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "US",
+                "viewability": "NO_PAGES",
+                "embeddable": false,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=vpWOGwAACAAJ&hl=&source=gbs_api",
+                "accessViewStatus": "NONE",
+                "quoteSharingAllowed": false
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "ceR0xAEACAAJ",
+            "etag": "i+tekgzi3yU",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/ceR0xAEACAAJ",
+            "volumeInfo": {
+                "title": "Requiem for a Spanish Peasant",
+                "subtitle": "Novel",
+                "authors": [
+                    "Ramón José Sender"
+                ],
+                "publishedDate": "1960",
+                "industryIdentifiers": [
+                    {
+                        "type": "OTHER",
+                        "identifier": "OCLC:971442369"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": false
+                },
+                "pageCount": 123,
+                "printType": "BOOK",
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "preview-1.0.0",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=ceR0xAEACAAJ&dq=R%C3%A9quiem+por+un+campesiono+inauthor:sender&hl=&cd=5&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=ceR0xAEACAAJ&dq=R%C3%A9quiem+por+un+campesiono+inauthor:sender&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/Requiem_for_a_Spanish_Peasant.html?hl=&id=ceR0xAEACAAJ"
+            },
+            "saleInfo": {
+                "country": "US",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "US",
+                "viewability": "NO_PAGES",
+                "embeddable": false,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=ceR0xAEACAAJ&hl=&source=gbs_api",
+                "accessViewStatus": "NONE",
+                "quoteSharingAllowed": false
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "8BmXPwAACAAJ",
+            "etag": "6jVPQwaPgRQ",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/8BmXPwAACAAJ",
+            "volumeInfo": {
+                "title": "Réquiem por un campesino español",
+                "authors": [
+                    "Ramón J. Sender"
+                ],
+                "publishedDate": "2008",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "8423340635"
+                    },
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9788423340637"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": false
+                },
+                "pageCount": 105,
+                "printType": "BOOK",
+                "categories": [
+                    "Priests"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "preview-1.0.0",
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=8BmXPwAACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=8BmXPwAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                },
+                "language": "es",
+                "previewLink": "http://books.google.com/books?id=8BmXPwAACAAJ&dq=R%C3%A9quiem+por+un+campesiono+inauthor:sender&hl=&cd=6&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=8BmXPwAACAAJ&dq=R%C3%A9quiem+por+un+campesiono+inauthor:sender&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/R%C3%A9quiem_por_un_campesino_espa%C3%B1ol.html?hl=&id=8BmXPwAACAAJ"
+            },
+            "saleInfo": {
+                "country": "US",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "US",
+                "viewability": "NO_PAGES",
+                "embeddable": false,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=8BmXPwAACAAJ&hl=&source=gbs_api",
+                "accessViewStatus": "NONE",
+                "quoteSharingAllowed": false
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "nGB8pwAACAAJ",
+            "etag": "BSDvtE8JuB0",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/nGB8pwAACAAJ",
+            "volumeInfo": {
+                "title": "Requiem for a Spanish Peasant",
+                "authors": [
+                    "Ramón José Sender",
+                    "Bernard Molloy"
+                ],
+                "publishedDate": "1986",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "8450541948"
+                    },
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9788450541946"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": false
+                },
+                "pageCount": 92,
+                "printType": "BOOK",
+                "categories": [
+                    "Spanish literature"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "preview-1.0.0",
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=nGB8pwAACAAJ&dq=R%C3%A9quiem+por+un+campesiono+inauthor:sender&hl=&cd=7&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=nGB8pwAACAAJ&dq=R%C3%A9quiem+por+un+campesiono+inauthor:sender&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/Requiem_for_a_Spanish_Peasant.html?hl=&id=nGB8pwAACAAJ"
+            },
+            "saleInfo": {
+                "country": "US",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "US",
+                "viewability": "NO_PAGES",
+                "embeddable": false,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=nGB8pwAACAAJ&hl=&source=gbs_api",
+                "accessViewStatus": "NONE",
+                "quoteSharingAllowed": false
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "FQAe90t_IYsC",
+            "etag": "Xs944jZ4J2g",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/FQAe90t_IYsC",
+            "volumeInfo": {
+                "title": "Requiem Por Un Campesino Espanol",
+                "authors": [
+                    "Ramon J. Sender"
+                ],
+                "publisher": "Manchester University Press",
+                "publishedDate": "1991",
+                "description": "Requiem per un campesino espanol was first published under the title Mosen Millan in Coleccion Aquelarre,Mexico, 1953. The present text follows the first Spanish edition published by Destino, Barcelona, 1974, which bears a few minor variants, mainly in paragraph structure. It has been reprinted a number of times and translated into many languages and is one of the most widely read Spanish texts in the 20th century. This edition is aimed primarily at sixth-formers and university undergraduates and the introduction and notes have been compiled in the light of recent socio-politial topic-based syllabuses and communication studies courses. The inclusion in the introduction of a substantial section on the now out-of-print \"Contraataque\" (1937), the wartime narrative which contains the germ of the post-war novel, is intended to provide the student with a context for the study of the process in Sender's writing inspired by the Civil War - from explicit militant propaganda penned in the heat of battle to implicit poetic parable, historical emotion recollected in the comparative tranquillity and distance of exile. It is hoped that such a juxtaposition will illuminate both the content and literary achievement of \"Requiem\"",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "0719032229"
+                    },
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9780719032226"
+                    }
+                ],
+                "readingModes": {
+                    "text": true,
+                    "image": true
+                },
+                "pageCount": 130,
+                "printType": "BOOK",
+                "categories": [
+                    "Fiction"
+                ],
+                "averageRating": 4,
+                "ratingsCount": 2,
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "0.7.12.0.preview.3",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=FQAe90t_IYsC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=FQAe90t_IYsC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "es",
+                "previewLink": "http://books.google.com/books?id=FQAe90t_IYsC&printsec=frontcover&dq=R%C3%A9quiem+por+un+campesiono+inauthor:sender&hl=&cd=8&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=FQAe90t_IYsC&dq=R%C3%A9quiem+por+un+campesiono+inauthor:sender&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/Requiem_Por_Un_Campesino_Espanol.html?hl=&id=FQAe90t_IYsC"
+            },
+            "saleInfo": {
+                "country": "US",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "US",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com/books/download/Requiem_Por_Un_Campesino_Espanol-sample-epub.acsm?id=FQAe90t_IYsC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com/books/download/Requiem_Por_Un_Campesino_Espanol-sample-pdf.acsm?id=FQAe90t_IYsC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=FQAe90t_IYsC&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "This edition is aimed primarily at sixth-formers and university undergraduates and the introduction and notes have been compiled in the light of recent socio-politial topic-based syllabuses and communication studies courses."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "E015QAAACAAJ",
+            "etag": "C71InKkhyGY",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/E015QAAACAAJ",
+            "volumeInfo": {
+                "title": "Réquiem por un campesino español",
+                "authors": [
+                    "Ramón José Sender",
+                    "Antonio A. Gómez Yebra"
+                ],
+                "publishedDate": "2008",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "842333905X"
+                    },
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9788423339051"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": false
+                },
+                "pageCount": 178,
+                "printType": "BOOK",
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "preview-1.0.0",
+                "language": "es",
+                "previewLink": "http://books.google.com/books?id=E015QAAACAAJ&dq=R%C3%A9quiem+por+un+campesiono+inauthor:sender&hl=&cd=9&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=E015QAAACAAJ&dq=R%C3%A9quiem+por+un+campesiono+inauthor:sender&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/R%C3%A9quiem_por_un_campesino_espa%C3%B1ol.html?hl=&id=E015QAAACAAJ"
+            },
+            "saleInfo": {
+                "country": "US",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "US",
+                "viewability": "NO_PAGES",
+                "embeddable": false,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=E015QAAACAAJ&hl=&source=gbs_api",
+                "accessViewStatus": "NONE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "Réquiem por un campesino español recoge un dramático episodio de la guerra civil en un pueblecito aragonés."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "vKAYjVo-E68C",
+            "etag": "lg/6sacK+x8",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/vKAYjVo-E68C",
+            "volumeInfo": {
+                "title": "Réquiem por un campesino español",
+                "authors": [
+                    "Ramón José Sender",
+                    "Enrique Turpin"
+                ],
+                "publishedDate": "2006",
+                "industryIdentifiers": [
+                    {
+                        "type": "OTHER",
+                        "identifier": "UCBK:C116160452"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": false
+                },
+                "pageCount": 254,
+                "printType": "BOOK",
+                "categories": [
+                    "Spanish literature"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "1.0.0.0.preview.0",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=vKAYjVo-E68C&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=vKAYjVo-E68C&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                },
+                "language": "es",
+                "previewLink": "http://books.google.com/books?id=vKAYjVo-E68C&q=R%C3%A9quiem+por+un+campesiono+inauthor:sender&dq=R%C3%A9quiem+por+un+campesiono+inauthor:sender&hl=&cd=10&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=vKAYjVo-E68C&dq=R%C3%A9quiem+por+un+campesiono+inauthor:sender&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/R%C3%A9quiem_por_un_campesino_espa%C3%B1ol.html?hl=&id=vKAYjVo-E68C"
+            },
+            "saleInfo": {
+                "country": "US",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "US",
+                "viewability": "NO_PAGES",
+                "embeddable": false,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=vKAYjVo-E68C&hl=&source=gbs_api",
+                "accessViewStatus": "NONE",
+                "quoteSharingAllowed": false
+            }
+        }
+    ]
+}

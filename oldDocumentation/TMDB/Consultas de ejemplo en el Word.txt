@@ -1,0 +1,25 @@
+curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MTcyMzFkZjQyZjJmN2UyOTBiYjUyZjZjY2VhNzZjNSIsInN1YiI6IjY1MjRmY2IzMDcyMTY2NDViNTFiZDYxMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.67j-LsKfsaTj7RBIUlirImZT4cdWkFB2se8n917TKxE" https://api.themoviedb.org/3/authentication
+
+
+curl https://api.themoviedb.org/3/movie/11?api_key=517231df42f2f7e290bb52f6ccea76c5
+
+curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MTcyMzFkZjQyZjJmN2UyOTBiYjUyZjZjY2VhNzZjNSIsInN1YiI6IjY1MjRmY2IzMDcyMTY2NDViNTFiZDYxMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.67j-LsKfsaTj7RBIUlirImZT4cdWkFB2se8n917TKxE" "https://api.themoviedb.org/3/search/movie?query=Barry%20Lyndon&include_adult=false&language=es-ES&primary_release_year=1975&page=1"
+
+
+curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MTcyMzFkZjQyZjJmN2UyOTBiYjUyZjZjY2VhNzZjNSIsInN1YiI6IjY1MjRmY2IzMDcyMTY2NDViNTFiZDYxMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.67j-LsKfsaTj7RBIUlirImZT4cdWkFB2se8n917TKxE" "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=es-ES&page=1&primary_release_year=2019&sort_by=popularity.desc&vote_average.gte=8.2&vote_average.lte=10&vote_count.gte=1000&with_origin_country=US&with_original_language=en&year=2019"
+
+curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MTcyMzFkZjQyZjJmN2UyOTBiYjUyZjZjY2VhNzZjNSIsInN1YiI6IjY1MjRmY2IzMDcyMTY2NDViNTFiZDYxMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.67j-LsKfsaTj7RBIUlirImZT4cdWkFB2se8n917TKxE" "https://api.themoviedb.org/3/company/41077"
+
+curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MTcyMzFkZjQyZjJmN2UyOTBiYjUyZjZjY2VhNzZjNSIsInN1YiI6IjY1MjRmY2IzMDcyMTY2NDViNTFiZDYxMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.67j-LsKfsaTj7RBIUlirImZT4cdWkFB2se8n917TKxE" "https://api.themoviedb.org/3/person/3096/combined_credits?language=en-US"
+
+curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MTcyMzFkZjQyZjJmN2UyOTBiYjUyZjZjY2VhNzZjNSIsInN1YiI6IjY1MjRmY2IzMDcyMTY2NDViNTFiZDYxMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.67j-LsKfsaTj7RBIUlirImZT4cdWkFB2se8n917TKxE" "https://api.themoviedb.org/3/genre/tv/list?language=en"
+
+
+curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MTcyMzFkZjQyZjJmN2UyOTBiYjUyZjZjY2VhNzZjNSIsInN1YiI6IjY1MjRmY2IzMDcyMTY2NDViNTFiZDYxMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.67j-LsKfsaTj7RBIUlirImZT4cdWkFB2se8n917TKxE" "https://api.themoviedb.org/3/tv/1399?language=es-ES"
+
+curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MTcyMzFkZjQyZjJmN2UyOTBiYjUyZjZjY2VhNzZjNSIsInN1YiI6IjY1MjRmY2IzMDcyMTY2NDViNTFiZDYxMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.67j-LsKfsaTj7RBIUlirImZT4cdWkFB2se8n917TKxE" "https://api.themoviedb.org/3/configuration/countries"
+
+curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MTcyMzFkZjQyZjJmN2UyOTBiYjUyZjZjY2VhNzZjNSIsInN1YiI6IjY1MjRmY2IzMDcyMTY2NDViNTFiZDYxMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.67j-LsKfsaTj7RBIUlirImZT4cdWkFB2se8n917TKxE" "https://api.themoviedb.org/3/configuration"
+
+
+

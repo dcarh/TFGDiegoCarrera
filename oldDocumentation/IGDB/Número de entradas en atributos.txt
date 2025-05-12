@@ -1,0 +1,17 @@
+Platforms: 481
+
+Genres: 36
+
+Collections: 9775
+
+Franchises: 5512
+
+Game Engines: 1606
+
+Game Modes: 6
+
+Companies: 54218
+
+Player Perspectives: 7
+
+Themes: 44

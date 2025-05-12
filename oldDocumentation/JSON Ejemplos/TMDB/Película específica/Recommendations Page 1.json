@@ -1,0 +1,441 @@
+{
+    "page": 1,
+    "results": [
+      {
+        "adult": false,
+        "backdrop_path": "/yIonSXf1jdNihhK8PssxO6KCIfz.jpg",
+        "id": 185,
+        "title": "La naranja mecánica",
+        "original_language": "en",
+        "original_title": "A Clockwork Orange",
+        "overview": "Gran Bretaña, en un futuro indeterminado. Alex es un joven muy agresivo que tiene dos pasiones: la violencia desaforada y Beethoven. Es el jefe de la banda de los drugos, que dan rienda suelta a sus instintos más salvajes apaleando, violando y aterrorizando a la población. Cuando esa escalada de terror llega hasta el asesinato, Alex es detenido y, en prisión, se someterá voluntariamente a una innovadora experiencia de reeducación que pretende anular drásticamente cualquier atisbo de conducta antisocial.",
+        "poster_path": "/p40pYh2EBPoyVyqw6qy2PAZkFVA.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          878,
+          80
+        ],
+        "popularity": 38.476,
+        "release_date": "1971-12-19",
+        "video": false,
+        "vote_average": 8.208,
+        "vote_count": 12276
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/mmd1HnuvAzFc4iuVJcnBrhDNEKr.jpg",
+        "id": 694,
+        "title": "El resplandor",
+        "original_language": "en",
+        "original_title": "The Shining",
+        "overview": "Jack Torrance se traslada, junto a su mujer y a su hijo, al impresionante hotel Overlook, en Colorado, para encargarse del mantenimiento del mismo durante la temporada invernal, en la que permanece cerrado y aislado por la nieve. Su idea es escribir su novela al tiempo que cuida de las instalaciones durante esos largos y solitarios meses de invierno, pero desde su llegada al hotel, Jack comienza a padecer inquietantes transtornos de personalidad, al mismo tiempo que en el lugar comienzan a suceder diversos fenómenos paranormales.",
+        "poster_path": "/mm003Mj2e9kJRsrxiVdPn2BSBPh.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          27,
+          53
+        ],
+        "popularity": 54.831,
+        "release_date": "1980-05-23",
+        "video": false,
+        "vote_average": 8.216,
+        "vote_count": 16660
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/9caD0fGCrp96JTFFeGyI0CGNj7.jpg",
+        "id": 967,
+        "title": "Espartaco",
+        "original_language": "en",
+        "original_title": "Spartacus",
+        "overview": "Hacia el año 75 antes de Cristo, un esclavo llamado Espartaco es vendido a una escuela de gladiadores donde le adiestran para combatir en la arena de los circos romanos. Pronto, Espartaco lidera una rebelión por el maltrato sufrido.",
+        "poster_path": "/azXoEA108BvWjeKxIW9tfYlxY2I.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          36,
+          10752,
+          18,
+          12
+        ],
+        "popularity": 41.718,
+        "release_date": "1960-10-13",
+        "video": false,
+        "vote_average": 7.547,
+        "vote_count": 2011
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/tUuGsAkn5SlLuAXm53f91eONClq.jpg",
+        "id": 802,
+        "title": "Lolita",
+        "original_language": "en",
+        "original_title": "Lolita",
+        "overview": "Humbert Humbert, un profesor cuarentón, acaba de instalarse en Ramsdale, New Hampshire. Allí se enamora perdidamente de una niña de once años, tanto que concibe un plan maestro: se casará con su madre, Charlotte Haze, para poder estar siempre cerca del objeto de sus afectos: la alegre adolescente, la irresistible nínfula de nombre encantador, lírico y melodioso: Lolita.",
+        "poster_path": "/3VVvm1EhGWAxRX0SjizQvNWobcH.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          18,
+          35,
+          10749
+        ],
+        "popularity": 26.732,
+        "release_date": "1962-06-13",
+        "video": false,
+        "vote_average": 7.354,
+        "vote_count": 1926
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/AklO85uUDAL3O7iSOtFGfqT3w8n.jpg",
+        "id": 345,
+        "title": "Eyes Wide Shut",
+        "original_language": "en",
+        "original_title": "Eyes Wide Shut",
+        "overview": "William Harford es un respetable médico neoyorquino cuya vida parece ir muy bien: está casado con una preciosa mujer, tiene una hija y tiene un trabajo que le gusta. Pero, al día siguiente de asistir a una fiesta, su esposa Alice le habla de unas fantasías eróticas y de cómo estuvo a punto de romper su matrimonio por un desconocido. Abrumado por esta confesión, acaba entrando en un local, donde un antiguo compañero le habla de una congregación secreta dedicada al hedonismo y al placer sin límites. A partir de entonces un mundo dominado por el sexo y el erotismo se abre ante él.",
+        "poster_path": "/a0YOhU3zq0RkOYrVlPXCeE1oFkR.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          18,
+          53,
+          9648
+        ],
+        "popularity": 39.873,
+        "release_date": "1999-07-16",
+        "video": false,
+        "vote_average": 7.5,
+        "vote_count": 5781
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/3k2TRmqMjgt7tcwkYwZQdctnty3.jpg",
+        "id": 600,
+        "title": "La chaqueta metálica",
+        "original_language": "en",
+        "original_title": "Full Metal Jacket",
+        "overview": "Un grupo de reclutas se prepara en Parish Island, centro de entrenamiento de la marina Norteamericana. Allí está el sargento Hartmann, duro e implacable, cuya única misión en la vida es endurecer el cuerpo y el alma de los novatos, para que puedan defenderse del enemigo. Pero no todos los jóvenes soportan igual sus métodos...",
+        "poster_path": "/6CX7BcyD8Xd5AQ7myNs0UE4mu6c.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          18,
+          10752
+        ],
+        "popularity": 37.888,
+        "release_date": "1987-06-26",
+        "video": false,
+        "vote_average": 8.1,
+        "vote_count": 9941
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/w5IDXtifKntw0ajv2co7jFlTQDM.jpg",
+        "id": 62,
+        "title": "2001: Una odisea del espacio",
+        "original_language": "en",
+        "original_title": "2001: A Space Odyssey",
+        "overview": "Hace millones de años, en los albores del nacimiento del homo sapiens, unos simios descubren un monolito que les lleva a un estadio de inteligencia superior. Otro monolito vuelve a aparecer, millones de años después, enterrado en una luna, lo que provoca el interés de los científicos humanos. Por último, HAL 9000, una máquina de inteligencia artificial, es la encargada de todos los sistemas de una nave espacial tripulada durante una misión de la NASA.",
+        "poster_path": "/sln50uQYigvu5AvN72JfYfu1ckq.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          878,
+          9648,
+          12
+        ],
+        "popularity": 54.629,
+        "release_date": "1968-04-02",
+        "video": false,
+        "vote_average": 8.077,
+        "vote_count": 10889
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/hg0MTIFs49ef179C9Y1HRtzqbbK.jpg",
+        "id": 16869,
+        "title": "Malditos bastardos",
+        "original_language": "en",
+        "original_title": "Inglourious Basterds",
+        "overview": "Segunda Guerra Mundial. Durante la ocupación de Francia por los alemanes, Shosanna Dreyfus presencia la ejecución de su familia por orden del coronel nazi Hans Landa. Ella consigue huir a París, donde adopta una nueva identidad como propietaria de un cine. En otro lugar de Europa, el teniente Aldo Raine adiestra a un grupo de soldados judíos \"Los bastardos\" para atacar objetivos concretos. Los hombres de Raine y una actriz alemana, que trabaja para los aliados, deben llevar a cabo una misión que hará caer a los jefes del Tercer Reich. El destino quiere que todos se encuentren bajo la marquesina de un cine donde Shosanna espera para vengarse.",
+        "poster_path": "/rZuCZ4o77Tct0EEYV4CfTTtYj4z.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          18,
+          53,
+          10752
+        ],
+        "popularity": 70.085,
+        "release_date": "2009-08-02",
+        "video": false,
+        "vote_average": 8.217,
+        "vote_count": 21309
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/sTp8K0SfcC2RQef1Tu160z3niHO.jpg",
+        "id": 935,
+        "title": "¿Teléfono rojo? Volamos hacia Moscú",
+        "original_language": "en",
+        "original_title": "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb",
+        "overview": "Convencido de que los comunistas están contaminando los Estados Unidos, un general ordena, en un acceso de locura, un ataque aéreo nuclear sorpresa contra la Unión Soviética. Su ayudante, el capitán Mandrake, trata de encontrar la fórmula para impedir el bombardeo. Por su parte, el presidente de los EE.UU. se pone en contacto con Moscú para convencer al gobierno soviético de que el ataque no es más que un estúpido error. Mientras tanto, el asesor estadounidense, un antiguo científico nazi, el doctor Strangelove, confirma la existencia de la \"Máquina del Juicio Final\", un dispositivo de represalia soviético capaz de acabar con la humanidad para siempre.",
+        "poster_path": "/snsOoRb1d4WD6q62PRfBuGLJ8xr.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          35,
+          10752
+        ],
+        "popularity": 23.787,
+        "release_date": "1964-01-29",
+        "video": false,
+        "vote_average": 8.125,
+        "vote_count": 5279
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/nbMY2UcNnaAr3jrrowzN0NaxQyr.jpg",
+        "id": 975,
+        "title": "Senderos de gloria",
+        "original_language": "en",
+        "original_title": "Paths of Glory",
+        "overview": "Primera Guerra Mundial (1914-1918). En 1916, en Francia, el general Boulard ordena la conquista de una inexpugnable posición alemana y encarga esa misión al ambicioso general Mireau. El encargado de dirigir el ataque será el coronel Dax. La toma de la colina resulta un infierno, y el regimiento emprende la retirada hacia las trincheras. El alto mando militar, irritado por la derrota, decide imponer al regimiento un terrible castigo que sirva de ejemplo a los demás soldados.",
+        "poster_path": "/3f6d4IbvOSSEVAhbW8wePphWN56.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          18,
+          10752,
+          36
+        ],
+        "popularity": 20.202,
+        "release_date": "1957-10-25",
+        "video": false,
+        "vote_average": 8.3,
+        "vote_count": 2702
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/jJh2syzwZDM3cX2UOeDbKUZzuE8.jpg",
+        "id": 8321,
+        "title": "Escondidos en Brujas",
+        "original_language": "en",
+        "original_title": "In Bruges",
+        "overview": "Narra la historia de dos asesinos a sueldo en Londres que, debido a una operación que termina mal, reciben la orden de exiliarse por un tiempo en la ciudad de Brujas, en Bélgica.",
+        "poster_path": "/i5xoTabhskqM6syMY2CDCb5WFDm.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          35,
+          18,
+          80
+        ],
+        "popularity": 23.948,
+        "release_date": "2008-02-08",
+        "video": false,
+        "vote_average": 7.5,
+        "vote_count": 4794
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/dY0suaAdGpOqh7JkLeIN6lT7k9d.jpg",
+        "id": 247,
+        "title": "Atraco perfecto",
+        "original_language": "en",
+        "original_title": "The Killing",
+        "overview": "Después de pasar por la cárcel, Johnny Clay ha decidido dar el último golpe de su vida, el que le permita retirarse junto a su amada Fay. El plan es llevarse la recaudación de las carreras de caballos de un hipódromo. Después de una meticulosa selección de colaboradores, planea la estrategia del asalto con una precisión insospechada. Tratará de provocar un altercado en la sala de apuestas y matar al caballo favorito de la séptima carrera. Clay cuenta con la ayuda de Randy, un policía sobornado, George, el cajero de las apuestas, y Mike, barman del hipódromo. El atraco se desarrolla según lo previsto, pero los problemas se presentan con el reparto del botín.",
+        "poster_path": "/3cRhD5tXnhpPgOhSrRFavM9rR2u.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          80,
+          53
+        ],
+        "popularity": 21.644,
+        "release_date": "1956-06-06",
+        "video": false,
+        "vote_average": 7.672,
+        "vote_count": 1411
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/eIi3klFf7mp3oL5EEF4mLIDs26r.jpg",
+        "id": 78,
+        "title": "Blade Runner",
+        "original_language": "en",
+        "original_title": "Blade Runner",
+        "overview": "A principios del siglo XXI, la Tyrell Corporation desarrolló un nuevo tipo de robot llamado Nexus, un ser virtualmente idéntico al hombre y conocido como Replicante.  Los Replicantes Nexus-6 eran superiores en fuerza y agilidad, y al menos iguales en inteligencia, a los ingenieros de genética que los crearon.  En el espacio exterior, los Replicantes fueron usados como trabajadores esclavos en la arriesgada exploración y colonización de otros planetas.  Después de la sangrienta rebelión de un equipo de combate de Nexus-6 en una colonia sideral, los Replicantes fueron declarados proscritos en la Tierra bajo pena de muerte.  Brigadas de policías especiales, con el nombre de Unidades de Blade Runners, tenían órdenes de tirar a matar al ver a cualquier Replicante invasor.  A esto no se le llamó ejecución, se le llamó retiro.",
+        "poster_path": "/k7tpmwwSqwJ6l1f1FqDMnM7x5c2.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          878,
+          18,
+          53
+        ],
+        "popularity": 53.784,
+        "release_date": "1982-06-25",
+        "video": false,
+        "vote_average": 7.933,
+        "vote_count": 13133
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/mvyERNa0oNsBjbHqn5qSGMHk2FM.jpg",
+        "id": 5915,
+        "title": "Hacia rutas salvajes",
+        "original_language": "en",
+        "original_title": "Into the Wild",
+        "overview": "A principios de los años noventa, el joven e idealista Christopher McCandless adopta el nombre de Alexander Supertramp, deja sus posesiones y sus ahorros a la beneficencia y abandona el mundo civilizado con rumbo a la salvaje Alaska para entrar en contacto con la Naturaleza y descubrir el verdadero sentido de la vida. Adaptación del best-seller de Jon Krakauer, basado en las notas del diario de McCandless.",
+        "poster_path": "/nsukpCUlvOfcZEcMIBN1m4coUkd.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          12,
+          18
+        ],
+        "popularity": 29.844,
+        "release_date": "2007-09-21",
+        "video": false,
+        "vote_average": 7.8,
+        "vote_count": 9196
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/6aoyUbvu0419XLKLIMoH0TkEicH.jpg",
+        "id": 103,
+        "title": "Taxi Driver",
+        "original_language": "en",
+        "original_title": "Taxi Driver",
+        "overview": "Para sobrellevar el insomnio crónico que sufre después de su regreso de Vietnam, Travis decide trabajar como taxista nocturno. Como individuo tiene poco contacto con la gente, pero observa la violencia y desolación en la que se hunde la ciudad de Nueva York. Travis anota en su diario todas sus impresiones, hasta que un día decide pasar a la acción.",
+        "poster_path": "/9G26DnAeMbA4sp58Gi0Vze6eQv4.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          80,
+          18
+        ],
+        "popularity": 48.69,
+        "release_date": "1976-02-09",
+        "video": false,
+        "vote_average": 8.153,
+        "vote_count": 11507
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/OR8oloCZ3klJtB7Y0i8pSqWw5a.jpg",
+        "id": 213,
+        "title": "Con la muerte en los talones",
+        "original_language": "en",
+        "original_title": "North by Northwest",
+        "overview": "Debido a un malentendido, a Roger O. Thornhill, un ejecutivo del mundo de la publicidad, unos espías lo confunden con un agente del gobierno llamado George Kaplan. Secuestrado por tres individuos y llevado a una mansión en la que es interrogado, consigue huir antes de que lo maten. Cuando al día siguiente regresa a la casa acompañado de la policía, no hay rastro de las personas que había descrito.",
+        "poster_path": "/rzOQHh5Utbr3x0UvKIbIU5pVA0f.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          9648,
+          53,
+          12
+        ],
+        "popularity": 27.598,
+        "release_date": "1959-07-08",
+        "video": false,
+        "vote_average": 7.984,
+        "vote_count": 3858
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/e1rPzkIcBEJiAd3piGirt7qVux7.jpg",
+        "id": 4638,
+        "title": "Arma fatal",
+        "original_language": "en",
+        "original_title": "Hot Fuzz",
+        "overview": "Nicholas Angel (Simon Pegg) es, sin duda alguna, el mejor policía de Londres. Sus detenciones superan en un 400% al segundo mejor agente del Cuerpo. Es tan bueno que, comparado a él, cualquier poli es malo. Por eso sus superiores deciden trasladarle a un lugar en que su talento no ponga a nadie en evidencia, a Sandford, un aparentemente adormecido y pacífico pueblecito.",
+        "poster_path": "/f6CsaHMy1PYd3u27BbSQ3jYngD2.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          80,
+          28,
+          35
+        ],
+        "popularity": 26.208,
+        "release_date": "2007-02-14",
+        "video": false,
+        "vote_average": 7.552,
+        "vote_count": 7147
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/fK5ssgvtI43z19FoWigdlqgpLRE.jpg",
+        "id": 10681,
+        "title": "WALL·E: Batallón de limpieza",
+        "original_language": "en",
+        "original_title": "WALL·E",
+        "overview": "En el año 2800, en un planeta Tierra devastado y sin vida, tras cientos de solitarios años haciendo aquello para lo que fue construido -limpiar el planeta de basura- el pequeño robot WALL•E descubre una nueva misión en su vida cuando se encuentra con una moderna y lustrosa robot exploradora llamada EVE. Ambos viajarán a lo largo de la galaxia y vivirán una emocionante e inolvidable aventura.",
+        "poster_path": "/m3gKwcubqhN8J7pLcMcCDY1YJLJ.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          16,
+          10751,
+          878
+        ],
+        "popularity": 68.249,
+        "release_date": "2008-06-22",
+        "video": false,
+        "vote_average": 8.085,
+        "vote_count": 17890
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/8ZTVqvKDQ8emSGUEMjsS4yHAwrp.jpg",
+        "id": 27205,
+        "title": "Origen",
+        "original_language": "en",
+        "original_title": "Inception",
+        "overview": "Dom Cobb es un ladrón hábil, el mejor de todos, especializado en el peligroso arte de extracción: el robo de secretos valiosos desde las profundidades del subconsciente durante el estado de sueño cuando la mente está más vulnerable. Esta habilidad excepcional de Cobb le ha hecho un jugador codiciado en el traicionero nuevo mundo de espionaje corporativo, pero al mismo tiempo, le ha convertido en un fugitivo internacional y ha tenido que sacrificar todo que le importaba. Ahora a Cobb se le ofrece una oportunidad para redimirse. Con un último trabajo podría recuperar su vida anterior, pero solamente si logra lo imposible.",
+        "poster_path": "/tXQvtRWfkUUnWJAn2tN3jERIUG.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          28,
+          878,
+          12
+        ],
+        "popularity": 100.94,
+        "release_date": "2010-07-15",
+        "video": false,
+        "vote_average": 8.367,
+        "vote_count": 35239
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/ecvy2kMxsJ60ej52beZ0F8EOGkL.jpg",
+        "id": 11324,
+        "title": "Shutter Island",
+        "original_language": "en",
+        "original_title": "Shutter Island",
+        "overview": "Verano de 1954. Los agentes judiciales Teddy Daniels y Chuck Aule son destinados a una remota isla del puerto de Boston para investigar la desaparición de una peligrosa asesina recluida en el hospital psiquiátrico Ashecliffe, un centro penitenciario para criminales perturbados dirigido por el siniestro doctor John Cawley. Pronto descubrirán que el centro guarda muchos secretos, y que la isla esconde algo más peligroso que los pacientes.",
+        "poster_path": "/56utveUWJwmG12YU7c2zKw6pbRZ.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          18,
+          53,
+          9648
+        ],
+        "popularity": 72.393,
+        "release_date": "2010-02-14",
+        "video": false,
+        "vote_average": 8.202,
+        "vote_count": 22943
+      },
+      {
+        "adult": false,
+        "backdrop_path": "/sw7mordbZxgITU877yTpZCud90M.jpg",
+        "id": 769,
+        "title": "Uno de los nuestros",
+        "original_language": "en",
+        "original_title": "GoodFellas",
+        "overview": "Henry, un niño de trece años de Brooklyn, vive fascinado con el mundo de los gángsters. Su sueño se hace realidad cuando entra a formar parte de la familia Pauline, dueña absoluta de la zona, que lo educan como un miembro más de la banda convirtiéndole en un destacado mafioso.",
+        "poster_path": "/l80O2wzJRHQUPtlTlgVGVrlFtvg.jpg",
+        "media_type": "movie",
+        "genre_ids": [
+          18,
+          80
+        ],
+        "popularity": 51.172,
+        "release_date": "1990-09-12",
+        "video": false,
+        "vote_average": 8.467,
+        "vote_count": 12144
+      }
+    ],
+    "total_pages": 2,
+    "total_results": 40
+  }

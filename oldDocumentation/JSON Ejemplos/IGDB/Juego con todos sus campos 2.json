@@ -1,0 +1,237 @@
+{
+    "id": 19686,
+    "age_ratings": [
+        23806,
+        91809,
+        106051,
+        106052,
+        106053,
+        106054,
+        106055
+    ],
+    "aggregated_rating": 92.83333333333333,
+    "aggregated_rating_count": 15,
+    "alternative_names": [
+        56078,
+        82970,
+        82971,
+        82972,
+        95835
+    ],
+    "artworks": [
+        5081,
+        5082,
+        5083,
+        5231,
+        5824,
+        6255,
+        6402
+    ],
+    "bundles": [
+        132952,
+        167078,
+        170055,
+        218545
+    ],
+    "category": 8,
+    "cover": 70959,
+    "created_at": 1466347526,
+    "dlcs": [
+        228709
+    ],
+    "external_games": [
+        110610,
+        1593404,
+        1704155,
+        1708278,
+        1865556,
+        1865806,
+        1928481,
+        1928796,
+        1930339,
+        1932228,
+        1933817,
+        1934243,
+        1934407,
+        1936738,
+        1937149,
+        1937765,
+        1938146,
+        1999107,
+        2082459,
+        2086076,
+        2086838,
+        2087645,
+        2175733,
+        2447642,
+        2586496,
+        2586892,
+        2589858,
+        2590662,
+        2718448,
+        2879281
+    ],
+    "first_release_date": 1548374400,
+    "follows": 132,
+    "franchises": [
+        29
+    ],
+    "game_engines": [
+        354
+    ],
+    "game_modes": [
+        1
+    ],
+    "genres": [
+        5,
+        31
+    ],
+    "hypes": 46,
+    "involved_companies": [
+        184693,
+        184694,
+        184695,
+        252401
+    ],
+    "keywords": [
+        5,
+        606
+    ],
+    "name": "Resident Evil 2",
+    "parent_game": 880,
+    "platforms": [
+        6,
+        48,
+        49,
+        167,
+        169
+    ],
+    "player_perspectives": [
+        2
+    ],
+    "rating": 88.26577705075752,
+    "rating_count": 895,
+    "release_dates": [
+        153809,
+        153810,
+        153811,
+        365652,
+        365653
+    ],
+    "screenshots": [
+        213970,
+        213971,
+        213972,
+        213973,
+        213974,
+        213975,
+        213976,
+        213977,
+        213978,
+        243827,
+        243828,
+        243829
+    ],
+    "similar_games": [
+        13210,
+        19561,
+        25646,
+        26658,
+        44076,
+        102584,
+        103292,
+        105049,
+        109550,
+        111130
+    ],
+    "slug": "resident-evil-2--1",
+    "storyline": "Players join rookie police officer Leon Kennedy and college student Claire Redfield, who are thrust together by a disastrous outbreak in Raccoon City that transformed its population into deadly zombies. Both Leon and Claire have their own separate playable campaigns, allowing players to see the story from both characters’ perspectives. The fate of these two fan favorite characters is in the player's hands as they work together to survive and get to the bottom of what is behind the terrifying attack on the city.",
+    "summary": "Resident Evil 2 is a remake of 1998's Resident Evil 2. The game was not developed with the intent of improving the original, but rather a reimagining of the original story with redesigned maps, characters and story elements. Gameplay mechanics are more similar to Resident Evil 7: Biohazard though with the use of an over-the-shoulder camera.",
+    "tags": [
+        1,
+        19,
+        21,
+        268435461,
+        268435487,
+        536870917,
+        536871518
+    ],
+    "themes": [
+        1,
+        19,
+        21
+    ],
+    "total_rating": 90.54955519204543,
+    "total_rating_count": 910,
+    "updated_at": 1707937426,
+    "url": "https://www.igdb.com/games/resident-evil-2--1",
+    "videos": [
+        8603,
+        20610,
+        20626,
+        22281,
+        22630,
+        22631,
+        24395
+    ],
+    "websites": [
+        74885,
+        74886,
+        74887,
+        74888,
+        80149,
+        80150,
+        81098,
+        90003,
+        246325,
+        344558
+    ],
+    "checksum": "09a26f49-e69d-bd07-3e81-f873834aec01",
+    "remakes": [
+        218542
+    ],
+    "language_supports": [
+        67155,
+        67157,
+        67159,
+        67161,
+        67163,
+        67164,
+        67165,
+        67166,
+        67167,
+        67168,
+        67169,
+        67170,
+        67171,
+        67172,
+        67173,
+        67174,
+        67175,
+        67176,
+        67177,
+        67178,
+        67179,
+        67180,
+        67181,
+        67182,
+        67183,
+        67184,
+        67185,
+        67186,
+        67187,
+        67188,
+        67189,
+        67190,
+        67191,
+        67192,
+        67193
+    ],
+    "game_localizations": [
+        349,
+        25759
+    ],
+    "collections": [
+        83
+    ]
+}

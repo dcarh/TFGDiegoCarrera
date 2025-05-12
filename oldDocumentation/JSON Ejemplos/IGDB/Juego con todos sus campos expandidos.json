@@ -1,0 +1,641 @@
+[
+    {
+        "id": 20275,
+        "age_ratings": [
+            {
+                "id": 28332,
+                "rating_category": {
+                    "id": 12,
+                    "rating": "18"
+                },
+                "rating_content_descriptions": [
+                    {
+                        "id": 50,
+                        "description": "Violence",
+                        "organization": {
+                            "id": 2,
+                            "name": "PEGI"
+                        }
+                    },
+                    {
+                        "id": 55,
+                        "description": "Bad Language",
+                        "organization": {
+                            "id": 2,
+                            "name": "PEGI"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 190234,
+                "rating_category": {
+                    "id": 6,
+                    "rating": "M"
+                },
+                "rating_content_descriptions": [
+                    {
+                        "id": 4,
+                        "description": "Blood and Gore",
+                        "organization": {
+                            "id": 1,
+                            "name": "ESRB"
+                        }
+                    },
+                    {
+                        "id": 15,
+                        "description": "Partial Nudity",
+                        "organization": {
+                            "id": 1,
+                            "name": "ESRB"
+                        }
+                    },
+                    {
+                        "id": 21,
+                        "description": "Strong Language",
+                        "organization": {
+                            "id": 1,
+                            "name": "ESRB"
+                        }
+                    },
+                    {
+                        "id": 23,
+                        "description": "Strong Sexual Content",
+                        "organization": {
+                            "id": 1,
+                            "name": "ESRB"
+                        }
+                    },
+                    {
+                        "id": 29,
+                        "description": "Violence",
+                        "organization": {
+                            "id": 1,
+                            "name": "ESRB"
+                        }
+                    },
+                    {
+                        "id": 14,
+                        "description": "Nudity",
+                        "organization": {
+                            "id": 1,
+                            "name": "ESRB"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 123110,
+                "rating_category": {
+                    "id": 22,
+                    "rating": "18"
+                }
+            }
+        ],
+        "bundles": [
+            {
+                "id": 154960,
+                "name": "The Witcher Franchise Bundle"
+            }
+        ],
+        "external_games": [
+            {
+                "id": 2000684,
+                "name": "The Witcher: Enhanced Edition",
+                "url": "https://www.twitch.tv/directory/game/The%20Witcher:%20Enhanced%20Edition"
+            },
+            {
+                "id": 2924277,
+                "name": "The Witcher: Enhanced Edition",
+                "url": "https://play.amazon.com/play?gid=amzn1.adg.product.2124545e-8b50-4aa1-89df-21dd8b029b79&territory=US&r=web&ref=igdb"
+            },
+            {
+                "id": 2924205,
+                "name": "The Witcher: Enhanced Edition",
+                "url": "https://play.amazon.com/play?gid=amzn1.adg.product.2124545e-8b50-4aa1-89df-21dd8b029b79&territory=US&r=web&ref=igdb"
+            },
+            {
+                "id": 78485,
+                "name": "Witcher: Enhanced Edition, The ",
+                "url": "https://www.gog.com/en/game/the_witcher"
+            }
+        ],
+        "game_engines": [
+            {
+                "id": 68,
+                "companies": [
+                    {
+                        "id": 2,
+                        "name": "BioWare"
+                    }
+                ],
+                "name": "Aurora Engine",
+                "platforms": [
+                    {
+                        "id": 6,
+                        "name": "PC (Microsoft Windows)"
+                    }
+                ]
+            }
+        ],
+        "game_modes": [
+            {
+                "id": 1,
+                "name": "Single player"
+            }
+        ],
+        "genres": [
+            {
+                "id": 12,
+                "name": "Role-playing (RPG)"
+            },
+            {
+                "id": 31,
+                "name": "Adventure"
+            }
+        ],
+        "involved_companies": [
+            {
+                "id": 38437,
+                "company": {
+                    "id": 4291,
+                    "country": 616,
+                    "description": "CD Projekt S.A. is a Polish video game developer, publisher and distributor based in Warsaw, founded in May 1994 by Marcin Iwiński and Michał Kiciński.\n\nSubsidiaries:\n- CD Projekt RED\n- GOG\n- Spokko",
+                    "name": "CD Projekt",
+                    "status": {
+                        "id": 0,
+                        "name": "active"
+                    }
+                },
+                "developer": false,
+                "porting": false,
+                "publisher": true,
+                "supporting": false
+            },
+            {
+                "id": 38435,
+                "company": {
+                    "id": 908,
+                    "country": 616,
+                    "description": "CD Projekt Red - a Polish video game developer, established in 2002 as a subsidiary of CD Projekt (the first company of this name, now CDP). The studio belonged to the holding CDP Investment, which was later merged with Optimus. The company's registered office was located in Warsaw. As part of the subsequent numerous transformations of the parent company, CD Projekt Red became a legal subsidiary of CD Projekt SA (until November 2012 CD Projekt Red SA).",
+                    "name": "CD Projekt RED",
+                    "status": {
+                        "id": 0,
+                        "name": "active"
+                    }
+                },
+                "developer": true,
+                "porting": false,
+                "publisher": false,
+                "supporting": false
+            },
+            {
+                "id": 184931,
+                "company": {
+                    "id": 908,
+                    "country": 616,
+                    "description": "CD Projekt Red - a Polish video game developer, established in 2002 as a subsidiary of CD Projekt (the first company of this name, now CDP). The studio belonged to the holding CDP Investment, which was later merged with Optimus. The company's registered office was located in Warsaw. As part of the subsequent numerous transformations of the parent company, CD Projekt Red became a legal subsidiary of CD Projekt SA (until November 2012 CD Projekt Red SA).",
+                    "name": "CD Projekt RED",
+                    "status": {
+                        "id": 0,
+                        "name": "active"
+                    }
+                },
+                "developer": true,
+                "porting": false,
+                "publisher": true,
+                "supporting": false
+            },
+            {
+                "id": 237461,
+                "company": {
+                    "id": 2406,
+                    "country": 840,
+                    "description": "The second company under the Atari name, Atari Inc. was formerly GT Interactive and Infogrames, Inc. It is now a subsidiary of Atari SA.",
+                    "name": "Atari, Inc.",
+                    "status": {
+                        "id": 0,
+                        "name": "active"
+                    }
+                },
+                "developer": false,
+                "porting": false,
+                "publisher": true,
+                "supporting": false
+            }
+        ],
+        "keywords": [
+            {
+                "id": 415,
+                "name": "turn-based"
+            }
+        ],
+        "name": "The Witcher: Enhanced Edition",
+        "parent_game": {
+            "id": 80,
+            "name": "The Witcher"
+        },
+        "platforms": [
+            {
+                "id": 6,
+                "abbreviation": "PC",
+                "alternative_name": "mswin",
+                "name": "PC (Microsoft Windows)",
+                "platform_type": {
+                    "id": 4,
+                    "name": "Operating_system"
+                }
+            },
+            {
+                "id": 14,
+                "abbreviation": "Mac",
+                "alternative_name": "Mac OS",
+                "name": "Mac",
+                "platform_type": {
+                    "id": 4,
+                    "name": "Operating_system"
+                }
+            }
+        ],
+        "player_perspectives": [
+            {
+                "id": 2,
+                "name": "Third person"
+            }
+        ],
+        "rating": 79.96845906488188,
+        "rating_count": 234,
+        "release_dates": [
+            {
+                "id": 55047,
+                "human": "Sep 19, 2008",
+                "m": 9,
+                "y": 2008,
+                "release_region": {
+                    "id": 1,
+                    "region": "europe"
+                }
+            },
+            {
+                "id": 55046,
+                "human": "Sep 16, 2008",
+                "m": 9,
+                "y": 2008,
+                "release_region": {
+                    "id": 2,
+                    "region": "north_america"
+                }
+            },
+            {
+                "id": 55049,
+                "human": "Apr 05, 2012",
+                "m": 4,
+                "y": 2012,
+                "release_region": {
+                    "id": 8,
+                    "region": "worldwide"
+                }
+            },
+            {
+                "id": 55048,
+                "human": "Sep 30, 2008",
+                "m": 9,
+                "y": 2008,
+                "release_region": {
+                    "id": 3,
+                    "region": "australia"
+                }
+            },
+            {
+                "id": 461179,
+                "human": "Jul 28, 2022",
+                "m": 7,
+                "y": 2022,
+                "release_region": {
+                    "id": 1,
+                    "region": "europe"
+                }
+            }
+        ],
+        "similar_games": [
+            {
+                "id": 96217,
+                "name": "Eternity: The Last Unicorn"
+            },
+            {
+                "id": 106987,
+                "name": "Torchlight III"
+            },
+            {
+                "id": 81249,
+                "name": "The Elder Scrolls VI"
+            },
+            {
+                "id": 103303,
+                "name": "The Elder Scrolls: Blades"
+            },
+            {
+                "id": 103168,
+                "name": "Warhammer: Chaosbane"
+            },
+            {
+                "id": 113360,
+                "name": "Hytale"
+            },
+            {
+                "id": 55038,
+                "name": "Immortal: Unchained"
+            },
+            {
+                "id": 101608,
+                "name": "Anima: Gate of Memories - The Nameless Chronicles"
+            },
+            {
+                "id": 27092,
+                "name": "GreedFall"
+            },
+            {
+                "id": 28010,
+                "name": "God Eater 3"
+            }
+        ],
+        "storyline": "Following the events of The Witcher novels, Geralt of Rivia, a professional monster slayer, finds himself at the foot of the mythical witcher stronghold chased by a mysterious force. Exhausted and suffering from retrograde amnesia, he is nursed back to health by his fellow witchers and a familiar sorceress.\n\nHowever, before he could put the pieces of his former life back together, the fortress is attacked by bandits led by a mysterious mage who succeed in stealing the carefully guarded secrets of the witcher order while dealing a deadly blow to one of its members. The remaining witchers embark on a search for their stolen property and a quest for revenge, spreading out to the four corners of the world. Geralt of Rivia ventures south, to the kingdom of Temeria...",
+        "summary": "Based on the novels by a popular Polish writer Andrzej Sapkowski, The Witcher is an action-oriented, epic fantasy RPG that takes players on a journey through a world which in many ways mirrors our own. Take on the role of Geralt of Rivia, a professional monster hunter, as he embarks on a quest of self-discovery and revenge.\n\nThe game's time-delayed decision-consequence system ensures that the consequences of your choices will become apparent only in the following chapters of Geralt's story, discouraging returns to a previous save point.\n\nThe Enhanced Edition includes technical and gameplay improvements that bring shorter loading times, more natural animations, and improved inventory, among others. Two new adventures titled The Price of Neutrality and Side Effects will extend players' enjoyment of the game. Finally, the \"D'jinni Adventure Editor\" enables players to create their adventures and shared them with others.",
+        "tags": [
+            1,
+            17,
+            268435468,
+            268435487,
+            536871327
+        ],
+        "themes": [
+            {
+                "id": 1,
+                "name": "Action"
+            },
+            {
+                "id": 17,
+                "name": "Fantasy"
+            }
+        ],
+        "expanded_games": [
+            {
+                "id": 27832,
+                "name": "The Witcher: Enhanced Edition Director's Cut"
+            }
+        ],
+        "language_supports": [
+            {
+                "id": 481033,
+                "language": {
+                    "id": 4,
+                    "name": "Czech",
+                    "native_name": "čeština",
+                    "locale": "cs-CZ"
+                },
+                "language_support_type": {
+                    "id": 3,
+                    "name": "Interface"
+                }
+            },
+            {
+                "id": 481039,
+                "language": {
+                    "id": 9,
+                    "name": "Spanish (Spain)",
+                    "native_name": "Español (España)",
+                    "locale": "es-ES"
+                },
+                "language_support_type": {
+                    "id": 3,
+                    "name": "Interface"
+                }
+            },
+            {
+                "id": 481040,
+                "language": {
+                    "id": 12,
+                    "name": "French",
+                    "native_name": "Français",
+                    "locale": "fr-FR"
+                },
+                "language_support_type": {
+                    "id": 1,
+                    "name": "Audio"
+                }
+            },
+            {
+                "id": 481041,
+                "language": {
+                    "id": 12,
+                    "name": "French",
+                    "native_name": "Français",
+                    "locale": "fr-FR"
+                },
+                "language_support_type": {
+                    "id": 3,
+                    "name": "Interface"
+                }
+            },
+            {
+                "id": 481044,
+                "language": {
+                    "id": 15,
+                    "name": "Italian",
+                    "native_name": "Italiano",
+                    "locale": "it-IT"
+                },
+                "language_support_type": {
+                    "id": 1,
+                    "name": "Audio"
+                }
+            },
+            {
+                "id": 481045,
+                "language": {
+                    "id": 15,
+                    "name": "Italian",
+                    "native_name": "Italiano",
+                    "locale": "it-IT"
+                },
+                "language_support_type": {
+                    "id": 3,
+                    "name": "Interface"
+                }
+            },
+            {
+                "id": 481043,
+                "language": {
+                    "id": 14,
+                    "name": "Hungarian",
+                    "native_name": "Magyar",
+                    "locale": "hu-HU"
+                },
+                "language_support_type": {
+                    "id": 3,
+                    "name": "Interface"
+                }
+            },
+            {
+                "id": 481032,
+                "language": {
+                    "id": 4,
+                    "name": "Czech",
+                    "native_name": "čeština",
+                    "locale": "cs-CZ"
+                },
+                "language_support_type": {
+                    "id": 1,
+                    "name": "Audio"
+                }
+            },
+            {
+                "id": 481049,
+                "language": {
+                    "id": 22,
+                    "name": "Russian",
+                    "native_name": "Русский",
+                    "locale": "ru-RU"
+                },
+                "language_support_type": {
+                    "id": 1,
+                    "name": "Audio"
+                }
+            },
+            {
+                "id": 481034,
+                "language": {
+                    "id": 27,
+                    "name": "German",
+                    "native_name": "Deutsch",
+                    "locale": "de-DE"
+                },
+                "language_support_type": {
+                    "id": 1,
+                    "name": "Audio"
+                }
+            },
+            {
+                "id": 481035,
+                "language": {
+                    "id": 27,
+                    "name": "German",
+                    "native_name": "Deutsch",
+                    "locale": "de-DE"
+                },
+                "language_support_type": {
+                    "id": 3,
+                    "name": "Interface"
+                }
+            },
+            {
+                "id": 481036,
+                "language": {
+                    "id": 7,
+                    "name": "English",
+                    "native_name": "English (US)",
+                    "locale": "en-US"
+                },
+                "language_support_type": {
+                    "id": 1,
+                    "name": "Audio"
+                }
+            },
+            {
+                "id": 481037,
+                "language": {
+                    "id": 7,
+                    "name": "English",
+                    "native_name": "English (US)",
+                    "locale": "en-US"
+                },
+                "language_support_type": {
+                    "id": 3,
+                    "name": "Interface"
+                }
+            },
+            {
+                "id": 481038,
+                "language": {
+                    "id": 9,
+                    "name": "Spanish (Spain)",
+                    "native_name": "Español (España)",
+                    "locale": "es-ES"
+                },
+                "language_support_type": {
+                    "id": 1,
+                    "name": "Audio"
+                }
+            },
+            {
+                "id": 481047,
+                "language": {
+                    "id": 19,
+                    "name": "Polish",
+                    "native_name": "Polski",
+                    "locale": "pl-PL"
+                },
+                "language_support_type": {
+                    "id": 1,
+                    "name": "Audio"
+                }
+            },
+            {
+                "id": 481048,
+                "language": {
+                    "id": 19,
+                    "name": "Polish",
+                    "native_name": "Polski",
+                    "locale": "pl-PL"
+                },
+                "language_support_type": {
+                    "id": 3,
+                    "name": "Interface"
+                }
+            },
+            {
+                "id": 481042,
+                "language": {
+                    "id": 14,
+                    "name": "Hungarian",
+                    "native_name": "Magyar",
+                    "locale": "hu-HU"
+                },
+                "language_support_type": {
+                    "id": 1,
+                    "name": "Audio"
+                }
+            },
+            {
+                "id": 481050,
+                "language": {
+                    "id": 22,
+                    "name": "Russian",
+                    "native_name": "Русский",
+                    "locale": "ru-RU"
+                },
+                "language_support_type": {
+                    "id": 3,
+                    "name": "Interface"
+                }
+            },
+            {
+                "id": 481051,
+                "language": {
+                    "id": 3,
+                    "name": "Chinese (Traditional)",
+                    "native_name": "繁體中文",
+                    "locale": "zh-TW"
+                },
+                "language_support_type": {
+                    "id": 3,
+                    "name": "Interface"
+                }
+            }
+        ],
+        "game_type": {
+            "id": 10,
+            "type": "Expanded Game"
+        }
+    }
+]

@@ -1,0 +1,9 @@
+curl -X POST "https://id.twitch.tv/oauth2/token?client_id=qn2w238rb9gpxxpiv546tgg9th31mk&client_secret=mu9jh71o7arztis19ak011l806pcib&grant_type=client_credentials"
+
+curl -X POST -H "Client-ID: qn2w238rb9gpxxpiv546tgg9th31mk" -H "Authorization: Bearer 29tljqccqwbec5rk8g67iw1stj4iif" "https://api.igdb.com/v4/platforms"
+
+curl -X POST -H "Client-ID: qn2w238rb9gpxxpiv546tgg9th31mk" -H "Authorization: Bearer 29tljqccqwbec5rk8g67iw1stj4iif" -d "fields id, name, first_release_date, collections.name, platforms.name, genres.name; where collections = 129 & category = 0; sort first_release_date desc; limit 100;" "https://api.igdb.com/v4/games"
+
+curl -X POST -H "Client-ID: qn2w238rb9gpxxpiv546tgg9th31mk" -H "Authorization: Bearer 29tljqccqwbec5rk8g67iw1stj4iif" -d "fields *; where collection = 120 | game.category = 3; sort rating desc; limit 4;" "https://api.igdb.com/v4/search"
+
+curl -X POST -H "Client-ID: qn2w238rb9gpxxpiv546tgg9th31mk" -H "Authorization: Bearer 29tljqccqwbec5rk8g67iw1stj4iif" "https://api.igdb.com/v4/games?search=Ratchet&id=170995&fields=name"

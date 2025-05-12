@@ -1,0 +1,27 @@
+{
+    "page": 1,
+    "results": [
+      {
+        "adult": false,
+        "backdrop_path": "/okdg55jhsr9k1F2lxsZoQncrLZL.jpg",
+        "genre_ids": [
+          18,
+          10749,
+          10752
+        ],
+        "id": 3175,
+        "original_language": "en",
+        "original_title": "Barry Lyndon",
+        "overview": "An Irish rogue uses his cunning and wit to work his way up the social classes of 18th century England, transforming himself from the humble Redmond Barry into the noble Barry Lyndon.",
+        "popularity": 26.736,
+        "poster_path": "/dOJtBSyI30wWc08UmyEKLsu4Rfk.jpg",
+        "release_date": "1975-12-18",
+        "title": "Barry Lyndon",
+        "video": false,
+        "vote_average": 8.003,
+        "vote_count": 2632
+      }
+    ],
+    "total_pages": 1,
+    "total_results": 1
+}
