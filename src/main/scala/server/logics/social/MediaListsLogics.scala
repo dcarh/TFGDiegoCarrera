@@ -97,29 +97,18 @@ object MediaListsLogics {
 
 
   val editMediaList: ((MediaListId, MediaList)) => IO[Either[UserError, MediaList]] =
-    (mediaListId, updatedMediaListData) => IO.pure {
-      CommonFunctions.getMediaList(mediaListId) match
-        case Left(error)              => Left(error)
-        case Right(existingMediaList) =>
-          CommonFunctions.getUserAndApply(existingMediaList.userId)(existingMediaList, updateUserFromMediaList) match
-            case Left(error) => Left(error)
-            case Right(_)    =>
-              val updatedMediaList = existingMediaList.copy(
-                id           = updatedMediaListData.id,
-                userId       = updatedMediaListData.userId,
-                title        = updatedMediaListData.title,
-                description  = updatedMediaListData.description,
-                mediaIds     = updatedMediaListData.mediaIds,
-                visibility   = updatedMediaListData.visibility,
-                allowReplies = updatedMediaListData.allowReplies,
-                ranked       = updatedMediaListData.ranked,
-                creationDate = updatedMediaListData.creationDate,
-                updateDate   = updatedMediaListData.updateDate,
-                likes        = updatedMediaListData.likes,
-                replies      = updatedMediaListData.replies
-              )
-              MediaListRepository.put(mediaListId, updatedMediaList)
-              Right(updatedMediaList)
+    (mediaListId, updatedMediaList) => IO.pure {
+      if (mediaListId.value != updatedMediaList.id.value) 
+        Left(BadRequest("Media list ID in path and updated media list ID did not match"))
+      else
+        CommonFunctions.getMediaList(mediaListId) match
+          case Left(error)              => Left(error)
+          case Right(existingMediaList) =>
+            CommonFunctions.getUserAndApply(existingMediaList.userId)(existingMediaList, updateUserFromMediaList) match
+              case Left(error) => Left(error)
+              case Right(_)    =>
+                MediaListRepository.put(mediaListId, updatedMediaList)
+                Right(updatedMediaList)
       
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))

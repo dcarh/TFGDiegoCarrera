@@ -171,18 +171,21 @@ object EntriesLogics {
     }
 
   val editEntry: ((EntryId, Entry)) => IO[Either[UserError, Entry]] =
-    (entryId, updatedEntryData) => IO.pure {
-      CommonFunctions.getEntry(entryId) match
-        case Left(error)          => Left(error)
-        case Right(existingEntry) =>
-          CommonFunctions.getUserAndApply(existingEntry.userId)(existingEntry, removeEntryFromUser) match
-            case Left(error) => Left(error)
-            case Right(_)    =>
-              CommonFunctions.getUserAndApply(updatedEntryData.userId)(updatedEntryData, addNewEntryToUser(_, _, true)) match
-                case Left(error) => Left(error)
-                case Right(_)    =>
-                  EntryRepository.put(updatedEntryData.id, updatedEntryData)
-                  Right(updatedEntryData)
+    (entryId, updatedEntry) => IO.pure {
+      if (entryId.value != updatedEntry.id.value)
+        Left(BadRequest("Entry ID in path and updated entry ID did not match"))
+      else
+        CommonFunctions.getEntry(entryId) match
+          case Left(error)          => Left(error)
+          case Right(existingEntry) =>
+            CommonFunctions.getUserAndApply(existingEntry.userId)(existingEntry, removeEntryFromUser) match
+              case Left(error) => Left(error)
+              case Right(_)    =>
+                CommonFunctions.getUserAndApply(updatedEntry.userId)(updatedEntry, addNewEntryToUser(_, _, true)) match
+                  case Left(error) => Left(error)
+                  case Right(_)    =>
+                    EntryRepository.put(updatedEntry.id, updatedEntry)
+                    Right(updatedEntry)
 
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))

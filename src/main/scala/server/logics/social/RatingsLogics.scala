@@ -73,21 +73,18 @@ object RatingsLogics {
     }
 
   val editRating: ((RatingId, Rating)) => IO[Either[UserError, Rating]] =
-    (ratingId, updatedRatingData) => IO.pure {
-      CommonFunctions.getRating(ratingId) match
-        case Left(error)           => Left(error)
-        case Right(existingRating) =>
-          CommonFunctions.getUserAndApply(existingRating.userId)(existingRating, updateUserFromRating) match
-            case Left(error) => Left(error)
-            case Right(_)    =>
-              val updatedRating = existingRating.copy(
-                id           = updatedRatingData.id,
-                userId       = updatedRatingData.userId,
-                mediaRatedId = updatedRatingData.mediaRatedId,
-                rating       = updatedRatingData.rating
-              )
-              RatingRepository.put(ratingId, updatedRating)
-              Right(updatedRating)
+    (ratingId, updatedRating) => IO.pure {
+      if (ratingId.value != updatedRating.id.value)
+        Left(BadRequest("Rating ID in path and updated rating ID did not match"))
+      else
+        CommonFunctions.getRating(ratingId) match
+          case Left(error)           => Left(error)
+          case Right(existingRating) =>
+            CommonFunctions.getUserAndApply(existingRating.userId)(existingRating, updateUserFromRating) match
+              case Left(error) => Left(error)
+              case Right(_)    =>
+                RatingRepository.put(ratingId, updatedRating)
+                Right(updatedRating)
       
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))

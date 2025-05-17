@@ -56,43 +56,38 @@ object RepliesLogics {
     }
 
   val editReply: ((ReplyId, Reply)) => IO[Either[UserError, Reply]] =
-    (replyId, updatedReplyData) => IO.pure {
-      CommonFunctions.getReply(replyId) match
-        case Left(error)          => Left(error)
-        case Right(existingReply) =>
-          CommonFunctions.getUserAndApply(existingReply.userId)(existingReply, RepliesAuxFunctions.updateUserFromReply) match
-            case Left(error) => Left(error)
-            case Right(_)    =>
-              val result = existingReply.objectRepliedId match
-                case mediaListId: MediaListId =>
-                  CommonFunctions.getMediaListAndApply(mediaListId)(existingReply, RepliesAuxFunctions.updateMediaListFromReply) match
-                    case Left(error) => Left(error)
-                    case Right(_)    => Right(())
-
-                case reviewId: ReviewId =>
-                  CommonFunctions.getReviewAndApply(reviewId)(existingReply, RepliesAuxFunctions.updateReviewFromReply) match
-                    case Left(error) => Left(error)
-                    case Right(_)    => Right(())
-
-                case replyId: ReplyId =>
-                  CommonFunctions.getReplyAndApply(replyId)(existingReply, RepliesAuxFunctions.updateReplyFromReply) match
-                    case Left(error) => Left(error)
-                    case Right(_)    => Right(())
-
-              result match
-                case Right(_) =>
-                  val updatedReply = existingReply.copy(
-                    id              = updatedReplyData.id,
-                    userId          = updatedReplyData.userId,
-                    objectRepliedId = updatedReplyData.objectRepliedId,
-                    reply           = updatedReplyData.reply,
-                    likes           = updatedReplyData.likes,
-                    replies         = updatedReplyData.replies
-                  )
-                  ReplyRepository.put(replyId, updatedReply)
-                  Right(updatedReply)
-
-                case Left(error) => Left(error)
+    (replyId, updatedReply) => IO.pure {
+      if (replyId.value != updatedReply.id.value)
+        Left(BadRequest("Reply ID in path and updated reply ID did not match"))
+      else
+        CommonFunctions.getReply(replyId) match
+          case Left(error)          => Left(error)
+          case Right(existingReply) =>
+            CommonFunctions.getUserAndApply(existingReply.userId)(existingReply, RepliesAuxFunctions.updateUserFromReply) match
+              case Left(error) => Left(error)
+              case Right(_)    =>
+                val result = existingReply.objectRepliedId match
+                  case mediaListId: MediaListId =>
+                    CommonFunctions.getMediaListAndApply(mediaListId)(existingReply, RepliesAuxFunctions.updateMediaListFromReply) match
+                      case Left(error) => Left(error)
+                      case Right(_)    => Right(())
+  
+                  case reviewId: ReviewId =>
+                    CommonFunctions.getReviewAndApply(reviewId)(existingReply, RepliesAuxFunctions.updateReviewFromReply) match
+                      case Left(error) => Left(error)
+                      case Right(_)    => Right(())
+  
+                  case replyId: ReplyId =>
+                    CommonFunctions.getReplyAndApply(replyId)(existingReply, RepliesAuxFunctions.updateReplyFromReply) match
+                      case Left(error) => Left(error)
+                      case Right(_)    => Right(())
+  
+                result match
+                  case Right(_) =>
+                    ReplyRepository.put(replyId, updatedReply)
+                    Right(updatedReply)
+  
+                  case Left(error) => Left(error)
 
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))

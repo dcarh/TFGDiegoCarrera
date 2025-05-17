@@ -1,6 +1,5 @@
 package modelClasses.app.social
 
-import modelClasses.app.Time
 import modelClasses.ids.Media.*
 import modelClasses.ids.Social.{EntryId, RatingId, ReviewId}
 import modelClasses.ids.User.UserId
@@ -21,8 +20,6 @@ case class Entry(
                   repeat      : Boolean,
                   startedDate : Option[LocalDate],
                   finishedDate: Option[LocalDate],
-                  platform    : Option[Int], // TODO: ¿En vez de un entero que se corresponda con el entero de IGDB, plantear crear un enum de consolas y parsear el entero entrante de IGDB a un valor del enum (así va a ser más legible)?
-                  timeSpent   : Option[Time],
-                  tags        : List[String],
+                  platform    : Option[Int], // TODO: En vez de un entero que se corresponda con el entero de IGDB, string de la plataforma (habría que hacer petición a IGDB)
                   creationDate: LocalDateTime,
                 )
