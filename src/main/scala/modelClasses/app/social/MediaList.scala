@@ -19,4 +19,4 @@ case class MediaList(
                       updateDate  : LocalDateTime,
                       likes       : List[LikeId],
                       replies     : List[ReplyId]
-                           )
+                    )
