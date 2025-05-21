@@ -2,7 +2,7 @@ package server.logics.media
 
 import cats.effect.IO
 import clients.TMDBClient
-import dummies.repositories.{EntryRepository, MediaListRepository}
+import memory.repositories.{EntryRepository, MediaListRepository}
 import endpoints.tmdb.TvShows
 import modelClasses.app.media.*
 import modelClasses.app.social.{Entry, MediaList}
@@ -49,7 +49,7 @@ object TvShowLogics {
             recommendedTvShows <- recommendedTvShowsTmdb
             aggregateCredits   <- aggregateCreditsTmdb
           } yield Right(TvShow(
-            requestedTvShow    = requestedTvShow,
+            tvShowFromTMDB    = requestedTvShow,
             similarTvShows     = similarTvShows,
             recommendedTvShows = recommendedTvShows,
             cast               = aggregateCredits.map(_.cast.sortBy(_.order)),
@@ -57,11 +57,11 @@ object TvShowLogics {
             averageRating      = metrics.averageRating,
             entriesIds         = metrics.entriesIds,
             mediaListsIds      = metrics.mediaListsIds,
-            numberOfCompleted  = metrics.statusCounts.completed,
-            numberOfDropped    = metrics.statusCounts.dropped,
-            numberOfInProgress = metrics.statusCounts.inProgress,
-            numberOfOnHold     = metrics.statusCounts.onHold,
-            numberOfPending    = metrics.statusCounts.pending,
+            completedCount  = metrics.statusCounts.completed,
+            droppedCount    = metrics.statusCounts.dropped,
+            inProgressCount = metrics.statusCounts.inProgress,
+            onHoldCount     = metrics.statusCounts.onHold,
+            pendingCount    = metrics.statusCounts.pending,
             totalRatings       = metrics.totalRatings
           ))
       }.handleError {

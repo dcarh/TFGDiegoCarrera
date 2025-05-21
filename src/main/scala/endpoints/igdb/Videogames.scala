@@ -16,7 +16,7 @@ object Videogames {
       )
       .out(jsonListRequestedVideogameOut)
 
-  val requestVideogameAllFields: PublicEndpoint[(String, String, String, String), UserError, List[VideogameAllFields], Any] =
+  val requestVideogameAllFields: PublicEndpoint[(String, String, String, String), UserError, List[VideogameFromIGDB], Any] =
     Base.igdbBaseEndpoint(
         "requestVideogameAllFields",
         "This endpoint returns a list of videogames from IGDB API, whether we want a specific videogame by its ID " +

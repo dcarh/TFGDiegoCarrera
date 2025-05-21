@@ -2,14 +2,14 @@ package server.logics.media
 
 import cats.effect.IO
 import clients.IGDBClient
-import dummies.repositories.{EntryRepository, MediaListRepository}
+import memory.repositories.{EntryRepository, MediaListRepository}
 import endpoints.igdb.Videogames
 import modelClasses.app.media.*
 import modelClasses.app.social.{Entry, MediaList}
 import modelClasses.errors.UserError.*
 import modelClasses.ids.Media.VideogameId
 import modelClasses.ids.Social.{EntryId, MediaListId}
-import modelClasses.igdb.VideogameRequests.VideogameAllFields
+import modelClasses.igdb.VideogameRequests.VideogameFromIGDB
 import server.logics.media.MediaAuxFunctions.getMetricsForMedia
 
 object VideogameLogics {
@@ -17,22 +17,22 @@ object VideogameLogics {
   val getVideogame: VideogameId => IO[Either[UserError, Videogame]] =
     videogameId =>
       IGDBClient.executeRequest(Videogames.requestVideogameAllFields, videogameId).flatMap {
-        case Right(requestedListOfVideogames: List[VideogameAllFields]) =>
+        case Right(requestedListOfVideogames: List[VideogameFromIGDB]) =>
           requestedListOfVideogames match
             case head :: tail =>
               val metrics = getMetricsForMedia(videogameId)
               
               IO.pure(Right(
                 Videogame(
-                  requestedVideogame = head,
+                  videogameFromIGDB = head,
                   averageRating      = metrics.averageRating,
                   entriesIds         = metrics.entriesIds,
                   mediaListsIds      = metrics.mediaListsIds,
-                  numberOfCompleted  = metrics.statusCounts.completed,
-                  numberOfDropped    = metrics.statusCounts.dropped,
-                  numberOfInProgress = metrics.statusCounts.inProgress,
-                  numberOfOnHold     = metrics.statusCounts.onHold,
-                  numberOfPending    = metrics.statusCounts.pending,
+                  completedCount  = metrics.statusCounts.completed,
+                  droppedCount    = metrics.statusCounts.dropped,
+                  inProgressCount = metrics.statusCounts.inProgress,
+                  onHoldCount     = metrics.statusCounts.onHold,
+                  pendingCount    = metrics.statusCounts.pending,
                   totalRatings       = metrics.totalRatings
                 )
               ))

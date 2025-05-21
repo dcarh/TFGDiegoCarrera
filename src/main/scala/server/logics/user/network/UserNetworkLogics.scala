@@ -1,7 +1,7 @@
 package server.logics.user.network
 
 import cats.effect.IO
-import dummies.repositories.UserRepository
+import memory.repositories.UserRepository
 import modelClasses.app.user.User
 import modelClasses.errors.UserError.*
 import modelClasses.ids.User.UserId
@@ -14,7 +14,7 @@ object UserNetworkLogics {
     userId => IO.pure {
       getUser(userId) match
         case Left(error) => Left(error)
-        case Right(user) => Right(user.followers)
+        case Right(user) => Right(user.followersIds)
 
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
@@ -24,7 +24,7 @@ object UserNetworkLogics {
     userId => IO.pure {
       getUser(userId) match
         case Left(error) => Left(error)
-        case Right(user) => Right(user.following)
+        case Right(user) => Right(user.followingIds)
 
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
@@ -34,7 +34,7 @@ object UserNetworkLogics {
     userId => IO.pure {
       getUser(userId) match
         case Left(error) => Left(error)
-        case Right(user) => Right(user.blocked)
+        case Right(user) => Right(user.blockedIds)
 
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
@@ -45,18 +45,18 @@ object UserNetworkLogics {
       getBothUsers(userId, followedUserId) match
         case Left(error)               => Left(error)
         case Right(user, followedUser) =>
-          if user.following.contains(followedUserId) then
+          if user.followingIds.contains(followedUserId) then
             Left(Conflict("User already followed"))
           else
             val updatedUser = user.copy(
-              following = followedUserId :: user.following
+              followingIds = followedUserId :: user.followingIds
             )
             val updatedFollowedUser = followedUser.copy(
-              followers = userId :: followedUser.followers
+              followersIds = userId :: followedUser.followersIds
             )
             UserRepository.put(userId, updatedUser)
             UserRepository.put(followedUserId, updatedFollowedUser)
-            Right((updatedUser.following, updatedFollowedUser.followers))
+            Right((updatedUser.followingIds, updatedFollowedUser.followersIds))
 
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
@@ -67,12 +67,12 @@ object UserNetworkLogics {
       getBothUsers(userId, unfollowedUserId) match
         case Left(error)                 => Left(error)
         case Right(user, unfollowedUser) =>
-          if user.following.contains(unfollowedUserId) then
+          if user.followingIds.contains(unfollowedUserId) then
             val updatedUser = user.copy(
-              following = user.following.filterNot(_ == unfollowedUserId)
+              followingIds = user.followingIds.filterNot(_ == unfollowedUserId)
             )
             val updatedUnfollowedUser = unfollowedUser.copy(
-              followers = unfollowedUser.followers.filterNot(_ == userId)
+              followersIds = unfollowedUser.followersIds.filterNot(_ == userId)
             )
             UserRepository.put(userId, updatedUser)
             UserRepository.put(unfollowedUserId, updatedUnfollowedUser)
@@ -89,14 +89,14 @@ object UserNetworkLogics {
       getBothUsers(userId, blockedUserId) match
         case Left(error)              => Left(error)
         case Right(user, blockedUser) =>
-          if user.blocked.contains(blockedUserId) then
+          if user.blockedIds.contains(blockedUserId) then
             Left(Conflict("User already blocked"))
           else
             val updatedUser = user.copy(
-              blocked = blockedUserId :: user.blocked
+              blockedIds = blockedUserId :: user.blockedIds
             )
             UserRepository.put(userId, updatedUser)
-            Right(updatedUser.blocked)
+            Right(updatedUser.blockedIds)
 
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
@@ -107,9 +107,9 @@ object UserNetworkLogics {
       getBothUsers(userId, unblockedUserId) match
         case Left(error)                => Left(error)
         case Right(user, unblockedUser) =>
-          if user.blocked.contains(unblockedUserId) then
+          if user.blockedIds.contains(unblockedUserId) then
             val updatedUser = user.copy(
-              blocked = user.blocked.filterNot(_ == unblockedUserId)
+              blockedIds = user.blockedIds.filterNot(_ == unblockedUserId)
             )
             UserRepository.put(userId, updatedUser)
             Right(())

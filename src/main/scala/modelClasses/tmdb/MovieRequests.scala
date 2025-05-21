@@ -5,7 +5,7 @@ import modelClasses.tmdb.Common.*
 
 object MovieRequests {
 
-  case class RequestedMovie(
+  case class MovieFromTMDB(
                              adult: Boolean,
                              backdrop_path: Option[String],
                              belongs_to_collection: Option[Collection],

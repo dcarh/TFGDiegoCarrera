@@ -11,7 +11,7 @@ import modelClasses.tmdb.Common.Result
 import endpoints.outputs.TMDB.jsonListOfResultOut
 import endpoints.outputs.GoogleBooks.jsonSearchedBookListOut
 import modelClasses.googleBooks.BooksRequests.SearchedBook
-import modelClasses.igdb.VideogameRequests.VideogameAllFields
+import modelClasses.igdb.VideogameRequests.VideogameFromIGDB
 import sttp.tapir.*
 
 object SearchEndpoints {
@@ -39,7 +39,7 @@ object SearchEndpoints {
       .in(QueryInputs.querySortBy)
       .out(jsonListOfResultOut)
 
-  val searchVideogame: PublicEndpoint[(String, Option[String]), UserError, List[VideogameAllFields], Any] =
+  val searchVideogame: PublicEndpoint[(String, Option[String]), UserError, List[VideogameFromIGDB], Any] =
     searchBaseEndpoint(
       "searchVideogame",
       "This endpoint searches any videogame on the app based on text coincidence"

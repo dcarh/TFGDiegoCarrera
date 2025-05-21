@@ -10,7 +10,7 @@ import modelClasses.errors.UserError.*
 
 object Books {
 
-  val requestBook: PublicEndpoint[BookId, UserError, RequestedBook, Any] =
+  val requestBook: PublicEndpoint[BookId, UserError, BookFromGoogleBooks, Any] =
     Base.bookBaseEndpoint(
         "requestBook",
         "This endpoint returns a book from Google Books API by its ID"

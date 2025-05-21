@@ -4,7 +4,7 @@ import modelClasses.ids.Social.{LikeId, MediaListId, ReplyId, ReviewId}
 import modelClasses.ids.User.UserId
 
 case class Like(
-               id            : LikeId,
-               userId        : UserId,
-               elementLikedId: MediaListId | ReviewId | ReplyId
+                 id            : LikeId,
+                 userId        : UserId,
+                 likedElementId: MediaListId | ReviewId | ReplyId
                )

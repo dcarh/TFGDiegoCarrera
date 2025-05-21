@@ -18,7 +18,7 @@ object TvShows {
       .in("tv")
       .out(jsonResultsOut)
   
-  val requestTvShow: PublicEndpoint[(String, TvShowId), UserError, RequestedTvShow, Any] =
+  val requestTvShow: PublicEndpoint[(String, TvShowId), UserError, TvShowFromTMDB, Any] =
     Base.tvShowBaseEndpoint(
         "requestTvShow", 
         "This endpoint returns a TV show from TMDB API by its ID"

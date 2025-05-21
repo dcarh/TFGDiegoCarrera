@@ -1,7 +1,7 @@
 package server.logics.social
 
 import cats.effect.IO
-import dummies.repositories.{MediaListRepository, UserRepository}
+import memory.repositories.{MediaListRepository, UserRepository}
 import modelClasses.app.social.MediaList
 import modelClasses.app.user.User
 import modelClasses.errors.UserError.*
@@ -14,9 +14,9 @@ object MediaListsLogics {
 
   private val addNewMediaListToUser: (User, MediaList) => Either[UserError, User] =
     (user, mediaList) =>
-      if !user.mediaLists.contains(mediaList.id) then
+      if !user.mediaListsIds.contains(mediaList.id) then
         val updatedUser = user.copy(
-          mediaLists = mediaList.id :: user.mediaLists
+          mediaListsIds = mediaList.id :: user.mediaListsIds
         )
         UserRepository.put(updatedUser.id, updatedUser)
         Right(user)
@@ -26,7 +26,7 @@ object MediaListsLogics {
 
   private val updateUserFromMediaList: (User, MediaList) => Either[UserError, User] =
     (user, mediaList) =>
-      if user.mediaLists.contains(mediaList.id) then
+      if user.mediaListsIds.contains(mediaList.id) then
         Right(user)
 
       else
@@ -34,9 +34,9 @@ object MediaListsLogics {
 
   private val removeMediaListFromUser: (User, MediaList) => Either[UserError, User] =
     (user, mediaList) =>
-      if user.mediaLists.contains(mediaList.id) then
+      if user.mediaListsIds.contains(mediaList.id) then
         val updatedUser = user.copy(
-          mediaLists = user.mediaLists.filterNot(_ == mediaList.id)
+          mediaListsIds = user.mediaListsIds.filterNot(_ == mediaList.id)
         )
         UserRepository.put(updatedUser.id, updatedUser)
         Right(user)
@@ -54,10 +54,10 @@ object MediaListsLogics {
         case Some("newest_created")   => Right(mediaLists.sortBy(_.creationDate).reverse)
         case Some("earliest_updated") => Right(mediaLists.sortBy(_.updateDate))
         case Some("newest_updated")   => Right(mediaLists.sortBy(_.updateDate).reverse)
-        case Some("least_liked")      => Right(mediaLists.sortBy(_.likes.size))
-        case Some("most_liked")       => Right(mediaLists.sortBy(_.likes.size).reverse)
-        case Some("least_replied")    => Right(mediaLists.sortBy(_.replies.size))
-        case Some("most_replied")     => Right(mediaLists.sortBy(_.replies.size).reverse)
+        case Some("least_liked")      => Right(mediaLists.sortBy(_.likesIds.size))
+        case Some("most_liked")       => Right(mediaLists.sortBy(_.likesIds.size).reverse)
+        case Some("least_replied")    => Right(mediaLists.sortBy(_.repliesIds.size))
+        case Some("most_replied")     => Right(mediaLists.sortBy(_.repliesIds.size).reverse)
         case Some(unknown)            => Left(BadRequest(s"Invalid sorting parameter: $unknown"))
         case None                     => Right(mediaLists)
       

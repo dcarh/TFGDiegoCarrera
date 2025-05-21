@@ -1,6 +1,6 @@
 package server.logics.social
 
-import dummies.repositories.{MediaListRepository, ReplyRepository, ReviewRepository, UserRepository}
+import memory.repositories.{MediaListRepository, ReplyRepository, ReviewRepository, UserRepository}
 import modelClasses.app.social.{MediaList, Reply, Review}
 import modelClasses.app.user.User
 import modelClasses.errors.UserError.{BadRequest, UserError}
@@ -9,9 +9,9 @@ object RepliesAuxFunctions {
 
   val addNewReplyToUser: (User, Reply) => Either[UserError, User] =
     (user, reply) =>
-      if !user.replies.contains(reply.id) then
+      if !user.repliesIds.contains(reply.id) then
         val updatedUser = user.copy(
-          replies = reply.id :: user.replies
+          repliesIds = reply.id :: user.repliesIds
         )
         UserRepository.put(updatedUser.id, updatedUser)
         Right(user)
@@ -21,7 +21,7 @@ object RepliesAuxFunctions {
 
   val updateUserFromReply: (User, Reply) => Either[UserError, User] =
     (user, reply) =>
-      if user.replies.contains(reply.id) then
+      if user.repliesIds.contains(reply.id) then
         Right(user)
 
       else
@@ -29,9 +29,9 @@ object RepliesAuxFunctions {
 
   val removeReplyFromUser: (User, Reply) => Either[UserError, User] =
     (user, reply) =>
-      if user.replies.contains(reply.id) then
+      if user.repliesIds.contains(reply.id) then
         val updatedUser = user.copy(
-          replies = user.replies.filterNot(_ == reply.id)
+          repliesIds = user.repliesIds.filterNot(_ == reply.id)
         )
         UserRepository.put(updatedUser.id, updatedUser)
         Right(user)
@@ -41,9 +41,9 @@ object RepliesAuxFunctions {
 
   val addNewReplyToMediaList: (MediaList, Reply) => Either[UserError, MediaList] =
     (mediaList, reply) =>
-      if !mediaList.replies.contains(reply.id) then
+      if !mediaList.repliesIds.contains(reply.id) then
         val updatedMediaList = mediaList.copy(
-          replies = reply.id :: mediaList.replies
+          repliesIds = reply.id :: mediaList.repliesIds
         )
         MediaListRepository.put(updatedMediaList.id, updatedMediaList)
         Right(updatedMediaList)
@@ -53,7 +53,7 @@ object RepliesAuxFunctions {
 
   val updateMediaListFromReply: (MediaList, Reply) => Either[UserError, MediaList] =
     (mediaList, reply) =>
-      if mediaList.replies.contains(reply.id) then
+      if mediaList.repliesIds.contains(reply.id) then
         Right(mediaList)
 
       else
@@ -61,9 +61,9 @@ object RepliesAuxFunctions {
 
   val removeReplyFromMediaList: (MediaList, Reply) => Either[UserError, MediaList] =
     (mediaList, reply) =>
-      if mediaList.replies.contains(reply.id) then
+      if mediaList.repliesIds.contains(reply.id) then
         val updatedMediaList = mediaList.copy(
-          replies = mediaList.replies.filterNot(_ == reply.id)
+          repliesIds = mediaList.repliesIds.filterNot(_ == reply.id)
         )
         MediaListRepository.put(updatedMediaList.id, updatedMediaList)
         Right(updatedMediaList)
@@ -73,9 +73,9 @@ object RepliesAuxFunctions {
 
   val addNewReplyToReview: (Review, Reply) => Either[UserError, Review] =
     (review, reply) =>
-      if !review.likes.contains(reply.id) then
+      if !review.likesIds.contains(reply.id) then
         val updatedReview = review.copy(
-          replies = reply.id :: review.replies
+          repliesIds = reply.id :: review.repliesIds
         )
         ReviewRepository.put(updatedReview.id, updatedReview)
         Right(updatedReview)
@@ -85,7 +85,7 @@ object RepliesAuxFunctions {
 
   val updateReviewFromReply: (Review, Reply) => Either[UserError, Review] =
     (review, reply) =>
-      if review.replies.contains(reply.id) then
+      if review.repliesIds.contains(reply.id) then
         Right(review)
 
       else
@@ -93,9 +93,9 @@ object RepliesAuxFunctions {
 
   val removeReplyFromReview: (Review, Reply) => Either[UserError, Review] =
     (review, reply) =>
-      if review.replies.contains(reply.id) then
+      if review.repliesIds.contains(reply.id) then
         val updatedReview = review.copy(
-          replies = review.replies.filterNot(_ == reply.id)
+          repliesIds = review.repliesIds.filterNot(_ == reply.id)
         )
         ReviewRepository.put(updatedReview.id, updatedReview)
         Right(updatedReview)
@@ -105,9 +105,9 @@ object RepliesAuxFunctions {
 
   val addNewReplyToReply: (Reply, Reply) => Either[UserError, Reply] =
     (replied, newReply) =>
-      if !replied.likes.contains(newReply.id) then
+      if !replied.likesIds.contains(newReply.id) then
         val updatedReplied = replied.copy(
-          replies = newReply.id :: replied.replies
+          repliesIds = newReply.id :: replied.repliesIds
         )
         ReplyRepository.put(updatedReplied.id, updatedReplied)
         Right(updatedReplied)
@@ -117,7 +117,7 @@ object RepliesAuxFunctions {
 
   val updateReplyFromReply: (Reply, Reply) => Either[UserError, Reply] =
     (updatedReply, reply) =>
-      if updatedReply.replies.contains(reply.id) then
+      if updatedReply.repliesIds.contains(reply.id) then
         Right(updatedReply)
 
       else
@@ -125,9 +125,9 @@ object RepliesAuxFunctions {
 
   val removeReplyFromReply: (Reply, Reply) => Either[UserError, Reply] =
     (repliedReply, removedReply) =>
-      if repliedReply.replies.contains(removedReply.id) then
+      if repliedReply.repliesIds.contains(removedReply.id) then
         val updatedReplied = repliedReply.copy(
-          replies = repliedReply.replies.filterNot(_ == removedReply.id)
+          repliesIds = repliedReply.repliesIds.filterNot(_ == removedReply.id)
         )
         ReplyRepository.put(updatedReplied.id, updatedReplied)
         Right(updatedReplied)

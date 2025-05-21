@@ -18,7 +18,7 @@ object Movies {
       .in("movie")
       .out(jsonResultsOut)
   
-  val requestMovie: PublicEndpoint[(String, MovieId), UserError, RequestedMovie, Any] =
+  val requestMovie: PublicEndpoint[(String, MovieId), UserError, MovieFromTMDB, Any] =
     Base.movieBaseEndpoint(
         "requestMovie", 
         "This endpoint returns a movie from TMDB API by its ID"

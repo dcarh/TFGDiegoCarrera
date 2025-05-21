@@ -6,7 +6,7 @@ import modelClasses.tmdb.Common.Member
 
 object TvEpisodeRequests {
 
-  case class RequestedTvEpisode(
+  case class TvEpisodeFromTMDB(
                                  air_date: Option[String],
                                  crew: List[Member],
                                  episode_number: TvEpisodeNumber,

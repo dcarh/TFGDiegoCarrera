@@ -3,7 +3,7 @@ package server.logics.search
 import cats.effect.IO
 import cats.implicits.*
 import clients.{GoogleBooksClient, IGDBClient, TMDBClient}
-import dummies.repositories.{MediaListRepository, UserRepository}
+import memory.repositories.{MediaListRepository, UserRepository}
 import endpoints.googleBooks.Books
 import endpoints.igdb.Videogames
 import endpoints.tmdb.{Movies, TvShows}
@@ -11,7 +11,7 @@ import modelClasses.app.social.MediaList
 import modelClasses.app.user.User
 import modelClasses.errors.UserError.*
 import modelClasses.googleBooks.BooksRequests.{ListOfSearchedBooks, SearchedBook}
-import modelClasses.igdb.VideogameRequests.VideogameAllFields
+import modelClasses.igdb.VideogameRequests.VideogameFromIGDB
 import modelClasses.tmdb.Common.{Result, Results}
 import utility.DateParser.*
 
@@ -66,10 +66,10 @@ object SearchLogics {
         case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
       }
 
-  val searchVideogame: ((String, Option[String])) => IO[Either[UserError, List[VideogameAllFields]]] =
+  val searchVideogame: ((String, Option[String])) => IO[Either[UserError, List[VideogameFromIGDB]]] =
     (title, sortByOption) =>
       IGDBClient.executeRequest(Videogames.requestVideogameAllFields, title).flatMap {
-        case Right(listOfRequestedVideogames: List[VideogameAllFields]) =>
+        case Right(listOfRequestedVideogames: List[VideogameFromIGDB]) =>
 
           val sortedVideogames = sortByOption match {
             case Some("oldest")           => Right(listOfRequestedVideogames.sortBy(_.first_release_date))
@@ -114,10 +114,10 @@ object SearchLogics {
         case Some("newest")                 => Right(mediaListsObtained.sortBy(_.creationDate).reverse)
         case Some("least_recently_updated") => Right(mediaListsObtained.sortBy(_.updateDate))
         case Some("most_recently_updated")  => Right(mediaListsObtained.sortBy(_.updateDate).reverse)
-        case Some("least_liked")            => Right(mediaListsObtained.sortBy(_.likes.size))
-        case Some("most_liked")             => Right(mediaListsObtained.sortBy(_.likes.size).reverse)
-        case Some("least_replied")          => Right(mediaListsObtained.sortBy(_.replies.size))
-        case Some("most_replied")           => Right(mediaListsObtained.sortBy(_.replies.size).reverse)
+        case Some("least_liked")            => Right(mediaListsObtained.sortBy(_.likesIds.size))
+        case Some("most_liked")             => Right(mediaListsObtained.sortBy(_.likesIds.size).reverse)
+        case Some("least_replied")          => Right(mediaListsObtained.sortBy(_.repliesIds.size))
+        case Some("most_replied")           => Right(mediaListsObtained.sortBy(_.repliesIds.size).reverse)
         case None                           => Right(mediaListsObtained)
         case _                              => Left(BadRequest("Parameter not supported"))
       }
@@ -133,18 +133,18 @@ object SearchLogics {
       val usersObtained = UserRepository.findByUsername(username)
 
       val sortedUsers = sortByOption match {
-        case Some("least_popular")         => Right(usersObtained.sortBy(_.followers.size))
-        case Some("most_popular")          => Right(usersObtained.sortBy(_.followers.size).reverse)
-        case Some("least_media_lists")     => Right(usersObtained.sortBy(_.mediaLists.size))
-        case Some("most_media_lists")      => Right(usersObtained.sortBy(_.mediaLists.size).reverse)
-        case Some("least_reviews")         => Right(usersObtained.sortBy(_.reviews.size))
-        case Some("most_reviews")          => Right(usersObtained.sortBy(_.reviews.size).reverse)
-        case Some("least_ratings")         => Right(usersObtained.sortBy(_.ratings.size))
-        case Some("most_ratings")          => Right(usersObtained.sortBy(_.ratings.size).reverse)
-        case Some("least_completed_media") => Right(usersObtained.sortBy(_.completed.size))
-        case Some("most_completed_media")  => Right(usersObtained.sortBy(_.completed.size).reverse)
-        case Some("least_dropped_media")   => Right(usersObtained.sortBy(_.dropped.size))
-        case Some("most_dropped_media")    => Right(usersObtained.sortBy(_.dropped.size).reverse)
+        case Some("least_popular")         => Right(usersObtained.sortBy(_.followersIds.size))
+        case Some("most_popular")          => Right(usersObtained.sortBy(_.followersIds.size).reverse)
+        case Some("least_media_lists")     => Right(usersObtained.sortBy(_.mediaListsIds.size))
+        case Some("most_media_lists")      => Right(usersObtained.sortBy(_.mediaListsIds.size).reverse)
+        case Some("least_reviews")         => Right(usersObtained.sortBy(_.reviewsIds.size))
+        case Some("most_reviews")          => Right(usersObtained.sortBy(_.reviewsIds.size).reverse)
+        case Some("least_ratings")         => Right(usersObtained.sortBy(_.ratingsIds.size))
+        case Some("most_ratings")          => Right(usersObtained.sortBy(_.ratingsIds.size).reverse)
+        case Some("least_completed_media") => Right(usersObtained.sortBy(_.completedMediaIds.size))
+        case Some("most_completed_media")  => Right(usersObtained.sortBy(_.completedMediaIds.size).reverse)
+        case Some("least_dropped_media")   => Right(usersObtained.sortBy(_.droppedMediaIds.size))
+        case Some("most_dropped_media")    => Right(usersObtained.sortBy(_.droppedMediaIds.size).reverse)
         case None => Right(usersObtained)
         case _ => Left(BadRequest("Parameter not supported"))
       }

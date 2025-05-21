@@ -1,7 +1,7 @@
 package server.logics.social
 
 import cats.effect.IO
-import dummies.repositories.LikeRepository
+import memory.repositories.LikeRepository
 import modelClasses.app.social.Like
 import modelClasses.app.user.User
 import modelClasses.errors.UserError.*
@@ -29,7 +29,7 @@ object LikesLogics {
           CommonFunctions.getUserAndApply(newLike.userId)(newLike, LikesAuxFunctions.addNewLikeToUser) match
             case Left(error) => Left(error)
             case Right(_)    =>
-              val result = newLike.elementLikedId match
+              val result = newLike.likedElementId match
                 case mediaListId: MediaListId =>
                   CommonFunctions.getMediaListAndApply(mediaListId)(newLike, LikesAuxFunctions.addNewLikeToMediaList) match
                     case Left(error) => Left(error)
@@ -63,7 +63,7 @@ object LikesLogics {
           CommonFunctions.getUserAndApply(like.userId)(like, LikesAuxFunctions.removeLikeFromUser) match
             case Left(error) => Left(error)
             case Right(_)    =>
-              val result = like.elementLikedId match
+              val result = like.likedElementId match
                 case mediaListId: MediaListId =>
                   CommonFunctions.getMediaListAndApply(mediaListId)(like, LikesAuxFunctions.removeLikeFromMediaList) match
                     case Left(error) => Left(error)

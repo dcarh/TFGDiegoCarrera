@@ -1,7 +1,7 @@
 package server.logics.social
 
 import cats.effect.IO
-import dummies.repositories.ReplyRepository
+import memory.repositories.ReplyRepository
 import modelClasses.app.social.Reply
 import modelClasses.app.user.User
 import modelClasses.errors.UserError.*
@@ -29,7 +29,7 @@ object RepliesLogics {
           CommonFunctions.getUserAndApply(newReply.userId)(newReply, RepliesAuxFunctions.addNewReplyToUser) match
             case Left(error) => Left(error)
             case Right(_)    =>
-              val result = newReply.objectRepliedId match
+              val result = newReply.repliedObjectId match
                 case mediaListId: MediaListId =>
                   CommonFunctions.getMediaListAndApply(mediaListId)(newReply, RepliesAuxFunctions.addNewReplyToMediaList) match
                     case Left(error) => Left(error)
@@ -66,7 +66,7 @@ object RepliesLogics {
             CommonFunctions.getUserAndApply(existingReply.userId)(existingReply, RepliesAuxFunctions.updateUserFromReply) match
               case Left(error) => Left(error)
               case Right(_)    =>
-                val result = existingReply.objectRepliedId match
+                val result = existingReply.repliedObjectId match
                   case mediaListId: MediaListId =>
                     CommonFunctions.getMediaListAndApply(mediaListId)(existingReply, RepliesAuxFunctions.updateMediaListFromReply) match
                       case Left(error) => Left(error)
@@ -101,7 +101,7 @@ object RepliesLogics {
           CommonFunctions.getUserAndApply(reply.userId)(reply, RepliesAuxFunctions.removeReplyFromUser) match
             case Left(error) => Left(error)
             case Right(_)    =>
-              val result = reply.objectRepliedId match
+              val result = reply.repliedObjectId match
                 case mediaListId: MediaListId =>
                   CommonFunctions.getMediaListAndApply(mediaListId)(reply, RepliesAuxFunctions.removeReplyFromMediaList) match
                     case Left(error) => Left(error)

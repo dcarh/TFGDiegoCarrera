@@ -1,6 +1,6 @@
 package server.logics.social
 
-import dummies.repositories.{MediaListRepository, ReplyRepository, ReviewRepository, UserRepository}
+import memory.repositories.{MediaListRepository, ReplyRepository, ReviewRepository, UserRepository}
 import modelClasses.app.social.{Like, MediaList, Reply, Review}
 import modelClasses.app.user.User
 import modelClasses.errors.UserError.{BadRequest, UserError}
@@ -9,9 +9,9 @@ object LikesAuxFunctions {
 
   val addNewLikeToUser: (User, Like) => Either[UserError, User] =
     (user, like) =>
-      if !user.likes.contains(like.id) then
+      if !user.likesIds.contains(like.id) then
         val updatedUser = user.copy(
-          likes = like.id :: user.likes
+          likesIds = like.id :: user.likesIds
         )
         UserRepository.put(updatedUser.id, updatedUser)
         Right(updatedUser)
@@ -21,9 +21,9 @@ object LikesAuxFunctions {
 
   val removeLikeFromUser: (User, Like) => Either[UserError, User] =
     (user, like) =>
-      if user.likes.contains(like.id) then
+      if user.likesIds.contains(like.id) then
         val updatedUser = user.copy(
-          likes = user.likes.filterNot(_ == like.id)
+          likesIds = user.likesIds.filterNot(_ == like.id)
         )
         UserRepository.put(updatedUser.id, updatedUser)
         Right(user)
@@ -33,9 +33,9 @@ object LikesAuxFunctions {
 
   val addNewLikeToMediaList: (MediaList, Like) => Either[UserError, MediaList] =
     (mediaList, like) =>
-      if !mediaList.likes.contains(like.id) then
+      if !mediaList.likesIds.contains(like.id) then
         val updatedMediaList = mediaList.copy(
-          likes = like.id :: mediaList.likes
+          likesIds = like.id :: mediaList.likesIds
         )
         MediaListRepository.put(updatedMediaList.id, updatedMediaList)
         Right(updatedMediaList)
@@ -45,9 +45,9 @@ object LikesAuxFunctions {
 
   val removeLikeFromMediaList: (MediaList, Like) => Either[UserError, MediaList] =
     (mediaList, like) =>
-      if mediaList.likes.contains(like.id) then
+      if mediaList.likesIds.contains(like.id) then
         val updatedMediaList = mediaList.copy(
-          likes = mediaList.likes.filterNot(_ == like.id)
+          likesIds = mediaList.likesIds.filterNot(_ == like.id)
         )
         MediaListRepository.put(updatedMediaList.id, updatedMediaList)
         Right(mediaList)
@@ -57,9 +57,9 @@ object LikesAuxFunctions {
 
   val addNewLikeToReview: (Review, Like) => Either[UserError, Review] =
     (review, like) =>
-      if !review.likes.contains(like.id) then
+      if !review.likesIds.contains(like.id) then
         val updatedReview = review.copy(
-          likes = like.id :: review.likes
+          likesIds = like.id :: review.likesIds
         )
         ReviewRepository.put(updatedReview.id, updatedReview)
         Right(updatedReview)
@@ -69,9 +69,9 @@ object LikesAuxFunctions {
 
   val removeLikeFromReview: (Review, Like) => Either[UserError, Review] =
     (review, like) =>
-      if review.likes.contains(like.id) then
+      if review.likesIds.contains(like.id) then
         val updatedReview = review.copy(
-          likes = review.likes.filterNot(_ == like.id)
+          likesIds = review.likesIds.filterNot(_ == like.id)
         )
         ReviewRepository.put(updatedReview.id, updatedReview)
         Right(updatedReview)
@@ -81,9 +81,9 @@ object LikesAuxFunctions {
 
   val addNewLikeToReply: (Reply, Like) => Either[UserError, Reply] =
     (reply, like) =>
-      if !reply.likes.contains(like.id) then
+      if !reply.likesIds.contains(like.id) then
         val updatedReply = reply.copy(
-          likes = like.id :: reply.likes
+          likesIds = like.id :: reply.likesIds
         )
         ReplyRepository.put(updatedReply.id, updatedReply)
         Right(updatedReply)
@@ -93,9 +93,9 @@ object LikesAuxFunctions {
 
   val removeLikeFromReply: (Reply, Like) => Either[UserError, Reply] =
     (reply, like) =>
-      if reply.likes.contains(like.id) then
+      if reply.likesIds.contains(like.id) then
         val updatedReply = reply.copy(
-          likes = reply.likes.filterNot(_ == like.id)
+          likesIds = reply.likesIds.filterNot(_ == like.id)
         )
         ReplyRepository.put(updatedReply.id, updatedReply)
         Right(updatedReply)

@@ -1,6 +1,6 @@
 package server.logics.media
 
-import dummies.repositories.{EntryRepository, MediaListRepository, RatingRepository, UserRepository}
+import memory.repositories.{EntryRepository, MediaListRepository, RatingRepository, UserRepository}
 import modelClasses.ids.Media.{BookId, MovieId, TvEpisodeNumber, TvSeasonNumber, TvShowId, VideogameId}
 import modelClasses.ids.Social.{EntryId, MediaListId}
 import server.logics.media.MediaAuxClasses.{MediaMetrics, StatusCounts}
@@ -40,11 +40,11 @@ object MediaAuxFunctions {
     val allUsers = UserRepository.getAll
 
     StatusCounts(
-      completed  = allUsers.flatMap(_.completed).count(_ == mediaId),
-      dropped    = allUsers.flatMap(_.dropped).count(_ == mediaId),
-      inProgress = allUsers.flatMap(_.inProgress).count(_ == mediaId),
-      onHold     = allUsers.flatMap(_.onHold).count(_ == mediaId),
-      pending    = allUsers.flatMap(_.pending).count(_ == mediaId)
+      completed  = allUsers.flatMap(_.completedMediaIds).count(_ == mediaId),
+      dropped    = allUsers.flatMap(_.droppedMediaIds).count(_ == mediaId),
+      inProgress = allUsers.flatMap(_.inProgressMediaIds).count(_ == mediaId),
+      onHold     = allUsers.flatMap(_.onHoldMediaIds).count(_ == mediaId),
+      pending    = allUsers.flatMap(_.pendingMediaIds).count(_ == mediaId)
     )
 
   private def getAverageRatingForMedia(mediaId:
@@ -55,7 +55,7 @@ object MediaAuxFunctions {
                                          | VideogameId
                                          | BookId
                                       ): Option[Double] =
-    val allRatingsForMedia = RatingRepository.getAll.filter(_.mediaRatedId == mediaId)
+    val allRatingsForMedia = RatingRepository.getAll.filter(_.ratedMediaId == mediaId)
 
     if (allRatingsForMedia.nonEmpty) Some(allRatingsForMedia.map(_.rating).sum.toDouble / allRatingsForMedia.length)
     else None
@@ -68,7 +68,7 @@ object MediaAuxFunctions {
                                         | VideogameId
                                         | BookId
                                      ): Long =
-    RatingRepository.getAll.count(_.mediaRatedId == mediaId)
+    RatingRepository.getAll.count(_.ratedMediaId == mediaId)
 
   private def getListsIdsForMedia(mediaId:
                                   MovieId

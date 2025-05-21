@@ -1,6 +1,6 @@
 package server.logics.commonFunctions
 
-import dummies.repositories.*
+import memory.repositories.*
 import modelClasses.app.chatting.{Chat, Message}
 import modelClasses.app.social.*
 import modelClasses.app.user.User

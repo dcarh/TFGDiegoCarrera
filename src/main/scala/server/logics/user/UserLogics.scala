@@ -1,7 +1,7 @@
 package server.logics.user
 
 import cats.effect.IO
-import dummies.repositories.UserRepository
+import memory.repositories.UserRepository
 import modelClasses.app.user.{User, UserFavourites, UserProfile}
 import modelClasses.errors.UserError.*
 import modelClasses.ids.User.UserId
@@ -38,8 +38,8 @@ object UserLogics {
         val users = UserRepository.getAll
 
         val sortedUsers = sortByOption match
-          case Some("least_popular") => Right(users.sortBy(_.followers.length))
-          case Some("most_popular")  => Right(users.sortBy(_.followers.length).reverse)
+          case Some("least_popular") => Right(users.sortBy(_.followersIds.length))
+          case Some("most_popular")  => Right(users.sortBy(_.followersIds.length).reverse)
           case Some(unknown)         => Left(BadRequest(s"Invalid sorting parameter: $unknown"))
           case None                  => Right(users)
 
@@ -80,23 +80,23 @@ object UserLogics {
           val newUser = User(
             id            = newUserId,
             profile       = UserProfile(username = "", password = "", email = "", biography = "", location = ""),
-            favourites    = UserFavourites(movie = None, tvShow = None, videogame = None, book = None),
-            completed     = emptyList,
-            pending       = emptyList,
-            inProgress    = emptyList,
-            onHold        = emptyList,
-            dropped       = emptyList,
-            mediaLists    = emptyList,
-            entries       = emptyList,
-            reviews       = emptyList,
-            ratings       = emptyList,
-            likes         = emptyList,
-            replies       = emptyList,
-            following     = emptyList,
-            followers     = emptyList,
-            blocked       = emptyList,
-            chats         = emptyList,
-            archivedChats = emptyList
+            favourites    = UserFavourites(movieId = None, tvShowId = None, videogameId = None, bookId = None),
+            completedMediaIds     = emptyList,
+            pendingMediaIds       = emptyList,
+            inProgressMediaIds    = emptyList,
+            onHoldMediaIds        = emptyList,
+            droppedMediaIds       = emptyList,
+            mediaListsIds    = emptyList,
+            entriesIds       = emptyList,
+            reviewsIds       = emptyList,
+            ratingsIds       = emptyList,
+            likesIds         = emptyList,
+            repliesIds       = emptyList,
+            followingIds     = emptyList,
+            followersIds     = emptyList,
+            blockedIds       = emptyList,
+            chatsIds         = emptyList,
+            archivedChatsIds = emptyList
           )
 
           applyProfileToUser(newUser, newUserProfile)

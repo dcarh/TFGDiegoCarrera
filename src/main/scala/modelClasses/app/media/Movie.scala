@@ -3,10 +3,10 @@ package modelClasses.app.media
 import io.circe.generic.auto.*
 import modelClasses.ids.Social.{EntryId, MediaListId}
 import modelClasses.tmdb.Common.{Member, Result}
-import modelClasses.tmdb.MovieRequests.RequestedMovie
+import modelClasses.tmdb.MovieRequests.MovieFromTMDB
 
 case class Movie(
-                  requestedMovie   : RequestedMovie,
+                  movieFromTMDB    : MovieFromTMDB,
                   similarMovies    : Option[List[Result]],
                   recommendedMovies: Option[List[Result]],
                   cast             : Option[List[Member]],
@@ -15,8 +15,8 @@ case class Movie(
                   averageRating    : Option[Double],
                   entriesIds       : Option[List[EntryId]],
                   mediaListsIds    : Option[List[MediaListId]],
-                  numberOfCompleted: Long,
-                  numberOfDropped  : Long,
-                  numberOfPending  : Long,
+                  completedCount   : Long,
+                  droppedCount     : Long,
+                  pendingCount     : Long,
                   totalRatings     : Long,
                 )

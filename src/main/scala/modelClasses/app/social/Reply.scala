@@ -8,8 +8,8 @@ import modelClasses.ids.User.UserId
 case class Reply(
                   id             : ReplyId,
                   userId         : UserId,
-                  objectRepliedId: MediaListId | ReviewId | ReplyId,
+                  repliedObjectId: MediaListId | ReviewId | ReplyId,
                   reply          : String,
-                  likes          : List[LikeId],
-                  replies        : List[ReplyId]
+                  likesIds       : List[LikeId],
+                  repliesIds     : List[ReplyId]
                 )

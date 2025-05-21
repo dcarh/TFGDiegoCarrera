@@ -2,14 +2,14 @@ package server.logics.media
 
 import cats.effect.IO
 import clients.TMDBClient
-import dummies.repositories.{EntryRepository, MediaListRepository}
+import memory.repositories.{EntryRepository, MediaListRepository}
 import endpoints.tmdb.Movies
 import modelClasses.app.media.*
 import modelClasses.app.social.{Entry, MediaList}
 import modelClasses.errors.UserError.*
 import modelClasses.ids.Media.MovieId
 import modelClasses.ids.Social.{EntryId, MediaListId}
-import modelClasses.tmdb.MovieRequests.RequestedMovie
+import modelClasses.tmdb.MovieRequests.MovieFromTMDB
 import server.logics.media.MediaAuxFunctions.getMetricsForMedia
 
 object MovieLogics {
@@ -50,7 +50,7 @@ object MovieLogics {
             recommendedMovies <- recommendedMoviesTmdb
             credits           <- creditsTmdb
           } yield Right(Movie(
-            requestedMovie    = requestedMovie,
+            movieFromTMDB    = requestedMovie,
             similarMovies     = similarMovies,
             recommendedMovies = recommendedMovies,
             cast              = credits.map(_.cast),
@@ -58,9 +58,9 @@ object MovieLogics {
             averageRating     = metrics.averageRating,
             entriesIds        = metrics.entriesIds,
             mediaListsIds     = metrics.mediaListsIds,
-            numberOfCompleted = metrics.statusCounts.completed,
-            numberOfDropped   = metrics.statusCounts.dropped,
-            numberOfPending   = metrics.statusCounts.pending,
+            completedCount = metrics.statusCounts.completed,
+            droppedCount   = metrics.statusCounts.dropped,
+            pendingCount   = metrics.statusCounts.pending,
             totalRatings      = metrics.totalRatings
           ))
       }.handleError {

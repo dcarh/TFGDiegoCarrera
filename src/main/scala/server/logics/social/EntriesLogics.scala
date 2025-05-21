@@ -1,7 +1,7 @@
 package server.logics.social
 
 import cats.effect.IO
-import dummies.repositories.{EntryRepository, RatingRepository, UserRepository}
+import memory.repositories.{EntryRepository, RatingRepository, UserRepository}
 import modelClasses.app.social.Entry
 import modelClasses.app.user.User
 import modelClasses.errors.UserError.*
@@ -17,28 +17,28 @@ object EntriesLogics {
     if entry.completed then
       if add then
         user.copy(
-          completed  = entry.mediaId :: user.completed,
-          dropped    = user.dropped.filterNot(_ == entry.mediaId),
-          inProgress = user.inProgress.filterNot(_ == entry.mediaId),
-          onHold     = user.onHold.filterNot(_ == entry.mediaId),
-          pending    = user.pending.filterNot(_ == entry.mediaId),
+          completedMediaIds  = entry.mediaId :: user.completedMediaIds,
+          droppedMediaIds    = user.droppedMediaIds.filterNot(_ == entry.mediaId),
+          inProgressMediaIds = user.inProgressMediaIds.filterNot(_ == entry.mediaId),
+          onHoldMediaIds     = user.onHoldMediaIds.filterNot(_ == entry.mediaId),
+          pendingMediaIds    = user.pendingMediaIds.filterNot(_ == entry.mediaId),
         )
       else
-        val index = user.completed.indexOf(entry.mediaId)
+        val index = user.completedMediaIds.indexOf(entry.mediaId)
         val completedUpdated =
-          if index >= 0 then user.completed.patch(index, Nil, 1)
-          else user.completed
-        user.copy(completed = completedUpdated)
+          if index >= 0 then user.completedMediaIds.patch(index, Nil, 1)
+          else user.completedMediaIds
+        user.copy(completedMediaIds = completedUpdated)
     else if entry.dropped then
       if add then
         user.copy(
-          dropped    = entry.mediaId :: user.dropped.filterNot(_ == entry.mediaId),
-          inProgress = user.inProgress.filterNot(_ == entry.mediaId),
-          onHold     = user.onHold.filterNot(_ == entry.mediaId),
-          pending    = user.pending.filterNot(_ == entry.mediaId),
+          droppedMediaIds    = entry.mediaId :: user.droppedMediaIds.filterNot(_ == entry.mediaId),
+          inProgressMediaIds = user.inProgressMediaIds.filterNot(_ == entry.mediaId),
+          onHoldMediaIds     = user.onHoldMediaIds.filterNot(_ == entry.mediaId),
+          pendingMediaIds    = user.pendingMediaIds.filterNot(_ == entry.mediaId),
         )
       else
-        user.copy(dropped = user.dropped.filterNot(_ == entry.mediaId))
+        user.copy(droppedMediaIds = user.droppedMediaIds.filterNot(_ == entry.mediaId))
     else
       entry.onHold match
         case Some(onHold) if onHold =>
@@ -46,13 +46,13 @@ object EntriesLogics {
             case id: (TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId) =>
               if add then
                 user.copy(
-                  onHold     = id :: user.onHold.filterNot(_ == id),
-                  dropped    = user.dropped.filterNot(_ == id),
-                  inProgress = user.inProgress.filterNot(_ == id),
-                  pending    = user.pending.filterNot(_ == id)
+                  onHoldMediaIds     = id :: user.onHoldMediaIds.filterNot(_ == id),
+                  droppedMediaIds    = user.droppedMediaIds.filterNot(_ == id),
+                  inProgressMediaIds = user.inProgressMediaIds.filterNot(_ == id),
+                  pendingMediaIds    = user.pendingMediaIds.filterNot(_ == id)
                 )
               else
-                user.copy(onHold = user.onHold.filterNot(_ == entry.mediaId))
+                user.copy(onHoldMediaIds = user.onHoldMediaIds.filterNot(_ == entry.mediaId))
             case _ => throw Exception("'On Hold' does not support movies nor episodes")
         case _ =>
           entry.inProgress match
@@ -61,22 +61,22 @@ object EntriesLogics {
                 case id: (TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId) =>
                   if add then
                     user.copy(
-                      inProgress = id :: user.inProgress.filterNot(_ == id),
-                      dropped    = user.dropped.filterNot(_ == id),
-                      onHold     = user.onHold.filterNot(_ == id),
-                      pending    = user.pending.filterNot(_ == id)
+                      inProgressMediaIds = id :: user.inProgressMediaIds.filterNot(_ == id),
+                      droppedMediaIds    = user.droppedMediaIds.filterNot(_ == id),
+                      onHoldMediaIds     = user.onHoldMediaIds.filterNot(_ == id),
+                      pendingMediaIds    = user.pendingMediaIds.filterNot(_ == id)
                     )
                   else
-                    user.copy(inProgress = user.inProgress.filterNot(_ == entry.mediaId))
+                    user.copy(inProgressMediaIds = user.inProgressMediaIds.filterNot(_ == entry.mediaId))
                 case _ => throw Exception("'In Progress' does not support movies nor episodes")
             case _ => user
 
   private val addNewEntryToUser: (User, Entry, Boolean) => Either[UserError, User] =
     (user, entry, edit) =>
-      if !user.entries.contains(entry.id) || edit then
+      if !user.entriesIds.contains(entry.id) || edit then
         val mediaUpdate = userMediaUpdated(user, entry, edit)
         val updatedUser = mediaUpdate.copy(
-          entries = entry.id :: user.entries
+          entriesIds = entry.id :: user.entriesIds
         )
         UserRepository.put(updatedUser.id, updatedUser)
         Right(updatedUser)
@@ -87,10 +87,10 @@ object EntriesLogics {
 
   private val removeEntryFromUser: (User, Entry) => Either[UserError, User] =
     (user, entry) =>
-      if user.entries.contains(entry.id) then
+      if user.entriesIds.contains(entry.id) then
         val mediaUpdate = userMediaUpdated(user, entry, false)
         val updatedUser = mediaUpdate.copy(
-          entries = user.entries.filterNot(_ == entry.id)
+          entriesIds = user.entriesIds.filterNot(_ == entry.id)
         )
         UserRepository.put(updatedUser.id, updatedUser)
         Right(user)
@@ -127,7 +127,7 @@ object EntriesLogics {
 
           case Some(s"${order}_rating") =>
             var ordered_entries = filteredEntries.sortBy { 
-              entry => entry.rating.flatMap(ratingMap.get)
+              entry => entry.ratingId.flatMap(ratingMap.get)
             }(Ordering.Option(Ordering.by(_.rating)))
             
             order match {

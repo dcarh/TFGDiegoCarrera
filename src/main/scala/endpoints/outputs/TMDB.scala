@@ -25,38 +25,38 @@ object TMDB {
 
     import MovieRequests.*
 
-    val jsonRequestedMovieOut: EndpointOutput[RequestedMovie] =
-      jsonBody[RequestedMovie]
+    val jsonRequestedMovieOut: EndpointOutput[MovieFromTMDB] =
+      jsonBody[MovieFromTMDB]
 
-    val jsonRequestedMoviesListOut: EndpointOutput[List[RequestedMovie]] =
-      jsonBody[List[RequestedMovie]]
+    val jsonRequestedMoviesListOut: EndpointOutput[List[MovieFromTMDB]] =
+      jsonBody[List[MovieFromTMDB]]
   }
 
   object TVShowsOutputs {
 
     import TvShowRequests.*
 
-    val jsonRequestedTvShowOut: EndpointOutput[RequestedTvShow] =
-      jsonBody[RequestedTvShow]
+    val jsonRequestedTvShowOut: EndpointOutput[TvShowFromTMDB] =
+      jsonBody[TvShowFromTMDB]
 
-    val jsonRequestedTvShowsListOut: EndpointOutput[List[RequestedTvShow]] =
-      jsonBody[List[RequestedTvShow]]
+    val jsonRequestedTvShowsListOut: EndpointOutput[List[TvShowFromTMDB]] =
+      jsonBody[List[TvShowFromTMDB]]
   }
 
   object SeasonsOutputs {
 
     import TvSeasonRequests.*
 
-    val jsonRequestedTvSeasonOut: EndpointOutput[RequestedTvSeason] =
-      jsonBody[RequestedTvSeason]
+    val jsonRequestedTvSeasonOut: EndpointOutput[TvSeasonFromTMDB] =
+      jsonBody[TvSeasonFromTMDB]
   }
 
   object EpisodesOutputs {
 
     import TvEpisodeRequests.*
 
-    val jsonRequestedTvEpisodeOut: EndpointOutput[RequestedTvEpisode] =
-      jsonBody[RequestedTvEpisode]
+    val jsonRequestedTvEpisodeOut: EndpointOutput[TvEpisodeFromTMDB] =
+      jsonBody[TvEpisodeFromTMDB]
   }
 
 }

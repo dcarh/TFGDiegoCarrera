@@ -1,7 +1,7 @@
 package server.logics.social
 
 import cats.effect.IO
-import dummies.repositories.{ReviewRepository, UserRepository}
+import memory.repositories.{ReviewRepository, UserRepository}
 
 import modelClasses.app.social.Review
 import modelClasses.app.user.User
@@ -16,9 +16,9 @@ object ReviewsLogics {
 
   private val addNewReviewToUser: (User, Review) => Either[UserError, User] =
     (user, review) =>
-      if !user.reviews.contains(review.id) then
+      if !user.reviewsIds.contains(review.id) then
         val updatedUser = user.copy(
-          reviews = review.id :: user.reviews
+          reviewsIds = review.id :: user.reviewsIds
         )
         UserRepository.put(updatedUser.id, updatedUser)
         Right(user)
@@ -28,7 +28,7 @@ object ReviewsLogics {
 
   private val updateUserFromReview: (User, Review) => Either[UserError, User] =
     (user, review) =>
-      if user.reviews.contains(review.id) then
+      if user.reviewsIds.contains(review.id) then
         Right(user)
 
       else
@@ -36,9 +36,9 @@ object ReviewsLogics {
 
   private val removeReviewFromUser: (User, Review) => Either[UserError, User] =
     (user, review) =>
-      if user.reviews.contains(review.id) then
+      if user.reviewsIds.contains(review.id) then
         val updatedUser = user.copy(
-          reviews = user.reviews.filterNot(_ == review.id)
+          reviewsIds = user.reviewsIds.filterNot(_ == review.id)
         )
         UserRepository.put(updatedUser.id, updatedUser)
         Right(user)
@@ -55,7 +55,7 @@ object ReviewsLogics {
         case None             => reviews
         case Some(categories) =>
           reviews.filter(
-            review => review.mediaReviewedId match
+            review => review.reviewedMediaId match
               case _: MovieId                                           => categories.contains("movie")
               case _: TvShowId                                          => categories.contains("tv_show")
               case (_: TvShowId, _: TvSeasonNumber)                     => categories.contains("season")
@@ -65,10 +65,10 @@ object ReviewsLogics {
           )
       
       val sortedReviews = sortByOption match {
-        case Some("least_liked")   => Right(filteredReviews.sortBy(_.likes.size))
-        case Some("most_liked")    => Right(filteredReviews.sortBy(_.likes.size).reverse)
-        case Some("least_replied") => Right(filteredReviews.sortBy(_.replies.size))
-        case Some("most_replied")  => Right(filteredReviews.sortBy(_.replies.size).reverse)
+        case Some("least_liked")   => Right(filteredReviews.sortBy(_.likesIds.size))
+        case Some("most_liked")    => Right(filteredReviews.sortBy(_.likesIds.size).reverse)
+        case Some("least_replied") => Right(filteredReviews.sortBy(_.repliesIds.size))
+        case Some("most_replied")  => Right(filteredReviews.sortBy(_.repliesIds.size).reverse)
         case Some(unknown)         => Left(BadRequest(s"Invalid sorting parameter: $unknown"))
         case None                  => Right(filteredReviews)
       }

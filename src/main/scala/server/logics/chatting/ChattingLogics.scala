@@ -1,9 +1,9 @@
 package server.logics.chatting
 
 import cats.effect.IO
-import dummies.repositories.ChatRepository
-import dummies.repositories.MessageRepository
-import dummies.repositories.UserRepository
+import memory.repositories.ChatRepository
+import memory.repositories.MessageRepository
+import memory.repositories.UserRepository
 
 import modelClasses.app.chatting.Chat
 import modelClasses.app.chatting.Message
@@ -21,8 +21,8 @@ object ChattingLogics {
       getUser(userId) match
         case Left(error) => Left(error)
         case Right(user) => archivedOption match
-            case Some(archived) if archived => Right(user.archivedChats)
-            case _                          => Right(user.chats)
+            case Some(archived) if archived => Right(user.archivedChatsIds)
+            case _                          => Right(user.chatsIds)
 
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))
@@ -42,23 +42,23 @@ object ChattingLogics {
       ChattingAuxFunctions.assertUserAndChatIds(userId, chatId) match
         case Left(error)       => Left(error)
         case Right(user, chat) =>
-          val (updatedChat, updatedUser) = if user.chats.contains(chat.id) && !user.archivedChats.contains(chat.id) then
+          val (updatedChat, updatedUser) = if user.chatsIds.contains(chat.id) && !user.archivedChatsIds.contains(chat.id) then
             val updatedChat = chat.copy(
               archived = true
             )
             val updatedUser = user.copy(
-              chats         = user.chats.filterNot(_ == chat.id),
-              archivedChats = chat.id :: user.archivedChats
+              chatsIds         = user.chatsIds.filterNot(_ == chat.id),
+              archivedChatsIds = chat.id :: user.archivedChatsIds
             )
             (updatedChat, updatedUser)
 
-          else if !user.chats.contains(chat.id) && user.archivedChats.contains(chat.id) then
+          else if !user.chatsIds.contains(chat.id) && user.archivedChatsIds.contains(chat.id) then
             val updatedChat = chat.copy(
               archived = false
             )
             val updatedUser = user.copy(
-              chats         = chat.id :: user.chats,
-              archivedChats = user.archivedChats.filterNot(_ == chat.id)
+              chatsIds         = chat.id :: user.chatsIds,
+              archivedChatsIds = user.archivedChatsIds.filterNot(_ == chat.id)
             )
             (updatedChat, updatedUser)
           else

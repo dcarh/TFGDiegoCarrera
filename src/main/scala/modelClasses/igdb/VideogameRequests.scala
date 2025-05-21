@@ -12,7 +12,7 @@ object VideogameRequests {
                                  url: String
                                )
 
-  case class VideogameAllFields(
+  case class VideogameFromIGDB(
                                id: VideogameId,
                                age_ratings: Option[List[Long]],
                                aggregated_rating: Option[Double],             // Me da igual

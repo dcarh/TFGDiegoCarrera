@@ -14,7 +14,7 @@ object UserEntriesLogics {
     userId => IO.pure {
       CommonFunctions.getUser(userId) match
         case Left(error) => Left(error)
-        case Right(user) => Right(user.entries)
+        case Right(user) => Right(user.entriesIds)
       
     }.handleError {
       case ex: Exception => Left(Unknown(500, s"An unexpected error occurred: ${ex.getMessage}"))

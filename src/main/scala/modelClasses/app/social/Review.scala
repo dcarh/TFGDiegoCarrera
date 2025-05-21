@@ -9,10 +9,10 @@ import modelClasses.ids.User.UserId
 case class Review(
                    id             : ReviewId,
                    userId         : UserId,
-                   mediaReviewedId: MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId,
+                   reviewedMediaId: MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId,
                    review         : String,
-                   likes          : List[LikeId],
+                   likesIds       : List[LikeId],
                    allowReplies   : Boolean,
-                   replies        : List[ReplyId],
+                   repliesIds     : List[ReplyId],
                    spoilers       : Boolean
                  )

@@ -2,12 +2,12 @@ package server.logics.media
 
 import cats.effect.IO
 import clients.GoogleBooksClient
-import dummies.repositories.{EntryRepository, MediaListRepository}
+import memory.repositories.{EntryRepository, MediaListRepository}
 import endpoints.googleBooks.Books
 import modelClasses.app.media.*
 import modelClasses.app.social.{Entry, MediaList}
 import modelClasses.errors.UserError.*
-import modelClasses.googleBooks.BooksRequests.RequestedBook
+import modelClasses.googleBooks.BooksRequests.BookFromGoogleBooks
 import modelClasses.ids.Media.BookId
 import modelClasses.ids.Social.{EntryId, MediaListId}
 import server.logics.media.MediaAuxFunctions.getMetricsForMedia
@@ -17,20 +17,20 @@ object BookLogics {
   val getBook: BookId => IO[Either[UserError, Book]] =
     bookId =>
       GoogleBooksClient.executeRequest(Books.requestBook, bookId).flatMap {
-        case Right(requestedBook: RequestedBook) =>
+        case Right(requestedBook: BookFromGoogleBooks) =>
           val metrics = getMetricsForMedia(bookId)
           
           IO.pure(Right(
             Book(
-              requestedBook      = requestedBook,
+              bookFromGoogleBooks      = requestedBook,
               averageRating      = metrics.averageRating,
               entriesIds         = metrics.entriesIds,
               mediaListsIds      = metrics.mediaListsIds,
-              numberOfCompleted  = metrics.statusCounts.completed,
-              numberOfDropped    = metrics.statusCounts.dropped,
-              numberOfInProgress = metrics.statusCounts.inProgress,
-              numberOfOnHold     = metrics.statusCounts.onHold,
-              numberOfPending    = metrics.statusCounts.pending,
+              completedCount  = metrics.statusCounts.completed,
+              droppedCount    = metrics.statusCounts.dropped,
+              inProgressCount = metrics.statusCounts.inProgress,
+              onHoldCount     = metrics.statusCounts.onHold,
+              pendingCount    = metrics.statusCounts.pending,
               totalRatings       = metrics.totalRatings
             )
           ))

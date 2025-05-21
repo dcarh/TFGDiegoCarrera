@@ -6,20 +6,20 @@ import modelClasses.tmdb.Common.*
 
 object TvSeasonRequests {
 
-  case class RequestedTvSeason(
-                                _id: String,
-                                air_date: Option[String],
-                                episodes: List[TvEpisodeForTvSeason],
-                                name: String,
-                                overview: String,
-                                id: Long,
-                                poster_path: Option[String],
-                                runtime: Option[Long],
-                                season_number: TvSeasonNumber,
-                                vote_average: Double
+  case class TvSeasonFromTMDB(
+                           _id: String,
+                           air_date: Option[String],
+                           episodes: List[TvEpisodeInTvSeason],
+                           name: String,
+                           overview: String,
+                           id: Long,
+                           poster_path: Option[String],
+                           runtime: Option[Long],
+                           season_number: TvSeasonNumber,
+                           vote_average: Double
                             )
 
-  case class TvEpisodeForTvSeason(
+  case class TvEpisodeInTvSeason(
                                    air_date:Option[String],
                                    episode_number: TvEpisodeNumber,
                                    episode_type: String,

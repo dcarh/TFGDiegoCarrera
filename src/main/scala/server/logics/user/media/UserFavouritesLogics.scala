@@ -1,7 +1,7 @@
 package server.logics.user.media
 
 import cats.effect.IO
-import dummies.repositories.UserRepository
+import memory.repositories.UserRepository
 import modelClasses.app.user.User
 import modelClasses.errors.UserError.*
 import modelClasses.ids.User.UserId
@@ -31,24 +31,24 @@ object UserFavouritesLogics {
           val updatedFavourites = mediaId match
 
             case movieId: MovieId =>
-              user.favourites.movie match
+              user.favourites.movieId match
                 case Some(_) => Left(Conflict("The user already has a favourite movie. Delete it before you add a new one"))
-                case None    => Right(user.favourites.copy(movie = Some(movieId)))
+                case None    => Right(user.favourites.copy(movieId = Some(movieId)))
 
             case tvShowId: TvShowId =>
-              user.favourites.tvShow match
+              user.favourites.tvShowId match
                 case Some(_) => Left(Conflict("The user already has a favourite TV show. Delete it before you add a new one"))
-                case None    => Right(user.favourites.copy(tvShow = Some(tvShowId)))
+                case None    => Right(user.favourites.copy(tvShowId = Some(tvShowId)))
 
             case videogameId: VideogameId =>
-              user.favourites.videogame match
+              user.favourites.videogameId match
                 case Some(_) => Left(Conflict("The user already has a favourite videogame. Delete it before you add a new one"))
-                case None    => Right(user.favourites.copy(videogame = Some(videogameId)))
+                case None    => Right(user.favourites.copy(videogameId = Some(videogameId)))
 
             case bookId: BookId =>
-              user.favourites.book match
+              user.favourites.bookId match
                 case Some(_) => Left(Conflict("The user already has a favourite book. Delete it before you add a new one"))
-                case None    => Right(user.favourites.copy(book = Some(bookId)))
+                case None    => Right(user.favourites.copy(bookId = Some(bookId)))
 
           updatedFavourites match
             case Left(error)       => Left(error)
@@ -66,23 +66,23 @@ object UserFavouritesLogics {
           val updatedFavourites = mediaId match
 
             case movieId: MovieId =>
-              user.favourites.movie match
-                case Some(_) => Right(user.favourites.copy(movie = None))
+              user.favourites.movieId match
+                case Some(_) => Right(user.favourites.copy(movieId = None))
                 case None    => Left(NotFound("The user does not have a favourite movie"))
 
             case tvShowId: TvShowId =>
-              user.favourites.tvShow match
-                case Some(_) => Right(user.favourites.copy(tvShow = None))
+              user.favourites.tvShowId match
+                case Some(_) => Right(user.favourites.copy(tvShowId = None))
                 case None    => Left(NotFound("The user does not have a favourite TV show"))
 
             case videogameId: VideogameId =>
-              user.favourites.videogame match
-                case Some(_) => Right(user.favourites.copy(videogame = None))
+              user.favourites.videogameId match
+                case Some(_) => Right(user.favourites.copy(videogameId = None))
                 case None    => Left(NotFound("The user does not have a favourite videogame"))
 
             case bookId: BookId =>
-              user.favourites.book match
-                case Some(_) => Right(user.favourites.copy(book = None))
+              user.favourites.bookId match
+                case Some(_) => Right(user.favourites.copy(bookId = None))
                 case None    => Left(NotFound("The user does not have a favourite book"))
 
           updatedFavourites match

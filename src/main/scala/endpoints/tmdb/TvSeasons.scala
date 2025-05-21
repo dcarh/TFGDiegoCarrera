@@ -10,7 +10,7 @@ import modelClasses.tmdb.Common.Credits
 
 object TvSeasons {
 
-  val requestTvSeason: PublicEndpoint[(String, TvShowId, TvSeasonNumber), UserError, RequestedTvSeason, Any] =
+  val requestTvSeason: PublicEndpoint[(String, TvShowId, TvSeasonNumber), UserError, TvSeasonFromTMDB, Any] =
     Base.tvSeasonBaseEndpoint(
         "requestTvSeason", 
         "This endpoint returns a TV season from TMDB API by its ID"

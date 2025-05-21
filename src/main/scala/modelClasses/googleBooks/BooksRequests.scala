@@ -5,7 +5,7 @@ import modelClasses.ids.Media.BookId
 
 object BooksRequests {
 
-  case class RequestedBook(
+  case class BookFromGoogleBooks(
                             id: BookId,
                             volumeInfo: VolumeInfo
                           )

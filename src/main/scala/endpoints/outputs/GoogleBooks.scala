@@ -13,8 +13,8 @@ object GoogleBooks {
 
   import BooksRequests.*
 
-  val jsonRequestedBookOut: EndpointOutput[RequestedBook] =
-    jsonBody[RequestedBook]
+  val jsonRequestedBookOut: EndpointOutput[BookFromGoogleBooks] =
+    jsonBody[BookFromGoogleBooks]
 
   val jsonRequestedBookSearchOut: EndpointOutput[RequestedBookSearch] =
     jsonBody[RequestedBookSearch]

@@ -17,6 +17,6 @@ case class MediaList(
                       ranked      : Boolean,
                       creationDate: LocalDateTime,
                       updateDate  : LocalDateTime,
-                      likes       : List[LikeId],
-                      replies     : List[ReplyId]
+                      likesIds    : List[LikeId],
+                      repliesIds  : List[ReplyId]
                     )

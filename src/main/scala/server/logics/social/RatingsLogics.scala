@@ -1,7 +1,7 @@
 package server.logics.social
 
 import cats.effect.IO
-import dummies.repositories.{RatingRepository, UserRepository}
+import memory.repositories.{RatingRepository, UserRepository}
 
 import modelClasses.app.social.Rating
 import modelClasses.app.user.User
@@ -15,9 +15,9 @@ object RatingsLogics {
 
   private val addNewRatingToUser: (User, Rating) => Either[UserError, User] =
     (user, rating) =>
-      if !user.ratings.contains(rating.id) then
+      if !user.ratingsIds.contains(rating.id) then
         val updatedUser = user.copy(
-          ratings = rating.id :: user.ratings
+          ratingsIds = rating.id :: user.ratingsIds
         )
         UserRepository.put(updatedUser.id, updatedUser)
         Right(user)
@@ -27,7 +27,7 @@ object RatingsLogics {
 
   private val updateUserFromRating: (User, Rating) => Either[UserError, User] =
     (user, rating) =>
-      if user.ratings.contains(rating.id) then
+      if user.ratingsIds.contains(rating.id) then
         Right(user)
 
       else
@@ -35,9 +35,9 @@ object RatingsLogics {
 
   private val removeRatingFromUser: (User, Rating) => Either[UserError, User] =
     (user, rating) =>
-      if user.ratings.contains(rating.id) then
+      if user.ratingsIds.contains(rating.id) then
         val updatedUser = user.copy(
-          ratings = user.ratings.filterNot(_ == rating.id)
+          ratingsIds = user.ratingsIds.filterNot(_ == rating.id)
         )
         UserRepository.put(updatedUser.id, updatedUser)
         Right(user)

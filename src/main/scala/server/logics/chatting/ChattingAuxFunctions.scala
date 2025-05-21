@@ -1,7 +1,7 @@
 package server.logics.chatting
 
-import dummies.repositories.ChatRepository
-import dummies.repositories.UserRepository
+import memory.repositories.ChatRepository
+import memory.repositories.UserRepository
 import modelClasses.app.chatting.Chat
 import modelClasses.app.chatting.Message
 import modelClasses.app.user.User
@@ -23,7 +23,7 @@ object ChattingAuxFunctions {
             case Right(chat) =>
               if userId.value != chat.user1Id.value then
                 Left(BadRequest("User ID introduced and user ID stored in the chat did not match"))
-              else if !user.chats.contains(chatId) && !user.archivedChats.contains(chatId) then
+              else if !user.chatsIds.contains(chatId) && !user.archivedChatsIds.contains(chatId) then
                 Left(BadRequest("Chat ID introduced and chat ID stored in the user did not match"))
               else
                 Right((user, chat))
@@ -69,28 +69,28 @@ object ChattingAuxFunctions {
         archived     = false
       )
       val updatedUser = user.copy(
-        chats = chatId :: user.chats
+        chatsIds = chatId :: user.chatsIds
       )
       ChatRepository.put(chatId, newChat)
       UserRepository.put(user.id, updatedUser)
 
   val checkUserChatsAndUpdate: ((User, Chat, Message)) => Unit =
     (user, chat, message) =>
-      if user.chats.contains(chat.id) && !user.archivedChats.contains(chat.id) then
+      if user.chatsIds.contains(chat.id) && !user.archivedChatsIds.contains(chat.id) then
         val updatedChat = chat.copy(
           messagesIds = message.id :: chat.messagesIds,
           archived    = false
         )
         ChatRepository.put(chat.id, updatedChat)
 
-      else if !user.chats.contains(chat.id) && user.archivedChats.contains(chat.id) then
+      else if !user.chatsIds.contains(chat.id) && user.archivedChatsIds.contains(chat.id) then
         val updatedChat = chat.copy(
           messagesIds = message.id :: chat.messagesIds,
           archived    = false
         )
         val updatedUser = user.copy(
-          chats         = chat.id :: user.chats,
-          archivedChats = user.archivedChats.filterNot(_ == chat.id)
+          chatsIds         = chat.id :: user.chatsIds,
+          archivedChatsIds = user.archivedChatsIds.filterNot(_ == chat.id)
         )
         ChatRepository.put(chat.id, updatedChat)
         UserRepository.put(user.id, updatedUser)
@@ -113,9 +113,9 @@ object ChattingAuxFunctions {
           
   val checkIfUsersBlocked: ((User, User)) => Either[UserError, Unit] =
     (user1, user2) =>
-      if user1.blocked.contains(user2.id) then
+      if user1.blockedIds.contains(user2.id) then
         Left(Conflict(s"User with ID ${user2.id.value} is blocked by ${user1.id.value}"))
-      else if user2.blocked.contains(user1.id) then
+      else if user2.blockedIds.contains(user1.id) then
         Left(Conflict(s"User with ID ${user1.id.value} is blocked by ${user2.id.value}"))
       else
         Right(())

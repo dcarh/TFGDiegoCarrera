@@ -16,6 +16,6 @@ object IGDB {
   val jsonListRequestedVideogameOut: EndpointOutput[List[RequestedVideogame]] =
     jsonBody[List[RequestedVideogame]]  
     
-  val jsonListRequestedVideogameAllFieldsOut: EndpointOutput[List[VideogameAllFields]] =
-    jsonBody[List[VideogameAllFields]]
+  val jsonListRequestedVideogameAllFieldsOut: EndpointOutput[List[VideogameFromIGDB]] =
+    jsonBody[List[VideogameFromIGDB]]
 }
