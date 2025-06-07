@@ -4,9 +4,8 @@ import memory.repositories.*
 import domain.app.chatting.{Chat, Message}
 import domain.app.social.*
 import domain.app.user.User
-import domain.errors.UserError.{BadRequest, Conflict, NotFound, UserError}
+import domain.errors.UserError.{BadRequest, NotFound, UserError}
 import domain.ids.Chatting.*
-import domain.ids.Media.{BookId, TvEpisodeNumber, MovieId, TvSeasonNumber, TvShowId, VideogameId}
 import domain.ids.Social.*
 import domain.ids.User.UserId
 
