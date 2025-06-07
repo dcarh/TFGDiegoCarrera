@@ -1,9 +1,8 @@
-package endpoints.outputs
+package endpoints.io.outputs
 
 import io.circe.*
 import io.circe.generic.auto.*
-import domain.tmdb.*
-import domain.tmdb.Common.{Credits, Results, Result}
+import domain.apis.tmdb.Common.{Credits, Results, Result}
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*
@@ -23,7 +22,7 @@ object TMDB {
 
   object MoviesOutputs {
 
-    import MovieRequests.*
+    import domain.apis.tmdb.MovieRequests.*
 
     val jsonRequestedMovieOut: EndpointOutput[MovieFromTMDB] =
       jsonBody[MovieFromTMDB]
@@ -34,7 +33,7 @@ object TMDB {
 
   object TVShowsOutputs {
 
-    import TvShowRequests.*
+    import domain.apis.tmdb.TvShowRequests.*
 
     val jsonRequestedTvShowOut: EndpointOutput[TvShowFromTMDB] =
       jsonBody[TvShowFromTMDB]
@@ -45,7 +44,7 @@ object TMDB {
 
   object SeasonsOutputs {
 
-    import TvSeasonRequests.*
+    import domain.apis.tmdb.TvSeasonRequests.*
 
     val jsonRequestedTvSeasonOut: EndpointOutput[TvSeasonFromTMDB] =
       jsonBody[TvSeasonFromTMDB]
@@ -53,7 +52,7 @@ object TMDB {
 
   object EpisodesOutputs {
 
-    import TvEpisodeRequests.*
+    import domain.apis.tmdb.TvEpisodeRequests.*
 
     val jsonRequestedTvEpisodeOut: EndpointOutput[TvEpisodeFromTMDB] =
       jsonBody[TvEpisodeFromTMDB]

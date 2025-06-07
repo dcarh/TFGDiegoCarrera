@@ -2,8 +2,8 @@ package endpoints.app.social
 
 import sttp.tapir.*
 import endpoints.EndpointsUtils.httpMethodEndpoint
-import endpoints.inputs.Common.*
-import endpoints.outputs.Common.*
+import endpoints.io.inputs.Common.*
+import endpoints.io.outputs.Common.*
 import domain.errors.UserError.*
 import domain.app.social.Like
 import domain.ids.Social.LikeId

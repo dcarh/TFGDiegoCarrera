@@ -1,4 +1,4 @@
-package domain.igdb
+package domain.apis.igdb
 
 import io.circe.generic.auto.*
 import domain.ids.Media.VideogameId

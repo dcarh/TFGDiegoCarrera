@@ -1,4 +1,4 @@
-package domain.tmdb
+package domain.apis.tmdb
 
 object Common {
   

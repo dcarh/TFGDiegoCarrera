@@ -1,9 +1,9 @@
 package endpoints.apis.igdb
 
 import sttp.tapir.*
-import endpoints.outputs.IGDB.*
-import domain.igdb.VideogameRequests.*
+import domain.apis.igdb.VideogameRequests.*
 import domain.errors.UserError.*
+import endpoints.io.outputs.IGDB.*
 
 object Videogames {
 

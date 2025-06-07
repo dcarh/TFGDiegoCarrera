@@ -7,7 +7,7 @@ import memory.repositories.{EntryRepository, MediaListRepository}
 import domain.app.media.*
 import domain.app.social.{Entry, MediaList}
 import domain.errors.UserError.*
-import domain.googleBooks.BooksRequests.BookFromGoogleBooks
+import domain.apis.googleBooks.BooksRequests.BookFromGoogleBooks
 import domain.ids.Media.BookId
 import domain.ids.Social.{EntryId, MediaListId}
 import server.logics.media.MediaAuxFunctions.getMetricsForMedia

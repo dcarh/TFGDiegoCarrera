@@ -2,8 +2,8 @@ package domain.app.media
 
 import io.circe.generic.auto.*
 import domain.ids.Social.{EntryId, MediaListId}
-import domain.tmdb.Common.Member
-import domain.tmdb.TvSeasonRequests.TvSeasonFromTMDB
+import domain.apis.tmdb.Common.Member
+import domain.apis.tmdb.TvSeasonRequests.TvSeasonFromTMDB
 
 case class TvSeason(
                      tvSeasonFromTMDB: TvSeasonFromTMDB,

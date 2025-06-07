@@ -2,8 +2,8 @@ package endpoints.app.media
 
 import sttp.tapir.*
 import endpoints.app.media.MediaBaseEndpoint.mediaBaseEndpoint
-import endpoints.inputs.Common.*
-import endpoints.outputs.Common.*
+import endpoints.io.inputs.Common.*
+import endpoints.io.outputs.Common.*
 import domain.errors.UserError.*
 import domain.app.media.*
 import domain.app.social.{Entry, MediaList}

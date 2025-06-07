@@ -2,7 +2,7 @@ package endpoints.app.user
 
 import sttp.tapir.*
 import endpoints.EndpointsUtils.httpMethodEndpoint
-import endpoints.inputs.Common.PathInputs
+import endpoints.io.inputs.Common.PathInputs
 import domain.errors.UserError.*
 import domain.ids.User.UserId
 

@@ -2,7 +2,7 @@ package endpoints.app.user.social
 
 import endpoints.app.user.UserEndpointsUtils.specificUserBaseEndpoint
 import sttp.tapir.*
-import endpoints.outputs.Common.*
+import endpoints.io.outputs.Common.*
 import domain.errors.UserError.*
 import domain.ids.Social.ReviewId
 import domain.ids.User.UserId

@@ -1,4 +1,4 @@
-package endpoints.inputs
+package endpoints.io.inputs
 
 import sttp.tapir.*
 

@@ -1,4 +1,4 @@
-package domain.googleBooks
+package domain.apis.googleBooks
 
 import io.circe.generic.auto.*
 import domain.ids.Media.BookId
