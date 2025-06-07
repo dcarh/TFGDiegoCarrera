@@ -1,7 +1,7 @@
 package memory.objects
 
 import memory.ids.{MessageIds, UserIds}
-import modelClasses.app.chatting.Message
+import domain.app.chatting.Message
 
 import java.time.LocalDateTime
 

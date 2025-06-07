@@ -4,7 +4,7 @@ import io.circe.generic.auto.*
 import io.circe.syntax.*
 import io.circe.Encoder
 
-import modelClasses.app.social.{MediaList, Reply, Review}
+import domain.app.social.{MediaList, Reply, Review}
 
 import MediaIDsUnionTypes.*
 import SocialIDsUnionTypes.*

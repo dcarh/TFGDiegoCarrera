@@ -4,12 +4,12 @@ import sttp.tapir.*
 import endpoints.app.user.UserEndpointsUtils.specificUserBaseEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
-import modelClasses.errors.UserError.*
-import modelClasses.app.chatting.Chat
-import modelClasses.ids.Chatting.ChatId
-import modelClasses.app.chatting.Message
-import modelClasses.ids.Chatting.MessageId
-import modelClasses.ids.User.UserId
+import domain.errors.UserError.*
+import domain.app.chatting.Chat
+import domain.ids.Chatting.ChatId
+import domain.app.chatting.Message
+import domain.ids.Chatting.MessageId
+import domain.ids.User.UserId
 
 object ChattingEndpoints {
 

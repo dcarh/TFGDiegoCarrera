@@ -1,7 +1,7 @@
 package clients
 
 import cats.effect.*
-import modelClasses.errors.UserError.*
+import domain.errors.UserError.*
 import org.http4s.*
 import org.http4s.client.Client
 import org.http4s.ember.client.EmberClientBuilder

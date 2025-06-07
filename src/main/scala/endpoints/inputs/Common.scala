@@ -4,13 +4,13 @@ import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*
 import io.circe.generic.auto.*
-import modelClasses.app.chatting.Message
-import modelClasses.app.social.{Entry, Like, MediaList, Rating, Reply, Review}
-import modelClasses.app.user.{User, UserProfile}
-import modelClasses.ids.Chatting.*
-import modelClasses.ids.Media.*
-import modelClasses.ids.Social.*
-import modelClasses.ids.User.UserId
+import domain.app.chatting.Message
+import domain.app.social.{Entry, Like, MediaList, Rating, Reply, Review}
+import domain.app.user.{User, UserProfile}
+import domain.ids.Chatting.*
+import domain.ids.Media.*
+import domain.ids.Social.*
+import domain.ids.User.UserId
 import codecs.ModelClasses.Chatting.*
 import codecs.ModelClasses.Media.*
 import codecs.ModelClasses.Social.*

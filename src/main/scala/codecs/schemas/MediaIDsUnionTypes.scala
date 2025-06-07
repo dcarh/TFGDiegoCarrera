@@ -3,7 +3,7 @@ package codecs.schemas
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 
-import modelClasses.ids.Media.*
+import domain.ids.Media.*
 
 object MediaIDsUnionTypes {
 

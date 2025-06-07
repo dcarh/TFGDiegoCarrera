@@ -4,7 +4,7 @@ import io.circe.generic.auto.*
 import io.circe.syntax.*
 import io.circe.Encoder
 
-import modelClasses.app.media.*
+import domain.app.media.*
 
 object MediaUnionTypes {
   

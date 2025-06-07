@@ -3,7 +3,7 @@ package codecs.encoders
 import io.circe.{Encoder, Json}
 import io.circe.syntax.*
 
-import modelClasses.ids.Social.{MediaListId, ReplyId, ReviewId}
+import domain.ids.Social.{MediaListId, ReplyId, ReviewId}
 
 object SocialIDsUnionTypes {
 

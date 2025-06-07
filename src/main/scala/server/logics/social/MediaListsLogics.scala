@@ -2,11 +2,11 @@ package server.logics.social
 
 import cats.effect.IO
 import memory.repositories.{MediaListRepository, UserRepository}
-import modelClasses.app.social.MediaList
-import modelClasses.app.user.User
-import modelClasses.errors.UserError.*
-import modelClasses.ids.Social.MediaListId
-import modelClasses.ids.User.UserId
+import domain.app.social.MediaList
+import domain.app.user.User
+import domain.errors.UserError.*
+import domain.ids.Social.MediaListId
+import domain.ids.User.UserId
 
 import server.logics.commonFunctions.CommonFunctions
 

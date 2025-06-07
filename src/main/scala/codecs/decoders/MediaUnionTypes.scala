@@ -5,7 +5,7 @@ import io.circe.Decoder
 
 import cats.syntax.functor.*
 
-import modelClasses.app.media.*
+import domain.app.media.*
 
 object MediaUnionTypes {
 

@@ -3,16 +3,16 @@ package server.logics.search
 import cats.effect.IO
 import cats.implicits.*
 import clients.{GoogleBooksClient, IGDBClient, TMDBClient}
+import endpoints.apis.googleBooks.Books
+import endpoints.apis.igdb.Videogames
+import endpoints.apis.tmdb.{Movies, TvShows}
 import memory.repositories.{MediaListRepository, UserRepository}
-import endpoints.googleBooks.Books
-import endpoints.igdb.Videogames
-import endpoints.tmdb.{Movies, TvShows}
-import modelClasses.app.social.MediaList
-import modelClasses.app.user.User
-import modelClasses.errors.UserError.*
-import modelClasses.googleBooks.BooksRequests.{ListOfSearchedBooks, SearchedBook}
-import modelClasses.igdb.VideogameRequests.VideogameFromIGDB
-import modelClasses.tmdb.Common.{Result, Results}
+import domain.app.social.MediaList
+import domain.app.user.User
+import domain.errors.UserError.*
+import domain.googleBooks.BooksRequests.{ListOfSearchedBooks, SearchedBook}
+import domain.igdb.VideogameRequests.VideogameFromIGDB
+import domain.tmdb.Common.{Result, Results}
 import utility.DateParser.*
 
 object SearchLogics {

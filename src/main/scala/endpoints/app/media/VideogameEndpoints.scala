@@ -4,10 +4,10 @@ import sttp.tapir.*
 import endpoints.app.media.MediaBaseEndpoint.mediaBaseEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
-import modelClasses.errors.UserError.*
-import modelClasses.app.media.*
-import modelClasses.app.social.{Entry, MediaList}
-import modelClasses.ids.Media.*
+import domain.errors.UserError.*
+import domain.app.media.*
+import domain.app.social.{Entry, MediaList}
+import domain.ids.Media.*
 
 object VideogameEndpoints {
 

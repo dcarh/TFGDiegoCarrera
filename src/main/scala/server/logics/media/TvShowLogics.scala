@@ -2,13 +2,13 @@ package server.logics.media
 
 import cats.effect.IO
 import clients.TMDBClient
+import endpoints.apis.tmdb.TvShows
 import memory.repositories.{EntryRepository, MediaListRepository}
-import endpoints.tmdb.TvShows
-import modelClasses.app.media.*
-import modelClasses.app.social.{Entry, MediaList}
-import modelClasses.errors.UserError.*
-import modelClasses.ids.Media.TvShowId
-import modelClasses.ids.Social.{EntryId, MediaListId}
+import domain.app.media.*
+import domain.app.social.{Entry, MediaList}
+import domain.errors.UserError.*
+import domain.ids.Media.TvShowId
+import domain.ids.Social.{EntryId, MediaListId}
 import server.logics.media.MediaAuxFunctions.getMetricsForMedia
 
 object TvShowLogics {

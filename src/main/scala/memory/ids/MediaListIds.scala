@@ -1,6 +1,6 @@
 package memory.ids
 
-import modelClasses.ids.Social.MediaListId
+import domain.ids.Social.MediaListId
 
 object MediaListIds {
   val mediaListId1: MediaListId = MediaListId(1)

@@ -1,8 +1,8 @@
 package memory.objects
 
-import modelClasses.app.user.*
+import domain.app.user.*
 import memory.ids.*
-import modelClasses.ids.Media.{BookId, TvEpisodeNumber, MovieId, TvSeasonNumber, TvShowId, VideogameId}
+import domain.ids.Media.{BookId, TvEpisodeNumber, MovieId, TvSeasonNumber, TvShowId, VideogameId}
 
 object Users {
   val user1: User = User(
