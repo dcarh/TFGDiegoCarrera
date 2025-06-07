@@ -2,11 +2,11 @@ package server.logics.user.media
 
 import cats.effect.IO
 import memory.repositories.UserRepository
-import modelClasses.app.user.User
-import modelClasses.errors.UserError.*
-import modelClasses.ids.User.UserId
-import modelClasses.app.user.UserFavourites
-import modelClasses.ids.Media.{BookId, MovieId, TvShowId, VideogameId}
+import domain.app.user.User
+import domain.errors.UserError.*
+import domain.ids.User.UserId
+import domain.app.user.UserFavourites
+import domain.ids.Media.{BookId, MovieId, TvShowId, VideogameId}
 
 import server.logics.commonFunctions.CommonFunctions
 

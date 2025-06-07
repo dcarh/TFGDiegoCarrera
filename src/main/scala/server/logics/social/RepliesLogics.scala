@@ -2,10 +2,10 @@ package server.logics.social
 
 import cats.effect.IO
 import memory.repositories.ReplyRepository
-import modelClasses.app.social.Reply
-import modelClasses.app.user.User
-import modelClasses.errors.UserError.*
-import modelClasses.ids.Social.{MediaListId, ReplyId, ReviewId}
+import domain.app.social.Reply
+import domain.app.user.User
+import domain.errors.UserError.*
+import domain.ids.Social.{MediaListId, ReplyId, ReviewId}
 import server.logics.commonFunctions.CommonFunctions
 
 object RepliesLogics {

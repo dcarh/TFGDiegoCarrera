@@ -2,14 +2,14 @@ package server.logics.media
 
 import cats.effect.IO
 import clients.IGDBClient
+import endpoints.apis.igdb.Videogames
 import memory.repositories.{EntryRepository, MediaListRepository}
-import endpoints.igdb.Videogames
-import modelClasses.app.media.*
-import modelClasses.app.social.{Entry, MediaList}
-import modelClasses.errors.UserError.*
-import modelClasses.ids.Media.VideogameId
-import modelClasses.ids.Social.{EntryId, MediaListId}
-import modelClasses.igdb.VideogameRequests.VideogameFromIGDB
+import domain.app.media.*
+import domain.app.social.{Entry, MediaList}
+import domain.errors.UserError.*
+import domain.ids.Media.VideogameId
+import domain.ids.Social.{EntryId, MediaListId}
+import domain.igdb.VideogameRequests.VideogameFromIGDB
 import server.logics.media.MediaAuxFunctions.getMetricsForMedia
 
 object VideogameLogics {

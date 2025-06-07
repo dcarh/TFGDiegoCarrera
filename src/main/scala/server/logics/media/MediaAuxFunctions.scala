@@ -1,8 +1,8 @@
 package server.logics.media
 
 import memory.repositories.{EntryRepository, MediaListRepository, RatingRepository, UserRepository}
-import modelClasses.ids.Media.{BookId, MovieId, TvEpisodeNumber, TvSeasonNumber, TvShowId, VideogameId}
-import modelClasses.ids.Social.{EntryId, MediaListId}
+import domain.ids.Media.{BookId, MovieId, TvEpisodeNumber, TvSeasonNumber, TvShowId, VideogameId}
+import domain.ids.Social.{EntryId, MediaListId}
 import server.logics.media.MediaAuxClasses.{MediaMetrics, StatusCounts}
 
 object MediaAuxFunctions {

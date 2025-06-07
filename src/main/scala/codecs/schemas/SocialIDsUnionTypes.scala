@@ -1,6 +1,6 @@
 package codecs.schemas
 
-import modelClasses.ids.Social.{MediaListId, ReplyId, ReviewId}
+import domain.ids.Social.{MediaListId, ReplyId, ReviewId}
 
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*

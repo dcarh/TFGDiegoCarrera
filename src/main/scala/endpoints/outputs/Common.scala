@@ -2,15 +2,15 @@ package endpoints.outputs
 
 import io.circe.*
 import io.circe.generic.auto.*
-import modelClasses.errors.UserError.*
-import modelClasses.app.chatting.{Chat, Message}
-import modelClasses.app.media.{Book, TvEpisode, Movie, TvSeason, TvShow, Videogame}
-import modelClasses.app.social.{Entry, Like, MediaList, Rating, Reply, Review}
-import modelClasses.app.user.{User, UserFavourites, UserProfile}
-import modelClasses.ids.Chatting.{ChatId, MessageId}
-import modelClasses.ids.Media.{BookId, TvEpisodeNumber, MovieId, TvSeasonNumber, TvShowId, VideogameId}
-import modelClasses.ids.Social.*
-import modelClasses.ids.User.UserId
+import domain.errors.UserError.*
+import domain.app.chatting.{Chat, Message}
+import domain.app.media.{Book, TvEpisode, Movie, TvSeason, TvShow, Videogame}
+import domain.app.social.{Entry, Like, MediaList, Rating, Reply, Review}
+import domain.app.user.{User, UserFavourites, UserProfile}
+import domain.ids.Chatting.{ChatId, MessageId}
+import domain.ids.Media.{BookId, TvEpisodeNumber, MovieId, TvSeasonNumber, TvShowId, VideogameId}
+import domain.ids.Social.*
+import domain.ids.User.UserId
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*

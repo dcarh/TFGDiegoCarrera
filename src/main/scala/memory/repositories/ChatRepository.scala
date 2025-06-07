@@ -2,8 +2,8 @@ package memory.repositories
 
 import memory.ids.ChatIds
 import memory.objects.Chats
-import modelClasses.app.chatting.Chat
-import modelClasses.ids.Chatting.ChatId
+import domain.app.chatting.Chat
+import domain.ids.Chatting.ChatId
 
 object ChatRepository {
   private val repository: InMemoryRepository[ChatId, Chat] = InMemoryRepository(

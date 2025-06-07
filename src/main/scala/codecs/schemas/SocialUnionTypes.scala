@@ -3,7 +3,7 @@ package codecs.schemas
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 
-import modelClasses.app.social.{MediaList, Reply, Review}
+import domain.app.social.{MediaList, Reply, Review}
 
 import MediaIDsUnionTypes.*
 import SocialIDsUnionTypes.*

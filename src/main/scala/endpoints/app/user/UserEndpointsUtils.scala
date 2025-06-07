@@ -3,8 +3,8 @@ package endpoints.app.user
 import sttp.tapir.*
 import endpoints.EndpointsUtils.httpMethodEndpoint
 import endpoints.inputs.Common.PathInputs
-import modelClasses.errors.UserError.*
-import modelClasses.ids.User.UserId
+import domain.errors.UserError.*
+import domain.ids.User.UserId
 
 object UserEndpointsUtils {
   

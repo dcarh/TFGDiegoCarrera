@@ -1,6 +1,6 @@
 package memory.ids
 
-import modelClasses.ids.Social.LikeId
+import domain.ids.Social.LikeId
 
 object LikeIds {
   val likeId1: LikeId = LikeId(1)

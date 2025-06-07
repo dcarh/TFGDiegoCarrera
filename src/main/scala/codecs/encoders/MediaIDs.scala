@@ -2,7 +2,7 @@ package codecs.encoders
 
 import io.circe.Encoder
 
-import modelClasses.ids.Media.*
+import domain.ids.Media.*
 
 object MediaIDs {
   

@@ -1,9 +1,9 @@
 package server.logics.social
 
 import memory.repositories.{MediaListRepository, ReplyRepository, ReviewRepository, UserRepository}
-import modelClasses.app.social.{MediaList, Reply, Review}
-import modelClasses.app.user.User
-import modelClasses.errors.UserError.{BadRequest, UserError}
+import domain.app.social.{MediaList, Reply, Review}
+import domain.app.user.User
+import domain.errors.UserError.{BadRequest, UserError}
 
 object RepliesAuxFunctions {
 

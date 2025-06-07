@@ -1,8 +1,8 @@
 package memory.objects
 
 import memory.ids.{LikeIds, MediaListIds, ReplyIds, UserIds}
-import modelClasses.app.social.{MediaList, Visibility}
-import modelClasses.ids.Media.{BookId, MovieId, TvShowId, VideogameId}
+import domain.app.social.{MediaList, Visibility}
+import domain.ids.Media.{BookId, MovieId, TvShowId, VideogameId}
 
 import java.time.LocalDateTime
 

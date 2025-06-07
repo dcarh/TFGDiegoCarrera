@@ -2,9 +2,9 @@ package server.logics.user.social
 
 import cats.effect.IO
 
-import modelClasses.errors.UserError.*
-import modelClasses.ids.User.UserId
-import modelClasses.ids.Social.ReplyId
+import domain.errors.UserError.*
+import domain.ids.User.UserId
+import domain.ids.Social.ReplyId
 
 import server.logics.commonFunctions.CommonFunctions
 

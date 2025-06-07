@@ -4,9 +4,9 @@ import sttp.tapir.*
 import endpoints.EndpointsUtils.httpMethodEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
-import modelClasses.errors.UserError.*
-import modelClasses.app.social.Rating
-import modelClasses.ids.Social.RatingId
+import domain.errors.UserError.*
+import domain.app.social.Rating
+import domain.ids.Social.RatingId
 
 object RatingsEndpoints {
 

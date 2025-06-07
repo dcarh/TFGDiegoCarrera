@@ -5,12 +5,12 @@ import memory.repositories.ChatRepository
 import memory.repositories.MessageRepository
 import memory.repositories.UserRepository
 
-import modelClasses.app.chatting.Chat
-import modelClasses.app.chatting.Message
-import modelClasses.errors.UserError.*
-import modelClasses.ids.Chatting.ChatId
-import modelClasses.ids.Chatting.MessageId
-import modelClasses.ids.User.UserId
+import domain.app.chatting.Chat
+import domain.app.chatting.Message
+import domain.errors.UserError.*
+import domain.ids.Chatting.ChatId
+import domain.ids.Chatting.MessageId
+import domain.ids.User.UserId
 
 import server.logics.commonFunctions.CommonFunctions.getUser
 

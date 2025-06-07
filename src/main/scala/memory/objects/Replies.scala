@@ -1,7 +1,7 @@
 package memory.objects
 
 import memory.ids.{LikeIds, MediaListIds, ReplyIds, ReviewIds, UserIds}
-import modelClasses.app.social.Reply
+import domain.app.social.Reply
 
 object Replies {
   val reply1: Reply = Reply(

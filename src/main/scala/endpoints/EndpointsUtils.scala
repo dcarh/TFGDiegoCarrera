@@ -3,7 +3,7 @@ package endpoints
 import sttp.tapir.*
 import sttp.model.StatusCode
 import endpoints.outputs.Common.ErrorOutputsTraits
-import modelClasses.errors.UserError.*
+import domain.errors.UserError.*
 
 object EndpointsUtils {
 

@@ -1,6 +1,6 @@
 package server.logics.media
 
-import modelClasses.ids.Social.{EntryId, MediaListId}
+import domain.ids.Social.{EntryId, MediaListId}
 
 object MediaAuxClasses {
 

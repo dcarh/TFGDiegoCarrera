@@ -2,14 +2,14 @@ package server.logics.media
 
 import cats.effect.IO
 import clients.GoogleBooksClient
+import endpoints.apis.googleBooks.Books
 import memory.repositories.{EntryRepository, MediaListRepository}
-import endpoints.googleBooks.Books
-import modelClasses.app.media.*
-import modelClasses.app.social.{Entry, MediaList}
-import modelClasses.errors.UserError.*
-import modelClasses.googleBooks.BooksRequests.BookFromGoogleBooks
-import modelClasses.ids.Media.BookId
-import modelClasses.ids.Social.{EntryId, MediaListId}
+import domain.app.media.*
+import domain.app.social.{Entry, MediaList}
+import domain.errors.UserError.*
+import domain.googleBooks.BooksRequests.BookFromGoogleBooks
+import domain.ids.Media.BookId
+import domain.ids.Social.{EntryId, MediaListId}
 import server.logics.media.MediaAuxFunctions.getMetricsForMedia
 
 object BookLogics {

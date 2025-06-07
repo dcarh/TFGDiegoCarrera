@@ -4,9 +4,9 @@ import sttp.tapir.*
 import endpoints.EndpointsUtils.httpMethodEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
-import modelClasses.errors.UserError.*
-import modelClasses.app.social.Reply
-import modelClasses.ids.Social.ReplyId
+import domain.errors.UserError.*
+import domain.app.social.Reply
+import domain.ids.Social.ReplyId
 
 object RepliesEndpoints {
 
