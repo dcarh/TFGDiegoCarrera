@@ -2,7 +2,7 @@ package endpoints
 
 import sttp.tapir.*
 import sttp.model.StatusCode
-import endpoints.outputs.Common.ErrorOutputsTraits
+import endpoints.io.outputs.Common.ErrorOutputsTraits
 import domain.errors.UserError.*
 
 object EndpointsUtils {

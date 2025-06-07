@@ -1,8 +1,9 @@
-package domain.tmdb
+package domain.apis.tmdb
 
+import domain.apis.tmdb.Common.Member
 import io.circe.generic.auto.*
 import domain.ids.Media.{TvEpisodeNumber, TvSeasonNumber}
-import domain.tmdb.Common.*
+import Common.*
 
 object TvSeasonRequests {
 

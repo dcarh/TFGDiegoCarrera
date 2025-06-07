@@ -9,7 +9,7 @@ import domain.app.social.{Entry, MediaList}
 import domain.errors.UserError.*
 import domain.ids.Media.VideogameId
 import domain.ids.Social.{EntryId, MediaListId}
-import domain.igdb.VideogameRequests.VideogameFromIGDB
+import domain.apis.igdb.VideogameRequests.VideogameFromIGDB
 import server.logics.media.MediaAuxFunctions.getMetricsForMedia
 
 object VideogameLogics {

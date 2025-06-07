@@ -1,7 +1,8 @@
-package domain.tmdb
+package domain.apis.tmdb
 
+import domain.apis.tmdb.Common.{Genre, ProductionCompany, ProductionCountry, SpokenLanguage}
 import domain.ids.Media.MovieId
-import domain.tmdb.Common.*
+import Common.*
 
 object MovieRequests {
 

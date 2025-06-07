@@ -10,9 +10,9 @@ import memory.repositories.{MediaListRepository, UserRepository}
 import domain.app.social.MediaList
 import domain.app.user.User
 import domain.errors.UserError.*
-import domain.googleBooks.BooksRequests.{ListOfSearchedBooks, SearchedBook}
-import domain.igdb.VideogameRequests.VideogameFromIGDB
-import domain.tmdb.Common.{Result, Results}
+import domain.apis.googleBooks.BooksRequests.{ListOfSearchedBooks, SearchedBook}
+import domain.apis.igdb.VideogameRequests.VideogameFromIGDB
+import domain.apis.tmdb.Common.{Result, Results}
 import utility.DateParser.*
 
 object SearchLogics {

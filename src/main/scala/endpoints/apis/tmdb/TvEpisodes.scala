@@ -1,12 +1,12 @@
 package endpoints.apis.tmdb
 
 import sttp.tapir.*
-import endpoints.outputs.TMDB.jsonCreditsOut
-import endpoints.outputs.TMDB.EpisodesOutputs.*
-import domain.tmdb.TvEpisodeRequests.*
+import endpoints.io.outputs.TMDB.jsonCreditsOut
+import endpoints.io.outputs.TMDB.EpisodesOutputs.*
+import domain.apis.tmdb.TvEpisodeRequests.*
 import domain.errors.UserError.*
 import domain.ids.Media.{TvEpisodeNumber, TvSeasonNumber, TvShowId}
-import domain.tmdb.Common.Credits
+import domain.apis.tmdb.Common.Credits
 
 object TvEpisodes {
   

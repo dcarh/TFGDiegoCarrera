@@ -2,7 +2,7 @@ package domain.app.media
 
 import io.circe.generic.auto.*
 import domain.ids.Social.{EntryId, MediaListId}
-import domain.igdb.VideogameRequests.VideogameFromIGDB
+import domain.apis.igdb.VideogameRequests.VideogameFromIGDB
 
 case class Videogame(
                       videogameFromIGDB: VideogameFromIGDB,

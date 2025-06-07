@@ -2,8 +2,8 @@ package endpoints.apis.tmdb
 
 import sttp.tapir.*
 import endpoints.EndpointsUtils.httpMethodEndpoint
-import endpoints.inputs.Common.*
-import endpoints.inputs.TMDB.Query.*
+import endpoints.io.inputs.Common.*
+import endpoints.io.inputs.TMDB.Query.*
 import domain.errors.UserError.*
 import domain.ids.Media.{TvEpisodeNumber, MovieId, TvSeasonNumber, TvShowId}
 

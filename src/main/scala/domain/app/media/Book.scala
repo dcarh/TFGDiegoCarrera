@@ -1,7 +1,7 @@
 package domain.app.media
 
 import io.circe.generic.auto.*
-import domain.googleBooks.BooksRequests.BookFromGoogleBooks
+import domain.apis.googleBooks.BooksRequests.BookFromGoogleBooks
 import domain.ids.Social.{EntryId, MediaListId}
 
 case class Book(

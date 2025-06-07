@@ -2,7 +2,7 @@ package endpoints.apis.igdb
 
 import sttp.tapir.*
 import endpoints.EndpointsUtils.httpMethodEndpoint
-import endpoints.inputs.IGDB.*
+import endpoints.io.inputs.IGDB.*
 import domain.errors.UserError.*
 
 object Base {

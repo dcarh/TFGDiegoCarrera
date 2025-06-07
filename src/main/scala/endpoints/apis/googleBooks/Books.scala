@@ -1,11 +1,11 @@
 package endpoints.apis.googleBooks
 
 import sttp.tapir.*
-import endpoints.inputs.Common.*
-import endpoints.inputs.GoogleBooks.*
-import endpoints.outputs.GoogleBooks.*
+import endpoints.io.inputs.Common.*
+import endpoints.io.inputs.GoogleBooks.*
+import endpoints.io.outputs.GoogleBooks.*
 import domain.ids.Media.BookId
-import domain.googleBooks.BooksRequests.*
+import domain.apis.googleBooks.BooksRequests.*
 import domain.errors.UserError.*
 
 object Books {

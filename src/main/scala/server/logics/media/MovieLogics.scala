@@ -9,7 +9,7 @@ import domain.app.social.{Entry, MediaList}
 import domain.errors.UserError.*
 import domain.ids.Media.MovieId
 import domain.ids.Social.{EntryId, MediaListId}
-import domain.tmdb.MovieRequests.MovieFromTMDB
+import domain.apis.tmdb.MovieRequests.MovieFromTMDB
 import server.logics.media.MediaAuxFunctions.getMetricsForMedia
 
 object MovieLogics {

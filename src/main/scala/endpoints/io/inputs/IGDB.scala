@@ -1,5 +1,4 @@
-package endpoints.inputs
-
+package endpoints.io.inputs
 
 import sttp.model.HeaderNames
 import sttp.tapir.*

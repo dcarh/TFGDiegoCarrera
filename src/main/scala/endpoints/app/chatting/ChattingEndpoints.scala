@@ -2,8 +2,8 @@ package endpoints.app.chatting
 
 import sttp.tapir.*
 import endpoints.app.user.UserEndpointsUtils.specificUserBaseEndpoint
-import endpoints.inputs.Common.*
-import endpoints.outputs.Common.*
+import endpoints.io.inputs.Common.*
+import endpoints.io.outputs.Common.*
 import domain.errors.UserError.*
 import domain.app.chatting.Chat
 import domain.ids.Chatting.ChatId

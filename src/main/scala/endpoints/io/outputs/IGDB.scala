@@ -1,8 +1,7 @@
-package endpoints.outputs
+package endpoints.io.outputs
 
 import io.circe.*
 import io.circe.generic.auto.*
-import domain.igdb._
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*
@@ -11,7 +10,7 @@ import codecs.encoders.MediaIDs.*
 
 object IGDB {
 
-  import VideogameRequests.*
+  import domain.apis.igdb.VideogameRequests.*
     
   val jsonListRequestedVideogameOut: EndpointOutput[List[RequestedVideogame]] =
     jsonBody[List[RequestedVideogame]]  

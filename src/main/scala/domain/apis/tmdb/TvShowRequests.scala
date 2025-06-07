@@ -1,7 +1,8 @@
-package domain.tmdb
+package domain.apis.tmdb
 
+import domain.apis.tmdb.Common.{Creator, Genre, ProductionCompany, ProductionCountry, SpokenLanguage}
 import domain.ids.Media.{TvEpisodeNumber, TvSeasonNumber, TvShowId}
-import domain.tmdb.Common.*
+import Common.*
 
 object TvShowRequests {
 

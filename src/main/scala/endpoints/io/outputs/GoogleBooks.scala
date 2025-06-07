@@ -1,8 +1,7 @@
-package endpoints.outputs
+package endpoints.io.outputs
 
 import io.circe.*
 import io.circe.generic.auto.*
-import domain.googleBooks._
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*
@@ -11,7 +10,7 @@ import codecs.encoders.MediaIDs.*
 
 object GoogleBooks {
 
-  import BooksRequests.*
+  import domain.apis.googleBooks.BooksRequests.*
 
   val jsonRequestedBookOut: EndpointOutput[BookFromGoogleBooks] =
     jsonBody[BookFromGoogleBooks]

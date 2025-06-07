@@ -1,4 +1,4 @@
-package endpoints.outputs
+package endpoints.io.outputs
 
 import io.circe.*
 import io.circe.generic.auto.*
