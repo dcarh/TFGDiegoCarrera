@@ -2,9 +2,9 @@ package server.logics.user.network
 
 import cats.effect.IO
 import memory.repositories.UserRepository
-import modelClasses.app.user.User
-import modelClasses.errors.UserError.*
-import modelClasses.ids.User.UserId
+import domain.app.user.User
+import domain.errors.UserError.*
+import domain.ids.User.UserId
 
 import server.logics.commonFunctions.CommonFunctions.{getUser, getBothUsers}
 

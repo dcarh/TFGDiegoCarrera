@@ -4,8 +4,8 @@ import sttp.tapir.*
 import endpoints.app.user.UserEndpointsUtils.specificUserBaseEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
-import modelClasses.errors.UserError.*
-import modelClasses.ids.User.UserId
+import domain.errors.UserError.*
+import domain.ids.User.UserId
 
 object UserNetworkEndpoints {
 

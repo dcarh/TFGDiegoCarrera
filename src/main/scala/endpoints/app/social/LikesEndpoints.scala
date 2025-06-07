@@ -4,9 +4,9 @@ import sttp.tapir.*
 import endpoints.EndpointsUtils.httpMethodEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
-import modelClasses.errors.UserError.*
-import modelClasses.app.social.Like
-import modelClasses.ids.Social.LikeId
+import domain.errors.UserError.*
+import domain.app.social.Like
+import domain.ids.Social.LikeId
 
 object LikesEndpoints {
 

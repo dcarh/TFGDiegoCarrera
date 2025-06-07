@@ -8,8 +8,8 @@ import org.http4s.ember.client.EmberClientBuilder
 import sttp.tapir.*
 import sttp.tapir.DecodeResult
 import sttp.tapir.client.http4s.Http4sClientInterpreter
-import modelClasses.errors.UserError.*
-import modelClasses.ids.Media.{TvEpisodeNumber, MovieId, TvSeasonNumber, TvShowId}
+import domain.errors.UserError.*
+import domain.ids.Media.{TvEpisodeNumber, MovieId, TvSeasonNumber, TvShowId}
 
 import scala.concurrent.duration.*
 //import retry._

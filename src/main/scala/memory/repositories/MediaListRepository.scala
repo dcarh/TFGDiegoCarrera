@@ -2,8 +2,8 @@ package memory.repositories
 
 import memory.ids.MediaListIds
 import memory.objects.MediaLists
-import modelClasses.app.social.MediaList
-import modelClasses.ids.Social.MediaListId
+import domain.app.social.MediaList
+import domain.ids.Social.MediaListId
 
 object MediaListRepository {
   private val repository: InMemoryRepository[MediaListId, MediaList] = InMemoryRepository(

@@ -1,8 +1,8 @@
 package memory.objects
 
 import memory.ids.{EntryIds, RatingIds, ReviewIds, UserIds}
-import modelClasses.app.social.Entry
-import modelClasses.ids.Media.*
+import domain.app.social.Entry
+import domain.ids.Media.*
 
 import java.time.{LocalDate, LocalDateTime}
 

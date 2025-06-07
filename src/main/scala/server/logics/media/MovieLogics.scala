@@ -2,14 +2,14 @@ package server.logics.media
 
 import cats.effect.IO
 import clients.TMDBClient
+import endpoints.apis.tmdb.Movies
 import memory.repositories.{EntryRepository, MediaListRepository}
-import endpoints.tmdb.Movies
-import modelClasses.app.media.*
-import modelClasses.app.social.{Entry, MediaList}
-import modelClasses.errors.UserError.*
-import modelClasses.ids.Media.MovieId
-import modelClasses.ids.Social.{EntryId, MediaListId}
-import modelClasses.tmdb.MovieRequests.MovieFromTMDB
+import domain.app.media.*
+import domain.app.social.{Entry, MediaList}
+import domain.errors.UserError.*
+import domain.ids.Media.MovieId
+import domain.ids.Social.{EntryId, MediaListId}
+import domain.tmdb.MovieRequests.MovieFromTMDB
 import server.logics.media.MediaAuxFunctions.getMetricsForMedia
 
 object MovieLogics {

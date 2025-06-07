@@ -2,7 +2,7 @@ package endpoints.app.media
 
 import sttp.tapir.*
 import endpoints.EndpointsUtils.httpMethodEndpoint
-import modelClasses.errors.UserError.*
+import domain.errors.UserError.*
 
 object MediaBaseEndpoint {
 

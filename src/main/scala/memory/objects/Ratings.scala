@@ -1,8 +1,8 @@
 package memory.objects
 
 import memory.ids.{RatingIds, UserIds}
-import modelClasses.app.social.Rating
-import modelClasses.ids.Media.{BookId, MovieId, TvSeasonNumber, TvShowId, VideogameId}
+import domain.app.social.Rating
+import domain.ids.Media.{BookId, MovieId, TvSeasonNumber, TvShowId, VideogameId}
 
 object Ratings {
   val rating1: Rating = Rating(

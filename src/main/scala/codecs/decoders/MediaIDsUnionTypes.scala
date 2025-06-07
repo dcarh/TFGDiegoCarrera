@@ -2,7 +2,7 @@ package codecs.decoders
 
 import io.circe.{Decoder, DecodingFailure}
 
-import modelClasses.ids.Media.*
+import domain.ids.Media.*
 
 object MediaIDsUnionTypes {
 

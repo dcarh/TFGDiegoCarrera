@@ -1,7 +1,7 @@
 package memory.objects
 
 import memory.ids.{LikeIds, MediaListIds, ReplyIds, ReviewIds, UserIds}
-import modelClasses.app.social.Like
+import domain.app.social.Like
 
 object Likes {
   val like1: Like = Like(

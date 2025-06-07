@@ -2,8 +2,8 @@ package memory.repositories
 
 import memory.ids.MessageIds
 import memory.objects.Messages
-import modelClasses.app.chatting.Message
-import modelClasses.ids.Chatting.MessageId
+import domain.app.chatting.Message
+import domain.ids.Chatting.MessageId
 
 object MessageRepository {
   private val repository: InMemoryRepository[MessageId, Message] = InMemoryRepository(

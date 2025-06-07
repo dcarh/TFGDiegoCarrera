@@ -2,8 +2,8 @@ package memory.repositories
 
 import memory.ids.LikeIds
 import memory.objects.Likes
-import modelClasses.app.social.Like
-import modelClasses.ids.Social.LikeId
+import domain.app.social.Like
+import domain.ids.Social.LikeId
 
 object LikeRepository {
   private val repository: InMemoryRepository[LikeId, Like] = InMemoryRepository(

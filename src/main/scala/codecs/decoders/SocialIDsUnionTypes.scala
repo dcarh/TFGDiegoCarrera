@@ -1,7 +1,7 @@
 package codecs.decoders
 
 import io.circe.{Decoder, DecodingFailure}
-import modelClasses.ids.Social.{MediaListId, ReplyId, ReviewId}
+import domain.ids.Social.{MediaListId, ReplyId, ReviewId}
 
 object SocialIDsUnionTypes {
 

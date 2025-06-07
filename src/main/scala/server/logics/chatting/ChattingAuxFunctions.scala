@@ -2,13 +2,13 @@ package server.logics.chatting
 
 import memory.repositories.ChatRepository
 import memory.repositories.UserRepository
-import modelClasses.app.chatting.Chat
-import modelClasses.app.chatting.Message
-import modelClasses.app.user.User
-import modelClasses.errors.UserError.*
-import modelClasses.ids.Chatting.ChatId
-import modelClasses.ids.Chatting.MessageId
-import modelClasses.ids.User.UserId
+import domain.app.chatting.Chat
+import domain.app.chatting.Message
+import domain.app.user.User
+import domain.errors.UserError.*
+import domain.ids.Chatting.ChatId
+import domain.ids.Chatting.MessageId
+import domain.ids.User.UserId
 import server.logics.commonFunctions.CommonFunctions
 
 object ChattingAuxFunctions {

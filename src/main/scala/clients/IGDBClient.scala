@@ -8,8 +8,8 @@ import org.http4s.ember.client.EmberClientBuilder
 import sttp.tapir.*
 import sttp.tapir.DecodeResult
 import sttp.tapir.client.http4s.Http4sClientInterpreter
-import modelClasses.errors.UserError.*
-import modelClasses.ids.Media.VideogameId
+import domain.errors.UserError.*
+import domain.ids.Media.VideogameId
 import scala.concurrent.duration._
 //import retry._
 //import retry.cats.effect._

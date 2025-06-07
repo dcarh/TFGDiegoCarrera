@@ -2,10 +2,10 @@ package server.logics.user.media
 
 import cats.effect.IO
 import memory.repositories.UserRepository
-import modelClasses.errors.UserError.*
-import modelClasses.ids.User.UserId
-import modelClasses.ids.Media.{BookId, MovieId, TvEpisodeNumber, TvSeasonNumber, TvShowId, VideogameId}
-import modelClasses.ids.Social.EntryId
+import domain.errors.UserError.*
+import domain.ids.User.UserId
+import domain.ids.Media.{BookId, MovieId, TvEpisodeNumber, TvSeasonNumber, TvShowId, VideogameId}
+import domain.ids.Social.EntryId
 import server.logics.commonFunctions.CommonFunctions
 
 object UserMediaLogics {

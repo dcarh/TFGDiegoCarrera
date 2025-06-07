@@ -3,9 +3,9 @@ package endpoints.app.user.social
 import sttp.tapir.*
 import endpoints.app.user.UserEndpointsUtils.specificUserBaseEndpoint
 import endpoints.outputs.Common.*
-import modelClasses.errors.UserError.*
-import modelClasses.ids.Social.LikeId
-import modelClasses.ids.User.UserId
+import domain.errors.UserError.*
+import domain.ids.Social.LikeId
+import domain.ids.User.UserId
 
 object UserLikesEndpoints {
 

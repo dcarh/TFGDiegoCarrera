@@ -5,7 +5,7 @@ import io.circe.Decoder
 
 import cats.syntax.functor.*
 
-import modelClasses.app.social.{MediaList, Reply, Review}
+import domain.app.social.{MediaList, Reply, Review}
 
 import MediaIDsUnionTypes.*
 import SocialIDsUnionTypes.*

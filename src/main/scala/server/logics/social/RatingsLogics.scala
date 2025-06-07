@@ -3,11 +3,11 @@ package server.logics.social
 import cats.effect.IO
 import memory.repositories.{RatingRepository, UserRepository}
 
-import modelClasses.app.social.Rating
-import modelClasses.app.user.User
-import modelClasses.errors.UserError.*
-import modelClasses.ids.Social.RatingId
-import modelClasses.ids.User.UserId
+import domain.app.social.Rating
+import domain.app.user.User
+import domain.errors.UserError.*
+import domain.ids.Social.RatingId
+import domain.ids.User.UserId
 
 import server.logics.commonFunctions.CommonFunctions
 

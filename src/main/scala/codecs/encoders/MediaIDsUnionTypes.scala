@@ -3,7 +3,7 @@ package codecs.encoders
 import io.circe.syntax.*
 import io.circe.{Encoder, Json}
 
-import modelClasses.ids.Media.*
+import domain.ids.Media.*
 
 object MediaIDsUnionTypes {
 

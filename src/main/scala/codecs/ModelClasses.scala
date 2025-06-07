@@ -7,7 +7,7 @@ object ModelClasses {
   
   object Media {
     
-    import modelClasses.ids.Media.*
+    import domain.ids.Media.*
     
     implicit val movieIdCodec: Codec[String, MovieId, TextPlain] =
       Codec.string.mapDecode(s => DecodeResult.Value(MovieId(s.toLong)))(_.value.toString)
@@ -30,7 +30,7 @@ object ModelClasses {
   
   object Social {
     
-    import modelClasses.ids.Social.*
+    import domain.ids.Social.*
     
     implicit val entryIdCodec: Codec[String, EntryId, TextPlain] =
       Codec.string.mapDecode(s => DecodeResult.Value(EntryId(s.toLong)))(_.value.toString)
@@ -53,14 +53,14 @@ object ModelClasses {
   
   object User {
 
-    import modelClasses.ids.User.UserId
+    import domain.ids.User.UserId
 
     implicit val userIdCodec: Codec[String, UserId, TextPlain] =
       Codec.string.mapDecode(s => DecodeResult.Value(UserId(s.toLong)))(_.value.toString)
   }
   
   object Chatting { 
-    import modelClasses.ids.Chatting.{ChatId, MessageId}
+    import domain.ids.Chatting.{ChatId, MessageId}
     
     implicit val chatIdCodec: Codec[String, ChatId, TextPlain] =
       Codec.string.mapDecode(s => DecodeResult.Value(ChatId(s.toLong)))(_.value.toString)

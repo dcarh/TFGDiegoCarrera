@@ -3,12 +3,12 @@ package server.logics.social
 import cats.effect.IO
 import memory.repositories.{ReviewRepository, UserRepository}
 
-import modelClasses.app.social.Review
-import modelClasses.app.user.User
-import modelClasses.errors.UserError.*
-import modelClasses.ids.Media.{BookId, TvEpisodeNumber, MovieId, TvSeasonNumber, TvShowId, VideogameId}
-import modelClasses.ids.Social.ReviewId
-import modelClasses.ids.User.UserId
+import domain.app.social.Review
+import domain.app.user.User
+import domain.errors.UserError.*
+import domain.ids.Media.{BookId, TvEpisodeNumber, MovieId, TvSeasonNumber, TvShowId, VideogameId}
+import domain.ids.Social.ReviewId
+import domain.ids.User.UserId
 
 import server.logics.commonFunctions.CommonFunctions
 

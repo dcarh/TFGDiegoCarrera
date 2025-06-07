@@ -4,10 +4,10 @@ import sttp.tapir.*
 import endpoints.app.user.UserEndpointsUtils.specificUserBaseEndpoint
 import endpoints.inputs.Common.*
 import endpoints.outputs.Common.*
-import modelClasses.errors.UserError.*
-import modelClasses.app.user.UserFavourites
-import modelClasses.ids.Media.{BookId, MovieId, TvShowId, VideogameId}
-import modelClasses.ids.User.UserId
+import domain.errors.UserError.*
+import domain.app.user.UserFavourites
+import domain.ids.Media.{BookId, MovieId, TvShowId, VideogameId}
+import domain.ids.User.UserId
 
 object UserFavouritesEndpoints {
 

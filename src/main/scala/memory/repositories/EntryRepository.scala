@@ -2,8 +2,8 @@ package memory.repositories
 
 import memory.ids.EntryIds
 import memory.objects.Entries
-import modelClasses.app.social.Entry
-import modelClasses.ids.Social.EntryId
+import domain.app.social.Entry
+import domain.ids.Social.EntryId
 
 object EntryRepository {
   private val repository: InMemoryRepository[EntryId, Entry] = InMemoryRepository(

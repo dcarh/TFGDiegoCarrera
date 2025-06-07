@@ -2,7 +2,7 @@ package endpoints.outputs
 
 import io.circe.*
 import io.circe.generic.auto.*
-import modelClasses.igdb._
+import domain.igdb._
 import sttp.tapir.*
 import sttp.tapir.generic.auto.*
 import sttp.tapir.json.circe.*

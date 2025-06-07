@@ -2,9 +2,9 @@ package server.logics.user
 
 import cats.effect.IO
 import memory.repositories.UserRepository
-import modelClasses.app.user.{User, UserFavourites, UserProfile}
-import modelClasses.errors.UserError.*
-import modelClasses.ids.User.UserId
+import domain.app.user.{User, UserFavourites, UserProfile}
+import domain.errors.UserError.*
+import domain.ids.User.UserId
 import server.logics.commonFunctions.CommonFunctions
 
 object UserLogics {
