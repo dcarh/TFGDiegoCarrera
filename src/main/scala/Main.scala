@@ -1,7 +1,7 @@
 import cats.effect.{IO, ExitCode, IOApp}
 import org.http4s.blaze.server.BlazeServerBuilder
 import org.http4s.implicits._
-import server.routes.HttpRoutes.httpRoutes
+import routes.HttpRoutes.httpRoutes
 
 object Main extends IOApp {
 
