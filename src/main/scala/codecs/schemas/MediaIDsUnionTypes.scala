@@ -34,7 +34,7 @@ object MediaIDsUnionTypes {
     case _: BookId => "BookId"
   }
 
-  implicit val listMediaUnionSchema22: Schema[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId] =
+  implicit val listMediaUnionSchema2: Schema[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId] =
     Schema.oneOfUsingField[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId, String](
       extractDiscriminator2,
       identity

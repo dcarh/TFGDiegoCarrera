@@ -16,28 +16,30 @@ object MediaIDsUnionTypes {
     }
   }
 
-  implicit val listMediaUnionDecoder2: Decoder[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId] = Decoder.instance { cursor =>
-    cursor.downField("type").as[String].flatMap {
-      case "MovieId" => cursor.downField("value").as[Long].map(MovieId.apply)
-      case "TvShowId" => cursor.downField("value").as[Long].map(TvShowId.apply)
-      case "SeasonNumber" =>
-        cursor.downField("value").as[Map[String, Long]].map { values =>
-          (TvShowId(values("tvShowId")), TvSeasonNumber(values("seasonNumber")))
-        }
+  implicit val listMediaUnionDecoder2:
+    Decoder[MovieId | TvShowId | (TvShowId, TvSeasonNumber) | (TvShowId, TvSeasonNumber, TvEpisodeNumber) | VideogameId | BookId] =
+      Decoder.instance { cursor =>
+        cursor.downField("type").as[String].flatMap {
+          case "MovieId" => cursor.downField("value").as[Long].map(MovieId.apply)
+          case "TvShowId" => cursor.downField("value").as[Long].map(TvShowId.apply)
+          case "SeasonNumber" =>
+            cursor.downField("value").as[Map[String, Long]].map { values =>
+              (TvShowId(values("tvShowId")), TvSeasonNumber(values("seasonNumber")))
+            }
 
-      case "EpisodeNumber" =>
-        cursor.downField("value").as[Map[String, Long]].map { values =>
-          (
-            TvShowId(values("tvShowId")),
-            TvSeasonNumber(values("seasonNumber")),
-            TvEpisodeNumber(values("episodeNumber"))
-          )
+          case "EpisodeNumber" =>
+            cursor.downField("value").as[Map[String, Long]].map { values =>
+              (
+                TvShowId(values("tvShowId")),
+                TvSeasonNumber(values("seasonNumber")),
+                TvEpisodeNumber(values("episodeNumber"))
+              )
+            }
+          case "VideogameId" => cursor.downField("value").as[Long].map(VideogameId.apply)
+          case "BookId" => cursor.downField("value").as[String].map(BookId.apply)
+          case other => Left(DecodingFailure(s"Unknown type: $other", cursor.history))
         }
-      case "VideogameId" => cursor.downField("value").as[Long].map(VideogameId.apply)
-      case "BookId" => cursor.downField("value").as[String].map(BookId.apply)
-      case other => Left(DecodingFailure(s"Unknown type: $other", cursor.history))
-    }
-  }
+      }
 
   implicit val listMediaUnionDecoder3: Decoder[TvShowId | (TvShowId, TvSeasonNumber) | VideogameId | BookId] = Decoder.instance { cursor =>
     cursor.downField("type").as[String].flatMap {
