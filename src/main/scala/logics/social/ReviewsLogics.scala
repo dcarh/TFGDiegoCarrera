@@ -25,8 +25,8 @@ object ReviewsLogics {
               case _: TvShowId                                          => categories.contains("tv_show")
               case (_: TvShowId, _: TvSeasonNumber)                     => categories.contains("season")
               case (_: TvShowId, _: TvSeasonNumber, _: TvEpisodeNumber) => categories.contains("episode")
-              case videogameId: VideogameId                             => categories.contains("videogame")
-              case bookId: BookId                                       => categories.contains("book")
+              case _: VideogameId                                       => categories.contains("videogame")
+              case _: BookId                                            => categories.contains("book")
           )
       
       val sortedReviews = sortByOption match {
