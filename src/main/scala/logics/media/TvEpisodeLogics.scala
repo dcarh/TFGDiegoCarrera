@@ -64,7 +64,7 @@ object TvEpisodeLogics {
       if (mediaLists.nonEmpty)
         IO.pure(Right(mediaLists))
       else
-        IO.pure(Left(BadRequest("No mediaLists found for episode " + tvEpisodeNumber.value + ", season " + tvSeasonNumber.value + ", from TV show with ID: " + tvShowId.value)))
+        IO.pure(Left(BadRequest("No media lists found for episode " + tvEpisodeNumber.value + ", season " + tvSeasonNumber.value + ", from TV show with ID: " + tvShowId.value)))
 
 }
 

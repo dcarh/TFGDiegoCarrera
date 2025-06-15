@@ -60,7 +60,7 @@ object VideogameLogics {
       if (mediaLists.nonEmpty)
         IO.pure(Right(mediaLists))
       else
-        IO.pure(Left(BadRequest("No mediaLists found for videogame with ID: " + videogameId.value)))
+        IO.pure(Left(BadRequest("No media lists found for videogame with ID: " + videogameId.value)))
 
 }
 

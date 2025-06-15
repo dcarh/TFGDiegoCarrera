@@ -22,5 +22,4 @@ object EntryIds {
   val entryId17: EntryId = EntryId(17)
   val entryId18: EntryId = EntryId(18)
   val entryId19: EntryId = EntryId(19)
-  val entryId20: EntryId = EntryId(20)
 }

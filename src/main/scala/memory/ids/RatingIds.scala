@@ -17,4 +17,5 @@ object RatingIds {
   val ratingId12: RatingId = RatingId(12)
   val ratingId13: RatingId = RatingId(13)
   val ratingId14: RatingId = RatingId(14)
+  val ratingId15: RatingId = RatingId(15)
 }

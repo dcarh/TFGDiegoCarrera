@@ -331,4 +331,22 @@ object Entries {
     LocalDateTime.of(2024, 8, 21, 23, 9, 11)
   )
 
+  val entry19: Entry = Entry(
+    // The Bear
+    EntryIds.entryId19,
+    UserIds.userId3,
+    TvShowId(136315),
+    Some(RatingIds.ratingId5),
+    None,
+    true,
+    Some(false),
+    Some(false),
+    false,
+    true,
+    Some(LocalDate.of(2025, 6, 1)),
+    Some(LocalDate.of(2025, 6, 15)),
+    None,
+    LocalDateTime.of(2025, 6, 15, 17, 34, 1)
+  )
+
 }

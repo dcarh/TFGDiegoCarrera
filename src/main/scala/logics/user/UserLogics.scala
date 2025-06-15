@@ -74,7 +74,7 @@ object UserLogics {
     (newUserId, newUserProfile) => IO.pure {
       UserRepository.get(newUserId) match
         case Some(_)                      => Left(Conflict(s"User with ID ${newUserId.value} already exists"))
-        case None if newUserId.value <= 0 => Left(BadRequest("Invalid entry ID"))
+        case None if newUserId.value <= 0 => Left(BadRequest("Invalid user ID"))
         case None                         =>
           val emptyList = List()
           val newUser = User(

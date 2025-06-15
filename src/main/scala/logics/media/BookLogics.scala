@@ -56,7 +56,7 @@ object BookLogics {
       if (mediaLists.nonEmpty)
         IO.pure(Right(mediaLists))
       else
-        IO.pure(Left(BadRequest("No mediaLists found for book with ID: " + bookId.value)))
+        IO.pure(Left(BadRequest("No media lists found for book with ID: " + bookId.value)))
 
 }
 

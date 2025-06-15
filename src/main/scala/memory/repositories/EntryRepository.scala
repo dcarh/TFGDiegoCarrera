@@ -26,6 +26,7 @@ object EntryRepository {
       EntryIds.entryId16 -> Entries.entry16,
       EntryIds.entryId17 -> Entries.entry17,
       EntryIds.entryId18 -> Entries.entry18,
+      EntryIds.entryId19 -> Entries.entry19,
     )
   )
 

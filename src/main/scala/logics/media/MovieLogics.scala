@@ -84,7 +84,7 @@ object MovieLogics {
       if (mediaLists.nonEmpty)
         IO.pure(Right(mediaLists))
       else
-        IO.pure(Left(BadRequest("No mediaLists found for movie with ID: " + movieId.value)))
+        IO.pure(Left(BadRequest("No media lists found for movie with ID: " + movieId.value)))
 
 
 }
