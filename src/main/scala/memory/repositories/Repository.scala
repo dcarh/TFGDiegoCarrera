@@ -21,7 +21,7 @@ class InMemoryRepository[K, V] private (private val storage: TrieMap[K, V]) exte
     "Object successfully updated!"
 
   override def delete(id: K): String =
-    "Object deleted successfully!"
+    "Object successfully deleted!"
     
 //  override def delete2(id: K): String =
 //    if !storage.contains(id) then "Object not found"
