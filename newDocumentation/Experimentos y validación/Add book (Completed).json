@@ -1,0 +1,26 @@
+[
+    {
+        "type": "BookId",
+        "value": "kHh_EAAAQBAJ"
+    },
+    {
+        "type": "TvShowId",
+        "value": 136315
+    },
+    {
+        "type": "TvShowId",
+        "value": 100565
+    },
+    {
+        "type": "EpisodeNumber",
+        "value": {
+            "tvShowId": 136315,
+            "seasonNumber": 2,
+            "episodeNumber": 7
+        }
+    },
+    {
+        "type": "VideogameId",
+        "value": 19564
+    }
+]

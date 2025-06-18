@@ -1,0 +1,146 @@
+{
+    "tvSeasonFromTMDB": {
+        "_id": "663cfd855ad4ec9cf92fee4e",
+        "air_date": "2024-06-26",
+        "episodes": [
+            {
+                "air_date": "2024-06-26",
+                "episode_number": {
+                    "value": 1
+                },
+                "episode_type": "standard",
+                "id": 5334913,
+                "name": "Tomorrow",
+                "overview": "The next day and the days that led to it.",
+                "production_code": "XCBV3001",
+                "runtime": 37,
+                "season_number": {
+                    "value": 3
+                },
+                "show_id": 136315,
+                "still_path": "/qJ42DnApTQMFUQodRHWXWzomjvz.jpg",
+                "vote_average": 8.121,
+                "vote_count": 33,
+                "crew": [
+                    {
+                        "adult": false,
+                        "gender": 2,
+                        "id": 1057655,
+                        "known_for_department": "Directing",
+                        "name": "Christopher Storer",
+                        "original_name": "Christopher Storer",
+                        "popularity": 1.0947,
+                        "profile_path": "/kG6I1GlaUtENJoJzrP7uxiJovy9.jpg",
+                        "roles": null,
+                        "jobs": null,
+                        "cast_id": null,
+                        "character": null,
+                        "credit_id": "63c7aa41c5c1ef00bd9a25e3",
+                        "department": "Directing",
+                        "job": "Director",
+                        "total_episode_count": null,
+                        "order": null
+                    },
+                    ...
+                ],
+                "guest_stars": [
+                    {
+                        "adult": false,
+                        "gender": 2,
+                        "id": 17485,
+                        "known_for_department": "Acting",
+                        "name": "Oliver Platt",
+                        "original_name": "Oliver Platt",
+                        "popularity": 2.779,
+                        "profile_path": "/ipBzOzgWRdxxYoM5xNN1cfenFaC.jpg",
+                        "roles": null,
+                        "jobs": null,
+                        "cast_id": null,
+                        "character": "Uncle Jimmy 'Cicero' Kalinowski",
+                        "credit_id": "62d158afaf4324004c8b1094",
+                        "department": null,
+                        "job": null,
+                        "total_episode_count": null,
+                        "order": 500
+                    },
+                    ...
+                ]
+            },
+            ...
+        ],
+        "name": "Season 3",
+        "overview": "In season three, Carmen 'Carmy' Berzatto, Sydney Adamu, and Richard 'Richie' Jerimovich do what it takes to elevate The Bear, their beef stand turned fine dining establishment, to the highest level, all while doing their best just to stay in business. Our chefs have learned that every second counts, but this season we'll find out if they have what it takes to make it to tomorrow.",
+        "id": 392941,
+        "poster_path": "/kmKOXOC6txne2tXjcnZPHNtsY9E.jpg",
+        "runtime": null,
+        "season_number": {
+            "value": 3
+        },
+        "vote_average": 7.6
+    },
+    "cast": [
+        {
+            "adult": false,
+            "gender": 2,
+            "id": 206905,
+            "known_for_department": "Acting",
+            "name": "Jeremy Allen White",
+            "original_name": "Jeremy Allen White",
+            "popularity": 4.817,
+            "profile_path": "/zKk4vmDeUexdevtt6wm8WdMQ1TG.jpg",
+            "roles": [
+                {
+                    "credit_id": "61673937b865eb00254041e9",
+                    "character": "Carmen 'Carmy' Berzatto",
+                    "episode_count": 10
+                }
+            ],
+            "jobs": null,
+            "cast_id": null,
+            "character": null,
+            "credit_id": null,
+            "department": null,
+            "job": null,
+            "total_episode_count": 10,
+            "order": 0
+        },
+        ...
+    ],
+    "crew": [
+        {
+            "adult": false,
+            "gender": 1,
+            "id": 4797619,
+            "known_for_department": "Art",
+            "name": "Angela Ngo",
+            "original_name": "Angela Ngo",
+            "popularity": 0.0553,
+            "profile_path": null,
+            "roles": null,
+            "jobs": [
+                {
+                    "credit_id": "667d4a0f9055c8a09e09211e",
+                    "job": "Set Designer",
+                    "episode_count": 10
+                }
+            ],
+            "cast_id": null,
+            "character": null,
+            "credit_id": null,
+            "department": "Art",
+            "job": null,
+            "total_episode_count": 10,
+            "order": null
+        },
+        ...
+    ],
+    "averageRating": null,
+    "entriesIds": null,
+    "mediaListsIds": null,
+    "completedCount": 0,
+    "droppedCount": 0,
+    "inProgressCount": 0,
+    "onHoldCount": 0,
+    "pendingCount": 0,
+    "totalRatings": 0
+}

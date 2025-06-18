@@ -1,0 +1,32 @@
+{
+    "id": {
+        "value": 4
+    },
+    "userId": {
+        "value": 2
+    },
+    "title": "Movies, games, etc. to get to know me",
+    "description": "Hope you enjoy them as much as I've done",
+    "mediaIds": [
+        {
+            "type": "VideogameId",
+            "value": 144022
+        },
+        {
+            "type": "MovieId",
+            "value": 10402
+        },
+        ...
+    ],
+    "visibility": "Followers",
+    "allowReplies": true,
+    "ranked": false,
+    "creationDate": "2024-11-03T19:12:18",
+    "updateDate": "2024-11-03T19:12:18",
+    "likesIds": [
+        {
+            "value": 2
+        }
+    ],
+    "repliesIds": []
+}

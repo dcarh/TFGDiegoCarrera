@@ -1,0 +1,139 @@
+{
+    "videogameFromIGDB": {
+        "id": {
+            "value": 144022
+        },
+        "age_ratings": [
+            56619,
+            56621,
+            ...
+        ],
+        "aggregated_rating": 78.85714285714286,
+        "aggregated_rating_count": 13,
+        "alternative_names": [
+            79764
+        ],
+        "artworks": [
+            50394
+        ],
+        "bundles": null,
+        "category": 0,
+        "collection": null,
+        "cover": 208864,
+        "created_at": 1614291022,
+        "dlcs": null,
+        "external_games": [
+            2658785,
+            1998663,
+            ...
+        ],
+        "first_release_date": 1644278400,
+        "follows": null,
+        "franchises": null,
+        "game_engines": [
+            439
+        ],
+        "game_modes": [
+            1
+        ],
+        "genres": [
+            4,
+            25,
+            32
+        ],
+        "hypes": 17,
+        "involved_companies": [
+            120003,
+            205058
+        ],
+        "keywords": [
+            1985
+        ],
+        "name": "Sifu",
+        "parent_game": null,
+        "platforms": [
+            169,
+            48,
+            ...
+        ],
+        "player_perspectives": [
+            2
+        ],
+        "rating": 83.05934684868875,
+        "rating_count": 141,
+        "release_dates": [
+            325753,
+            389053,
+            ...
+        ],
+        "screenshots": [
+            424043,
+            424044,
+            ...
+        ],
+        "similar_games": [
+            113895,
+            111130,
+            ...
+        ],
+        "slug": "sifu",
+        "standalone_expansions": null,
+        "storyline": "Sifu is the story of a young Kung Fu student on a path of revenge, hunting for the murderers of his family. One against all, he has no allies, and countless enemies. He has to rely on his unique mastery of Kung Fu as well as a mysterious pendant to prevail, and preserve his family’s legacy.",
+        "summary": "A third person action game featuring intense hand-to-hand combat, it puts you in control of a young Kung-Fu student on his path of revenge throughout the city.",
+        "tags": [
+            1,
+            268435460,
+            268435481,
+            ...
+        ],
+        "themes": [
+            1
+        ],
+        "total_rating": 80.95824485291581,
+        "total_rating_count": 154,
+        "updated_at": 1749953033,
+        "url": "https://www.igdb.com/games/sifu",
+        "videos": [
+            46028,
+            47133,
+            ...
+        ],
+        "websites": [
+            756581,
+            756582,
+            ...
+        ],
+        "checksum": "168bc905-197c-272f-3a1b-f85b6e7b652b",
+        "remakes": null,
+        "language_supports": [
+            149147,
+            149154,
+            ...
+        ],
+        "game_localizations": [
+            14101,
+            26149
+        ],
+        "collections": null
+    },
+    "averageRating": 8.0,
+    "entriesIds": [
+        {
+            "value": 2
+        }
+    ],
+    "mediaListsIds": [
+        {
+            "value": 1
+        },
+        {
+            "value": 5
+        }
+    ],
+    "completedCount": 1,
+    "droppedCount": 0,
+    "inProgressCount": 0,
+    "onHoldCount": 0,
+    "pendingCount": 0,
+    "totalRatings": 1
+}

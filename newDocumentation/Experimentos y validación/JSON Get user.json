@@ -1,0 +1,108 @@
+{
+    "id": {
+        "value": 2
+    },
+    "profile": {
+        "username": "User2",
+        "password": "kljhfsdg87ygfjsbhn",
+        "email": "user2@gmail.com",
+        "biography": "Hey there! I'm user 2",
+        "location": "London, UK"
+    },
+    "favourites": {
+        "movieId": {
+            "value": 502033
+        },
+        "tvShowId": {
+            "value": 135918
+        },
+        "videogameId": {
+            "value": 113112
+        },
+        "bookId": {
+            "value": "kHh_EAAAQBAJ"
+        }
+    },
+    "completedMediaIds": [
+        {
+            "type": "MovieId",
+            "value": 502033
+        },
+        {
+            "type": "BookId",
+            "value": "UU-VAAAACAAJ"
+        },
+        ...
+    ],
+    "pendingMediaIds": [],
+    "inProgressMediaIds": [],
+    "onHoldMediaIds": [],
+    "droppedMediaIds": [
+        {
+            "type": "VideogameId",
+            "value": 1082
+        }
+    ],
+    "mediaListsIds": [
+        {
+            "value": 4
+        }
+    ],
+    "entriesIds": [
+        {
+            "value": 5
+        },
+        {
+            "value": 6
+        },
+        ...
+    ],
+    "reviewsIds": [
+        {
+            "value": 5
+        }
+    ],
+    "ratingsIds": [
+        {
+            "value": 5
+        },
+        {
+            "value": 6
+        },
+        ...
+    ],
+    "likesIds": [
+        {
+            "value": 1
+        }
+    ],
+    "repliesIds": [
+        {
+            "value": 2
+        }
+    ],
+    "followingIds": [
+        {
+            "value": 4
+        }
+    ],
+    "followersIds": [
+        {
+            "value": 4
+        },
+        {
+            "value": 5
+        }
+    ],
+    "blockedIds": [],
+    "chatsIds": [
+        {
+            "value": 1
+        }
+    ],
+    "archivedChatsIds": [
+        {
+            "value": 6
+        }
+    ]
+}

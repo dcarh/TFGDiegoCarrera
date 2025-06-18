@@ -1,0 +1,36 @@
+[
+    {
+        "kind": "books#volume",
+        "id": "5SIAEAAAQBAJ",
+        "etag": "1NMGEcfOVZQ",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/5SIAEAAAQBAJ",
+        "volumeInfo": {
+            "title": "El viejo y el mar",
+            "subtitle": null,
+            "authors": [
+                "Ernest Hemingway"
+            ],
+            "publisher": "LUMEN",
+            "publishedDate": "2020-10-01",
+            "description": "Una de las historias más grandes jamás contadas. En esta nueva y magistral traducción de Miguel Temprano García, El viejo y el mar recobra todo el esplendor del clásico imperecedero que le valió el Premio Pulitzer de 1953 a Ernest Hemingway. Con un lenguaje de gran fuerza y sencillez, El viejo y el mar narra la historia..."
+        }
+    },
+    {
+        "kind": "books#volume",
+        "id": "vV23SgAACAAJ",
+        "etag": "+O5bzHLxnk0",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/vV23SgAACAAJ",
+        "volumeInfo": {
+            "title": "El viejo y el mar",
+            "subtitle": null,
+            "authors": [
+                "Ernest Hemingway",
+                "Miguel Temprano García"
+            ],
+            "publisher": null,
+            "publishedDate": "2011-06",
+            "description": "'El viejo y el mar' narra la historia de un viejo pescador cubano a quien la suerte parece haber abandonado, y del desafío mayor al que se enfrenta - la batalla despiadada y sin tregua con un pez gigantesco en las aguas del golfo. Traducción de Miguel Temprano García; Prólogo de Juan Villoro."
+        }
+    },
+    ...
+]

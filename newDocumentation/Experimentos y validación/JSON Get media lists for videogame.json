@@ -1,0 +1,62 @@
+[
+    {
+        "id": {
+            "value": 1
+        },
+        "userId": {
+            "value": 3
+        },
+        "title": "Martial arts",
+        "description": "",
+        "mediaIds": [
+            {
+                "type": "MovieId",
+                "value": 94329
+            },
+            {
+                "type": "MovieId",
+                "value": 180299
+            },
+            ...
+        ],
+        "visibility": "Public",
+        "allowReplies": false,
+        "ranked": false,
+        "creationDate": "2024-05-29T20:43:12",
+        "updateDate": "2024-08-03T16:09:27",
+        "likesIds": [
+            {
+                "value": 4
+            }
+        ],
+        "repliesIds": []
+    },
+    {
+        "id": {
+            "value": 5
+        },
+        "userId": {
+            "value": 4
+        },
+        "title": "A generic list",
+        "description": "",
+        "mediaIds": [
+            {
+                "type": "MovieId",
+                "value": 10402
+            },
+            {
+                "type": "MovieId",
+                "value": 632617
+            },
+            ...
+        ],
+        "visibility": "Followers",
+        "allowReplies": true,
+        "ranked": false,
+        "creationDate": "2025-05-05T21:14:02",
+        "updateDate": "2025-05-05T21:14:57",
+        "likesIds": [],
+        "repliesIds": []
+    }
+]
