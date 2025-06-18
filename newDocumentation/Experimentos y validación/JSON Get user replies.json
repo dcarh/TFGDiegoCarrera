@@ -1,5 +1,17 @@
 [
     {
-        "value": 2
+        "id": {
+            "value": 2
+        },
+        "userId": {
+            "value": 2
+        },
+        "repliedObjectId": {
+            "type": "ReviewId",
+            "value": 5
+        },
+        "reply": "Well, at least it made fishing look less boring",
+        "likesIds": [],
+        "repliesIds": []
     }
 ]
