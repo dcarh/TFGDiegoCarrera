@@ -1,11 +1,11 @@
 package endpoints.app.user.social
 
-import endpoints.app.user.UserEndpointsUtils.specificUserBaseEndpoint
-import sttp.tapir.*
-import endpoints.io.outputs.Common.*
+import domain.app.social.Review
 import domain.errors.UserError.*
-import domain.ids.Social.ReviewId
 import domain.ids.User.UserId
+import endpoints.app.user.UserEndpointsUtils.specificUserBaseEndpoint
+import endpoints.io.outputs.Common.*
+import sttp.tapir.*
 
 object UserReviewsEndpoints {
 
@@ -14,11 +14,11 @@ object UserReviewsEndpoints {
     (name, description, method) => specificUserBaseEndpoint(name, description, method)
       .in("reviews")
 
-  val getUserReviews: PublicEndpoint[UserId, UserError, List[ReviewId], Any] =
+  val getUserReviews: PublicEndpoint[UserId, UserError, List[Review], Any] =
     userReviewsBaseEndpoint(
       "getUserReviews",
       "This endpoint returns all the reviews written by a user",
       "GET"
     )
-      .out(SocialOutputs.listOfReviewsIdsOutput)
+      .out(SocialOutputs.listOfReviewsOutput)
 }

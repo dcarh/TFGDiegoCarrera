@@ -1,11 +1,11 @@
 package endpoints.app.user.social
 
-import sttp.tapir.*
+import domain.app.social.Like
+import domain.errors.UserError.*
+import domain.ids.User.UserId
 import endpoints.app.user.UserEndpointsUtils.specificUserBaseEndpoint
 import endpoints.io.outputs.Common.*
-import domain.errors.UserError.*
-import domain.ids.Social.LikeId
-import domain.ids.User.UserId
+import sttp.tapir.*
 
 object UserLikesEndpoints {
 
@@ -14,11 +14,11 @@ object UserLikesEndpoints {
       (name, description, method) => specificUserBaseEndpoint(name, description, method)
         .in("likes")
   
-  val getUserLikes: PublicEndpoint[UserId, UserError, List[LikeId], Any] =
+  val getUserLikes: PublicEndpoint[UserId, UserError, List[Like], Any] =
     userLikesBaseEndpoint(
       "getUserLikes",
       "This endpoint returns all the likes of a user",
       "GET"
     )
-      .out(SocialOutputs.listOfLikesIdsOutput)
+      .out(SocialOutputs.listOfLikesOutput)
 }

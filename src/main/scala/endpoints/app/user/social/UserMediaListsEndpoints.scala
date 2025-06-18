@@ -1,11 +1,11 @@
 package endpoints.app.user.social
 
-import sttp.tapir.*
+import domain.app.social.MediaList
+import domain.errors.UserError.*
+import domain.ids.User.UserId
 import endpoints.app.user.UserEndpointsUtils.specificUserBaseEndpoint
 import endpoints.io.outputs.Common.*
-import domain.errors.UserError.*
-import domain.ids.Social.MediaListId
-import domain.ids.User.UserId
+import sttp.tapir.*
 
 object UserMediaListsEndpoints {
 
@@ -14,11 +14,11 @@ object UserMediaListsEndpoints {
       (name, description, method) => specificUserBaseEndpoint(name, description, method)
         .in("media_lists")
 
-  val getUserMediaLists: PublicEndpoint[UserId, UserError, List[MediaListId], Any] =
+  val getUserMediaLists: PublicEndpoint[UserId, UserError, List[MediaList], Any] =
     userMediaListsBaseEndpoint(
       "getUserMediaLists",
       "This endpoint returns all the media lists of a user",
       "GET"
     )
-      .out(SocialOutputs.listOfMediaListsIdsOutput)
+      .out(SocialOutputs.listOfMediaListsOutput)
 }

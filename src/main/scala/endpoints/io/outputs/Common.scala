@@ -114,39 +114,39 @@ object Common {
 
     val listOfEntriesOutput: EndpointOutput[List[Entry]] =
       jsonBody[List[Entry]].description("The requested list of entries")
-
-    val listOfEntriesIdsOutput: EndpointOutput[List[EntryId]] =
-      jsonBody[List[EntryId]].description("The requested list of entries IDs")
+//
+//    val listOfEntriesIdsOutput: EndpointOutput[List[EntryId]] =
+//      jsonBody[List[EntryId]].description("The requested list of entries IDs")
 
     val listOfReviewsOutput: EndpointOutput[List[Review]] =
       jsonBody[List[Review]].description("The requested list of reviews")
-
-    val listOfReviewsIdsOutput: EndpointOutput[List[ReviewId]] =
-      jsonBody[List[ReviewId]].description("The requested list of reviews IDs")
+//
+//    val listOfReviewsIdsOutput: EndpointOutput[List[ReviewId]] =
+//      jsonBody[List[ReviewId]].description("The requested list of reviews IDs")
 
     val listOfRatingsOutput: EndpointOutput[List[Rating]] =
       jsonBody[List[Rating]].description("The requested list of ratings")
-
-    val listOfRatingsIdsOutput: EndpointOutput[List[RatingId]] =
-      jsonBody[List[RatingId]].description("The requested list of ratings IDs")
+//
+//    val listOfRatingsIdsOutput: EndpointOutput[List[RatingId]] =
+//      jsonBody[List[RatingId]].description("The requested list of ratings IDs")
 
     val listOfLikesOutput: EndpointOutput[List[Like]] =
       jsonBody[List[Like]].description("The requested list of likes")
-
-    val listOfLikesIdsOutput: EndpointOutput[List[LikeId]] =
-      jsonBody[List[LikeId]].description("The requested list of likes IDs")
+//
+//    val listOfLikesIdsOutput: EndpointOutput[List[LikeId]] =
+//      jsonBody[List[LikeId]].description("The requested list of likes IDs")
 
     val listOfRepliesOutput: EndpointOutput[List[Reply]] =
       jsonBody[List[Reply]].description("The requested list of replies")
-
-    val listOfRepliesIdsOutput: EndpointOutput[List[ReplyId]] =
-      jsonBody[List[ReplyId]].description("The requested list of replies IDs")
+//
+//    val listOfRepliesIdsOutput: EndpointOutput[List[ReplyId]] =
+//      jsonBody[List[ReplyId]].description("The requested list of replies IDs")
 
     val listOfMediaListsOutput: EndpointOutput[List[MediaList]] =
       jsonBody[List[MediaList]].description("The requested list of media lists")
-
-    val listOfMediaListsIdsOutput: EndpointOutput[List[MediaListId]] =
-      jsonBody[List[MediaListId]].description("The requested list of media lists IDs")
+//
+//    val listOfMediaListsIdsOutput: EndpointOutput[List[MediaListId]] =
+//      jsonBody[List[MediaListId]].description("The requested list of media lists IDs")
 
     val listOfLikeableObjectsOutput: EndpointOutput[List[MediaList | Review | Reply]] =
       jsonBody[List[MediaList | Review | Reply]].description("The requested list of likeable objects")
