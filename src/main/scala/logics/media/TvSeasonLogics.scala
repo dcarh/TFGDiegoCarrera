@@ -51,21 +51,24 @@ object TvSeasonLogics {
 
   val getEntriesForTvSeason: ((TvShowId, TvSeasonNumber)) => IO[Either[UserError, List[Entry]]] =
     (tvShowId, tvSeasonNumber) =>
-      val entries = EntryRepository.getAll.filter(_.mediaId == (tvShowId, tvSeasonNumber))
+      IO.pure {
+        val entries = EntryRepository.getAll.filter(_.mediaId == (tvShowId, tvSeasonNumber))
 
-      if (entries.nonEmpty)
-        IO.pure(Right(entries))
-      else
-        IO.pure(Left(BadRequest("No entries found for season " + tvSeasonNumber.value + " from TV show with ID: " + tvShowId.value)))
+        Right(entries)
+      }.handleError {
+        case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
+      }
 
   val getMediaListsForTvSeason: ((TvShowId, TvSeasonNumber)) => IO[Either[UserError, List[MediaList]]] =
     (tvShowId, tvSeasonNumber) =>
-      val mediaLists = MediaListRepository.getAll.filter(_.mediaIds.contains((tvShowId, tvSeasonNumber)))
+      IO.pure {
+        val mediaLists = MediaListRepository.getAll.filter(_.mediaIds.contains((tvShowId, tvSeasonNumber)))
 
-      if (mediaLists.nonEmpty)
-        IO.pure(Right(mediaLists))
-      else
-        IO.pure(Left(BadRequest("No media lists found for season " + tvSeasonNumber.value + " from TV show with ID: " + tvShowId.value)))
+        Right(mediaLists)
+
+      }.handleError {
+        case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
+      }
 
 }
 

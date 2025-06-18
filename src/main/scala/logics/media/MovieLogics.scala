@@ -69,22 +69,25 @@ object MovieLogics {
       }
 
   val getEntriesForMovie: MovieId => IO[Either[UserError, List[Entry]]] =
-    movieId => 
-      val entries = EntryRepository.getAll.filter(_.mediaId == movieId)
-      
-      if (entries.nonEmpty) 
-        IO.pure(Right(entries))
-      else 
-        IO.pure(Left(BadRequest("No entries found for movie with ID: " + movieId.value)))
+    movieId =>
+      IO.pure {
+        val entries = EntryRepository.getAll.filter(_.mediaId == movieId)
+
+        Right(entries)
+      }.handleError {
+        case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
+      }
 
   val getMediaListsForMovie: MovieId => IO[Either[UserError, List[MediaList]]] =
     movieId =>
-      val mediaLists = MediaListRepository.getAll.filter(_.mediaIds.contains(movieId))
+      IO.pure {
+        val mediaLists = MediaListRepository.getAll.filter(_.mediaIds.contains(movieId))
 
-      if (mediaLists.nonEmpty)
-        IO.pure(Right(mediaLists))
-      else
-        IO.pure(Left(BadRequest("No media lists found for movie with ID: " + movieId.value)))
+        Right(mediaLists)
+
+      }.handleError {
+        case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
+      }
 
 
 }

@@ -42,21 +42,24 @@ object BookLogics {
 
   val getEntriesForBook: BookId => IO[Either[UserError, List[Entry]]] =
     bookId =>
-      val entries = EntryRepository.getAll.filter(_.mediaId == bookId)
+      IO.pure {
+        val entries = EntryRepository.getAll.filter(_.mediaId == bookId)
 
-      if (entries.nonEmpty)
-        IO.pure(Right(entries))
-      else
-        IO.pure(Left(BadRequest("No entries found for book with ID: " + bookId.value)))
+        Right(entries)
+      }.handleError {
+        case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
+      }
 
   val getMediaListsForBook: BookId => IO[Either[UserError, List[MediaList]]] =
     bookId =>
-      val mediaLists = MediaListRepository.getAll.filter(_.mediaIds.contains(bookId))
+      IO.pure {
+        val mediaLists = MediaListRepository.getAll.filter(_.mediaIds.contains(bookId))
 
-      if (mediaLists.nonEmpty)
-        IO.pure(Right(mediaLists))
-      else
-        IO.pure(Left(BadRequest("No media lists found for book with ID: " + bookId.value)))
+        Right(mediaLists)
+        
+      }.handleError {
+        case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
+      }
 
 }
 

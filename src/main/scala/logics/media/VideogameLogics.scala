@@ -46,21 +46,24 @@ object VideogameLogics {
 
   val getEntriesForVideogame: VideogameId => IO[Either[UserError, List[Entry]]] =
     videogameId =>
-      val entries = EntryRepository.getAll.filter(_.mediaId == videogameId)
+      IO.pure {
+        val entries = EntryRepository.getAll.filter(_.mediaId == videogameId)
 
-      if (entries.nonEmpty)
-        IO.pure(Right(entries))
-      else
-        IO.pure(Left(BadRequest("No entries found for videogame with ID: " + videogameId.value)))
+        Right(entries)
+      }.handleError {
+        case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
+      }
 
   val getMediaListsForVideogame: VideogameId => IO[Either[UserError, List[MediaList]]] =
     videogameId =>
-      val mediaLists = MediaListRepository.getAll.filter(_.mediaIds.contains(videogameId))
+      IO.pure {
+        val mediaLists = MediaListRepository.getAll.filter(_.mediaIds.contains(videogameId))
 
-      if (mediaLists.nonEmpty)
-        IO.pure(Right(mediaLists))
-      else
-        IO.pure(Left(BadRequest("No media lists found for videogame with ID: " + videogameId.value)))
+        Right(mediaLists)
+
+      }.handleError {
+        case ex: Exception => Left(Unknown(500, s"Unexpected error: ${ex.getMessage}"))
+      }
 
 }
 
