@@ -6,13 +6,10 @@ import routes.HttpRoutes.httpRoutes
 object Main extends IOApp {
 
   override def run(args: List[String]): IO[ExitCode] = {
-
-    SwaggerInterpreter
-
+    
     BlazeServerBuilder[IO]
       .bindHttp(8080, "localhost")
       .withHttpApp(httpRoutes.orNotFound)
-      .
       .serve
       .compile
       .drain
