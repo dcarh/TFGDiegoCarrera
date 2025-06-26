@@ -34,8 +34,8 @@ object GoogleBooksClient {
         parseResponse(response).attempt.flatMap {
           case Right(DecodeResult.Value(Right(result))) => IO.pure(Right(result))
           case Right(DecodeResult.Value(Left(error)))   => IO.pure(Left(error))
-          case Right(failure: DecodeResult.Failure)    => IO.pure(Left(Unknown(500, s"Failed to decode response: $failure")))
-          case Left(error)                             => IO.pure(Left(Unknown(500, s"Failed to parse response: ${error.getMessage}")))
+          case Right(failure: DecodeResult.Failure)     => IO.pure(Left(Unknown(500, s"Failed to decode response: $failure")))
+          case Left(error)                              => IO.pure(Left(Unknown(500, s"Failed to parse response: ${error.getMessage}")))
         }
       }.handleErrorWith { error =>
         IO.pure(Left(Unknown(500, s"Unexpected error: ${error.getMessage}")))

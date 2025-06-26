@@ -78,25 +78,25 @@ object UserLogics {
         case None                         =>
           val emptyList = List()
           val newUser = User(
-            id            = newUserId,
-            profile       = UserProfile(username = "", password = "", email = "", biography = "", location = ""),
-            favourites    = UserFavourites(movieId = None, tvShowId = None, videogameId = None, bookId = None),
-            completedMediaIds     = emptyList,
-            pendingMediaIds       = emptyList,
-            inProgressMediaIds    = emptyList,
-            onHoldMediaIds        = emptyList,
-            droppedMediaIds       = emptyList,
-            mediaListsIds    = emptyList,
-            entriesIds       = emptyList,
-            reviewsIds       = emptyList,
-            ratingsIds       = emptyList,
-            likesIds         = emptyList,
-            repliesIds       = emptyList,
-            followingIds     = emptyList,
-            followersIds     = emptyList,
-            blockedIds       = emptyList,
-            chatsIds         = emptyList,
-            archivedChatsIds = emptyList
+            id                 = newUserId,
+            profile            = UserProfile(username = "", password = "", email = "", biography = "", location = ""),
+            favourites         = UserFavourites(movieId = None, tvShowId = None, videogameId = None, bookId = None),
+            completedMediaIds  = emptyList,
+            pendingMediaIds    = emptyList,
+            inProgressMediaIds = emptyList,
+            onHoldMediaIds     = emptyList,
+            droppedMediaIds    = emptyList,
+            mediaListsIds      = emptyList,
+            entriesIds         = emptyList,
+            reviewsIds         = emptyList,
+            ratingsIds         = emptyList,
+            likesIds           = emptyList,
+            repliesIds         = emptyList,
+            followingIds       = emptyList,
+            followersIds       = emptyList,
+            blockedIds         = emptyList,
+            chatsIds           = emptyList,
+            archivedChatsIds   = emptyList
           )
 
           applyProfileToUser(newUser, newUserProfile)
