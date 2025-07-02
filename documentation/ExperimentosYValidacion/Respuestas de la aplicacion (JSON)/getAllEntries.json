@@ -1,0 +1,179 @@
+[
+    {
+        "id": {
+            "value": 4
+        },
+        "userId": {
+            "value": 1
+        },
+        "mediaId": {
+            "type": "MovieId",
+            "value": 502033
+        },
+        "ratingId": {
+            "value": 4
+        },
+        "reviewId": {
+            "value": 4
+        },
+        "completed": true,
+        "inProgress": null,
+        "onHold": null,
+        "dropped": false,
+        "repeat": true,
+        "startedDate": null,
+        "finishedDate": "2024-11-02",
+        "platform": null,
+        "creationDate": "2024-11-02T23:51:20"
+    },
+    {
+        "id": {
+            "value": 10
+        },
+        "userId": {
+            "value": 1
+        },
+        "mediaId": {
+            "type": "BookId",
+            "value": "ZEfWEAAAQBAJ"
+        },
+        "ratingId": {
+            "value": 10
+        },
+        "reviewId": null,
+        "completed": true,
+        "inProgress": false,
+        "onHold": false,
+        "dropped": false,
+        "repeat": false,
+        "startedDate": "2024-10-19",
+        "finishedDate": "2024-10-24",
+        "platform": null,
+        "creationDate": "2024-10-24T13:20:39"
+    },
+    {
+        "id": {
+            "value": 7
+        },
+        "userId": {
+            "value": 3
+        },
+        "mediaId": {
+            "type": "MovieId",
+            "value": 837
+        },
+        "ratingId": {
+            "value": 7
+        },
+        "reviewId": null,
+        "completed": true,
+        "inProgress": null,
+        "onHold": null,
+        "dropped": false,
+        "repeat": true,
+        "startedDate": null,
+        "finishedDate": "2024-09-21",
+        "platform": null,
+        "creationDate": "2024-09-21T18:16:03"
+    },
+    {
+        "id": {
+            "value": 18
+        },
+        "userId": {
+            "value": 2
+        },
+        "mediaId": {
+            "type": "BookId",
+            "value": "WLmqonsyH0QC"
+        },
+        "ratingId": {
+            "value": 14
+        },
+        "reviewId": null,
+        "completed": true,
+        "inProgress": false,
+        "onHold": false,
+        "dropped": false,
+        "repeat": false,
+        "startedDate": "2024-08-12",
+        "finishedDate": "2024-08-21",
+        "platform": null,
+        "creationDate": "2024-08-21T23:09:11"
+    },
+    {
+        "id": {
+            "value": 5
+        },
+        "userId": {
+            "value": 2
+        },
+        "mediaId": {
+            "type": "BookId",
+            "value": "UU-VAAAACAAJ"
+        },
+        "ratingId": {
+            "value": 5
+        },
+        "reviewId": {
+            "value": 5
+        },
+        "completed": true,
+        "inProgress": false,
+        "onHold": false,
+        "dropped": false,
+        "repeat": false,
+        "startedDate": "2024-08-12",
+        "finishedDate": "2024-08-13",
+        "platform": null,
+        "creationDate": "2024-08-14T12:07:38"
+    },
+    {
+        "id": {
+            "value": 12
+        },
+        "userId": {
+            "value": 1
+        },
+        "mediaId": {
+            "type": "BookId",
+            "value": "WLmqonsyH0QC"
+        },
+        "ratingId": null,
+        "reviewId": null,
+        "completed": false,
+        "inProgress": false,
+        "onHold": true,
+        "dropped": false,
+        "repeat": false,
+        "startedDate": "2024-07-12",
+        "finishedDate": "2024-07-19",
+        "platform": null,
+        "creationDate": "2024-07-19T17:51:24"
+    },
+    {
+        "id": {
+            "value": 11
+        },
+        "userId": {
+            "value": 4
+        },
+        "mediaId": {
+            "type": "MovieId",
+            "value": 55347
+        },
+        "ratingId": {
+            "value": 11
+        },
+        "reviewId": null,
+        "completed": true,
+        "inProgress": null,
+        "onHold": null,
+        "dropped": false,
+        "repeat": false,
+        "startedDate": null,
+        "finishedDate": "0024-07-28",
+        "platform": null,
+        "creationDate": "0024-08-03T19:12:09"
+    }
+]

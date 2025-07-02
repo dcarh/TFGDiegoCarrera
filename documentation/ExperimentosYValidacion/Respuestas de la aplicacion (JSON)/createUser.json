@@ -1,0 +1,34 @@
+{
+    "id": {
+        "value": 7
+    },
+    "profile": {
+        "username": "Diego Carrera",
+        "password": "89nkj43nhj_9j22az",
+        "email": "d.carrerah.2019@alumnos.urjc.es",
+        "biography": "Hey there! I'm user Diego Carrera",
+        "location": "Fuenlabrada, Madrid, España"
+    },
+    "favourites": {
+        "movieId": null,
+        "tvShowId": null,
+        "videogameId": null,
+        "bookId": null
+    },
+    "completedMediaIds": [],
+    "pendingMediaIds": [],
+    "inProgressMediaIds": [],
+    "onHoldMediaIds": [],
+    "droppedMediaIds": [],
+    "mediaListsIds": [],
+    "entriesIds": [],
+    "reviewsIds": [],
+    "ratingsIds": [],
+    "likesIds": [],
+    "repliesIds": [],
+    "followingIds": [],
+    "followersIds": [],
+    "blockedIds": [],
+    "chatsIds": [],
+    "archivedChatsIds": []
+}

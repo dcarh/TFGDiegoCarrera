@@ -1,5 +1,0 @@
-curl "https://www.googleapis.com/books/v1/volumes/E6s3SAAACAAJ"
-
-curl "https://www.googleapis.com/books/v1/volumes?q=Réquiem+por+un+campesiono+inauthor:sender&langRestrict=es"
-
-curl "https://www.googleapis.com/books/v1/volumes?q=Guerra+y+paz&langRestrict=es&orderBy=relevance&projection=lite"

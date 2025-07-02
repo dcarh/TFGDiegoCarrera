@@ -1,0 +1,54 @@
+[
+    {
+        "id": {
+            "value": 1
+        },
+        "userId": {
+            "value": 5
+        },
+        "mediaId": {
+            "type": "TvShowId",
+            "value": 136315
+        },
+        "ratingId": {
+            "value": 1
+        },
+        "reviewId": {
+            "value": 1
+        },
+        "completed": true,
+        "inProgress": false,
+        "onHold": false,
+        "dropped": false,
+        "repeat": false,
+        "startedDate": "2024-11-10",
+        "finishedDate": "2024-12-02",
+        "platform": null,
+        "creationDate": "2024-12-02T20:16:41"
+    },
+    {
+        "id": {
+            "value": 19
+        },
+        "userId": {
+            "value": 3
+        },
+        "mediaId": {
+            "type": "TvShowId",
+            "value": 136315
+        },
+        "ratingId": {
+            "value": 5
+        },
+        "reviewId": null,
+        "completed": true,
+        "inProgress": false,
+        "onHold": false,
+        "dropped": false,
+        "repeat": true,
+        "startedDate": "2025-06-01",
+        "finishedDate": "2025-06-15",
+        "platform": null,
+        "creationDate": "2025-06-15T17:34:01"
+    }
+]
