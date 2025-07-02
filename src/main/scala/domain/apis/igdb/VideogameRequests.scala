@@ -15,19 +15,19 @@ object VideogameRequests {
   case class VideogameFromIGDB(
                                id: VideogameId,
                                age_ratings: Option[List[Long]],
-                               aggregated_rating: Option[Double],             // Me da igual
-                               aggregated_rating_count: Option[Long],         // Me da igual
+                               aggregated_rating: Option[Double],
+                               aggregated_rating_count: Option[Long],
                                alternative_names: Option[List[Long]],
-                               artworks: Option[List[Long]],                  // Me da igual
+                               artworks: Option[List[Long]],
                                bundles: Option[List[Long]],
                                category: Option[Long],
                                collection: Option[Long],                     
-                               cover: Option[Long],                           // Me da igual
-                               created_at: Option[Long],                      // Me da igual
+                               cover: Option[Long],
+                               created_at: Option[Long],
                                dlcs: Option[List[Long]],                     
                                external_games: Option[List[Long]],
                                first_release_date: Option[Long],
-                               follows: Option[Long],                         // Me da igual
+                               follows: Option[Long],
                                franchises: Option[List[Long]],
                                game_engines: Option[List[Long]],
                                game_modes: Option[List[Long]],
