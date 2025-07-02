@@ -50,7 +50,7 @@ object MovieLogics {
             recommendedMovies <- recommendedMoviesTmdb
             credits           <- creditsTmdb
           } yield Right(Movie(
-            movieFromTMDB    = requestedMovie,
+            movieFromTMDB     = requestedMovie,
             similarMovies     = similarMovies,
             recommendedMovies = recommendedMovies,
             cast              = credits.map(_.cast),
@@ -58,9 +58,9 @@ object MovieLogics {
             averageRating     = metrics.averageRating,
             entriesIds        = metrics.entriesIds,
             mediaListsIds     = metrics.mediaListsIds,
-            completedCount = metrics.statusCounts.completed,
-            droppedCount   = metrics.statusCounts.dropped,
-            pendingCount   = metrics.statusCounts.pending,
+            completedCount    = metrics.statusCounts.completed,
+            droppedCount      = metrics.statusCounts.dropped,
+            pendingCount      = metrics.statusCounts.pending,
             totalRatings      = metrics.totalRatings
           ))
       }.handleError {

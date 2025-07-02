@@ -33,15 +33,15 @@ object TvEpisodeLogics {
             credits <- creditsTmdb
           } yield Right(TvEpisode(
             tvEpisodeFromTMDB = requestedTvEpisode,
-            cast               = credits.map(_.cast.sortBy(_.order)),
-            crew               = credits.map(_.crew),
-            averageRating      = metrics.averageRating,
-            entriesIds         = metrics.entriesIds,
-            mediaListsIds      = metrics.mediaListsIds,
-            completedCount  = metrics.statusCounts.completed,
-            droppedCount    = metrics.statusCounts.dropped,
-            pendingCount    = metrics.statusCounts.pending,
-            totalRatings       = metrics.totalRatings
+            cast              = credits.map(_.cast.sortBy(_.order)),
+            crew              = credits.map(_.crew),
+            averageRating     = metrics.averageRating,
+            entriesIds        = metrics.entriesIds,
+            mediaListsIds     = metrics.mediaListsIds,
+            completedCount    = metrics.statusCounts.completed,
+            droppedCount      = metrics.statusCounts.dropped,
+            pendingCount      = metrics.statusCounts.pending,
+            totalRatings      = metrics.totalRatings
           ))
       }.handleError {
         case ex: Exception =>

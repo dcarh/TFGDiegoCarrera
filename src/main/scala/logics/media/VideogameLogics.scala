@@ -25,15 +25,15 @@ object VideogameLogics {
               IO.pure(Right(
                 Videogame(
                   videogameFromIGDB = head,
-                  averageRating      = metrics.averageRating,
-                  entriesIds         = metrics.entriesIds,
-                  mediaListsIds      = metrics.mediaListsIds,
-                  completedCount  = metrics.statusCounts.completed,
-                  droppedCount    = metrics.statusCounts.dropped,
-                  inProgressCount = metrics.statusCounts.inProgress,
-                  onHoldCount     = metrics.statusCounts.onHold,
-                  pendingCount    = metrics.statusCounts.pending,
-                  totalRatings       = metrics.totalRatings
+                  averageRating     = metrics.averageRating,
+                  entriesIds        = metrics.entriesIds,
+                  mediaListsIds     = metrics.mediaListsIds,
+                  completedCount    = metrics.statusCounts.completed,
+                  droppedCount      = metrics.statusCounts.dropped,
+                  inProgressCount   = metrics.statusCounts.inProgress,
+                  onHoldCount       = metrics.statusCounts.onHold,
+                  pendingCount      = metrics.statusCounts.pending,
+                  totalRatings      = metrics.totalRatings
                 )
               ))
             case Nil => IO.pure(Left(NotFound("Not found videogame with ID introduced")))

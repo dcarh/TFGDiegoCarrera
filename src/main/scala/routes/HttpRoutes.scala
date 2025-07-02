@@ -11,7 +11,6 @@ import routes.media.TvSeasonRoutes.tvSeasonRoutes
 import routes.media.TvEpisodeRoutes.tvEpisodeRoutes
 import routes.media.VideogameRoutes.videogameRoutes
 import routes.media.BookRoutes.bookRoutes
-import routes.media.MovieRoutes.movieRoutes
 import routes.social.EntriesRoutes.entriesRoutes
 import routes.social.LikesRoutes.likesRoutes
 import routes.social.MediaListsRoutes.mediaListsRoutes

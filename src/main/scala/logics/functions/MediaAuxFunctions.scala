@@ -4,7 +4,6 @@ import domain.ids.Media.*
 import domain.ids.Social.{EntryId, MediaListId}
 import logics.media.MediaAuxClasses.{MediaMetrics, StatusCounts}
 import memory.repositories.{EntryRepository, MediaListRepository, RatingRepository, UserRepository}
-import logics.media.MediaAuxClasses.{MediaMetrics, StatusCounts}
 
 object MediaAuxFunctions {
 

@@ -31,18 +31,18 @@ object TvSeasonLogics {
           for {
             aggregateCredits <- aggregateCreditsTmdb
           } yield Right(TvSeason(
-            tvSeasonFromTMDB  = requestedTvSeason,
-            cast               = aggregateCredits.map(_.cast.sortBy(_.order)),
-            crew               = aggregateCredits.map(_.crew),
-            averageRating      = metrics.averageRating,
-            entriesIds         = metrics.entriesIds,
-            mediaListsIds      = metrics.mediaListsIds,
-            completedCount  = metrics.statusCounts.completed,
-            droppedCount    = metrics.statusCounts.dropped,
-            inProgressCount = metrics.statusCounts.inProgress,
-            onHoldCount     = metrics.statusCounts.onHold,
-            pendingCount    = metrics.statusCounts.pending,
-            totalRatings       = metrics.totalRatings
+            tvSeasonFromTMDB = requestedTvSeason,
+            cast             = aggregateCredits.map(_.cast.sortBy(_.order)),
+            crew             = aggregateCredits.map(_.crew),
+            averageRating    = metrics.averageRating,
+            entriesIds       = metrics.entriesIds,
+            mediaListsIds    = metrics.mediaListsIds,
+            completedCount   = metrics.statusCounts.completed,
+            droppedCount     = metrics.statusCounts.dropped,
+            inProgressCount  = metrics.statusCounts.inProgress,
+            onHoldCount      = metrics.statusCounts.onHold,
+            pendingCount     = metrics.statusCounts.pending,
+            totalRatings     = metrics.totalRatings
           ))
       }.handleError {
         case ex: Exception =>

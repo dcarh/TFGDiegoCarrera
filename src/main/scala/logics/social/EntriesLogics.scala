@@ -1,13 +1,12 @@
 package logics.social
 
 import cats.effect.IO
-import memory.repositories.{EntryRepository, RatingRepository, UserRepository}
+import memory.repositories.{EntryRepository, RatingRepository}
 import domain.app.social.Entry
 import domain.app.user.User
 import domain.errors.UserError.*
 import domain.ids.Media.{BookId, MovieId, TvEpisodeNumber, TvSeasonNumber, TvShowId, VideogameId}
 import domain.ids.Social.EntryId
-import domain.ids.User.UserId
 import logics.functions.{CommonFunctions, EntriesAuxFunctions}
 
 

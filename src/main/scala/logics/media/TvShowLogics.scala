@@ -49,7 +49,7 @@ object TvShowLogics {
             recommendedTvShows <- recommendedTvShowsTmdb
             aggregateCredits   <- aggregateCreditsTmdb
           } yield Right(TvShow(
-            tvShowFromTMDB    = requestedTvShow,
+            tvShowFromTMDB     = requestedTvShow,
             similarTvShows     = similarTvShows,
             recommendedTvShows = recommendedTvShows,
             cast               = aggregateCredits.map(_.cast.sortBy(_.order)),
@@ -57,11 +57,11 @@ object TvShowLogics {
             averageRating      = metrics.averageRating,
             entriesIds         = metrics.entriesIds,
             mediaListsIds      = metrics.mediaListsIds,
-            completedCount  = metrics.statusCounts.completed,
-            droppedCount    = metrics.statusCounts.dropped,
-            inProgressCount = metrics.statusCounts.inProgress,
-            onHoldCount     = metrics.statusCounts.onHold,
-            pendingCount    = metrics.statusCounts.pending,
+            completedCount     = metrics.statusCounts.completed,
+            droppedCount       = metrics.statusCounts.dropped,
+            inProgressCount    = metrics.statusCounts.inProgress,
+            onHoldCount        = metrics.statusCounts.onHold,
+            pendingCount       = metrics.statusCounts.pending,
             totalRatings       = metrics.totalRatings
           ))
       }.handleError {

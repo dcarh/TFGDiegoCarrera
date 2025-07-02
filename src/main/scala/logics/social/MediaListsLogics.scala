@@ -1,12 +1,11 @@
 package logics.social
 
 import cats.effect.IO
-import memory.repositories.{MediaListRepository, UserRepository}
+import memory.repositories.MediaListRepository
 import domain.app.social.MediaList
 import domain.app.user.User
 import domain.errors.UserError.*
 import domain.ids.Social.MediaListId
-import domain.ids.User.UserId
 import logics.functions.{CommonFunctions, MediaListsAuxFunctions}
 
 object MediaListsLogics {

@@ -22,16 +22,16 @@ object BookLogics {
           
           IO.pure(Right(
             Book(
-              bookFromGoogleBooks      = requestedBook,
-              averageRating      = metrics.averageRating,
-              entriesIds         = metrics.entriesIds,
-              mediaListsIds      = metrics.mediaListsIds,
-              completedCount  = metrics.statusCounts.completed,
-              droppedCount    = metrics.statusCounts.dropped,
-              inProgressCount = metrics.statusCounts.inProgress,
-              onHoldCount     = metrics.statusCounts.onHold,
-              pendingCount    = metrics.statusCounts.pending,
-              totalRatings       = metrics.totalRatings
+              bookFromGoogleBooks = requestedBook,
+              averageRating       = metrics.averageRating,
+              entriesIds          = metrics.entriesIds,
+              mediaListsIds       = metrics.mediaListsIds,
+              completedCount      = metrics.statusCounts.completed,
+              droppedCount        = metrics.statusCounts.dropped,
+              inProgressCount     = metrics.statusCounts.inProgress,
+              onHoldCount         = metrics.statusCounts.onHold,
+              pendingCount        = metrics.statusCounts.pending,
+              totalRatings        = metrics.totalRatings
             )
           ))
 
