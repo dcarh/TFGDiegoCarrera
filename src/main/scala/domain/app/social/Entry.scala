@@ -20,6 +20,6 @@ case class Entry(
                   repeat      : Boolean,
                   startedDate : Option[LocalDate],
                   finishedDate: Option[LocalDate],
-                  platform    : Option[Int], // TODO: En vez de un entero que se corresponda con el entero de IGDB, string de la plataforma (habría que hacer petición a IGDB)
+                  platform    : Option[Int],
                   creationDate: LocalDateTime,
                 )

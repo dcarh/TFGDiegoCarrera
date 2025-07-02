@@ -9,8 +9,8 @@ case class TvShow(
                    tvShowFromTMDB    : TvShowFromTMDB,
                    similarTvShows    : Option[List[Result]],
                    recommendedTvShows: Option[List[Result]],
-                   cast              : Option[List[Member]], // Viene de los Aggregate Credits y habría que ordenarlos según el campo order.
-                   crew              : Option[List[Member]], // Viene de los Aggregate Credits también, aunque no se me ocurre la forma de ordenarlos (Pooularidad?)
+                   cast              : Option[List[Member]],
+                   crew              : Option[List[Member]],
 
                    averageRating     : Option[Double],
                    entriesIds        : Option[List[EntryId]],

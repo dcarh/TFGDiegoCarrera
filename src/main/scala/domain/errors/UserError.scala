@@ -7,4 +7,3 @@ case class Unauthorized(realm: String) extends UserError
 case class Conflict(what: String) extends UserError
 case class Unknown(code: Int, msg: String) extends UserError
 case class NoContent() extends UserError
-//case object NoContent extends UserError
