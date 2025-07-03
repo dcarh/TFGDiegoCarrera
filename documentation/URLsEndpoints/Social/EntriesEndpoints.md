@@ -36,7 +36,7 @@
             "creationDate": "2025-05-30T21:36:02"
         }
 
-- http://localhost:8080/entry/6/edit   (PUT, Con el siguiente JSON como cuerpo de la petición)
+- http://localhost:8080/entry/6/edit   (PUT, con el siguiente JSON como cuerpo de la petición)
 
         {
             "id": {

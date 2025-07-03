@@ -2,7 +2,7 @@
 
 - http://localhost:8080/like/3   (GET)
 
-- http://localhost:8080/like/create   (POST, Con el siguiente JSON como cuerpo de la petición)
+- http://localhost:8080/like/create   (POST, con el siguiente JSON como cuerpo de la petición)
 
         {
             "id": {

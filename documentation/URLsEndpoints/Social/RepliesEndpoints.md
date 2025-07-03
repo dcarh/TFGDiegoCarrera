@@ -2,7 +2,7 @@
 
 - http://localhost:8080/reply/2   (GET)
 
-- http://localhost:8080/reply/create   (POST, Con el siguiente JSON como cuerpo de la petición)
+- http://localhost:8080/reply/create   (POST, con el siguiente JSON como cuerpo de la petición)
 
         {
             "id": {
@@ -20,7 +20,7 @@
             "replies": []
         }
 
-- http://localhost:8080/reply/2/edit   (PUT, Con el siguiente JSON como cuerpo de la petición)
+- http://localhost:8080/reply/2/edit   (PUT, con el siguiente JSON como cuerpo de la petición)
 
         {
             "id": {

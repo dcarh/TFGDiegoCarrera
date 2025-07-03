@@ -2,7 +2,7 @@
 
 - http://localhost:8080/rating/8   (GET)
 
-- http://localhost:8080/rating/create   (POST, Con el siguiente JSON como cuerpo de la petición)
+- http://localhost:8080/rating/create   (POST, con el siguiente JSON como cuerpo de la petición)
 
         {
             "id": {
@@ -18,7 +18,7 @@
             "rating": 7
         }
 
-- http://localhost:8080/rating/8/edit   (PUT, Con el siguiente JSON como cuerpo de la petición)
+- http://localhost:8080/rating/8/edit   (PUT, con el siguiente JSON como cuerpo de la petición)
 
         {
             "id": {

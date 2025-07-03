@@ -4,7 +4,7 @@
 
 - http://localhost:8080/review/6   (GET)
 
-- http://localhost:8080/review/create   (POST, Con el siguiente JSON como cuerpo de la petición)
+- http://localhost:8080/review/create   (POST, con el siguiente JSON como cuerpo de la petición)
 
         {
             "id": {
@@ -24,7 +24,7 @@
             "spoilers": false
         }
 
-- http://localhost:8080/review/5/edit   (PUT, Con el siguiente JSON como cuerpo de la petición)
+- http://localhost:8080/review/5/edit   (PUT, con el siguiente JSON como cuerpo de la petición)
 
         {
             "id": {

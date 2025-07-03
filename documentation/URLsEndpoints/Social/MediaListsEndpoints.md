@@ -12,7 +12,7 @@
 
 - http://localhost:8080/media_list/2   (GET)
 
-- http://localhost:8080/media_list/create   (POST, Con el siguiente JSON como cuerpo de la petición)
+- http://localhost:8080/media_list/create   (POST, con el siguiente JSON como cuerpo de la petición)
 
         {
             "id": {
@@ -48,7 +48,7 @@
             "replies": []
         }
 
-- http://localhost:8080/media_list/4/edit   (PUT, Con el siguiente JSON como cuerpo de la petición)
+- http://localhost:8080/media_list/4/edit   (PUT, con el siguiente JSON como cuerpo de la petición)
 
         {
             "id": {
