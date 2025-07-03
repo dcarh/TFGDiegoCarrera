@@ -1,0 +1,197 @@
+[
+    {
+        "id": 144022,
+        "age_ratings": [
+            56619,
+            56621,
+            56618,
+            131124,
+            63550,
+            56620,
+            106647
+        ],
+        "aggregated_rating": 78.85714285714286,
+        "aggregated_rating_count": 13,
+        "alternative_names": [
+            79764
+        ],
+        "artworks": [
+            50394
+        ],
+        "bundles": null,
+        "category": 0,
+        "collection": null,
+        "cover": 208864,
+        "created_at": 1614291022,
+        "dlcs": null,
+        "external_games": [
+            2658785,
+            1998663,
+            2440283,
+            2440406,
+            2677032,
+            2683968,
+            2687249,
+            2654800,
+            2754198,
+            2118134,
+            2581106,
+            2583362,
+            2625173,
+            2664501,
+            2951377,
+            2708369,
+            2172100,
+            2593771
+        ],
+        "first_release_date": 1644278400,
+        "follows": null,
+        "franchises": null,
+        "game_engines": [
+            439
+        ],
+        "game_modes": [
+            1
+        ],
+        "genres": [
+            4,
+            25,
+            32
+        ],
+        "hypes": 17,
+        "involved_companies": [
+            120003,
+            205058
+        ],
+        "keywords": [
+            1985
+        ],
+        "name": "Sifu",
+        "parent_game": null,
+        "platforms": [
+            169,
+            48,
+            6,
+            167,
+            49,
+            130
+        ],
+        "player_perspectives": [
+            2
+        ],
+        "rating": 83.05741070121393,
+        "rating_count": 146,
+        "release_dates": [
+            325753,
+            389053,
+            457241,
+            457242,
+            325754,
+            325755
+        ],
+        "screenshots": [
+            424043,
+            424044,
+            424045,
+            424046,
+            424047,
+            424048,
+            424049
+        ],
+        "similar_games": [
+            113895,
+            111130,
+            96217,
+            54775,
+            106987,
+            37419,
+            89550,
+            28309,
+            25646,
+            113109
+        ],
+        "slug": "sifu",
+        "standalone_expansions": null,
+        "storyline": "Sifu is the story of a young Kung Fu student on a path of revenge, hunting for the murderers of his family. One against all, he has no allies, and countless enemies. He has to rely on his unique mastery of Kung Fu as well as a mysterious pendant to prevail, and preserve his family’s legacy.",
+        "summary": "A third person action game featuring intense hand-to-hand combat, it puts you in control of a young Kung-Fu student on his path of revenge throughout the city.",
+        "tags": [
+            1,
+            268435460,
+            268435481,
+            268435488,
+            536872897
+        ],
+        "themes": [
+            1
+        ],
+        "total_rating": 80.95727677917839,
+        "total_rating_count": 159,
+        "updated_at": 1751562245,
+        "url": "https://www.igdb.com/games/sifu",
+        "videos": [
+            46028,
+            47133,
+            50703,
+            51956,
+            53833
+        ],
+        "websites": [
+            756581,
+            756582,
+            756583,
+            171164,
+            262363,
+            452591,
+            528447,
+            171161,
+            171165,
+            570989,
+            658923,
+            171160,
+            171166,
+            658921,
+            658922
+        ],
+        "checksum": "184a6ca4-b4e3-ab28-ca28-849650eb70df",
+        "remakes": null,
+        "language_supports": [
+            149147,
+            149154,
+            135686,
+            135687,
+            135688,
+            135689,
+            135690,
+            135691,
+            135692,
+            135693,
+            135683,
+            135684,
+            135685,
+            149159,
+            149160,
+            149155,
+            149158,
+            623644,
+            623645,
+            623646,
+            623647,
+            623633,
+            623634,
+            623635,
+            623636,
+            623637,
+            623638,
+            623639,
+            623640,
+            623641,
+            623642,
+            623643
+        ],
+        "game_localizations": [
+            14101,
+            26149
+        ],
+        "collections": null
+    }
+]

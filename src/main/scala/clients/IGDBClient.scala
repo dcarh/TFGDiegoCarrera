@@ -23,7 +23,7 @@ object IGDBClient {
 
   private val headerAccept = "application/json"
   private val headerClientID = "qn2w238rb9gpxxpiv546tgg9th31mk"
-  private val headerAuthorization = "Bearer na5o8o5486eypcqa6tangaj7by1gf9"
+  private val headerAuthorization = "Bearer ss2zu5i4au70imdq84a3ye7lg1g2i8"
   private val baseUri = uri"https://api.igdb.com/v4"
 
   def executeRequest[I, O](
